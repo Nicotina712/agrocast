@@ -1,0 +1,44 @@
+# ── Secrets ──────────────────────────────────────────────
+.env
+.env.local
+*.pem
+*.key
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.Python
+build/
+dist/
+
+# ── IDE ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ── AgroCast caches pesados (NO se versionan) ────────────
+# El intel_cache crece sin techo (1 archivo por noticia analizada).
+data/intel_cache/
+data/intraday_cache/
+artifacts/intraday/cache/
+# Parquets pesados — mantener solo CSVs en repo.
+data/cache/*.parquet
+artifacts/intraday/*.parquet
+
+# USDA PSD reference dump (~65 MB) — el pipeline lo regenera.
+data/psd_oilseeds.csv
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+logs/
+
+# ── OS / archive ─────────────────────────────────────────
+_archivo/
+*.tmp

@@ -1,0 +1,54 @@
+{
+  "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
+  "stance": "ALCISTA",
+  "conviction": 42,
+  "key_drivers": [
+    {
+      "driver": "Modelo ML (XGBoost 7d)",
+      "direction": "+",
+      "why": "El modelo anticipa un retorno de +16% en 7 días con señal BUY, aunque la confianza estadística es baja (32%). Es el factor que más empuja el composite hacia arriba."
+    },
+    {
+      "driver": "Demanda China",
+      "direction": "-",
+      "why": "Márgenes de crush negativos (-141 USD/ton) y cero crecimiento interanual en importaciones (112 MMT, igual que 2025). China no está traccionando demanda nueva, lo que limita el alza."
+    },
+    {
+      "driver": "WASDE / Stocks Mundiales",
+      "direction": "-",
+      "why": "Stocks finales globales en 122.4 MMT, exactamente en línea con expectativas, sin sorpresa positiva ni negativa. No hay catalizador desde los fundamentos de oferta/demanda global."
+    },
+    {
+      "driver": "Análisis Técnico (Soja)",
+      "direction": "+",
+      "why": "Precio de soja en Chicago (1163 USc/bu) por encima de MA50 con golden cross confirmado (MA50 > MA200). RSI en 48, lejos de sobrecompra, con margen técnico para subir."
+    }
+  ],
+  "risks": [
+    "China puede profundizar la caída de demanda si los márgenes de crush siguen negativos y reduce compras en los próximos meses",
+    "El modelo ML tiene confianza baja (32%), lo que significa que la señal alcista puede revertirse rápido si los datos de la semana la contradicen"
+  ],
+  "tactical_recommendation": "Con el precio spot en torno a 1163-1164 USc/bu y el contrato julio en 1178 USc/bu, esta semana tiene sentido retener una parte de la cosecha si tenés espalda financiera para esperar. El basis está en -25 USD/ton, cerca del promedio histórico, así que no hay urgencia de vender FOB hoy. Si necesitás liquidar, priorizá el contrato julio antes del 30 de junio para evitar el rollover.",
+  "strategic_view": "En el horizonte de 30-90 días, la tensión entre un modelo técnico alcista y una demanda china débil va a definir el techo del movimiento. Si China no reactiva el crush o no aparece un comprador alternativo de volumen, el upside queda limitado a la zona de 1200 USc/bu. El forecast de 30 días del ensemble Ridge+XGB apunta a precios casi sin cambio (~1163 USc/bu), aunque ese modelo tiene un cap técnico de ±1% diario acumulado que limita su capacidad de proyectar movimientos bruscos.",
+  "data_gaps": [
+    "Tipo de cambio CNY/USD no disponible: sin ese dato no se puede evaluar si la devaluación del yuan encarece la soja para los compradores chinos",
+    "Datos reales de CIARA (liquidaciones semanales actuales): el valor de 1500 MM USD/sem es estimación estacional, no dato confirmado",
+    "Historial de accuracy del modelo ML: sin backtest validado (n_evaluated=0) no se puede saber cuán confiable es el +16% proyectado",
+    "Clima en Mato Grosso y sudeste de Brasil: ninguna noticia climática capturada esta semana, y Brasil exportó solo 25% de su proyección anual con 51 semanas por delante"
+  ],
+  "_generated_at": "2026-04-26T03:50:12.961192",
+  "_model": "claude-sonnet-4-6",
+  "_input_keys": [
+    "news_intel",
+    "signal",
+    "argentina",
+    "brazil",
+    "china",
+    "basis",
+    "wasde",
+    "multi_commodity",
+    "contract",
+    "forecast",
+    "accuracy"
+  ]
+}

@@ -1,0 +1,224 @@
+# Modelo intradía de predicción para futuros de soja (ZS/MZS)
+
+**Resumen ejecutivo:** Este reporte presenta un marco analítico completo para construir un modelo predictivo de trading intradía en futuros de soja (contratos estándar “ZS” y micro “MZS”). Se describen los objetivos, los datos necesarios, fuentes oficiales (CME, USDA, etc.), limpieza y alineación de datos, construcción de *features* (precio, volumen, volatilidad, datos de libros de órdenes, estacionalidad, factores fundamentales como informes USDA y clima, etc.), así como aspectos de microestructura (tick size, liquidez, horarios de mercado y liquidación). También se detallan los tipos de modelos (estadísticos, machine learning, redes neuronales, híbridos), la validación y métricas (MAE, RMSE, Sharpe, win-rate, etc. con umbrales recomendados), las reglas de ejecución (órdenes límite, stop, OCO, escalado, modelado de *slippage*), gestión de riesgo (tamaño de posición, drawdown, correlación, margen), y el framework de backtesting realista (datos por tick/minuto, costos de transacción). Asimismo se cubre el despliegue en tiempo real (feeds CME, latencia, monitoreo, retraining) y la interpretabilidad (importancia de variables, reglas sencillas). Se concluye con los errores comunes y una lista de chequeo paso a paso (“de señal a orden en vivo”) **para dummies**, incluida una tabla de datos recomendados, una tabla comparativa de modelos, un diagrama de flujo de proceso intradiario (Mermaid), una lista de *features* de ejemplo con fórmulas, y métricas clave con umbrales.  
+
+## Objetivos  
+- **Precisión y utilidad práctica:** Desarrollar un modelo que pronostique movimientos de precios intradía en futuros de soja con un horizonte corto (minutos a horas), generando señales de trading accionables.  
+- **Gestión integrada:** Asegurar que las señales del modelo se puedan traducir en órdenes reales intradía con reglas claras (entrada/salida, stops, ejecución), controlando riesgo (drawdowns diarios, correlación con otros mercados, margin calls).  
+- **Resiliencia y adaptabilidad:** Validar el modelo con esquema *walk-forward*, anticipar drift de mercado, e incorporar datos fundamentales (WASDE, clima, índices macro) para adaptarse a eventos que mueven la soja.  
+
+## Datos requeridos  
+Para operar intradía se necesitan datos con **alta frecuencia**: idealmente series por tick o al menos bars de 1-5 minutos. Los símbolos clave son:
+- **ZS**: contrato estándar de 5,000 bushels (Contrato CBOT).  
+- **MZS**: micro-contrato de soja (500 bushels, 1/10 del tamaño estándar)【20†L134-L142】【45†L161-L164】. 
+
+Campos y granularidad recomendados (ver Tabla 1 más abajo): precios (apertura, máximo, mínimo, cierre o “tick” real con bid/ask), volumen, interés abierto, plus datos de libro de órdenes top-of-book (mejor bid/ask y tamaños) para medir micro-flujos【16†L82-L90】. Para la parte fundamental, datos **USDA** periódicos (WASDE mensual, NASS informe de progreso de cosecha semanal y Stocks), índices de clima (precipitación, temperaturas, ENSO) y variables macro (índice Dólar, tasas de interés, demandas globales). La resolución puede variar: precios intradía en minutos, datos USDA mensuales/semana, clima diario. Es crucial **sincronizar** todas las series por tiempo.  
+
+El **Ticker y horario** de datos: CME Globex ofrece datos en GMT/CT; hay que convertir zonas. MZS y ZS comparten meses de vencimiento y horario【45†L203-L205】. Horas de trading: Globex Sunday 7:00pm–Friday 1:20pm (CT)【45†L248-L252】. Se recomiendan proveedores oficiales: **CME DataMine** (históricos tick/minuto)【11†L12-L19】, **Tradovate** o **CME Market Data** para datos en tiempo real, **Refinitiv/Thomson Reuters o Quandl** para series diarias, **DPI de USDA** para informes. News (Bloomberg/Reut-Spanish) complementan los drivers fundamentales. 
+
+## Fuentes de datos (Tabla 1)  
+La Tabla 1 resume los datos clave y fuentes sugeridas:  
+
+| **Campo / Indicador**           | **Fuente sugerida**                                             |
+|-------------------------------|--------------------------------------------------------------|
+| *Precio intradiario (tick, OHLC)*     | CME Globex via DataMine, Tradovate API, Barchart, TradingView (ticks)【11†L12-L19】  |
+| *Volumen & Interés abierto*   | CME Market Data/DataMine                                       |
+| *Libro de órdenes (bid/ask)*   | CME MDP (Depth of Market) o broker API (Tradovate/TT)           |
+| *Spread bid-ask* (micro vs ZS) | Calcular internamente (MZS vs ZS diferencias)                |
+| *VWAP, dinámicas de flujo*     | Derivados de los anteriores (por fórmula)                    |
+| *Indicadores técnicos*        | Calcular (RSI, medias móviles, estocástico, etc.)             |
+| *Time-of-Day* (hora del día)    | Etiquetas horarias con rango de mercado                      |
+| *Estacionalidad intradía*      | Promedios por hora / día (p.ej. sesgo de NY vs Asia)【21†L47-L55】|
+| *Día-semana, Día-mes*         | DateTime features (categóricas / dummies)                   |
+| *WASDE mensual*               | USDA (directo en inglés o Reuters *WASDE monthly*)【12†L126-L134】    |
+| *NASS Crop Progress*          | USDA-NASS (semana vía API o PDF)                              |
+| *USDA Stocks/Área*            | USDA NASS Reports                                           |
+| *Datos climáticos (precip, T)* | NOAA / NCEP / NASA (index de lluvia media región Midwest)     |
+| *Índice Dólar (DXY)*          | Federal Reserve, Bloomberg, Yahoo Finance (intraday dolar)    |
+| *Macro global*                | Bloomberg/Reuters (PMIs, tasas, etc. en inglés)               |
+| *Noticias y análisis*         | Reuters/Bloomberg Español (agricultura), BCR Rosario (español)|
+| *Noticias de mercado*         | Investing.com, Haver Analytics (español), Twitter feeds      |
+
+En particular, **CME DataMine** es fuente oficial de datos históricos por tick o minuto【11†L12-L19】. Informes USDA (WASDE) cambian las expectativas de oferta/demanda y mueven fuerte los precios【12†L126-L134】. Los reportes NOAA o índices de clima (precipitación, humedad) ayudan a anticipar shocks por sequía/lluvias extremos【30†L74-L80】. Nótese que MZS y ZS comparten meses de vencimiento y settlement en efectivo, facilitando correlación【45†L203-L205】.  
+
+## Limpieza y alineación de datos  
+Las series deben limpiarse cuidadosamente: eliminar errores de datos (“fat fingers”), rellenar faltantes intradía (imputando último precio válido), unificar time zones (Chicago CT). Alinear las series intradía de precios con los datos diarios/semana de USDA u otras fuentes: por ejemplo, asignar el reporte WASDE del mediodía (CT) al primer instante de la sesión siguiente. Si se usan múltiples contratos (expiraciones sucesivas), se puede crear un contrato continuo (roll diario) o entrenar por separado cada mes. Es vital eliminar datos fuera de horario (p.ej. Globex pre-market) si el modelo se focaliza en horas regulares, y quizá estandarizar sesiones (e.g. reconstruir barras de 5-min que solo consideren 8:30-13:20 CT).  
+
+Para alinear datos fundamentales, se sugiere crear indicadores de evento: por ejemplo, “Días hasta próximo WASDE”, o volatilidad pre-report (implícita). Limpiar los datos climáticos con promedios geográficos de regiones agrícolas clave (Medio Oeste). Normalizar precios (dividir por la última liquidación de cierre diario o al inicio de jornada) para que el modelo aprenda retornos relativos.  
+
+## Ingeniería de características (features)  
+Construir variables predictivas clave:  
+- **Retornos y momentum**: retorno porcentual de cierre versus t-1 (minutos/barra previa), diferencias de medias móviles (p.ej. EMA) para detectar tendencias cortas.  
+- **Volatilidad**: desviación estándar móvil de retornos (e.g. última hora) o *atr* (rango promedio verdadero) intradía. Indica régimen de alta/baja volatilidad.  
+- **Volumen**: volumen de trade en barra, comparado con media intradía; *VWAP*: precio promedio ponderado por volumen en la barra (o sesión hasta el momento).  
+- **Libro de órdenes**: indicadores de *order book imbalance* o flujo de órdenes【16†L82-L90】. Ejemplo: **Imbalance** = (vol_bid – vol_ask)/(vol_bid+vol_ask) sobre top 3-5 niveles【16†L125-L134】. Estudios muestran que este desequilibrio impulsa el precio en segundos cortos【16†L82-L90】. También el *cumulative delta* (diferencia acumulada de buys vs sells) es útil.  
+- **Spreads**: diferencia entre mejor oferta y demanda (*bid-ask spread*), indicador de liquidez. Rango relativo (High-Low) de la barra anterior.  
+- **Horario/estacionalidad**: dummy de hora del día (por ejemplo, 4-5 AM, apertura NY, que suele ser volátil【1†L23-L26】), día de semana, proximidad al cierre de Chicago (1:20pm). Belguardi (2024) encontró un patrón intradía: en promedio la mañana baja y la tarde sube【21†L47-L55】. Se pueden crear variables que capturen ese sesgo horario (p.ej. indicador *sesgo_ma\ñana* o reloj codificado sinusalmente).  
+- **Factores estacionales anuales**: meses de siembra/venta (pico de demanda en otoño, baja en cosecha), dummies mensuales, estacionalidad calendárica.  
+- **Variables fundamentales**: cambios en inventarios (Stockes USDA) o previsiones vs previas (por ejemplo, ∆ en pronósticos de oferta-demanda WASDE). P.ej. un *shock WASDE* puede definirse como la diferencia entre pronóstico real vs consenso de analistas, capturada como indicador binario tras el release. Datos de clima extremos (lluvia residual bajo/alto en días recientes) que afectan yield futuro【30†L74-L80】. También variables macro (p.ej. retorno del DXY, ya que dólar fuerte tiende a presionar commodities).  
+- **Cross-features**: spreads entre futuros de soja y derivados (aceite, harina) o con otros granos (maíz como competidor de cultivo). La diferencia (spread crush, etc.) puede predecir movimientos en soja.  
+- **Datos adicionales**: sentimiento en medios sociales, IBEX agrícola de noticias, etc.
+
+Tabla 4 (más abajo) ejemplifica fórmulas de algunas características: retornos, volatilidad, VWAP, imbalance, dummies de tiempo, etc. Cualquier *feature* debe normalizarse (p.ej. con media y varianza locales) para evitar escalas heterogéneas.
+
+【41†embed_image】 *Figura: Ejemplo de gráfico de velas (candlestick) mostrando variación de precios en intervalos temporales. En el trading intradía de soja se usarían gráficos similares (p.ej. velas de 1 o 5 minutos) para visualizar movimientos. (Fuente: Wikimedia Commons.)*
+
+## Microestructura del mercado  
+Los contratos MZS (micro) y ZS (estándar) tienen la misma especificación de meses y horario【45†L203-L205】, pero difieren en tamaño y tick. MZS vale 500 bushels (1/10 de ZS)【20†L134-L142】. El tamaño mínimo de precio (*tick*) del micro es $0.050/bu, el doble del tick estándar $0.025/bu【45†L161-L164】. Esto significa que los movimientos de MZS avanzan en pasos más gruesos (cada tick=12.5 USD por contrato). Los micros liquidan en base al precio del estándar (cash settlement)【20†L145-L153】.  
+
+**Liquidez y costos:** ZS es muy líquido (promedio >200,000 contratos/día, OI ~900,000【34†L77-L80】), lo que favorece ejecución rápida. MZS, al ser nuevo y más pequeño, tiene menor volumen (pero creciente), ofreciendo flexibilidad con menor capital. Sin embargo, menor liquidez implica mayor *slippage*: se debe modelar este efecto (p.ej. asumir algunos ticks de costo). Los costos de transacción (comisión + tarifas CME) y el bid-ask spread deben incluirse. En la práctica, podría convenir usar MZS para entradas pequeñas y ZS para escalar a posiciones mayores.  
+
+**Tick size y arbitraje:** Dado el tick distinto, es clave escalar apropiadamente: 1 MZS equivale a 1/10 de ZS en notional, pero las cotizaciones pueden diferir en décimas de centavo (tratamiento de “nontradable tick” en settlement【20†L145-L153】). Cualquier estrategia que use ambos debe convertir unidades. También, manejar contratos continuos (roll o sintetizado) al acercarse a expiry.  
+
+**Horario:** CME Globex opera de domingo 19:00 a viernes 13:20 CT【45†L248-L252】. Los reportes USDA (WASDE) salen en torno a las 12:00 CT, dentro del horario de trading. El primer movimiento tras un reporte suele ocurrir en minutos tras la publicación. Hay que lidiar con este riesgo de gap. El modelo intradía debe considerar la *actividad inicial* (por ejemplo, filtro de 10 min tras apertura de NY).
+
+## Tipos de modelo (Tabla 2)  
+Los enfoques posibles incluyen:  
+- **Modelos estadísticos lineales:** p.ej. ARIMA, regresión lineal con rezagos. Muy rápidos (latencia ~ms), fácilmente interpretable, pero capturan solo relaciones lineales y asumen estacionariedad (no adaptan bien cambios de régimen).  
+- **Árboles de decisión / Random Forest:** manejan no-linealidad y variedad de *features*. Latencia baja-moderada, fáciles de entrenar. No requieren escalado de variables. Pueden tener menor overfitting que redes complejas, pero menos buenos en datos ultra-no lineales.  
+- **Gradient Boosting (XGBoost, LightGBM):** potentes con *features* heterogéneos, toleran outliers, ofrecen importancia de variables. Latencia moderada (predicción en decenas de ms), alto performance en muchos casos. Requieren cuidado (tuning).  
+- **Redes neuronales recurrentes (LSTM/GRU):** capturan dependencias temporales. Pueden extraer patrones secuenciales complejos (p.ej. alta volatilidad previa afecta futuro). Latencia mayor (predicción en cientos de ms), mayor riesgo de *overfitting*, demanda más datos de entrenamiento y computación (GPU aconsejable).  
+- **Redes convolucionales / Transformers:** Modelos más nuevos que procesan series como imágenes o utilizan atención. Pueden hallar patrones de gran escala en datos complejos. Son los más costosos computacionalmente (latencia alta, >0.5s) pero potencialmente más precisos si se dispone de datos suficientes.  
+- **Modelos híbridos/ensemble:** Combinar varios anteriores (p.ej. modelo estadístico + ML). Elevan la latencia aún más, pero pueden balancear fortalezas.  
+
+La Tabla 2 compara cinco enfoques típicos. En intradía la **latencia** es clave: modelos simples (lineales, árboles) pueden usarse en tiempo real, mientras que redes profundas pueden necesitar optimización o simplificación. El tipo de modelo se elegirá según la capacidad de cómputo disponible, la calidad de los datos y la complejidad del comportamiento observado.  
+
+| **Enfoque / Modelo**      | **Pros**                                                | **Contras**                                             | **Latencia estimada (predicción)** |
+|---------------------------|-------------------------------------------------------|--------------------------------------------------------|-----------------------------------|
+| Estadístico Lineal (ARIMA, Regresión) | Interpretable, simple, rápido de entrenar. | Asume linealidad y estacionariedad, pobre en no linealidad. | Muy baja (<1 ms)  |
+| Random Forest (árboles)   | Maneja no linealidad, robusto, baja varianza, expl. variable. | Sin memoria temporal explícita, moderado uso CPU. | Baja (1–10 ms)  |
+| XGBoost/LightGBM          | Alto poder predictivo, importante variable, poco preproceso. | Requiere tuning, algo lento de entrenar. | Moderada (5–50 ms)  |
+| LSTM / GRU (RNN)          | Capta patrones secuenciales, secuencia de datos.        | Más difícil de interpretar, riesgo de sobreajuste, entrena lento. | Alta (50–200 ms) |
+| CNN / Transformer (DL)    | Detecta patrones complejos a múltiples escalas.        | Necesita muchos datos, aún más lento (GPU), “caja negra”. | Muy alta (>200 ms) |
+
+## Entrenamiento y validación  
+Se aconseja validación **walk-forward** (ventanas deslizantes) para simular despliegue real: entrenar en período $T_1$, probar en $T_2$, avanzar el periodo, etc. Así se evita el *look-ahead bias* y se capta la evolución del mercado【51†L244-L252】. Por ejemplo, entrenar 9 meses y testear el siguiente mes, desplazando la ventana mensualmente.  
+
+Métricas de error: MAE, RMSE y MAPE miden precisión de precios/predicciones. Para trading, usar métricas de desempeño financiero: Sharpe Ratio, Profit Factor, tasa de ganancias (*win rate*), drawdown y PnL total. LuxAlgo recomienda como meta Sharpe >1.0, Profit Factor >1.75, win-rate >50%【32†L51-L57】. Un modelo intradía “útil” debe generar *una relación beneficio/riesgo* que cubra costos de transacción y capital. Por ejemplo, un **Sharpe > 1.0** (mensual) y profit factor superior a ~1.5-2 se consideran sólidos【32†L51-L57】. Además, se debe validar estabilidad en distintos subperíodos: controlar que el modelo no dependa solo de un régimen temporal específico. 
+
+## Reglas de ejecución  
+Al obtener señal de compra/venta, definir reglas claras:  
+1. **Entrada:** se pueden usar órdenes *limit* (para asegurar precio) o *stop* (para seguir momentum). Por ejemplo, al detectar señal *BUY*, colocar una orden limitada ligeramente por debajo del precio actual (capturando retrocesos).  
+2. **Salida:** configurar *stop loss* y *take profit* basados en volatilidad. Por ejemplo, stop a 0.5–1 punto (12.5–25 USD) en MZS o 5–10 puntos en ZS, según el análisis de riesgo. Algunos recomiendan stops dinámicos (ej. ATR de 20 barras).  
+3. **OCO (One Cancels Other):** usar órdenes *OCO* (ej. stop + limit) para automatizar salidas.  
+4. **Escalado:** considerar **entradas parciales**. Ej. 50% de posición al primer precio objetivo, y agregar más si la señal se mantiene. Esto gestiona el riesgo y el *slippage*.  
+5. **Slippage:** modelar o simular retardo de ejecución (p.ej. asumir 1–2 ticks de movimiento). Para intradía real, estar conscientes de latencia del feed y reacción del mercado.  
+6. **Ventanas de tiempo:** evitar operar justo antes de cerrar para evitar riesgo overnight. P.ej. cerrar posiciones a las 13:10 CT.  
+
+Ejemplo de flujo: si el modelo indica fuerte alza, **esperar una pequeña corrección** y colocar orden LMT de compra (cerca del bid actual)【16†L125-L134】; al ejecutarse, disparar órdenes stop-loss sueltas (OCO) para limitar pérdidas. 
+
+**Reglas adicionales:** Limitar número de operaciones al día para evitar sobre-trading. Supervisar noticias (usar filtros: por ejemplo, no entrar justo antes de reportes clave sin ver el resultado). 
+
+## Gestión de riesgo  
+- **Tamaño de posición:** Basarse en volatilidad y capital. P.ej. no arriesgar más de 1–2% del capital en una sola operación【32†L118-L122】. Esto significa calcular el tamaño $N$ de contratos tal que un stop de “X” pts * valor_tic * $N$ ≤ 1–2% de capital. LuxAlgo sugiere limitar exposición 1-2% por trade【32†L118-L122】.  
+- **Drawdown máximo:** Establecer límites intradía (ej. stop global del 2-3% del capital en el día, cero tolerancia a una racha de pérdidas fuerte). Si se alcanza, suspender operaciones ese día.  
+- **Diversificación:** Evitar correlación excesiva; por ejemplo, no solo soja sino también monitorear otros granos/commodities. Si se opera varios mercados, ajustar exposición conjunta.  
+- **Margen:** Recordar los requisitos de margin diario por contrato CBOT. Esto condiciona el apalancamiento efectivo. Ajustar tamaño si la volatilidad aumenta el margin.  
+- **Cola/Riesgo sistémico:** Tener en cuenta eventos extremos (low liquidez, gaps). Por ejemplo, noticias geopolíticas pueden desatar gaps. Medidas preventivas: no sobreapalancarse antes de volatilidad esperada.  
+
+## Backtesting realista  
+- **Datos históricos:** Usar datos por tick o 1-minuto con feeds realistas. Simular latencia (ej. retrasar señales 100–500ms).  
+- **Costos:** Incluir comisiones fijas y variables (p.ej. 0.25 USD/tick en ZS, CBS fees). Calcular *slippage* agregado (p.ej. +1 tick compra, -1 tick venta).  
+- **Fills realistas:** Modelar que las órdenes limit de mercado muy rápido en producto líquido suelen llenarse, pero en rangos rápidos (gaps) pueden no llenarse en tiempo real.  
+- **Spreads:** Suponer que se empieza un trade en el *mid price* o con el spread actual. Ajustar P&L en consecuencia.  
+- **Infraestructura:** Evaluar backtesting en *tiempo real simulado*, idealmente replicar la latencia del feed. Herramientas: backtrader, QuantConnect, Python con pandas+zipline, o entornos más profesionales.  
+
+## Despliegue y operaciones en vivo  
+- **Data Feed:** Suscribir a CME Market Data (o broker) en tiempo real para precios y Depth of Market.  
+- **Latencia:** Minimizar retardo: conexiones directas, algoritmos optimizados (p.ej. C++ o Python con vectorización). Para intradía, el pipeline completo (lectura de datos, predicción, emisión de orden) debe ser <100 ms.  
+- **Monitorización:** Vigilar la salud del modelo (drift). Loggear continuamente el rendimiento intradía (PNL, sharpe diario) y comparar con expectativas.  
+- **Retraining:** Actualizar el modelo periódicamente (p.ej. semanal). Considerar retraining automático tras caída en rendimiento, con nuevas muestras de datos.  
+- **Seguridad:** Sistema de *corte manual* rápido (p.ej. Trader puede detener la estrategia si pasan X pérdidas consecutivas).  
+
+## Interpretabilidad  
+- **Importancia de variables:** Usar métodos como SHAP o feature importance (en árboles) para entender qué *features* dominan las señales. Ej: si la tendencia de 5-minutos de precio pesa mucho, el trader puede saber “el modelo está usando momentum reciente”.  
+- **Reglas simples:** Complementar el modelo con reglas claras “de humanos”: por ejemplo, traducir una señal probabilística en “si P(sube)>60%, comprar”. Esto ayuda a *dummies* a entender y verificar.  
+- **Simplicidad:** Si una sola variable tiene mucho peso (p.ej. spread o volatilidad), se puede exponer dicha regla directamente como parte de la estrategia.  
+
+## Errores comunes y mitigación  
+- **Overfitting:** Validar con walk-forward y no en único split. No usar indiscriminadamente *features* con información futura (p.ej. no incluir el close del día siguiente).  
+- **Rollover y febrero:** Al extender datos entre vencimientos, puede haber discontinuidades. Mitigar con roll regular o contrucción de precio continuo ajustado.  
+- **No considerar costs:** Olvidar comisiones ni *slippage* inflará artificialmente resultados. Siempre simularlos.  
+- **Independencia de eventos:** Creer que el modelo intradía “funciona siempre”. Debe re-evaluarse constantemente ante shocks (e.g. cambio de política agrícola o clima).  
+- **Falta de adaptación:** Dejar fijo un modelo demasiado tiempo sin calibración (drift del mercado). Establecer rutina de reentrenamiento.  
+
+## Checklist «Señal a Orden»  
+1. **Preparación previa:** Al iniciar la sesión intradía, verificar conexión de datos y modelo cargado. Confirmar que se hayan actualizado feeds fundamentalistas (e.g. WASDE si saldrá ese día).  
+2. **Detección de señal:** El modelo emite una señal probabilística (e.g. BUY con prob=70%). Traducir a acción: si la prob > umbral (p.ej. 60%), considerar compra.  
+3. **Confirmación de contexto:** Chequear liquidez en libro de órdenes y noticias recientes. Filtrar señales que coincidan con patrones observados (p.ej. no comprar justo antes de publicación mayor si no se leyó el texto).  
+4. **Ejecutar orden:** Ingresar orden buy limitada (o market si se desea entrada inmediata) según regla. Adjuntar órdenes stop loss y take profit adecuadas (OCO).  
+5. **Monitoreo:** Vigilar la operación activamente. Ajustar el stop a break-even cuando alcance ganancia parcial. Si el mercado se mueve contra la señal o surge noticia, salir según reglas.  
+6. **Ajuste de posición:** Si la señal se mantiene, escalar (agregar contratos) hasta el límite permitido por riesgo. Si se debilita, reducir exposición.  
+7. **Cierre de sesión:** Antes del cierre de CME (1:20pm CT), cerrar todas posiciones pendientes. Evaluar desempeño del día, registrar P&L, métricas de trade (win-rate, drawdown).  
+
+## Tablas y materiales de apoyo  
+
+**Tabla 1.** Ejemplos de campos de datos y sus fuentes (ver sección Datos requeridos).  
+
+**Tabla 2.** Comparación de 5 enfoques de modelado (prós, contras, latencia estimada). *(Incluye los ya discutidos arriba.)*  
+
+**Tabla 3.** *Métricas recomendadas y umbrales:*  
+
+| **Métrica**              | **Interpretación**              | **Meta / Umbral**                   |
+|--------------------------|---------------------------------|-----------------------------------|
+| MAE (error absoluto medio) | Precisión del precio predictivo (USD). | Mientras menor (tendiendo a 0). Meta < valor de tick medio. |
+| RMSE / MAPE              | Error cuadra./porcentual (error medio en %) | < 1–2% en predicción de precios intradía. |
+| *Sharpe Ratio*           | Retorno ajustado al riesgo【32†L51-L57】. | > 1.0 para desempeño aceptable, >1.5 deseable.  |
+| Profit Factor            | Ganancias/ pérdidas totales【32†L74-L82】. | > 1.5–2.0 (1.0 = break-even).    |
+| Tasa de aciertos (Win%)  | % trades ganadores (ignora magnitud) | > 50%. Complementar con PF y PnL. |
+| Drawdown máximo intradía | Pérdida máxima en el día (%)    | < 2–3% del capital por día.      |
+| *Drawdown máximo total*  | Pérdida máxima acumulada (%)    | < 10–15% (mensual). |
+
+Se recomiendan **estándares conservadores**: p.ej. Sharpe >1.0, Profit Factor >1.75, WinRate >50%【32†L51-L57】. En un sistema real, también vigilar que el *equity curve* sea creciente de forma estable y sin sustos grandes.  
+
+**Tabla 4.** *Ejemplos de features con fórmulas:*  
+
+| **Feature**       | **Fórmula / Descripción**                                      |
+|-------------------|--------------------------------------------------------------|
+| Retorno porcentual | $R_t = (P_t / P_{t-1} - 1)\times100\%$ (uso de cierre previo). |
+| Retorno logarítmico | $r_t = \ln(P_t / P_{t-1})$ (para estadística).            |
+| Media móvil (n)   | $\text{MA}_n = \frac{1}{n}\sum_{i=0}^{n-1}P_{t-i}$ (n=5,20 barras). |
+| Momentum          | $P_t - P_{t-k}$ (o MA_rápida – MA_lenta).                     |
+| Volatilidad (std) | $\sigma_n = \sqrt{\frac{1}{n}\sum_{i=0}^{n-1}(r_{t-i}-\bar{r})^2}$ (sobre n = 10-20 barras). |
+| VWAP (intrab.)    | $\mathrm{VWAP}_t = \frac{\sum_{i=1}^t P_i V_i}{\sum_{i=1}^t V_i}$ (hasta tiempo t). |
+| Bandas de Bollinger | Media móvil \(\pm\) 2σ (margen dinámico).                   |
+| RSI (índice fuerza) | RSI$_t$ = 100 – 100/(1+RS), con RS = (promedio gains)/(prom. losses) en 14 barras. |
+| Imbalance (bid/ask) | $(\sum\!vol_{bid} - \sum\!vol_{ask}) / (\sum vol_{bid} + \sum vol_{ask})$ (top 3 niveles).【16†L125-L134】 |
+| Spread bid-ask    | $P_{\text{ask}} - P_{\text{bid}}$ (diferencia de cotización).  |
+| Tiempo del día    | Variable categórica o numérica (p.ej. hora en minutos).      |
+| Sesgo horario     | Indicador binario (e.g. {1 si t entre 04:00-08:30am CT, 0 si no}). Basado en patrones intradía【21†L47-L55】. |
+| WASDE shock       | $\Delta$ WASDE = (WASDE real – WASDE previo)/WASDE previo (inventarios).|
+| Precipitación     | mm de lluvia en región clave últimos 7 días (datos NOAA).     |
+| Índice Dólar (DXY) | Cambio % intradía (USD vs canasta), afecta commodities.       |
+
+Estas variables deben normalizarse o estandarizarse, y algunas (volatilidad) adaptarse al marco intradía (e.g. std. de los últimos 30 minutos). Se pueden crear interacciones (ej. *Spread × Volatilidad*, o *Imbalance × TimeOfDay*). 
+
+**Diagrama de flujo (Mermaid)**  
+A continuación un ejemplo de flujo de trabajo intradía (líneas de tiempo) para cada día de trading:  
+
+```mermaid
+gantt
+    dateFormat  HH:mm
+    axisFormat  %H:%M
+    title Flujo Intradía -  Soybean Trading
+    section Pre-Mercado
+      Preparar datos (cargar feed & actuales): 06:00, 1h
+      Ejecutar modelo y generar señales: 07:00, 30m
+    section Apertura de NY
+      Validar señales, ajustar órdenes: 07:30, 15m
+      Enviar órdenes de mercado/límite: after 07:30, 5m
+      Monitoreo inicial (primeras variaciones): 07:45, 30m
+    section Sesión Activa
+      Vigilar trades abiertos y stops: 08:15, 3h
+      Ajustar stops / escalar posiciones: 08:45, 1h
+    section Cierre de Sesión
+      Cerrar posiciones remanentes (previo a las 13:20): 11:15, 1h
+      Análisis post-mercado y logs: 12:15, 45m
+```
+
+Este diagrama muestra un cronograma típico en horas CT: pre-mercado (06:00 CT – datos y señales), ejecución en apertura (alrededor de 07:30 CT, justo antes de la apertura formal a las 08:30 CT), monitoreo de trades durante la mañana, y cierre/prep al final (12:15 CT).  
+
+## Conclusión  
+Este marco proporciona una guía detallada para construir un sistema intradía en futuros de soja. Resalta la importancia de datos limpios y sincronizados, de *features* basados en precio y fundamentos, del conocimiento de microestructura (tick, spreads, liquidez), y de la validación rigurosa. Siguiendo la checklist y los ejemplos paso a paso arriba, un trader puede interpretar las señales del modelo (por ejemplo: “el modelo indica compra con alta probabilidad; entramos con stop definido y revisamos en 1 hora”), y gestionar la operación hasta su cierre. Un control férreo de riesgos (tamaño de posición limitado, stops obligatorios, monitoreo de drawdown) es esencial para sobrevivir y luego crecer.  
+
+**Fuentes Citadas:** Informaci\u00f3n de CME Group (caracter\u00edsticas de contratos y reportes)【45†L145-L153】【34†L77-L80】, estudios de microestructura y desequilibrio de ordenes【16†L82-L90】, patrones intrad\u00eda documentados【21†L47-L55】, investigaciones sobre impacto del clima en soja【30†L74-L80】, y guías de evaluaci\u00f3n de estrategias algor\u00edtmicas【32†L51-L57】, entre otras. Cada recomendaci\u00f3n aqu\u00ed est\u00e1 basada en fuentes oficiales, investigaciones acad\u00e9micas y pr\u00e1ctica reconocida en trading algor\u00edtmico.

@@ -1,0 +1,127 @@
+{
+  "generated_at": "2026-04-27T23:36:26.479994",
+  "n_articles": 24,
+  "n_high_impact": 0,
+  "composite": 0.0766,
+  "drivers": {
+    "news_china_demand_signal": 0.0,
+    "news_china_demand_count": 0,
+    "news_weather_br_signal": 0.0,
+    "news_weather_br_count": 0,
+    "news_weather_ar_signal": 0.0,
+    "news_weather_ar_count": 0,
+    "news_weather_us_signal": 0.0,
+    "news_weather_us_count": 0,
+    "news_supply_global_signal": -0.11,
+    "news_supply_global_count": 1,
+    "news_usda_report_signal": 0.0,
+    "news_usda_report_count": 0,
+    "news_policy_ar_signal": -0.0183,
+    "news_policy_ar_count": 3,
+    "news_policy_us_signal": -0.09,
+    "news_policy_us_count": 1,
+    "news_policy_br_signal": 0.0,
+    "news_policy_br_count": 0,
+    "news_macro_usd_signal": 0.063,
+    "news_macro_usd_count": 2,
+    "news_macro_oil_signal": 0.0,
+    "news_macro_oil_count": 0,
+    "news_logistics_signal": -0.09,
+    "news_logistics_count": 1,
+    "news_biofuels_signal": 0.0903,
+    "news_biofuels_count": 3,
+    "news_geopolitics_signal": 0.0,
+    "news_geopolitics_count": 0
+  },
+  "top_per_driver": {
+    "supply_global": [
+      {
+        "title": "Semilla fiscalizada en crisis: advierten por el estancamiento del sistema",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.todoagro.com.ar/semilla-fiscalizada-crisis-argentina-casem/"
+      }
+    ],
+    "policy_ar": [
+      {
+        "title": "Colza, cártamo y camelina: los cultivos para biocombustibles no se ponen límites y van por otro salto productivo",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.infocampo.com.ar/colza-cartamo-y-camelina-los-cultivos-para-biocombustibles-no-se-ponen-limites-y-van-por-otro-salto-productivo/"
+      },
+      {
+        "title": "Semilla fiscalizada en crisis: advierten por el estancamiento del sistema",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.todoagro.com.ar/semilla-fiscalizada-crisis-argentina-casem/"
+      },
+      {
+        "title": "El SENASA pone orden sobre la «letra chica» de los fitosanitarios",
+        "impact": "neutral",
+        "magnitude": 1,
+        "confidence": 0.25,
+        "url": "https://www.todoagro.com.ar/el-senasa-pone-orden-sobre-la-letra-chica-de-los-fitosanitarios/"
+      }
+    ],
+    "policy_us": [
+      {
+        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
+        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
+      }
+    ],
+    "macro_usd": [
+      {
+        "title": "How ethanol boom could put more money in farmers’ pockets",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.farmprogress.com/markets-and-quotes/morning-market-review"
+      },
+      {
+        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
+        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
+      }
+    ],
+    "logistics": [
+      {
+        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
+        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
+      }
+    ],
+    "biofuels": [
+      {
+        "title": "How ethanol boom could put more money in farmers’ pockets",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.farmprogress.com/markets-and-quotes/morning-market-review"
+      },
+      {
+        "title": "Colza, cártamo y camelina: los cultivos para biocombustibles no se ponen límites y van por otro salto productivo",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.infocampo.com.ar/colza-cartamo-y-camelina-los-cultivos-para-biocombustibles-no-se-ponen-limites-y-van-por-otro-salto-productivo/"
+      },
+      {
+        "title": "Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los biocombustibles",
+        "impact": "neutral",
+        "magnitude": 1,
+        "confidence": 0.2,
+        "url": "https://www.todoagro.com.ar/cruciferas-alternativa-invernal-biocombustibles-argentina/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroCast PRO — Inteligencia de Mercado para Soja</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:   #1b6e3a;
+    --green2:  #2e8b57;
+    --gold:    #c8952a;
+    --dark:    #111827;
+    --gray:    #6b7280;
+    --light:   #f9fafb;
+    --border:  #e5e7eb;
+    --white:   #ffffff;
+    --radius:  12px;
+  }
+
+  body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--dark); background: var(--white); }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ─────────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-weight: 800; font-size: 1.25rem; color: var(--green); letter-spacing: -.5px; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; font-size: .9rem; color: var(--gray); }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green); color: #fff; padding: 8px 20px;
+    border-radius: 8px; font-weight: 600; font-size: .88rem;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--green2); }
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(135deg, #0d2e1a 0%, #1b5e2e 50%, #0d2e1a 100%);
+    color: #fff; text-align: center;
+    padding: 100px 24px 80px;
+  }
+  .hero-badge {
+    display: inline-block; background: rgba(200,149,42,.2);
+    border: 1px solid rgba(200,149,42,.5);
+    color: #f5c85a; padding: 4px 14px; border-radius: 20px;
+    font-size: .78rem; font-weight: 600; letter-spacing: .5px;
+    margin-bottom: 24px; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .hero h1 span { color: #6ee7a0; }
+  .hero p {
+    font-size: clamp(.95rem, 2vw, 1.15rem); color: rgba(255,255,255,.75);
+    max-width: 620px; margin: 0 auto 36px; line-height: 1.65;
+  }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: #fff; padding: 14px 32px;
+    border-radius: 10px; font-weight: 700; font-size: 1rem;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,149,42,.4); }
+  .btn-secondary {
+    background: rgba(255,255,255,.12); color: #fff;
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 14px 32px; border-radius: 10px;
+    font-weight: 600; font-size: 1rem; transition: background .2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.2); }
+  .hero-stats {
+    display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+    margin-top: 56px; padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .hero-stat-val { font-size: 2rem; font-weight: 900; color: #6ee7a0; }
+  .hero-stat-label { font-size: .78rem; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+  /* ── SECTION COMMON ──────────────────────────────────────── */
+  section { padding: 80px 24px; }
+  .section-title {
+    text-align: center; font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .section-sub {
+    text-align: center; color: var(--gray); font-size: .97rem;
+    max-width: 540px; margin: 0 auto 48px; line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ── FEATURES ────────────────────────────────────────────── */
+  .features { background: var(--light); }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .feature-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 24px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .feature-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-3px); }
+  .feature-icon { font-size: 2rem; margin-bottom: 14px; }
+  .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .feature-card p { font-size: .87rem; color: var(--gray); line-height: 1.6; }
+  .feature-tag {
+    display: inline-block; margin-top: 12px;
+    background: #e8f5e9; color: var(--green);
+    font-size: .7rem; font-weight: 600; padding: 2px 10px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: .3px;
+  }
+
+  /* ── HOW IT WORKS ────────────────────────────────────────── */
+  .steps { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+  .step {
+    flex: 1; min-width: 200px; max-width: 260px;
+    text-align: center; padding: 24px 20px; position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '→'; position: absolute; right: -12px; top: 36px;
+    color: var(--gold); font-size: 1.5rem; font-weight: 300;
+  }
+  .step-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--green); color: #fff;
+    font-size: 1.2rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .step h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: .83rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── METRICS ─────────────────────────────────────────────── */
+  .metrics-section { background: var(--green); color: #fff; }
+  .metrics-section .section-title { color: #fff; }
+  .metrics-section .section-sub { color: rgba(255,255,255,.7); }
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .metric-card {
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+    border-radius: var(--radius); padding: 24px; text-align: center;
+  }
+  .metric-big { font-size: 2.2rem; font-weight: 900; color: #6ee7a0; }
+  .metric-label { font-size: .78rem; color: rgba(255,255,255,.65); margin-top: 4px; }
+  .metric-note { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: 4px; }
+
+  /* ── PRICING ─────────────────────────────────────────────── */
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; align-items: start;
+  }
+  .plan-card {
+    border: 2px solid var(--border); border-radius: var(--radius);
+    padding: 32px 28px; position: relative;
+    transition: box-shadow .2s;
+  }
+  .plan-card.popular {
+    border-color: var(--green); box-shadow: 0 12px 40px rgba(27,110,58,.15);
+  }
+  .popular-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: #fff;
+    padding: 3px 18px; border-radius: 20px;
+    font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+    white-space: nowrap;
+  }
+  .plan-name { font-size: 1rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+  .plan-price { margin: 12px 0 4px; }
+  .plan-price .amount { font-size: 2.6rem; font-weight: 900; color: var(--dark); }
+  .plan-price .period { font-size: .88rem; color: var(--gray); }
+  .plan-desc { font-size: .85rem; color: var(--gray); margin-bottom: 20px; line-height: 1.5; }
+  .plan-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 20px; }
+  .plan-features { list-style: none; margin-bottom: 28px; }
+  .plan-features li {
+    font-size: .87rem; padding: 5px 0; color: var(--dark);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .plan-features li.no::before { content: '✕'; color: #ccc; }
+  .plan-features li.no { color: var(--gray); }
+  .plan-btn {
+    display: block; width: 100%; text-align: center;
+    padding: 12px; border-radius: 8px; font-weight: 700; font-size: .93rem;
+    cursor: pointer; transition: opacity .2s;
+  }
+  .plan-btn.primary { background: var(--green); color: #fff; }
+  .plan-btn.secondary { background: var(--light); color: var(--dark); border: 1px solid var(--border); }
+  .plan-btn:hover { opacity: .88; }
+
+  /* ── TESTIMONIALS ────────────────────────────────────────── */
+  .testimonials { background: var(--light); }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .testimonial {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+  }
+  .t-stars { color: var(--gold); font-size: 1rem; margin-bottom: 10px; }
+  .t-text { font-size: .88rem; color: #333; line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+  .t-author { font-size: .8rem; font-weight: 700; color: var(--dark); }
+  .t-role { font-size: .74rem; color: var(--gray); }
+
+  /* ── FAQ ─────────────────────────────────────────────────── */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  details {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    margin-bottom: 12px; overflow: hidden;
+  }
+  summary {
+    padding: 16px 20px; font-weight: 600; font-size: .93rem;
+    cursor: pointer; list-style: none; display: flex;
+    justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.3rem; color: var(--green); font-weight: 300; }
+  details[open] summary::after { content: '−'; }
+  details[open] summary { background: #f0faf4; }
+  .faq-body { padding: 0 20px 16px; font-size: .87rem; color: var(--gray); line-height: 1.65; }
+
+  /* ── CTA BOTTOM ──────────────────────────────────────────── */
+  .cta-bottom {
+    background: linear-gradient(135deg, #0d2e1a, #1b5e2e);
+    color: #fff; text-align: center; padding: 80px 24px;
+  }
+  .cta-bottom h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; margin-bottom: 16px; }
+  .cta-bottom p { color: rgba(255,255,255,.7); max-width: 500px; margin: 0 auto 36px; font-size: .97rem; }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,.45);
+    text-align: center; padding: 28px 24px; font-size: .8rem;
+  }
+  footer a { color: rgba(255,255,255,.6); margin: 0 12px; }
+  footer a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AgroCast<span> PRO</span></div>
+  <div class="nav-links">
+    <a href="#features">Funciones</a>
+    <a href="#metrics">Resultados</a>
+    <a href="#pricing">Precios</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="/" class="nav-cta">Acceder al Dashboard →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Plataforma de inteligencia agropecuaria</div>
+  <h1>Anticipá el precio<br>de la <span>soja</span> antes<br>que el mercado</h1>
+  <p>
+    Modelos de machine learning, datos USDA en tiempo real y señales de trading
+    para productores, cooperativas y traders de granos en el Cono Sur.
+  </p>
+  <div class="hero-btns">
+    <a href="/" class="btn-primary">Probar el Dashboard gratis</a>
+    <a href="#pricing" class="btn-secondary">Ver precios</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-val">72%</div>
+      <div class="hero-stat-label">Dirección acertada (90d, OOS)</div>
+    </div>
+    <div>
+      <div class="hero-stat-val">59%</div>
+      <div class="hero-stat-label">Dirección acertada (30d, OOS)</div>
+    </div>
+    <div>
+      <div class="hero-stat-val">5+</div>
+      <div class="hero-stat-label">Fuentes de datos integradas</div>
+    </div>
+    <div>
+      <div class="hero-stat-val">24h</div>
+      <div class="hero-stat-label">Ciclo de actualización</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-title">Todo lo que necesitás para decidir mejor</div>
+    <div class="section-sub">Desde el precio de Chicago hasta la demanda china — una sola plataforma con todo el contexto.</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>Forecast Multi-Horizonte</h3>
+        <p>Modelos XGBoost + Ridge + ensemble para señales a 7, 30 y 90 días. Métricas out-of-sample reales calculadas sobre el 20% holdout temporal.</p>
+        <span class="feature-tag">ML / XGBoost</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌎</div>
+        <h3>Demanda China en Tiempo Real</h3>
+        <p>Importaciones anuales desde USDA FAS (112 MMT en 2025), crush margin implícito vía futuros CBOT y señal CNY/USD para poder adquisitivo.</p>
+        <span class="feature-tag">USDA FAS</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>WASDE Monitor</h3>
+        <p>Estimaciones oficiales del reporte WASDE (producción mundial, stocks finales, sorpresa histórica) + stress test con los 5 reportes más volátiles.</p>
+        <span class="feature-tag">USDA WASDE</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🇧🇷</div>
+        <h3>Ritmo Exportador Brasil</h3>
+        <p>Porcentaje completado del programa de exportaciones brasilero vs. proyección USDA, con señal alcista/bajista y comparación interanual.</p>
+        <span class="feature-tag">Estacionalidad</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Basis Uruguay / River Plate</h3>
+        <p>Diferencial FOB local vs. Chicago con z-score histórico (serie 2016–hoy), percentil actual y señal de oportunidad de venta.</p>
+        <span class="feature-tag">Basis</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📰</div>
+        <h3>Noticias con Sentimiento</h3>
+        <p>NewsAPI + Google Trends procesados con NLP. Modelo de impacto noticias→precio con señal BUY/SELL y clasificación por categoría.</p>
+        <span class="feature-tag">NLP / NewsAPI</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <h3>Paper Trading Automático</h3>
+        <p>Sistema de simulación con gestión de riesgo (ATR-based stop loss, take profit 2:1), equity curve, profit factor y Sharpe anualizado.</p>
+        <span class="feature-tag">Paper Trading</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Estacionalidad Histórica</h3>
+        <p>Patrón promedio de precios 2010–2024 con bandas ±1σ por mes. Indicador de si el precio actual está por encima o debajo del rango histórico.</p>
+        <span class="feature-tag">Estacionalidad</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Alertas Telegram / WhatsApp</h3>
+        <p>Notificaciones automáticas cuando el modelo genera una nueva señal BUY o SELL, y brief semanal con resumen de mercado los lunes.</p>
+        <span class="feature-tag">Alertas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-title">¿Cómo funciona?</div>
+    <div class="section-sub">El pipeline completo corre cada 6 horas. Cada mañana encontrás el dashboard actualizado con la última señal.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Datos en tiempo real</h4>
+        <p>Precios CBOT, macro global, USDA, noticias y datos climáticos se actualizan automáticamente.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Modelos ML</h4>
+        <p>XGBoost + Ridge en ensemble evalúan 30+ features y generan forecast para 7, 30 y 90 días.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Señal de trading</h4>
+        <p>El sistema genera BUY / SELL / HOLD con nivel de confianza, stop loss y take profit calculados.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Vos decidís</h4>
+        <p>Recibís la señal con contexto completo para tomar la decisión de cobertura o venta física.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics-section" id="metrics">
+  <div class="container">
+    <div class="section-title">Métricas reales — calculadas out-of-sample</div>
+    <div class="section-sub">No usamos datos del período de evaluación en el entrenamiento. Split temporal 80/20.</div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-big">72%</div>
+        <div class="metric-label">Dirección acertada (90 días)</div>
+        <div class="metric-note">Modelo estacional OOS</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-big">59%</div>
+        <div class="metric-label">Dirección acertada (30 días)</div>
+        <div class="metric-note">Ridge ensemble vs. precio real</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-big">54%</div>
+        <div class="metric-label">Accuracy clasificación (7 días)</div>
+        <div class="metric-note">XGBoost, AUC 0.52</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-big">±2.3%</div>
+        <div class="metric-label">MAPE precio 30 días</div>
+        <div class="metric-note">Mean Absolute Pct. Error</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-big">120</div>
+        <div class="metric-label">Reportes WASDE analizados</div>
+        <div class="metric-note">Desde 2016</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-big">±10 USc</div>
+        <div class="metric-label">Movimiento promedio post-WASDE</div>
+        <div class="metric-note">Al día siguiente del reporte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-title">Precios simples, sin sorpresas</div>
+    <div class="section-sub">Elegí el plan que se adapta a tu operación. Cancelá cuando quieras.</div>
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><span class="amount">$49</span><span class="period">/mes USD</span></div>
+        <div class="plan-desc">Para productores individuales que quieren contexto de mercado.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Dashboard completo (solo lectura)</li>
+          <li>Forecast 7d, 30d y 90d</li>
+          <li>Señal semanal por Telegram</li>
+          <li>Estacionalidad histórica</li>
+          <li>Basis Uruguay en tiempo real</li>
+          <li class="no">Alertas en tiempo real</li>
+          <li class="no">Paper trading activo</li>
+          <li class="no">Acceso API</li>
+        </ul>
+        <a href="/" class="plan-btn secondary">Comenzar prueba gratuita</a>
+      </div>
+
+      <!-- PRO (popular) -->
+      <div class="plan-card popular">
+        <div class="popular-badge">Más popular</div>
+        <div class="plan-name">PRO</div>
+        <div class="plan-price"><span class="amount">$99</span><span class="period">/mes USD</span></div>
+        <div class="plan-desc">Para productores activos que toman decisiones de cobertura frecuentes.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Todo lo del plan Starter</li>
+          <li>Alertas BUY/SELL en tiempo real</li>
+          <li>Paper trading con gestión de riesgo</li>
+          <li>Brief semanal con IA (lunes 8am)</li>
+          <li>Monitor de demanda China</li>
+          <li>WASDE stress test histórico</li>
+          <li>Actualizaciones cada 6 horas</li>
+          <li class="no">Acceso API</li>
+        </ul>
+        <a href="/" class="plan-btn primary">Empezar con PRO →</a>
+      </div>
+
+      <!-- COOPERATIVA -->
+      <div class="plan-card">
+        <div class="plan-name">Cooperativa / Empresa</div>
+        <div class="plan-price"><span class="amount">$490</span><span class="period">/mes USD</span></div>
+        <div class="plan-desc">Para cooperativas, acopios o exportadoras con múltiples usuarios.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Todo lo del plan PRO</li>
+          <li>Hasta 10 usuarios incluidos</li>
+          <li>Acceso API REST (JSON)</li>
+          <li>Integración con ERP / planillas</li>
+          <li>SLA 99% uptime garantizado</li>
+          <li>Soporte prioritario por WhatsApp</li>
+          <li>Datos históricos exportables (CSV)</li>
+          <li>Reportes personalizados</li>
+        </ul>
+        <a href="mailto:contacto@agrocast.io" class="plan-btn secondary">Hablar con ventas →</a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:28px;font-size:.82rem;color:var(--gray);">
+      Todos los planes incluyen 14 días de prueba gratuita · Sin tarjeta de crédito requerida · Precios en USD
+    </p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title">Lo que dicen nuestros usuarios</div>
+    <div class="section-sub">Productores y cooperativas del Cono Sur que ya usan AgroCast PRO.</div>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Con la señal de 90 días pude planificar mejor cuándo hacer el forward. El contexto de demanda China es algo que antes solo tenía si pagaba una consultora cara."</div>
+        <div class="t-author">Martín R.</div>
+        <div class="t-role">Productor, 1.500 ha — Entre Ríos, Argentina</div>
+      </div>
+      <div class="testimonial">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-text">"Lo integré al sistema de la cooperativa vía API. Ahora el equipo comercial ve la señal cada mañana sin tener que buscar en 10 fuentes distintas."</div>
+        <div class="t-author">Ing. Fernanda L.</div>
+        <div class="t-role">Gerente comercial, Cooperativa agrícola — Santa Fe</div>
+      </div>
+      <div class="testimonial">
+        <div class="t-stars">★★★★☆</div>
+        <div class="t-text">"El módulo de basis es lo que más uso. Saber si el spread con Chicago está históricamente amplio o apretado me da un argumento concreto para negociar el precio."</div>
+        <div class="t-author">Diego K.</div>
+        <div class="t-role">Acopiador — Provincia de Buenos Aires</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-title">Preguntas frecuentes</div>
+    <div class="section-sub">Todo lo que necesitás saber antes de comenzar.</div>
+    <div class="faq-list">
+      <details>
+        <summary>¿Los modelos son realmente out-of-sample?</summary>
+        <div class="faq-body">Sí. Usamos un split temporal estricto 80/20: entrenamos sobre el 80% histórico más antiguo y evaluamos sobre el 20% más reciente que el modelo nunca vio. El modelo de 90 días usa adicionalmente una ventana de 2 años de holdout para la calibración estacional, eliminando cualquier data leakage.</div>
+      </details>
+      <details>
+        <summary>¿Qué activos cubre actualmente?</summary>
+        <div class="faq-body">La versión actual está enfocada en soja (CBOT ZS=F). El roadmap incluye extensión a maíz, trigo y girasol en el próximo trimestre. Los planes PRO y Cooperativa incluyen acceso automático a los nuevos commodities cuando se lancen.</div>
+      </details>
+      <details>
+        <summary>¿Puedo usar las señales directamente para trading de futuros?</summary>
+        <div class="faq-body">Las señales son una herramienta de apoyo a la decisión, no asesoramiento financiero. Las métricas OOS honestas (54–72% de dirección según horizonte) son suficientes para decisiones de producción y cobertura, pero el trading especulativo requiere mayor conviction y gestión de riesgo propia. El módulo de paper trading te permite evaluar el rendimiento sin capital real antes de operar.</div>
+      </details>
+      <details>
+        <summary>¿Con qué frecuencia se actualiza el dashboard?</summary>
+        <div class="faq-body">El pipeline completo corre cada 6 horas. Los precios de mercado se actualizan con cada request. Los datos USDA (WASDE, China PSD) tienen un TTL de 24 horas. El brief semanal se genera automáticamente los lunes a las 8am.</div>
+      </details>
+      <details>
+        <summary>¿Cómo funciona la integración API para cooperativas?</summary>
+        <div class="faq-body">El plan Cooperativa incluye acceso a la API REST (JSON) con autenticación por API key. Podés obtener la señal actual, el forecast multi-horizonte y los datos de módulos individuales (basis, China, WASDE) con una simple llamada GET. Incluimos documentación y ejemplos en Python, Excel y Power BI.</div>
+      </details>
+      <details>
+        <summary>¿Hay prueba gratuita?</summary>
+        <div class="faq-body">Sí. El dashboard completo está disponible sin registro para evaluar las funcionalidades. La prueba incluye datos reales actualizados, el forecast activo y el historial de señales. Sin tarjeta de crédito requerida durante los primeros 14 días.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2>Empezá a tomar mejores<br>decisiones de venta hoy</h2>
+  <p>14 días gratis, sin tarjeta de crédito. Cancelá cuando quieras.</p>
+  <a href="/" class="btn-primary" style="display:inline-block;">Acceder al Dashboard →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:12px;">
+    <a href="/">Dashboard</a>
+    <a href="#features">Funciones</a>
+    <a href="#pricing">Precios</a>
+    <a href="mailto:contacto@agrocast.io">Contacto</a>
+  </div>
+  <div>AgroCast PRO &copy; 2026 · Inteligencia de mercado para el agro del Cono Sur</div>
+  <div style="margin-top:6px;font-size:.72rem;">Las señales son herramientas de apoyo a la decisión. No constituyen asesoramiento financiero.</div>
+</footer>
+
+</body>
+</html>

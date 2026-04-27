@@ -1,0 +1,59 @@
+{
+  "run_at": "2026-04-26T15:43:25.923007",
+  "overall": "GO",
+  "by_interval": [
+    {
+      "interval": "5m",
+      "verdict": "GO",
+      "reasons": [],
+      "warnings": [],
+      "n_bars_total": 10041,
+      "n_bars_rth": 2842,
+      "n_sessions_rth": 49,
+      "rth_usable_for_ml": 2842,
+      "essentials_nan_pct": {
+        "ret_1": 9.959167413604223e-05,
+        "rsi_14": 0.0013942834379045911,
+        "atr_14": 0.001294691763768549,
+        "vwap_session": 0.716960462105368,
+        "vol_zscore_30": 0.00089632506722438
+      }
+    },
+    {
+      "interval": "15m",
+      "verdict": "GO",
+      "reasons": [],
+      "warnings": [],
+      "n_bars_total": 3410,
+      "n_bars_rth": 980,
+      "n_sessions_rth": 49,
+      "rth_usable_for_ml": 980,
+      "essentials_nan_pct": {
+        "ret_1": 0.0002932551319648094,
+        "rsi_14": 0.004105571847507331,
+        "atr_14": 0.003812316715542522,
+        "vwap_session": 0.7126099706744868,
+        "vol_zscore_30": 0.0026392961876832845
+      }
+    },
+    {
+      "interval": "60m",
+      "verdict": "GO",
+      "reasons": [],
+      "warnings": [],
+      "n_bars_total": 11165,
+      "n_bars_rth": 2999,
+      "n_sessions_rth": 601,
+      "rth_usable_for_ml": 2995,
+      "essentials_nan_pct": {
+        "ret_1": 8.956560680698612e-05,
+        "rsi_14": 0.0012539184952978057,
+        "atr_14": 0.0011643528884908196,
+        "vwap_session": 0.7313927451858486,
+        "vol_zscore_30": 0.0008060904612628751
+      }
+    }
+  ],
+  "decision_rule": "GO si al menos 1 intervalo cumple criterios; WARN si solo warnings; NO-GO si ninguno califica.",
+  "next_step": "Avanzar a Fase 0.1: construir target intrad\u00eda (ret futuro N barras) y entrenar XGBoost piloto."
+}

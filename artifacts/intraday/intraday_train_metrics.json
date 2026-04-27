@@ -1,0 +1,113 @@
+{
+  "interval": "5m",
+  "horizon_bars": 12,
+  "embargo_bars": 24,
+  "n_total": 2830,
+  "n_features": 33,
+  "fold_metrics": [
+    {
+      "fold": 0,
+      "n_train": 471,
+      "n_test": 471,
+      "auc": 0.4669,
+      "acc": 0.5074,
+      "f1": 0.572,
+      "pos_rate_train": 0.522,
+      "pos_rate_test": 0.531
+    },
+    {
+      "fold": 1,
+      "n_train": 942,
+      "n_test": 471,
+      "auc": 0.4554,
+      "acc": 0.5053,
+      "f1": 0.4247,
+      "pos_rate_train": 0.525,
+      "pos_rate_test": 0.408
+    },
+    {
+      "fold": 2,
+      "n_train": 1413,
+      "n_test": 471,
+      "auc": 0.4939,
+      "acc": 0.4607,
+      "f1": 0.4752,
+      "pos_rate_train": 0.497,
+      "pos_rate_test": 0.418
+    },
+    {
+      "fold": 3,
+      "n_train": 1884,
+      "n_test": 471,
+      "auc": 0.7008,
+      "acc": 0.6306,
+      "f1": 0.5693,
+      "pos_rate_train": 0.468,
+      "pos_rate_test": 0.352
+    }
+  ],
+  "mean_auc": 0.5292,
+  "mean_acc": 0.526,
+  "top_features": [
+    {
+      "name": "swing_bias_today",
+      "importance": 0.0592
+    },
+    {
+      "name": "swing_expected_ret",
+      "importance": 0.0584
+    },
+    {
+      "name": "dow",
+      "importance": 0.0549
+    },
+    {
+      "name": "swing_expected_vol",
+      "importance": 0.0489
+    },
+    {
+      "name": "swing_confidence",
+      "importance": 0.0441
+    },
+    {
+      "name": "swing_age_hours",
+      "importance": 0.0428
+    },
+    {
+      "name": "ema_cross",
+      "importance": 0.0418
+    },
+    {
+      "name": "atr_zscore_60",
+      "importance": 0.0394
+    },
+    {
+      "name": "adx_14",
+      "importance": 0.0391
+    },
+    {
+      "name": "mins_to_close",
+      "importance": 0.0381
+    },
+    {
+      "name": "atr_14",
+      "importance": 0.0364
+    },
+    {
+      "name": "realized_vol_30",
+      "importance": 0.0363
+    },
+    {
+      "name": "hour_cos",
+      "importance": 0.0359
+    },
+    {
+      "name": "vwap_dist",
+      "importance": 0.035
+    },
+    {
+      "name": "cum_delta_20",
+      "importance": 0.0348
+    }
+  ]
+}

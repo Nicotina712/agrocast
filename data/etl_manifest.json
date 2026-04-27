@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-04-27T20:37:16",
+  "n_datasets": 12,
+  "n_missing": 0,
+  "by_layer": {
+    "bronze": [
+      {
+        "layer": "bronze",
+        "name": "raw_market",
+        "path": "data/raw_market.csv",
+        "source": "yfinance + Investing",
+        "frequency": "daily",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "Soybeans",
+          "Maize",
+          "Oil"
+        ],
+        "exists": true,
+        "row_count": 2513,
+        "last_updated": "2026-04-26T20:53:33",
+        "size_kb": 300.7
+      },
+      {
+        "layer": "bronze",
+        "name": "cot_soybeans",
+        "path": "data/cot_soybeans.csv",
+        "source": "CFTC weekly",
+        "frequency": "weekly (Fri release)",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "cot_commercial_net",
+          "cot_index"
+        ],
+        "exists": true,
+        "row_count": 1935,
+        "last_updated": "2026-04-26T15:17:00",
+        "size_kb": 150.5
+      },
+      {
+        "layer": "bronze",
+        "name": "usda_inspections",
+        "path": "data/usda_inspections.csv",
+        "source": "USDA-FGIS",
+        "frequency": "weekly (Thu)",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "insp_soy_lbs",
+          "insp_soy_yoy"
+        ],
+        "exists": true,
+        "row_count": 538,
+        "last_updated": "2026-04-27T17:20:30",
+        "size_kb": 49.2
+      },
+      {
+        "layer": "bronze",
+        "name": "crop_progress",
+        "path": "data/crop_progress.csv",
+        "source": "USDA NASS",
+        "frequency": "weekly (Mon release)",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "good_excellent_pct"
+        ],
+        "exists": true,
+        "row_count": 3,
+        "last_updated": "2026-04-27T19:58:08",
+        "size_kb": 0.2
+      },
+      {
+        "layer": "bronze",
+        "name": "wasde_official",
+        "path": "data/wasde_official.json",
+        "source": "USDA FAS PSD / static fallback",
+        "frequency": "monthly",
+        "point_in_time": false,
+        "schema_cols": [
+          "world",
+          "argentina",
+          "brazil",
+          "usa"
+        ],
+        "exists": true,
+        "row_count": 1,
+        "last_updated": "2026-04-27T17:21:16",
+        "size_kb": 0.8
+      },
+      {
+        "layer": "bronze",
+        "name": "cme_history",
+        "path": "data/cme_history.csv",
+        "source": "CME public + Yahoo fallback",
+        "frequency": "daily",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "front_settle",
+          "total_oi",
+          "front_volume"
+        ],
+        "exists": true,
+        "row_count": 2,
+        "last_updated": "2026-04-27T20:37:08",
+        "size_kb": 0.3
+      },
+      {
+        "layer": "bronze",
+        "name": "cvol_history",
+        "path": "data/cvol_history.csv",
+        "source": "Yahoo options chain",
+        "frequency": "daily",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "iv_atm",
+          "iv_call",
+          "iv_put"
+        ],
+        "exists": true,
+        "row_count": 2,
+        "last_updated": "2026-04-27T20:37:09",
+        "size_kb": 0.2
+      },
+      {
+        "layer": "bronze",
+        "name": "satellite_history",
+        "path": "data/satellite_history.csv",
+        "source": "NASA POWER",
+        "frequency": "5-7 days",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "precip_anom",
+          "temp_anom"
+        ],
+        "exists": true,
+        "row_count": 2884,
+        "last_updated": "2026-04-25T23:54:03",
+        "size_kb": 198.5
+      },
+      {
+        "layer": "bronze",
+        "name": "climate_macro",
+        "path": "data/climate_macro.csv",
+        "source": "NOAA ONI + drought proxy",
+        "frequency": "monthly",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "enso_oni",
+          "enso_phase"
+        ],
+        "exists": true,
+        "row_count": 27875,
+        "last_updated": "2026-04-26T15:11:28",
+        "size_kb": 699.6
+      },
+      {
+        "layer": "bronze",
+        "name": "news_sentiment_history",
+        "path": "data/news_sentiment_history.csv",
+        "source": "RSS + LLM",
+        "frequency": "intraday",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "news_sentiment",
+          "news_volume"
+        ],
+        "exists": true,
+        "row_count": 10,
+        "last_updated": "2026-04-27T20:36:26",
+        "size_kb": 0.5
+      }
+    ],
+    "silver": [],
+    "gold": [
+      {
+        "layer": "gold",
+        "name": "features",
+        "path": "data/features.csv",
+        "source": "src/pipeline.py",
+        "frequency": "on pipeline run",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "Soybeans",
+          "ret_14d_fwd",
+          "rsi_14",
+          "cot_index",
+          "days_to_wasde",
+          "event_intensity",
+          "cvol_iv_atm",
+          "enso_oni"
+        ],
+        "exists": true,
+        "row_count": 2513,
+        "last_updated": "2026-04-27T20:37:10",
+        "size_kb": 3353.3
+      },
+      {
+        "layer": "gold",
+        "name": "signals",
+        "path": "artifacts/signals.csv",
+        "source": "src/model/predict_returns.py",
+        "frequency": "on pipeline run",
+        "point_in_time": true,
+        "schema_cols": [
+          "Date",
+          "expected_return",
+          "signal",
+          "confidence",
+          "expected_vol"
+        ],
+        "exists": true,
+        "row_count": 2513,
+        "last_updated": "2026-04-27T20:37:16",
+        "size_kb": 184.2
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "date": "2026-04-25",
+    "stance": "BAJISTA",
+    "conviction": 32,
+    "headline": "Señales mixtas con sesgo bajista frenan decisiones de venta esta semana",
+    "price_at_snapshot": 1176.75,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-04-26",
+    "stance": "BAJISTA",
+    "conviction": 42,
+    "headline": "Señales bajistas dominan: prudencia antes de vender soja esta semana",
+    "price_at_snapshot": 1163.75,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-04-27",
+    "stance": "ALCISTA",
+    "conviction": 42,
+    "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
+    "price_at_snapshot": 1178.5,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  }
+]

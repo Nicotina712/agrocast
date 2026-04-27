@@ -1,0 +1,37 @@
+{
+  "report_year": 2026,
+  "marketing_year": "2025/26",
+  "report_date": "2026-04-10",
+  "released_at": "2026-04-10T17:00:00+00:00",
+  "world": {
+    "production_mmt": 422.0,
+    "exports_mmt": 175.0,
+    "consumption_mmt": 328.0,
+    "ending_stocks_mmt": 122.4
+  },
+  "argentina": {
+    "production_mmt": 49.0,
+    "exports_mmt": 5.0
+  },
+  "brazil": {
+    "production_mmt": 169.0,
+    "exports_mmt": 103.0
+  },
+  "usa": {
+    "production_mmt": 120.7,
+    "exports_mmt": 54.4
+  },
+  "china": {
+    "imports_mmt": 109.0
+  },
+  "surprise": {
+    "score": 0.0,
+    "expected": 122.4,
+    "direction": "NEUTRAL"
+  },
+  "signal": "NEUTRAL",
+  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.0%) \u2192 NEUTRAL.",
+  "data_source": "static_estimates",
+  "history_n": 25,
+  "as_of": "2026-04-27T17:21:16.224186"
+}

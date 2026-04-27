@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "top_events": [
+    {
+      "wasde_date": "2021-02-09",
+      "price_pre": 1401.75,
+      "price_post": 1354.0,
+      "move_usc": -47.75,
+      "move_pct": -3.41,
+      "direction": "CA\u00cdDA",
+      "model_signal": "BUY",
+      "model_correct": false
+    },
+    {
+      "wasde_date": "2021-08-10",
+      "price_pre": 1447.5,
+      "price_post": 1405.5,
+      "move_usc": -42.0,
+      "move_pct": -2.9,
+      "direction": "CA\u00cdDA",
+      "model_signal": "SELL",
+      "model_correct": true
+    },
+    {
+      "wasde_date": "2023-07-11",
+      "price_pre": 1520.5,
+      "price_post": 1488.5,
+      "move_usc": -32.0,
+      "move_pct": -2.1,
+      "direction": "CA\u00cdDA",
+      "model_signal": "BUY",
+      "model_correct": false
+    },
+    {
+      "wasde_date": "2022-09-13",
+      "price_pre": 1534.25,
+      "price_post": 1503.75,
+      "move_usc": -30.5,
+      "move_pct": -1.99,
+      "direction": "CA\u00cdDA",
+      "model_signal": "SELL",
+      "model_correct": true
+    },
+    {
+      "wasde_date": "2021-03-09",
+      "price_pre": 1441.25,
+      "price_post": 1411.5,
+      "move_usc": -29.75,
+      "move_pct": -2.06,
+      "direction": "CA\u00cdDA",
+      "model_signal": "SELL",
+      "model_correct": true
+    }
+  ],
+  "all_stats": {
+    "n_events": 120,
+    "avg_move_usc": 10.26,
+    "std_move_usc": 8.67,
+    "pct_up": 49.2,
+    "pct_down": 50.8,
+    "buckets": {
+      "gt_10usc": 52,
+      "gt_20usc": 13,
+      "gt_30usc": 4
+    }
+  },
+  "as_of": "2026-04-27"
+}

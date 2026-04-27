@@ -1,0 +1,34 @@
+---
+🌱 **AgroCast PRO — Brief Semanal 27/04/2026**
+
+📊 **Señal actual:** HOLD con 65% de confianza
+💲 **Precio Chicago:** 433.03 USc/bu
+
+**¿Qué pasó la semana pasada?**
+El mercado se mantuvo estable sin grandes movimientos direccionales. Brasil continúa con su ritmo de exportaciones dentro de lo esperado (25% de la proyección USDA completada), mientras que Argentina mantiene liquidaciones normales a pesar del cepo activo. La demanda china sigue en niveles neutrales sin presiones alcistas.
+
+**Top 3 drivers esta semana:**
+
+1. **Basis amplio en Uruguay (-25 USD/ton):** El descuento respecto a Chicago está elevado, reflejando oferta local abundante. Esto te penaliza si vendés ahora, pero podría mejorar si Chicago sube o si la oferta local se ajusta.
+
+2. **Pace de exportaciones brasileño en línea (25% completado):** Sin sorpresas de oferta. Brasil mantiene su ritmo normal, lo que sugiere que no habrá shocks por sobreoferta en las próximas semanas.
+
+3. **Retenciones argentinas estables (33%):** Sin cambios regulatorios que afecten la competitividad regional. Los vecinos exportan sin fricción adicional.
+
+**Señales clave del modelo:**
+
+• **COT:** No disponible en datos actuales — mantené atención a próximas lecturas.
+• **Argentina:** Cepo activo pero liquidaciones normales (~1500 MM USD/sem). Impacto neutral en precios.
+• **Brasil:** 25.75 MMT exportadas YTD, +5.1% YoY. Oferta controlada, sin alerta.
+• **Basis Uruguay:** -25 USD/ton (percentil 49 vs. 5 años). Spread desfavorable pero cercano a promedio histórico.
+
+**📅 Calendario de la semana:**
+
+• Próximos reportes WASDE: 13 y 10 de febrero (futuros) — aguardá actualizaciones de proyecciones.
+• Sin vencimientos críticos esta semana en CBOT.
+
+**💡 Recomendación para el productor:**
+
+**Esperá antes de vender masivamente.** El basis amplio (-25 USD/ton) te castiga hoy, pero los fundamentals están balanceados: oferta normal en Brasil y Argentina, sin presión bajista. Si tenés custodia sin urgencia financiera, mantené posición y monitoreá el basis diariamente — podría cerrar en los próximos 2-3 weeks cuando la oferta local se normalice. Si necesitás liquidez, hacé ventas parciales para no quedar expuesto al riesgo de basis desfavorable.
+
+---

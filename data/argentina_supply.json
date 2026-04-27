@@ -1,0 +1,24 @@
+{
+  "cepo_activo": true,
+  "spread_pct": null,
+  "usd_oficial": null,
+  "usd_blue": null,
+  "usd_mep": null,
+  "retenciones_soja": 33.0,
+  "retenciones_source": "reference_table",
+  "ciara_liquidaciones_usd_mm": 1500,
+  "ciara_source": "seasonal_estimate",
+  "supply_score": 50,
+  "impacto_precio": "NEUTRAL",
+  "razonamiento": "Oferta argentina dentro de parámetros normales.",
+  "factores": [
+    "Retenciones soja 33%",
+    "Liquidaciones CIARA ~1500 MM USD/sem",
+    "Retenciones 33%: nivel normal",
+    "CIARA 1500MM/sem: pace normal"
+  ],
+  "fuente": "Bluelytics + AFIP + CIARA",
+  "ultima_actualizacion": "2026-04-27",
+  "nota": "Argentina + Brasil = ~80% exportaciones mundiales de soja",
+  "_ts": 1777312412.787195
+}

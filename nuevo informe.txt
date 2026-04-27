@@ -1,0 +1,967 @@
+# Desarrollo de un modelo predictivo para futuros de soja
+
+## Resumen ejecutivo
+
+Si tu objetivo es construir un sistema serio para predecir futuros de soja y convertir esas predicciones en señales operables, la mejor arquitectura no es “un modelo mágico”, sino un **stack multi-horizonte y multi-salida**. En la práctica, conviene separar al menos tres problemas: **intradía** para microestructura y ejecución, **1–7 días** para swing y reacción a eventos, y **30 días** para régimen, estacionalidad y fundamentales. Para el activo subyacente, la referencia natural es el futuro de soja de entity["company","CME Group","derivatives exchange us"], idealmente usando series continuas **Active** y **Front** con metadatos de roll, volumen y open interest; además, el contrato se negocia como benchmark global y la propia bolsa provee series continuas oficiales con próxima fecha de roll. citeturn22search5turn0search4turn9search3
+
+La **ventaja competitiva real** no suele venir del algoritmo, sino de la calidad del dataset: datos point-in-time, timestamps correctos, control de revisiones, manejo limpio de rolls de contratos, y sincronización entre feeds de mercado, USDA, clima y posicionamiento. En soja, el set mínimo de fuentes oficiales debe incluir los reportes **WASDE** mensuales, **Quick Stats**, **Crop Progress**, **PSD/FAS**, clima de NOAA, posicionamiento **COT** de la CFTC, y precios/bases de mercados locales como Rosario, MATBA-ROFEX y B3. WASDE es publicado mensualmente y el propio USDA lo describe como benchmark de referencia; Crop Progress sale semanalmente a las 4:00 p.m. ET entre abril y noviembre; el COT sale generalmente los viernes a las 3:30 p.m. ET con posiciones al cierre del martes. citeturn0search13turn10search0turn1search9turn13search1
+
+Para empezar bien, la recomendación práctica es: **primero una línea base diaria de 1–7 días**, luego un modelo de eventos USDA, y solo después un intradía con datos de profundidad de libro. La razón es simple: el horizonte 1–7 días suele ofrecer el mejor equilibrio entre **señal disponible** y **ruido**, porque captura la reacción a WASDE, Crop Progress, COT, clima y spreads sin depender por completo de microestructura. El intradía puede ser muy potente, pero exige market data más cara, supuestos de ejecución más delicados y mejores pruebas de slippage. Por eso, en producción, el mejor baseline suele ser una combinación de **SARIMAX + XGBoost** sobre features bien construidas; deep learning entra después, cuando ya tengas una tubería robusta y suficiente volumen de datos limpios. citeturn4search0turn18search0turn12search15turn12search10
+
+Un sistema útil para trading no debería producir una sola cifra. Debería producir al menos cuatro salidas: **retorno esperado**, **probabilidad de suba**, **volatilidad esperada** y **riesgo de evento**. Con eso puedes traducir el output a reglas simples: “long”, “short” o “no trade”, con un tamaño de posición relativo a convicción, liquidez y volatilidad. En otras palabras: el modelo debe decirte no solo “qué cree que va a pasar”, sino también **cuán confiado está**, **cuán violento puede ser el movimiento** y **qué variables lo están empujando**.
+
+La regla de oro metodológica es esta: **no validar por RMSE solamente**. En trading hay que medir error, dirección, calibración y resultado económico. Eso implica usar **walk-forward validation**, separar event days de días normales, y evaluar MAE, RMSE, accuracy direccional, P&L simulado neto de costos, drawdown y Sharpe. Si pruebas muchos modelos y muchas reglas de señal, también debes controlar el sesgo de data snooping con tests como **White’s Reality Check** o **Hansen SPA**. citeturn5search1turn21search8turn21search20
+
+## Qué debe predecir el modelo
+
+La primera decisión importante no es el algoritmo: es **qué variable quieres predecir**. Para futuros, casi siempre es mejor modelar **retornos** y no **niveles de precio crudos**, porque los rolls entre contratos introducen saltos artificiales. La forma más limpia es trabajar con series continuas oficiales de CME Group —**Active Contract** y **Front Contract**— y guardar además el identificador del contrato real y la próxima fecha de roll. citeturn22search5turn22search14
+
+La formulación recomendada es multisalida:
+
+- **Regresión**: retorno forward \(k\) barras o \(k\) días.
+- **Clasificación**: probabilidad de que el retorno sea positivo.
+- **Volatilidad**: realized vol esperada del horizonte.
+- **Riesgo de evento**: dummy o score para releases USDA, COT, reportes climáticos o shocks de headlines.
+
+Una definición práctica del target es:
+
+```text
+y_ret_k   = log(P[t+k] / P[t])
+y_dir_k   = 1 si y_ret_k > 0, 0 si no
+y_vol_k   = stdev(retornos entre t y t+k)
+```
+
+### Horizontes recomendados y uso operativo
+
+| Horizonte | Qué intenta capturar | Tipo de datos dominante | Usos de trading |
+|---|---|---|---|
+| Intradía | Microestructura, order flow, reacción inmediata a eventos | tick, 1-min, 5-min, profundidad | breakout/fade, ejecución, ventanas post-reporte |
+| 1–7 días | Reacción a USDA/COT/clima/spreads, swing táctico | hourly, daily, weekly-low-freq alineada | swing, post-WASDE, post-Crop Progress, posicionamiento de corto plazo |
+| 30 días | Régimen, estacionalidad, fundamentos, clima hemisférico | daily, weekly, monthly | trend/regime, coberturas, spreads de base, positioning macro-agro |
+
+Mi recomendación si arrancas desde cero: **construir primero el modelo de 1–7 días**. Es el horizonte “más enseñable” para el dataset y el más fácil de traducir a señales robustas.
+
+### Qué output debería entregar el modelo
+
+Para que el output sea útil a un trader no técnico, el modelo final debería devolver algo parecido a esto:
+
+```json
+{
+  "horizon": "5d",
+  "expected_return": 0.018,
+  "prob_up": 0.67,
+  "expected_vol": 0.024,
+  "event_risk": "medio",
+  "confidence_band": [-0.009, 0.041],
+  "top_drivers": [
+    "crop_condition_surprise",
+    "managed_money_covering",
+    "soybean_oil_strength"
+  ]
+}
+```
+
+La traducción “para dummies” sería:
+
+- **expected_return**: cuánto cree que puede moverse, en promedio.
+- **prob_up**: cuán probable ve una suba.
+- **expected_vol**: qué tan brusco puede ser el viaje.
+- **event_risk**: cuánta chance hay de que un reporte cambie todo rápido.
+- **top_drivers**: por qué está pensando eso.
+
+## Datos prioritarios, tipos de frecuencia y esquema sugerido
+
+### Tabla de fuentes priorizadas
+
+| Bloque | Qué aporta | URL / endpoint | Acceso / nota |
+|---|---|---|---|
+| Precio y derivados de entity["company","CME Group","derivatives exchange us"] | precios, volumen, open interest, series continuas, market depth, CVOL, settlements | `https://www.cmegroup.com/market-data/cme-group-continuous-price-series.html`  / `https://www.cmegroup.com/datamine.html` | Comercial/licencia; series continuas oficiales y DataMine para histórico |
+| Fundamentales del entity["organization","Departamento de Agricultura de EE.UU.","us agriculture department"] | WASDE mensual, historia oficial “as reported”, calendario de releases | `https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report` | Oficial; esencial para shock fundamental |
+| NASS Quick Stats | producción, rendimiento, área, stocks, precios, acres por estado/county | `https://quickstats.nass.usda.gov/api/` | API con key; base oficial de series agrícolas |
+| NASS Crop Progress | avance de siembra/cosecha, condición del cultivo, clima semanal | `https://www.nass.usda.gov/Publications/National_Crop_Progress/` | Oficial; weekly/event-driven |
+| FAS PSD / Open Data | oferta-demanda global, exportaciones, comercio internacional | `https://apps.fas.usda.gov/opendataweb/home` / `https://apps.fas.usda.gov/opendata/swagger/ui/index` | API pública; muy útil para mundo y trade flows |
+| Clima de la entity["organization","Administracion Nacional Oceanica y Atmosferica","us weather agency"] | temperatura, precipitación, degree days, normals, estaciones | `https://www.ncei.noaa.gov/cdo-web/api/v2/` | Token requerido; histórico oficial |
+| CPC / drought.gov | ENSO, sequía agrícola, ESI 4w/12w | `https://www.cpc.ncep.noaa.gov/` / `https://www.drought.gov/` | Oficial; ideal para features climáticos de régimen y estrés |
+| Crop-CASMA | humedad de suelo y vegetación desde SMAP/MODIS | `https://www.nass.usda.gov/developer/index.php` | Público; daily/3-day/weekly |
+| Posicionamiento de la entity["organization","Comision de Comercio de Futuros de Materias Primas","us derivatives regulator"] | COT legacy, disaggregated, CIT supplemental | `https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm` | Oficial; positioning semanal |
+| Macro de la entity["organization","Oficina de Estadisticas Laborales de EE.UU.","us labor statistics"] | CPI, PPI y otras series macro oficiales | `https://api.bls.gov/publicAPI/v2/timeseries/data/` | API pública sin registro obligatorio |
+| Cambio / dólar de la entity["organization","Reserva Federal","us central bank"] | broad dollar index H.10 | `https://www.federalreserve.gov/releases/h10/summary/` | Oficial; útil para régimen macro |
+| Biofuel / energía de la entity["organization","Administracion de Informacion Energetica","us energy statistics"] | renewable diesel, insumos de soybean oil a biofuels | `https://www.eia.gov/opendata/browser/` | Oficial; enriquecedor para complejo soja/aceite |
+| Base local de entity["organization","Bolsa de Comercio de Rosario","Rosario, Santa Fe, Argentina"] | pizarra, cotizaciones locales, cash Rosario | `https://www.cac.bcr.com.ar/es/precios-de-pizarra` | Público; clave para basis Rosario–CME |
+| Derivados locales de entity["organization","MATBA-ROFEX","Rosario, Santa Fe, Argentina"] | futuros de soja, soja Chicago, horarios, minis | `https://www.matbarofex.com.ar/producto/futuros-y-opciones-sobre-soja` | Público; útil para basis y paridad local |
+| Brasil / bases en entity["company","B3","Sao Paulo, Brazil"] | soja FOB Santos, soja CME referenciada, horarios | `https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/commodities/` | Público/comercial según dato; clave para spread Brasil–Chicago |
+| Premium news: entity["company","Reuters","news provider"] y entity["company","Bloomberg","financial data company"] | headlines timestamped, contexto geopolítico y flujo de noticias | `https://www.reuters.com/markets/` / `https://www.bloomberg.com/commodities` | Comercial/licencia; usar solo si puedes archivar timestamp exacto |
+
+Las capacidades resumidas arriba provienen de documentación oficial de series continuas, data histórica y CVOL de CME; WASDE, Quick Stats, Crop Progress y FAS Open Data del USDA; APIs y productos climáticos de NOAA/NCEI/CPC/drought.gov; reportes COT de CFTC; BLS API; y páginas de BCR, MATBA-ROFEX, B3, Reuters y Bloomberg. citeturn22search5turn12search0turn9search15turn10search0turn22search3turn1search9turn29search0turn29search2turn28search0turn7search12turn16search2turn13search1turn1search3turn2search1turn2search3turn14search2turn14search3turn3search16turn23search17
+
+### Qué datos importan para cada horizonte
+
+- **Tick / 1-min / 5-min**: open/high/low/close, bid-ask spread, microprice, imbalance de profundidad, VWAP, order flow proxy, session dummies.
+- **Hourly**: returns, range, realized vol, volume surprise, overnight gap.
+- **Daily**: settle, volume, OI, ATR, CVOL, spreads ZS–ZM / ZS–ZL, basis local.
+- **Weekly**: Crop Progress, COT, ESI, ENSO probabilities, export inspections/ventas, drought shares.
+- **Monthly**: WASDE, PSD, macro BLS/Fed, biofuel demand, régimen climático.
+
+Regla práctica: **no subas por costumbre toda fuente a la máxima frecuencia**. Un WASDE mensual no debe “inventarse” intradía; debes traerlo al timeline solo **desde la hora exacta de publicación en adelante**.
+
+### Esquema sugerido del dataset
+
+| Columna | Descripción | Frecuencia nativa | Fuente principal | Update cadence |
+|---|---|---:|---|---|
+| `timestamp_utc` | timestamp maestro normalizado a UTC | todas | varias | continua |
+| `symbol_root` | `ZS`, `ZM`, `ZL`, etc. | mercado | CME | continua |
+| `contract_code` | contrato real (`ZSN6`, etc.) | mercado | CME | continua |
+| `continuous_type` | `front` / `active` | daily/minute | CME | diaria |
+| `open`,`high`,`low`,`close`,`settle` | OHLC/settlement | tick→daily | CME | continua / T+0/T+1 |
+| `volume` | volumen del contrato/serie | todas | CME | continua |
+| `open_interest` | open interest | daily | CME | diaria |
+| `cvol_30d` | implied vol 30d | daily | CME | diaria |
+| `ret_1d`,`ret_5d`,`ret_20d` | retornos forward/backward | derivada | calculada | diaria |
+| `realized_vol_5d`,`atr_14` | riesgo realizado | derivada | calculada | diaria |
+| `zs_zm_spread` | spread soja vs meal | daily/hourly | CME | diaria/intraday |
+| `zs_zl_spread` | spread soja vs oil | daily/hourly | CME | diaria/intraday |
+| `crush_proxy` | proxy de margen de crush | daily | CME + cálculo | diaria |
+| `basis_rosario_usd_tn` | cash Rosario vs Chicago normalizado | daily | BCR + CME | diaria |
+| `basis_santos_usd_tn` | FOB Santos vs Chicago normalizado | daily | B3 + CME | diaria |
+| `wasde_us_ending_stocks` | ending stocks EE.UU. | monthly | USDA | mensual |
+| `wasde_world_ending_stocks` | ending stocks mundo | monthly | USDA | mensual |
+| `stocks_to_use_us` | ending stocks / total use | derivada | USDA | mensual |
+| `psd_brazil_prod` | producción Brasil | monthly | USDA FAS PSD | mensual |
+| `psd_arg_prod` | producción Argentina | monthly | USDA FAS PSD | mensual |
+| `crop_progress_planted` | % sembrado | weekly | USDA NASS | semanal |
+| `crop_progress_harvested` | % cosechado | weekly | USDA NASS | semanal |
+| `crop_condition_ge` | good/excellent | weekly | USDA NASS | semanal |
+| `crop_progress_surprise` | vs 5-year avg / esperado | derivada | USDA NASS | semanal |
+| `cot_mm_net` | net managed money | weekly | CFTC | semanal |
+| `cot_producer_net` | net producer/merchant | weekly | CFTC | semanal |
+| `cit_index_traders_net` | net index traders | weekly | CFTC | semanal |
+| `temp_anom_weighted_us` | anomalía de temperatura ponderada | daily/weekly | NOAA | diaria/semanal |
+| `precip_anom_weighted_us` | anomalía de precipitación ponderada | daily/weekly | NOAA | diaria/semanal |
+| `esi_4w`, `esi_12w` | evaporative stress | weekly | drought.gov / NASA | semanal |
+| `soil_moisture_cropcasma` | humedad de suelo geoespacial | daily/3-day/weekly | Crop-CASMA | diaria/semanal |
+| `enso_regime` | Niño/Neutral/Niña | monthly | NOAA CPC | mensual |
+| `dxy_broad` | broad dollar index | weekly/monthly | Federal Reserve | semanal/mensual |
+| `ppi_food`,`cpi` | inflación/costos macro | monthly | BLS | mensual |
+| `rdiesel_prod` | renewable diesel output | monthly | EIA | mensual |
+| `soy_oil_to_biofuels` | uso de aceite de soja en biofuels | monthly | EIA | mensual |
+| `is_wasde_day`,`is_crop_progress_day`,`is_cot_day` | banderas de evento | derivada | calendario oficial | según release |
+| `headline_score` | sentimiento/noticia timestamped | intraday/daily | Reuters/Bloomberg | continua |
+
+Este esquema mezcla fuentes con frecuencias muy distintas; por eso debe unirse con **joins as-of** y reglas estrictas de timestamp. El USDA publica WASDE mensualmente; Crop Progress tiene horario semanal fijo durante la temporada; Quick Stats ofrece acceso directo a la base oficial; NOAA CDO ofrece datos diarios/mensuales con token; Crop-CASMA publica datos diarios, de 3 días y semanales; COT está disponible en formatos disaggregated y supplemental; y BLS expone series por API. Además, CME Group provee series continuas oficiales con roll y volumen/OI mapeados, mientras BCR, MATBA-ROFEX y B3 agregan la capa de basis regional. citeturn10search0turn1search9turn22search3turn28search0turn16search2turn13search8turn22search5turn2search1turn2search3turn14search2
+
+## Pipeline de datos e ingeniería de variables
+
+### Pipeline recomendado
+
+Usa una arquitectura **Bronze / Silver / Gold**:
+
+- **Bronze**: raw append-only, sin tocar, con timestamp original, zona horaria original y checksum.
+- **Silver**: limpieza, estandarización, ajuste de calendarios, deduplicación, control de nulos y outliers.
+- **Gold**: features model-ready, targets, flags de leak-check, splits de entrenamiento y scoring views.
+
+```mermaid
+flowchart LR
+    A[Fuentes oficiales y premium] --> B[Bronze raw store]
+    B --> C[Normalizacion de timezone y contratos]
+    C --> D[Silver limpio]
+    D --> E[Joins as-of por released_at]
+    E --> F[Feature store Gold]
+    F --> G[Modelo estadistico]
+    F --> H[Modelo ML]
+    F --> I[Modelo DL]
+    G --> J[Stack / ensemble]
+    H --> J
+    I --> J
+    J --> K[Walk-forward validation]
+    K --> L[Model registry]
+    L --> M[Paper trading]
+    M --> N[Produccion]
+    N --> O[Monitoreo de drift / PnL / datos]
+    O --> F
+```
+
+### Reglas no negociables del ETL
+
+La mayor parte de los errores graves en trading cuantitativo no vienen del modelo; vienen del **alineamiento temporal**. Estas son las reglas que debes imponer:
+
+1. **Todo a UTC**, pero conserva también la zona horaria original de publicación.
+2. **Nunca forward-fillear hacia atrás**. Solo puedes usar una observación desde `released_at <= t`.
+3. **Los reportes revisados deben versionarse**. Quick Stats tiene actualizaciones y revisiones; WASDE tiene datasets históricos “as originally reported”, que sirven precisamente para backtests point-in-time. citeturn22search12turn0search17
+4. **Los contratos deben preservar roll metadata**. No entrenes solo con una serie “pegada” sin saber cuándo cambió el contrato.
+5. **Los missing bars deben quedar explícitos**, con flags. Interpolar precios indiscriminadamente es una forma elegante de contaminar el dataset.
+6. **Separa horario regular, overnight y ventanas de evento**. No mezcles comportamientos muy distintos en una sola sopa estadística.
+
+### Feature engineering que sí agrega valor
+
+#### Estacionalidad y calendario
+
+La soja tiene una estructura de temporada agrícola muy marcada, y el propio CME remarca la importancia del nuevo crop del hemisferio norte en noviembre y del nuevo crop sudamericano en mayo. Eso sugiere incluir features de **mes**, **semana de año**, **día de crop-year**, **fase del calendario agrícola** y dummies para ventanas pre/post reportes. citeturn9search3
+
+Features concretos:
+
+- `month`, `weekofyear`, `dayofyear`
+- `sin/cos` de estacionalidad anual
+- `days_to_wasde`, `days_since_wasde`
+- `days_to_first_notice`, `days_to_roll`
+- `pre_holiday`, `month_end`, `quarter_end`
+- `overnight_session_flag`, `post_report_window`
+
+#### Clima y agroclima
+
+El clima debe entrar **agregado con lógica agrícola**, no como un promedio bruto de un país. Lo correcto es construir **índices ponderados por área sembrada o producción**. NOAA CDO ofrece temperatura, precipitación, viento y degree days; Climate Normals te da baseline histórico; drought.gov agrega mapas agrícolas y ESI; Crop-CASMA añade humedad de suelo y vegetación observada satelitalmente. NOAA también publica probabilidades ENSO mensuales y, en el caso del ESI, drought.gov resume que ciertos cambios anómalos de evapotranspiración pueden adelantarse alrededor de dos semanas a eventos de flash drought en algunos casos. citeturn28search0turn7search2turn7search1turn15search0turn15search18turn16search2turn7search12turn15search9
+
+Features climáticos útiles:
+
+- `temp_anom_weighted_us`
+- `precip_anom_weighted_us`
+- `gdd_anom`
+- `drought_share_d1plus`, `drought_share_d2plus`
+- `esi_4w`, `esi_12w`
+- `soil_moisture_cropcasma`
+- `enso_regime`, `oni_proxy`
+- para Brasil: índices regionales desde INMET y entity["organization","Instituto Nacional de Meteorologia","brazil weather service"] / entity["organization","CPTEC/INPE","brazil forecast center"], sobre todo Mato Grosso, Paraná, Rio Grande do Sul y MATOPIBA. citeturn24search1turn24search12turn24search14turn24search2
+
+#### Fundamentales
+
+El núcleo fundamental en soja sale de WASDE y PSD:
+
+- `ending_stocks_us`
+- `ending_stocks_world`
+- `stocks_to_use_us`
+- `stocks_to_use_world`
+- `brazil_prod`, `arg_prod`
+- `exports_forecast`, `crush_forecast`
+- `export_pace_gap = exportes acumulados / objetivo USDA`
+- `crop_progress_surprise` vs año anterior y promedio 5 años
+
+WASDE es mensual y benchmark; PSD añade granularidad global; ERS y AMS pueden enriquecer con export inspections, market outlook y transporte/logística. citeturn0search13turn29search7turn27search1turn27search0turn27search2
+
+#### Spreads, volatilidad implícita y complejo soja
+
+La soja rara vez se mueve sola. Tienes que modelarla dentro del **complejo**:
+
+- **ZS vs ZM** (soybeans vs soybean meal)
+- **ZS vs ZL** (soybeans vs soybean oil)
+- **crush spread proxy**
+- **CVOL 30d** de soja
+- **term structure** de implied vol si tienes opciones
+- **CVOL / realized vol ratio**
+- **basis Rosario–Chicago**
+- **basis Santos–Chicago**
+
+CME Group publica CVOL como una medida de volatilidad implícita 30d forward derivada de opciones; también tiene contratos de meal y oil con sus propios CVOL. B3 agrega el ángulo Brasil/Santos; BCR y MATBA-ROFEX agregan el ángulo Rosario/Argentina. citeturn9search6turn9search15turn9search1turn9search2turn2search1turn2search7turn2search3turn14search2
+
+#### Proxies de order flow
+
+Si tienes datos MBO/MBP de CME:
+
+- imbalance bid/ask depth
+- signed volume
+- VWAP deviation
+- aggressive trade ratio
+- book slope
+- short-term realized variance
+- volume surprise
+- open interest change vs price change
+
+CME MDP soporta market-by-order full depth y market-by-price, y la oferta en la nube da histórico de market depth desde 2014. Ese es el dataset correcto para un intradía serio. citeturn12search10turn12search15
+
+### Ejemplo de ingestión y unión point-in-time
+
+El siguiente ejemplo muestra la idea correcta: leer precios, traer WASDE por `released_at`, y hacer `merge_asof` para que el modelo solo vea la última observación disponible en tiempo real.
+
+```python
+import os
+import pandas as pd
+import requests
+
+# -------------------------
+# 1) Leer precios CME ya descargados de DataMine / Continuous Price Series
+# -------------------------
+px = pd.read_parquet("zs_active_daily.parquet")
+px["timestamp_utc"] = pd.to_datetime(px["timestamp_utc"], utc=True)
+px = px.sort_values("timestamp_utc")
+
+# Esperado: columnas como close, settle, volume, open_interest, contract_code
+# y flags de roll.
+
+# -------------------------
+# 2) Traer WASDE o PSD desde un archivo point-in-time
+# -------------------------
+wasde = pd.read_csv("wasde_soybeans_point_in_time.csv")
+wasde["released_at"] = pd.to_datetime(wasde["released_at"], utc=True)
+wasde = wasde.sort_values("released_at")
+
+# -------------------------
+# 3) Join as-of: SOLO usar el ultimo dato publicado al momento t
+# -------------------------
+df = pd.merge_asof(
+    px,
+    wasde,
+    left_on="timestamp_utc",
+    right_on="released_at",
+    direction="backward"
+)
+
+# -------------------------
+# 4) Repetir con COT, Crop Progress, NOAA, BCR, B3, etc.
+# -------------------------
+cot = pd.read_csv("cot_soybeans_weekly.csv")
+cot["released_at"] = pd.to_datetime(cot["released_at"], utc=True)
+cot = cot.sort_values("released_at")
+
+df = pd.merge_asof(
+    df.sort_values("timestamp_utc"),
+    cot.sort_values("released_at"),
+    left_on="timestamp_utc",
+    right_on="released_at",
+    direction="backward",
+    suffixes=("", "_cot")
+)
+
+# -------------------------
+# 5) Flags de eventos
+# -------------------------
+df["is_wasde_day"] = df["timestamp_utc"].dt.date.eq(df["released_at"].dt.date)
+df["is_cot_day"] = df["timestamp_utc"].dt.date.eq(df["released_at_cot"].dt.date)
+```
+
+### Ejemplo de creación de features
+
+```python
+import numpy as np
+
+def add_features(df: pd.DataFrame) -> pd.DataFrame:
+    out = df.copy()
+
+    # Retornos y volatilidad
+    out["ret_1d"] = np.log(out["close"] / out["close"].shift(1))
+    out["ret_5d"] = np.log(out["close"] / out["close"].shift(5))
+    out["rv_20d"] = out["ret_1d"].rolling(20).std()
+
+    # Momentum / reversión
+    out["mom_20d"] = out["close"] / out["close"].shift(20) - 1
+    out["zscore_close_60d"] = (
+        (out["close"] - out["close"].rolling(60).mean()) /
+        out["close"].rolling(60).std()
+    )
+
+    # Estacionalidad
+    doy = out["timestamp_utc"].dt.dayofyear
+    out["doy_sin"] = np.sin(2 * np.pi * doy / 365.25)
+    out["doy_cos"] = np.cos(2 * np.pi * doy / 365.25)
+    out["month"] = out["timestamp_utc"].dt.month
+
+    # Spreads del complejo
+    if {"close_zm", "close_zl"}.issubset(out.columns):
+        out["zs_zm_ratio"] = out["close"] / out["close_zm"]
+        out["zs_zl_ratio"] = out["close"] / out["close_zl"]
+
+    # Sorpresas fundamentales
+    if {"crop_condition_ge", "crop_condition_ge_5yavg"}.issubset(out.columns):
+        out["crop_cond_surprise"] = (
+            out["crop_condition_ge"] - out["crop_condition_ge_5yavg"]
+        )
+
+    if {"cvol_30d", "rv_20d"}.issubset(out.columns):
+        out["iv_rv_ratio"] = out["cvol_30d"] / (out["rv_20d"] * np.sqrt(252))
+
+    # Positioning
+    if "cot_mm_net" in out.columns:
+        out["cot_mm_z"] = (
+            (out["cot_mm_net"] - out["cot_mm_net"].rolling(52).mean()) /
+            out["cot_mm_net"].rolling(52).std()
+        )
+
+    # Etiqueta forward 5d
+    out["y_ret_5d"] = np.log(out["close"].shift(-5) / out["close"])
+    out["y_dir_5d"] = (out["y_ret_5d"] > 0).astype(int)
+
+    return out
+```
+
+## Modelos candidatos, entrenamiento y validación
+
+### Qué modelos probar
+
+La jerarquía sana es:
+
+1. **Naive baselines**: random walk, seasonal naive, moving average.
+2. **Estadísticos**: ARIMA / SARIMAX.
+3. **Machine learning tabular**: Random Forest, XGBoost.
+4. **Deep learning secuencial**: LSTM, Transformer.
+5. **Ensembles híbridos**: stacking o mixture-of-experts por régimen.
+
+SARIMAX es valioso porque modela estructura temporal y exógenas; RandomForest mejora precisión promediando árboles y controlando overfitting; XGBoost organiza hiperparámetros en familias general/booster/task y es excelente baseline tabular; LSTM aplica RNN de memoria larga a secuencias; TransformerEncoderLayer ofrece d_model, nhead y feed-forward para dependencias más complejas. SHAP, además, tiene explicadores específicos para árboles y modelos generales. citeturn4search0turn4search1turn18search0turn20search0turn19search1turn6search0turn6search1
+
+### Tabla comparativa de modelos
+
+| Modelo | Accuracy esperable | Latencia inferencia | Hambre de datos | Interpretabilidad | Cuándo usarlo |
+|---|---|---|---|---|---|
+| Naive / seasonal naive | Baja | Muy baja | Muy baja | Muy alta | baseline obligatorio |
+| ARIMA / SARIMAX | Media | Baja | Baja-media | Alta | daily/weekly con exógenas y estacionalidad |
+| Random Forest | Media | Baja-media | Media | Media | baseline no lineal robusta |
+| XGBoost | Media-alta | Baja-media | Media | Media | primer modelo de producción para datos tabulares |
+| LSTM | Media-alta potencial | Media | Alta | Baja-media | secuencias con bastante historia limpia |
+| Transformer | Alta potencial, pero inestable si el dataset es chico | Media-alta | Muy alta | Baja | multivariado secuencial con mucha data |
+| Ensemble híbrido | Alta potencial | Media | Alta | Media | producción seria y multi-régimen |
+
+La columna de accuracy es **cualitativa**. No es una promesa ex ante; es una guía de priorización. En datasets tabulares ricos, XGBoost suele ser la primera apuesta práctica. En datasets pequeños o con pocos regímenes, LSTM/Transformer pueden compilar muy bonito y aportar poco.
+
+### Hiperparámetros iniciales a probar
+
+#### SARIMAX
+
+- `order = (p,d,q)` con \(p,q \in [0,3]\)
+- `seasonal_order = (P,D,Q,s)` con `s=5`, `21` o `63` en daily
+- exógenas contemporáneas y con lags de 1, 2, 5, 10 días
+- transformar targets a retornos o diferencias
+
+#### Random Forest
+
+- `n_estimators = 300–1000`
+- `max_depth = 4–12`
+- `min_samples_leaf = 20–100`
+- `max_features = sqrt, log2 o 0.3–0.8`
+- `bootstrap = True`
+
+#### XGBoost
+
+- `n_estimators = 300–1500`
+- `learning_rate = 0.01–0.10`
+- `max_depth = 3–8`
+- `min_child_weight = 1–10`
+- `subsample = 0.6–1.0`
+- `colsample_bytree = 0.5–1.0`
+- `reg_alpha = 0–5`
+- `reg_lambda = 1–20`
+- `gamma = 0–5`
+- `tree_method = hist`
+- `early_stopping_rounds = 50`
+
+#### LSTM
+
+- `seq_len = 32–256`
+- `hidden_size = 64–256`
+- `num_layers = 1–3`
+- `dropout = 0.1–0.3`
+- `lr = 1e-4–1e-3`
+- `batch_size = 32–256`
+
+#### Transformer
+
+- `context = 64–512`
+- `d_model = 64–256`
+- `nhead = 2–8`
+- `num_layers = 2–6`
+- `dim_feedforward = 128–512`
+- `dropout = 0.1–0.3`
+
+### Estrategia de entrenamiento y validación
+
+Para series temporales, **no barajes datos**. El propio `TimeSeriesSplit` de scikit-learn existe porque mezclar datos aleatoriamente induce entrenamiento con futuro y evaluación en pasado; además, para comparar métricas entre folds, las muestras deben estar igualmente espaciadas. citeturn5search1
+
+Mi recomendación:
+
+- **Intradía**: rolling train 3–6 meses, valid 2 semanas, test 1 semana, stride 1 semana.
+- **1–7 días**: rolling/expanding train 5 años, valid 6 meses, test 1 mes, stride mensual.
+- **30 días**: train 8–10 años, valid 1 año, test 1–3 meses.
+
+También recomiendo incluir:
+
+- **gap/embargo** entre train y test alrededor de releases.
+- validación aparte en **event days** y **non-event days**.
+- análisis por sub-régimen: alta vol, baja vol, El Niño, harvest, planting, etc.
+
+### Ejemplo de walk-forward con scikit-learn / XGBoost
+
+```python
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+from xgboost import XGBRegressor
+
+FEATURES = [
+    "ret_1d", "ret_5d", "rv_20d", "mom_20d", "zscore_close_60d",
+    "doy_sin", "doy_cos", "month", "crop_cond_surprise",
+    "cot_mm_z", "iv_rv_ratio", "zs_zm_ratio", "zs_zl_ratio",
+    "basis_rosario_usd_tn", "basis_santos_usd_tn",
+    "stocks_to_use_us", "psd_brazil_prod", "temp_anom_weighted_us",
+    "precip_anom_weighted_us", "esi_4w", "dxy_broad"
+]
+
+data = df.dropna(subset=FEATURES + ["y_ret_5d"]).copy()
+X = data[FEATURES]
+y = data["y_ret_5d"]
+
+tscv = TimeSeriesSplit(n_splits=5, test_size=63, gap=5)
+
+rows = []
+for fold, (tr, te) in enumerate(tscv.split(X), start=1):
+    X_tr, X_te = X.iloc[tr], X.iloc[te]
+    y_tr, y_te = y.iloc[tr], y.iloc[te]
+
+    model = XGBRegressor(
+        n_estimators=1200,
+        learning_rate=0.03,
+        max_depth=4,
+        min_child_weight=4,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        reg_alpha=0.2,
+        reg_lambda=10.0,
+        objective="reg:squarederror",
+        tree_method="hist",
+        random_state=42
+    )
+
+    model.fit(X_tr, y_tr, eval_set=[(X_te, y_te)], verbose=False)
+    pred = model.predict(X_te)
+
+    mae = mean_absolute_error(y_te, pred)
+    rmse = np.sqrt(mean_squared_error(y_te, pred))
+    dir_acc = (np.sign(pred) == np.sign(y_te)).mean()
+
+    rows.append({"fold": fold, "mae": mae, "rmse": rmse, "dir_acc": dir_acc})
+
+cv_results = pd.DataFrame(rows)
+print(cv_results)
+print(cv_results.mean(numeric_only=True))
+```
+
+### Pseudocódigo PyTorch para LSTM
+
+```python
+# Pseudocodigo PyTorch
+import torch
+import torch.nn as nn
+
+class SoyLSTM(nn.Module):
+    def __init__(self, n_features, hidden=128, layers=2, dropout=0.2):
+        super().__init__()
+        self.lstm = nn.LSTM(
+            input_size=n_features,
+            hidden_size=hidden,
+            num_layers=layers,
+            dropout=dropout,
+            batch_first=True
+        )
+        self.head_ret = nn.Linear(hidden, 1)
+        self.head_dir = nn.Linear(hidden, 1)   # logit
+        self.head_vol = nn.Linear(hidden, 1)
+
+    def forward(self, x):
+        out, _ = self.lstm(x)           # [B, T, H]
+        h = out[:, -1, :]               # ultimo paso
+        ret = self.head_ret(h)
+        dir_logit = self.head_dir(h)
+        vol = torch.relu(self.head_vol(h))
+        return ret, dir_logit, vol
+
+model = SoyLSTM(n_features=X_seq.shape[-1]).to(device)
+opt = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
+
+for epoch in range(50):
+    model.train()
+    for xb, y_ret, y_dir, y_vol in train_loader:
+        xb, y_ret, y_dir, y_vol = xb.to(device), y_ret.to(device), y_dir.to(device), y_vol.to(device)
+        pred_ret, pred_dir, pred_vol = model(xb)
+
+        loss_ret = nn.HuberLoss()(pred_ret.squeeze(-1), y_ret)
+        loss_dir = nn.BCEWithLogitsLoss()(pred_dir.squeeze(-1), y_dir.float())
+        loss_vol = nn.HuberLoss()(pred_vol.squeeze(-1), y_vol)
+
+        loss = loss_ret + 0.5 * loss_dir + 0.3 * loss_vol
+        opt.zero_grad()
+        loss.backward()
+        nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        opt.step()
+```
+
+## Evaluación, interpretabilidad y despliegue
+
+### Métricas correctas
+
+No todas las métricas sirven para el mismo objetivo.
+
+- **MAE**: error promedio absoluto. Fácil de entender.
+- **RMSE**: castiga mucho los errores grandes.
+- **MAPE**: útil sobre niveles de precio o series positivas; es mala idea sobre retornos cercanos a cero porque explota con denominadores pequeños. Scikit-learn además devuelve MAPE como valor relativo, no porcentaje 0–100. citeturn5search2turn5search6turn5search14
+- **Directional accuracy**: porcentaje de veces que aciertas la dirección.
+- **P&L neto**: retorno de estrategia después de costos y slippage.
+- **Sharpe**: retorno ajustado por volatilidad.
+- **Drawdown**: caída máxima.
+- **Hit rate de señales fuertes**: accuracy solo cuando el modelo está muy convencido.
+- **Event-day score**: performance separada en WASDE/Crop Progress/COT.
+
+Mi recomendación: para trading, ordenar modelos por una combinación de:
+
+1. RMSE/MAE en retorno  
+2. directional accuracy  
+3. P&L neto  
+4. Sharpe  
+5. drawdown  
+6. estabilidad por fold  
+
+### Interpretabilidad que sí sirve al trader
+
+En producción, usaría tres niveles de interpretabilidad:
+
+1. **Feature importance global**
+2. **SHAP local por señal**
+3. **PDP/ICE o permutation importance** para validar que la relación tenga sentido
+
+SHAP define explicaciones con base game-theoretic; `TreeExplainer` es un método rápido y exacto para ensembles de árboles bajo ciertos supuestos. PDP/ICE muestran dependencia promedio o individual respecto a features; permutation importance mide cuánto cae la performance al permutar una columna. citeturn6search1turn6search0turn17search0turn17search1turn17search3
+
+### Cómo explicar una señal a un trader no técnico
+
+Nunca le digas al trader: “la red neuronal dijo 0.63”. Dile algo así:
+
+> “La señal es alcista a 5 días porque el modelo ve mejora relativa del complejo aceite/harina, cobertura de cortos en managed money, deterioro climático en estados productores y volatilidad implícita contenida. El riesgo de evento es medio porque no hay WASDE hoy, pero sí COT este viernes.”
+
+Eso es exactamente lo que SHAP y las top features deben permitir.
+
+### Ejemplo de explicación con SHAP
+
+```python
+import shap
+
+# model ya entrenado, X_valid es holdout
+explainer = shap.TreeExplainer(model)
+shap_values = explainer(X_valid)
+
+# Importancia global
+shap.plots.bar(shap_values)
+
+# Explicacion de una observacion puntual
+idx = 10
+shap.plots.waterfall(shap_values[idx])
+
+# Si quieres texto simple:
+row = X_valid.iloc[[idx]]
+sv = explainer(row)
+contrib = pd.Series(sv.values[0], index=row.columns).sort_values(key=abs, ascending=False)
+print("Top drivers:")
+print(contrib.head(5))
+```
+
+### Visualizaciones mínimas que debes generar
+
+#### Estacionalidad
+
+```python
+import matplotlib.pyplot as plt
+
+tmp = df.copy()
+tmp["month"] = tmp["timestamp_utc"].dt.month
+seasonal = tmp.groupby("month")["y_ret_20d"].mean()
+
+plt.figure(figsize=(8, 4))
+seasonal.plot(kind="bar")
+plt.title("Retorno promedio forward 20d por mes")
+plt.ylabel("Retorno")
+plt.tight_layout()
+plt.show()
+```
+
+#### Autocorrelación
+
+```python
+from statsmodels.graphics.tsaplots import plot_acf
+
+plt.figure(figsize=(8, 4))
+plot_acf(df["ret_1d"].dropna(), lags=40)
+plt.title("Autocorrelacion de retornos diarios")
+plt.tight_layout()
+plt.show()
+```
+
+#### Importancia de features
+
+```python
+# Usando SHAP global bars
+shap.plots.bar(shap_values, max_display=15)
+```
+
+### Despliegue y monitoreo
+
+El despliegue correcto depende del horizonte:
+
+- **Intradía**: feed de mercado de baja latencia, reloj sincronizado, scoring continuo.
+- **1–7 días**: batch al cierre + refresco al salir reportes USDA/COT.
+- **30 días**: batch diario o semanal con monitoreo de régimen.
+
+CME MDP está pensado para market data de muy baja latencia; los datos históricos de profundidad también pueden obtenerse por vías cloud o DataMine. Para señales más lentas, la prioridad ya no es la latencia, sino la correcta incorporación de releases y revisiones. citeturn12search1turn12search10turn12search15
+
+Monitores obligatorios:
+
+- freshness por fuente
+- porcentaje de nulos
+- outliers de OHLC/volume/OI
+- distribución de features vs train
+- drift de predicciones
+- error rolling MAE/RMSE
+- directional accuracy rolling
+- P&L rolling
+- performance por régimen
+- performance en event days
+
+Mi cadencia sugerida de retraining:
+
+- **intradía**: semanal
+- **1–7 días**: quincenal o mensual
+- **30 días**: mensual o trimestral
+
+## Guía para dummies
+
+### Cómo leer salidas del modelo
+
+Piensa en el output como un semáforo con cuatro preguntas:
+
+1. **¿Hacia dónde?** → `prob_up`
+2. **¿Cuánto?** → `expected_return`
+3. **¿Qué tan violento?** → `expected_vol`
+4. **¿Hay bomba de evento cerca?** → `event_risk`
+
+Si el modelo te dice:
+
+```text
+expected_return = +1.8%
+prob_up         = 0.67
+expected_vol    = 2.4%
+event_risk      = medio
+```
+
+la traducción es:
+
+- ve suba probable
+- cree que el movimiento puede ser útil
+- espera volatilidad moderada
+- no es una señal “a ciegas”; todavía hay riesgo de sorpresa
+
+Si te dice:
+
+```text
+expected_return = +0.3%
+prob_up         = 0.54
+expected_vol    = 2.2%
+event_risk      = alto
+```
+
+eso **no es una operación**. Es una opinión tibia.
+
+### Reglas simples de señal
+
+#### Reglas mínimas
+
+| Condición | Traducción | Acción simple |
+|---|---|---|
+| `prob_up >= 0.60` y `expected_return > 0` y `event_risk != alto` | sesgo alcista claro | buscar long |
+| `prob_up <= 0.40` y `expected_return < 0` y `event_risk != alto` | sesgo bajista claro | buscar short |
+| `0.45 < prob_up < 0.55` | señal débil | no trade |
+| `event_risk = alto` | puede venir salto por reporte | esperar, reducir o no abrir |
+| `expected_vol muy alta` | movimiento violento y difícil | bajar tamaño o exigir más convicción |
+
+#### Regla de convicción
+
+Una fórmula simple y útil:
+
+```text
+conviccion = abs(prob_up - 0.50) / 0.20
+conviccion limitada entre 0 y 1
+```
+
+Ejemplos:
+
+- `prob_up = 0.51` → convicción ~0.05 → casi nada
+- `prob_up = 0.60` → convicción ~0.50 → media
+- `prob_up = 0.70` → convicción = 1.00 → máxima
+
+### Reglas simples de position sizing y stops
+
+Sin hablar de capital, piensa en **unidades de riesgo**.
+
+#### Tamaño relativo
+
+```text
+tamano_base = conviccion
+si event_risk = alto -> tamano = tamano_base * 0.5 o 0
+si liquidez baja -> tamano = tamano_base * 0.5
+si volatilidad muy alta -> tamano = tamano_base * 0.5
+```
+
+#### Stops para dummies
+
+- **Intradía**: `stop = 0.75 a 1.0 x ATR corto`
+- **1–7 días**: `stop = 1.5 x ATR(14)`
+- **30 días**: `stop = 2.0 x ATR(20)` o por estructura de swing
+
+#### Salida sencilla
+
+- tomar parcial en `+1R`
+- dejar resto hasta `+2R` o `+3R`
+- salir antes si la probabilidad vuelve a neutral (`prob_up` cae entre 0.45 y 0.55)
+- salir si aparece señal opuesta fuerte
+
+### Checklist de una página para ejecutar una operación con señal de modelo
+
+Antes de abrir una operación, marca esto:
+
+- [ ] ¿El contrato y la serie están bien alineados?  
+- [ ] ¿La señal es fuerte o es ruido?  
+- [ ] ¿El dato fundamental ya había sido publicado a esa hora?  
+- [ ] ¿Hay WASDE, Crop Progress o COT cerca?  
+- [ ] ¿La volatilidad esperada permite operar o te va a barrer?  
+- [ ] ¿La base local/Brasil confirma o contradice Chicago?  
+- [ ] ¿El complejo soja (meal/oil) acompaña?  
+- [ ] ¿El posicionamiento COT está empujando en la misma dirección?  
+- [ ] ¿El tamaño respetará el régimen de riesgo?  
+- [ ] ¿Dónde está el stop antes de entrar?  
+- [ ] ¿Dónde está el primer take profit?  
+- [ ] ¿Sabes qué condición invalida la señal?  
+
+Si no puedes responder estas 12 preguntas, no es una operación de modelo: es intuición disfrazada.
+
+## Sesgos, experimentos recomendados y apéndice de URLs
+
+### Pitfalls y sesgos más comunes
+
+#### Look-ahead bias
+
+Este es el pecado mayor. Ocurre cuando el modelo ve información que todavía no existía al momento de la predicción. En news/text features esto es especialmente peligroso: investigaciones recientes en finanzas muestran que el sesgo look-ahead puede inflar de forma muy fuerte la aparente capacidad predictiva si el pipeline no es estrictamente point-in-time. citeturn21search0
+
+**Fix**: toda fuente debe tener `released_at`, no solo `date`.
+
+#### Uso de datos revisados como si fueran originales
+
+WASDE ofrece datasets históricos “as reported”, y Quick Stats tiene actualizaciones y revisiones. Si entrenas con el dato final revisado, tu backtest queda contaminado. citeturn0search17turn22search12
+
+**Fix**: snapshot o versionado por fecha de extracción/publicación.
+
+#### Roll contamination
+
+Si pegas contratos sin controlar el roll, el modelo aprende cambios de contrato en lugar de oferta/demanda.
+
+**Fix**: guardar `contract_code`, `continuous_type`, `next_roll_date`, `days_to_roll`.
+
+#### Survivorship / active-contract bias
+
+Si solo usas el contrato “ganador” o la serie más líquida retrospectivamente, puedes favorecer artificialmente al modelo.
+
+**Fix**: probar Active y Front por separado, y comparar.
+
+#### Data snooping
+
+Si pruebas 500 combinaciones de features, thresholds y reglas, alguna va a “ganar” por azar. Los tests de White’s Reality Check y Hansen SPA existen justamente para corregir esta ilusión. citeturn21search8turn21search20
+
+**Fix**: controlar múltiples pruebas y reservar un período final intocable.
+
+#### Ignorar costos, slippage y ventanas de reporte
+
+El modelo puede verse fantástico justo donde menos te llenan: minutos posteriores a WASDE o aperturas violentas.
+
+**Fix**: simulación con slippage por régimen y filtros de ejecución.
+
+### Experimentos y ablation studies que sí valen la pena
+
+Hazlos en este orden:
+
+1. **Price-only baseline**  
+   solo OHLCV, retornos, ATR, vol.
+2. **+ estacionalidad y calendario**  
+   mes, crop-year, días a WASDE, días a roll.
+3. **+ volatilidad implícita y spreads**  
+   CVOL, ZS–ZM, ZS–ZL, crush proxy.
+4. **+ fundamentales USDA**  
+   WASDE, Crop Progress, PSD.
+5. **+ clima**  
+   NOAA + ESI + Crop-CASMA.
+6. **+ basis regional**  
+   Rosario y Santos.
+7. **+ positioning**  
+   COT disaggregated + CIT.
+8. **+ news/headlines**  
+   solo si tienes archivo timestamped serio.
+9. **+ intradía/order flow**  
+   solo para el modelo intradía.
+
+Luego corre ablations inversas:
+
+- quitar CVOL
+- quitar COT
+- quitar clima
+- quitar basis
+- quitar report flags
+- Active vs Front
+- point-in-time vs “dato final” como test de fuga
+- con y sin event embargo
+- con y sin Brasil/Argentina
+
+La pregunta no es “qué modelo gana”, sino **qué bloque de información agrega P&L robusto**.
+
+### Arquitectura concreta recomendada
+
+Si hoy tuviera que construir el mejor stack sin restricciones de cómputo, haría esto:
+
+- **Modelo A — 1–7d daily XGBoost**  
+  Tabular, con USDA + clima + spreads + basis + COT + CVOL.  
+  Este sería el caballo de batalla.
+- **Modelo B — Event model**  
+  Especialista en WASDE / Crop Progress / COT, entrenado solo en ventanas de evento.
+- **Modelo C — Intradía microstructure**  
+  Solo si tengo MDP depth limpio.
+- **Modelo D — 30d regime model**  
+  SARIMAX o XGBoost mensual/semanal con ENSO, PSD, stocks/use, dólar, biofuel.
+- **Meta-model / ensemble**  
+  Decide qué señal pesa más según régimen.
+
+Si solo puedes desplegar **uno**, despliega el **Modelo A** primero.
+
+### Apéndice de URLs y endpoints priorizados
+
+| Uso | URL / endpoint |
+|---|---|
+| CME series continuas | `https://www.cmegroup.com/market-data/cme-group-continuous-price-series.html` |
+| CME histórico DataMine | `https://www.cmegroup.com/datamine.html` |
+| CME market data / connect | `https://www.cmegroup.com/market-data/connect-data.html` |
+| CME CVOL | `https://www.cmegroup.com/market-data/cme-group-benchmark-administration/cme-group-volatility-indexes.html` |
+| WASDE | `https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report` |
+| Historical WASDE point-in-time | `https://www.usda.gov/historical-wasde-report-data-3` |
+| Quick Stats API | `https://quickstats.nass.usda.gov/api/` |
+| NASS developer hub | `https://www.nass.usda.gov/developer/index.php` |
+| Crop Progress | `https://www.nass.usda.gov/Publications/National_Crop_Progress/` |
+| FAS Open Data | `https://apps.fas.usda.gov/opendataweb/home` |
+| FAS Swagger | `https://apps.fas.usda.gov/opendata/swagger/ui/index` |
+| PSD Online | `https://apps.fas.usda.gov/psdonline/` |
+| NOAA CDO API v2 | `https://www.ncei.noaa.gov/cdo-web/api/v2/` |
+| NOAA access data service | `https://www.ncei.noaa.gov/support/access-data-service-api-user-documentation` |
+| NOAA CPC ENSO | `https://www.cpc.ncep.noaa.gov/` |
+| drought.gov agriculture | `https://www.drought.gov/topics/agriculture` |
+| CFTC COT | `https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm` |
+| CFTC historical compressed | `https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm` |
+| BLS API | `https://api.bls.gov/publicAPI/v2/timeseries/data/` |
+| Federal Reserve H.10 | `https://www.federalreserve.gov/releases/h10/summary/` |
+| EIA open data | `https://www.eia.gov/opendata/browser/` |
+| BCR pizarra | `https://www.cac.bcr.com.ar/es/precios-de-pizarra` |
+| BCR cotizaciones locales | `https://www.bcr.com.ar/es/mercados/mercado-de-granos/cotizaciones/cotizaciones-locales-0` |
+| MATBA-ROFEX soja | `https://www.matbarofex.com.ar/producto/futuros-y-opciones-sobre-soja` |
+| MATBA-ROFEX horarios | `https://matbarofex.com.ar/documentos/legales/horario-de-negociacion` |
+| B3 commodities soja | `https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/commodities/` |
+| B3 soja FOB Santos | `https://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/commodities/ficha-do-produto-8AA8D0CC9D71B1D8019D78950BF35E0C.htm` |
+| Reuters markets | `https://www.reuters.com/markets/` |
+| Bloomberg commodities | `https://www.bloomberg.com/commodities` |
+
+La priorización del apéndice se apoya en la documentación y páginas oficiales ya citadas: CME para series continuas, DataMine y CVOL; USDA para WASDE, Quick Stats, Crop Progress y FAS PSD/Open Data; NOAA para CDO/CPC; CFTC para COT; BLS y Federal Reserve para macro; EIA para energía/biofuels; y BCR, MATBA-ROFEX, B3, Reuters y Bloomberg para basis regional y news context. citeturn22search5turn12search0turn9search6turn10search0turn0search17turn22search3turn1search9turn29search0turn29search2turn28search0turn13search1turn1search3turn8search2turn26search0turn2search1turn2search3turn14search2turn3search16turn23search17
+
+## Open questions y limitaciones
+
+Hay tres cosas que no pueden resolverse de forma totalmente genérica sin tu implementación exacta:
+
+La primera es **qué proveedor/licencia vas a usar para datos tick y de profundidad**. Para intradía, esto cambia mucho la factibilidad real del modelo.
+
+La segunda es **la cobertura climática exacta fuera de EE.UU.**. Para Brasil y Argentina, la arquitectura es clara, pero la mejor combinación entre NOAA global, INMET/CPTEC y fuentes locales depende de cómo vayas a construir agregados regionales.
+
+La tercera es **la regla final de ejecución**. El modelo puede producir una señal excelente, pero la estrategia concreta —órdenes limit, stop, market, escalado, ventanas no operables— define gran parte del P&L real.
+
+Aun con esas limitaciones, el marco anterior es suficiente para construir un sistema de predicción de soja de nivel profesional: limpio en datos, sólido metodológicamente, explicable para un trader y apto para convertirse en un pipeline de producción.

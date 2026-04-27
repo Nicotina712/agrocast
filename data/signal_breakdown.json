@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "factors": [
+    {
+      "name": "Modelo ML (XGBoost 7d)",
+      "score": -0.046,
+      "direction": "NEUTRO",
+      "detail": "Retorno esperado: -0.92% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 1.8%",
+      "weight": 0.3,
+      "raw": {
+        "expected_return": -0.0092,
+        "confidence": 0.0183,
+        "signal": "HOLD"
+      }
+    },
+    {
+      "name": "Forecast 30d (Ridge+XGB Ensemble)",
+      "score": 1.0,
+      "direction": "MUY ALCISTA",
+      "detail": "Precio objetivo: 1329.2 USc/bu \u00b7 Retorno: +12.8% (informativo, no pondera)",
+      "weight": 0.0,
+      "raw": {
+        "forecast": 1329.2,
+        "return_pct": 12.79
+      }
+    },
+    {
+      "name": "Demanda China",
+      "score": 0.0,
+      "direction": "NEUTRO",
+      "detail": "Score demanda: 50/100 \u00b7 Crush: None",
+      "weight": 0.2,
+      "raw": {
+        "demand_score": 50,
+        "crush_signal": null
+      }
+    },
+    {
+      "name": "WASDE / Stocks Mundiales",
+      "score": 0.0,
+      "direction": "NEUTRO",
+      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 122.4 MMT",
+      "weight": 0.15,
+      "raw": {
+        "signal": "NEUTRAL",
+        "surprise_score": 0
+      }
+    },
+    {
+      "name": "An\u00e1lisis T\u00e9cnico (Soja)",
+      "score": 0.2,
+      "direction": "ALCISTA",
+      "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 56 \u00b7 Bollinger%: 106% \u00b7 precio > MA50; MA50 > MA200 (golden cross)",
+      "weight": 0.1,
+      "raw": {
+        "tech_score": 1,
+        "rsi": 55.7,
+        "bb_pct": 105.5
+      }
+    },
+    {
+      "name": "Estacionalidad Hist\u00f3rica",
+      "score": -0.092,
+      "direction": "NEUTRO",
+      "detail": "Abr: retorno hist\u00f3rico promedio -0.5% \u00b7 \u00b11\u03c3: [-4.1%, +3.2%]",
+      "weight": 0.0,
+      "raw": {
+        "month": 4,
+        "avg_pct": -0.46
+      }
+    }
+  ],
+  "composite_score": 50,
+  "composite_raw": 0.008,
+  "composite_signal": "HOLD",
+  "as_of": "2026-04-27"
+}

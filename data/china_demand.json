@@ -1,0 +1,19 @@
+{
+  "imports_mmt_current": null,
+  "imports_mmt_prev": null,
+  "imports_yoy_pct": null,
+  "imports_zscore": null,
+  "crush_margin": {
+    "margin_usd_ton": null,
+    "signal": null
+  },
+  "cny_usd": null,
+  "cny_signal": null,
+  "cny_note": null,
+  "demand_score": 50,
+  "demand_signal": "NORMAL",
+  "interpretation": "Demanda china en niveles normales \u2014 sin se\u00f1ales extremas.",
+  "data_source": "usda_fas_psd_csv",
+  "history": [],
+  "as_of": "2026-04-27"
+}

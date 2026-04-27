@@ -1,0 +1,58 @@
+# render.yaml — AgroCast PRO (FREE TIER)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Free tier constraints:
+#   - 750 instance-hours/month (one instance 24/7 fits)
+#   - 512 MB RAM, 0.1 CPU shared
+#   - Sleeps after 15 min of inactivity → cold start ~30 s
+#   - NO persistent disk, NO managed Postgres
+#
+# Strategy:
+#   - Web service serves Flask read-only against CSVs/parquet committed in
+#     the repo by GitHub Actions (.github/workflows/pipeline.yml).
+#   - The pipeline does NOT run inside Render — it runs on Actions every
+#     6 h (free 2000 min/mo) and commits artifacts back to main, which
+#     auto-deploys here.
+#
+# After first push:
+#   Render → New + → Blueprint → connect repo → Apply.
+#   Then set the secrets listed below (sync: false) in the Dashboard.
+
+services:
+  - type: web
+    name: agrocast-web
+    runtime: python
+    region: oregon
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    # --workers 1 keeps RAM low; --threads 4 enough for read-only API
+    startCommand: "gunicorn wsgi:app --workers 1 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT --access-logfile -"
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      # Pipeline runs on GitHub Actions, NOT here.
+      - key: RUN_SCHEDULER
+        value: "0"
+      - key: BOOTSTRAP_PIPELINE
+        value: "0"
+      # Read CSVs straight from the repo checkout (no disk on free tier).
+      - key: AGROCAST_FAST_START
+        value: "1"
+      - key: TZ
+        value: America/Montevideo
+      - key: CORS_ORIGINS
+        value: "*"
+      # ── Secrets (set values in Render Dashboard) ───────────────────
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: NEWSAPI_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: AGROCAST_API_KEY
+        sync: false

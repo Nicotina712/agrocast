@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(python -c ' *)",
+      "Bash(python src/pipeline.py)",
+      "Bash(python)",
+      "WebFetch(domain:octopusbot.ai)",
+      "WebFetch(domain:permutable.ai)",
+      "WebFetch(domain:vespertool.com)",
+      "WebFetch(domain:chaipredict.com)",
+      "WebFetch(domain:www.fbn.com)",
+      "WebFetch(domain:www.terrainag.com)",
+      "Bash(python -c \"import telegram; print\\('telegram ok'\\)\")",
+      "Bash(pip show *)",
+      "Bash(python -c \"import requests; print\\('requests ok'\\)\")",
+      "Bash(python news_server.py)",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(pkill -f \"python.*news_server\")",
+      "Bash(curl -s \"http://localhost:8000/api/news\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d['executive_summary'][0][:120]\\)\")",
+      "Bash(netstat -ano)",
+      "Bash(taskkill /F /PID 13116 /PID 14560 /PID 10172)",
+      "Bash(cmd.exe /c \"taskkill /F /PID 13116 && taskkill /F /PID 14560 && taskkill /F /PID 10172\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('EXEC_SUMMARY_0:', d['executive_summary'][0][:150]\\)\")",
+      "Bash(curl -s \"http://localhost:8000/api/news_impact\")",
+      "Bash(curl -s -X POST \"http://localhost:8000/api/news_impact/train\")",
+      "Bash(python -c \"import sys,json; print\\(json.load\\(sys.stdin\\)\\)\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('signal:',d.get\\('current_signal'\\),'pred:',d.get\\('current_pred_return'\\),'trained:',d.get\\('trained_at'\\)\\)\")"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "run_at": "2026-04-26T20:26:39.797872",
+  "initial_capital": 10000,
+  "contract": "MZS",
+  "summary": {
+    "n_trades": 164,
+    "final_capital": 8461.3,
+    "total_pnl": -1538.7,
+    "return_pct": -15.39
+  },
+  "metrics": {
+    "n_trades": 164,
+    "n_sessions": 54,
+    "total_pnl": -1538.7,
+    "return_pct": -15.39,
+    "win_rate": 0.1524,
+    "n_wins": 25,
+    "n_losses": 139,
+    "avg_win": 12.17,
+    "avg_loss": -13.26,
+    "win_loss_ratio": 0.92,
+    "profit_factor": 0.17,
+    "expectancy_per_trade": -9.38,
+    "sharpe_annualized": -19.82,
+    "max_drawdown_pct": -14.82,
+    "by_exit_tag": {
+      "SL": {
+        "count": 64,
+        "sum": -1234.8,
+        "mean": -19.29
+      },
+      "TIME": {
+        "count": 62,
+        "sum": -530.51,
+        "mean": -8.56
+      },
+      "TP": {
+        "count": 38,
+        "sum": 226.61,
+        "mean": 5.96
+      }
+    },
+    "by_side": {
+      "BUY": {
+        "count": 69,
+        "sum": -690.99,
+        "mean": -10.01
+      },
+      "SELL": {
+        "count": 95,
+        "sum": -847.71,
+        "mean": -8.92
+      }
+    },
+    "fase0_gate": "FAIL"
+  }
+}

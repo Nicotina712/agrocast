@@ -1,0 +1,43 @@
+# AgroCast PRO — dependencias
+# Instalar con: pip install -r requirements.txt
+
+# ── Web / API ────────────────────────────────────────────
+flask>=3.0
+requests>=2.31
+feedparser>=6.0
+
+# ── Datos de mercado ─────────────────────────────────────
+yfinance>=0.2.40
+pandas>=2.0
+numpy>=1.26
+
+# ── NLP / Sentiment ──────────────────────────────────────
+vaderSentiment>=3.3
+
+# ── Machine Learning ─────────────────────────────────────
+scikit-learn>=1.4
+xgboost>=2.0
+joblib>=1.3
+
+# ── Utilidades ───────────────────────────────────────────
+python-dotenv>=1.0
+
+# ── Scheduler (pipeline automático cada 6h) ───────────────
+apscheduler>=3.10
+
+# ── Weekly Brief (IA) ─────────────────────────────────────
+anthropic>=0.20
+
+# ── Scraping (Argentina / CIARA / WASDE) ─────────────────
+beautifulsoup4>=4.12
+
+# ── Production server / deployment ───────────────────────
+gunicorn>=21.2
+flask-cors>=4.0
+
+# ── Database (Postgres on Render; CSV fallback if unset) ─
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+
+# ── Performance (parquet I/O) ────────────────────────────
+pyarrow>=15.0

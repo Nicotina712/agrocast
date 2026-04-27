@@ -1,0 +1,14 @@
+{
+  "usda_projection_mmt": 103.0,
+  "exported_ytd_mmt": 25.75,
+  "pct_completed": 25.0,
+  "yoy_pct": 5.1,
+  "weekly_pace_mmt": 1.515,
+  "weeks_to_complete": 51.0,
+  "week_of_year": 17,
+  "signal": "NORMAL",
+  "interpretation": "Brasil export\u00f3 25.8 MMT (25.0% de proyecci\u00f3n USDA 103.0 MMT). Pace en l\u00ednea con expectativas estacionales. YoY: +5.1%.",
+  "data_source": "seasonal_estimate",
+  "monthly_breakdown": [],
+  "as_of": "2026-04-26"
+}
