@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T20:37:16",
+  "generated_at": "2026-04-28T05:23:00",
   "n_datasets": 12,
   "n_missing": 0,
   "by_layer": {
@@ -19,8 +19,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-04-26T20:53:33",
-        "size_kb": 300.7
+        "last_updated": "2026-04-28T05:22:10",
+        "size_kb": 298.3
       },
       {
         "layer": "bronze",
@@ -36,8 +36,8 @@
         ],
         "exists": true,
         "row_count": 1935,
-        "last_updated": "2026-04-26T15:17:00",
-        "size_kb": 150.5
+        "last_updated": "2026-04-28T05:22:10",
+        "size_kb": 148.6
       },
       {
         "layer": "bronze",
@@ -53,8 +53,8 @@
         ],
         "exists": true,
         "row_count": 538,
-        "last_updated": "2026-04-27T17:20:30",
-        "size_kb": 49.2
+        "last_updated": "2026-04-28T05:22:10",
+        "size_kb": 48.7
       },
       {
         "layer": "bronze",
@@ -69,7 +69,7 @@
         ],
         "exists": true,
         "row_count": 3,
-        "last_updated": "2026-04-27T19:58:08",
+        "last_updated": "2026-04-28T05:22:10",
         "size_kb": 0.2
       },
       {
@@ -87,7 +87,7 @@
         ],
         "exists": true,
         "row_count": 1,
-        "last_updated": "2026-04-27T17:21:16",
+        "last_updated": "2026-04-28T05:22:10",
         "size_kb": 0.8
       },
       {
@@ -104,9 +104,9 @@
           "front_volume"
         ],
         "exists": true,
-        "row_count": 2,
-        "last_updated": "2026-04-27T20:37:08",
-        "size_kb": 0.3
+        "row_count": 3,
+        "last_updated": "2026-04-28T05:22:54",
+        "size_kb": 0.4
       },
       {
         "layer": "bronze",
@@ -122,9 +122,9 @@
           "iv_put"
         ],
         "exists": true,
-        "row_count": 2,
-        "last_updated": "2026-04-27T20:37:09",
-        "size_kb": 0.2
+        "row_count": 3,
+        "last_updated": "2026-04-28T05:22:54",
+        "size_kb": 0.3
       },
       {
         "layer": "bronze",
@@ -139,9 +139,9 @@
           "temp_anom"
         ],
         "exists": true,
-        "row_count": 2884,
-        "last_updated": "2026-04-25T23:54:03",
-        "size_kb": 198.5
+        "row_count": 484,
+        "last_updated": "2026-04-28T05:22:57",
+        "size_kb": 29.8
       },
       {
         "layer": "bronze",
@@ -157,8 +157,8 @@
         ],
         "exists": true,
         "row_count": 27875,
-        "last_updated": "2026-04-26T15:11:28",
-        "size_kb": 699.6
+        "last_updated": "2026-04-28T05:22:10",
+        "size_kb": 672.4
       },
       {
         "layer": "bronze",
@@ -174,7 +174,7 @@
         ],
         "exists": true,
         "row_count": 10,
-        "last_updated": "2026-04-27T20:36:26",
+        "last_updated": "2026-04-28T05:22:10",
         "size_kb": 0.5
       }
     ],
@@ -200,8 +200,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-04-27T20:37:10",
-        "size_kb": 3353.3
+        "last_updated": "2026-04-28T05:22:58",
+        "size_kb": 3286.4
       },
       {
         "layer": "gold",
@@ -219,8 +219,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-04-27T20:37:16",
-        "size_kb": 184.2
+        "last_updated": "2026-04-28T05:23:00",
+        "size_kb": 182.2
       }
     ]
   }
