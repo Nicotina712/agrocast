@@ -47,7 +47,7 @@
       "n_test": 193,
       "auc": 0.4379,
       "accuracy": 0.5389,
-      "p_mean": 0.6209,
+      "p_mean": 0.6208,
       "p_std": 0.1839,
       "top1_share": 0.0355,
       "top5_features": {

@@ -1,13 +1,13 @@
 {
-  "p_model": 0.5436,
+  "p_model": 0.5528,
   "p_llm": 0.5,
-  "p_ensemble": 0.5436,
+  "p_ensemble": 0.5528,
   "w_model": 0.0,
   "w_llm": 0.0,
   "model_hit_rate": null,
   "llm_hit_rate": null,
-  "disagreement": 0.0436,
+  "disagreement": 0.0528,
   "abstain": false,
   "signal_ensemble": "HOLD",
-  "agreement_score": 0.9564
+  "agreement_score": 0.9472
 }
