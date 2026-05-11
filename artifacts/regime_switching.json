@@ -1,46 +1,4 @@
 {
-  "ok": true,
-  "n_states": 2,
-  "current_state": "low_vol",
-  "current_state_prob": 0.86,
-  "state_probs_today": {
-    "low_vol": 0.86,
-    "high_vol": 0.14
-  },
-  "regime_means": [
-    0.000753,
-    -0.002186
-  ],
-  "regime_sigmas": [
-    0.01055,
-    0.02292
-  ],
-  "regime_labels_order": [
-    "low_vol",
-    "high_vol"
-  ],
-  "transition_matrix": [
-    [
-      [
-        0.9843530909009067
-      ],
-      [
-        0.07572492270219551
-      ]
-    ],
-    [
-      [
-        0.015646909099093276
-      ],
-      [
-        0.9242750772978044
-      ]
-    ]
-  ],
-  "alpha_adjustment": 0.0,
-  "alpha_advice": "mantener \u03b1 nominal (r\u00e9gimen estable)",
-  "n_obs_fitted": 1499,
-  "log_likelihood": 4432.28,
-  "aic": -8852.56,
-  "bic": -8820.68
+  "ok": false,
+  "error": "statsmodels MarkovRegression not available"
 }
