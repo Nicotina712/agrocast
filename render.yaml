@@ -28,7 +28,7 @@ services:
     autoDeploy: true
     buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
     # --workers 1 keeps RAM low; --threads 4 enough for read-only API
-    startCommand: "gunicorn wsgi:app --workers 1 --threads 4 --timeout 120 --bind 0.0.0.0:$PORT --access-logfile -"
+    startCommand: "gunicorn wsgi:app --workers 1 --threads 4 --timeout 180 --bind 0.0.0.0:$PORT --access-logfile -"
     healthCheckPath: /healthz
     envVars:
       - key: PYTHON_VERSION

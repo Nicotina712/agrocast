@@ -4429,40 +4429,60 @@ function _renderIE2(d) {
     const bullEl = document.getElementById("ie2-bull");
     if (bullEl && agents.bull) {
         const b = agents.bull;
-        let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
-        html += `<div>Convicción: <b>${b.conviction || "?"}</b></div>`;
-        if (b.arguments) {
-            b.arguments.forEach(a => {
-                html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #aed581;">`;
-                html += `<div style="font-weight:500;">${a.point || ""}</div>`;
-                if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
-                if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
-                html += `</div>`;
-            });
+        if (b.error) {
+            bullEl.innerHTML = `<div style="color:#c62828;font-size:.82rem;">❌ Error: ${b.error}</div>`;
+        } else {
+            let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
+            const convColor = {ALTA:"#2e7d32",MEDIA:"#e65100",BAJA:"#757575"}[b.conviction] || "#333";
+            html += `<div>Convicción: <b style="color:${convColor}">${b.conviction || "?"}</b></div>`;
+            if (b.arguments) {
+                b.arguments.forEach(a => {
+                    html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #aed581;">`;
+                    html += `<div style="font-weight:500;">${a.point || ""}</div>`;
+                    if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
+                    if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
+                    html += `</div>`;
+                });
+            }
+            if (b.catalysts_7d && b.catalysts_7d.length) {
+                html += `<div style="margin-top:8px;font-weight:500;font-size:.78rem;">⚡ Catalizadores 7d:</div>`;
+                b.catalysts_7d.forEach(c => html += `<div style="font-size:.72rem;padding-left:8px;">• ${c}</div>`);
+            }
+            if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
+            if (b.price_target_30d) html += `<div>Target 30d: $${b.price_target_30d.low}–$${b.price_target_30d.high}</div>`;
+            if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
+            bullEl.innerHTML = html;
         }
-        if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
-        if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
-        bullEl.innerHTML = html;
     }
 
     // Bear agent
     const bearEl = document.getElementById("ie2-bear");
     if (bearEl && agents.bear) {
         const b = agents.bear;
-        let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
-        html += `<div>Convicción: <b>${b.conviction || "?"}</b></div>`;
-        if (b.arguments) {
-            b.arguments.forEach(a => {
-                html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #ef9a9a;">`;
-                html += `<div style="font-weight:500;">${a.point || ""}</div>`;
-                if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
-                if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
-                html += `</div>`;
-            });
+        if (b.error) {
+            bearEl.innerHTML = `<div style="color:#c62828;font-size:.82rem;">❌ Error: ${b.error}</div>`;
+        } else {
+            let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
+            const convColor = {ALTA:"#c62828",MEDIA:"#e65100",BAJA:"#757575"}[b.conviction] || "#333";
+            html += `<div>Convicción: <b style="color:${convColor}">${b.conviction || "?"}</b></div>`;
+            if (b.arguments) {
+                b.arguments.forEach(a => {
+                    html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #ef9a9a;">`;
+                    html += `<div style="font-weight:500;">${a.point || ""}</div>`;
+                    if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
+                    if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
+                    html += `</div>`;
+                });
+            }
+            if (b.risks_7d && b.risks_7d.length) {
+                html += `<div style="margin-top:8px;font-weight:500;font-size:.78rem;">⚡ Riesgos 7d:</div>`;
+                b.risks_7d.forEach(r => html += `<div style="font-size:.72rem;padding-left:8px;">• ${r}</div>`);
+            }
+            if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
+            if (b.price_target_30d) html += `<div>Target 30d: $${b.price_target_30d.low}–$${b.price_target_30d.high}</div>`;
+            if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
+            bearEl.innerHTML = html;
         }
-        if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
-        if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
-        bearEl.innerHTML = html;
     }
 
     // Risk agent
