@@ -74,18 +74,37 @@ def load_news_signals() -> pd.DataFrame:
 
 # ── 2. FRED (macro: BRL/USD y CNY/USD) ──────────────────────────────
 
+_FRED_CACHE_PATH = os.path.join(_PROJECT_ROOT, "data", "fred_cache.csv")
+
+
+def _load_fred_cache() -> pd.DataFrame:
+    """Caché de la última respuesta exitosa de FRED. Crítico: cuando FRED
+    devuelve 502 transient, sin caché el feature set cambia (faltan brl_usd
+    y cny_usd) y los modelos del A/B retoman α distinto entre runs."""
+    if not os.path.exists(_FRED_CACHE_PATH):
+        return pd.DataFrame()
+    try:
+        df = pd.read_csv(_FRED_CACHE_PATH, parse_dates=["Date"])
+        return df
+    except Exception:
+        return pd.DataFrame()
+
+
 def load_fred_data(start_date: date | None = None) -> pd.DataFrame:
     """
     Descarga BRL/USD y CNY/USD desde FRED si FRED_API_KEY está configurada.
-    Retorna DataFrame vacío si la clave no está disponible (falla silenciosa).
+    Cuando la API falla (502 transient u otra), cae al caché en disco
+    `data/fred_cache.csv` para mantener el feature set estable entre runs.
 
     Para obtener una clave gratuita: https://fred.stlouisfed.org/docs/api/api_key.html
     """
     fred_key = os.getenv("FRED_API_KEY", "").strip()
     if not fred_key:
         print("ℹ️  FRED_API_KEY no configurada — se omiten datos macro FRED")
-        print("   (Registrate gratis en https://fred.stlouisfed.org/docs/api/api_key.html)")
-        return pd.DataFrame()
+        cached = _load_fred_cache()
+        if not cached.empty:
+            print(f"   [FRED] usando cache en disco ({len(cached)} filas)")
+        return cached
 
     if start_date is None:
         start_date = date(2015, 1, 1)
@@ -113,11 +132,20 @@ def load_fred_data(start_date: date | None = None) -> pd.DataFrame:
         df = df.set_index("Date").resample("D").ffill().reset_index()
 
         print(f"✅ FRED: {df.shape[0]} días | BRL/USD y CNY/USD desde {start_date}")
+
+        # Persistir caché para tolerar fallas transientes en runs siguientes
+        try:
+            df.to_csv(_FRED_CACHE_PATH, index=False)
+        except Exception as _e:
+            print(f"   [FRED] no pude persistir cache: {_e}")
         return df
 
     except Exception as e:
         print(f"⚠️  Error cargando FRED: {e}")
-        return pd.DataFrame()
+        cached = _load_fred_cache()
+        if not cached.empty:
+            print(f"   [FRED] fallback a cache ({len(cached)} filas, último: {cached['Date'].max().date()})")
+        return cached
 
 
 # ── 3. USDA Export Inspections semanales ────────────────────────────

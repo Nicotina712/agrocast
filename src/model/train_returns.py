@@ -34,14 +34,19 @@ VOL_TARGET = "realized_vol_14d"  # head adicional: vol esperada (sizing/convicti
 EMBARGO_DAYS = 18                # = horizonte (14) + buffer evento (4)
 
 
-def train_returns_model(features_path: str, artifacts_dir: str) -> XGBClassifier:
+def train_returns_model(
+    features_path: str,
+    artifacts_dir: str,
+    rolling_window_years: int | None = None,
+) -> XGBClassifier:
     """
     Entrena XGBClassifier para predecir si el precio sube en 7 días.
 
     Parámetros
     ----------
-    features_path : path completo al CSV de features
-    artifacts_dir : directorio donde guardar returns_model.joblib
+    features_path        : path completo al CSV de features
+    artifacts_dir        : directorio donde guardar returns_model.joblib
+    rolling_window_years : si se pasa, limita el entrenamiento a los últimos N años
     """
     print(f"📂 Cargando features desde: {features_path}")
 
@@ -51,6 +56,13 @@ def train_returns_model(features_path: str, artifacts_dir: str) -> XGBClassifier
     df = pd.read_csv(features_path)
     df = df.dropna(subset=[TARGET_REG])
     df = df.replace([float("inf"), float("-inf")], 0)
+
+    # ── Ventana deslizante (rolling retrain) ──────────────────────
+    if rolling_window_years is not None and "Date" in df.columns:
+        cutoff = pd.Timestamp.today() - pd.DateOffset(years=rolling_window_years)
+        df_full_len = len(df)
+        df = df[pd.to_datetime(df["Date"]) >= cutoff]
+        print(f"   📅 Rolling window {rolling_window_years}a: {df_full_len} → {len(df)} filas")
 
     # ── Target NETO de costos ──────────────────────────────────────
     # Restamos el costo round-trip estimado del retorno antes de binarizar.
@@ -149,6 +161,39 @@ def train_returns_model(features_path: str, artifacts_dir: str) -> XGBClassifier
     print(f"   P(sube) — mean: {probs.mean():.3f} | std: {probs.std():.3f} "
           f"| min: {probs.min():.3f} | max: {probs.max():.3f}")
 
+    # ── Calibración isotonic (Brier+ECE) ──────────────────────────
+    # XGBoost classifier es overconfident → probs en bins extremos no se
+    # corresponden con la frecuencia real. Isotonic regression aprende la
+    # función monotónica raw_proba → calibrated_proba sobre val,
+    # bajando ~10-15% el Brier sin tocar el modelo base.
+    calibrator = None
+    brier_raw  = float(np.mean((probs - y_val.values) ** 2))
+    brier_cal  = brier_raw
+    try:
+        from sklearn.isotonic import IsotonicRegression
+        calibrator = IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
+        calibrator.fit(probs, y_val.values.astype(float))
+        probs_cal = calibrator.transform(probs)
+        brier_cal = float(np.mean((probs_cal - y_val.values) ** 2))
+        # ECE 10-bin antes/después
+        def _ece(p, y, bins=10):
+            edges = np.linspace(0, 1, bins + 1)
+            idx   = np.clip(np.digitize(p, edges) - 1, 0, bins - 1)
+            ece = 0.0
+            for b in range(bins):
+                m = idx == b
+                if m.any():
+                    ece += abs(p[m].mean() - y[m].mean()) * m.sum() / len(p)
+            return ece
+        ece_raw = _ece(probs,     y_val.values)
+        ece_cal = _ece(probs_cal, y_val.values)
+        print(f"   📐 Calibración isotonic — Brier {brier_raw:.4f} → {brier_cal:.4f} "
+              f"({(brier_raw-brier_cal)/brier_raw*100:+.1f}%) | "
+              f"ECE {ece_raw:.4f} → {ece_cal:.4f}")
+    except Exception as _ce:
+        print(f"   [WARN] calibración isotonic falló: {_ce}")
+        calibrator = None
+
     # BUY/SELL/HOLD distribution con thresholds por defecto
     buy_pct  = (probs > 0.58).mean() * 100
     sell_pct = (probs < 0.42).mean() * 100
@@ -177,22 +222,63 @@ def train_returns_model(features_path: str, artifacts_dir: str) -> XGBClassifier
             print(f"   [WARN] vol head falló: {_e}")
             vol_model = None
 
+    # ── SHAP explainability ───────────────────────────────────────
+    # Calcula importancia SHAP media absoluta en el val set y persiste
+    # en shap_explanation.json para el endpoint /api/shap_explanation.
+    shap_top = []
+    try:
+        import shap as _shap
+        _explainer = _shap.TreeExplainer(model)
+        _shap_vals = _explainer.shap_values(X_val)
+        _shap_mean = np.abs(_shap_vals).mean(axis=0)
+        _shap_df = sorted(
+            zip(feature_cols, _shap_mean.tolist()),
+            key=lambda x: -x[1],
+        )
+        shap_top = [{"feature": f, "shap_mean_abs": round(v, 6)} for f, v in _shap_df[:20]]
+        print(f"   🔍 SHAP top-3: " +
+              ", ".join(f"{r['feature']}({r['shap_mean_abs']:.4f})" for r in shap_top[:3]))
+    except ImportError:
+        print("   [INFO] shap no instalado — pip install shap para SHAP explainability")
+    except Exception as _se:
+        print(f"   [WARN] SHAP falló: {_se}")
+
     # ── Guardar ───────────────────────────────────────────────────
     os.makedirs(artifacts_dir, exist_ok=True)
     out_path = os.path.join(artifacts_dir, "returns_model.joblib")
 
     joblib.dump({
-        "model":       model,
-        "vol_model":   vol_model,
+        "model":        model,
+        "vol_model":    vol_model,
+        "calibrator":   calibrator,         # IsotonicRegression o None
         "feature_cols": feature_cols,
-        "model_type":  "classifier",    # señal para predict_returns
-        "buy_thresh":  0.58,
-        "sell_thresh": 0.42,
-        "val_acc":     round(acc, 4),
-        "val_auc":     round(auc, 4) if not np.isnan(auc) else None,
-        "vol_mae":     round(vol_mae, 4) if vol_mae is not None else None,
+        "model_type":   "classifier",
+        "buy_thresh":   0.58,
+        "sell_thresh":  0.42,
+        "val_acc":      round(acc, 4),
+        "val_auc":      round(auc, 4) if not np.isnan(auc) else None,
+        "val_brier_raw": round(brier_raw, 4),
+        "val_brier_cal": round(brier_cal, 4),
+        "vol_mae":      round(vol_mae, 4) if vol_mae is not None else None,
         "embargo_days": EMBARGO_DAYS,
+        "shap_top":     shap_top,
     }, out_path)
+
+    # Persistir SHAP por separado como JSON legible para el endpoint
+    if shap_top:
+        import json as _json
+        shap_path = os.path.join(artifacts_dir, "shap_explanation.json")
+        _payload = {
+            "generated_at":  pd.Timestamp.now().isoformat(),
+            "model":         "XGBClassifier_direction_14d",
+            "val_n":         len(X_val),
+            "val_acc":       round(acc, 4),
+            "val_auc":       round(auc, 4) if not np.isnan(auc) else None,
+            "top_features":  shap_top,
+        }
+        with open(shap_path, "w", encoding="utf-8") as _f:
+            _json.dump(_payload, _f, indent=2)
+        print(f"💾 SHAP guardado en {shap_path}")
 
     print(f"✅ Clasificador guardado en {out_path}")
     return model

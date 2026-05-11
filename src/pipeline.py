@@ -148,6 +148,12 @@ def run_pipeline() -> None:
     features["news_shock"] = features["news_sentiment"] * features["news_volume_norm"]
     features["news_shock"] = features["news_shock"].apply(lambda x: x * abs(x))
 
+    # news_velocity_7d: ratio artículos hoy vs media móvil 7d.
+    # Picos de cobertura preceden volatilidad de precio (paper §4, informe IA).
+    vol_rolling = features["news_volume"].rolling(7, min_periods=1).mean().replace(0, 1)
+    features["news_velocity_7d"] = (features["news_volume"] / vol_rolling).clip(0, 10).fillna(1.0)
+    print("   ✅ news_velocity_7d añadida")
+
     # ── 4b. Intel LLM (señales desagregadas por driver) ──────────────
     try:
         intel_path = os.path.join(PROJECT_ROOT, "data", "news_intel_history.csv")
@@ -265,6 +271,44 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [WARN] fetch_climate_macro: {_e}")
 
+    # ── 5f.ter Forecast climático FORWARD (H5) ────────────────────
+    # Diferencia con 5f.bis: 5f.bis es clima REALIZADO; éste es FORWARD
+    # (outlooks 3-6 meses adelante de ENSO). La deep research apuntó a forecasts
+    # forward como predictor causal de cosecha futura → precio futuro.
+    try:
+        from src.data.fetch_climate_forecast import get_climate_forecast, load_climate_forecast_features
+        cf = _bounded(get_climate_forecast, 30, "Climate forecast fetch")
+        features = load_climate_forecast_features(features)
+        if cf and cf.get("ok"):
+            print(f"   ✅ Climate forecast: ENSO 3m={cf.get('enso_value_3m', '?')} "
+                  f"phase={cf.get('enso_phase_3m', '?')} (fallback={cf.get('fallback')})")
+        else:
+            print(f"   [INFO] Climate forecast: usando heurística sobre histórico")
+    except Exception as _e:
+        print(f"   [WARN] climate_forecast: {_e}")
+
+    # ── 5f.ter Basis Uruguay (prima local que cobra el productor) ────
+    # El basis es lo que efectivamente recibe el productor uruguayo vs CBOT.
+    # Útil como feature: cuando el basis se aprieta (sube), exporta más;
+    # cuando se ensancha (baja), demanda local débil. Predice flujos.
+    try:
+        basis_path = os.path.join(DATA_DIR, "basis_history.csv")
+        if os.path.exists(basis_path):
+            bh = pd.read_csv(basis_path)
+            bh["Date"] = pd.to_datetime(bh["date"]).dt.normalize()
+            bh = bh.rename(columns={"basis_usd_ton": "basis_uy_usd_ton"})[["Date", "basis_uy_usd_ton"]]
+            features["Date"] = pd.to_datetime(features["Date"])
+            features = features.merge(bh, on="Date", how="left")
+            features["basis_uy_usd_ton"] = features["basis_uy_usd_ton"].ffill().fillna(0)
+            # Cambio del basis (compresión/expansión)
+            features["basis_uy_chg7"] = features["basis_uy_usd_ton"].diff(7).fillna(0)
+            features["basis_uy_chg30"] = features["basis_uy_usd_ton"].diff(30).fillna(0)
+            print(f"   ✅ Basis Uruguay: {bh.shape[0]} días | rango {bh['Date'].min().date()} → {bh['Date'].max().date()}")
+        else:
+            print(f"   [INFO] basis_history.csv no existe — se omite basis Uruguay")
+    except Exception as _e:
+        print(f"   [WARN] basis Uruguay: {_e}")
+
     # ── 5g. USDA Crop Progress weekly ────────────────────────────────
     try:
         from src.data.fetch_crop_progress import fetch_crop_progress, load_crop_progress_features
@@ -293,7 +337,13 @@ def run_pipeline() -> None:
     print(f"💾 Features guardadas en {features_path}")
 
     # ── 7. Modelo de precios ──────────────────────────────────────
-    train_model(features, target="Soybeans", artifacts_dir=ARTIFACTS_DIR)
+    # Si ROLLING_WINDOW_YEARS está seteado (ej. por el job mensual del scheduler),
+    # se entrena con ventana deslizante en lugar de datos acumulativos.
+    _rolling_years = int(os.getenv("ROLLING_WINDOW_YEARS", "0")) or None
+    if _rolling_years:
+        print(f"   📅 Modo rolling retrain activado: ventana {_rolling_years} años")
+    train_model(features, target="Soybeans", artifacts_dir=ARTIFACTS_DIR,
+                rolling_window_years=_rolling_years)
 
     # ── 8. Modelo de retornos ─────────────────────────────────────
     # El modelo de retornos siempre se reentrena: es rápido (~5s) y así
@@ -302,7 +352,8 @@ def run_pipeline() -> None:
     needs_train = True
 
     if needs_train:
-        train_returns_model(features_path, MODEL_ARTIFACTS_DIR)
+        train_returns_model(features_path, MODEL_ARTIFACTS_DIR,
+                            rolling_window_years=_rolling_years)
         print("[OK] Modelo de retornos entrenado")
 
     # ── 9. Forecast 30 días ───────────────────────────────────────
@@ -316,6 +367,183 @@ def run_pipeline() -> None:
 
     forecast_path = os.path.join(ARTIFACTS_DIR, "forecast.csv")
     save_forecast_csv(forecast, forecast_path)
+
+    # ── 9.bis Forecast variante "horizons" (A/B con flag) ────────
+    # FORECAST_VARIANT controla qué se publica:
+    #   legacy   → solo forecast.csv (sin cambios)
+    #   horizons → forecast.csv se sobreescribe con horizons + forecast_horizons.csv
+    #   both     → forecast.csv intacto + forecast_horizons.csv adicional (default)
+    #
+    # HORIZONS_REFIT_DAYS controla la frecuencia de RE-ENTRENAMIENTO de los
+    # modelos por horizonte (default 7 = semanal). El forecast diario siempre
+    # se regenera con los pesos vigentes; reentrenar más seguido sólo agrega
+    # ruido sin más datos. Usar 0 para forzar reentrenamiento en cada run.
+    _variant     = os.getenv("FORECAST_VARIANT", "both").lower()
+    _refit_days  = int(os.getenv("HORIZONS_REFIT_DAYS", "7"))
+    if _variant in ("horizons", "both"):
+        try:
+            from src.model.train_horizons   import train_all as train_horizons_all
+            from src.model.predict_horizons import forecast_curve as horizons_curve
+            horizons_artifacts = os.path.join(ARTIFACTS_DIR, "horizons")
+            os.makedirs(horizons_artifacts, exist_ok=True)
+            meta_path = os.path.join(horizons_artifacts, "horizons_meta.json")
+
+            # Decide si reentrenar
+            needs_retrain = True
+            if _refit_days > 0 and os.path.exists(meta_path):
+                age_days = (pd.Timestamp.now().timestamp() - os.path.getmtime(meta_path)) / 86400
+                if age_days < _refit_days:
+                    needs_retrain = False
+                    print(f"   ⏩ Modelos horizons frescos ({age_days:.1f}d < {_refit_days}d) — skip retrain")
+
+            print(f"   🔄 Forecast variante 'horizons' (variant={_variant}, refit_days={_refit_days})")
+            if needs_retrain:
+                train_horizons_all(features, horizons_artifacts)
+            new_fc = horizons_curve(
+                features, target="Soybeans", date_col="Date",
+                artifacts_dir=horizons_artifacts, real_last_date=last_real_date, steps=30,
+            )
+            new_fc_path = os.path.join(ARTIFACTS_DIR, "forecast_horizons.csv")
+            new_fc.to_csv(new_fc_path, index=False)
+            print(f"   💾 Forecast horizons → {new_fc_path}")
+            if _variant == "horizons":
+                # Cutover total: horizons reemplaza al legacy
+                new_fc.to_csv(forecast_path, index=False)
+                print(f"   🎯 Cutover activo: forecast.csv = horizons")
+        except Exception as _e:
+            print(f"   [WARN] forecast horizons falló (se mantiene legacy): {_e}")
+
+    # ── 9.ter Detector de régimen + score de confianza ───────────
+    # Output → artifacts/regime.json. La UI lo usa para semáforo de confianza
+    # y framing del precio puntual ("predicción" vs "rango con probabilidad").
+    try:
+        from src.model.regime import save_regime
+        regime_out = save_regime(features, ARTIFACTS_DIR)
+        print(f"   🌡️  Régimen: {regime_out.get('regime', '?')} — {regime_out.get('explanation', '')[:80]}")
+    except Exception as _e:
+        print(f"   [WARN] regime detector falló: {_e}")
+
+    # ── 9.sexies Decision Classifier multi-horizonte + multi-profile (Fase 1) ─────
+    # Cost-aware binary classifier sobre "¿esperar pagó el costo de carrying?"
+    # Multi-horizon (7d, 15d, 30d) × multi-profile (default, low_cost, high_cost,
+    # liquidity_need, quality_aware) + análogos explicativos.
+    # Validado empíricamente como la mejor aproximación predictiva (PnL -1.36%/año
+    # vs always-sell). Panel INFORMATIVO, NO decisor.
+    # Output → artifacts/decision_classifier.json (default) + artifacts/decision_classifier/{profile}.json
+    try:
+        from src.model.decision_classifier import save_all_profiles
+        dc_results = save_all_profiles(features, ARTIFACTS_DIR)
+        ok_profiles = [p for p, r in dc_results.items() if r.get("ok")]
+        # Resumen por profile
+        for prof in ok_profiles:
+            r = dc_results[prof]
+            best_h = r.get("best_horizon", "?")
+            h_data = r.get("horizons", {}).get(best_h or "", {})
+            p = h_data.get("prob_wait_pays_calibrated") if isinstance(h_data, dict) else None
+            print(f"   🎯 Decision[{prof:<14}] best_h={best_h or '?':<3}  P(WAIT)={p}")
+        failed = [p for p in dc_results if not dc_results[p].get("ok")]
+        if failed:
+            print(f"   [WARN] decision_classifier failed profiles: {failed}")
+    except Exception as _e:
+        print(f"   [WARN] decision_classifier: {_e}")
+
+    # ── 9.septies Backtest comparativo decision classifier (Fase 2.3) ──
+    # OOS backtest 6 estrategias × 5 profiles × 3 horizontes.
+    # Se ejecuta solo si el módulo está disponible (no bloquea el pipeline).
+    # Output → artifacts/backtest_decision/{profile}.json
+    try:
+        from src.model.backtest_decision import save_all_backtest_profiles
+        bt_results = save_all_backtest_profiles(features, ARTIFACTS_DIR)
+        ok_bt = [p for p, r in bt_results.items() if r.get("ok")]
+        fail_bt = [p for p in bt_results if not bt_results[p].get("ok")]
+        if ok_bt:
+            # Resumen: model_partial mean delta en horizonte 15d para profile default
+            dr = bt_results.get("default", {})
+            h15 = dr.get("horizons", {}).get("15d", {})
+            mp = h15.get("strategies", {}).get("model_partial", {})
+            mean_d = mp.get("mean_pnl_usd_ton")
+            print(f"   📊 Backtest[default 15d] model_partial Δmedio={mean_d} USD/ton"
+                  f" · perfiles OK: {ok_bt}")
+        if fail_bt:
+            print(f"   [WARN] backtest_decision failed profiles: {fail_bt}")
+    except Exception as _e:
+        print(f"   [WARN] backtest_decision: {_e}")
+
+    # ── 9.octies Event Memory + Hybrid Backtest (Market Intelligence V1) ──
+    # Construye event memory retroactivo (eventos narrativos + outcomes) y
+    # ejecuta backtest comparativo ML vs Narrativa vs Hibrido.
+    # Output → artifacts/event_memory.csv + .json, artifacts/hybrid_backtest/{profile}.json
+    try:
+        from src.intel.event_intelligence import save_event_memory
+        em_summary = save_event_memory(features, ARTIFACTS_DIR)
+        n_ev = em_summary.get("n_events", 0)
+        fade = em_summary.get("fade_rate_7d_pct", "?")
+        print(f"   🔍 Event memory: {n_ev} eventos, fade rate 7d={fade}%")
+    except Exception as _e:
+        print(f"   [WARN] event_memory: {_e}")
+
+    try:
+        from src.intel.hybrid_model import save_hybrid_backtest
+        hbt = save_hybrid_backtest(features, ARTIFACTS_DIR, profile_name="default")
+        h15 = hbt.get("horizons", {}).get("15d", {})
+        if h15.get("ok"):
+            hy = h15.get("strategies", {}).get("hybrid", {})
+            ml = h15.get("strategies", {}).get("ml_only", {})
+            print(f"   Hybrid backtest[default 15d]: hybrid={hy.get('mean_pnl_usd_ton','?')}"
+                  f" ml_only={ml.get('mean_pnl_usd_ton','?')} USD/ton")
+    except Exception as _e:
+        print(f"   [WARN] hybrid_backtest: {_e}")
+
+    # ── 9.novies Narrative Forecast (rango diario + multi-horizonte) ──
+    # Genera forecast narrativo con rangos esperados (1d, 7d, 15d, 30d)
+    # basado en analogos del event_memory.
+    # Output → artifacts/narrative_forecast/latest.json
+    try:
+        from src.intel.narrative_forecast import save_narrative_forecast
+        nf = save_narrative_forecast(features, ARTIFACTS_DIR)
+        fc = nf.get("forecast", {})
+        if fc.get("ok"):
+            d1 = fc.get("forecasts", {}).get("1d", {})
+            if d1.get("available"):
+                rng = d1.get("range_pct", {})
+                print(f"   Narrative forecast 1d: [{rng.get('q10','?')}%, {rng.get('q90','?')}%] "
+                      f"P(up)={d1.get('p_up','?')}")
+    except Exception as _e:
+        print(f"   [WARN] narrative_forecast: {_e}")
+
+    # ── 9.quinquies Shock Engine (catalog + analog) ───────────────
+    # Detecta si hay shock activo HOY, busca análogos en histórico, calcula
+    # estadísticas agregadas y emite recomendación condicional al productor.
+    # Output → artifacts/active_shock.json + shock_catalog.csv
+    try:
+        from src.model.shock_engine import save_active_shock
+        sh = save_active_shock(features, ARTIFACTS_DIR)
+        cur = sh.get("current", {})
+        if cur.get("is_shock"):
+            rec = sh.get("recommendation", {})
+            print(f"   ⚡ SHOCK ACTIVO: {cur.get('shock_type')} ({cur.get('shock_direction')}) "
+                  f"ret_5d={cur.get('ret_5d_pct')}% — análogos={sh.get('analogs_found')} "
+                  f"→ {rec.get('action')}")
+        else:
+            print(f"   🟢 Sin shock activo — modelo regular gobierna")
+    except Exception as _e:
+        print(f"   [WARN] shock_engine: {_e}")
+
+    # ── 9.quater Markov-Switching Regression (H4) ────────────────
+    # Modelo probabilistico de régimen sobre log-returns con K=2 estados.
+    # Output → artifacts/regime_switching.json — usado por la API y como
+    # ajuste sugerido al α del modelo horizons.
+    try:
+        from src.model.regime_switching import save_regime_switching
+        ms_out = save_regime_switching(features, ARTIFACTS_DIR)
+        if ms_out.get("ok"):
+            print(f"   📊 Markov-Switching: {ms_out.get('current_state')} "
+                  f"(p={ms_out.get('current_state_prob')}) — "
+                  f"α_adj={ms_out.get('alpha_adjustment')}")
+        else:
+            print(f"   [WARN] Markov-Switching: {ms_out.get('error')}")
+    except Exception as _e:
+        print(f"   [WARN] Markov-Switching falló: {_e}")
 
     # ── 9a. Forecast mensual robusto (ETS/Holt-Winters) ───────────
     try:

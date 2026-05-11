@@ -94,6 +94,32 @@ def make_features(
     # ── Volatilidad realizada ────────────────────────────────────
     d["vol_10d"] = d[target_col].pct_change().rolling(10).std().fillna(0)
     d["vol_30d"] = d[target_col].pct_change().rolling(30).std().fillna(0)
+    # vol_60d agregada tras experimento H1: el naive 60d le gana al naive 30d
+    # por +25 % en MAE de predicción de σ futura (ver experiments_h1_h2_h6).
+    # Es el baseline de vol más fuerte y debe estar disponible para los
+    # detectores de régimen y bandas.
+    d["vol_60d"] = d[target_col].pct_change().rolling(60).std().fillna(0)
+
+    # ── Features de spike y co-driver (post-spike fade research) ──
+    # Test empírico (scripts/test_post_spike_fade.py) mostró:
+    #   - Spikes >+5.5 %/5d sin co-driver: -1.58 % en 30d siguientes (p=0.013)
+    #   - Spikes >+5.5 %/5d con oil co-driver: +1.82 % en 30d (rally fundamental)
+    #   - Spikes con RSI<50: -5.19 % en 30d (rebote falso)
+    # Estas features explícitan la interacción para que el modelo la capture.
+    ret_5d = d[target_col].pct_change(5)
+    spike_thr_high = float(ret_5d.quantile(0.95))   # top 5%
+    d["is_spike_5d"]      = (ret_5d >= spike_thr_high).astype(float)
+    if "Oil" in d.columns:
+        oil_5d = d["Oil"].pct_change(5)
+        oil_thr = float(oil_5d.quantile(0.75))
+        d["spike_with_oil_codriver"] = ((ret_5d >= spike_thr_high) & (oil_5d >= oil_thr)).astype(float)
+        d["spike_without_oil"]       = ((ret_5d >= spike_thr_high) & (oil_5d <  oil_thr)).astype(float)
+    # Magnitud del spike (no solo binario)
+    d["spike_magnitude"]  = ret_5d.where(ret_5d >= spike_thr_high, 0.0).fillna(0.0)
+    # Drop simétrico (drops también predicen fade negativo)
+    drop_thr_low = float(ret_5d.quantile(0.05))
+    d["is_drop_5d"] = (ret_5d <= drop_thr_low).astype(float)
+    d["extreme_move_5d"] = ((ret_5d >= spike_thr_high) | (ret_5d <= drop_thr_low)).astype(float)
 
     # ── Spreads / ratios entre commodities ──────────────────────
     # El ratio soja/maíz es un predictor conocido (arbitraje entre cultivos)

@@ -1,0 +1,36 @@
+---
+🌱 **AgroCast PRO — Brief Semanal 11/05/2026**
+
+📊 **Señal actual:** HOLD con 55% de confianza
+💲 **Precio Chicago:** 443.22 USc/bu
+
+**¿Qué pasó la semana pasada?**
+El mercado se mantuvo relativamente estable con presiones contrapuestas. La demanda china débil (márgenes de crush negativos en -154 USD/ton) pesó sobre los precios, mientras que Brasil mantiene un ritmo de exportación normal (+5.1% YoY). Argentina no generó sorpresas con spread cambiario controlado y retenciones en 33%.
+
+**Top 3 drivers esta semana:**
+
+1. **Demanda china en crisis de márgenes** — Importaciones chinas estancadas en 112 MMT (sin cambio YoY), con márgenes de crush profundamente negativos. Esto reduce incentivos para procesar soja, impactando demanda global.
+
+2. **Basis muy amplio en Uruguay** — El descuento de 25 USD/ton vs. Chicago está en el percentil 49 histórico. Hay espacio para mejora antes de vender, pero no es extremo.
+
+3. **Pace de exportaciones brasileño normalizado** — 31.9 MMT ya liquidadas (31% de proyección), ritmo semanal de 1.68 MMT. Sin sorpresas alcistas ni bajistas en oferta.
+
+**Señales clave del modelo:**
+
+• **Argentina:** Cepo inactivo, brecha cambiaria mínima (-1.3%), retenciones normales. Scoring de oferta neutral — no hay shocks regulatorios.
+
+• **Brasil:** Exportaciones en línea con estacionalidad (semana 19). No hay presión de volumen adicional.
+
+• **Basis Uruguay:** -25 USD/ton ofrece descuento moderado pero no extremo. Histórico sugiere esperar a que se achique.
+
+**📅 Calendario de la semana:**
+
+• **WASDE próximo:** 13 de enero y 10 de febrero (datos futuros en sistema — revisar calendario oficial USDA para confirmación en mayo 2026)
+• Sin vencimientos críticos de futuros esta semana
+• Seguir reportes semanales de exportación de Brasil
+
+**💡 Recomendación para el productor:**
+
+**No vendas esta semana.** Los fundamentals están débiles (demanda china floja) pero el basis amplio de -25 USD/ton sugiere que esperando 2-3 semanas podés conseguir condiciones mejores. Usá este tiempo para monitorear reportes de exportación brasileña y cualquier movimiento en márgenes de crush en China — si se revierten, el precio podría subir con basis más cerrado.
+
+---

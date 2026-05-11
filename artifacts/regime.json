@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "regime": "trend",
+  "explanation": "Tendencia alcista sostenida \u2014 modelo aporta direcci\u00f3n.",
+  "confidence_hint": "medium",
+  "signals": {
+    "vol_window": "vol_60d",
+    "vol_now": 0.0099,
+    "vol_p33": 0.0096,
+    "vol_p66": 0.0104,
+    "news_velocity_7d": 0.81,
+    "iv_atm": 0.3262,
+    "ma90_slope": 0.00678,
+    "price_vs_ma90": 0.0668
+  },
+  "as_of": "2026-05-11T16:55:32",
+  "hmm": {
+    "ok": true,
+    "n_states": 3,
+    "lookback_days": 1440,
+    "current_state": "low_vol",
+    "current_proba": 0.977,
+    "state_probs": {
+      "medium_vol": 0.023,
+      "low_vol": 0.977,
+      "high_vol": 0.0
+    },
+    "state_freq": {
+      "medium_vol": 307,
+      "low_vol": 1065,
+      "high_vol": 68
+    },
+    "transition_matrix": [
+      [
+        0.922,
+        0.068,
+        0.01
+      ],
+      [
+        0.02,
+        0.98,
+        0.0
+      ],
+      [
+        0.044,
+        0.0,
+        0.956
+      ]
+    ],
+    "transition_labels": [
+      "medium_vol",
+      "low_vol",
+      "high_vol"
+    ],
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 98%. En la \u00faltima ventana (1440d), 1065 d\u00edas estuvieron en este r\u00e9gimen."
+  }
+}

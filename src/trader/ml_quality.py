@@ -28,8 +28,16 @@ _TTL_HOURS    = 6
 def _cache_valid() -> bool:
     if not os.path.exists(_CACHE_PATH):
         return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    cache_mtime = os.path.getmtime(_CACHE_PATH)
+    age = datetime.now() - datetime.fromtimestamp(cache_mtime)
+    if age >= timedelta(hours=_TTL_HOURS):
+        return False
+    # Invalidación cruzada: si horizons_meta.json es más nuevo que el cache,
+    # forzamos recomputo para que el bloque "horizons" refleje α/δ frescos.
+    horizons_meta = os.path.join(_PROJECT_ROOT, "artifacts", "horizons", "horizons_meta.json")
+    if os.path.exists(horizons_meta) and os.path.getmtime(horizons_meta) > cache_mtime:
+        return False
+    return True
 
 
 def _roc_auc(scores: np.ndarray, labels: np.ndarray) -> float:
@@ -105,12 +113,78 @@ def compute_ml_quality(force: bool = False) -> dict:
     full_block   = _metrics_block(df)
     recent_block = _metrics_block(df[df["Date"] >= cutoff])
 
+    # Bloque del modelo "horizons" (A/B): se carga desde horizons_meta.json
+    # producido por src.model.train_horizons. Permite al dashboard mostrar
+    # alpha, delta, lift y cobertura calibrados por ventana de validación.
+    horizons_block = None
+    try:
+        meta_path = os.path.join(_PROJECT_ROOT, "artifacts", "horizons", "horizons_meta.json")
+        if os.path.exists(meta_path):
+            with open(meta_path, "r", encoding="utf-8") as _f:
+                meta = json.load(_f)
+            hzs = meta.get("horizons", {})
+            horizons_block = {
+                "trained_at": meta.get("trained_at"),
+                "horizons":   {h: {
+                    "alpha":         hzs[h].get("alpha"),
+                    "delta_usd":     round(hzs[h].get("delta", 0), 2),
+                    "n_train":       hzs[h].get("n_train"),
+                    "n_val":         hzs[h].get("n_val"),
+                    "val_lift_pct":  hzs[h].get("val_metrics", {}).get("lift_pct"),
+                    "val_coverage":  hzs[h].get("val_metrics", {}).get("coverage_pct"),
+                    "val_mae_ens":   hzs[h].get("val_metrics", {}).get("mae_ens"),
+                    "val_mae_rw":    hzs[h].get("val_metrics", {}).get("mae_rw"),
+                } for h in hzs},
+            }
+    except Exception as _e:
+        horizons_block = {"error": str(_e)}
+
+    # Bloque de calibración probabilistica del clasificador 7d:
+    # - Brier score: error cuadrático medio de probabilidades vs outcomes (0=perfecto, 0.25=coin-flip)
+    # - PIT histogram: histograma de F̂(y_real) — si está calibrado, debe ser ~uniforme [0,1]
+    calibration_block = None
+    try:
+        if "expected_return" in df.columns:
+            sub = df.dropna(subset=["expected_return", "ret_7d"]).copy()
+            if len(sub) >= 30:
+                # P(↑) implícita (asume expected_return centrado en 0; clip a [0,1])
+                p_up = np.clip(sub["expected_return"].values + 0.5, 0.0, 1.0)
+                y_up = (sub["ret_7d"].values > 0).astype(int)
+                brier = float(np.mean((p_up - y_up) ** 2))
+                # ECE (Expected Calibration Error) en 10 bins
+                bins = np.linspace(0, 1, 11)
+                idx  = np.clip(np.digitize(p_up, bins) - 1, 0, 9)
+                ece  = 0.0
+                for b in range(10):
+                    mask = idx == b
+                    if mask.any():
+                        avg_p = p_up[mask].mean()
+                        avg_y = y_up[mask].mean()
+                        ece += abs(avg_p - avg_y) * mask.sum() / len(p_up)
+                # PIT hist (10 bins) — solo guardamos los counts normalizados
+                pit_hist, _ = np.histogram(p_up, bins=bins)
+                calibration_block = {
+                    "brier_score":     round(brier, 4),
+                    "ece_10bins":      round(float(ece), 4),
+                    "n":               int(len(sub)),
+                    "pit_hist":        [int(x) for x in pit_hist],
+                    "interpretation": (
+                        "Brier ≤ 0.20 = bien calibrado | "
+                        "0.20-0.23 = aceptable | "
+                        ">0.25 = peor que tirar moneda"
+                    ),
+                }
+    except Exception as _e:
+        calibration_block = {"error": str(_e)}
+
     result = {
-        "ok":         True,
-        "as_of":      datetime.now().isoformat(),
-        "full":       full_block,
-        "recent_12m": recent_block,
-        "note":       "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample).",
+        "ok":          True,
+        "as_of":       datetime.now().isoformat(),
+        "full":        full_block,
+        "recent_12m":  recent_block,
+        "horizons":    horizons_block,
+        "calibration": calibration_block,
+        "note":        "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample). horizons = modelo A/B (retornos+ensemble+conformal). calibration = Brier+ECE del clasificador.",
     }
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)

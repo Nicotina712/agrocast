@@ -1,0 +1,170 @@
+{
+  "H1": {
+    "ok": true,
+    "n_obs": 51,
+    "summary": [
+      {
+        "model": "Naive 30d (RV pasado 30d)",
+        "mae": 0.04022063455563149,
+        "mape": 26.65989946715174,
+        "lift_vs_rw": 0.0
+      },
+      {
+        "model": "Naive 60d (RV pasado 60d)",
+        "mae": 0.03026219360473243,
+        "mape": 20.65120102243055,
+        "lift_vs_rw": 24.759532167810438
+      },
+      {
+        "model": "EWMA RiskMetrics \u03bb=0.94",
+        "mae": 0.035842794594483744,
+        "mape": 24.063136600577867,
+        "lift_vs_rw": 10.884562139596534
+      },
+      {
+        "model": "XGB sobre features",
+        "mae": 0.03993895557191238,
+        "mape": 27.74164923889827,
+        "lift_vs_rw": 0.7003345094655508
+      }
+    ],
+    "p_xgb_vs_rw": 0.8439505534380651
+  },
+  "H2": {
+    "ok": true,
+    "spreads": [
+      {
+        "spread": "soy_corn_ratio",
+        "model": "RW (spread_t)",
+        "mae": 0.14465037907618325,
+        "lift_vs_rw": 0.0,
+        "n": 45
+      },
+      {
+        "spread": "soy_corn_ratio",
+        "model": "Mean reversion (MA)",
+        "mae": 0.3532901644891743,
+        "lift_vs_rw": -144.2372890727831,
+        "n": 45
+      },
+      {
+        "spread": "soy_corn_ratio",
+        "model": "XGB sobre features",
+        "mae": 0.18689337150799562,
+        "lift_vs_rw": -29.20351312011715,
+        "n": 45
+      },
+      {
+        "spread": "crush_spread",
+        "model": "RW (spread_t)",
+        "mae": 46.72678263696726,
+        "lift_vs_rw": 0.0,
+        "n": 45
+      },
+      {
+        "spread": "crush_spread",
+        "model": "Mean reversion (MA)",
+        "mae": 51.443820560434204,
+        "lift_vs_rw": -10.094934119720724,
+        "n": 45
+      },
+      {
+        "spread": "crush_spread",
+        "model": "XGB sobre features",
+        "mae": 46.98515771760121,
+        "lift_vs_rw": -0.5529485790651116,
+        "n": 45
+      }
+    ]
+  },
+  "H6": {
+    "ok": true,
+    "n_causal": 42,
+    "n_total": 153,
+    "top_causal": [
+      {
+        "feature": "price_vs_ma20",
+        "p": 2.0692227067666884e-54
+      },
+      {
+        "feature": "price_vs_ma90",
+        "p": 8.263253695049728e-50
+      },
+      {
+        "feature": "SoybeanMeal",
+        "p": 3.9790460860300464e-29
+      },
+      {
+        "feature": "mom_20d",
+        "p": 3.9876930910738416e-29
+      },
+      {
+        "feature": "mom_5d",
+        "p": 5.307350898801224e-27
+      },
+      {
+        "feature": "rsi_14",
+        "p": 7.014292240162892e-24
+      },
+      {
+        "feature": "mom_60d",
+        "p": 9.795117695020148e-21
+      },
+      {
+        "feature": "ma20_vs_ma90",
+        "p": 3.0913940189766233e-13
+      },
+      {
+        "feature": "soy_corn_ratio",
+        "p": 1.785688160475536e-09
+      },
+      {
+        "feature": "Maize_chg1",
+        "p": 3.743254904572716e-09
+      },
+      {
+        "feature": "SoybeanOil",
+        "p": 4.152166091887802e-09
+      },
+      {
+        "feature": "brl_usd",
+        "p": 4.3340811030391835e-09
+      },
+      {
+        "feature": "soy_corn_ratio_dev",
+        "p": 2.4473173013711656e-08
+      },
+      {
+        "feature": "Maize",
+        "p": 5.4097407639169876e-08
+      },
+      {
+        "feature": "Soybeans_lag1",
+        "p": 7.492529697448547e-08
+      },
+      {
+        "feature": "Maize_chg7",
+        "p": 4.489307529902968e-07
+      },
+      {
+        "feature": "ma90_slope",
+        "p": 6.60266628016173e-05
+      },
+      {
+        "feature": "crush_spread_ma",
+        "p": 0.00025544892408284147
+      },
+      {
+        "feature": "enso_oni",
+        "p": 0.0008228124713700386
+      },
+      {
+        "feature": "wasde_bull_bias",
+        "p": 0.003317716889098589
+      }
+    ],
+    "mae_full": 45.968067549327586,
+    "mae_pruned": 43.495687432428625,
+    "rw_mae": 41.1063829787234
+  }
+}

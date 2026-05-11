@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "n_events": 1423,
+  "date_range": [
+    "2016-08-11",
+    "2026-05-08"
+  ],
+  "event_types": {
+    "speculative_mom": 520,
+    "oil_energy": 452,
+    "macro_fx": 441,
+    "mixed": 6,
+    "weather": 3,
+    "geopolitical": 1
+  },
+  "direction_dist": {
+    "bullish": 741,
+    "bearish": 676,
+    "neutral": 6
+  },
+  "mean_narrative_strength": 0.664,
+  "mean_fade_risk": 0.157,
+  "fade_rate_7d_pct": 39.1,
+  "as_of": "2026-05-11T16:56:04"
+}

@@ -26,7 +26,7 @@ try:
     from dotenv import load_dotenv
     _env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
     if os.path.exists(_env_path):
-        load_dotenv(_env_path)
+        load_dotenv(_env_path, override=True)
         print("[OK] .env cargado")
 except ImportError:
     pass
@@ -34,6 +34,8 @@ except ImportError:
 from multi_news_fetcher import MultiNewsFetcher
 
 app     = Flask(__name__)
+app.config["JSON_AS_ASCII"] = False
+app.config["JSON_SORT_KEYS"] = False
 fetcher = MultiNewsFetcher()
 
 # ── JSON provider seguro contra NaN/Inf ───────────────────────────────
@@ -93,9 +95,16 @@ _last_update      = 0.0
 _cache            = {}
 CACHE_TTL         = 300
 PIPELINE_TIMEOUT  = 600
+# Intervalo mínimo entre runs del pipeline disparados por requests del dashboard.
+# El cache del endpoint /api/news es de 5 min y el frontend pollea cada 5 min;
+# sin este throttle, cada poll dispararía una corrida completa de pipeline
+# (entrena modelos, llama APIs externas) cada 5 min — desperdicio de CPU
+# y rate-limits innecesarios. El scheduler interno sigue corriendo cada 6h.
+PIPELINE_MIN_INTERVAL_S = int(os.getenv("PIPELINE_MIN_INTERVAL_S", "1800"))  # 30 min
 
 _pipeline_lock    = threading.Lock()
 _pipeline_running = False
+_last_pipeline_ts = 0.0   # epoch del último pipeline finalizado
 
 _backtest_lock    = threading.Lock()
 _backtest_cache   = {}
@@ -141,7 +150,7 @@ def _run_pipeline_process():
 
 
 def run_pipeline_blocking():
-    global _pipeline_running
+    global _pipeline_running, _last_pipeline_ts
     with _pipeline_lock:
         if _pipeline_running:
             return
@@ -152,18 +161,29 @@ def run_pipeline_blocking():
     finally:
         with _pipeline_lock:
             _pipeline_running = False
+            _last_pipeline_ts = time.time()
 
 
-def run_pipeline_background():
-    global _pipeline_running
+def run_pipeline_background(respect_min_interval: bool = True):
+    """Lanza el pipeline en background.
+    respect_min_interval: si True (default), salta si el último pipeline
+    finalizó hace menos de PIPELINE_MIN_INTERVAL_S. Pasa False para forzar
+    (ej. arranque inicial sin artifacts)."""
+    global _pipeline_running, _last_pipeline_ts
+    now = time.time()
     with _pipeline_lock:
         if _pipeline_running:
             print("[>>] Pipeline ya en ejecucion, se omite")
             return
+        if respect_min_interval and (now - _last_pipeline_ts) < PIPELINE_MIN_INTERVAL_S:
+            secs = int(PIPELINE_MIN_INTERVAL_S - (now - _last_pipeline_ts))
+            print(f"[>>] Pipeline ejecutado hace {int(now - _last_pipeline_ts)}s "
+                  f"— se respeta intervalo minimo ({PIPELINE_MIN_INTERVAL_S}s, faltan {secs}s)")
+            return
         _pipeline_running = True
 
     def _worker():
-        global _pipeline_running
+        global _pipeline_running, _last_pipeline_ts
         try:
             ok = _run_pipeline_process()
             if ok:
@@ -173,6 +193,7 @@ def run_pipeline_background():
         finally:
             with _pipeline_lock:
                 _pipeline_running = False
+                _last_pipeline_ts = time.time()
 
     threading.Thread(target=_worker, daemon=True).start()
 
@@ -295,8 +316,13 @@ def load_history(days: int = 90) -> list:
         return []
 
 
-def load_forecast() -> list:
-    path = os.path.join(ARTIFACTS_DIR, "forecast.csv")
+def load_forecast(variant: str = "legacy") -> list:
+    """Carga forecast desde disco. variant ∈ {legacy, horizons}.
+    legacy   → forecast.csv (modelo Ridge/XGB original)
+    horizons → forecast_horizons.csv (modelo retornos + ensemble + conformal)
+    Si la variante pedida no existe, retorna []."""
+    fname = "forecast_horizons.csv" if variant == "horizons" else "forecast.csv"
+    path  = os.path.join(ARTIFACTS_DIR, fname)
     if not os.path.exists(path):
         return []
     try:
@@ -792,7 +818,8 @@ def get_news():
             news_signal = {"signal": "NEUTRAL", "reason": "Mercado sin direccion"}
 
         model_signal = load_signals()
-        forecast     = load_forecast()
+        forecast            = load_forecast("legacy")
+        forecast_horizons   = load_forecast("horizons")
         price_14d    = load_14d_forecast()
 
         partial_data = {
@@ -800,6 +827,10 @@ def get_news():
             "market":         market,
             "history":        load_history(90),
             "forecast":       forecast,
+            "forecast_horizons": forecast_horizons,
+            "forecast_variants_available": [
+                v for v, lst in (("legacy", forecast), ("horizons", forecast_horizons)) if lst
+            ],
             "signal":         news_signal,
             "model_signal":   model_signal,
             "alerts":         news_data.get("alerts", []),
@@ -1024,16 +1055,639 @@ def get_producer():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+_PRODUCER_DECISIONS_PATH = os.path.join(PROJECT_ROOT, "data", "producer_decisions.csv")
+
+
+@app.route("/api/producer_decision", methods=["POST", "GET"])
+def producer_decision():
+    """
+    POST /api/producer_decision
+        body: {
+            "producer_id": "anon-1",
+            "decision":    "sell|wait|forward|hedge",
+            "qty_tons":    50,
+            "price_at_decision": 1187.5,
+            "horizon_days": 30,
+            "comment":     "..."
+        }
+    Registra la decisión del productor con snapshot del modelo en ese momento.
+    Genera la materia prima para medir utilidad económica real (post-hoc).
+
+    GET /api/producer_decision  → últimos 200 registros (read-only).
+    """
+    if request.method == "GET":
+        if not os.path.exists(_PRODUCER_DECISIONS_PATH):
+            return jsonify({"ok": True, "records": []})
+        try:
+            df = pd.read_csv(_PRODUCER_DECISIONS_PATH).tail(200)
+            return jsonify({"ok": True, "records": df.to_dict("records")})
+        except Exception as e:
+            return jsonify({"ok": False, "error": str(e)}), 500
+
+    # POST
+    try:
+        body = request.get_json(silent=True) or {}
+        producer_id  = str(body.get("producer_id", "anon"))[:64]
+        decision     = str(body.get("decision", ""))[:16].lower()
+        qty          = float(body.get("qty_tons") or 0)
+        price_now    = float(body.get("price_at_decision") or 0)
+        horizon_days = int(body.get("horizon_days") or 30)
+        comment      = str(body.get("comment", ""))[:500]
+
+        if decision not in ("sell", "wait", "forward", "hedge"):
+            return jsonify({"ok": False, "error": "decision must be one of sell|wait|forward|hedge"}), 400
+
+        # Snapshot del modelo en este momento
+        snapshot = {
+            "alpha_30d":    None, "delta_30d": None,
+            "regime":       None, "confidence_level": None,
+            "forecast_30d": None, "q10_30d": None, "q90_30d": None,
+        }
+        try:
+            meta_path = os.path.join(ARTIFACTS_DIR, "horizons", "horizons_meta.json")
+            if os.path.exists(meta_path):
+                with open(meta_path, "r", encoding="utf-8") as _f:
+                    meta = json.load(_f)
+                h30 = meta.get("horizons", {}).get("30d", {})
+                snapshot["alpha_30d"] = h30.get("alpha")
+                snapshot["delta_30d"] = h30.get("delta")
+        except Exception:
+            pass
+        try:
+            reg_path = os.path.join(ARTIFACTS_DIR, "regime.json")
+            if os.path.exists(reg_path):
+                with open(reg_path, "r", encoding="utf-8") as _f:
+                    reg = json.load(_f)
+                snapshot["regime"] = reg.get("regime")
+        except Exception:
+            pass
+        try:
+            hz = load_forecast("horizons")
+            if hz and len(hz) >= 30:
+                snapshot["forecast_30d"] = hz[-1].get("Soybeans")
+                snapshot["q10_30d"]      = hz[-1].get("lower")
+                snapshot["q90_30d"]      = hz[-1].get("upper")
+        except Exception:
+            pass
+
+        record = {
+            "ts":             pd.Timestamp.now().isoformat(timespec="seconds"),
+            "producer_id":    producer_id,
+            "decision":       decision,
+            "qty_tons":       qty,
+            "price_at_decision": price_now,
+            "horizon_days":   horizon_days,
+            "comment":        comment,
+            **{f"snapshot_{k}": v for k, v in snapshot.items()},
+        }
+
+        # Append a CSV (creando header si es la primera vez)
+        df_new = pd.DataFrame([record])
+        if os.path.exists(_PRODUCER_DECISIONS_PATH):
+            df_new.to_csv(_PRODUCER_DECISIONS_PATH, mode="a", header=False, index=False)
+        else:
+            df_new.to_csv(_PRODUCER_DECISIONS_PATH, index=False)
+
+        return jsonify({"ok": True, "record": record})
+    except Exception as e:
+        print(f"[ERROR] /api/producer_decision: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/regime")
+def get_regime():
+    """GET /api/regime — devuelve el régimen actual + HMM + Markov-Switching + score de confianza."""
+    try:
+        from src.model.regime import detect_regime, hmm_regime, confidence_score
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        df = pd.read_csv(feats_path, parse_dates=["Date"]) if os.path.exists(feats_path) else pd.DataFrame()
+        reg = detect_regime(df)
+        # Markov-Switching desde artifacts/regime_switching.json
+        ms_path = os.path.join(ARTIFACTS_DIR, "regime_switching.json")
+        if os.path.exists(ms_path):
+            try:
+                with open(ms_path, "r", encoding="utf-8") as _f:
+                    reg["markov_switching"] = json.load(_f)
+            except Exception:
+                pass
+        # HMM en vivo (no depende del file pre-computado)
+        try:
+            n_states = int(request.args.get("n_states", 3))
+            reg["hmm"] = hmm_regime(df, n_states=n_states)
+        except Exception as _he:
+            reg["hmm"] = {"ok": False, "error": str(_he)}
+        # Combinar con α y cobertura del modelo nuevo
+        meta_path = os.path.join(ARTIFACTS_DIR, "horizons", "horizons_meta.json")
+        alpha_30d = None; cov_30d = None
+        if os.path.exists(meta_path):
+            try:
+                meta = json.loads(open(meta_path, "r", encoding="utf-8").read())
+                h30 = meta.get("horizons", {}).get("30d", {})
+                alpha_30d = h30.get("alpha")
+                cov_30d   = h30.get("val_metrics", {}).get("coverage_pct")
+            except Exception:
+                pass
+        conf = confidence_score(alpha_30d, reg.get("regime"), cov_30d)
+
+        # Caveat producto: en regímenes alcistas el modelo tiende a recomendar
+        # venta anticipada (insight de backtest multi-régimen v2: HEUR -0.34pp
+        # vs v1 en R1 rally). Detectamos esto con drift + momentum + rsi.
+        caveat = None
+        try:
+            mom20 = float(df["mom_20d"].iloc[-1]) if "mom_20d" in df.columns and not df.empty else 0.0
+            rsi   = float(df["rsi_14"].iloc[-1])  if "rsi_14"  in df.columns and not df.empty else 50.0
+            ma90_slope = float(df["ma90_slope"].iloc[-1]) if "ma90_slope" in df.columns and not df.empty else 0.0
+            is_bullish = (mom20 > 0.02 and rsi > 60) or (ma90_slope > 0.002 and rsi > 55)
+            if is_bullish:
+                caveat = {
+                    "type": "bullish_regime",
+                    "title": "El mercado está en tendencia alcista",
+                    "message": ("En rallies sostenidos el modelo tiende a recomendar venta anticipada. "
+                                "Los datos históricos muestran que esperar puede pagar en estos regímenes. "
+                                "Considere su tolerancia al riesgo y costos de almacenamiento."),
+                    "indicators": {
+                        "mom_20d":   round(mom20 * 100, 2),
+                        "rsi_14":    round(rsi, 1),
+                        "ma90_slope": round(ma90_slope, 4),
+                    }
+                }
+        except Exception:
+            caveat = None
+
+        return jsonify({"ok": True, "regime": reg, "confidence": conf,
+                        "alpha_30d": alpha_30d, "coverage_30d": cov_30d,
+                        "caveat": caveat})
+    except Exception as e:
+        print(f"[ERROR] /api/regime: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/decision_classifier")
+def get_decision_classifier():
+    """GET /api/decision_classifier?profile=default|low_cost|high_cost|liquidity_need|quality_aware
+    Cost-aware multi-horizon decision classifier (Fase 1).
+    Devuelve probabilidad calibrada por horizonte (7d, 15d, 30d) + análogos
+    explicativos + profile del productor.
+    """
+    try:
+        profile = (request.args.get("profile") or "default").lower()
+        # Cache por profile
+        if profile == "default":
+            path = os.path.join(ARTIFACTS_DIR, "decision_classifier.json")
+        else:
+            path = os.path.join(ARTIFACTS_DIR, "decision_classifier", f"{profile}.json")
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            cached["source"] = "artifacts_cache"
+            return jsonify(cached)
+        # Live fallback
+        from src.model.decision_classifier import save_decision_classifier, PRODUCER_PROFILES
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        params = PRODUCER_PROFILES.get(profile, PRODUCER_PROFILES["default"])
+        # Override por query si se pasa
+        storage   = float(request.args.get("storage",   params["storage"]))
+        financing = float(request.args.get("financing", params["financing"]))
+        quality   = float(request.args.get("quality",   params.get("quality_risk_per_month", 0.0)))
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = save_decision_classifier(
+            df, ARTIFACTS_DIR,
+            storage_per_ton_month=storage,
+            financing_annual=financing,
+            quality_risk_per_month=quality,
+            profile_name=profile,
+        )
+        out["source"] = "live"
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/decision_classifier: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/decision_classifier/profiles")
+def get_decision_classifier_profiles():
+    """GET /api/decision_classifier/profiles — lista de profiles disponibles
+    con sus parámetros."""
+    try:
+        from src.model.decision_classifier import PRODUCER_PROFILES
+        return jsonify({"ok": True, "profiles": PRODUCER_PROFILES})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+# ── Intel Engine endpoints (Market Intelligence V1) ──────────────────
+
+@app.route("/api/intel/current_event")
+def get_current_event():
+    """GET /api/intel/current_event — evento narrativo actual + analogs."""
+    try:
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        from src.intel.event_intelligence import detect_current_event, find_narrative_analogs
+        # Load news_intel if available
+        intel_path = os.path.join(PROJECT_ROOT, "data", "news_intel.json")
+        news_intel = None
+        if os.path.exists(intel_path):
+            with open(intel_path, "r", encoding="utf-8") as f:
+                news_intel = json.load(f)
+        event = detect_current_event(df, news_intel=news_intel)
+        # Analogs from event_memory
+        em_path = os.path.join(ARTIFACTS_DIR, "event_memory.csv")
+        if os.path.exists(em_path):
+            em = pd.read_csv(em_path)
+            analogs = find_narrative_analogs(event, em, k=20)
+            event["analogs"] = analogs
+        return jsonify(event)
+    except Exception as e:
+        print(f"[ERROR] /api/intel/current_event: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/intel/event_memory")
+def get_event_memory():
+    """GET /api/intel/event_memory — resumen de event memory persistida."""
+    try:
+        json_path = os.path.join(ARTIFACTS_DIR, "event_memory.json")
+        if os.path.exists(json_path):
+            with open(json_path, "r", encoding="utf-8") as f:
+                return jsonify(json.load(f))
+        return jsonify({"ok": False, "error": "event_memory not generated yet"}), 404
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/intel/hybrid_verdict")
+def get_hybrid_verdict():
+    """GET /api/intel/hybrid_verdict?profile=default&horizon=15
+    Veredicto hibrido ML+Narrativa para hoy.
+    """
+    try:
+        profile = (request.args.get("profile") or "default").lower()
+        horizon = int(request.args.get("horizon") or 15)
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        # ML prediction
+        from src.model.decision_classifier import (
+            _build_decision_features, _compute_cost_pct, _resolve_profile,
+            train_decision_classifier, predict_decision,
+        )
+        from src.intel.event_intelligence import detect_current_event, find_narrative_analogs
+        from src.intel.hybrid_model import hybrid_verdict
+        prof = _resolve_profile(profile)
+        last_p = float(df.sort_values("Date").iloc[-1]["Soybeans"])
+        price_ton = last_p * 0.01 * 36.7437
+        cost_pct = _compute_cost_pct(prof["storage"], prof["financing"],
+                                      price_ton, prof.get("quality_risk_per_month", 0), horizon)
+        # Try cached bundle first
+        import joblib
+        bundle_path = os.path.join(ARTIFACTS_DIR, "decision_classifier",
+                                    f"{profile}_h{horizon}d.joblib")
+        if os.path.exists(bundle_path):
+            bundle = joblib.load(bundle_path)
+        else:
+            bundle = train_decision_classifier(df, cost_pct=cost_pct, horizon_days=horizon)
+        ml_pred = predict_decision(df, bundle)
+        ml_p = ml_pred.get("prob_wait_pays_calibrated", 0.5) if ml_pred.get("ok") else 0.5
+        # Event
+        intel_path = os.path.join(PROJECT_ROOT, "data", "news_intel.json")
+        news_intel = None
+        if os.path.exists(intel_path):
+            with open(intel_path, "r", encoding="utf-8") as f:
+                news_intel = json.load(f)
+        event = detect_current_event(df, news_intel=news_intel)
+        # Analogs
+        analogs = None
+        em_path = os.path.join(ARTIFACTS_DIR, "event_memory.csv")
+        if os.path.exists(em_path):
+            em = pd.read_csv(em_path)
+            analogs = find_narrative_analogs(event, em, k=20)
+        verdict = hybrid_verdict(ml_p, event, analogs=analogs)
+        verdict["horizon_days"] = horizon
+        verdict["profile"] = profile
+        verdict["ml_prediction"] = ml_pred if ml_pred.get("ok") else None
+        return jsonify(verdict)
+    except Exception as e:
+        print(f"[ERROR] /api/intel/hybrid_verdict: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/intel/hybrid_backtest")
+def get_hybrid_backtest():
+    """GET /api/intel/hybrid_backtest?profile=default
+    Backtest comparativo ML vs Narrativa vs Hibrido.
+    """
+    try:
+        profile = (request.args.get("profile") or "default").lower()
+        cache_path = os.path.join(ARTIFACTS_DIR, "hybrid_backtest", f"{profile}.json")
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            cached["source"] = "artifacts_cache"
+            return jsonify(cached)
+        # Live fallback
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        from src.intel.hybrid_model import save_hybrid_backtest
+        result = save_hybrid_backtest(df, ARTIFACTS_DIR, profile_name=profile)
+        result["source"] = "live"
+        return jsonify(result)
+    except Exception as e:
+        print(f"[ERROR] /api/intel/hybrid_backtest: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/intel/narrative_forecast")
+def get_narrative_forecast():
+    """GET /api/intel/narrative_forecast — forecast narrativo con rango por horizonte (1d,7d,15d,30d)."""
+    try:
+        cache_path = os.path.join(ARTIFACTS_DIR, "narrative_forecast", "latest.json")
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            cached["source"] = "artifacts_cache"
+            return jsonify(cached)
+        # Live fallback
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        from src.intel.narrative_forecast import save_narrative_forecast
+        result = save_narrative_forecast(df, ARTIFACTS_DIR)
+        result["source"] = "live"
+        return jsonify(result)
+    except Exception as e:
+        print(f"[ERROR] /api/intel/narrative_forecast: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/backtest_decision")
+def get_backtest_decision():
+    """GET /api/backtest_decision?profile=default&test_months=12
+    Backtest OOS comparativo de 6 estrategias de venta (Fase 2.3).
+    Sirve desde cache artifacts/backtest_decision/{profile}.json si existe,
+    o computa en vivo (lento ~20s) si no.
+    """
+    try:
+        profile = (request.args.get("profile") or "default").lower()
+        test_months = int(request.args.get("test_months") or 12)
+        cache_path = os.path.join(ARTIFACTS_DIR, "backtest_decision", f"{profile}.json")
+        if os.path.exists(cache_path):
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            cached["source"] = "artifacts_cache"
+            return jsonify(cached)
+        # Live fallback
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        from src.model.backtest_decision import run_decision_backtest
+        result = run_decision_backtest(df, profile_name=profile, test_months=test_months)
+        result["source"] = "live"
+        return jsonify(result)
+    except Exception as e:
+        print(f"[ERROR] /api/backtest_decision: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/active_shock")
+def get_active_shock():
+    """GET /api/active_shock — devuelve el assessment del Shock Engine.
+    Si hay shock activo hoy, incluye análogos históricos + recomendación condicional.
+    Si no, indica que el modelo regular gobierna.
+    Cache: lee artifacts/active_shock.json producido por el pipeline (TTL bajo)."""
+    try:
+        path = os.path.join(ARTIFACTS_DIR, "active_shock.json")
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            cached["source"] = "artifacts_cache"
+            return jsonify(cached)
+        # Si no hay cache, computar en vivo
+        from src.model.shock_engine import assess_shock
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = assess_shock(df, artifacts_dir=os.path.join(ARTIFACTS_DIR))
+        out["source"] = "live"
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/active_shock: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/regime_switching")
+def get_regime_switching():
+    """GET /api/regime_switching?n_states=2 — Markov-Switching Regression
+    de retornos. Devuelve probabilidad de cada estado + parámetros condicionales
+    + ajuste sugerido al α del modelo horizons."""
+    try:
+        n_states = int(request.args.get("n_states", 2))
+        from src.model.regime_switching import fit_regime_switching
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = fit_regime_switching(df, n_states=n_states)
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/regime_switching: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/optimal_stopping")
+def get_optimal_stopping():
+    """GET /api/optimal_stopping?storage=6&financing=0.08&horizon=30&n_paths=1000
+    Política óptima de venta vía backward induction (decisión correcta
+    matemáticamente, no heurística). Devuelve reservation price por día +
+    decisión hoy + valor esperado de la política óptima vs alternativas.
+    """
+    try:
+        storage   = float(request.args.get("storage",   6.0))
+        financing = float(request.args.get("financing", 0.08))
+        horizon   = int(  request.args.get("horizon",   30))
+        n_paths   = int(  request.args.get("n_paths",   1000))
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        from src.model.optimal_stopping import optimal_stopping_decision
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = optimal_stopping_decision(
+            df, storage_cost_per_ton_month=storage,
+            financing_rate_annual=financing, horizon_days=horizon,
+            n_paths=n_paths,
+            artifacts_dir=os.path.join(ARTIFACTS_DIR, "horizons"),
+        )
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/optimal_stopping: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/economic_utility")
+def get_economic_utility():
+    """GET /api/economic_utility?storage=6&financing=0.08&horizon=30
+    Calcula utilidad esperada de WAIT vs SELL_NOW para una tonelada del productor.
+    Es la pregunta REAL: "¿conviene esperar 30 días o vender hoy?"
+    """
+    try:
+        storage   = float(request.args.get("storage",   6.0))
+        financing = float(request.args.get("financing", 0.08))
+        horizon   = int(  request.args.get("horizon",   30))
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        from src.model.economic_utility import utility_wait_vs_sell
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = utility_wait_vs_sell(
+            df,
+            storage_cost_per_ton_month = storage,
+            financing_rate_annual       = financing,
+            horizon_days                = horizon,
+            artifacts_dir               = os.path.join(ARTIFACTS_DIR, "horizons"),
+        )
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/economic_utility: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/forecast_paths")
+def get_forecast_paths():
+    """GET /api/forecast_paths?n=1000&horizon=30
+    Densidad probabilistica del precio terminal vía Monte Carlo sobre los
+    quantiles del modelo nuevo. Útil para "P(precio > mi costo total)"."""
+    try:
+        n        = int(request.args.get("n", 1000))
+        horizon  = int(request.args.get("horizon", 30))
+        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+        if not os.path.exists(feats_path):
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
+        from src.model.predict_horizons import forecast_paths as _paths, prob_above
+        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        out = _paths(df, n_paths=min(n, 5000), horizon_days=horizon,
+                     artifacts_dir=os.path.join(ARTIFACTS_DIR, "horizons"))
+        # Si vino threshold, calcular P(>threshold)
+        thr = request.args.get("threshold")
+        if thr is not None and out.get("ok"):
+            try:
+                out["prob_above_threshold_pct"] = prob_above(
+                    df, float(thr), artifacts_dir=os.path.join(ARTIFACTS_DIR, "horizons"),
+                    n_paths=5000, horizon_days=horizon)
+                out["threshold"] = float(thr)
+            except Exception:
+                pass
+        return jsonify(out)
+    except Exception as e:
+        print(f"[ERROR] /api/forecast_paths: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/forecast_ab")
+def get_forecast_ab():
+    """
+    GET /api/forecast_ab
+    Devuelve ambas variantes de forecast (legacy y horizons) lado a lado
+    + metadata de calibración para el toggle A/B del dashboard.
+    """
+    try:
+        legacy   = load_forecast("legacy")
+        horizons = load_forecast("horizons")
+        meta_path = os.path.join(ARTIFACTS_DIR, "horizons", "horizons_meta.json")
+        meta = {}
+        if os.path.exists(meta_path):
+            try:
+                with open(meta_path, "r", encoding="utf-8") as _f:
+                    meta = json.load(_f)
+            except Exception:
+                meta = {}
+        return jsonify({
+            "ok": True,
+            "variants_available": [v for v, lst in (("legacy", legacy), ("horizons", horizons)) if lst],
+            "legacy":    legacy,
+            "horizons":  horizons,
+            "horizons_meta": meta,
+        })
+    except Exception as e:
+        print(f"[ERROR] /api/forecast_ab: {e}")
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/forecast_multihorizon")
 def get_forecast_multihorizon():
     """
-    GET /api/forecast_multihorizon
+    GET /api/forecast_multihorizon[?variant=legacy|horizons]
     Forecast multi-horizonte: 7d (traders), 30d (base), 90d (productores/forward).
+
+    variant=legacy (default): motor Ridge+XGB original (rampa anclada).
+    variant=horizons:         motor nuevo (retornos+ensemble+conformal) para 7d/30d.
+                              90d se mantiene legacy (estacionalidad histórica).
     """
     try:
         sys.path.insert(0, PROJECT_ROOT)
+        variant = (request.args.get("variant") or "legacy").lower()
+
         from src.model.predict_multihorizon import get_multihorizon_forecast
         data = get_multihorizon_forecast()
+
+        # Inyectar anclas del modelo "horizons" cuando esté disponible
+        try:
+            import pandas as pd
+            from src.model.predict_horizons import forecast_anchors as _h_anchors
+            feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
+            if os.path.exists(feats_path):
+                df = pd.read_csv(feats_path, parse_dates=["Date"])
+                horizons_artifacts = os.path.join(PROJECT_ROOT, "artifacts", "horizons")
+                anchors = _h_anchors(df, artifacts_dir=horizons_artifacts)
+                horizons_payload = {
+                    "current_price": anchors.get("current_price"),
+                    "horizons":      anchors.get("horizons", {}),
+                }
+                data["horizons_alt"] = horizons_payload
+                # Si el cliente pide variant=horizons, sobreescribimos los buckets
+                # 7d y 30d con el nuevo modelo (manteniendo el resto del payload).
+                if variant == "horizons" and anchors.get("horizons"):
+                    new_horizons = []
+                    for h in (data.get("horizons") or []):
+                        hkey = h.get("horizon")
+                        if hkey == "7d" and 7 in anchors["horizons"]:
+                            a = anchors["horizons"][7]
+                            h = {**h,
+                                 "forecast": a["price"],
+                                 "upper":    a["q90"],
+                                 "lower":    a["q10"],
+                                 "return_pct": a["return_pct"],
+                                 "description": f"Modelo retornos+ensemble (α={a['alpha']:.2f}, δ=${a['delta']:.1f})",
+                                 "engine":    "horizons"}
+                        elif hkey == "30d" and 30 in anchors["horizons"]:
+                            a = anchors["horizons"][30]
+                            h = {**h,
+                                 "forecast": a["price"],
+                                 "upper":    a["q90"],
+                                 "lower":    a["q10"],
+                                 "return_pct": a["return_pct"],
+                                 "description": f"Modelo retornos+ensemble (α={a['alpha']:.2f}, δ=${a['delta']:.1f})",
+                                 "engine":    "horizons"}
+                        new_horizons.append(h)
+                    data["horizons"] = new_horizons
+        except Exception as _e:
+            print(f"[INFO] horizons_alt no disponible: {_e}")
+
+        data["variant_active"] = variant
         return jsonify(data)
     except Exception as e:
         print(f"[ERROR] /api/forecast_multihorizon: {e}")
@@ -1521,19 +2175,23 @@ def get_ml_quality():
 
 @app.route("/api/market_synthesis", methods=["GET", "POST"])
 def get_market_synthesis():
-    """GET → devuelve cache. POST → fuerza re-generación."""
+    """GET → devuelve cache. POST → fuerza re-generación.
+    ?type=producer|trader (default: producer)
+    """
     try:
         sys.path.insert(0, PROJECT_ROOT)
         from src.intel.market_synthesis import synthesize, load_synthesis
+        brief_type = (request.args.get("type") or "producer").lower()
+        if brief_type not in ("producer", "trader"):
+            brief_type = "producer"
         if request.method == "POST":
-            out = synthesize(force=True)
+            out = synthesize(force=True, brief_type=brief_type)
             if not out:
                 return jsonify({"ok": False, "error": "no se pudo generar"}), 500
             return jsonify(out)
-        cached = load_synthesis()
+        cached = load_synthesis(brief_type=brief_type)
         if not cached:
-            # Generación lazy en primer GET
-            cached = synthesize(force=False) or {}
+            cached = synthesize(force=False, brief_type=brief_type) or {}
         if not cached:
             return jsonify({"ok": False, "error": "sin contexto"}), 404
         return jsonify(cached)
@@ -1784,6 +2442,29 @@ def get_drift_monitor():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/shap_explanation")
+def get_shap_explanation():
+    """
+    GET /api/shap_explanation
+    Top-20 features por importancia SHAP media absoluta (clasificador de dirección).
+    Se genera automáticamente en cada entrenamiento si shap está instalado.
+    """
+    try:
+        import json as _json
+        path = os.path.join(MODEL_ARTIFACTS, "shap_explanation.json")
+        if not os.path.exists(path):
+            return jsonify({
+                "ok": False,
+                "error": "SHAP no disponible. Instalar: pip install shap y re-ejecutar pipeline.",
+            }), 404
+        with open(path, "r", encoding="utf-8") as f:
+            data = _json.load(f)
+        data["ok"] = True
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/lookahead_audit")
 def get_lookahead_audit():
     """GET /api/lookahead_audit — resultados de la auditoría OOS por cortes temporales."""
@@ -1881,6 +2562,27 @@ def get_storage_roi():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/intelligence_engine", methods=["GET", "POST"])
+def get_intelligence_engine():
+    """Intelligence Engine v2: FinBERT → Sonnet → Multi-Agent Debate → Verdict"""
+    try:
+        force = request.method == "POST" or request.args.get("force") == "1"
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.intelligence_engine import run_intelligence_engine
+        result = run_intelligence_engine(force=force)
+        payload = {"ok": True, **result}
+        resp = app.response_class(
+            response=json.dumps(payload, ensure_ascii=False, default=str),
+            status=200,
+            mimetype="application/json; charset=utf-8",
+        )
+        return resp
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/")
 def home():
     with open(os.path.join(BASE_DIR, "index.html"), encoding="utf-8") as f:
@@ -1918,15 +2620,18 @@ if __name__ == "__main__":
     else:
         # Caso normal: ya hay artifacts. Servimos al usuario YA y refrescamos en background.
         print("[>>] Artifacts existentes — refrescando pipeline en background…")
-        run_pipeline_background()
+        run_pipeline_background(respect_min_interval=False)
 
     # Auditoría look-ahead en background (no bloquea el server)
     def _run_audit_bg():
         try:
+            # encoding="utf-8" evita el UnicodeDecodeError del reader thread
+            # cuando el subprocess emite caracteres no-cp1252 (ej. ✓, →, etc.)
             audit_proc = subprocess.run(
                 [sys.executable, "-m", "src.model.audit_lookahead"],
                 cwd=PROJECT_ROOT, timeout=180,
                 capture_output=True, text=True,
+                encoding="utf-8", errors="replace",
             )
             if audit_proc.returncode == 0:
                 print("[OK] Auditoría completada → artifacts/lookahead_audit.json")

@@ -1,0 +1,233 @@
+[
+  {
+    "ok": true,
+    "label": "Post-COVID rally + supply chain",
+    "metrics": {
+      "Heur\u00edstica": {
+        "avg": 509.1171428571428,
+        "lift_pct": 0.4831744211728273
+      },
+      "OptStop": {
+        "avg": 506.66904761904766,
+        "lift_pct": 0.0
+      },
+      "AlwaysSell": {
+        "avg": 506.66904761904766,
+        "lift_pct": 0.0
+      },
+      "AlwaysWait": {
+        "avg": 501.6590476190476,
+        "lift_pct": -0.9888111428047908
+      }
+    },
+    "p_values": {
+      "Heur_vs_Sell": 0.34523107177184,
+      "Opt_vs_Sell": null
+    },
+    "regime_stats": {
+      "n_decisions": 21,
+      "price_mean": 1378.93,
+      "price_std": 133.86,
+      "ret_30d_mean": 0.699,
+      "ret_30d_std": 8.177,
+      "wait_wins": 11,
+      "wait_wins_pct": 52.4
+    },
+    "n": 21,
+    "mix_heur": {
+      "SELL_NOW": 16.0,
+      "INDIFFERENT": 5.0
+    },
+    "mix_opt": {
+      "SELL_NOW": 21.0
+    },
+    "regime_id": "R1_post_covid_2021",
+    "start": "2021-04-01",
+    "end": "2022-04-01"
+  },
+  {
+    "ok": true,
+    "label": "Ucrania + m\u00e1ximos hist\u00f3ricos",
+    "metrics": {
+      "Heur\u00edstica": {
+        "avg": 567.7795833333333,
+        "lift_pct": -0.20016053856588556
+      },
+      "OptStop": {
+        "avg": 568.9183333333334,
+        "lift_pct": 0.0
+      },
+      "AlwaysSell": {
+        "avg": 568.9183333333334,
+        "lift_pct": 0.0
+      },
+      "AlwaysWait": {
+        "avg": 554.51625,
+        "lift_pct": -2.531485186801863
+      }
+    },
+    "p_values": {
+      "Heur_vs_Sell": 0.8589549227374824,
+      "Opt_vs_Sell": null
+    },
+    "regime_stats": {
+      "n_decisions": 24,
+      "price_mean": 1548.34,
+      "price_std": 103.12,
+      "ret_30d_mean": -0.843,
+      "ret_30d_std": 5.244,
+      "wait_wins": 9,
+      "wait_wins_pct": 37.5
+    },
+    "n": 24,
+    "mix_heur": {
+      "SELL_NOW": 15.0,
+      "WAIT": 6.0,
+      "INDIFFERENT": 3.0
+    },
+    "mix_opt": {
+      "SELL_NOW": 24.0
+    },
+    "regime_id": "R2_ukraine_2022",
+    "start": "2022-04-01",
+    "end": "2023-04-01"
+  },
+  {
+    "ok": true,
+    "label": "Normalizaci\u00f3n post-Ucrania",
+    "metrics": {
+      "Heur\u00edstica": {
+        "avg": 497.41541666666666,
+        "lift_pct": -0.44623349244630184
+      },
+      "OptStop": {
+        "avg": 499.645,
+        "lift_pct": 0.0
+      },
+      "AlwaysSell": {
+        "avg": 499.645,
+        "lift_pct": 0.0
+      },
+      "AlwaysWait": {
+        "avg": 477.7154166666666,
+        "lift_pct": -4.389032880011479
+      }
+    },
+    "p_values": {
+      "Heur_vs_Sell": null,
+      "Opt_vs_Sell": null
+    },
+    "regime_stats": {
+      "n_decisions": 24,
+      "price_mean": 1359.81,
+      "price_std": 104.28,
+      "ret_30d_mean": -2.576,
+      "ret_30d_std": 6.338,
+      "wait_wins": 7,
+      "wait_wins_pct": 29.2
+    },
+    "n": 24,
+    "mix_heur": {
+      "SELL_NOW": 20.0,
+      "INDIFFERENT": 4.0
+    },
+    "mix_opt": {
+      "SELL_NOW": 24.0
+    },
+    "regime_id": "R3_normalization_2023",
+    "start": "2023-04-01",
+    "end": "2024-04-01"
+  },
+  {
+    "ok": true,
+    "label": "Lateral + early tariff fears",
+    "metrics": {
+      "Heur\u00edstica": {
+        "avg": 391.0,
+        "lift_pct": -0.5959581621692411
+      },
+      "OptStop": {
+        "avg": 393.3441666666666,
+        "lift_pct": 0.0
+      },
+      "AlwaysSell": {
+        "avg": 393.3441666666666,
+        "lift_pct": 0.0
+      },
+      "AlwaysWait": {
+        "avg": 378.92125000000004,
+        "lift_pct": -3.666742229557207
+      }
+    },
+    "p_values": {
+      "Heur_vs_Sell": null,
+      "Opt_vs_Sell": null
+    },
+    "regime_stats": {
+      "n_decisions": 24,
+      "price_mean": 1070.51,
+      "price_std": 88.23,
+      "ret_30d_mean": -1.446,
+      "ret_30d_std": 6.092,
+      "wait_wins": 7,
+      "wait_wins_pct": 29.2
+    },
+    "n": 24,
+    "mix_heur": {
+      "SELL_NOW": 21.0,
+      "INDIFFERENT": 3.0
+    },
+    "mix_opt": {
+      "SELL_NOW": 24.0
+    },
+    "regime_id": "R4_lateral_2024",
+    "start": "2024-04-01",
+    "end": "2025-04-01"
+  },
+  {
+    "ok": true,
+    "label": "Tariff Trump 2.0 + Brasil r\u00e9cord (control)",
+    "metrics": {
+      "Heur\u00edstica": {
+        "avg": 390.5351851851852,
+        "lift_pct": 0.06291623884255859
+      },
+      "OptStop": {
+        "avg": 390.2896296296297,
+        "lift_pct": 0.0
+      },
+      "AlwaysSell": {
+        "avg": 390.2896296296297,
+        "lift_pct": 0.0
+      },
+      "AlwaysWait": {
+        "avg": 386.5548148148148,
+        "lift_pct": -0.9569341666492925
+      }
+    },
+    "p_values": {
+      "Heur_vs_Sell": null,
+      "Opt_vs_Sell": null
+    },
+    "regime_stats": {
+      "n_decisions": 27,
+      "price_mean": 1062.19,
+      "price_std": 51.31,
+      "ret_30d_mean": 1.186,
+      "ret_30d_std": 4.743,
+      "wait_wins": 10,
+      "wait_wins_pct": 37.0
+    },
+    "n": 27,
+    "mix_heur": {
+      "SELL_NOW": 26.0,
+      "INDIFFERENT": 1.0
+    },
+    "mix_opt": {
+      "SELL_NOW": 27.0
+    },
+    "regime_id": "R5_tariff_2025",
+    "start": "2025-04-01",
+    "end": "2026-05-01"
+  }
+]

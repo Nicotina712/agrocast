@@ -1,42 +1,42 @@
 {
-  "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
-  "stance": "ALCISTA",
-  "conviction": 42,
+  "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
+  "stance": "NEUTRAL",
+  "conviction": 22,
   "key_drivers": [
-    {
-      "driver": "Modelo ML (XGBoost 7d)",
-      "direction": "+",
-      "why": "El modelo anticipa un retorno de +16% en 7 días con señal BUY, aunque la confianza estadística es baja (32%). Es el factor que más empuja el composite hacia arriba."
-    },
     {
       "driver": "Demanda China",
       "direction": "-",
-      "why": "Márgenes de crush negativos (-141 USD/ton) y cero crecimiento interanual en importaciones (112 MMT, igual que 2025). China no está traccionando demanda nueva, lo que limita el alza."
+      "why": "Márgenes de crush negativos en China (-154 USD/ton) y sin crecimiento en importaciones (0% interanual sobre 112 MMT), lo que frena el principal motor de demanda global de soja."
+    },
+    {
+      "driver": "Modelo ML (XGBoost 7d)",
+      "direction": "-",
+      "why": "Retorno esperado para la próxima semana de apenas -0.69% con confianza del 1.4%, prácticamente sin señal direccional clara. El modelo no ve catalizador inminente."
     },
     {
       "driver": "WASDE / Stocks Mundiales",
-      "direction": "-",
-      "why": "Stocks finales globales en 122.4 MMT, exactamente en línea con expectativas, sin sorpresa positiva ni negativa. No hay catalizador desde los fundamentos de oferta/demanda global."
+      "direction": "=",
+      "why": "Stocks finales globales en 122.4 MMT, exactamente en línea con expectativas (sorpresa cero). Sin presión ni alivio desde el lado de la oferta mundial."
     },
     {
       "driver": "Análisis Técnico (Soja)",
       "direction": "+",
-      "why": "Precio de soja en Chicago (1163 USc/bu) por encima de MA50 con golden cross confirmado (MA50 > MA200). RSI en 48, lejos de sobrecompra, con margen técnico para subir."
+      "why": "Precio actual de 1208 USc/bu por encima de MA50 y MA200 (golden cross activo), RSI en 64.9 y precio rozando la banda superior de Bollinger. Momentum positivo pero cerca de zona de sobrecompra."
     }
   ],
   "risks": [
-    "China puede profundizar la caída de demanda si los márgenes de crush siguen negativos y reduce compras en los próximos meses",
-    "El modelo ML tiene confianza baja (32%), lo que significa que la señal alcista puede revertirse rápido si los datos de la semana la contradicen"
+    "Próximo WASDE podría traer tidings bajistas para la nueva cosecha según analistas de mercado",
+    "Crush chino negativo sostenido puede reducir compras de soja sudamericana en las próximas semanas"
   ],
-  "tactical_recommendation": "Con el precio spot en torno a 1163-1164 USc/bu y el contrato julio en 1178 USc/bu, esta semana tiene sentido retener una parte de la cosecha si tenés espalda financiera para esperar. El basis está en -25 USD/ton, cerca del promedio histórico, así que no hay urgencia de vender FOB hoy. Si necesitás liquidar, priorizá el contrato julio antes del 30 de junio para evitar el rollover.",
-  "strategic_view": "En el horizonte de 30-90 días, la tensión entre un modelo técnico alcista y una demanda china débil va a definir el techo del movimiento. Si China no reactiva el crush o no aparece un comprador alternativo de volumen, el upside queda limitado a la zona de 1200 USc/bu. El forecast de 30 días del ensemble Ridge+XGB apunta a precios casi sin cambio (~1163 USc/bu), aunque ese modelo tiene un cap técnico de ±1% diario acumulado que limita su capacidad de proyectar movimientos bruscos.",
+  "tactical_recommendation": "Con la soja en 1208 USc/bu, no es momento de apurarse ni a vender ni a retener especulativamente. Si tenés grano sin precio, considerá fijar entre un 20-30% del stock aprovechando que el precio está técnicamente fuerte y cerca de resistencia (banda superior Bollinger ~1205-1210 USc/bu). Esperá confirmación del próximo WASDE y señales de mejora en el crush chino antes de tomar una postura más agresiva.",
+  "strategic_view": "En el horizonte de 30 a 90 días, el contexto de demanda china débil y stocks mundiales neutrales limita el upside estructural. El modelo de pronóstico ensemble sugiere un potencial alcista en torno a 1290-1317 USc/bu, pero ese escenario requiere que mejoren los márgenes de crush en China y que Brasil no acelere su ritmo exportador; tomalos como referencia optimista, no como precio garantizado.",
   "data_gaps": [
-    "Tipo de cambio CNY/USD no disponible: sin ese dato no se puede evaluar si la devaluación del yuan encarece la soja para los compradores chinos",
-    "Datos reales de CIARA (liquidaciones semanales actuales): el valor de 1500 MM USD/sem es estimación estacional, no dato confirmado",
-    "Historial de accuracy del modelo ML: sin backtest validado (n_evaluated=0) no se puede saber cuán confiable es el +16% proyectado",
-    "Clima en Mato Grosso y sudeste de Brasil: ninguna noticia climática capturada esta semana, y Brasil exportó solo 25% de su proyección anual con 51 semanas por delante"
+    "Fecha y contenido del próximo reporte WASDE (mayo 2026) — puede mover el mercado significativamente",
+    "Dato actualizado de importaciones chinas en tiempo real (actualmente estimado con z-score estático)",
+    "Tipo de cambio CNY/USD no disponible, lo que limita la precisión del análisis de demanda china",
+    "Liquidaciones CIARA confirmadas (dato actual es estimación estacional, no cifra oficial de la semana)"
   ],
-  "_generated_at": "2026-04-26T03:50:12.961192",
+  "_generated_at": "2026-05-10T14:35:15.239023",
   "_model": "claude-sonnet-4-6",
   "_input_keys": [
     "news_intel",

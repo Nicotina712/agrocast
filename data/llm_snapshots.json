@@ -31,5 +31,159 @@
     "hit": null,
     "ret_pct": null,
     "verified_at": null
+  },
+  {
+    "date": "2026-04-28",
+    "stance": "ALCISTA",
+    "conviction": 42,
+    "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
+    "price_at_snapshot": 1191.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-04-29",
+    "stance": "BAJISTA",
+    "conviction": 38,
+    "headline": "Señal bajista dominante: el modelo ML pesa fuerte a la baja",
+    "price_at_snapshot": 1190.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-04-30",
+    "stance": "BAJISTA",
+    "conviction": 38,
+    "headline": "Señal bajista dominante: el modelo ML pesa fuerte a la baja",
+    "price_at_snapshot": 1197.75,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-01",
+    "stance": "BAJISTA",
+    "conviction": 45,
+    "headline": "Señal bajista domina: modelo ML y China presionan precios a la baja",
+    "price_at_snapshot": 1195.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-02",
+    "stance": "BAJISTA",
+    "conviction": 32,
+    "headline": "Señal bajista moderada con técnicos alcistas creando tensión",
+    "price_at_snapshot": 1201.5,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-03",
+    "stance": "BAJISTA",
+    "conviction": 32,
+    "headline": "Señal bajista moderada con técnicos alcistas creando tensión",
+    "price_at_snapshot": 1187.75,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-04",
+    "stance": "BAJISTA",
+    "conviction": 45,
+    "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
+    "price_at_snapshot": 1211.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-05",
+    "stance": "BAJISTA",
+    "conviction": 45,
+    "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
+    "price_at_snapshot": 1211.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-06",
+    "stance": "BAJISTA",
+    "conviction": 45,
+    "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
+    "price_at_snapshot": 1200.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-07",
+    "stance": "BAJISTA",
+    "conviction": 45,
+    "headline": "Señal bajista dominante: modelo ML y demanda china presionan precios",
+    "price_at_snapshot": 1200.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-08",
+    "stance": "BAJISTA",
+    "conviction": 39,
+    "headline": "Señal bajista clara: momento de vender soja antes de más caída",
+    "price_at_snapshot": 1193.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-09",
+    "stance": "BAJISTA",
+    "conviction": 39,
+    "headline": "Señal bajista clara: momento de vender soja antes de más caída",
+    "price_at_snapshot": 1206.25,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-10",
+    "stance": "BAJISTA",
+    "conviction": 39,
+    "headline": "Señal bajista clara: momento de vender soja antes de más caída",
+    "price_at_snapshot": 1208.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
+  },
+  {
+    "date": "2026-05-11",
+    "stance": "NEUTRAL",
+    "conviction": 22,
+    "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
+    "price_at_snapshot": 1208.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
   }
 ]

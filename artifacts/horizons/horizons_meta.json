@@ -1,0 +1,31 @@
+{
+  "horizons": {
+    "7d": {
+      "alpha": 0.0,
+      "delta": 15.798518899083142,
+      "n_train": 1134,
+      "n_val": 124,
+      "val_metrics": {
+        "mae_rw": 22.7520866079616,
+        "mae_ens": 22.7520866079616,
+        "lift_pct": 0.0,
+        "coverage_pct": 79.83870967741935
+      },
+      "path": "artifacts/horizons\\model_h7d.joblib"
+    },
+    "30d": {
+      "alpha": 0.45,
+      "delta": 31.014458614587788,
+      "n_train": 1134,
+      "n_val": 124,
+      "val_metrics": {
+        "mae_rw": 58.48765467521104,
+        "mae_ens": 56.670294963948,
+        "lift_pct": 3.1072535244489696,
+        "coverage_pct": 79.83870967741935
+      },
+      "path": "artifacts/horizons\\model_h30d.joblib"
+    }
+  },
+  "trained_at": "2026-05-04T17:19:53"
+}

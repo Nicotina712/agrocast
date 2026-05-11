@@ -50,6 +50,7 @@ def predict_returns(features: pd.DataFrame, artifacts_dir: str | None = None) ->
     saved        = joblib.load(model_path)
     model        = saved["model"]
     vol_model    = saved.get("vol_model")
+    calibrator   = saved.get("calibrator")
     feature_cols = saved.get("feature_cols")
     model_type   = saved.get("model_type", "regressor")
     buy_thresh   = saved.get("buy_thresh",  0.58)
@@ -71,7 +72,16 @@ def predict_returns(features: pd.DataFrame, artifacts_dir: str | None = None) ->
     # ── Predicción ────────────────────────────────────────────────
     if model_type == "classifier":
         # P(precio sube) en [0, 1]
-        probs = model.predict_proba(X)[:, 1].astype(float)
+        probs_raw = model.predict_proba(X)[:, 1].astype(float)
+        # Aplicar calibración isotonic si fue entrenada (corrige overconfidence)
+        if calibrator is not None:
+            try:
+                probs = calibrator.transform(probs_raw)
+                probs = np.clip(probs, 0.0, 1.0)
+            except Exception:
+                probs = probs_raw
+        else:
+            probs = probs_raw
         df["expected_return"] = probs - 0.5   # centrado en 0 para display
 
         df["signal"] = "HOLD"

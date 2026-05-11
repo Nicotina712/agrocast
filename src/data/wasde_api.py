@@ -138,28 +138,71 @@ def _load_history() -> list:
         return []
 
 
-def _save_history(history: list):
+def _save_history(history: list, new_snapshot: dict) -> list:
+    """
+    Agrega `new_snapshot` a la historia SOLO si el report_date es distinto
+    al último guardado. Evita duplicar el mismo reporte en cada pipeline run.
+    El score de sorpresa se calcula ANTES de agregar el snapshot actual
+    para comparar "este WASDE vs el anterior", no vs sí mismo.
+    """
     os.makedirs(os.path.dirname(_HIST_PATH), exist_ok=True)
+    # Deduplicar por report_date: si el último entry tiene el mismo report_date, no agregar
+    new_date = new_snapshot.get("report_date")
+    if history:
+        last_date = history[-1].get("report_date")
+        if last_date and new_date and last_date == new_date:
+            return history  # mismo WASDE, no duplicar
+    history.append(new_snapshot)
     with open(_HIST_PATH, "w") as f:
-        json.dump(history[-24:], f, indent=2)
+        json.dump(history[-36:], f, indent=2)  # conservar últimos 36 reportes (~3 años)
+    return history
 
 
-def _compute_surprise(current_stocks: float, history: list) -> dict:
-    if not history or current_stocks is None:
-        return {"score": None, "expected": None, "direction": "NEUTRAL"}
-    recent = [h.get("world_ending_stocks") for h in history[-3:]
-              if h.get("world_ending_stocks") is not None]
-    if not recent:
-        return {"score": None, "expected": None, "direction": "NEUTRAL"}
-    expected = sum(recent) / len(recent)
+def _compute_surprise(current_stocks: float, current_report_date: str, history: list) -> dict:
+    """
+    Calcula el surprise score como desviación del actual vs el reporte ANTERIOR.
+    Usa la historia de reportes únicos (deduplicados por report_date).
+    - expected = ending_stocks del reporte inmediatamente anterior
+    - surprise_pct = (expected - actual) / expected × 100
+      positivo = stocks menores de lo esperado → BULLISH (escasez sorpresiva)
+      negativo = stocks mayores de lo esperado → BEARISH (abundancia sorpresiva)
+    """
+    if current_stocks is None:
+        return {"score": None, "expected": None, "direction": "NEUTRAL", "n_history": 0}
+
+    # Filtrar entradas válidas excluyendo el reporte actual
+    prior = [
+        h for h in history
+        if h.get("world_ending_stocks") is not None
+        and h.get("report_date") != current_report_date
+    ]
+    if not prior:
+        return {"score": None, "expected": None, "direction": "NEUTRAL", "n_history": 0}
+
+    # Expected = reporte inmediatamente anterior (no promedio, para capturar MoM real)
+    expected = float(prior[-1]["world_ending_stocks"])
     if expected == 0:
-        return {"score": None, "expected": None, "direction": "NEUTRAL"}
+        return {"score": None, "expected": None, "direction": "NEUTRAL", "n_history": len(prior)}
+
     surprise_pct = (expected - current_stocks) / expected * 100
+
+    # Normalizar por std histórico de cambios MoM para calibrar la magnitud
+    stocks_series = [h["world_ending_stocks"] for h in prior if h.get("world_ending_stocks")]
+    if len(stocks_series) >= 3:
+        deltas = [stocks_series[i] - stocks_series[i-1] for i in range(1, len(stocks_series))]
+        delta_std = (sum(d**2 for d in deltas) / len(deltas)) ** 0.5 or 1.0
+        surprise_z = round((expected - current_stocks) / delta_std, 2)
+    else:
+        surprise_z = None
+
     direction = "BULLISH" if surprise_pct > 1 else "BEARISH" if surprise_pct < -1 else "NEUTRAL"
     return {
-        "score":     round(surprise_pct, 2),
-        "expected":  round(expected, 2),
-        "direction": direction,
+        "score":      round(surprise_pct, 2),
+        "surprise_z": surprise_z,
+        "expected":   round(expected, 2),
+        "actual":     round(current_stocks, 2),
+        "direction":  direction,
+        "n_history":  len(prior),
     }
 
 
@@ -208,23 +251,37 @@ def get_wasde_official() -> dict:
         usa   = {**_STATIC_ESTIMATES["usa"], **(nass_data.get("usa", {}))}
         china = _STATIC_ESTIMATES["china"].copy()
 
+    # report_date del WASDE actual (estático o de la API)
+    static_report_date = (
+        _STATIC_ESTIMATES.get("report_date")
+        if data_source in ("static_estimates", "usda_nass")
+        else datetime.now().strftime("%Y-%m-%d")
+    )
+    released_at_iso = None
+    if static_report_date:
+        released_at_iso = f"{static_report_date}T17:00:00+00:00"
+
     # ── Surprise score ────────────────────────────────────────────────────
+    # IMPORTANTE: cargar historia ANTES de agregar el snapshot actual,
+    # para comparar este WASDE contra el reporte anterior (no contra sí mismo).
+    # El historial se deduplicó por report_date → cada entrada es un WASDE único.
     history = _load_history()
     world_stocks = world.get("ending_stocks_mmt")
-    surprise = _compute_surprise(world_stocks, history)
+    surprise = _compute_surprise(world_stocks, static_report_date, history)
 
     snapshot = {
         "timestamp":           datetime.now().isoformat(),
+        "report_date":         static_report_date,
         "world_ending_stocks": world_stocks,
         "world_production":    world.get("production_mmt"),
         "world_exports":       world.get("exports_mmt"),
         "brazil_exports":      bra.get("exports_mmt"),
         "argentina_exports":   arg.get("exports_mmt"),
     }
-    history.append(snapshot)
-    _save_history(history)
+    history = _save_history(history, snapshot)
 
     score = surprise.get("score")
+    n_hist = surprise.get("n_history", 0)
     if score is not None:
         if score > 2:
             note = f"Stocks globales {score:+.1f}% por debajo de expectativas → presión ALCISTA."
@@ -235,19 +292,9 @@ def get_wasde_official() -> dict:
     else:
         my = _STATIC_ESTIMATES["marketing_year"]
         ws = world_stocks
+        n_needed = max(0, 2 - n_hist)
         note = (f"Estimación MY {my}: {ws} MMT ending stocks mundiales. "
-                f"Acumulando historial para calcular sorpresa.")
-
-    # Fix #12: released_at explícito (WASDE oficial se publica 12:00 ET el día del reporte)
-    # Para datos estáticos, usamos report_date + 12h ET como released_at.
-    static_report_date = _STATIC_ESTIMATES.get("report_date")
-    released_at_iso = None
-    try:
-        if static_report_date:
-            # 12:00 ET (UTC-5/-4) ≈ 17:00Z; usamos T17:00:00 UTC para consistency
-            released_at_iso = f"{static_report_date}T17:00:00+00:00"
-    except Exception:
-        pass
+                f"Acumulando historial ({n_hist} reportes únicos, necesita {n_needed} más).")
 
     result = {
         "report_year":        year,
@@ -260,10 +307,12 @@ def get_wasde_official() -> dict:
         "usa":                usa,
         "china":              china,
         "surprise":           surprise,
+        "surprise_z":         surprise.get("surprise_z"),
         "signal":             surprise.get("direction", "NEUTRAL"),
         "note":               note,
         "data_source":        data_source,
         "history_n":          len(history),
+        "history_n_unique":   n_hist,
         "as_of":              datetime.now().isoformat(),
     }
 

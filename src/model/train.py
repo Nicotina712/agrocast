@@ -48,19 +48,34 @@ EXCLUDE_FROM_FEATURES = {
 MAX_FEATURES = 25
 
 
-def train_model(df: pd.DataFrame, target: str = "Soybeans", artifacts_dir: str | None = None) -> None:
+def train_model(
+    df: pd.DataFrame,
+    target: str = "Soybeans",
+    artifacts_dir: str | None = None,
+    rolling_window_years: int | None = None,
+) -> None:
     """
     Entrena un modelo Ridge para predecir el precio de soja.
 
     Parámetros
     ----------
-    df            : DataFrame con features (salida de make_features)
-    target        : columna objetivo
-    artifacts_dir : directorio donde guardar model.joblib
+    df                   : DataFrame con features (salida de make_features)
+    target               : columna objetivo
+    artifacts_dir        : directorio donde guardar model.joblib
+    rolling_window_years : si se pasa, limita el entrenamiento a los últimos N años
+                           (ventana deslizante en lugar de datos acumulativos)
     """
     print("\n🤖 Entrenando modelo de precios…")
 
     df = df.copy()
+
+    # ── Ventana deslizante (rolling retrain) ──────────────────────
+    if rolling_window_years is not None and "Date" in df.columns:
+        cutoff = pd.Timestamp.today() - pd.DateOffset(years=rolling_window_years)
+        df_full_len = len(df)
+        df = df[pd.to_datetime(df["Date"]) >= cutoff]
+        print(f"   📅 Rolling window {rolling_window_years}a: {df_full_len} → {len(df)} filas "
+              f"(desde {cutoff.date()})")
 
     # ── Limpieza ──────────────────────────────────────────────────
     df = df.dropna(subset=[target])
@@ -123,6 +138,37 @@ def train_model(df: pd.DataFrame, target: str = "Soybeans", artifacts_dir: str |
     imp = sorted(zip(selected, model.feature_importances_), key=lambda x: -x[1])
     print("   Top features: " + ", ".join(f"{n}({v:.3f})" for n, v in imp[:5]))
 
+    # ── Modelos de cuantiles Q10 / Q90 para bandas de confianza ──
+    # XGBoost soporta reg:quantileerror desde v1.7. Si la versión es
+    # antigua o falla, se omiten sin romper el pipeline.
+    q10_model = None
+    q90_model = None
+    try:
+        _q_params = dict(
+            n_estimators=300,
+            max_depth=4,
+            learning_rate=0.05,
+            subsample=0.8,
+            colsample_bytree=0.8,
+            random_state=42,
+            objective="reg:quantileerror",
+        )
+        q10_model = XGBRegressor(**_q_params, quantile_alpha=0.10)
+        q10_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=False)
+
+        q90_model = XGBRegressor(**_q_params, quantile_alpha=0.90)
+        q90_model.fit(X_train, y_train, eval_set=[(X_test, y_test)], verbose=False)
+
+        # Cobertura empírica: cuántos puntos del test caen entre Q10 y Q90
+        q10_preds = np.expm1(q10_model.predict(X_test))
+        q90_preds = np.expm1(q90_model.predict(X_test))
+        coverage = float(((y_real >= q10_preds) & (y_real <= q90_preds)).mean())
+        print(f"   📐 Cuantiles Q10/Q90 — cobertura test: {coverage*100:.1f}% (objetivo 80%)")
+    except Exception as _qe:
+        print(f"   [INFO] Quantile models omitidos (XGBoost <1.7 o error): {_qe}")
+        q10_model = None
+        q90_model = None
+
     # ── Guardar ───────────────────────────────────────────────────
     if artifacts_dir is None:
         # Fallback: artifacts/ en la raíz del proyecto
@@ -134,6 +180,11 @@ def train_model(df: pd.DataFrame, target: str = "Soybeans", artifacts_dir: str |
     os.makedirs(artifacts_dir, exist_ok=True)
 
     out_path = os.path.join(artifacts_dir, "model.joblib")
-    joblib.dump({"model": model, "features": selected}, out_path)
+    joblib.dump({
+        "model":      model,
+        "features":   selected,
+        "q10_model":  q10_model,
+        "q90_model":  q90_model,
+    }, out_path)
 
     print(f"💾 Modelo guardado en {out_path}")

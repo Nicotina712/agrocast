@@ -28,8 +28,8 @@
       "move_usc": -32.0,
       "move_pct": -2.1,
       "direction": "CA\u00cdDA",
-      "model_signal": "BUY",
-      "model_correct": false
+      "model_signal": "HOLD",
+      "model_correct": null
     },
     {
       "wasde_date": "2022-09-13",
@@ -64,5 +64,5 @@
       "gt_30usc": 4
     }
   },
-  "as_of": "2026-04-27"
+  "as_of": "2026-05-10"
 }

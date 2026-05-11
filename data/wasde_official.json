@@ -18,7 +18,7 @@
     "exports_mmt": 103.0
   },
   "usa": {
-    "production_mmt": 120.7,
+    "production_mmt": 115988.6,
     "exports_mmt": 54.4
   },
   "china": {
@@ -31,7 +31,7 @@
   },
   "signal": "NEUTRAL",
   "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.0%) \u2192 NEUTRAL.",
-  "data_source": "static_estimates",
+  "data_source": "usda_nass",
   "history_n": 25,
-  "as_of": "2026-04-27T17:21:16.224186"
+  "as_of": "2026-05-11T13:51:59.769610"
 }

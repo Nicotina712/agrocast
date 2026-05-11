@@ -1,0 +1,2 @@
+ts,producer_id,decision,qty_tons,price_at_decision,horizon_days,comment,snapshot_alpha_30d,snapshot_delta_30d,snapshot_regime,snapshot_confidence_level,snapshot_forecast_30d,snapshot_q10_30d,snapshot_q90_30d
+2026-05-03T14:44:17,pilot-1,wait,50.0,1187.5,30,Test piloto,0.0,38.16623647212969,trend,,1188.95,1081.19,1297.45

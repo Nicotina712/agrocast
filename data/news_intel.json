@@ -1,62 +1,117 @@
 {
-  "generated_at": "2026-04-27T23:36:26.479994",
-  "n_articles": 24,
-  "n_high_impact": 0,
-  "composite": 0.0766,
+  "generated_at": "2026-05-11T20:24:20.424149",
+  "n_articles": 22,
+  "n_high_impact": 1,
+  "composite": 0.0488,
   "drivers": {
-    "news_china_demand_signal": 0.0,
-    "news_china_demand_count": 0,
-    "news_weather_br_signal": 0.0,
-    "news_weather_br_count": 0,
+    "news_china_demand_signal": 0.0168,
+    "news_china_demand_count": 4,
+    "news_weather_br_signal": -0.225,
+    "news_weather_br_count": 1,
     "news_weather_ar_signal": 0.0,
     "news_weather_ar_count": 0,
     "news_weather_us_signal": 0.0,
     "news_weather_us_count": 0,
-    "news_supply_global_signal": -0.11,
-    "news_supply_global_count": 1,
-    "news_usda_report_signal": 0.0,
-    "news_usda_report_count": 0,
-    "news_policy_ar_signal": -0.0183,
-    "news_policy_ar_count": 3,
-    "news_policy_us_signal": -0.09,
+    "news_supply_global_signal": 0.0012,
+    "news_supply_global_count": 4,
+    "news_usda_report_signal": 0.5128,
+    "news_usda_report_count": 2,
+    "news_policy_ar_signal": -0.045,
+    "news_policy_ar_count": 2,
+    "news_policy_us_signal": 0.225,
     "news_policy_us_count": 1,
     "news_policy_br_signal": 0.0,
     "news_policy_br_count": 0,
-    "news_macro_usd_signal": 0.063,
+    "news_macro_usd_signal": -0.022,
     "news_macro_usd_count": 2,
-    "news_macro_oil_signal": 0.0,
-    "news_macro_oil_count": 0,
-    "news_logistics_signal": -0.09,
-    "news_logistics_count": 1,
-    "news_biofuels_signal": 0.0903,
+    "news_macro_oil_signal": 0.3456,
+    "news_macro_oil_count": 1,
+    "news_logistics_signal": 0.0,
+    "news_logistics_count": 0,
+    "news_biofuels_signal": 0.0,
     "news_biofuels_count": 3,
-    "news_geopolitics_signal": 0.0,
-    "news_geopolitics_count": 0
+    "news_geopolitics_signal": 0.1534,
+    "news_geopolitics_count": 4
   },
   "top_per_driver": {
+    "china_demand": [
+      {
+        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
+      },
+      {
+        "title": "Brazil beans offer a better deal for China",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.farmprogress.com/commentary/brazil-beans-offer-a-better-deal-for-china"
+      },
+      {
+        "title": "Will this week’s Trump/Xi meeting put beans on boats?",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.65,
+        "url": "https://www.farmprogress.com/commentary/will-this-week-s-trump-xi-meeting-put-beans-on-boats-"
+      }
+    ],
+    "weather_br": [
+      {
+        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
+      }
+    ],
     "supply_global": [
       {
-        "title": "Semilla fiscalizada en crisis: advierten por el estancamiento del sistema",
+        "title": "May WASDE report to reveal first look at new crop outlook",
+        "impact": "bullish",
+        "magnitude": 4,
+        "confidence": 0.85,
+        "url": "https://www.farmprogress.com/max-armstrong/may-wasde-report-to-reveal-first-look-at-new-crop-outlook"
+      },
+      {
+        "title": "Brazil beans offer a better deal for China",
         "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://www.todoagro.com.ar/semilla-fiscalizada-crisis-argentina-casem/"
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.farmprogress.com/commentary/brazil-beans-offer-a-better-deal-for-china"
+      },
+      {
+        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
+      }
+    ],
+    "usda_report": [
+      {
+        "title": "May WASDE report to reveal first look at new crop outlook",
+        "impact": "bullish",
+        "magnitude": 4,
+        "confidence": 0.85,
+        "url": "https://www.farmprogress.com/max-armstrong/may-wasde-report-to-reveal-first-look-at-new-crop-outlook"
+      },
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
       }
     ],
     "policy_ar": [
       {
-        "title": "Colza, cártamo y camelina: los cultivos para biocombustibles no se ponen límites y van por otro salto productivo",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://www.infocampo.com.ar/colza-cartamo-y-camelina-los-cultivos-para-biocombustibles-no-se-ponen-limites-y-van-por-otro-salto-productivo/"
-      },
-      {
-        "title": "Semilla fiscalizada en crisis: advierten por el estancamiento del sistema",
+        "title": "Contratistas en crisis: trabajan sin rentabilidad y con maquinaria obsoleta",
         "impact": "bearish",
         "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://www.todoagro.com.ar/semilla-fiscalizada-crisis-argentina-casem/"
+        "confidence": 0.45,
+        "url": "https://www.todoagro.com.ar/contratistas-en-crisis-trabajan-sin-rentabilidad-y-con-maquinaria-obsoleta/"
       },
       {
         "title": "El SENASA pone orden sobre la «letra chica» de los fitosanitarios",
@@ -68,52 +123,52 @@
     ],
     "policy_us": [
       {
-        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.45,
-        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
+        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
       }
     ],
     "macro_usd": [
       {
-        "title": "How ethanol boom could put more money in farmers’ pockets",
+        "title": "Grain and Oilseed Futures Slide on Middle East War Optimism",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://financialpost.com/pmn/business-pmn/grain-and-oilseed-futures-slide-on-middle-east-war-optimism"
+      },
+      {
+        "title": "Trade optimism gives soybeans a bump",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.farmprogress.com/markets-and-quotes/afternoon-market-recap"
+      }
+    ],
+    "macro_oil": [
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
         "impact": "bullish",
         "magnitude": 3,
         "confidence": 0.72,
-        "url": "https://www.farmprogress.com/markets-and-quotes/morning-market-review"
-      },
-      {
-        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.45,
-        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
-      }
-    ],
-    "logistics": [
-      {
-        "title": "Midwest Soybean Farmers Face Financial Struggles Amid Rising Costs",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.45,
-        "url": "https://www.insurancejournal.com/news/midwest/2026/04/23/867061.htm"
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
       }
     ],
     "biofuels": [
       {
-        "title": "How ethanol boom could put more money in farmers’ pockets",
+        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
         "impact": "bullish",
         "magnitude": 3,
-        "confidence": 0.72,
-        "url": "https://www.farmprogress.com/markets-and-quotes/morning-market-review"
+        "confidence": 0.75,
+        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
       },
       {
-        "title": "Colza, cártamo y camelina: los cultivos para biocombustibles no se ponen límites y van por otro salto productivo",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://www.infocampo.com.ar/colza-cartamo-y-camelina-los-cultivos-para-biocombustibles-no-se-ponen-limites-y-van-por-otro-salto-productivo/"
+        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
       },
       {
         "title": "Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los biocombustibles",
@@ -121,6 +176,29 @@
         "magnitude": 1,
         "confidence": 0.2,
         "url": "https://www.todoagro.com.ar/cruciferas-alternativa-invernal-biocombustibles-argentina/"
+      }
+    ],
+    "geopolitics": [
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
+      },
+      {
+        "title": "Will this week’s Trump/Xi meeting put beans on boats?",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.65,
+        "url": "https://www.farmprogress.com/commentary/will-this-week-s-trump-xi-meeting-put-beans-on-boats-"
+      },
+      {
+        "title": "Grain and Oilseed Futures Slide on Middle East War Optimism",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://financialpost.com/pmn/business-pmn/grain-and-oilseed-futures-slide-on-middle-east-war-optimism"
       }
     ]
   }

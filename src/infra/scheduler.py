@@ -26,8 +26,9 @@ _PIPELINE_SCRIPT = os.path.join(_PROJECT_ROOT, "src", "pipeline.py")
 logger = logging.getLogger("agrocast.scheduler")
 
 # Configuración via env vars
-PIPELINE_INTERVAL_H = int(os.getenv("PIPELINE_INTERVAL_H", "6"))
-BRIEF_HOUR          = int(os.getenv("BRIEF_HOUR", "8"))
+PIPELINE_INTERVAL_H  = int(os.getenv("PIPELINE_INTERVAL_H", "6"))
+BRIEF_HOUR           = int(os.getenv("BRIEF_HOUR", "8"))
+ROLLING_WINDOW_YEARS = int(os.getenv("ROLLING_WINDOW_YEARS", "3"))
 
 
 def _run_pipeline():
@@ -38,6 +39,7 @@ def _run_pipeline():
             [sys.executable, _PIPELINE_SCRIPT],
             capture_output=True, text=True, timeout=600,
             cwd=_PROJECT_ROOT,
+            encoding="utf-8", errors="replace",
         )
         if result.returncode == 0:
             logger.info("[Scheduler] Pipeline OK")
@@ -75,6 +77,32 @@ def _check_wasde_alert():
             logger.info("[Scheduler] Alerta WASDE enviada")
     except Exception as e:
         logger.error(f"[Scheduler] WASDE alert error: {e}")
+
+
+def _run_monthly_rolling_retrain():
+    """
+    Re-entrena modelos con ventana deslizante de ROLLING_WINDOW_YEARS años.
+    Corre el primer lunes de cada mes.
+    Esto evita que el modelo se ancle a regímenes de precios muy antiguos
+    (el drift monitor lo confirmó: AUC degrada con datos acumulativos).
+    """
+    logger.info(f"[Scheduler] Rolling retrain mensual (ventana {ROLLING_WINDOW_YEARS}a)…")
+    try:
+        result = subprocess.run(
+            [sys.executable, _PIPELINE_SCRIPT],
+            capture_output=True, text=True, timeout=600,
+            cwd=_PROJECT_ROOT,
+            encoding="utf-8", errors="replace",
+            env={**os.environ, "ROLLING_WINDOW_YEARS": str(ROLLING_WINDOW_YEARS)},
+        )
+        if result.returncode == 0:
+            logger.info("[Scheduler] Rolling retrain OK")
+        else:
+            logger.warning(f"[Scheduler] Rolling retrain error: {result.stderr[-500:]}")
+    except subprocess.TimeoutExpired:
+        logger.error("[Scheduler] Rolling retrain timeout (>10 min)")
+    except Exception as e:
+        logger.error(f"[Scheduler] Rolling retrain exception: {e}")
 
 
 def _cleanup_cache():
@@ -152,6 +180,17 @@ def start_scheduler():
         trigger=CronTrigger(hour=3, minute=0),
         id="cleanup",
         name="Cleanup caché",
+        replace_existing=True,
+    )
+
+    # Rolling retrain mensual — primer lunes de cada mes a las 2:00 AM
+    # Usa ventana deslizante ROLLING_WINDOW_YEARS (default 3 años) para
+    # evitar que el modelo se ancle a regímenes de precios históricos.
+    scheduler.add_job(
+        _run_monthly_rolling_retrain,
+        trigger=CronTrigger(day="1-7", day_of_week="mon", hour=2, minute=0),
+        id="monthly_rolling_retrain",
+        name=f"Rolling Retrain Mensual ({ROLLING_WINDOW_YEARS}a ventana)",
         replace_existing=True,
     )
 

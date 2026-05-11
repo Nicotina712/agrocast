@@ -3,15 +3,16 @@ src/data/fetch_basis_uruguay.py
 Basis Uruguay en tiempo real: precio local FAS/FOB vs. CBOT.
 
 Fuentes (en orden de prioridad):
-  1. Bolsa de Cereales de Buenos Aires — FOB UP Paraná (HTML scraping)
-  2. USDA FAS PSD API — precio de referencia mensual para Argentina/Uruguay
-  3. Fallback: estima basis desde spread histórico promedio (-25 USD/ton)
+  1. Revista Verde (revistaverde.com.uy) — precio local diario USD/ton + ref CBOT
+  2. Bolsa de Cereales de Buenos Aires — FOB UP Paraná (HTML scraping)
+  3. USDA FAS PSD API — precio de referencia mensual para Argentina/Uruguay
+  4. Fallback: estima basis desde spread histórico promedio (-25 USD/ton)
 
 El basis se define como:
   basis_usd_ton = precio_local_fob_usd_ton - cbot_usd_ton
 
-  - Negativo (normal): Uruguay vende a descuento vs. Chicago
-  - Cercano a 0: spread muy apretado → buen momento para vender
+  - Positivo o cercano a 0: spread apretado → buen momento para vender
+  - Negativo: descuento vs. Chicago
   - Muy negativo: descuento excesivo → esperar
 
 Cache: data/basis_uruguay.json (TTL 24h)
@@ -35,6 +36,9 @@ _ARG_CODE = "2020"             # Argentina (proxy River Plate)
 _BRA_CODE = "2024"             # Brazil
 _URY_CODE = "2840"             # Uruguay (código USDA)
 
+# Revista Verde — precios locales Uruguay (diarios)
+_REVISTA_VERDE_URL = "https://revistaverde.com.uy/precio-mercado-nacional/"
+
 # Bolsa de Cereales BA — pizarra diaria
 _BCBA_URL = "https://www.bolsadecereales.com/precio-pizarra"
 
@@ -46,6 +50,95 @@ def _cache_valid() -> bool:
         return False
     age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
     return age < timedelta(hours=_TTL_HOURS)
+
+
+def _scrape_revista_verde() -> dict | None:
+    """
+    Scrape revistaverde.com.uy/precio-mercado-nacional/
+    Returns dict with local_usd_ton, cbot_usd_ton (front month), date string.
+    Page structure:
+      - "Referencias Internacionales": tables with Soja Mayo/Julio prices
+      - "Referencias Locales": table with Soja 2024-25 / 2025-26 prices
+    """
+    try:
+        import re
+        import requests
+        from bs4 import BeautifulSoup
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "Accept": "text/html,application/xhtml+xml",
+        }
+        r = requests.get(_REVISTA_VERDE_URL, timeout=15, headers=headers)
+        if r.status_code != 200:
+            print(f"   [Basis] Revista Verde HTTP {r.status_code}")
+            return None
+
+        soup = BeautifulSoup(r.text, "html.parser")
+
+        date_str = None
+        cbot_front = None
+        local_price = None
+
+        headings = soup.find_all(["h2", "h3", "h4", "h5"])
+        soja_sections = []
+        for h in headings:
+            if h.get_text(strip=True).lower() == "soja":
+                soja_sections.append(h)
+
+        def _parse_number(text: str) -> float | None:
+            text = text.strip().replace(".", "").replace(",", ".")
+            try:
+                v = float(text)
+                return v if 50 < v < 1500 else None
+            except ValueError:
+                return None
+
+        # Extract date from "Fecha: DD mes YYYY" pattern
+        page_text = soup.get_text()
+        m = re.search(r"Fecha:\s*(\d{1,2}\s+\w+\s+\d{4})", page_text)
+        if m:
+            date_str = m.group(1)
+
+        # Parse tables following each Soja heading
+        for i, soja_h in enumerate(soja_sections):
+            table = soja_h.find_next("table")
+            if not table:
+                continue
+            cells = [td.get_text(strip=True) for td in table.find_all(["td", "th", "div", "span"])
+                     if td.get_text(strip=True)]
+
+            if i == 0:
+                # First Soja = Internacional (CBOT references)
+                # Cells like: "Mayo", "382,42", "Julio", "387,11"
+                for j, c in enumerate(cells):
+                    v = _parse_number(c)
+                    if v and 200 < v < 800:
+                        cbot_front = v
+                        break
+            else:
+                # Second Soja = Local
+                # Cells like: "2024-25", "0", "2025-26", "404"
+                for j in range(len(cells) - 1, -1, -1):
+                    v = _parse_number(cells[j])
+                    if v and v > 100:
+                        local_price = v
+                        break
+
+        if local_price and local_price > 100:
+            result = {
+                "local_usd_ton": local_price,
+                "cbot_usd_ton": cbot_front,
+                "date_str": date_str,
+            }
+            print(f"   [Basis] Revista Verde OK: local={local_price} cbot_ref={cbot_front} ({date_str})")
+            return result
+
+        print("   [Basis] Revista Verde: no se encontró precio local de soja")
+        return None
+    except Exception as e:
+        print(f"   [Basis] Revista Verde falló: {e}")
+        return None
 
 
 def _scrape_bcba_fob() -> float | None:
@@ -296,26 +389,36 @@ def get_basis_uruguay(cbot_usd_ton: float | None = None) -> dict:
         "as_of":          date.today().isoformat(),
     }
 
-    # ── 1. USDA FAS PSD (fuente oficial mensual, más estable) ────────────────
+    # ── 1. Revista Verde (precio local real Uruguay, diario) ───────────────
     fob_price = None
     source = "estimated_historical"
-    if cbot_usd_ton:
+    rv = _scrape_revista_verde()
+    if rv and rv.get("local_usd_ton"):
+        fob_price = rv["local_usd_ton"]
+        source = "revista_verde"
+        # Use RV's own CBOT reference for basis calc (same conversion method)
+        if rv.get("cbot_usd_ton"):
+            cbot_usd_ton = rv["cbot_usd_ton"]
+            result["cbot_usd_ton"] = cbot_usd_ton
+            result["cbot_note"] = "CBOT ref from Revista Verde (front month USD/ton)"
+        result["rv_date"] = rv.get("date_str")
+
+    # ── 2. USDA FAS PSD (fuente oficial mensual) ────────────────────────────
+    if fob_price is None and cbot_usd_ton:
         fas_data = _fetch_fas_price(cbot_usd_ton)
         if fas_data:
             fob_price = fas_data["fob_usd_ton"]
             source = fas_data["source"]
 
-    # ── 2. Scraping BCBA (diario, más fresco pero frágil) ────────────────────
+    # ── 3. Scraping BCBA (diario, proxy argentino) ──────────────────────────
     if fob_price is None:
         bcba_price = _scrape_bcba_fob()
         if bcba_price:
             fob_price = bcba_price
             source = "BCBA_pizarra"
 
-    # ── 3. Fallback: estimar basis desde CBOT + spread histórico ─────────────
+    # ── 4. Fallback: estimar basis desde CBOT + spread histórico ─────────────
     if fob_price is None and cbot_usd_ton:
-        # Uruguay basis histórico promedio: ~-20 a -30 USD/ton
-        # Ajustamos dinámicamente: en contango el basis se amplía, en backwardation se aprieta
         fob_price = cbot_usd_ton - 25.0
         source = "estimated_historical"
 

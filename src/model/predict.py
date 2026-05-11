@@ -63,6 +63,8 @@ def forecast_30d(
     model_data = joblib.load(model_path)
     model      = model_data["model"]
     features   = model_data["features"]
+    q10_model  = model_data.get("q10_model")
+    q90_model  = model_data.get("q90_model")
 
     # ── Precio base para ancla ────────────────────────────────────
     base_price  = float(df[target].iloc[-1])
@@ -71,6 +73,7 @@ def forecast_30d(
     # ✅ Buffer de precios para actualizar lags correctamente
     # Guardamos los últimos 30 precios reales + predichos
     price_buffer = list(df[target].values[-30:])
+    use_quantile_bands = (q10_model is not None) and (q90_model is not None)
 
     # Capturar features de noticias del último dato real para
     # proyectarlas de forma atenuada a lo largo del forecast
@@ -79,6 +82,8 @@ def forecast_30d(
 
     current = df.iloc[-1:].copy()
     forecasts = []
+    forecasts_q10 = []
+    forecasts_q90 = []
 
     for i in range(steps):
 
@@ -122,6 +127,23 @@ def forecast_30d(
         forecasts.append(pred)
         price_buffer.append(pred)
 
+        # ── Bandas cuantílicas (Q10/Q90) ──────────────────────────
+        if use_quantile_bands:
+            q10_log = float(q10_model.predict(X)[0])
+            q90_log = float(q90_model.predict(X)[0])
+            q10_log = max(min(q10_log, 10), -10)
+            q90_log = max(min(q90_log, 10), -10)
+            q10_raw = np.expm1(q10_log)
+            q90_raw = np.expm1(q90_log)
+            q10_anc = (0.88 * q10_raw) + (0.12 * base_price)
+            q90_anc = (0.88 * q90_raw) + (0.12 * base_price)
+            # Asegurar que Q10 ≤ pred ≤ Q90
+            forecasts_q10.append(min(q10_anc, pred))
+            forecasts_q90.append(max(q90_anc, pred))
+        else:
+            forecasts_q10.append(None)
+            forecasts_q90.append(None)
+
         current[target] = pred
 
     # ── Armar DataFrame de salida ─────────────────────────────────
@@ -131,13 +153,20 @@ def forecast_30d(
         freq="D",
     )
 
-    # Bandas de confianza calibradas con OOS MAE (honesto) + volatilidad (wide guard)
-    # OOS MAE ~24.5 USc/bu a 30 días → escalar con sqrt(t/30) para horizontes menores
-    oos_mae_usc = 24.5   # USc/bu (calibrado en OOS 20% holdout — actualizar si se re-entrena)
-    residual_vol = oos_mae_usc / base_price if base_price > 0 else daily_vol
-    band_vol = max(residual_vol / np.sqrt(30), daily_vol * 0.5)  # conservador: max de ambas
-    upper = [f * (1 + band_vol * np.sqrt(i + 1)) for i, f in enumerate(forecasts)]
-    lower = [max(f * (1 - band_vol * np.sqrt(i + 1)), 0) for i, f in enumerate(forecasts)]
+    # ── Bandas de confianza ───────────────────────────────────────
+    # Prioridad: modelos Q10/Q90 del pipeline (más honestos).
+    # Fallback: fórmula basada en OOS MAE si los modelos cuantílicos no están.
+    if use_quantile_bands:
+        upper = [q if q is not None else f for q, f in zip(forecasts_q90, forecasts)]
+        lower = [max(q, 0) if q is not None else 0 for q in forecasts_q10]
+        print("   📐 Bandas de confianza: modelos Q10/Q90")
+    else:
+        oos_mae_usc = 24.5
+        residual_vol = oos_mae_usc / base_price if base_price > 0 else daily_vol
+        band_vol = max(residual_vol / np.sqrt(30), daily_vol * 0.5)
+        upper = [f * (1 + band_vol * np.sqrt(i + 1)) for i, f in enumerate(forecasts)]
+        lower = [max(f * (1 - band_vol * np.sqrt(i + 1)), 0) for i, f in enumerate(forecasts)]
+        print("   📐 Bandas de confianza: fórmula OOS MAE (sin modelos cuantílicos)")
 
     return pd.DataFrame({
         "Date":     future_dates,

@@ -81,261 +81,281 @@
   },
   {
     "snapshot_date": "2026-04-28",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1191.25,
+    "signal": "SELL",
+    "score": 31,
     "horizons": {
       "7": {
         "target_date": "2026-05-05",
-        "forecast_price": 1293.37
+        "forecast_price": 1289.95
       },
       "14": {
         "target_date": "2026-05-12",
-        "forecast_price": 1310.89
+        "forecast_price": 1320.48
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-27",
+        "forecast_price": 1320.69
       }
     }
   },
   {
     "snapshot_date": "2026-04-29",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1190.25,
+    "signal": "SELL",
+    "score": 32,
     "horizons": {
       "7": {
         "target_date": "2026-05-06",
-        "forecast_price": 1292.98
+        "forecast_price": 1288.87
       },
       "14": {
         "target_date": "2026-05-13",
-        "forecast_price": 1310.89
+        "forecast_price": 1312.93
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-28",
+        "forecast_price": 1313.04
       }
     }
   },
   {
     "snapshot_date": "2026-04-30",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1197.75,
+    "signal": "SELL",
+    "score": 27,
     "horizons": {
       "7": {
         "target_date": "2026-05-07",
-        "forecast_price": 1294.87
+        "forecast_price": 1288.91
       },
       "14": {
         "target_date": "2026-05-14",
-        "forecast_price": 1310.89
+        "forecast_price": 1309.52
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-29",
+        "forecast_price": 1309.71
       }
     }
   },
   {
     "snapshot_date": "2026-05-01",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1195.25,
+    "signal": "SELL",
+    "score": 27,
     "horizons": {
       "7": {
         "target_date": "2026-05-08",
-        "forecast_price": 1303.13
+        "forecast_price": 1289.35
       },
       "14": {
         "target_date": "2026-05-15",
-        "forecast_price": 1311.31
+        "forecast_price": 1312.96
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-30",
+        "forecast_price": 1313.09
       }
     }
   },
   {
     "snapshot_date": "2026-05-02",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1201.5,
+    "signal": "SELL",
+    "score": 25,
     "horizons": {
       "7": {
         "target_date": "2026-05-09",
-        "forecast_price": 1309.47
+        "forecast_price": 1297.05
       },
       "14": {
         "target_date": "2026-05-16",
-        "forecast_price": 1311.31
+        "forecast_price": 1318.0
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-31",
+        "forecast_price": 1318.0
       }
     }
   },
   {
     "snapshot_date": "2026-05-03",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1187.75,
+    "signal": "SELL",
+    "score": 25,
     "horizons": {
       "7": {
         "target_date": "2026-05-10",
-        "forecast_price": 1310.89
+        "forecast_price": 1290.08
       },
       "14": {
         "target_date": "2026-05-17",
-        "forecast_price": 1311.31
+        "forecast_price": 1313.78
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-05-31",
+        "forecast_price": 1313.78
       }
     }
   },
   {
     "snapshot_date": "2026-05-04",
-    "price_at_snapshot": 1178.5,
+    "price_at_snapshot": 1211.0,
     "signal": "HOLD",
-    "score": 50,
+    "score": 43,
     "horizons": {
       "7": {
         "target_date": "2026-05-11",
-        "forecast_price": 1310.89
+        "forecast_price": 1294.17
       },
       "14": {
         "target_date": "2026-05-18",
-        "forecast_price": 1311.31
+        "forecast_price": 1320.2
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-02",
+        "forecast_price": 1319.87
       }
     }
   },
   {
     "snapshot_date": "2026-05-05",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1211.0,
+    "signal": "SELL",
+    "score": 39,
     "horizons": {
       "7": {
         "target_date": "2026-05-12",
-        "forecast_price": 1310.89
+        "forecast_price": 1286.91
       },
       "14": {
         "target_date": "2026-05-19",
-        "forecast_price": 1311.31
+        "forecast_price": 1315.6
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-02",
+        "forecast_price": 1317.87
       }
     }
   },
   {
     "snapshot_date": "2026-05-06",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1218.0,
+    "signal": "SELL",
+    "score": 25,
     "horizons": {
       "7": {
         "target_date": "2026-05-13",
-        "forecast_price": 1310.89
+        "forecast_price": 1290.55
       },
       "14": {
         "target_date": "2026-05-20",
-        "forecast_price": 1311.31
+        "forecast_price": 1292.36
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-04",
+        "forecast_price": 1292.01
       }
     }
   },
   {
     "snapshot_date": "2026-05-07",
-    "price_at_snapshot": 1178.5,
-    "signal": "HOLD",
-    "score": 50,
+    "price_at_snapshot": 1193.0,
+    "signal": "SELL",
+    "score": 30,
     "horizons": {
       "7": {
         "target_date": "2026-05-14",
-        "forecast_price": 1310.89
+        "forecast_price": 1274.07
       },
       "14": {
         "target_date": "2026-05-21",
-        "forecast_price": 1311.31
+        "forecast_price": 1291.31
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-06",
+        "forecast_price": 1291.31
       }
     }
   },
   {
     "snapshot_date": "2026-05-08",
-    "price_at_snapshot": 1178.5,
+    "price_at_snapshot": 1193.0,
     "signal": "HOLD",
-    "score": 50,
+    "score": 43,
     "horizons": {
       "7": {
         "target_date": "2026-05-15",
-        "forecast_price": 1311.31
+        "forecast_price": 1276.91
       },
       "14": {
         "target_date": "2026-05-22",
-        "forecast_price": 1311.31
+        "forecast_price": 1289.53
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-06",
+        "forecast_price": 1289.53
       }
     }
   },
   {
     "snapshot_date": "2026-05-09",
-    "price_at_snapshot": 1178.5,
+    "price_at_snapshot": 1206.25,
     "signal": "HOLD",
-    "score": 50,
+    "score": 45,
     "horizons": {
       "7": {
         "target_date": "2026-05-16",
-        "forecast_price": 1311.31
+        "forecast_price": 1291.63
       },
       "14": {
         "target_date": "2026-05-23",
-        "forecast_price": 1311.31
+        "forecast_price": 1310.43
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-07",
+        "forecast_price": 1310.41
       }
     }
   },
   {
     "snapshot_date": "2026-05-10",
-    "price_at_snapshot": 1178.5,
+    "price_at_snapshot": 1208.0,
     "signal": "HOLD",
-    "score": 50,
+    "score": 45,
     "horizons": {
       "7": {
         "target_date": "2026-05-17",
-        "forecast_price": 1311.31
+        "forecast_price": 1306.29
       },
       "14": {
         "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "forecast_price": 1316.64
       },
       "30": {
-        "target_date": "2026-05-24",
-        "forecast_price": 1311.31
+        "target_date": "2026-06-07",
+        "forecast_price": 1316.81
+      }
+    }
+  },
+  {
+    "snapshot_date": "2026-05-11",
+    "price_at_snapshot": 1208.0,
+    "signal": "SELL",
+    "score": 40,
+    "horizons": {
+      "7": {
+        "target_date": "2026-05-18",
+        "forecast_price": 1315.29
+      },
+      "14": {
+        "target_date": "2026-05-25",
+        "forecast_price": 1316.81
+      },
+      "30": {
+        "target_date": "2026-06-07",
+        "forecast_price": 1316.81
       }
     }
   },

@@ -3,36 +3,36 @@
   "factors": [
     {
       "name": "Modelo ML (XGBoost 7d)",
-      "score": -0.046,
+      "score": 0.071,
       "direction": "NEUTRO",
-      "detail": "Retorno esperado: -0.92% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 1.8%",
+      "detail": "Retorno esperado: +1.41% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 2.8%",
       "weight": 0.3,
       "raw": {
-        "expected_return": -0.0092,
-        "confidence": 0.0183,
+        "expected_return": 0.0141,
+        "confidence": 0.0283,
         "signal": "HOLD"
       }
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 1.0,
+      "score": 0.901,
       "direction": "MUY ALCISTA",
-      "detail": "Precio objetivo: 1329.2 USc/bu \u00b7 Retorno: +12.8% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1316.8 USc/bu \u00b7 Retorno: +9.0% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1329.2,
-        "return_pct": 12.79
+        "forecast": 1316.8115713575228,
+        "return_pct": 9.01
       }
     },
     {
       "name": "Demanda China",
-      "score": 0.0,
-      "direction": "NEUTRO",
-      "detail": "Score demanda: 50/100 \u00b7 Crush: None",
+      "score": -0.4,
+      "direction": "BAJISTA",
+      "detail": "Score demanda: 30/100 \u00b7 Crush: NEGATIVO \u00b7 Importaciones YoY: +0.0%",
       "weight": 0.2,
       "raw": {
-        "demand_score": 50,
-        "crush_signal": null
+        "demand_score": 30,
+        "crush_signal": "NEGATIVO"
       }
     },
     {
@@ -50,28 +50,28 @@
       "name": "An\u00e1lisis T\u00e9cnico (Soja)",
       "score": 0.2,
       "direction": "ALCISTA",
-      "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 56 \u00b7 Bollinger%: 106% \u00b7 precio > MA50; MA50 > MA200 (golden cross)",
+      "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 65 \u00b7 Bollinger%: 105% \u00b7 precio > MA50; MA50 > MA200 (golden cross)",
       "weight": 0.1,
       "raw": {
         "tech_score": 1,
-        "rsi": 55.7,
-        "bb_pct": 105.5
+        "rsi": 64.9,
+        "bb_pct": 104.7
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": -0.092,
+      "score": 0.02,
       "direction": "NEUTRO",
-      "detail": "Abr: retorno hist\u00f3rico promedio -0.5% \u00b7 \u00b11\u03c3: [-4.1%, +3.2%]",
+      "detail": "May: retorno hist\u00f3rico promedio +0.1% \u00b7 \u00b11\u03c3: [-5.5%, +5.7%]",
       "weight": 0.0,
       "raw": {
-        "month": 4,
-        "avg_pct": -0.46
+        "month": 5,
+        "avg_pct": 0.1
       }
     }
   ],
-  "composite_score": 50,
-  "composite_raw": 0.008,
+  "composite_score": 47,
+  "composite_raw": -0.052,
   "composite_signal": "HOLD",
-  "as_of": "2026-04-27"
+  "as_of": "2026-05-11"
 }

@@ -349,6 +349,7 @@
     <button class="tab-btn"        onclick="switchTab('seasonality')">📅 Estacionalidad</button>
     <button class="tab-btn"        onclick="switchTab('news-impact')">🧠 Intel LLM</button>
     <button class="tab-btn"        onclick="switchTab('historial')">📋 Historial</button>
+    <button class="tab-btn"        onclick="switchTab('intel-engine')">🔍 Intel Engine</button>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -387,9 +388,13 @@
             <div class="kpi-sub"  id="kpi-target-7d-sub">precio proyectado</div>
         </div>
         <div class="kpi">
-            <div class="kpi-label">Forecast 30d</div>
-            <div class="kpi-value" id="kpi-forecast-price">—</div>
-            <div class="kpi-sub"  id="kpi-forecast-chg">variación esperada</div>
+            <div class="kpi-label">
+                Rango 30d
+                <span id="kpi-confidence-dot" title="Semáforo de confianza"
+                      style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#bbb;margin-left:6px;vertical-align:middle"></span>
+            </div>
+            <div class="kpi-value" id="kpi-forecast-range" style="font-size:1.1rem;line-height:1.15;">—</div>
+            <div class="kpi-sub"  id="kpi-forecast-chg">dirección esperada</div>
         </div>
         <div class="kpi">
             <div class="kpi-label">Señal IA</div>
@@ -415,21 +420,201 @@
     </div>
 
     <!-- Gráfico principal + señales -->
+    <!-- ── Decision Classifier card multi-horizon + profile (Fase 1) ──── -->
+    <div id="dc-card" class="card" style="display:none;margin-bottom:16px;
+            background:#f5f7fb;border:1px solid #c0c8d8;border-left:4px solid #5c7cb0;opacity:.95;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+            <span style="font-size:.6rem;font-weight:600;color:#5c7cb0;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#e8eef7;padding:2px 6px;border-radius:3px;">
+                INFORMATIVO · NO DECISOR
+            </span>
+            <span style="font-size:.7rem;color:#6a7a92;">🎯 Decision Classifier · multi-horizonte</span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:.7rem;">
+                <label for="dc-profile-select" style="color:#666;">Perfil:</label>
+                <select id="dc-profile-select" style="font-size:.75rem;padding:2px 6px;border-radius:3px;border:1px solid #ccc;">
+                    <option value="default">Default</option>
+                    <option value="low_cost">Low cost (silo propio)</option>
+                    <option value="high_cost">High cost (storage rentado)</option>
+                    <option value="liquidity_need">Necesidad de liquidez</option>
+                    <option value="quality_aware">Riesgo de calidad</option>
+                </select>
+            </div>
+        </div>
+        <!-- Tabla por horizonte -->
+        <div style="overflow-x:auto;">
+            <table id="dc-horizons-table" style="width:100%;border-collapse:collapse;font-size:.85rem;">
+                <thead>
+                    <tr style="background:#e8eef7;color:#3b5a8a;">
+                        <th style="padding:6px 10px;text-align:left;">Horizonte</th>
+                        <th style="padding:6px 10px;text-align:right;">P(WAIT pague)</th>
+                        <th style="padding:6px 10px;text-align:center;">Advisory</th>
+                        <th style="padding:6px 10px;text-align:center;">Confianza</th>
+                        <th style="padding:6px 10px;text-align:right;">Costo esperar</th>
+                        <th style="padding:6px 10px;text-align:right;">Δ USD/ton</th>
+                        <th style="padding:6px 10px;text-align:center;">Recomendación</th>
+                    </tr>
+                </thead>
+                <tbody id="dc-horizons-tbody">
+                    <tr><td colspan="7" style="padding:14px;text-align:center;color:#888;">Cargando…</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="dc-best-horizon-note" style="margin-top:6px;font-size:.78rem;color:#3b5a8a;font-weight:600;">—</div>
+        <!-- Análogos explicativos (Fase 1.1) -->
+        <div id="dc-analogs-block" style="display:none;margin-top:12px;padding:10px 12px;
+                background:#fafcfe;border:1px dashed #b8c8d8;border-radius:5px;font-size:.82rem;color:#444;">
+            <div style="font-size:.7rem;color:#5c7cb0;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">
+                📚 Análogos históricos (capa explicativa, no predictor)
+            </div>
+            <div id="dc-analogs-narrative" style="line-height:1.5;"></div>
+        </div>
+        <!-- Costos -->
+        <div id="dc-cost-config" style="margin-top:10px;font-size:.72rem;color:#6a7a92;line-height:1.5;">—</div>
+
+        <!-- Backtest comparativo (Fase 2.3) — collapsible -->
+        <div style="margin-top:12px;">
+            <button id="dc-backtest-toggle" onclick="(function(){
+                const b=document.getElementById('dc-backtest-body');
+                const open=b.style.display!=='none';
+                b.style.display=open?'none':'block';
+                document.getElementById('dc-backtest-toggle').textContent=open?'📊 Backtest comparativo ▼':'📊 Backtest comparativo ▲';
+                if(!open && !b.dataset.loaded){ b.dataset.loaded='1'; _dcLoadBacktest(); }
+            })()" style="background:none;border:1px solid #c0c8d8;border-radius:4px;padding:4px 10px;
+                font-size:.72rem;color:#5c7cb0;cursor:pointer;width:100%;text-align:left;">
+                📊 Backtest comparativo ▼
+            </button>
+            <div id="dc-backtest-body" style="display:none;margin-top:8px;padding:10px 12px;
+                    background:#fafcfe;border:1px dashed #b8c8d8;border-radius:5px;">
+                <div style="font-size:.7rem;color:#5c7cb0;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">
+                    Comparación OOS · último año · 6 estrategias
+                </div>
+                <div id="dc-backtest-content" style="font-size:.8rem;color:#444;">Cargando…</div>
+                <div style="margin-top:8px;font-size:.68rem;color:#888;line-height:1.4;">
+                    OOS = modelo entrenado en años previos, evaluado en último año. Delta vs Always-Sell en USD/ton por decisión.
+                    Oracle = información perfecta (techo teórico). Resultados informativos, no garantizan performance futura.
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #d0d8e8;font-size:.7rem;color:#6a7a92;line-height:1.4;">
+            <b>⚠️ Caveat empírico:</b> En backtest 5y este clasificador es la mejor aproximación
+            predictiva validada (PnL −1.36 %/año vs always-sell — el menor gap entre 21 configs probadas).
+            Sigue perdiendo al always-sell. Use como segunda opinión, no como decisor único.
+        </div>
+    </div>
+
+    <!-- ── Shock Engine card (panel INFORMATIVO, no decisor) ────────── -->
+    <div id="shock-card" class="card" style="display:none;margin-bottom:16px;
+            background:#fafafa;border:1px solid #ccc;border-left:4px solid #888;opacity:.92;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+            <span style="font-size:.6rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#eee;padding:2px 6px;border-radius:3px;">
+                INFORMATIVO · NO DECISOR
+            </span>
+            <span style="font-size:.7rem;color:#888;">📊 Panel de contexto histórico</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    ⚡ <span id="shock-tag">Shock detectado</span>
+                </div>
+                <div id="shock-action" style="font-size:1rem;font-weight:600;color:#444;line-height:1.2;margin-bottom:6px;">—</div>
+                <div id="shock-message" style="font-size:.85rem;color:#444;line-height:1.4;margin-bottom:6px;">—</div>
+                <div id="shock-tactical" style="font-size:.78rem;color:#666;line-height:1.4;font-style:italic;">—</div>
+            </div>
+            <div style="flex:1;min-width:200px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    Análogos históricos
+                </div>
+                <div id="shock-n" style="font-size:1.4rem;font-weight:700;color:#333;line-height:1.1;">—</div>
+                <div id="shock-stats" style="font-size:.78rem;color:#555;line-height:1.5;margin-top:4px;">—</div>
+            </div>
+            <div style="flex:1;min-width:200px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    Características del shock
+                </div>
+                <div id="shock-type-text" style="font-size:1rem;font-weight:700;color:#333;line-height:1.2;margin-bottom:6px;">—</div>
+                <div id="shock-magnitudes" style="font-size:.78rem;color:#555;line-height:1.5;">—</div>
+            </div>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #ddd;font-size:.7rem;color:#888;line-height:1.4;">
+            <b>⚠️ Caveat empírico:</b> Backtest sobre 971 shocks históricos mostró que actuar
+            sobre la recomendación direccional de los análogos pierde valor sistemáticamente
+            (lift −1.28 % vs always-sell, p&lt;0.0001). Este panel queda como referencia
+            informativa — la decisión la toma el modelo regular en la card principal.
+        </div>
+    </div>
+
+    <!-- ── Hero card: Decisión recomendada para el productor ──────── -->
+    <div id="producer-hero" class="card" style="display:none;margin-bottom:16px;
+            background:linear-gradient(135deg,#f8fafc 0%,#eef2f7 100%);
+            border:2px solid #1976d2;border-left:6px solid #1976d2;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    Recomendación para el productor
+                </div>
+                <div id="hero-decision" style="font-size:2rem;font-weight:800;color:#1976d2;line-height:1.1;margin-bottom:6px;">—</div>
+                <div id="hero-reason" style="font-size:.9rem;color:#555;line-height:1.4;">—</div>
+            </div>
+            <div style="flex:1;min-width:200px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    Rango esperado 30d
+                </div>
+                <div id="hero-range" style="font-size:1.4rem;font-weight:700;color:#222;line-height:1.2;margin-bottom:4px;">—</div>
+                <div id="hero-range-detail" style="font-size:.75rem;color:#888;">—</div>
+            </div>
+            <div style="flex:1;min-width:200px;">
+                <div style="font-size:.7rem;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;">
+                    Régimen + confianza
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                    <span id="hero-regime-dot" style="width:14px;height:14px;border-radius:50%;background:#bbb;display:inline-block;"></span>
+                    <span id="hero-regime-text" style="font-size:1.1rem;font-weight:700;">—</span>
+                </div>
+                <div id="hero-conf-text" style="font-size:.75rem;color:#666;line-height:1.4;">—</div>
+            </div>
+        </div>
+        <div id="hero-caveat" style="display:none;margin-top:14px;padding:10px 14px;background:#fff8e1;border-left:4px solid #f0a500;border-radius:4px;font-size:.82rem;color:#5a4000;line-height:1.4;">
+            <b>⚠️ <span id="hero-caveat-title"></span></b><br>
+            <span id="hero-caveat-msg"></span>
+        </div>
+    </div>
+
     <div class="grid-2">
         <div class="card">
-            <h2>📈 Precio Real + Forecast 30 días (USD/bushel)</h2>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+                <h2 style="margin:0;">📈 Precio Real + Forecast 30 días (USD/bushel)</h2>
+                <div id="forecast-ab-toggle" style="display:none;font-size:.7rem;">
+                    <span style="color:#888;margin-right:6px;">Modelo:</span>
+                    <button data-variant="legacy"   class="ab-btn ab-active">Legacy (Ridge+XGB)</button>
+                    <button data-variant="horizons" class="ab-btn">Nuevo (retornos+conformal)</button>
+                    <button data-variant="compare"  class="ab-btn">Comparar</button>
+                </div>
+            </div>
             <div class="chart-wrap" style="position:relative;">
                 <canvas id="chart-main"></canvas>
                 <div id="chart-main-empty" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#aaa;font-size:.85rem;text-align:center;padding:20px;">
                     Sin datos de precio + forecast aún. Ejecutá el pipeline para generar el primer snapshot.
                 </div>
             </div>
-            <div style="font-size:.7rem;color:#888;margin-top:6px;display:flex;gap:16px;flex-wrap:wrap;">
+            <div style="font-size:.7rem;color:#888;margin-top:6px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
                 <span>— Precio real</span>
-                <span style="color:#2e7d32">-- Forecast Ridge+XGB</span>
-                <span style="color:#81c784">▓ Banda ±1σ (calibrada OOS MAE ~24.5 USc/bu)</span>
+                <span style="color:#2e7d32" id="legacy-legend">-- Forecast Ridge+XGB</span>
+                <span style="color:#81c784" id="legacy-band-legend">▓ Banda ±1σ (OOS MAE ~24.5 USc/bu)</span>
+                <span style="color:#1976d2;display:none;" id="horizons-legend">-- Forecast retornos+ensemble (α/δ calibrados)</span>
+                <span style="color:#64b5f6;display:none;" id="horizons-band-legend">▓ Banda Q10/Q90 conformal (cob ~80%)</span>
+                <span id="forecast-ab-meta" style="margin-left:auto;color:#888;"></span>
             </div>
         </div>
+        <style>
+            .ab-btn {
+                background:#f0f0f0; border:1px solid #ccc; padding:3px 8px;
+                border-radius:4px; cursor:pointer; font-size:.7rem; margin-left:2px;
+            }
+            .ab-btn.ab-active { background:#1976d2; color:#fff; border-color:#1976d2; }
+            .ab-btn:hover:not(.ab-active) { background:#e0e0e0; }
+        </style>
 
         <div style="display:flex;flex-direction:column;gap:14px;">
             <div class="card">
@@ -455,6 +640,23 @@
             <div class="card">
                 <h2>🚨 Alertas de Mercado <span style="font-size:.65rem;font-weight:400;color:#888;text-transform:none;letter-spacing:0">LLM mag≥3 · conf≥60%</span></h2>
                 <div id="alerts"><span class="loading">—</span></div>
+            </div>
+            <div class="card" id="optstop-card" style="opacity:.85;border-left:3px solid #aaa;">
+                <h2>🔬 Optimal stopping (research)
+                    <span style="font-size:.6rem;font-weight:400;color:#aaa;text-transform:uppercase;letter-spacing:1px;background:#f5f5f5;padding:1px 5px;border-radius:3px;margin-left:6px;">EXPERIMENTAL</span>
+                </h2>
+                <div style="font-size:.7rem;color:#888;margin-bottom:8px;line-height:1.4;">
+                    Política calculada por DP backward induction.
+                    <b>Caveat empírico</b>: en backtests multi-régimen (5 ventanas, 144 obs) coincide
+                    con "always-sell" en el 100 % de los casos. Su valor es académico —
+                    confirma que vender hoy es óptimo bajo el modelo actual.
+                </div>
+                <div id="optstop-decision" style="font-size:1.2rem;font-weight:700;margin-bottom:6px;color:#888;">—</div>
+                <div id="optstop-detail" style="font-size:.8rem;color:#555;line-height:1.4;">—</div>
+                <canvas id="optstop-sparkline" height="60" style="width:100%;margin-top:8px;"></canvas>
+                <div style="font-size:.65rem;color:#888;margin-top:4px;">
+                    Reservation price = precio mínimo a partir del cual conviene vender ese día.
+                </div>
             </div>
         </div>
     </div>
@@ -910,7 +1112,7 @@
     <div style="font-size:.76rem;color:#888;margin-bottom:10px;">Costo total de almacenar vs. ganancia esperada del modelo por horizonte</div>
     <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
       <label style="font-size:.8rem;color:#555;">Financiamiento anual (%):
-        <input id="roi-financing-input" type="number" value="0" min="0" max="30" step="0.5"
+        <input id="roi-financing-input" type="number" value="6" min="0" max="30" step="0.5"
           style="width:60px;margin-left:6px;padding:3px 6px;border:1px solid #ddd;border-radius:4px;font-size:.82rem;">
       </label>
       <button onclick="reloadStorageRoi()" style="padding:4px 12px;background:#1565c0;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.82rem;">Recalcular</button>
@@ -942,13 +1144,26 @@
 <div id="tab-trader" class="tab-panel">
 <div class="main">
 
+  <!-- ── Brief Tecnico (Trader) ──────────────────────────────────── -->
+  <div class="card" style="margin-bottom:18px;border-left:4px solid #1565c0;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <span style="font-size:.6rem;font-weight:600;color:#1565c0;text-transform:uppercase;letter-spacing:1.5px;
+                   background:#e3f2fd;padding:2px 6px;border-radius:3px;">BRIEF TECNICO</span>
+      <span style="font-size:.7rem;color:#6a7a92;">Claude Sonnet - sintesis de toda la inteligencia</span>
+      <button id="trader-syn-refresh" onclick="refreshTraderSynthesis()"
+              style="margin-left:auto;border:1px solid #1565c0;background:#fff;color:#1565c0;border-radius:4px;padding:3px 10px;font-size:.72rem;cursor:pointer;">
+        Re-generar</button>
+    </div>
+    <div id="trader-synthesis-content" style="margin-top:8px"><i style="color:#888">Cargando brief tecnico…</i></div>
+  </div>
+
   <div style="background:#e3f2fd;border-left:4px solid #1565c0;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#0d3c6e;line-height:1.7;">
-    <b>📈 Módulo Trader</b> — Herramienta para operar futuros ZS (soybeans CBOT).<br>
+    <b>Modulo Trader</b> — Herramienta para operar futuros ZS (soybeans CBOT).<br>
     Stop Loss y Take Profit calculados con ATR(14). Curva de futuros (term structure).<br>
     <span style="opacity:.7;font-size:.8rem;">Capital y % de riesgo configurables. 1 contrato ZS = 5.000 bushels.</span>
   </div>
 
-  <!-- Configuración de capital -->
+  <!-- Configuracion de capital -->
   <div class="card" style="margin-bottom:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
     <div>
       <label style="font-size:.8rem;color:#888;">Capital (USD)</label><br>
@@ -1328,6 +1543,186 @@
 </div>
 </div><!-- /tab-historial -->
 
+<!-- ══════════════════════════════════════════════════════════════════
+     TAB: Intel Engine — Market Intelligence V1
+     ══════════════════════════════════════════════════════════════════ -->
+<div id="tab-intel-engine" class="tab-panel">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         INTELLIGENCE ENGINE V2 — Multi-Agent Debate System
+         FinBERT → Claude Sonnet → Bull/Bear/Risk → Fund Manager
+         ══════════════════════════════════════════════════════════════ -->
+    <div class="card" style="margin-bottom:18px;border-left:4px solid #d32f2f;background:linear-gradient(135deg,#fff5f5 0%,#fff 100%);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
+            <span style="font-size:.7rem;font-weight:700;color:#d32f2f;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#ffebee;padding:3px 10px;border-radius:3px;">⚡ INTELLIGENCE ENGINE V2</span>
+            <span style="font-size:.7rem;color:#6a7a92;">Multi-Agent Debate · FinBERT + Sonnet + RAG</span>
+            <button id="ie2-run-btn" onclick="runIntelligenceEngine(true)"
+                    style="margin-left:auto;padding:4px 14px;font-size:.72rem;border:1px solid #d32f2f;
+                           background:#fff;color:#d32f2f;border-radius:4px;cursor:pointer;font-weight:600;">
+                ▶ Ejecutar debate
+            </button>
+        </div>
+
+        <!-- Verdict header -->
+        <div id="ie2-verdict-box" style="display:none;padding:16px;border-radius:8px;margin-bottom:14px;text-align:center;">
+            <div style="font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">VEREDICTO</div>
+            <div id="ie2-verdict-label" style="font-size:2rem;font-weight:800;letter-spacing:1px;"></div>
+            <div id="ie2-verdict-confidence" style="font-size:.85rem;margin-top:4px;"></div>
+            <div id="ie2-verdict-reasoning" style="font-size:.82rem;color:#444;margin-top:8px;line-height:1.5;"></div>
+        </div>
+
+        <!-- Price ranges -->
+        <div id="ie2-ranges" style="display:none;display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+            <div style="flex:1;min-width:180px;padding:12px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e6ee;">
+                <div style="font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">Rango 7 días</div>
+                <div id="ie2-range-7d" style="font-size:1.1rem;font-weight:700;margin-top:4px;"></div>
+            </div>
+            <div style="flex:1;min-width:180px;padding:12px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e6ee;">
+                <div style="font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">Rango 30 días</div>
+                <div id="ie2-range-30d" style="font-size:1.1rem;font-weight:700;margin-top:4px;"></div>
+            </div>
+            <div style="flex:1;min-width:180px;padding:12px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e6ee;">
+                <div style="font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:1px;">Sizing recomendado</div>
+                <div id="ie2-sizing" style="font-size:1.1rem;font-weight:700;margin-top:4px;"></div>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div id="ie2-actions" style="display:none;display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+            <div style="flex:1;min-width:200px;padding:10px 14px;background:#e8f5e9;border-radius:6px;border:1px solid #c8e6c9;">
+                <div style="font-size:.65rem;color:#2e7d32;text-transform:uppercase;letter-spacing:1px;font-weight:600;">🌾 Productores</div>
+                <div id="ie2-action-producer" style="font-size:.82rem;color:#333;margin-top:4px;line-height:1.4;"></div>
+            </div>
+            <div style="flex:1;min-width:200px;padding:10px 14px;background:#e3f2fd;border-radius:6px;border:1px solid #bbdefb;">
+                <div style="font-size:.65rem;color:#1565c0;text-transform:uppercase;letter-spacing:1px;font-weight:600;">📊 Traders</div>
+                <div id="ie2-action-trader" style="font-size:.82rem;color:#333;margin-top:4px;line-height:1.4;"></div>
+            </div>
+        </div>
+
+        <!-- Agent panels (collapsible) -->
+        <details id="ie2-agents-detail" style="margin-bottom:10px;">
+            <summary style="cursor:pointer;font-size:.75rem;font-weight:600;color:#d32f2f;">
+                VER DEBATE COMPLETO · Bull vs Bear vs Risk (click para expandir)
+            </summary>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+                <!-- Bull -->
+                <div style="flex:1;min-width:250px;padding:12px;background:#f1f8e9;border-radius:6px;border:1px solid #dcedc8;">
+                    <div style="font-size:.7rem;font-weight:700;color:#33691e;margin-bottom:8px;">🐂 BULL ANALYST</div>
+                    <div id="ie2-bull" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
+                </div>
+                <!-- Bear -->
+                <div style="flex:1;min-width:250px;padding:12px;background:#fce4ec;border-radius:6px;border:1px solid #f8bbd0;">
+                    <div style="font-size:.7rem;font-weight:700;color:#880e4f;margin-bottom:8px;">🐻 BEAR ANALYST</div>
+                    <div id="ie2-bear" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
+                </div>
+                <!-- Risk -->
+                <div style="flex:1;min-width:250px;padding:12px;background:#fff3e0;border-radius:6px;border:1px solid #ffe0b2;">
+                    <div style="font-size:.7rem;font-weight:700;color:#e65100;margin-bottom:8px;">⚖️ RISK ASSESSOR</div>
+                    <div id="ie2-risk" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
+                </div>
+            </div>
+        </details>
+
+        <!-- Pipeline info -->
+        <div id="ie2-pipeline-info" style="font-size:.68rem;color:#999;border-top:1px solid #eee;padding-top:8px;"></div>
+        <div id="ie2-loading" style="display:none;text-align:center;padding:20px;">
+            <div style="font-size:.85rem;color:#d32f2f;">⏳ Ejecutando debate multi-agente...</div>
+            <div style="font-size:.72rem;color:#999;margin-top:4px;">FinBERT clasificando → Sonnet analizando → Agentes debatiendo...</div>
+        </div>
+    </div>
+
+    <!-- ── Current Event Status ──────────────────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #ff9800;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:.6rem;font-weight:600;color:#ff9800;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#fff3e0;padding:2px 6px;border-radius:3px;">MARKET INTELLIGENCE V2</span>
+            <span style="font-size:.7rem;color:#6a7a92;">Evento narrativo actual + forecast por analogos</span>
+        </div>
+
+        <div id="ie-event-status" style="font-size:.85rem;color:#444;">Cargando evento actual…</div>
+
+        <!-- Gauges row -->
+        <div id="ie-gauges" style="display:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:16px;">
+            <div id="ie-gauge-strength" class="ie-gauge-box"></div>
+            <div id="ie-gauge-fade" class="ie-gauge-box"></div>
+            <div id="ie-gauge-speculation" class="ie-gauge-box"></div>
+            <div id="ie-gauge-data" class="ie-gauge-box"></div>
+        </div>
+        <style>
+            .ie-gauge-box {
+                flex:1;min-width:120px;padding:10px 12px;border-radius:6px;
+                background:#f9fafb;border:1px solid #e0e6ee;text-align:center;
+            }
+            .ie-gauge-label { font-size:.65rem;color:#888;text-transform:uppercase;letter-spacing:1px; }
+            .ie-gauge-value { font-size:1.5rem;font-weight:700;margin:4px 0; }
+            .ie-gauge-bar   { height:4px;border-radius:2px;background:#e0e6ee;margin-top:4px; }
+            .ie-gauge-fill  { height:100%;border-radius:2px; }
+        </style>
+    </div>
+
+    <!-- ── Daily Range Forecast (PROMINENTE) ─────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #1565c0;background:linear-gradient(135deg,#f8fbff 0%,#fff 100%);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+            <span style="font-size:.65rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#e3f2fd;padding:3px 8px;border-radius:3px;">RANGO ESPERADO HOY/MANANA</span>
+            <span style="font-size:.7rem;color:#6a7a92;">Basado en analogos narrativos (1d)</span>
+        </div>
+        <div id="ie-daily-range" style="font-size:.85rem;color:#444;">Cargando rango diario…</div>
+    </div>
+
+    <!-- ── Multi-Horizon Narrative Forecast ───────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #26a69a;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:.6rem;font-weight:600;color:#26a69a;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#e0f2f1;padding:2px 6px;border-radius:3px;">FORECAST MULTI-HORIZONTE</span>
+            <span style="font-size:.7rem;color:#6a7a92;margin-left:6px;">Rangos esperados: 1d · 7d · 15d · 30d</span>
+        </div>
+        <div id="ie-multihorizon" style="font-size:.82rem;color:#444;">Cargando forecast…</div>
+    </div>
+
+    <!-- ── Narrative Analogs ─────────────────────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #6a1b9a;">
+        <div style="margin-bottom:8px;">
+            <span style="font-size:.6rem;font-weight:600;color:#6a1b9a;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#f3e5f5;padding:2px 6px;border-radius:3px;">ANALOGOS NARRATIVOS</span>
+            <span style="font-size:.7rem;color:#6a7a92;margin-left:6px;">Eventos historicos con estado de mercado similar</span>
+        </div>
+        <div id="ie-analogs-content" style="font-size:.82rem;color:#444;">Cargando analogos…</div>
+    </div>
+
+    <!-- ── Narrative Backtest ─────────────────────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #7b1fa2;">
+        <details>
+            <summary style="cursor:pointer;font-size:.75rem;font-weight:600;color:#7b1fa2;">
+                BACKTEST NARRATIVO · OOS ultimo ano (click para expandir)
+            </summary>
+            <div id="ie-backtest-content" style="font-size:.82rem;color:#444;margin-top:10px;">Cargando backtest…</div>
+            <div style="margin-top:10px;font-size:.68rem;color:#888;line-height:1.4;">
+                Narrative-only: espera cuando evento activo + bullish + strength&gt;0.3.
+                Delta relativo a Always-Sell. Panel INFORMATIVO.
+            </div>
+        </details>
+    </div>
+
+    <!-- ── Event Memory Stats ────────────────────────────────────── -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #888;">
+        <div style="margin-bottom:8px;">
+            <span style="font-size:.6rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#f5f5f5;padding:2px 6px;border-radius:3px;">EVENT MEMORY</span>
+            <span style="font-size:.7rem;color:#6a7a92;margin-left:6px;">Base de datos de eventos detectados</span>
+        </div>
+        <div id="ie-memory-content" style="font-size:.82rem;color:#444;">Cargando event memory…</div>
+    </div>
+
+    <div style="padding:10px;font-size:.7rem;color:#6a7a92;line-height:1.4;border-top:1px solid #e0e6ee;">
+        <b>Nota:</b> El rango esperado se basa en analogos narrativos historicos (eventos similares en los ultimos 10 anos).
+        Los eventos tienden a estrechar el rango diario (std ~0.70% vs ~0.85% sin evento). La direccionalidad a 1d
+        es marginal (~50-53%). El valor informativo esta en el RANGO, no en la prediccion direccional.
+        Panel INFORMATIVO — no decisor.
+    </div>
+</div><!-- /tab-intel-engine -->
+
 <script>
 let chartMain     = null;
 let chartBacktest = null;
@@ -1383,12 +1778,48 @@ async function loadData() {
     }
 }
 
+// Estado A/B del forecast (legacy | horizons | compare)
+let _abVariant = (() => {
+    try { return localStorage.getItem("forecast_ab_variant") || "legacy"; }
+    catch (_) { return "legacy"; }
+})();
+let _lastRender = null;
+
+function setForecastVariant(v) {
+    _abVariant = v;
+    try { localStorage.setItem("forecast_ab_variant", v); } catch (_) {}
+    document.querySelectorAll("#forecast-ab-toggle .ab-btn").forEach(b => {
+        b.classList.toggle("ab-active", b.dataset.variant === v);
+    });
+    const showH = (v === "horizons" || v === "compare");
+    const showL = (v === "legacy"   || v === "compare");
+    const set = (id, on) => { const e = document.getElementById(id); if (e) e.style.display = on ? "" : "none"; };
+    set("legacy-legend",        showL);
+    set("legacy-band-legend",   showL);
+    set("horizons-legend",      showH);
+    set("horizons-band-legend", showH);
+    if (_lastRender) renderData(_lastRender);
+}
+
 function renderData(data) {
+    _lastRender = data;
     document.getElementById("last-update").textContent =
         "Actualizado: " + new Date().toLocaleString("es-UY");
 
     const hist = data.history  || [];
-    const fc   = data.forecast || [];
+    const fcLegacy   = data.forecast          || [];
+    const fcHorizons = data.forecast_horizons || [];
+
+    // Toggle A/B: solo se muestra si la variante horizons existe en disco
+    const abEl = document.getElementById("forecast-ab-toggle");
+    if (abEl) abEl.style.display = (fcHorizons.length > 0) ? "" : "none";
+    if (fcHorizons.length === 0 && _abVariant !== "legacy") setForecastVariant("legacy");
+
+    // Selección de qué fc pasar al chart según _abVariant
+    let fc;
+    if (_abVariant === "horizons")      fc = fcHorizons;
+    else if (_abVariant === "compare")  fc = fcLegacy;   // legacy va como base; horizons se agrega como overlay
+    else                                fc = fcLegacy;
 
     // ── KPIs ────────────────────────────────────────────────────
     if (hist.length > 0) {
@@ -1427,15 +1858,447 @@ function renderData(data) {
         document.getElementById("kpi-target-7d-sub").innerHTML = sub14;
     }
 
+    let _kpiSignalDiverges = false;
     if (fc.length > 0 && hist.length > 0) {
         const lastReal    = hist[hist.length - 1].Soybeans;
         const lastFc      = fc[fc.length - 1].Soybeans;
         const pct         = (lastFc - lastReal) / lastReal * 100;
         const cls         = colorClass(pct);
-        document.getElementById("kpi-forecast-price").textContent  = `$${lastFc.toFixed(2)}`;
-        document.getElementById("kpi-forecast-price").className    = `kpi-value ${cls}`;
-        document.getElementById("kpi-forecast-chg").innerHTML      =
-            `<span class="${cls}">${fmtPct(pct)}</span> en 30 días`;
+
+        // KPI honesto: rango (Q10–Q90) + dirección + semáforo de confianza.
+        // Razón del cambio: mostrar sólo "Forecast 30d = $1188" induce al
+        // productor a leer el modelo como una certeza puntual. La banda y la
+        // dirección son lo realmente accionable.
+        const fcSrc       = (fcHorizons.length > 0) ? fcHorizons : fc;
+        const lastSrc     = fcSrc[fcSrc.length - 1];
+        const hasBand     = lastSrc && lastSrc.upper != null && lastSrc.lower != null;
+        const rangeEl     = document.getElementById("kpi-forecast-range");
+        if (rangeEl) {
+            if (hasBand) {
+                rangeEl.innerHTML =
+                    `<span style="color:#888;font-weight:400;font-size:.85em">$</span>${Math.round(lastSrc.lower)} – ${Math.round(lastSrc.upper)}`;
+            } else {
+                rangeEl.textContent = `$${lastFc.toFixed(2)}`;
+            }
+            rangeEl.className = `kpi-value ${cls}`;
+        }
+        const dirLabel = pct >  1.5 ? "tendencia <b>alcista</b>"
+                        : pct < -1.5 ? "tendencia <b>bajista</b>"
+                        :              "tendencia <b>lateral</b>";
+        document.getElementById("kpi-forecast-chg").innerHTML =
+            `${dirLabel} · centro <span class="${cls}">$${lastFc.toFixed(0)}</span> (${fmtPct(pct)})`;
+
+        // Decision Classifier — panel multi-horizonte + multi-profile + análogos
+        const _dcLoadProfile = (profile) => {
+            const url = `/api/decision_classifier?profile=${encodeURIComponent(profile || "default")}`;
+            fetch(url).then(r => r.json()).then(dc => {
+                const card = document.getElementById("dc-card");
+                if (!card || !dc || !dc.ok) { if (card) card.style.display = "none"; return; }
+                card.style.display = "block";
+
+                const tbody = document.getElementById("dc-horizons-tbody");
+                if (!tbody) return;
+                const horizons = dc.horizons || {};
+                const rows = [];
+                for (const hKey of ["7d", "15d", "30d"]) {
+                    const h = horizons[hKey];
+                    if (!h || h.ok === false) {
+                        rows.push(`<tr><td style="padding:6px 10px;color:#888;">${hKey}</td>
+                                    <td colspan="4" style="padding:6px 10px;color:#888;">no disponible</td></tr>`);
+                        continue;
+                    }
+                    const p = h.prob_wait_pays_calibrated;
+                    const pct = (p * 100).toFixed(1);
+                    const advMap = {
+                        WAIT:        {label: "ESPERAR",     color: "#2e7d32"},
+                        SELL:        {label: "VENDER",      color: "#c62828"},
+                        INDIFFERENT: {label: "Sin convicción", color: "#888"},
+                    };
+                    const adv = advMap[h.decision_advisory] || {label: h.decision_advisory, color: "#888"};
+                    const confMap = {
+                        high:   {label: "Alta",  color: "#2e7d32"},
+                        medium: {label: "Media", color: "#f0a500"},
+                        low:    {label: "Baja",  color: "#888"},
+                    };
+                    const cf = confMap[h.confidence] || {label: h.confidence, color: "#888"};
+                    const probColor = p >= 0.6 ? "#2e7d32" : p <= 0.4 ? "#c62828" : "#3b5a8a";
+                    const isBest = (dc.best_horizon === hKey) ? " ⭐" : "";
+
+                    // Δ USD/ton (Fase 2.1)
+                    const deltaUsd = h.delta_predicted_usd_ton;
+                    let deltaCell = `<span style="color:#aaa;">—</span>`;
+                    if (deltaUsd != null && !isNaN(deltaUsd)) {
+                        const dColor = deltaUsd > 1 ? "#2e7d32" : deltaUsd < -1 ? "#c62828" : "#888";
+                        const dSign  = deltaUsd > 0 ? "+" : "";
+                        deltaCell = `<span style="color:${dColor};font-weight:600;">${dSign}$${deltaUsd.toFixed(1)}</span>`;
+                    }
+
+                    // Recomendación graduada (Fase 2.2 partial_decision)
+                    const partialMap = {
+                        SELL_100: {label: "Vender 100%",  color: "#c62828", bg: "#fdecea"},
+                        SELL_70:  {label: "Vender 70%",   color: "#e65100", bg: "#fff3e0"},
+                        SPLIT_50: {label: "50% / 50%",    color: "#f0a500", bg: "#fffde7"},
+                        HOLD_70:  {label: "Retener 70%",  color: "#2e7d32", bg: "#e8f5e9"},
+                        HOLD_100: {label: "Retener 100%", color: "#1b5e20", bg: "#c8e6c9"},
+                    };
+                    const pd = h.partial_decision;
+                    let partialCell = `<span style="color:#aaa;">—</span>`;
+                    if (pd && partialMap[pd]) {
+                        const pm = partialMap[pd];
+                        const sDesc = h.sell_pct != null ? ` <span style="font-size:.72rem;color:#666;">(v:${h.sell_pct}% r:${h.hold_pct}%)</span>` : "";
+                        partialCell = `<span style="background:${pm.bg};color:${pm.color};font-weight:600;
+                                        padding:2px 7px;border-radius:3px;font-size:.8rem;">${pm.label}</span>${sDesc}`;
+                    }
+
+                    rows.push(
+                        `<tr style="border-top:1px solid #e0e6ee;">` +
+                        `<td style="padding:8px 10px;font-weight:600;">${hKey}${isBest}</td>` +
+                        `<td style="padding:8px 10px;text-align:right;color:${probColor};font-weight:700;">${pct}%</td>` +
+                        `<td style="padding:8px 10px;text-align:center;color:${adv.color};font-weight:600;">${adv.label}</td>` +
+                        `<td style="padding:8px 10px;text-align:center;color:${cf.color};">${cf.label}</td>` +
+                        `<td style="padding:8px 10px;text-align:right;color:#666;">${h.cost_pct_used}%</td>` +
+                        `<td style="padding:8px 10px;text-align:right;">${deltaCell}</td>` +
+                        `<td style="padding:8px 10px;text-align:center;">${partialCell}</td>` +
+                        `</tr>`
+                    );
+                }
+                tbody.innerHTML = rows.join("");
+
+                // Best horizon
+                const bestNote = document.getElementById("dc-best-horizon-note");
+                if (bestNote) {
+                    if (dc.best_horizon) {
+                        bestNote.innerHTML = `⭐ Horizonte con más convicción: <b>${dc.best_horizon}</b> (confianza ${dc.best_horizon_confidence})`;
+                    } else {
+                        bestNote.textContent = "";
+                    }
+                }
+
+                // Análogos del horizonte ⭐
+                const ablock = document.getElementById("dc-analogs-block");
+                const anar   = document.getElementById("dc-analogs-narrative");
+                const bestH = horizons[dc.best_horizon || "30d"] || {};
+                const analogs = bestH.analogs;
+                if (ablock && anar && analogs && analogs.ok) {
+                    ablock.style.display = "block";
+                    anar.innerHTML =
+                        `${analogs.narrative}<br>` +
+                        `<span style="color:#666;font-size:.78rem;">` +
+                        `Distancia mediana: ${analogs.neighbor_dist_med} · ` +
+                        `Q10–Q90 USD/ton: ${analogs.delta_q10_usd_ton} a ${analogs.delta_q90_usd_ton} · ` +
+                        `Win rate: ${analogs.wait_win_rate_pct}%` +
+                        `</span>`;
+                } else if (ablock) {
+                    ablock.style.display = "none";
+                }
+
+                // Cost config
+                const ccEl = document.getElementById("dc-cost-config");
+                if (ccEl) {
+                    ccEl.innerHTML =
+                        `<b>Perfil ${dc.profile_name || "default"}:</b> ` +
+                        `storage $${dc.storage_per_ton_month}/ton/mes · ` +
+                        `financiación ${(dc.financing_annual*100).toFixed(1)}% anual · ` +
+                        `quality risk $${dc.quality_risk_per_month || 0}/ton/mes · ` +
+                        `precio referencia $${dc.price_per_ton_used}/ton`;
+                }
+            }).catch(() => {});
+        };
+        // Carga inicial con default
+        _dcLoadProfile("default");
+        // Re-carga al cambiar selector
+        const dcSel = document.getElementById("dc-profile-select");
+        if (dcSel) {
+            dcSel.addEventListener("change", (e) => {
+                _dcLoadProfile(e.target.value);
+                // Si el backtest ya estaba abierto, recargar con el nuevo profile
+                const bBody = document.getElementById("dc-backtest-body");
+                if (bBody && bBody.style.display !== "none") {
+                    bBody.dataset.loaded = "";
+                    _dcLoadBacktest();
+                }
+            });
+        }
+
+        // Backtest comparativo (Fase 2.3)
+        const _dcLoadBacktest = () => {
+            const profile = (document.getElementById("dc-profile-select") || {}).value || "default";
+            const el = document.getElementById("dc-backtest-content");
+            if (!el) return;
+            el.textContent = "Cargando…";
+            fetch(`/api/backtest_decision?profile=${encodeURIComponent(profile)}`)
+                .then(r => r.json())
+                .then(bt => {
+                    if (!bt || !bt.ok) {
+                        el.textContent = bt?.error || "No disponible";
+                        return;
+                    }
+                    const horizons = bt.horizons || {};
+                    const stratOrder = ["always_sell","always_wait","split_50","oracle","model_binary","model_partial"];
+                    const stratLabels = {
+                        always_sell:   "Always-Sell (baseline)",
+                        always_wait:   "Always-Wait",
+                        split_50:      "Split 50/50",
+                        oracle:        "Oracle (techo)",
+                        model_binary:  "Modelo binario",
+                        model_partial: "Modelo graduado ★",
+                    };
+                    const stratColors = {
+                        always_sell:   "#888",
+                        always_wait:   "#3b5a8a",
+                        split_50:      "#f0a500",
+                        oracle:        "#1b5e20",
+                        model_binary:  "#5c7cb0",
+                        model_partial: "#c62828",
+                    };
+
+                    let html = `<div style="overflow-x:auto;">`;
+                    for (const hKey of ["7d","15d","30d"]) {
+                        const hd = horizons[hKey];
+                        if (!hd || !hd.ok) continue;
+                        const strats = hd.strategies || {};
+                        html += `<div style="margin-bottom:14px;">
+                            <div style="font-size:.75rem;font-weight:700;color:#3b5a8a;margin-bottom:4px;">
+                                Horizonte ${hKey} · ${hd.n_decisions} decisiones OOS · costo ${hd.cost_pct}%
+                            </div>
+                            <table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+                            <thead><tr style="background:#edf1f7;color:#3b5a8a;">
+                                <th style="padding:4px 8px;text-align:left;">Estrategia</th>
+                                <th style="padding:4px 8px;text-align:right;">Δ medio</th>
+                                <th style="padding:4px 8px;text-align:right;">Δ total</th>
+                                <th style="padding:4px 8px;text-align:right;">Win%</th>
+                                <th style="padding:4px 8px;text-align:right;">Anual.</th>
+                            </tr></thead><tbody>`;
+                        for (const s of stratOrder) {
+                            const sd = strats[s];
+                            if (!sd) continue;
+                            const mean = sd.mean_pnl_usd_ton;
+                            const mColor = mean > 0.5 ? "#2e7d32" : mean < -0.5 ? "#c62828" : "#555";
+                            const mSign  = mean > 0 ? "+" : "";
+                            const ann = sd.annualized_excess_usd_ton;
+                            const aColor = ann > 0 ? "#2e7d32" : ann < 0 ? "#c62828" : "#555";
+                            const aSign  = ann > 0 ? "+" : "";
+                            const isStar = s === "model_partial";
+                            html += `<tr style="border-top:1px solid #e8eef4;${isStar?'background:#fff8f0;':''}">
+                                <td style="padding:4px 8px;color:${stratColors[s]};font-weight:${isStar?700:400};">
+                                    ${stratLabels[s]}</td>
+                                <td style="padding:4px 8px;text-align:right;color:${mColor};font-weight:600;">
+                                    ${mSign}$${mean.toFixed(2)}</td>
+                                <td style="padding:4px 8px;text-align:right;color:${mColor};">
+                                    ${mSign}$${sd.total_pnl_usd_ton.toFixed(1)}</td>
+                                <td style="padding:4px 8px;text-align:right;color:#555;">${sd.win_rate_pct}%</td>
+                                <td style="padding:4px 8px;text-align:right;color:${aColor};">
+                                    ${aSign}$${ann.toFixed(1)}</td>
+                            </tr>`;
+                        }
+                        html += `</tbody></table></div>`;
+                    }
+                    html += `</div>`;
+                    html += `<div style="font-size:.7rem;color:#888;margin-top:4px;">
+                        Generado: ${bt.as_of || "?"} · perfil: ${bt.profile_name || profile}
+                        ${bt.source === "artifacts_cache" ? " · cache" : " · live"}
+                    </div>`;
+                    el.innerHTML = html;
+                })
+                .catch(() => { if (el) el.textContent = "Error al cargar backtest"; });
+        };
+
+        // Shock Engine — card prominente cuando hay shock activo
+        fetch("/api/active_shock").then(r => r.json()).then(sh => {
+            const card = document.getElementById("shock-card");
+            if (!card || !sh || !sh.current || !sh.current.is_shock) {
+                if (card) card.style.display = "none";
+                return;
+            }
+            card.style.display = "block";
+            const cur = sh.current;
+            const rec = sh.recommendation || {};
+            const stats = sh.analog_stats || {};
+
+            // Action descriptiva (nuevo formato INFO_*: NO accionable)
+            const actionMap = {
+                INFO_BULLISH_PERSISTENT: { label: "Patrón histórico: shock alcista persistente", color: "#444" },
+                INFO_BULLISH_FADES:      { label: "Patrón histórico: shock alcista que se diluye", color: "#444" },
+                INFO_BEARISH_DEEPENS:    { label: "Patrón histórico: caída que se profundiza",      color: "#444" },
+                INFO_AMBIGUOUS:          { label: "Patrón histórico: outcomes mixtos",               color: "#444" },
+                INSUFFICIENT_ANALOGS:    { label: "Pocos análogos disponibles",                       color: "#888" },
+                NO_SHOCK:                { label: "Sin shock activo",                                 color: "#888" },
+            };
+            const act = actionMap[rec.action] || { label: rec.action || "?", color: "#888" };
+            const aEl = document.getElementById("shock-action");
+            if (aEl) { aEl.textContent = act.label; aEl.style.color = act.color; }
+
+            const tag = document.getElementById("shock-tag");
+            if (tag) tag.textContent = `Shock ${cur.shock_direction === "up" ? "alcista" : "bajista"} · ${cur.shock_type}`;
+
+            const m = document.getElementById("shock-message");
+            if (m) m.textContent = rec.message || "";
+            const t = document.getElementById("shock-tactical");
+            if (t) t.textContent = rec.tactical ? "💡 " + rec.tactical : "";
+
+            // Análogos
+            const nEl = document.getElementById("shock-n");
+            if (nEl) nEl.innerHTML = `${stats.n || 0} <span style="font-size:.65em;font-weight:400;color:#7a4400">eventos similares</span>`;
+            const sEl = document.getElementById("shock-stats");
+            if (sEl) {
+                const lines = [];
+                if (stats.peak_day_med != null)
+                    lines.push(`Peak típico: <b>día ${stats.peak_day_med}</b> (q25=${stats.peak_day_q25}, q75=${stats.peak_day_q75})`);
+                if (stats.ret_30d_med_pct != null)
+                    lines.push(`Ret 30d esperado: <b>${stats.ret_30d_med_pct >= 0 ? "+" : ""}${stats.ret_30d_med_pct.toFixed(1)}%</b> (Q25=${stats.ret_30d_q25_pct.toFixed(1)}%, Q75=${stats.ret_30d_q75_pct.toFixed(1)}%)`);
+                if (stats.survived_30d_pct != null)
+                    lines.push(`Sobrevive 30d: <b>${stats.survived_30d_pct.toFixed(0)}%</b>`);
+                if (stats.confidence)
+                    lines.push(`Confianza: <b>${stats.confidence}</b>`);
+                sEl.innerHTML = lines.join("<br>");
+            }
+
+            // Tipo + magnitudes
+            const tt = document.getElementById("shock-type-text");
+            if (tt) {
+                const typeMap = {
+                    oil_driven: "Driven por petróleo",
+                    soyoil_driven: "Driven por biocombustibles",
+                    speculative_up: "Especulativo (alcista)",
+                    speculative_down: "Especulativo (bajista)",
+                    oil_collapse: "Caída petrolera",
+                };
+                tt.textContent = typeMap[cur.shock_type] || cur.shock_type;
+            }
+            const sm = document.getElementById("shock-magnitudes");
+            if (sm) {
+                sm.innerHTML =
+                    `Soja 5d: <b>${cur.ret_5d_pct >= 0 ? "+" : ""}${cur.ret_5d_pct}%</b> ` +
+                    `(threshold ${cur.thr_spike_pct}%)<br>` +
+                    `Oil 5d: <b>${cur.oil_5d_pct >= 0 ? "+" : ""}${cur.oil_5d_pct}%</b><br>` +
+                    `SoyOil 5d: <b>${cur.soyoil_5d_pct >= 0 ? "+" : ""}${cur.soyoil_5d_pct}%</b>`;
+            }
+        }).catch(() => {});
+
+        // Semáforo de confianza + Hero card del productor
+        // Agrupa /api/regime + /api/economic_utility + datos de la curva forecast
+        Promise.all([
+            fetch("/api/regime").then(r => r.json()).catch(() => null),
+            fetch("/api/economic_utility?storage=6&financing=0.08&horizon=30").then(r => r.json()).catch(() => null),
+        ]).then(([reg, util]) => {
+            // Mini dot del KPI (legacy)
+            if (reg && reg.ok) {
+                const lvl = reg.confidence?.level || "medium";
+                const colorMap = { high: "#2e7d32", medium: "#f0a500", low: "#c62828" };
+                const dot = document.getElementById("kpi-confidence-dot");
+                if (dot) {
+                    dot.style.background = colorMap[lvl] || "#bbb";
+                    dot.title = `${reg.confidence?.label || ""} — ${reg.confidence?.reason || ""}`;
+                }
+            }
+            // Hero card
+            const hero = document.getElementById("producer-hero");
+            if (!hero || !reg || !reg.ok || !util || !util.ok) return;
+            hero.style.display = "block";
+
+            // Decisión grande
+            const decMap = {
+                SELL_NOW:    {label: "VENDER hoy",      color: "#c62828"},
+                WAIT:        {label: "ESPERAR",          color: "#2e7d32"},
+                INDIFFERENT: {label: "Sin convicción",   color: "#f0a500"},
+            };
+            const dInfo = decMap[util.decision] || {label: util.decision, color: "#888"};
+            const decEl = document.getElementById("hero-decision");
+            if (decEl) { decEl.textContent = dInfo.label; decEl.style.color = dInfo.color; }
+            const rEl = document.getElementById("hero-reason");
+            if (rEl) rEl.textContent = util.decision_reason || "";
+
+            // Rango esperado
+            const wq = util.wait_quantiles_usd_ton || {};
+            const range = document.getElementById("hero-range");
+            if (range && wq.q05 != null && wq.q95 != null) {
+                range.innerHTML = `<span style="color:#888;font-weight:400;font-size:.85em">$</span>${Math.round(wq.q05)} – ${Math.round(wq.q95)}<span style="color:#888;font-weight:400;font-size:.6em;margin-left:4px;">USD/ton</span>`;
+            }
+            const rdEl = document.getElementById("hero-range-detail");
+            if (rdEl && util.expected_value_wait_usd_ton != null) {
+                const sign = util.diff_wait_minus_sell_usd_ton >= 0 ? "+" : "";
+                rdEl.innerHTML = `Esperar: $${util.expected_value_wait_usd_ton} · vender hoy: $${util.expected_value_sell_now_usd_ton} · Δ <b>${sign}$${util.diff_wait_minus_sell_usd_ton}</b> · P(esperar gana) ${util.prob_wait_better_pct}%`;
+            }
+
+            // Régimen + confianza
+            const regimeName = reg.regime?.regime || "?";
+            const regColors = { calm: "#2e7d32", trend: "#1976d2", choppy: "#f0a500", shock: "#c62828" };
+            const dotEl = document.getElementById("hero-regime-dot");
+            if (dotEl) dotEl.style.background = regColors[regimeName] || "#bbb";
+            const rtEl = document.getElementById("hero-regime-text");
+            if (rtEl) rtEl.textContent = regimeName;
+            const ctEl = document.getElementById("hero-conf-text");
+            if (ctEl) {
+                const cf = reg.confidence || {};
+                ctEl.innerHTML = `<b>${cf.label || ""}</b><br>${cf.reason || ""}`;
+            }
+
+            // Caveat banner condicional (régimen alcista)
+            const caveatEl = document.getElementById("hero-caveat");
+            if (caveatEl) {
+                if (reg.caveat) {
+                    caveatEl.style.display = "block";
+                    document.getElementById("hero-caveat-title").textContent = reg.caveat.title || "Atención";
+                    document.getElementById("hero-caveat-msg").textContent   = reg.caveat.message || "";
+                } else {
+                    caveatEl.style.display = "none";
+                }
+            }
+        }).catch(() => {});
+
+        // Optimal stopping decision card (DP backward induction)
+        fetch("/api/optimal_stopping?horizon=30&n_paths=600").then(r => r.json()).then(d => {
+            if (!d.ok) return;
+            const decEl = document.getElementById("optstop-decision");
+            const detEl = document.getElementById("optstop-detail");
+            const colorMap = { SELL_NOW: "#c62828", WAIT: "#2e7d32", INDIFFERENT: "#f0a500" };
+            const labelMap = { SELL_NOW: "VENDER hoy", WAIT: "ESPERAR", INDIFFERENT: "Indeciso" };
+            if (decEl) {
+                decEl.textContent = labelMap[d.decision_now] || d.decision_now;
+                decEl.style.color = colorMap[d.decision_now] || "#888";
+            }
+            if (detEl) {
+                detEl.innerHTML =
+                    `Precio hoy: <b>$${d.p_now_usd_ton}</b>/ton · ` +
+                    `Reservation: <b>$${d.reservation_today_usd_ton}</b>/ton<br>` +
+                    `E[V*] óptimo: <b>$${d.expected_value_optimal_usd_ton}</b> · ` +
+                    `vs always-wait: <span style="color:${d.lift_optimal_vs_wait_pct >= 0 ? '#2e7d32' : '#c62828'}">${d.lift_optimal_vs_wait_pct >= 0 ? '+' : ''}${d.lift_optimal_vs_wait_pct}%</span>`;
+            }
+            // Sparkline del reservation curve
+            const cv = document.getElementById("optstop-sparkline");
+            if (cv && d.reservation_curve && d.reservation_curve.length > 0) {
+                const ctx = cv.getContext("2d");
+                const W = cv.clientWidth || 240, H = 60;
+                cv.width = W * 2; cv.height = H * 2;
+                ctx.scale(2, 2);
+                ctx.clearRect(0, 0, W, H);
+                const arr = d.reservation_curve;
+                const min = Math.min(...arr, d.p_now_usd_ton);
+                const max = Math.max(...arr, d.p_now_usd_ton);
+                const range = Math.max(max - min, 1);
+                // Linea reservation
+                ctx.strokeStyle = "#1976d2";
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                arr.forEach((v, i) => {
+                    const x = (i / (arr.length - 1)) * W;
+                    const y = H - ((v - min) / range) * (H - 6) - 3;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                });
+                ctx.stroke();
+                // Línea horizontal del precio actual
+                const yp = H - ((d.p_now_usd_ton - min) / range) * (H - 6) - 3;
+                ctx.strokeStyle = "rgba(198,40,40,.7)";
+                ctx.setLineDash([3, 3]);
+                ctx.beginPath(); ctx.moveTo(0, yp); ctx.lineTo(W, yp); ctx.stroke();
+                ctx.setLineDash([]);
+                // Etiquetas
+                ctx.font = "10px sans-serif"; ctx.fillStyle = "#888";
+                ctx.fillText("d1", 2, H - 2); ctx.fillText("d30", W - 22, H - 2);
+                ctx.fillStyle = "#1976d2"; ctx.fillText(`reservation`, 2, 12);
+                ctx.fillStyle = "#c62828"; ctx.fillText(`precio actual`, W - 80, yp - 3);
+            }
+        }).catch(() => {});
 
         // ── Nota de consistencia ────────────────────────────────
         // Solo muestra cuando el forecast de precios y la señal del clasificador
@@ -1447,6 +2310,7 @@ function renderData(data) {
         const forecastDn = pct < -3.0;  // forecast baja más del 3%
         const diverges   = (signal === "SELL" && forecastUp) || (signal === "BUY" && forecastDn);
         noteEl.style.display = diverges ? "block" : "none";
+        _kpiSignalDiverges = diverges;
         if (diverges) {
             const sigLabel = signal === "SELL"
                 ? "bajista (SELL) — anticipa baja en 14 días"
@@ -1460,7 +2324,9 @@ function renderData(data) {
     }
     if (data.model_signal) {
         const { signal, expected_return, confidence } = data.model_signal;
-        document.getElementById("kpi-signal").innerHTML  = signalBadge(signal);
+        const _sigEl = document.getElementById("kpi-signal");
+        _sigEl.innerHTML = signalBadge(signal)
+            + (_kpiSignalDiverges ? '<span title="Divergencia: señal corto plazo y forecast 30d van en sentido opuesto" style="color:#f57c00;margin-left:5px;font-size:.85rem;vertical-align:middle;">⚠</span>' : '');
         const probUp = Math.round((0.5 + expected_return) * 100);
         document.getElementById("kpi-signal-sub").textContent =
             `P(sube): ${probUp}% | Conf: ${(confidence * 100).toFixed(0)}%`;
@@ -1507,37 +2373,38 @@ function renderData(data) {
     }
 
     // ── Panel señal noticias ────────────────────────────────────
-    // Preferimos LLM (Claude Haiku) sobre VADER cuando hay datos disponibles:
-    // VADER es léxico y suele dar señales suaves y a veces engañosas.
+    // Preferimos LLM (Claude Haiku) sobre VADER cuando hay datos disponibles.
+    // renderData() NO es async — usamos .then() en vez de await.
     const newsSignalEl = document.getElementById("news_signal");
     const clsMap = { ALCISTA: "badge-bull", BAJISTA: "badge-bear", NEUTRAL: "badge-neut" };
-    let signalRendered = false;
-    try {
-        const intel = await fetch("/api/news_intel").then(r => r.json()).catch(() => null);
-        const composite = intel && intel.ok ? intel.composite : null;
-        const nArts     = intel && intel.ok ? intel.n_articles : 0;
-        if (composite !== null && composite !== undefined && nArts >= 5) {
-            const lbl = composite > 0.05 ? "ALCISTA" : composite < -0.05 ? "BAJISTA" : "NEUTRAL";
-            const cls = clsMap[lbl];
-            newsSignalEl.innerHTML = `
-                <div style="margin-bottom:6px">
-                    <span class="badge ${cls}">${lbl}</span>
-                    <span style="font-size:.7rem;color:#888;margin-left:6px">composite ${(composite>=0?"+":"")+composite.toFixed(3)}</span>
-                </div>
-                <div style="font-size:.78rem;color:#666">
-                    ${nArts} artículos analizados por Claude Haiku.
-                    ${intel.n_high_impact ? `<b>${intel.n_high_impact}</b> de alto impacto.` : ""}
-                </div>`;
-            signalRendered = true;
-        }
-    } catch (e) { /* fallback to VADER */ }
 
-    if (!signalRendered && data.signal) {
+    // VADER fallback (síncrono, se ve mientras llega el intel LLM)
+    const renderVaderFallback = () => {
+        if (!data.signal) return;
         const cls = clsMap[data.signal.signal] || "badge-neut";
         newsSignalEl.innerHTML = `
             <div style="margin-bottom:6px"><span class="badge ${cls}">${data.signal.signal}</span></div>
             <div style="font-size:.82rem;color:#666">${data.signal.reason} <span style="color:#aaa;font-size:.7rem">(VADER fallback)</span></div>`;
-    }
+    };
+    renderVaderFallback();
+
+    // Pisamos con LLM si hay datos (async fire-and-forget)
+    fetch("/api/news_intel").then(r => r.json()).then(intel => {
+        const composite = intel && intel.ok ? intel.composite : null;
+        const nArts     = intel && intel.ok ? intel.n_articles : 0;
+        if (composite === null || composite === undefined || nArts < 5) return;
+        const lbl = composite > 0.05 ? "ALCISTA" : composite < -0.05 ? "BAJISTA" : "NEUTRAL";
+        const cls = clsMap[lbl];
+        newsSignalEl.innerHTML = `
+            <div style="margin-bottom:6px">
+                <span class="badge ${cls}">${lbl}</span>
+                <span style="font-size:.7rem;color:#888;margin-left:6px">composite ${(composite>=0?"+":"")+composite.toFixed(3)}</span>
+            </div>
+            <div style="font-size:.78rem;color:#666">
+                ${nArts} artículos analizados por Claude Haiku.
+                ${intel.n_high_impact ? `<b>${intel.n_high_impact}</b> de alto impacto.` : ""}
+            </div>`;
+    }).catch(() => { /* fallback ya pintado */ });
 
     // ── Alertas de mercado ──────────────────────────────────────
     const alertsEl = document.getElementById("alerts");
@@ -1636,7 +2503,24 @@ function renderData(data) {
     // Panel actualizado por loadNextWasde() al cargar la página
 
     // ── Gráfico principal ───────────────────────────────────────
-    buildMainChart(hist, fc);
+    // Si la variante activa es horizons, usamos su última obs para el KPI;
+    // si es compare, mostramos el meta del A/B (Δ entre ambos forecasts a 30d).
+    const metaEl = document.getElementById("forecast-ab-meta");
+    if (metaEl) {
+        if (_abVariant === "compare" && fcLegacy.length && fcHorizons.length) {
+            const dL = fcLegacy[fcLegacy.length - 1].Soybeans;
+            const dH = fcHorizons[fcHorizons.length - 1].Soybeans;
+            metaEl.textContent = `Δ legacy vs nuevo (30d): $${(dL - dH).toFixed(2)}`;
+        } else if (_abVariant === "horizons" && fcHorizons.length) {
+            metaEl.textContent = "modelo nuevo (en evaluación A/B)";
+        } else {
+            metaEl.textContent = "";
+        }
+    }
+
+    // En modo compare pasamos ambas series para overlay
+    const overlayFc = (_abVariant === "compare") ? fcHorizons : null;
+    buildMainChart(hist, fc, overlayFc);
 
     // ── Noticias ────────────────────────────────────────────────
     const articles = data.articles || [];
@@ -1664,13 +2548,27 @@ function renderData(data) {
 
 // ── Gráfico principal ──────────────────────────────────────────────
 
-function buildMainChart(hist, fc) {
+function buildMainChart(hist, fc, overlayFc) {
     const emptyEl  = document.getElementById("chart-main-empty");
     const canvasEl = document.getElementById("chart-main");
     const hasData  = (hist && hist.length > 0) || (fc && fc.length > 0);
     if (emptyEl)  emptyEl.style.display  = hasData ? "none" : "flex";
     if (canvasEl) canvasEl.style.display = hasData ? "block" : "none";
     if (!hasData) { if (chartMain) { chartMain.destroy(); chartMain = null; } return; }
+    // Shift forecast so it starts exactly at the last historical price (no visual jump)
+    const _shiftFc = (arr) => {
+        if (!arr || arr.length === 0 || hist.length === 0) return arr;
+        const shift = hist[hist.length - 1].Soybeans - arr[0].Soybeans;
+        if (Math.abs(shift) <= 0.01) return arr;
+        return arr.map(p => ({
+            ...p,
+            Soybeans: p.Soybeans + shift,
+            upper: p.upper != null ? p.upper + shift : null,
+            lower: p.lower != null ? p.lower + shift : null,
+        }));
+    };
+    fc        = _shiftFc(fc);
+    overlayFc = _shiftFc(overlayFc);
     const hasBands = fc.length > 0 && fc[0].upper != null;
     const labels   = [...hist.map(d => d.Date), ...fc.map(d => d.Date)];
     const real     = [...hist.map(d => d.Soybeans), ...fc.map(() => null)];
@@ -1716,6 +2614,36 @@ function buildMainChart(hist, fc) {
             borderWidth: 1, borderDash: [3,3], pointRadius: 0,
             tension: 0.3, fill: false, spanGaps: false, order: 1,
         });
+    }
+
+    // ── Overlay (modo compare): forecast horizons en azul ─────────────
+    if (overlayFc && overlayFc.length > 0) {
+        const fcastH = [
+            ...hist.map((d, i) => i === anchor ? d.Soybeans : null),
+            ...overlayFc.map(d => d.Soybeans),
+        ];
+        datasets.push({
+            label: "Forecast (nuevo)", data: fcastH,
+            borderColor: "#1976d2", backgroundColor: "rgba(25,118,210,.07)",
+            borderWidth: 2, borderDash: [2,2], pointRadius: 2,
+            tension: 0.3, fill: false, spanGaps: false, order: 2,
+        });
+        if (overlayFc[0].upper != null) {
+            const upH = [...hist.map((d,i) => i === anchor ? d.Soybeans : null), ...overlayFc.map(d => d.upper)];
+            const loH = [...hist.map((d,i) => i === anchor ? d.Soybeans : null), ...overlayFc.map(d => d.lower)];
+            datasets.push({
+                label: "Banda nueva sup", data: upH,
+                borderColor: "rgba(25,118,210,.25)", backgroundColor: "rgba(25,118,210,.07)",
+                borderWidth: 1, borderDash: [2,4], pointRadius: 0,
+                tension: 0.3, fill: false, spanGaps: false, order: 1,
+            });
+            datasets.push({
+                label: "Banda nueva inf", data: loH,
+                borderColor: "rgba(25,118,210,.25)", backgroundColor: "rgba(25,118,210,.07)",
+                borderWidth: 1, borderDash: [2,4], pointRadius: 0,
+                tension: 0.3, fill: false, spanGaps: false, order: 1,
+            });
+        }
     }
 
     if (chartMain) chartMain.destroy();
@@ -1874,6 +2802,13 @@ function renderBacktest(d) {
 
 // ── Init ───────────────────────────────────────────────────────────
 
+// Toggle A/B forecast: bind clicks (los botones se ocultan/muestran en renderData)
+document.querySelectorAll("#forecast-ab-toggle .ab-btn").forEach(btn => {
+    btn.addEventListener("click", () => setForecastVariant(btn.dataset.variant));
+});
+// Aplicar variante persistida al primer render (las clases active se sincronizan)
+setForecastVariant(_abVariant);
+
 loadData();
 setInterval(loadData, 5 * 60 * 1000);
 
@@ -1896,14 +2831,15 @@ function switchTab(name) {
     document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
     document.getElementById("tab-" + name).classList.add("active");
-    const tabs = ["principal", "producer", "trader", "seasonality", "news-impact"];
+    const tabs = ["principal", "producer", "trader", "seasonality", "news-impact", "historial", "intel-engine"];
     const idx  = tabs.indexOf(name);
     const btns = document.querySelectorAll(".tab-btn");
     if (btns[idx]) btns[idx].classList.add("active");
     if (name === "news-impact") { loadNewsImpact(); loadNewsIntel(); loadSynthesis(); }
     if (name === "seasonality") loadSeasonality();
     if (name === "producer")    loadProducer();
-    if (name === "trader")      loadTrader();
+    if (name === "trader")      { loadTrader(); loadTraderSynthesis(); }
+    if (name === "intel-engine") { loadIntelEngine(); loadIntelligenceEngineV2(false); }
 }
 
 // ── Módulo Productor ────────────────────────────────────────────────
@@ -1926,8 +2862,8 @@ async function loadProducer() {
 async function loadProducerBestWindow() {
     try {
         const d = await fetch("/api/monthly_forecast").then(r => r.json());
-        if (!d.ok || !d.history || d.history.length < 7) return;
-        const points = d.history;  // [{Date, point, lo, hi}]
+        if (!d.ok || !d.forecast || d.forecast.length < 7) return;
+        const points = d.forecast;  // [{Date, point, lo, hi}]
         // Tomamos el peak (mejor precio proyectado) en próximos 90d
         const peak = points.reduce((a, b) => (b.point > a.point ? b : a), points[0]);
         const todayPx = points[0].point;
@@ -2073,7 +3009,7 @@ function renderProducer(d) {
     }
 
     // Storage ROI — cargar con precio local actual
-    const localPrice   = d.sell_signal?.prices?.local_usd_ton;
+    const localPrice   = d.prices?.local_usd_ton ?? d.sell_signal?.prices?.local_usd_ton;
     const forecastRet  = d.sell_signal?.price_vs_avg_pct;
     _currentLocalPrice     = localPrice;
     _currentForecastReturn = forecastRet;
@@ -3112,6 +4048,462 @@ function renderSeasonality(d) {
 async function loadNewsImpact() { return; }
 async function trainNewsImpact() { return; }
 
+// ══════════════════════════════════════════════════════════════════════
+// ── Intel Engine (Market Intelligence V1) ─────────────────────────────
+// ══════════════════════════════════════════════════════════════════════
+
+let _ieLoaded = false;
+
+function loadIntelEngine() {
+    if (!_ieLoaded) {
+        _ieLoaded = true;
+        _ieLoadCurrentEvent();
+        _ieLoadMemory();
+        _ieLoadNarrativeForecast();
+    }
+}
+
+// ── Current Event ─────────────────────────────────────────────────
+function _ieLoadCurrentEvent() {
+    const el = document.getElementById("ie-event-status");
+    fetch("/api/intel/current_event").then(r => r.json()).then(ev => {
+        if (!ev || !ev.ok) { el.textContent = ev?.error || "No disponible"; return; }
+
+        const dirMap = {bullish:{es:"ALCISTA",color:"#2e7d32"},bearish:{es:"BAJISTA",color:"#c62828"},neutral:{es:"NEUTRAL",color:"#888"}};
+        const dir = dirMap[ev.direction] || dirMap.neutral;
+        const typeLabels = {
+            oil_energy:"Energía/Biofuel", china_demand:"China/Demanda", weather:"Clima",
+            supply_surprise:"Supply/WASDE", policy_shift:"Política", macro_fx:"Macro/FX",
+            geopolitical:"Geopolítica", speculative_mom:"Momentum especulativo", mixed:"Mixto/Bajo"
+        };
+
+        let statusHtml = `<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">`;
+        if (ev.is_event) {
+            statusHtml += `<div style="background:${dir.color};color:#fff;padding:6px 14px;border-radius:5px;font-weight:700;font-size:.95rem;">
+                ⚡ EVENTO ACTIVO: ${dir.es}</div>`;
+        } else {
+            statusHtml += `<div style="background:#e0e6ee;color:#555;padding:6px 14px;border-radius:5px;font-weight:600;font-size:.9rem;">
+                Sin evento notable hoy</div>`;
+        }
+        statusHtml += `<div style="font-size:.8rem;color:#555;">
+            Tipo: <b>${typeLabels[ev.event_type] || ev.event_type}</b> ·
+            Driver: <b>${ev.primary_driver}</b> / ${ev.secondary_driver} ·
+            Z-max: ${ev.max_z_score} ·
+            ${ev.as_of}
+        </div></div>`;
+        el.innerHTML = statusHtml;
+
+        // Gauges
+        const gaugesEl = document.getElementById("ie-gauges");
+        if (gaugesEl) {
+            gaugesEl.style.display = "flex";
+            _ieRenderGauge("ie-gauge-strength", "Fuerza narrativa", ev.narrative_strength, "#ff9800");
+            _ieRenderGauge("ie-gauge-fade", "Riesgo de fade", ev.fade_risk, "#e53935");
+            _ieRenderGauge("ie-gauge-speculation", "Especulación", ev.speculation_level, "#7b1fa2");
+            _ieRenderGauge("ie-gauge-data", "Confirmación datos", ev.data_confirmation, "#2e7d32");
+        }
+
+        // Analogs
+        const anEl = document.getElementById("ie-analogs-content");
+        if (anEl && ev.analogs && ev.analogs.ok) {
+            const a = ev.analogs;
+            let html = `<div style="line-height:1.6;margin-bottom:10px;">${a.narrative}</div>`;
+            html += `<div style="display:flex;flex-wrap:wrap;gap:12px;font-size:.78rem;">`;
+            if (a.outcome_1d_mean != null) html += `<div style="padding:6px 10px;background:#f5f7fb;border-radius:4px;">
+                <b>1d:</b> media ${a.outcome_1d_mean > 0?'+':''}${a.outcome_1d_mean}% · alcista ${a.bullish_pct_1d}%
+                ${a.outcome_1d_q10!=null ? `· Q10/Q90: ${a.outcome_1d_q10}% / ${a.outcome_1d_q90}%` : ''}</div>`;
+            if (a.outcome_7d_mean != null) html += `<div style="padding:6px 10px;background:#f5f7fb;border-radius:4px;">
+                <b>7d:</b> media ${a.outcome_7d_mean > 0?'+':''}${a.outcome_7d_mean}% · alcista ${a.bullish_pct_7d}%
+                ${a.outcome_7d_q10!=null ? `· Q10/Q90: ${a.outcome_7d_q10}% / ${a.outcome_7d_q90}%` : ''}</div>`;
+            if (a.outcome_30d_mean != null) html += `<div style="padding:6px 10px;background:#f5f7fb;border-radius:4px;">
+                <b>30d:</b> media ${a.outcome_30d_mean > 0?'+':''}${a.outcome_30d_mean}%</div>`;
+            if (a.fade_rate_7d_pct != null) html += `<div style="padding:6px 10px;background:#fff3e0;border-radius:4px;">
+                <b>Fade rate 7d:</b> ${a.fade_rate_7d_pct}%</div>`;
+            html += `</div>`;
+            html += `<div style="margin-top:8px;font-size:.7rem;color:#888;">
+                ${a.n} análogos · distancia mediana: ${a.dist_median} ·
+                tipos: ${Object.entries(a.event_types||{}).map(([k,v])=>k+':'+v).join(', ')}</div>`;
+            anEl.innerHTML = html;
+        } else if (anEl) {
+            anEl.innerHTML = `<span style="color:#888;">Análogos no disponibles. Ejecutar pipeline para generar event_memory.</span>`;
+        }
+    }).catch(() => { if (document.getElementById("ie-event-status")) document.getElementById("ie-event-status").textContent = "Error al cargar"; });
+}
+
+function _ieRenderGauge(id, label, value, color) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const pct = Math.round((value || 0) * 100);
+    el.innerHTML = `
+        <div class="ie-gauge-label">${label}</div>
+        <div class="ie-gauge-value" style="color:${color};">${pct}%</div>
+        <div class="ie-gauge-bar"><div class="ie-gauge-fill" style="width:${pct}%;background:${color};"></div></div>`;
+}
+
+// ── Narrative Forecast (daily range + multi-horizon) ─────────────
+function _ieLoadNarrativeForecast() {
+    const dailyEl = document.getElementById("ie-daily-range");
+    const multiEl = document.getElementById("ie-multihorizon");
+    const btEl = document.getElementById("ie-backtest-content");
+
+    fetch("/api/intel/narrative_forecast").then(r => r.json()).then(data => {
+        if (!data || !data.ok) {
+            dailyEl.textContent = data?.error || "No disponible";
+            return;
+        }
+
+        const fc = data.forecast || {};
+        const forecasts = fc.forecasts || {};
+        const price = fc.price_usd_ton;
+        const isEvent = fc.event_active;
+        const evType = fc.event_type || "?";
+        const evDir = fc.event_direction || "neutral";
+
+        // ── Daily Range (prominente) ──
+        const d1 = forecasts["1d"];
+        if (d1 && d1.available) {
+            const rng = d1.range_pct;
+            const dirColors = {bullish:"#2e7d32", bearish:"#c62828", neutral:"#555"};
+            const dirLabels = {bullish:"ALCISTA", bearish:"BAJISTA", neutral:"NEUTRAL"};
+            const typeLabels = {
+                oil_energy:"Energia/Biofuel", china_demand:"China/Demanda", weather:"Clima",
+                supply_surprise:"Supply/WASDE", policy_shift:"Politica", macro_fx:"Macro/FX",
+                geopolitical:"Geopolitica", speculative_mom:"Momentum", mixed:"Mixto"
+            };
+
+            let html = `<div style="display:flex;align-items:stretch;gap:16px;flex-wrap:wrap;">`;
+
+            // Left: Range visualization
+            html += `<div style="flex:1;min-width:240px;">`;
+            html += `<div style="font-size:.75rem;color:#666;margin-bottom:6px;">
+                Rango esperado para hoy/manana (basado en ${d1.n_samples} analogos):</div>`;
+
+            // Range bar visualization
+            const q10 = rng.q10, q90 = rng.q90, med = rng.median;
+            const q25 = rng.q25, q75 = rng.q75;
+            html += `<div style="position:relative;height:50px;margin:10px 0;background:#f0f4f8;border-radius:6px;overflow:hidden;">`;
+            // Full range bar (Q10 to Q90)
+            const barLeft = 10, barRight = 90;
+            html += `<div style="position:absolute;top:15px;left:${barLeft}%;right:${100-barRight}%;height:20px;background:#e3f2fd;border-radius:4px;border:1px solid #90caf9;"></div>`;
+            // IQR (Q25 to Q75)
+            const iqrLeft = 10 + (q25 - q10) / (q90 - q10) * 80;
+            const iqrRight = 10 + (q75 - q10) / (q90 - q10) * 80;
+            html += `<div style="position:absolute;top:15px;left:${iqrLeft}%;width:${iqrRight-iqrLeft}%;height:20px;background:#1565c0;opacity:0.3;border-radius:3px;"></div>`;
+            // Median line
+            const medPos = 10 + (med - q10) / (q90 - q10) * 80;
+            html += `<div style="position:absolute;top:10px;left:${medPos}%;width:2px;height:30px;background:#1565c0;"></div>`;
+            // Labels
+            html += `<div style="position:absolute;top:38px;left:${barLeft}%;font-size:.65rem;color:#888;">${q10.toFixed(2)}%</div>`;
+            html += `<div style="position:absolute;top:38px;left:${medPos-3}%;font-size:.7rem;font-weight:700;color:#1565c0;">${med.toFixed(2)}%</div>`;
+            html += `<div style="position:absolute;top:38px;right:${100-barRight}%;font-size:.65rem;color:#888;text-align:right;">${q90.toFixed(2)}%</div>`;
+            html += `</div>`;
+
+            // USD/ton range
+            if (d1.usd_ton) {
+                const u = d1.usd_ton;
+                html += `<div style="font-size:.82rem;color:#333;margin-top:4px;">
+                    <b>${u.q10 > 0 ? '+' : ''}${u.q10}</b> a <b>${u.q90 > 0 ? '+' : ''}${u.q90}</b> USD/ton
+                    (mediana: ${u.median > 0 ? '+' : ''}${u.median})</div>`;
+            }
+            html += `</div>`;
+
+            // Right: Stats
+            html += `<div style="min-width:180px;display:flex;flex-direction:column;gap:6px;">`;
+            html += `<div style="padding:8px 12px;background:${dirColors[d1.direction]||'#888'}11;border:1px solid ${dirColors[d1.direction]||'#888'}44;border-radius:5px;text-align:center;">
+                <div style="font-size:.65rem;color:#888;text-transform:uppercase;">Sesgo</div>
+                <div style="font-size:1rem;font-weight:700;color:${dirColors[d1.direction]||'#888'};">${dirLabels[d1.direction]||'?'}</div>
+                <div style="font-size:.72rem;color:#666;">P(suba): ${(d1.p_up*100).toFixed(0)}%</div>
+            </div>`;
+            html += `<div style="padding:6px 10px;background:#f5f7fb;border-radius:4px;font-size:.75rem;text-align:center;">
+                Volatilidad: <b>${d1.std_pct.toFixed(2)}%</b></div>`;
+            if (isEvent) {
+                html += `<div style="padding:6px 10px;background:#fff3e0;border-radius:4px;font-size:.72rem;text-align:center;">
+                    Evento: <b>${typeLabels[evType]||evType}</b></div>`;
+            }
+            html += `</div>`;
+            html += `</div>`;
+
+            // Daily narrative
+            if (fc.daily_narrative) {
+                html += `<div style="margin-top:12px;padding:10px 14px;background:#e8f5e9;border-radius:5px;font-size:.8rem;color:#2e7d32;line-height:1.5;border:1px solid #c8e6c9;">
+                    ${fc.daily_narrative}</div>`;
+            }
+
+            dailyEl.innerHTML = html;
+        } else {
+            dailyEl.innerHTML = `<span style="color:#888;">Rango diario no disponible. Ejecutar pipeline para generar event memory.</span>`;
+        }
+
+        // ── Multi-horizon forecast table ──
+        const horizonOrder = ["1d","7d","15d","30d"];
+        let mhtml = `<table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+            <thead><tr style="background:#e0f2f1;color:#004d40;">
+                <th style="padding:5px 8px;text-align:left;">Horizonte</th>
+                <th style="padding:5px 8px;text-align:right;">Q10</th>
+                <th style="padding:5px 8px;text-align:right;">Q25</th>
+                <th style="padding:5px 8px;text-align:right;">Mediana</th>
+                <th style="padding:5px 8px;text-align:right;">Q75</th>
+                <th style="padding:5px 8px;text-align:right;">Q90</th>
+                <th style="padding:5px 8px;text-align:right;">P(suba)</th>
+                <th style="padding:5px 8px;text-align:right;">n</th>
+            </tr></thead><tbody>`;
+
+        for (const hk of horizonOrder) {
+            const hf = forecasts[hk];
+            if (!hf || !hf.available) continue;
+            const r = hf.range_pct;
+            const pColor = hf.p_up >= 0.55 ? "#2e7d32" : hf.p_up <= 0.45 ? "#c62828" : "#555";
+            const hl = hk === "1d";
+            mhtml += `<tr style="border-top:1px solid #b2dfdb;${hl?'background:#e8f5e9;font-weight:600;':''}">
+                <td style="padding:5px 8px;">${hk}</td>
+                <td style="padding:5px 8px;text-align:right;color:#c62828;">${r.q10.toFixed(2)}%</td>
+                <td style="padding:5px 8px;text-align:right;color:#e65100;">${r.q25.toFixed(2)}%</td>
+                <td style="padding:5px 8px;text-align:right;font-weight:700;">${r.median.toFixed(2)}%</td>
+                <td style="padding:5px 8px;text-align:right;color:#1b5e20;">${r.q75.toFixed(2)}%</td>
+                <td style="padding:5px 8px;text-align:right;color:#2e7d32;">${r.q90.toFixed(2)}%</td>
+                <td style="padding:5px 8px;text-align:right;color:${pColor};">${(hf.p_up*100).toFixed(0)}%</td>
+                <td style="padding:5px 8px;text-align:right;color:#888;">${hf.n_samples}</td>
+            </tr>`;
+        }
+        mhtml += `</tbody></table>`;
+        mhtml += `<div style="margin-top:8px;font-size:.68rem;color:#888;">
+            ${fc.n_analogs_used} analogos usados · distancia mediana: ${fc.dist_median} ·
+            Evento: ${isEvent ? evType + ' (' + evDir + ')' : 'sin evento activo'}</div>`;
+        multiEl.innerHTML = mhtml;
+
+        // ── Backtest narrativo ──
+        const bts = data.backtests || {};
+        let bthtml = `<table style="width:100%;border-collapse:collapse;font-size:.78rem;">
+            <thead><tr style="background:#f3e5f5;color:#4a148c;">
+                <th style="padding:4px 8px;text-align:left;">Horizonte</th>
+                <th style="padding:4px 8px;text-align:right;">n dec</th>
+                <th style="padding:4px 8px;text-align:right;">Narr. media</th>
+                <th style="padding:4px 8px;text-align:right;">Always-Wait</th>
+                <th style="padding:4px 8px;text-align:right;">Oracle</th>
+                <th style="padding:4px 8px;text-align:right;">% activo</th>
+            </tr></thead><tbody>`;
+
+        for (const hk of ["1d","7d","15d","30d"]) {
+            const b = bts[hk];
+            if (!b || !b.ok) continue;
+            const s = b.strategies || {};
+            const nar = s.narrative || {};
+            const aw = s.always_wait || {};
+            const orc = s.oracle || {};
+            const narM = nar.mean_pnl_usd_ton || 0;
+            const narC = narM > 0.01 ? "#2e7d32" : narM < -0.01 ? "#c62828" : "#555";
+            bthtml += `<tr style="border-top:1px solid #ede7f6;">
+                <td style="padding:4px 8px;font-weight:600;">${hk}</td>
+                <td style="padding:4px 8px;text-align:right;">${b.n_decisions}</td>
+                <td style="padding:4px 8px;text-align:right;color:${narC};font-weight:600;">
+                    ${narM > 0?'+':''}$${narM.toFixed(3)}</td>
+                <td style="padding:4px 8px;text-align:right;color:#888;">
+                    ${(aw.mean_pnl_usd_ton||0) > 0?'+':''}$${(aw.mean_pnl_usd_ton||0).toFixed(3)}</td>
+                <td style="padding:4px 8px;text-align:right;color:#2e7d32;">
+                    +$${(orc.mean_pnl_usd_ton||0).toFixed(3)}</td>
+                <td style="padding:4px 8px;text-align:right;color:#888;">${b.narrative_active_pct||0}%</td>
+            </tr>`;
+        }
+        bthtml += `</tbody></table>`;
+        if (btEl) btEl.innerHTML = bthtml;
+
+    }).catch(e => {
+        dailyEl.textContent = "Error al cargar forecast narrativo";
+        console.error("narrative_forecast error:", e);
+    });
+}
+
+// ── Event Memory Stats ────────────────────────────────────────────
+function _ieLoadMemory() {
+    const el = document.getElementById("ie-memory-content");
+    fetch("/api/intel/event_memory").then(r => r.json()).then(mem => {
+        if (!mem || !mem.ok) {
+            el.innerHTML = `<span style="color:#888;">Event memory no generada. Ejecutar pipeline para construirla retroactivamente.</span>`;
+            return;
+        }
+        let html = `<div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;">
+            <div style="padding:8px 12px;background:#f5f7fb;border-radius:4px;">
+                <b>${mem.n_events}</b> eventos detectados</div>
+            <div style="padding:8px 12px;background:#f5f7fb;border-radius:4px;">
+                Rango: <b>${mem.date_range?.[0]}</b> a <b>${mem.date_range?.[1]}</b></div>
+            <div style="padding:8px 12px;background:#f5f7fb;border-radius:4px;">
+                Narrative strength media: <b>${mem.mean_narrative_strength}</b></div>
+            <div style="padding:8px 12px;background:#fff3e0;border-radius:4px;">
+                Fade rate 7d: <b>${mem.fade_rate_7d_pct}%</b></div>
+        </div>`;
+        // Event type distribution
+        const types = mem.event_types || {};
+        html += `<div style="font-size:.78rem;"><b>Distribución por tipo:</b> `;
+        html += Object.entries(types).sort((a,b)=>b[1]-a[1])
+            .map(([k,v])=>`${k}: ${v}`).join(' · ');
+        html += `</div>`;
+        // Direction distribution
+        const dirs = mem.direction_dist || {};
+        html += `<div style="font-size:.78rem;margin-top:4px;"><b>Distribución dirección:</b> `;
+        html += Object.entries(dirs).map(([k,v])=>`${k}: ${v}`).join(' · ');
+        html += `</div>`;
+        html += `<div style="font-size:.68rem;color:#888;margin-top:6px;">Generado: ${mem.as_of}</div>`;
+        el.innerHTML = html;
+    }).catch(() => { el.innerHTML = `<span style="color:#888;">Event memory no disponible.</span>`; });
+}
+
+// Intel Engine no longer has profile/horizon selects - single load on tab open
+
+// ── Intelligence Engine V2 — Multi-Agent Debate ───────────────────
+let _ie2Loaded = false;
+function loadIntelligenceEngineV2(force) {
+    if (_ie2Loaded && !force) return;
+    const loadingEl = document.getElementById("ie2-loading");
+    const btn = document.getElementById("ie2-run-btn");
+    if (force) {
+        if (loadingEl) loadingEl.style.display = "";
+        if (btn) { btn.disabled = true; btn.textContent = "⏳ Ejecutando..."; }
+    }
+    const url = force ? "/api/intelligence_engine?force=1" : "/api/intelligence_engine";
+    fetch(url).then(r => r.json()).then(d => {
+        if (loadingEl) loadingEl.style.display = "none";
+        if (btn) { btn.disabled = false; btn.textContent = "▶ Ejecutar debate"; }
+        if (!d.ok) {
+            document.getElementById("ie2-pipeline-info").textContent = "Error: " + (d.error || "desconocido");
+            return;
+        }
+        _ie2Loaded = true;
+        _renderIE2(d);
+    }).catch(e => {
+        if (loadingEl) loadingEl.style.display = "none";
+        if (btn) { btn.disabled = false; btn.textContent = "▶ Ejecutar debate"; }
+        document.getElementById("ie2-pipeline-info").textContent = "Error de conexión: " + e.message;
+    });
+}
+
+function runIntelligenceEngine(force) { loadIntelligenceEngineV2(force); }
+
+function _renderIE2(d) {
+    const v = d.verdict || {};
+    const agents = d.agents || {};
+
+    // Verdict box
+    const vBox = document.getElementById("ie2-verdict-box");
+    if (vBox && v.verdict) {
+        vBox.style.display = "";
+        const colors = {
+            "STRONG_BUY": {bg:"#e8f5e9",border:"#2e7d32",text:"#1b5e20"},
+            "BUY":        {bg:"#f1f8e9",border:"#558b2f",text:"#33691e"},
+            "HOLD":       {bg:"#fff8e1",border:"#f9a825",text:"#f57f17"},
+            "SELL":       {bg:"#fce4ec",border:"#c62828",text:"#b71c1c"},
+            "STRONG_SELL":{bg:"#ffebee",border:"#b71c1c",text:"#880e4f"},
+        };
+        const c = colors[v.verdict] || colors["HOLD"];
+        vBox.style.background = c.bg;
+        vBox.style.border = `2px solid ${c.border}`;
+        document.getElementById("ie2-verdict-label").textContent = v.verdict;
+        document.getElementById("ie2-verdict-label").style.color = c.text;
+        const conf = v.confidence != null ? (v.confidence * 100).toFixed(0) + "%" : "?";
+        document.getElementById("ie2-verdict-confidence").innerHTML =
+            `Confianza: <b>${conf}</b> · Sizing: <b>${v.position_sizing || "?"}</b>`;
+        document.getElementById("ie2-verdict-reasoning").textContent = v.reasoning || "";
+    }
+
+    // Price ranges
+    const rangesEl = document.getElementById("ie2-ranges");
+    if (rangesEl) {
+        rangesEl.style.display = "flex";
+        const r7 = v.price_range_7d || {};
+        const r30 = v.price_range_30d || {};
+        document.getElementById("ie2-range-7d").innerHTML =
+            r7.low != null ? `$${r7.low} — <b>$${r7.central || "?"}</b> — $${r7.high}` : "Sin datos";
+        document.getElementById("ie2-range-30d").innerHTML =
+            r30.low != null ? `$${r30.low} — <b>$${r30.central || "?"}</b> — $${r30.high}` : "Sin datos";
+        document.getElementById("ie2-sizing").textContent = v.position_sizing || "?";
+    }
+
+    // Actions
+    const actionsEl = document.getElementById("ie2-actions");
+    if (actionsEl && v.recommended_action) {
+        actionsEl.style.display = "flex";
+        document.getElementById("ie2-action-producer").textContent = v.recommended_action.producers || "";
+        document.getElementById("ie2-action-trader").textContent = v.recommended_action.traders || "";
+    }
+
+    // Bull agent
+    const bullEl = document.getElementById("ie2-bull");
+    if (bullEl && agents.bull) {
+        const b = agents.bull;
+        let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
+        html += `<div>Convicción: <b>${b.conviction || "?"}</b></div>`;
+        if (b.arguments) {
+            b.arguments.forEach(a => {
+                html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #aed581;">`;
+                html += `<div style="font-weight:500;">${a.point || ""}</div>`;
+                if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
+                if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
+                html += `</div>`;
+            });
+        }
+        if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
+        if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
+        bullEl.innerHTML = html;
+    }
+
+    // Bear agent
+    const bearEl = document.getElementById("ie2-bear");
+    if (bearEl && agents.bear) {
+        const b = agents.bear;
+        let html = `<div style="font-weight:600;margin-bottom:6px;">${b.thesis || ""}</div>`;
+        html += `<div>Convicción: <b>${b.conviction || "?"}</b></div>`;
+        if (b.arguments) {
+            b.arguments.forEach(a => {
+                html += `<div style="margin-top:6px;padding-left:8px;border-left:2px solid #ef9a9a;">`;
+                html += `<div style="font-weight:500;">${a.point || ""}</div>`;
+                if (a.evidence) html += `<div style="font-size:.72rem;color:#555;">📊 ${a.evidence}</div>`;
+                if (a.historical_support) html += `<div style="font-size:.72rem;color:#777;">📚 ${a.historical_support}</div>`;
+                html += `</div>`;
+            });
+        }
+        if (b.price_target_7d) html += `<div style="margin-top:6px;">Target 7d: $${b.price_target_7d.low}–$${b.price_target_7d.high}</div>`;
+        if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
+        bearEl.innerHTML = html;
+    }
+
+    // Risk agent
+    const riskEl = document.getElementById("ie2-risk");
+    if (riskEl && agents.risk) {
+        const r = agents.risk;
+        let html = `<div><b>Régimen:</b> ${r.regime || "?"} (conf: ${r.regime_confidence || "?"})</div>`;
+        html += `<div><b>Volatilidad:</b> ${r.volatility_assessment || "?"}</div>`;
+        html += `<div><b>Riesgo evento 7d:</b> ${r.event_risk_next_7d || "?"}</div>`;
+        if (r.event_risk_detail) html += `<div style="font-size:.72rem;color:#555;">${r.event_risk_detail}</div>`;
+        html += `<div><b>Posicionamiento:</b> ${r.positioning_risk || "?"}</div>`;
+        if (r.positioning_detail) html += `<div style="font-size:.72rem;color:#555;">${r.positioning_detail}</div>`;
+        html += `<div style="margin-top:6px;"><b>Persistencia:</b> ${((r.persistence_probability||0)*100).toFixed(0)}% · <b>Fade:</b> ${((r.fade_probability||0)*100).toFixed(0)}%</div>`;
+        html += `<div><b>Exposición recomendada:</b> ${r.max_recommended_exposure || "?"}</div>`;
+        if (r.key_risk_factors) {
+            html += `<div style="margin-top:6px;font-size:.72rem;"><b>Factores de riesgo:</b></div>`;
+            r.key_risk_factors.forEach(f => html += `<div style="font-size:.72rem;padding-left:8px;">• ${f}</div>`);
+        }
+        riskEl.innerHTML = html;
+    }
+
+    // Watchlist & invalidation
+    const pipelineEl = document.getElementById("ie2-pipeline-info");
+    if (pipelineEl) {
+        const pipe = d.pipeline || {};
+        const ctx = d.context_summary || {};
+        let info = `Pipeline: ${pipe.tier1_method || "?"} · ${pipe.tier1_articles || 0} artículos · ${pipe.tier1_escalated || 0} escalados · ${pipe.rag_documents || 0} docs RAG`;
+        if (d.execution_time_seconds) info += ` · ${d.execution_time_seconds}s`;
+        if (d.from_cache) info += ` · (cache, ${d.cache_age_seconds || 0}s ago)`;
+        if (v.key_watchlist && v.key_watchlist.length) {
+            info += `<br>👁️ Watchlist: ${v.key_watchlist.join(" · ")}`;
+        }
+        if (v.invalidation_conditions && v.invalidation_conditions.length) {
+            info += `<br>⚠️ Invalidación: ${v.invalidation_conditions.join(" · ")}`;
+        }
+        pipelineEl.innerHTML = info;
+    }
+}
+
+// Auto-load IE2 when Intel Engine tab opens (cached version, no debate)
+const _origSwitchTabIE2 = typeof switchTab === 'function' ? switchTab : null;
 
 // ── Accountability ─────────────────────────────────────────────────
 function _renderSynthesis(d) {
@@ -3119,32 +4511,118 @@ function _renderSynthesis(d) {
     if (!targets.length) return;
     if (!d || d.error) {
         targets.forEach(el => el.innerHTML =
-            `<i style="color:#888">${d && d.error ? d.error : "Sin datos. Configurá ANTHROPIC_API_KEY y refrescá."}</i>`);
+            `<i style="color:#888">${d && d.error ? d.error : "Sin datos. Configura ANTHROPIC_API_KEY y refresca."}</i>`);
         return;
     }
-    const stanceColor = d.stance === "ALCISTA" ? "#2e7d32" : d.stance === "BAJISTA" ? "#c62828" : "#666";
-    const drivers = (d.key_drivers || []).map(k =>
-        `<li><b style="color:${k.direction === '+' ? '#2e7d32' : k.direction === '-' ? '#c62828' : '#666'}">${k.direction || '·'}</b>
-         <b>${k.driver}:</b> ${k.why}</li>`).join("");
-    const risks = (d.risks || []).map(r => `<li>${r}</li>`).join("");
-    const gaps  = (d.data_gaps || []).map(g => `<li style="color:#888">${g}</li>`).join("");
 
-    const html = `
-      <div style="font-size:1.05rem;font-weight:600;margin-bottom:6px">${d.headline || ""}</div>
+    // V2 producer format (backward compatible with V1)
+    const isV2 = !!d.que_hacer;
+    const stanceColor = d.stance === "ALCISTA" ? "#2e7d32" : d.stance === "BAJISTA" ? "#c62828" : "#666";
+
+    const generatedAt = d._generated_at ? new Date(d._generated_at) : null;
+    const ageHours = generatedAt ? (Date.now() - generatedAt.getTime()) / 3600000 : null;
+    const staleWarning = ageHours != null && ageHours > 24
+        ? `<div style="background:#fff3e0;border-left:3px solid #f57c00;border-radius:4px;padding:6px 10px;margin-bottom:10px;font-size:.78rem;color:#e65100;">
+            Brief generado hace ${Math.round(ageHours)}h — puede estar desactualizado.
+            <a href="#" onclick="refreshSynthesis();return false;" style="color:#e65100;font-weight:600;">Re-generar</a></div>`
+        : "";
+
+    let html = staleWarning;
+
+    // Headline + stance
+    html += `<div style="font-size:1.05rem;font-weight:600;margin-bottom:6px">${d.headline || ""}</div>
       <div style="margin-bottom:14px">
         <span style="background:${stanceColor};color:#fff;padding:2px 10px;border-radius:12px;font-size:.85rem">${d.stance || "?"}</span>
-        <span style="color:#666;margin-left:10px">Convicción: <b>${d.conviction ?? "?"}</b>/100</span>
-      </div>
-      ${drivers ? `<h4 style="margin:8px 0 4px">Drivers clave</h4><ul style="margin:0;padding-left:18px;font-size:.9rem">${drivers}</ul>` : ""}
-      <h4 style="margin:14px 0 4px">Recomendación táctica</h4>
-      <p style="margin:0;font-size:.92rem">${d.tactical_recommendation || ""}</p>
-      <h4 style="margin:14px 0 4px">Visión estratégica (30-90d)</h4>
-      <p style="margin:0;font-size:.92rem;color:#555">${d.strategic_view || ""}</p>
-      ${risks ? `<h4 style="margin:14px 0 4px">Riesgos</h4><ul style="margin:0;padding-left:18px;font-size:.88rem;color:#c62828">${risks}</ul>` : ""}
-      ${gaps  ? `<h4 style="margin:14px 0 4px">Lo que falta saber</h4><ul style="margin:0;padding-left:18px;font-size:.85rem">${gaps}</ul>` : ""}
-      <div id="llm-track-record" style="margin-top:10px"></div>
-      <div style="margin-top:12px;font-size:.7rem;color:#aaa">${(d._generated_at || "").slice(0,16).replace("T"," ")} · ${d._model || ""}</div>
-    `;
+        <span style="color:#666;margin-left:10px">Conviccion: <b>${d.conviction ?? "?"}</b>/100</span>
+      </div>`;
+
+    if (isV2) {
+        // ── V2: Producer brief ──
+        // Situacion hoy
+        if (d.situacion_hoy) {
+            html += `<div style="padding:10px 14px;background:#f0f7ff;border-radius:6px;border-left:3px solid #1565c0;margin-bottom:14px;font-size:.92rem;line-height:1.6;color:#333;">
+                ${d.situacion_hoy}</div>`;
+        }
+
+        // Que hacer (accion principal)
+        const qh = d.que_hacer || {};
+        if (qh.accion_principal) {
+            const actionColor = qh.accion_principal.toLowerCase().includes("vender") ? "#c62828"
+                              : qh.accion_principal.toLowerCase().includes("esperar") ? "#2e7d32" : "#555";
+            html += `<div style="padding:12px 16px;background:${actionColor}0a;border:2px solid ${actionColor}33;border-radius:8px;margin-bottom:14px;">
+                <div style="font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Que hacer</div>
+                <div style="font-size:1rem;font-weight:700;color:${actionColor};margin-bottom:6px;">${qh.accion_principal}</div>
+                <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:.82rem;color:#555;">
+                    ${qh.porcentaje_sugerido ? `<span>Stock: <b>${qh.porcentaje_sugerido}</b></span>` : ''}
+                    ${qh.horizonte ? `<span>Horizonte: <b>${qh.horizonte}</b></span>` : ''}
+                </div>
+                ${qh.razon ? `<div style="margin-top:6px;font-size:.82rem;color:#666;">${qh.razon}</div>` : ''}
+            </div>`;
+        }
+
+        // Rangos esperados
+        const rng = d.rangos_esperados || {};
+        if (rng.hoy_manana || rng.semana || rng.quincenal) {
+            html += `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">`;
+            if (rng.hoy_manana) html += `<div style="flex:1;min-width:140px;padding:8px 12px;background:#e8f5e9;border-radius:6px;font-size:.82rem;">
+                <div style="font-size:.68rem;color:#2e7d32;text-transform:uppercase;font-weight:600;">Hoy/Manana</div>
+                <div style="font-weight:600;color:#333;margin-top:2px;">${rng.hoy_manana}</div></div>`;
+            if (rng.semana) html += `<div style="flex:1;min-width:140px;padding:8px 12px;background:#e3f2fd;border-radius:6px;font-size:.82rem;">
+                <div style="font-size:.68rem;color:#1565c0;text-transform:uppercase;font-weight:600;">Proxima semana</div>
+                <div style="font-weight:600;color:#333;margin-top:2px;">${rng.semana}</div></div>`;
+            if (rng.quincenal) html += `<div style="flex:1;min-width:140px;padding:8px 12px;background:#f3e5f5;border-radius:6px;font-size:.82rem;">
+                <div style="font-size:.68rem;color:#7b1fa2;text-transform:uppercase;font-weight:600;">Proximos 15 dias</div>
+                <div style="font-weight:600;color:#333;margin-top:2px;">${rng.quincenal}</div></div>`;
+            html += `</div>`;
+        }
+
+        // Contexto clave
+        const ctx = d.contexto_clave || [];
+        if (ctx.length) {
+            html += `<h4 style="margin:8px 0 4px;font-size:.85rem;">Contexto clave</h4>
+                <ul style="margin:0;padding-left:18px;font-size:.88rem;line-height:1.6;">
+                ${ctx.map(c => `<li>${c}</li>`).join("")}</ul>`;
+        }
+
+        // Riesgos
+        const risks = d.riesgos || d.risks || [];
+        if (risks.length) {
+            html += `<h4 style="margin:14px 0 4px;font-size:.85rem;">Riesgos</h4>
+                <ul style="margin:0;padding-left:18px;font-size:.85rem;color:#c62828;">${risks.map(r => `<li>${r}</li>`).join("")}</ul>`;
+        }
+
+        // Honestidad
+        if (d.honestidad) {
+            html += `<div style="margin-top:14px;padding:8px 12px;background:#fff8e1;border-radius:5px;border-left:3px solid #f9a825;font-size:.82rem;color:#795548;line-height:1.5;">
+                <b>Honestidad:</b> ${d.honestidad}</div>`;
+        }
+
+        // Data gaps
+        const gaps = d.data_gaps || [];
+        if (gaps.length) {
+            html += `<h4 style="margin:14px 0 4px;font-size:.82rem;color:#888;">Lo que falta saber</h4>
+                <ul style="margin:0;padding-left:18px;font-size:.82rem;color:#888;">${gaps.map(g => `<li>${g}</li>`).join("")}</ul>`;
+        }
+    } else {
+        // ── V1 fallback (backward compatible) ──
+        const drivers = (d.key_drivers || []).map(k =>
+            `<li><b style="color:${k.direction === '+' ? '#2e7d32' : k.direction === '-' ? '#c62828' : '#666'}">${k.direction || '.'}</b>
+             <b>${k.driver}:</b> ${k.why}</li>`).join("");
+        const risks = (d.risks || []).map(r => `<li>${r}</li>`).join("");
+        const gaps  = (d.data_gaps || []).map(g => `<li style="color:#888">${g}</li>`).join("");
+        html += `
+          ${drivers ? `<h4 style="margin:8px 0 4px">Drivers clave</h4><ul style="margin:0;padding-left:18px;font-size:.9rem">${drivers}</ul>` : ""}
+          <h4 style="margin:14px 0 4px">Recomendacion tactica</h4>
+          <p style="margin:0;font-size:.92rem">${d.tactical_recommendation || ""}</p>
+          <h4 style="margin:14px 0 4px">Vision estrategica (30-90d)</h4>
+          <p style="margin:0;font-size:.92rem;color:#555">${d.strategic_view || ""}</p>
+          ${risks ? `<h4 style="margin:14px 0 4px">Riesgos</h4><ul style="margin:0;padding-left:18px;font-size:.88rem;color:#c62828">${risks}</ul>` : ""}
+          ${gaps  ? `<h4 style="margin:14px 0 4px">Lo que falta saber</h4><ul style="margin:0;padding-left:18px;font-size:.85rem">${gaps}</ul>` : ""}`;
+    }
+
+    html += `<div id="llm-track-record" style="margin-top:10px"></div>
+      <div style="margin-top:12px;font-size:.7rem;color:#aaa">${(d._generated_at || "").slice(0,16).replace("T"," ")} . ${d._model || ""}</div>`;
+
     targets.forEach(el => el.innerHTML = html);
     loadLlmAccountability();
 }
@@ -3190,6 +4668,147 @@ async function refreshSynthesis() {
     } finally {
         if (btn) { btn.disabled = false; btn.textContent = "↻ Re-generar"; }
     }
+}
+
+// ── Trader Brief ──────────────────────────────────────────────────
+let _traderSynLoaded = false;
+async function loadTraderSynthesis() {
+    if (_traderSynLoaded) return;
+    _traderSynLoaded = true;
+    const el = document.getElementById("trader-synthesis-content");
+    if (!el) return;
+    try {
+        const r = await fetch("/api/market_synthesis?type=trader");
+        const d = await r.json();
+        _renderTraderSynthesis(el, d);
+    } catch (e) {
+        el.innerHTML = `<i style="color:#888">${e.message}</i>`;
+    }
+}
+
+async function refreshTraderSynthesis() {
+    _traderSynLoaded = false;
+    const btn = document.getElementById("trader-syn-refresh");
+    const el = document.getElementById("trader-synthesis-content");
+    if (btn) { btn.disabled = true; btn.textContent = "Generando..."; }
+    try {
+        const r = await fetch("/api/market_synthesis?type=trader", { method: "POST" });
+        const d = await r.json();
+        _renderTraderSynthesis(el, d);
+    } catch (e) {
+        if (el) el.innerHTML = `<i style="color:#c62828">${e.message}</i>`;
+    } finally {
+        if (btn) { btn.disabled = false; btn.textContent = "Re-generar"; }
+    }
+}
+
+function _renderTraderSynthesis(el, d) {
+    if (!el) return;
+    if (!d || d.error) { el.innerHTML = `<i style="color:#888">${d?.error || "No disponible"}</i>`; return; }
+
+    const stanceColor = d.stance === "ALCISTA" ? "#2e7d32" : d.stance === "BAJISTA" ? "#c62828" : "#666";
+
+    let html = `<div style="font-size:1rem;font-weight:600;margin-bottom:6px">${d.headline || ""}</div>
+      <div style="margin-bottom:12px;">
+        <span style="background:${stanceColor};color:#fff;padding:2px 10px;border-radius:12px;font-size:.82rem">${d.stance || "?"}</span>
+        <span style="color:#666;margin-left:10px;font-size:.82rem;">Conviccion: <b>${d.conviction ?? "?"}</b>/100</span>
+      </div>`;
+
+    // Senal compuesta
+    const sc = d.senal_compuesta;
+    if (sc) {
+        html += `<div style="padding:8px 12px;background:#f5f7fb;border-radius:5px;margin-bottom:10px;font-size:.8rem;line-height:1.6;">
+            <b>Senal Compuesta:</b> score=${sc.score} | raw=${sc.raw}<br>
+            ${sc.factores_clave || ''}</div>`;
+    }
+
+    // Grid: tecnico | narrativo | cross-market
+    html += `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">`;
+
+    const tec = d.tecnico;
+    if (tec) {
+        html += `<div style="padding:8px 10px;background:#e8f5e9;border-radius:5px;font-size:.78rem;line-height:1.5;">
+            <div style="font-weight:700;color:#2e7d32;font-size:.7rem;text-transform:uppercase;margin-bottom:4px;">Tecnico</div>
+            ${tec.niveles ? `<div><b>Niveles:</b> ${tec.niveles}</div>` : ''}
+            ${tec.rsi ? `<div><b>RSI:</b> ${tec.rsi}</div>` : ''}
+            ${tec.momentum ? `<div><b>Mom:</b> ${tec.momentum}</div>` : ''}
+            ${tec.pattern ? `<div><b>Pattern:</b> ${tec.pattern}</div>` : ''}
+        </div>`;
+    }
+
+    const nar = d.narrativo;
+    if (nar) {
+        html += `<div style="padding:8px 10px;background:#fff3e0;border-radius:5px;font-size:.78rem;line-height:1.5;">
+            <div style="font-weight:700;color:#e65100;font-size:.7rem;text-transform:uppercase;margin-bottom:4px;">Narrativo</div>
+            ${nar.evento_activo ? `<div><b>Evento:</b> ${nar.evento_activo}</div>` : ''}
+            ${nar.rango_1d ? `<div><b>1d:</b> ${nar.rango_1d}</div>` : ''}
+            ${nar.rango_7d ? `<div><b>7d:</b> ${nar.rango_7d}</div>` : ''}
+            ${nar.analogos ? `<div><b>Analogos:</b> ${nar.analogos}</div>` : ''}
+        </div>`;
+    }
+
+    const cm = d.cross_market;
+    if (cm) {
+        html += `<div style="padding:8px 10px;background:#e3f2fd;border-radius:5px;font-size:.78rem;line-height:1.5;">
+            <div style="font-weight:700;color:#1565c0;font-size:.7rem;text-transform:uppercase;margin-bottom:4px;">Cross-Market</div>
+            ${cm.oil ? `<div><b>Oil:</b> ${cm.oil}</div>` : ''}
+            ${cm.dollar ? `<div><b>USD:</b> ${cm.dollar}</div>` : ''}
+            ${cm.corn ? `<div><b>Corn:</b> ${cm.corn}</div>` : ''}
+        </div>`;
+    }
+    html += `</div>`;
+
+    // Fundamentales + DC
+    const fund = d.fundamentales;
+    const dc = d.decision_classifier;
+    if (fund || dc) {
+        html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">`;
+        if (fund) {
+            html += `<div style="padding:8px 10px;background:#f3e5f5;border-radius:5px;font-size:.78rem;line-height:1.5;">
+                <div style="font-weight:700;color:#7b1fa2;font-size:.7rem;text-transform:uppercase;margin-bottom:4px;">Fundamentales</div>
+                ${fund.china ? `<div><b>China:</b> ${fund.china}</div>` : ''}
+                ${fund.wasde ? `<div><b>WASDE:</b> ${fund.wasde}</div>` : ''}
+                ${fund.supply ? `<div><b>Supply:</b> ${fund.supply}</div>` : ''}
+            </div>`;
+        }
+        if (dc) {
+            html += `<div style="padding:8px 10px;background:#fce4ec;border-radius:5px;font-size:.78rem;line-height:1.5;">
+                <div style="font-weight:700;color:#c62828;font-size:.7rem;text-transform:uppercase;margin-bottom:4px;">Decision Classifier</div>
+                ${dc.horizonte_optimo ? `<div><b>Horizonte:</b> ${dc.horizonte_optimo}</div>` : ''}
+                ${dc.p_wait ? `<div><b>P(wait):</b> ${dc.p_wait}</div>` : ''}
+                ${dc.partial_sell ? `<div><b>Partial:</b> ${dc.partial_sell}</div>` : ''}
+            </div>`;
+        }
+        html += `</div>`;
+    }
+
+    // Trade idea
+    if (d.trade_idea) {
+        const ideaColor = d.trade_idea.toLowerCase().includes("sin setup") || d.trade_idea.toLowerCase().includes("esperar") ? "#888" : "#1565c0";
+        html += `<div style="padding:10px 14px;background:${ideaColor}0a;border:1px solid ${ideaColor}33;border-radius:6px;margin-bottom:10px;font-size:.85rem;line-height:1.5;">
+            <b style="color:${ideaColor};">Trade idea:</b> ${d.trade_idea}</div>`;
+    }
+
+    // Risks + track record
+    const risks = d.risks || [];
+    if (risks.length) {
+        html += `<div style="font-size:.78rem;color:#c62828;margin-bottom:6px;">
+            <b>Riesgos:</b> ${risks.join(" | ")}</div>`;
+    }
+    if (d.track_record) {
+        html += `<div style="font-size:.75rem;color:#666;margin-bottom:6px;">
+            <b>Track record:</b> ${d.track_record}</div>`;
+    }
+
+    // Gaps + meta
+    const gaps = d.data_gaps || [];
+    if (gaps.length) {
+        html += `<div style="font-size:.72rem;color:#888;">
+            <b>Data gaps:</b> ${gaps.join(" | ")}</div>`;
+    }
+    html += `<div style="margin-top:8px;font-size:.68rem;color:#aaa;">${(d._generated_at||"").slice(0,16).replace("T"," ")} . ${d._model||""}</div>`;
+
+    el.innerHTML = html;
 }
 
 async function loadNewsIntel() {
@@ -3728,8 +5347,8 @@ async function loadEnsemble() {
               ${disagreeBadge}
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px;font-size:.82rem;">
-              <div><div style="color:#888;">Modelo P(↑)</div><b>${pct(d.p_model)}</b> <span style="color:#aaa;">w=${d.w_model.toFixed(2)} · hit ${hr(d.model_hit_rate)}</span></div>
-              <div><div style="color:#888;">LLM stance</div><b>${pct(d.p_llm)}</b> <span style="color:#aaa;">w=${d.w_llm.toFixed(2)} · hit ${hr(d.llm_hit_rate)}</span></div>
+              <div><div style="color:#888;">Modelo P(↑)</div><b>${pct(d.p_model)}</b> <span style="color:#aaa;">w=${d.w_model != null ? d.w_model.toFixed(2) : "0.60"}${d.w_model == null ? " (def)" : ""} · hit ${hr(d.model_hit_rate)}</span></div>
+              <div><div style="color:#888;">LLM stance</div><b>${pct(d.p_llm)}</b> <span style="color:#aaa;">w=${d.w_llm != null ? d.w_llm.toFixed(2) : "0.40"}${d.w_llm == null ? " (def)" : ""} · hit ${hr(d.llm_hit_rate)}</span></div>
               <div><div style="color:#888;">Acuerdo</div><b>${(d.agreement_score*100).toFixed(0)}%</b> <span style="color:#aaa;">|Δ|=${d.disagreement.toFixed(2)}</span></div>
             </div>
         `;
@@ -3751,7 +5370,7 @@ async function loadCME() {
         const fmt = n => n == null ? "—" : Number(n).toLocaleString();
         const ch  = d.oi_change_pct_5d;
         const chColor = ch == null ? "#888" : (ch >= 0 ? "#2e7d32" : "#c62828");
-        const chTxt = ch == null ? "—" : `${ch >= 0 ? "+" : ""}${ch.toFixed(2)}%`;
+        const chTxt = ch == null ? "(< 5d datos)" : `${ch >= 0 ? "+" : ""}${ch.toFixed(2)}%`;
         el.innerHTML = `
             <div style="font-size:.8rem;color:#666;margin-bottom:8px;">
               Front: <b>${L.front_month || "—"}</b> @ ${L.front_settle || "—"} ¢/bu
@@ -3794,10 +5413,11 @@ async function loadCropProgress() {
             ["Cosechado",  pick("cp_pct_harvested","pct_harvested")],
             ["Bueno+Exc.", ge],
         ];
+        const visibleCards = cards.filter(([, v]) => v !== "—");
         el.innerHTML = `
             <div style="font-size:.7rem;color:#aaa;margin-bottom:6px;">Semana: ${L.Date || "—"}</div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;font-size:.85rem;">
-              ${cards.map(([k,v])=>`<div><div style="color:#888;">${k}</div><b>${v}</b></div>`).join("")}
+              ${visibleCards.length ? visibleCards.map(([k,v])=>`<div><div style="color:#888;">${k}</div><b>${v}</b></div>`).join("") : '<div style="color:#aaa;font-size:.82rem;">Sin datos de progreso disponibles.</div>'}
             </div>
         `;
     } catch(e) { el.innerHTML = `<div style="color:#c62828;">Error: ${e.message}</div>`; }
@@ -3822,8 +5442,8 @@ async function loadSatellite() {
               ${d.by_region.map(r=>`
                 <div style="border:1px solid #eee;border-radius:8px;padding:8px;">
                   <div style="font-weight:600;margin-bottom:4px;">${flag[r.region] || r.region}</div>
-                  <div style="color:#888;">Tmax: <b style="color:#333;">${r.tmax_c?.toFixed(1)}°C</b></div>
-                  <div style="color:#888;">Lluvia: <b style="color:#333;">${r.precip_mm?.toFixed(1)} mm</b></div>
+                  <div style="color:#888;">Tmax: <b style="color:#333;">${r.tmax_c != null ? r.tmax_c.toFixed(1) + "°C" : "—"}</b></div>
+                  <div style="color:#888;">Lluvia: <b style="color:#333;">${r.precip_mm != null ? r.precip_mm.toFixed(1) + " mm" : "—"}</b></div>
                   <div style="color:#888;">Stress: <b style="color:${stressColor(r.crop_stress_score)};">${r.crop_stress_score?.toFixed(2)}</b></div>
                 </div>
               `).join("")}

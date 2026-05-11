@@ -1,17 +1,17 @@
 Date,front_symbol,front_settle,atm_strike,iv_atm,iv_call,iv_put,source
 2026-04-26,SOYB (proxy ZS=F),1182.5,24.0,0.2212,0.2656,0.1768,yahoo_options:SOYB
-2026-04-27,SOYB (proxy ZS=F),1191.25,25.0,0.2017,0.1992,0.2041,yahoo_options:SOYB
-2026-04-28,SOYB (proxy ZS=F),1191.0,25.0,0.2378,0.2061,0.2695,yahoo_options:SOYB
-2026-04-29,SOYB (proxy ZS=F),1202.0,25.0,0.1992,0.1943,0.2041,yahoo_options:SOYB
+2026-04-27,SOYB (proxy ZS=F),1192.5,25.0,0.2066,0.2041,0.209,yahoo_options:SOYB
+2026-04-28,SOYB (proxy ZS=F),1192.5,25.0,0.2378,0.2061,0.2695,yahoo_options:SOYB
+2026-04-29,SOYB (proxy ZS=F),1203.75,25.0,0.1992,0.1943,0.2041,yahoo_options:SOYB
 2026-04-30,SOYB (proxy ZS=F),1203.0,25.0,0.2686,0.2051,0.332,yahoo_options:SOYB
 2026-05-01,SOYB (proxy ZS=F),1201.5,25.0,0.2305,0.2178,0.2432,yahoo_options:SOYB
 2026-05-02,SOYB (proxy ZS=F),1187.75,25.0,0.2388,0.2256,0.252,yahoo_options:SOYB
-2026-05-03,SOYB (proxy ZS=F),1210.25,25.0,0.249,0.2354,0.2627,yahoo_options:SOYB
-2026-05-04,SOYB (proxy ZS=F),1222.5,25.0,0.2832,0.2774,0.2891,yahoo_options:SOYB
-2026-05-05,SOYB (proxy ZS=F),1213.75,25.0,0.3174,0.2568,0.3779,yahoo_options:SOYB
-2026-05-06,SOYB (proxy ZS=F),1188.5,25.0,0.2827,0.293,0.2725,yahoo_options:SOYB
-2026-05-07,SOYB (proxy ZS=F),1192.25,25.0,0.2774,0.2598,0.2949,yahoo_options:SOYB
+2026-05-03,SOYB (proxy ZS=F),1208.75,25.0,0.249,0.2354,0.2627,yahoo_options:SOYB
+2026-05-04,SOYB (proxy ZS=F),1222.75,25.0,0.2832,0.2774,0.2891,yahoo_options:SOYB
+2026-05-05,SOYB (proxy ZS=F),1212.75,25.0,0.3174,0.2568,0.3779,yahoo_options:SOYB
+2026-05-06,SOYB (proxy ZS=F),1196.25,25.0,0.2827,0.293,0.2725,yahoo_options:SOYB
+2026-05-07,SOYB (proxy ZS=F),1193.0,25.0,0.2774,0.2598,0.2949,yahoo_options:SOYB
 2026-05-08,SOYB (proxy ZS=F),1206.25,25.0,0.3262,0.2539,0.3984,yahoo_options:SOYB
 2026-05-09,SOYB (proxy ZS=F),1194.25,25.0,0.3516,0.2734,0.4297,yahoo_options:SOYB
-2026-05-10,SOYB (proxy ZS=F),1214.75,25.0,0.3853,0.2998,0.4707,yahoo_options:SOYB
-2026-05-11,SOYB (proxy ZS=F),1211.0,25.0,0.2979,0.3066,0.2891,yahoo_options:SOYB
+2026-05-10,SOYB (proxy ZS=F),1215.0,25.0,0.3853,0.2998,0.4707,yahoo_options:SOYB
+2026-05-11,SOYB (proxy ZS=F),1211.0,25.0,0.2979,0.3047,0.291,yahoo_options:SOYB

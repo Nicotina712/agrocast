@@ -1,12 +1,12 @@
 {
-  "fob_usd_ton": 408.03,
-  "cbot_usd_ton": 433.03,
+  "fob_usd_ton": 418.22,
+  "cbot_usd_ton": 443.22,
   "basis_usd_ton": -25.0,
   "basis_zscore": -0.14,
   "basis_pct_rank": 48.9,
   "basis_5yr_avg": -24.29,
   "interpretation": "Basis amplio (-25.0 USD/ton) \u2014 descuento elevado vs. Chicago, eval\u00fae esperar mejora.",
   "source": "estimated_historical",
-  "as_of": "2026-04-27",
+  "as_of": "2026-05-09",
   "signal": "DESFAVORABLE"
 }
