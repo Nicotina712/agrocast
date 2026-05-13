@@ -11,6 +11,7 @@ Instead of pure ML regression on historical prices, this system:
   5. Produces a unified verdict with price range, action, and confidence
 """
 
+import gc
 import os
 import json
 import time
@@ -31,6 +32,7 @@ except ImportError:
 from .finbert_classifier import classify_batch
 from .knowledge_base import get_knowledge_base
 from .multi_agent_debate import run_debate
+from .debate_repository import save_debate
 
 _BASE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_BASE, "..", ".."))
@@ -271,6 +273,13 @@ def run_intelligence_engine(force: bool = False) -> dict:
     except Exception as e:
         print(f"[IE] Cache write failed: {e}")
 
+    try:
+        saved = save_debate(debate_result)
+        print(f"[IE] Debate saved to repository: verdict={saved.get('verdict')} ts={saved.get('timestamp')}")
+    except Exception as e:
+        print(f"[IE] Debate repository save failed: {e}")
+
+    gc.collect()
     print(f"[IE] Intelligence Engine complete in {elapsed:.1f}s")
     return debate_result
 

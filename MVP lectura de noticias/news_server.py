@@ -111,6 +111,31 @@ _backtest_cache   = {}
 _backtest_ts      = 0.0
 BACKTEST_TTL      = 3600  # 1 hora
 
+# ── features.csv singleton cache ─────────────────────────────────────
+# features.csv (~20MB in memory) is read by 15+ endpoints. Caching it
+# as a module-level singleton avoids repeated alloc/free spikes that
+# push the Render free-tier (512MB) over its limit.
+_features_lock   = threading.Lock()
+_features_df     = None
+_features_ts     = 0.0
+_FEATURES_PATH   = os.path.join(PROJECT_ROOT, "data", "features.csv")
+_FEATURES_TTL    = 3600  # reload once per hour (pipeline runs every 6h)
+
+def _get_features_df():
+    global _features_df, _features_ts
+    with _features_lock:
+        now = time.time()
+        if _features_df is not None and (now - _features_ts) < _FEATURES_TTL:
+            return _features_df
+        if not os.path.exists(_FEATURES_PATH):
+            return None
+        try:
+            _features_df = pd.read_csv(_FEATURES_PATH, parse_dates=["Date"])
+            _features_ts = now
+        except Exception:
+            pass
+        return _features_df
+
 _contract_lock    = threading.Lock()
 _contract_cache   = {}
 _contract_ts      = 0.0
@@ -1160,8 +1185,7 @@ def get_regime():
     """GET /api/regime — devuelve el régimen actual + HMM + Markov-Switching + score de confianza."""
     try:
         from src.model.regime import detect_regime, hmm_regime, confidence_score
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        df = pd.read_csv(feats_path, parse_dates=["Date"]) if os.path.exists(feats_path) else pd.DataFrame()
+        df = _get_features_df() or pd.DataFrame()
         reg = detect_regime(df)
         # Markov-Switching desde artifacts/regime_switching.json
         ms_path = os.path.join(ARTIFACTS_DIR, "regime_switching.json")
@@ -1245,15 +1269,14 @@ def get_decision_classifier():
             return jsonify(cached)
         # Live fallback
         from src.model.decision_classifier import save_decision_classifier, PRODUCER_PROFILES
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         params = PRODUCER_PROFILES.get(profile, PRODUCER_PROFILES["default"])
         # Override por query si se pasa
         storage   = float(request.args.get("storage",   params["storage"]))
         financing = float(request.args.get("financing", params["financing"]))
         quality   = float(request.args.get("quality",   params.get("quality_risk_per_month", 0.0)))
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = save_decision_classifier(
             df, ARTIFACTS_DIR,
             storage_per_ton_month=storage,
@@ -1286,8 +1309,9 @@ def get_decision_classifier_profiles():
 def get_current_event():
     """GET /api/intel/current_event — evento narrativo actual + analogs."""
     try:
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        df = _get_features_df()
+        if df is None:
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.intel.event_intelligence import detect_current_event, find_narrative_analogs
         # Load news_intel if available
         intel_path = os.path.join(PROJECT_ROOT, "data", "news_intel.json")
@@ -1330,8 +1354,9 @@ def get_hybrid_verdict():
     try:
         profile = (request.args.get("profile") or "default").lower()
         horizon = int(request.args.get("horizon") or 15)
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        df = _get_features_df()
+        if df is None:
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         # ML prediction
         from src.model.decision_classifier import (
             _build_decision_features, _compute_cost_pct, _resolve_profile,
@@ -1392,8 +1417,9 @@ def get_hybrid_backtest():
             cached["source"] = "artifacts_cache"
             return jsonify(cached)
         # Live fallback
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        df = _get_features_df()
+        if df is None:
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.intel.hybrid_model import save_hybrid_backtest
         result = save_hybrid_backtest(df, ARTIFACTS_DIR, profile_name=profile)
         result["source"] = "live"
@@ -1415,8 +1441,9 @@ def get_narrative_forecast():
             cached["source"] = "artifacts_cache"
             return jsonify(cached)
         # Live fallback
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
+        df = _get_features_df()
+        if df is None:
+            return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.intel.narrative_forecast import save_narrative_forecast
         result = save_narrative_forecast(df, ARTIFACTS_DIR)
         result["source"] = "live"
@@ -1444,10 +1471,9 @@ def get_backtest_decision():
             cached["source"] = "artifacts_cache"
             return jsonify(cached)
         # Live fallback
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         from src.model.backtest_decision import run_decision_backtest
         result = run_decision_backtest(df, profile_name=profile, test_months=test_months)
         result["source"] = "live"
@@ -1473,10 +1499,9 @@ def get_active_shock():
             return jsonify(cached)
         # Si no hay cache, computar en vivo
         from src.model.shock_engine import assess_shock
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = assess_shock(df, artifacts_dir=os.path.join(ARTIFACTS_DIR))
         out["source"] = "live"
         return jsonify(out)
@@ -1494,10 +1519,9 @@ def get_regime_switching():
     try:
         n_states = int(request.args.get("n_states", 2))
         from src.model.regime_switching import fit_regime_switching
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = fit_regime_switching(df, n_states=n_states)
         return jsonify(out)
     except Exception as e:
@@ -1518,11 +1542,10 @@ def get_optimal_stopping():
         financing = float(request.args.get("financing", 0.08))
         horizon   = int(  request.args.get("horizon",   30))
         n_paths   = int(  request.args.get("n_paths",   1000))
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.model.optimal_stopping import optimal_stopping_decision
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = optimal_stopping_decision(
             df, storage_cost_per_ton_month=storage,
             financing_rate_annual=financing, horizon_days=horizon,
@@ -1546,11 +1569,10 @@ def get_economic_utility():
         storage   = float(request.args.get("storage",   6.0))
         financing = float(request.args.get("financing", 0.08))
         horizon   = int(  request.args.get("horizon",   30))
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.model.economic_utility import utility_wait_vs_sell
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = utility_wait_vs_sell(
             df,
             storage_cost_per_ton_month = storage,
@@ -1573,11 +1595,10 @@ def get_forecast_paths():
     try:
         n        = int(request.args.get("n", 1000))
         horizon  = int(request.args.get("horizon", 30))
-        feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-        if not os.path.exists(feats_path):
+        df = _get_features_df()
+        if df is None:
             return jsonify({"ok": False, "error": "features.csv no existe"}), 503
         from src.model.predict_horizons import forecast_paths as _paths, prob_above
-        df = pd.read_csv(feats_path, parse_dates=["Date"])
         out = _paths(df, n_paths=min(n, 5000), horizon_days=horizon,
                      artifacts_dir=os.path.join(ARTIFACTS_DIR, "horizons"))
         # Si vino threshold, calcular P(>threshold)
@@ -1646,11 +1667,9 @@ def get_forecast_multihorizon():
 
         # Inyectar anclas del modelo "horizons" cuando esté disponible
         try:
-            import pandas as pd
             from src.model.predict_horizons import forecast_anchors as _h_anchors
-            feats_path = os.path.join(PROJECT_ROOT, "data", "features.csv")
-            if os.path.exists(feats_path):
-                df = pd.read_csv(feats_path, parse_dates=["Date"])
+            df = _get_features_df()
+            if df is not None:
                 horizons_artifacts = os.path.join(PROJECT_ROOT, "artifacts", "horizons")
                 anchors = _h_anchors(df, artifacts_dir=horizons_artifacts)
                 horizons_payload = {
@@ -2580,6 +2599,42 @@ def get_intelligence_engine():
     except Exception as e:
         import traceback
         traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/debate_history")
+def get_debate_history():
+    """Recent debates with ex-post evaluation results."""
+    try:
+        limit = int(request.args.get("limit", 30))
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.debate_repository import get_history
+        records = get_history(limit=limit)
+        return jsonify({"ok": True, "debates": records, "count": len(records)})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/debate_calibration")
+def get_debate_calibration():
+    """Calibration stats: direction hit rates, range accuracy, breakdown by verdict/regime."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.debate_repository import get_calibration_stats
+        return jsonify(get_calibration_stats())
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/debate_evaluate", methods=["POST"])
+def post_debate_evaluate():
+    """Trigger ex-post evaluation of pending debates (normally runs automatically)."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.debate_repository import evaluate_due
+        n = evaluate_due()
+        return jsonify({"ok": True, "evaluated": n})
+    except Exception as e:
         return jsonify({"ok": False, "error": str(e)}), 500
 
 

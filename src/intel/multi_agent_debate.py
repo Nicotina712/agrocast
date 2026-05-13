@@ -3,10 +3,11 @@ Multi-Agent Debate system for soybean market intelligence.
 Architecture inspired by TradingAgents (ICML 2025).
 
 Agents:
-  1. Bull Analyst  — finds reasons price goes up
-  2. Bear Analyst  — finds reasons price goes down
-  3. Risk Assessor — evaluates regime, volatility, position sizing
-  4. Fund Manager  — reads all three, produces final verdict
+  1. Bull Analyst       — finds reasons price goes up
+  2. Bear Analyst       — finds reasons price goes down
+  3. Risk Assessor      — evaluates regime, volatility, position sizing
+  4. Technical Analyst  — reads price chart, identifies key levels and setup
+  5. Fund Manager       — reads all four, produces final verdict
 
 Each agent receives the same market context + RAG-retrieved knowledge,
 but with different system prompts defining their analytical mandate.
@@ -101,20 +102,58 @@ Responde en formato JSON:
   "regime_analogs": "períodos históricos similares al actual"
 }"""
 
+TECHNICAL_ANALYST_SYSTEM = """Eres el ANALISTA TÉCNICO CHARTISTA de un equipo de inteligencia de mercado de soja CBOT.
+Tu mandato es leer el gráfico de precios e identificar el setup técnico actual.
+
+NO tomas partido en el debate fundamental. Tu trabajo es describir lo que el GRÁFICO dice:
+1. Tendencia primaria (UP/DOWN/SIDEWAYS) y su fortaleza
+2. Niveles clave de soporte y resistencia (últimos 3 swings relevantes)
+3. Señales de momentum: RSI divergencias, cruces de medias, posición Bollinger
+4. Setup actual: ¿está el precio en zona de entrada, distribución o compresión?
+5. Target técnico medido (measured move) y nivel de invalidación
+6. Confirmación o divergencia con el volumen/OI si está disponible
+
+Reglas:
+- Cita niveles de precio concretos, no rangos vagos
+- Indica si el setup es de alta, media o baja confiabilidad técnica
+- Cuando el técnico contradice el fundamental, dilo explícitamente
+- Usa terminología estándar: soporte/resistencia, breakout/breakdown, divergencia alcista/bajista, compresión de Bollinger, cruce dorado/cruce de la muerte
+
+Responde en formato JSON:
+{
+  "primary_trend": "UP|DOWN|SIDEWAYS",
+  "trend_strength": "strong|moderate|weak",
+  "key_support": [{"level": X, "type": "swing_low|MA200|bollinger_lower|prior_resistance", "strength": "major|minor"}],
+  "key_resistance": [{"level": X, "type": "swing_high|MA50|bollinger_upper|prior_support", "strength": "major|minor"}],
+  "momentum_signals": ["RSI en X (sobrevendido/sobrecomprado/neutro)", "precio vs MA20/50/200", "..."],
+  "bollinger_position": "upper_band|middle|lower_band|squeeze",
+  "setup": "descripción del setup técnico actual en 1-2 oraciones",
+  "price_target_bullish": X,
+  "price_target_bearish": X,
+  "technical_invalidation": X,
+  "confirmation_needed": "qué señal técnica confirmaría la dirección",
+  "fundamental_alignment": "CONFIRMS|CONTRADICTS|NEUTRAL",
+  "confidence": 0.0-1.0,
+  "key_level_to_watch": X
+}"""
+
 FUND_MANAGER_SYSTEM = """Eres el FUND MANAGER que toma la decisión final del equipo de inteligencia de soja.
-Has recibido los análisis del analista alcista, el analista bajista, y el analista de riesgo.
+Has recibido los análisis del analista alcista, el analista bajista, el analista de riesgo, y el analista técnico chartista.
 
 Tu trabajo es:
-1. Leer los tres análisis con ojo crítico
+1. Leer los cuatro análisis con ojo crítico
 2. Pesar los argumentos según la calidad de la evidencia (no solo la convicción del analista)
 3. Considerar el assessment de riesgo para calibrar el tamaño de la posición
-4. Producir un VEREDICTO FINAL unificado
+4. Usar el análisis técnico como árbitro cuando fundamental y técnico están alineados, y como señal de cautela cuando divergen
+5. Producir un VEREDICTO FINAL unificado
 
 Reglas de decisión:
-- Si ambos analistas tienen convicción BAJA → HOLD (esperar más información)
+- Si ambos analistas fundamentales tienen convicción BAJA → HOLD (esperar más información)
 - Si el riesgo es "crisis" o "extreme volatility" → reducir exposición independientemente
 - Si un analista tiene convicción ALTA y el otro BAJA → seguir al de alta convicción con sizing reducido
 - Si ambos tienen convicción ALTA → hay conflicto genuino, ser cauto
+- Si el técnico CONFIRMA el fundamental dominante → aumentar conviction 1 nivel
+- Si el técnico CONTRADICE el fundamental dominante → reducir sizing un nivel
 - Siempre incluir un rango de precios, nunca un punto exacto
 - Siempre incluir horizonte temporal y condiciones de invalidación
 
@@ -139,6 +178,113 @@ Responde en formato JSON:
   "key_watchlist": ["eventos o datos a monitorear esta semana"],
   "next_review_trigger": "qué evento debería disparar una re-evaluación"
 }"""
+
+
+def _load_technical_context() -> dict:
+    """
+    Compute technical indicators from raw_market.csv for the Technical Analyst agent.
+    Returns a dict with price series, indicators, and support/resistance levels.
+    """
+    try:
+        import numpy as np
+        import pandas as pd
+    except ImportError:
+        return {}
+
+    _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    raw_path = os.path.join(_ROOT, "data", "raw_market.csv")
+    if not os.path.exists(raw_path):
+        return {}
+
+    try:
+        df = pd.read_csv(raw_path, parse_dates=["Date"]).sort_values("Date").dropna(subset=["Soybeans"])
+        s  = df["Soybeans"]
+        if len(s) < 50:
+            return {}
+
+        price   = float(s.iloc[-1])
+        ma20    = float(s.rolling(20).mean().iloc[-1])
+        ma50    = float(s.rolling(50).mean().iloc[-1]) if len(s) >= 50  else None
+        ma200   = float(s.rolling(200).mean().iloc[-1]) if len(s) >= 200 else None
+
+        # RSI(14)
+        delta = s.diff()
+        gain  = delta.clip(lower=0).rolling(14).mean()
+        loss  = (-delta.clip(upper=0)).rolling(14).mean()
+        rs    = gain / (loss + 1e-8)
+        rsi   = float((100 - 100 / (1 + rs)).iloc[-1])
+
+        # Bollinger Bands(20, 2)
+        bb_std   = float(s.rolling(20).std().iloc[-1])
+        bb_upper = round(ma20 + 2 * bb_std, 2)
+        bb_lower = round(ma20 - 2 * bb_std, 2)
+        bb_pct   = round((price - bb_lower) / (bb_upper - bb_lower + 1e-8) * 100, 1)
+
+        # Momentum
+        ret_5d  = round((price / float(s.iloc[-6])  - 1) * 100, 2) if len(s) >= 6  else None
+        ret_20d = round((price / float(s.iloc[-21]) - 1) * 100, 2) if len(s) >= 21 else None
+
+        # Support/resistance: local swing highs and lows in last 60 bars
+        window = s.iloc[-60:].reset_index(drop=True)
+        swing_highs = []
+        swing_lows  = []
+        for i in range(2, len(window) - 2):
+            if window[i] > window[i-1] and window[i] > window[i-2] and window[i] > window[i+1] and window[i] > window[i+2]:
+                swing_highs.append(round(float(window[i]), 2))
+            if window[i] < window[i-1] and window[i] < window[i-2] and window[i] < window[i+1] and window[i] < window[i+2]:
+                swing_lows.append(round(float(window[i]), 2))
+
+        # Keep the 3 most recent, deduplicated within 0.5%
+        def _dedup(levels: list[float], tol: float = 0.005) -> list[float]:
+            out = []
+            for lv in sorted(set(levels), reverse=True):
+                if not out or abs(lv / out[-1] - 1) > tol:
+                    out.append(lv)
+            return out[:3]
+
+        resistances = _dedup([h for h in swing_highs if h > price])
+        supports    = _dedup([lo for lo in reversed(sorted(swing_lows)) if lo < price])
+
+        # Add MA levels as support/resistance
+        for ma_val, label in [(ma50, "MA50"), (ma200, "MA200")]:
+            if ma_val is None:
+                continue
+            if ma_val > price:
+                resistances.append(round(ma_val, 2))
+            else:
+                supports.append(round(ma_val, 2))
+
+        return {
+            "price":       round(price, 2),
+            "ma20":        round(ma20, 2),
+            "ma50":        round(ma50, 2) if ma50 else None,
+            "ma200":       round(ma200, 2) if ma200 else None,
+            "rsi":         round(rsi, 1),
+            "bb_upper":    bb_upper,
+            "bb_lower":    bb_lower,
+            "bb_pct":      bb_pct,
+            "ret_5d_pct":  ret_5d,
+            "ret_20d_pct": ret_20d,
+            "resistances": sorted(resistances)[:3],
+            "supports":    sorted(supports, reverse=True)[:3],
+        }
+    except Exception:
+        return {}
+
+
+def _format_technical_context(tc: dict) -> str:
+    if not tc:
+        return ""
+    lines = ["--- Datos técnicos (para Analista Técnico) ---"]
+    lines.append(f"  Precio actual: {tc.get('price')}")
+    lines.append(f"  MA20: {tc.get('ma20')} | MA50: {tc.get('ma50')} | MA200: {tc.get('ma200')}")
+    lines.append(f"  RSI(14): {tc.get('rsi'):.1f}" if tc.get("rsi") else "  RSI: N/A")
+    lines.append(f"  Bollinger: upper={tc.get('bb_upper')} lower={tc.get('bb_lower')} %B={tc.get('bb_pct')}%")
+    lines.append(f"  Momentum: 5d={tc.get('ret_5d_pct'):+.2f}% 20d={tc.get('ret_20d_pct'):+.2f}%" if tc.get("ret_5d_pct") is not None else "")
+    lines.append(f"  Resistencias clave: {tc.get('resistances')}")
+    lines.append(f"  Soportes clave: {tc.get('supports')}")
+    lines.append("")
+    return "\n".join(l for l in lines if l is not None)
 
 
 def _clean_json(text: str) -> str:
@@ -179,6 +325,7 @@ def _build_market_context(
     news_classified: list[dict],
     kb_results: list[dict],
     current_price: float,
+    technical_data: dict | None = None,
 ) -> str:
     lines = []
     lines.append(f"=== CONTEXTO DE MERCADO — {datetime.now().strftime('%Y-%m-%d %H:%M')} ===\n")
@@ -243,6 +390,9 @@ def _build_market_context(
                 lines.append(f"      → Retorno 30d: {meta['ret_30d']:.1f}%")
         lines.append("")
 
+    if technical_data:
+        lines.append(_format_technical_context(technical_data))
+
     return "\n".join(lines)
 
 
@@ -252,18 +402,23 @@ def run_debate(
     kb_results: list[dict],
     current_price: float,
 ) -> dict:
-    context = _build_market_context(market_data, news_classified, kb_results, current_price)
+    technical_data = _load_technical_context()
+    context = _build_market_context(
+        market_data, news_classified, kb_results, current_price, technical_data
+    )
 
     bull = _call_agent(BULL_SYSTEM, context, "Bull Analyst")
     bear = _call_agent(BEAR_SYSTEM, context, "Bear Analyst")
     risk = _call_agent(RISK_SYSTEM, context, "Risk Assessor")
+    tech = _call_agent(TECHNICAL_ANALYST_SYSTEM, context, "Technical Analyst")
 
     manager_context = (
         f"{context}\n\n"
         f"=== ANÁLISIS DEL EQUIPO ===\n\n"
         f"--- ANALISTA ALCISTA ---\n{json.dumps(bull, indent=2, ensure_ascii=False)}\n\n"
         f"--- ANALISTA BAJISTA ---\n{json.dumps(bear, indent=2, ensure_ascii=False)}\n\n"
-        f"--- ANALISTA DE RIESGO ---\n{json.dumps(risk, indent=2, ensure_ascii=False)}\n"
+        f"--- ANALISTA DE RIESGO ---\n{json.dumps(risk, indent=2, ensure_ascii=False)}\n\n"
+        f"--- ANALISTA TÉCNICO CHARTISTA ---\n{json.dumps(tech, indent=2, ensure_ascii=False)}\n"
     )
 
     verdict = _call_agent(FUND_MANAGER_SYSTEM, manager_context, "Fund Manager")
@@ -272,17 +427,19 @@ def run_debate(
         "timestamp": datetime.now().isoformat(),
         "current_price": current_price,
         "agents": {
-            "bull": bull,
-            "bear": bear,
-            "risk": risk,
+            "bull":      bull,
+            "bear":      bear,
+            "risk":      risk,
+            "technical": tech,
         },
         "verdict": verdict,
         "context_summary": {
-            "articles_analyzed": len(news_classified),
-            "articles_escalated": sum(1 for n in news_classified if n.get("escalate")),
+            "articles_analyzed":     len(news_classified),
+            "articles_escalated":    sum(1 for n in news_classified if n.get("escalate")),
             "kb_documents_retrieved": len(kb_results),
-            "bull_news": sum(1 for n in news_classified if n.get("sentiment") == "bullish"),
-            "bear_news": sum(1 for n in news_classified if n.get("sentiment") == "bearish"),
+            "bull_news":             sum(1 for n in news_classified if n.get("sentiment") == "bullish"),
+            "bear_news":             sum(1 for n in news_classified if n.get("sentiment") == "bearish"),
+            "technical_data_loaded": bool(technical_data),
         },
     }
 

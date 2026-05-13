@@ -282,12 +282,17 @@ class KnowledgeBase:
             return
         texts = [d["text"] for d in self._docs]
         self._vectorizer = TfidfVectorizer(
-            max_features=8000,
+            max_features=4000,
             stop_words="english",
             ngram_range=(1, 2),
             sublinear_tf=True,
         )
         self._tfidf_matrix = self._vectorizer.fit_transform(texts)
+        # Truncate stored text after building the TF-IDF matrix: the full
+        # text was needed for vectorization but we only display 250 chars.
+        # This frees ~40MB of RAM on Render's 512MB free tier.
+        for d in self._docs:
+            d["text"] = d["text"][:300]
 
     def search(self, query: str, top_k: int = 8, category: str = None) -> list[dict]:
         if not self._loaded:
