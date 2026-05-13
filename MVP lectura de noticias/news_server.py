@@ -1185,7 +1185,9 @@ def get_regime():
     """GET /api/regime — devuelve el régimen actual + HMM + Markov-Switching + score de confianza."""
     try:
         from src.model.regime import detect_regime, hmm_regime, confidence_score
-        df = _get_features_df() or pd.DataFrame()
+        df = _get_features_df()
+        if df is None:
+            df = pd.DataFrame()
         reg = detect_regime(df)
         # Markov-Switching desde artifacts/regime_switching.json
         ms_path = os.path.join(ARTIFACTS_DIR, "regime_switching.json")
