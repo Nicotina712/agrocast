@@ -3,7 +3,7 @@
   "horizons": {
     "7d": {
       "ok": true,
-      "as_of": "2026-05-13T16:52:19",
+      "as_of": "2026-05-13T23:53:20",
       "profile_name": "default",
       "horizon_days": 7,
       "test_months": 12,
@@ -270,7 +270,7 @@
     },
     "15d": {
       "ok": true,
-      "as_of": "2026-05-13T16:52:20",
+      "as_of": "2026-05-13T23:53:20",
       "profile_name": "default",
       "horizon_days": 15,
       "test_months": 12,
@@ -537,7 +537,7 @@
     },
     "30d": {
       "ok": true,
-      "as_of": "2026-05-13T16:52:20",
+      "as_of": "2026-05-13T23:53:21",
       "profile_name": "default",
       "horizon_days": 30,
       "test_months": 12,
@@ -803,6 +803,6 @@
       "context_note": "Backtest OOS hibrido ML+Narrativa. El modelo hibrido ajusta la P(WAIT) del clasificador con un narrative_adjustment basado en evento detectado, strength y fade_risk. Alpha=0.15 (conservador). Panel INFORMATIVO, no decisor."
     }
   },
-  "as_of": "2026-05-13T16:52:19",
+  "as_of": "2026-05-13T23:53:19",
   "profile_name": "default"
 }
