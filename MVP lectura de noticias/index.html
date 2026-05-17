@@ -1550,7 +1550,7 @@
 
     <!-- ══════════════════════════════════════════════════════════════
          INTELLIGENCE ENGINE V2 — Multi-Agent Debate System
-         FinBERT → Claude Sonnet → Bull/Bear/Risk → Fund Manager
+         FinBERT → Claude Sonnet → Bull/Bear/Technical/Risk → Fund Manager
          ══════════════════════════════════════════════════════════════ -->
     <div class="card" style="margin-bottom:18px;border-left:4px solid #d32f2f;background:linear-gradient(135deg,#fff5f5 0%,#fff 100%);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;">
@@ -1603,21 +1603,26 @@
         <!-- Agent panels (collapsible) -->
         <details id="ie2-agents-detail" style="margin-bottom:10px;">
             <summary style="cursor:pointer;font-size:.75rem;font-weight:600;color:#d32f2f;">
-                VER DEBATE COMPLETO · Bull vs Bear vs Risk (click para expandir)
+                VER DEBATE COMPLETO · Bull vs Bear vs Technical vs Risk (click para expandir)
             </summary>
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
                 <!-- Bull -->
-                <div style="flex:1;min-width:250px;padding:12px;background:#f1f8e9;border-radius:6px;border:1px solid #dcedc8;">
+                <div style="flex:1;min-width:220px;padding:12px;background:#f1f8e9;border-radius:6px;border:1px solid #dcedc8;">
                     <div style="font-size:.7rem;font-weight:700;color:#33691e;margin-bottom:8px;">🐂 BULL ANALYST</div>
                     <div id="ie2-bull" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
                 </div>
                 <!-- Bear -->
-                <div style="flex:1;min-width:250px;padding:12px;background:#fce4ec;border-radius:6px;border:1px solid #f8bbd0;">
+                <div style="flex:1;min-width:220px;padding:12px;background:#fce4ec;border-radius:6px;border:1px solid #f8bbd0;">
                     <div style="font-size:.7rem;font-weight:700;color:#880e4f;margin-bottom:8px;">🐻 BEAR ANALYST</div>
                     <div id="ie2-bear" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
                 </div>
+                <!-- Technical Analyst -->
+                <div style="flex:1;min-width:220px;padding:12px;background:#e8eaf6;border-radius:6px;border:1px solid #c5cae9;">
+                    <div style="font-size:.7rem;font-weight:700;color:#283593;margin-bottom:8px;">📈 TECHNICAL ANALYST</div>
+                    <div id="ie2-technical" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
+                </div>
                 <!-- Risk -->
-                <div style="flex:1;min-width:250px;padding:12px;background:#fff3e0;border-radius:6px;border:1px solid #ffe0b2;">
+                <div style="flex:1;min-width:220px;padding:12px;background:#fff3e0;border-radius:6px;border:1px solid #ffe0b2;">
                     <div style="font-size:.7rem;font-weight:700;color:#e65100;margin-bottom:8px;">⚖️ RISK ASSESSOR</div>
                     <div id="ie2-risk" style="font-size:.78rem;color:#333;line-height:1.5;"></div>
                 </div>
@@ -4558,6 +4563,35 @@ function _renderIE2(d) {
             if (b.price_target_30d) html += `<div>Target 30d: $${b.price_target_30d.low}–$${b.price_target_30d.high}</div>`;
             if (b.key_risk_to_thesis) html += `<div style="margin-top:4px;font-size:.72rem;color:#888;">⚠️ Riesgo: ${b.key_risk_to_thesis}</div>`;
             bearEl.innerHTML = html;
+        }
+    }
+
+    // Technical Analyst agent
+    const techEl = document.getElementById("ie2-technical");
+    if (techEl && agents.technical) {
+        const t = agents.technical;
+        if (t.error) {
+            techEl.innerHTML = `<div style="color:#c62828;font-size:.82rem;">❌ Error: ${t.error}</div>`;
+        } else {
+            let html = `<div style="font-weight:600;margin-bottom:6px;">${t.pattern_summary || t.thesis || ""}</div>`;
+            const biasColor = {"ALCISTA":"#2e7d32","BAJISTA":"#c62828","NEUTRAL":"#757575"}[t.bias] || "#333";
+            html += `<div>Sesgo técnico: <b style="color:${biasColor}">${t.bias || "?"}</b></div>`;
+            if (t.support_levels && t.support_levels.length) {
+                html += `<div style="margin-top:6px;"><b>Soportes:</b> ${t.support_levels.map(s => "$"+s).join(", ")}</div>`;
+            }
+            if (t.resistance_levels && t.resistance_levels.length) {
+                html += `<div><b>Resistencias:</b> ${t.resistance_levels.map(r => "$"+r).join(", ")}</div>`;
+            }
+            if (t.key_indicators) {
+                html += `<div style="margin-top:6px;font-size:.72rem;"><b>Indicadores:</b></div>`;
+                Object.entries(t.key_indicators).forEach(([k,v]) => {
+                    html += `<div style="font-size:.72rem;padding-left:8px;">• ${k}: ${v}</div>`;
+                });
+            }
+            if (t.trade_setup) html += `<div style="margin-top:6px;font-size:.72rem;"><b>Setup:</b> ${t.trade_setup}</div>`;
+            if (t.invalidation_level) html += `<div style="font-size:.72rem;">Invalidación: $${t.invalidation_level}</div>`;
+            if (t.timeframe) html += `<div style="font-size:.72rem;color:#555;">Timeframe: ${t.timeframe}</div>`;
+            techEl.innerHTML = html;
         }
     }
 

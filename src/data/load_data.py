@@ -22,11 +22,28 @@ _CACHE_TTL_H  = 24  # horas
 
 
 def _cache_is_fresh() -> bool:
-    """True si el caché existe y tiene menos de _CACHE_TTL_H horas."""
+    """
+    True si el caché existe y los DATOS son recientes.
+
+    IMPORTANTE: No usar mtime del archivo (se actualiza con git operations).
+    En su lugar, verificar la última fecha dentro del CSV.
+    Considerar fresco si la última fecha de datos es de hoy o del último día hábil.
+    """
     if not os.path.exists(_CACHE_PATH):
         return False
-    mtime = datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return datetime.now() - mtime < timedelta(hours=_CACHE_TTL_H)
+    try:
+        df = pd.read_csv(_CACHE_PATH, parse_dates=["Date"], usecols=["Date"])
+        if df.empty:
+            return False
+        last_date = df["Date"].max().date()
+        today = datetime.now().date()
+        days_stale = (today - last_date).days
+        # Fresh if data is from today or within 3 calendar days (covers weekends)
+        # Stale if more than 3 days old (should have at least 1 trading day in 3 cal days)
+        return days_stale <= 3
+    except Exception:
+        # If we can't read/parse the file, treat as stale to force refresh
+        return False
 
 
 def _detect_and_flag_rollovers(df: pd.DataFrame) -> set:
