@@ -1,12 +1,15 @@
-name: AgroCast Pipeline (every 6h)
+name: AgroCast Pipeline (market hours)
 
 # Free tier: 2000 min/month for private repos, unlimited for public.
-# Cada corrida ~5–8 min × 4/día × 30 = ~600–960 min/mes. Cabe holgado.
+# Runs 1x/day Mon-Fri during CBOT soybean market hours.
+# 14:00 UTC = 09:00 CT = market mid-morning (best time for daily analysis).
+# ~5-8 min × 1/day × 22 days/mo ≈ 110-176 min/mo (well within free tier).
+# Cost saving: 4 runs/day → 1 run/day = 75% reduction in API calls.
 
 on:
   schedule:
-    # 00:00, 06:00, 12:00, 18:00 UTC (≈ 21:00, 03:00, 09:00, 15:00 UY)
-    - cron: "0 */6 * * *"
+    # 14:00 UTC Mon-Fri = 09:00 CT (CBOT market hours)
+    - cron: "0 14 * * 1-5"
   workflow_dispatch: {}     # botón "Run workflow" en GitHub UI
 
 permissions:

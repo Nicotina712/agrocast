@@ -385,14 +385,34 @@ def synthesize(force: bool = False, brief_type: str = "producer") -> dict | None
     """Genera o devuelve cache del brief de mercado.
 
     brief_type: "producer" (Dashboard) o "trader" (pestaña Trader)
+
+    Cost gate: only generates 1x/day during market hours.
+    Outside that window, returns cached version.
     """
     path = _output_path(brief_type)
+    component = f"market_synthesis_{brief_type}"
 
+    # Always try cache first
     if not force and _is_fresh(path):
         try:
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
+            pass
+
+    # Cost gate: 1x/day during market hours only
+    if not force:
+        try:
+            from .market_hours import can_run_llm
+            if not can_run_llm(component):
+                print(f"[synthesis] Skipped {brief_type} — already ran today or market closed")
+                # Return stale cache if available
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        return json.load(f)
+                except Exception:
+                    return None
+        except ImportError:
             pass
 
     api_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
@@ -456,6 +476,13 @@ def synthesize(force: bool = False, brief_type: str = "producer") -> dict | None
                 evaluate_due()
             except Exception as _e:
                 print(f"[synthesis] accountability skip: {_e}")
+
+        # Mark as ran for cost gate
+        try:
+            from .market_hours import mark_llm_ran
+            mark_llm_ran(component)
+        except Exception:
+            pass
 
         return result
 

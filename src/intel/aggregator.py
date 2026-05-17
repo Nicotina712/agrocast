@@ -172,7 +172,23 @@ def load_intel(path: str = _OUTPUT_PATH) -> dict:
 def run_full_pipeline(articles: list, max_articles: int = 25) -> dict:
     """
     Pipeline completo: analiza con LLM + agrega + persiste.
+
+    Cost gate: Haiku API calls only run 1x/day during market hours.
+    Outside that window, returns cached intel or VADER-only analysis.
     """
+    try:
+        from src.intel.market_hours import can_run_llm, mark_llm_ran
+        if not can_run_llm("news_analyst"):
+            # Return cached intel if available, don't spend API calls
+            cached = load_intel()
+            if cached and cached.get("n_articles", 0) > 0:
+                print("[intel] Skipped — already ran today or market closed. Using cache.")
+                return cached
+            # No cache available — run with VADER only (no API cost)
+            print("[intel] Market closed / already ran — using VADER only (no API cost)")
+    except ImportError:
+        pass  # market_hours not available, run normally
+
     from src.intel.news_analyst import analyze_batch
 
     enriched = analyze_batch(articles, max_articles=max_articles)
@@ -180,4 +196,12 @@ def run_full_pipeline(articles: list, max_articles: int = 25) -> dict:
     save_intel(intel)
     print(f"[intel] composite={intel['composite']:+.3f}  "
           f"n={intel['n_articles']}  high_impact={intel['n_high_impact']}")
+
+    # Mark as ran for today
+    try:
+        from src.intel.market_hours import mark_llm_ran
+        mark_llm_ran("news_analyst")
+    except Exception:
+        pass
+
     return intel

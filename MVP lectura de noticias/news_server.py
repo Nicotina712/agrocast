@@ -2722,6 +2722,17 @@ def get_ie_history():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/llm_gate_status")
+def get_llm_gate_status():
+    """Status of LLM cost gate — shows which components ran today."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.market_hours import get_gate_status
+        return jsonify({"ok": True, **get_gate_status()})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/")
 def home():
     with open(os.path.join(BASE_DIR, "index.html"), encoding="utf-8") as f:

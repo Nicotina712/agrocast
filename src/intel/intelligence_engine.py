@@ -239,6 +239,21 @@ def _build_rag_query(market_ctx: dict, classified_news: list[dict]) -> str:
 
 
 def run_intelligence_engine(force: bool = False) -> dict:
+    # ── Cost gate: 1x/day during market hours ──
+    if not force:
+        try:
+            from .market_hours import can_run_llm
+            if not can_run_llm("intelligence_engine"):
+                # Return cached verdict
+                if os.path.exists(_CACHE_FILE):
+                    with open(_CACHE_FILE, encoding="utf-8") as f:
+                        cached = json.load(f)
+                    cached["from_cache"] = True
+                    cached["gate_reason"] = "already_ran_today_or_market_closed"
+                    return cached
+        except ImportError:
+            pass
+
     if not force and os.path.exists(_CACHE_FILE):
         try:
             with open(_CACHE_FILE, encoding="utf-8") as f:
@@ -324,6 +339,13 @@ def run_intelligence_engine(force: bool = False) -> dict:
             print(f"[IE] Verdict snapshot saved to history: {snap['verdict']}")
     except Exception as e:
         print(f"[IE] Verdict snapshot failed (non-blocking): {e}")
+
+    # ── Mark as ran for cost gate ──
+    try:
+        from .market_hours import mark_llm_ran
+        mark_llm_ran("intelligence_engine")
+    except Exception:
+        pass
 
     gc.collect()
     print(f"[IE] Intelligence Engine complete in {elapsed:.1f}s")
