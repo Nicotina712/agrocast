@@ -5,10 +5,11 @@
     "conviction": 32,
     "headline": "Señales mixtas con sesgo bajista frenan decisiones de venta esta semana",
     "price_at_snapshot": 1176.75,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 1.95,
+    "verified_at": "2026-05-17T16:06:30.434047",
+    "price_at_horizon": 1199.75
   },
   {
     "date": "2026-04-26",
@@ -16,10 +17,11 @@
     "conviction": 42,
     "headline": "Señales bajistas dominan: prudencia antes de vender soja esta semana",
     "price_at_snapshot": 1163.75,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 3.09,
+    "verified_at": "2026-05-17T16:06:30.434565",
+    "price_at_horizon": 1199.75
   },
   {
     "date": "2026-04-27",
@@ -27,10 +29,11 @@
     "conviction": 42,
     "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
     "price_at_snapshot": 1178.5,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": 1.8,
+    "verified_at": "2026-05-17T16:06:30.435027",
+    "price_at_horizon": 1199.75
   },
   {
     "date": "2026-04-28",
@@ -38,10 +41,11 @@
     "conviction": 42,
     "headline": "Señal compradora moderada con modelo ML tirando fuerte y China frenando",
     "price_at_snapshot": 1191.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": 1.87,
+    "verified_at": "2026-05-17T16:06:30.435464",
+    "price_at_horizon": 1213.5
   },
   {
     "date": "2026-04-29",
@@ -49,10 +53,11 @@
     "conviction": 38,
     "headline": "Señal bajista dominante: el modelo ML pesa fuerte a la baja",
     "price_at_snapshot": 1190.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 2.1,
+    "verified_at": "2026-05-17T16:06:30.435880",
+    "price_at_horizon": 1215.25
   },
   {
     "date": "2026-04-30",
@@ -60,10 +65,11 @@
     "conviction": 38,
     "headline": "Señal bajista dominante: el modelo ML pesa fuerte a la baja",
     "price_at_snapshot": 1197.75,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": -1.94,
+    "verified_at": "2026-05-17T16:06:30.436326",
+    "price_at_horizon": 1174.5
   },
   {
     "date": "2026-05-01",
@@ -71,10 +77,11 @@
     "conviction": 45,
     "headline": "Señal bajista domina: modelo ML y China presionan precios a la baja",
     "price_at_snapshot": 1195.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": -1.53,
+    "verified_at": "2026-05-17T16:06:30.436765",
+    "price_at_horizon": 1177.0
   },
   {
     "date": "2026-05-02",

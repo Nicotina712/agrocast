@@ -1,207 +1,44 @@
 {
-  "timestamp": "2026-05-11T17:07:18.834038",
+  "timestamp": "2026-05-17T16:06:31.383121",
   "current_price": 1211.0,
   "agents": {
     "bull": {
-      "thesis": "La soja se encuentra en régimen de tendencia con posicionamiento especulativo neutro (0 contratos netos), lo que elimina el riesgo de liquidación masiva y crea condiciones para absorber catalizadores alcistas; cualquier sorpresa positiva en WASDE o señal de demanda China puede generar un movimiento desproporcionado desde una base limpia.",
-      "arguments": [
-        {
-          "point": "Posicionamiento especulativo en cero absoluto — máxima capacidad de absorción alcista",
-          "evidence": "COT net_speculative = 0 contratos. No hay posiciones largas que liquidar ni cortas que defender. El mercado está en equilibrio perfecto de posicionamiento.",
-          "historical_support": "Históricamente, cuando el posicionamiento neto especulativo se acerca a cero en régimen de tendencia, los movimientos subsiguientes tienden a ser de mayor magnitud. En el período 2019-2020, posicionamiento neutro en tendencia precedió rallies de +8-12% en 30 días cuando se sumó un catalizador externo (acuerdo comercial Fase 1 con China generó +11.3% en 28 días desde base de posicionamiento similar)."
-        },
-        {
-          "point": "Régimen de TENDENCIA activo — el modelo confirma dirección",
-          "evidence": "El sistema de régimen clasifica el mercado actual como 'trend'. En mercados de commodities agrícolas, los regímenes de tendencia tienen probabilidad estadística de continuación del 62-68% en horizontes de 10-20 días.",
-          "historical_support": "En soja CBOT, los regímenes de tendencia identificados por modelos cuantitativos produjeron retornos promedio de +3.2% en los siguientes 15 días de trading durante 2021-2024 (n=47 ocurrencias)."
-        },
-        {
-          "point": "Exportaciones brasileñas a ritmo acelerado (+5.1% YoY) — paradójicamente alcista para CBOT",
-          "evidence": "Brasil exporta 31.93 MMT YTD a 1.681 MMT/semana con crecimiento YoY del 5.1%. Este ritmo agresivo de exportación reduce el stock exportable disponible de Brasil para el segundo semestre, potencialmente redirigiendo compradores hacia soja estadounidense en campañas futuras.",
-          "historical_support": "En 2022, cuando Brasil exportó agresivamente en H1 (+7% YoY), la base FOB brasileña se deterioró en Q3 mientras CBOT recuperó +6.8% por expectativa de demanda diferida hacia origen USA."
-        },
-        {
-          "point": "WASDE pendiente — evento de alto impacto con datos de stocks no revelados",
-          "evidence": "WASDE procesado el 2026-05-11 con ending_stocks=? y surprise=?. La incertidumbre sobre el dato de stocks es un catalizador binario de alta energía. Con posicionamiento neutral, una sorpresa bajista en stocks (menor inventario) no tiene amortiguadores de largo que vendan.",
-          "historical_support": "Según KB [1]: sorpresas en stocks WASDE han generado movimientos de ±3-5% en la sesión. Con posicionamiento neutro, el impacto se amplifica ~1.4x respecto a períodos de crowded positioning. Un shock de -50Mbu en ending stocks históricamente mueve +4-7% intraday."
-        },
-        {
-          "point": "Margen de crushing negativo en China (-$154.42/ton) puede ser punto de inflexión — las crushers chinas NECESITAN precio de soja más barato O ajustar oferta",
-          "evidence": "crush_margin=-154.42 USD/ton es extremadamente negativo. Las crushers operando en pérdida eventualmente reducen operación, contrayendo demanda spot pero generando efecto rebote cuando los márgenes se normalicen.",
-          "historical_support": "En Q4 2023, márgenes de crushing chinos negativos (-$80-120/ton) precedieron una fase de re-stocking agresivo cuando los márgenes se normalizaron, generando +9.2% en soja CBOT en 6 semanas. El nivel actual de -$154/ton es más extremo, sugiriendo el rebote eventual será más violento."
-        },
-        {
-          "point": "Basis Uruguay en -25 USD/ton con z-score negativo — señal de sobre-descuento que atrae compradores",
-          "evidence": "Basis = -25 USD/ton, señal DESFAVORABLE, z-score = -0.14. Un basis muy negativo en origen sudamericano significa que la soja física está barata relativa a CBOT, lo que eventualmente atrae demanda de arbitraje que soporta precios.",
-          "historical_support": "Bases negativas extremas en Sudamérica históricamente se normalizan en 2-4 semanas, y el proceso de normalización tiende a arrastrar CBOT al alza +1.5-3% mientras el arbitraje se cierra."
-        }
-      ],
-      "catalysts_7d": [
-        "Publicación/interpretación del WASDE de mayo con dato de ending stocks menor al esperado — catalizador #1 de alta energía",
-        "Cualquier anuncio de compra de soja USA por parte de China (flash sales USDA) revertiría sentiment instantáneamente desde base de posicionamiento cero",
-        "Deterioro meteorológico en Midwest USA (plantación de soja en curso para campaña 26/27) — cualquier retraso de siembra >5 días vs promedio histórico genera prima de riesgo",
-        "Short-covering técnico: con posicionamiento en cero, cualquier movimiento alcista por encima de resistencias técnicas puede auto-alimentarse sin presión de ventas de longs profit-taking"
-      ],
-      "catalysts_30d": [
-        "Normalización de márgenes de crushing chinos: con -$154/ton, las crushers están destruyendo demanda; una mejora en márgenes (subida precio proteína animal/harina de soja China) desencadenaría compras agresivas",
-        "Reducción del ritmo exportador brasileño en H2 por agotamiento de stocks, redirigiendo demanda global hacia origen USA y soportando CBOT",
-        "Datos de siembra USA de mayo-junio: USDA Crop Progress con intenciones de siembra de soja vs maíz — cualquier cambio en acreage a favor de maíz reduce oferta proyectada de soja 26/27",
-        "Resolución de tensiones comerciales USA-China o anuncio de acuerdo agrícola bilateral que incluya compromisos de compra de soja americana",
-        "Escenario La Niña en Australia/Sudeste Asiático afectando producción de aceites vegetales competidores, aumentando demanda relativa de soja"
-      ],
-      "price_target_7d": {
-        "low": 1211,
-        "high": 1260,
-        "note": "Rango +0% / +4.1% desde $1211. El escenario alto requiere sorpresa positiva en WASDE o flash sale China. Sin catalizador, el modelo ML señala HOLD con expected_return +1.4% → target central $1228"
-      },
-      "price_target_30d": {
-        "low": 1225,
-        "high": 1320,
-        "note": "Rango +1.2% / +8.8% desde $1211. El escenario alto ($1320) requiere convergencia de 2+ catalizadores: normalización crushing China + datos climáticos adversos USA. Target base con régimen tendencia activo: $1265 (+4.5%)"
-      },
-      "conviction": "BAJA",
-      "conviction_rationale": "El argumento alcista descansa sobre POTENCIALES catalizadores no confirmados. Los datos actuales son objetivamente mixtos-bajistas: demanda China con score 30/100, crush margins extremadamente negativos, basis desfavorable, modelo ML con confianza de solo 2.8% y señal HOLD. El único pilar sólido es el posicionamiento neutral que elimina riesgo de liquidación. La convicción sube a MEDIA solo si el WASDE revela ending stocks por debajo de consenso.",
-      "key_risk_to_thesis": "El riesgo principal es que el WASDE confirme ending stocks elevados (bearish surprise) simultáneamente con continuación del deterioro de márgenes de crushing chinos, lo que empujaría al mercado a régimen de rango o tendencia bajista. Adicionalmente, si Brasil mantiene su ritmo de exportación +5.1% YoY, desplaza demanda global permanentemente y reduce la ventana de demanda hacia origen USA. Un deterioro adicional del yuan chino también haría las importaciones de soja aún más costosas para China, deprimiendo el demand_score desde 30/100 hacia zona de crisis."
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cb8fVYckDRMPZKdwCDqm4'}"
     },
     "bear": {
-      "thesis": "La soja enfrenta presión bajista estructural por márgenes de crushing chino en territorio profundamente negativo (-154.42 USD/ton) que destruyen demanda de importación, combinado con exportaciones brasileñas aceleradas (+5.1% YoY a 1.681 MMT/sem) que saturan el mercado físico global en un contexto donde el modelo ML señala retorno esperado casi nulo con convicción mínima.",
-      "arguments": [
-        {
-          "point": "Crush margin chino en colapso severo: -154.42 USD/ton",
-          "evidence": "El crush margin de China es la métrica de demanda más importante para la soja global. Un valor de -154.42 USD/ton significa que los procesadores chinos pierden dinero por cada tonelada procesada. Con demand_score de 30/100, China está operando en modo defensivo. Históricamente, crush margins negativos sostenidos en China preceden cancelaciones de compra y reducción de importaciones con lag de 4-8 semanas.",
-          "historical_support": "En 2014 Q2, cuando los crush margins chinos cayeron a terreno negativo (-80 a -120 USD/ton), las importaciones de soja chinas cayeron ~15% QoQ y los precios CBOT corrigieron aproximadamente -12% en 45 días desde picos. En 2022-Q3, crush margins negativos coincidieron con caída de -8% en 30 días. Con -154.42 la presión es 30-40% más severa que el promedio histórico de eventos similares."
-        },
-        {
-          "point": "Brasil exportando a ritmo récord: 31.93 MMT YTD a 1.681 MMT/semana (+5.1% YoY)",
-          "evidence": "La oferta brasileña está llegando al mercado físico a un ritmo que supera las expectativas de demanda. Con importaciones chinas YoY en 0.0% (crecimiento estancado) y Brasil empujando +5.1% más volumen, el mercado físico global está absorbiendo un excedente estructural. El basis de Uruguay en -25 USD/ton con señal DESFAVORABLE confirma que el mercado físico está bajo presión de oferta.",
-          "historical_support": "En mayo-junio 2018, exportaciones brasileñas aceleradas (+7% YoY) combinadas con demanda china débil resultaron en una corrección CBOT de -180 c/bu (~-15%) en 6 semanas. El patrón actual de exportación acelerada + demanda plana es un análogo directo que históricamente genera presión de -8% a -15% en 30-45 días."
-        },
-        {
-          "point": "Posicionamiento especulativo neto en cero: ausencia de soporte de momentum comprador",
-          "evidence": "COT net_speculative = 0 contratos indica que los fondos especulativos no tienen posición direccional significativa. Esto es doblemente bajista: (1) no hay 'combustible' de cobertura corta para rebotes sostenidos, y (2) si las fundamentales deterioran, los fondos irán de neutral a corto, añadiendo presión vendedora de 50K-150K contratos potenciales hacia posición neta corta.",
-          "historical_support": "Según datos CFTC históricos, cuando los managed money pasan de posición neutra a net short >100K contratos bajo fundamentales negativos (como crush margins negativos), el movimiento de precio asociado promedia -6% a -9% en 21-28 días. La dirección del flujo especulativo desde 0 es la clave: con estas fundamentales, el sesgo es claramente hacia venta."
-        },
-        {
-          "point": "Modelo ML señala HOLD con confidence de 2.83%: mercado sin convicción alcista",
-          "evidence": "Un retorno esperado de +1.41% con confidence de apenas 2.83% estadísticamente no es distinguible de cero. El modelo ML falla en identificar un catalizador alcista robusto. En presencia de fundamentales bajistas estructurales (crush margin, oferta brasileña), la ausencia de señal alcista fuerte en el modelo cuantitativo refuerza la tesis vendedora por defecto.",
-          "historical_support": "Cuando señales cuantitativas muestran HOLD/baja convicción en contextos de fundamentos negativos (demanda débil + oferta abundante), el precio históricamente sigue los fundamentos con lag de 5-10 días, resultando en movimientos de -3% a -7% en la ventana de 7-14 días."
-        },
-        {
-          "point": "Régimen de mercado 'trend' con fundamentos a la baja: momentum puede amplificar la caída",
-          "evidence": "El régimen identificado como 'trend' en un contexto donde todos los indicadores de demanda son negativos (demand_score 30/100, crush margin -154, imports YoY 0%) sugiere que cualquier ruptura técnica hacia abajo podría activar stops y acelerar la tendencia bajista. El precio en $1211/bu puede estar en zona de resistencia tras rally reciente.",
-          "historical_support": "En regímenes de 'trend' con fundamentos deteriorados, los mercados de commodities agrícolas tienden a acelerar movimientos: ejemplos en soja 2012-Q4 (trend bajista amplificado por demanda débil resultó en -18% en 60 días) y 2015-Q3 (-14% en 45 días en régimen trend con oferta récord)."
-        }
-      ],
-      "risks_7d": [
-        "WASDE surprise alcista: si el reporte USDA del 12-May-2026 muestra ending stocks menores a expectativas o corte de producción brasileña/argentina, podría generar short squeeze de +3% a +6% en sesión",
-        "Clima adverso en región sojera de EE.UU. (cinturón de maíz/soja): sequía o heladas tardías podrían disparar compras de cobertura especulativa inmediata",
-        "Anuncio sorpresa de compra China de volumen significativo (>1 MMT en flash news) que reactive el demand_score",
-        "Ruptura técnica alcista si el precio supera resistencias clave en el contrato JUL2026 activando stops compradores de algoritmos"
-      ],
-      "risks_30d": [
-        "Recuperación de crush margins en China vía caída del precio del harina de soja o subsidios gubernamentales chinos al sector porcino, que reactive demanda de importación",
-        "Deterioro climático severo en Brasil que ralentice las exportaciones actuales y reduzca expectativas de segunda safra",
-        "Escalada de tensiones geopolíticas que reactive compras de precaución por parte de China antes de posibles restricciones comerciales",
-        "Debilitamiento del USD que haga la soja americana más competitiva globalmente mejorando la demanda de exportación",
-        "Reducción de área sembrada en EE.UU. mayor a esperada en el reporte de Planted Acreage de junio, ajustando la oferta proyectada 2026/27"
-      ],
-      "price_target_7d": {
-        "low": 1155,
-        "high": 1195
-      },
-      "price_target_30d": {
-        "low": 1080,
-        "high": 1175
-      },
-      "conviction": "MEDIA",
-      "key_risk_to_thesis": "Un WASDE report con sorpresa bajista en ending stocks (menor a consenso por recorte de producción sudamericana o demanda doméstica USA mayor) combinado con señales de recuperación del crush margin chino podría invalidar completamente la tesis bajista y generar un rally de +5% a +10% que obligaría a cubrir posiciones cortas aceleradamente. La incertidumbre sobre el dato WASDE (surprise=? en los datos) es el mayor riesgo binario inmediato para cualquier posición corta establecida hoy."
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cb8fVZ9FZ2erSAXV2NsjK'}"
     },
     "risk": {
-      "regime": "transition",
-      "regime_confidence": 0.38,
-      "volatility_assessment": "elevated",
-      "event_risk_next_7d": "high",
-      "event_risk_detail": "WASDE report publicado el 2026-05-11 con datos de ending_stocks no confirmados (surprise=?). La incertidumbre post-WASDE en las primeras horas/días genera alta volatilidad reactiva. Sin datos claros de sorpresa, el mercado puede reposicionarse bruscamente. Adicionalmente, crush margin negativo en China (-154.42 USD/ton) crea riesgo de cancelaciones o reducción de compras forward que podrían materializarse en anuncios esta semana.",
-      "positioning_risk": "low",
-      "positioning_detail": "COT net_speculative = 0 contracts indica posicionamiento neto neutro o datos no disponibles. Ausencia de crowding extremo (ni long >200K ni short >100K) reduce el riesgo de liquidaciones violentas por squeeze. Sin embargo, la neutralidad de posiciones en un contexto de WASDE reciente sugiere que el mercado está en modo 'wait and see', lo que puede amplificar movimientos ante catalizadores.",
-      "persistence_probability": 0.24,
-      "fade_probability": 0.61,
-      "max_recommended_exposure": "minimal",
-      "key_risk_factors": [
-        "WASDE reciente con sorpresa desconocida — reacción diferida del mercado posible en próximas 48-72h",
-        "Crush margin chino profundamente negativo (-154.42 USD/ton): demanda score 30/100 señala contracción estructural de imports",
-        "Exportaciones brasileñas aceleradas (+5.1% YoY, ritmo 1.681 MMT/sem): presión bajista de oferta abundante",
-        "Señal ML extremadamente débil (confianza 2.8%, retorno esperado +1.4%): modelo sin convicción direccional",
-        "Basis Uruguay en zona desfavorable (z-score -0.14): sin soporte desde demanda spot local",
-        "Régimen 'trend' declarado pero confidence baja (0.38) indica posible quiebre de tendencia inminente",
-        "Ausencia de dato COT confiable limita evaluación de riesgo de desposicionamiento"
-      ],
-      "regime_analogs": "Comparable a Q4-2014 (soja en rango post-cosecha récord Brasil con demanda china moderándose), y parcialmente a mayo-2019 (incertidumbre trade war EEUU-China con crush margins comprimidos). En ambos casos el mercado exhibió alta volatilidad intradía con dirección ambigua de 2-4 semanas antes de resolver hacia la baja por exceso de oferta. También presenta similitudes con transición de mayo-2023 donde señales técnicas de trend se diluyeron ante revisión alcista de stocks WASDE."
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cb8fVZfFSWcqSMjfgixup'}"
+    },
+    "technical": {
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cb8fVaB1h8w9PjeKov9K9'}"
     }
   },
   "verdict": {
-    "verdict": "SELL",
-    "confidence": 0.52,
-    "reasoning": "El analista bajista presenta convicción MEDIA respaldada por evidencia estructural sólida (crush margin chino en -$154.42/ton, exportaciones brasileñas aceleradas, demanda score 30/100), mientras el analista alcista tiene convicción BAJA y sus argumentos descansan mayoritariamente en catalizadores potenciales no confirmados. El analista de riesgo identifica régimen de transición con confidence 0.38 y recomienda exposición mínima, pero el sesgo fundamental apunta a la baja. Se vende con sizing reducido dada la incertidumbre del WASDE y el riesgo de evento binario en las próximas 48-72h.",
-    "price_range_7d": {
-      "low": 1155,
-      "central": 1185,
-      "high": 1225
-    },
-    "price_range_30d": {
-      "low": 1080,
-      "central": 1160,
-      "high": 1240
-    },
-    "recommended_action": {
-      "producers": "Aprovechar el precio actual de $1211/bu para cubrir entre 30-40% de la producción proyectada 2026/27 con opciones PUT (no ventas a futuro outright) con strike $1180-1200, pagando prima de seguro ante posible deterioro adicional. Evitar vender 100% forward dado el riesgo binario del WASDE; mantener optionalidad al alza. Si el WASDE resulta bajista para stocks, acelerar cobertura al 60-70%.",
-      "traders": "Posición short moderada en JUL2026 con sizing 25% del capital normal. Entry en zona $1205-1215, stop-loss en $1248 (cierre por encima de resistencia técnica clave). Target primario $1175, target secundario $1145 si los crush margins chinos continúan deteriorándose. No establecer posición corta completa hasta conocer el impacto del WASDE; esperar 24-48h para confirmación de dirección post-reporte."
-    },
-    "position_sizing": "25%",
-    "invalidation_conditions": [
-      "WASDE revela ending stocks US por debajo del consenso en más de 30 Mbu → revisar tesis, posible cierre de cortos",
-      "Flash sale USDA de soja americana a China por más de 500K toneladas → sentiment shift inmediato, cerrar posición corta",
-      "Crush margin chino mejora a niveles por encima de -$80/ton en cualquier reporte semanal → demanda china puede reactivarse, invalidación parcial",
-      "Precio cierra por encima de $1248/bu en contrato JUL2026 en base diaria → ruptura técnica al alza, stop activado",
-      "Clima adverso severo (sequía o heladas) en Midwest USA con impacto proyectado >5% en acreage → cambio de régimen fundamental",
-      "Posicionamiento especulativo COT gira a net long >80K contratos en próximo reporte → liquidez compradora materializada"
-    ],
-    "bull_bear_balance": {
-      "bull_weight": 0.35,
-      "bear_weight": 0.65,
-      "explanation": "Se pesa más el lado bajista porque sus argumentos tienen evidencia observable y cuantificable HOY: crush margin -$154/ton es un dato duro, exportaciones brasileñas +5.1% YoY son registros reales, demand_score 30/100 refleja realidad actual. Los argumentos alcistas son mayoritariamente opcionales y futuros (WASDE podría sorprender, China podría comprar, basis podría normalizarse). El principio de evidencia presente vs. esperanza futura favorece al bajista. El peso 65/35 (no 80/20) refleja el riesgo binario genuino del WASDE no resuelto y el posicionamiento neutral que elimina el riesgo de cascada vendedora."
-    },
-    "key_watchlist": [
-      "Datos definitivos del WASDE mayo-2026: ending stocks US y world, producción Brasil/Argentina — es el evento #1 de la semana",
-      "Registros diarios USDA de exportaciones de soja USA (Export Inspections del lunes y Export Sales del jueves)",
-      "Actualizaciones semanales de crush margin chino y precio de harina de soja en Dalian Commodity Exchange",
-      "Ritmo de exportaciones brasileñas semana del 11-17 mayo vs. promedio 1.681 MMT/sem",
-      "USDA Crop Progress del lunes: porcentaje de soja USA plantada vs. promedio histórico — retrasos >7 días generarían prima de riesgo",
-      "Tipo de cambio USD/BRL: fortalecimiento del BRL haría soja brasileña más cara, reduciendo competitividad vs. USA",
-      "Posicionamiento COT actualizado (publicación viernes) para detectar si los fondos comienzan a acumular cortos desde posición neutral"
-    ],
-    "next_review_trigger": "Publicación y análisis completo de los datos del WASDE mayo-2026 (ending_stocks y surprise factor). Si la sorpresa es bajista para stocks (menor inventario proyectado), revisar inmediatamente el veredicto hacia HOLD o BUY. Si la sorpresa es alcista para stocks (mayor inventario), confirmar y potencialmente ampliar la posición corta hacia 50%. Cualquier flash sale de soja USA a China superior a 500K MT también dispara revisión inmediata independientemente del WASDE."
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cb8fVahkpWpdCZsQLeXgx'}"
   },
   "context_summary": {
-    "articles_analyzed": 0,
-    "articles_escalated": 0,
-    "kb_documents_retrieved": 2,
-    "bull_news": 0,
-    "bear_news": 0
+    "articles_analyzed": 30,
+    "articles_escalated": 26,
+    "kb_documents_retrieved": 8,
+    "bull_news": 4,
+    "bear_news": 4,
+    "technical_data_loaded": true
   },
-  "execution_time_seconds": 138.5,
+  "execution_time_seconds": 1.1,
   "from_cache": false,
   "pipeline": {
-    "tier1_method": "none",
-    "tier1_articles": 0,
-    "tier1_escalated": 0,
-    "rag_documents": 2,
-    "rag_query": "regime trend",
+    "tier1_method": "vader_keywords",
+    "tier1_articles": 30,
+    "tier1_escalated": 26,
+    "rag_documents": 8,
+    "rag_query": "usda Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizant Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los  El SENASA pone orden sobre la «le",
     "kb_stats": {
-      "total_documents": 2525,
+      "total_documents": 2535,
       "categories": {
         "shock_history": 1092,
-        "event_history": 1423,
+        "event_history": 1433,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
@@ -212,7 +49,7 @@
         "technical": 1,
         "methodology": 1
       },
-      "index_features": 8000
+      "index_features": 4000
     }
   }
 }
