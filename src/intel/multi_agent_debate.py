@@ -278,9 +278,16 @@ def _format_technical_context(tc: dict) -> str:
     lines = ["--- Datos técnicos (para Analista Técnico) ---"]
     lines.append(f"  Precio actual: {tc.get('price')}")
     lines.append(f"  MA20: {tc.get('ma20')} | MA50: {tc.get('ma50')} | MA200: {tc.get('ma200')}")
-    lines.append(f"  RSI(14): {tc.get('rsi'):.1f}" if tc.get("rsi") else "  RSI: N/A")
+    lines.append(f"  RSI(14): {tc['rsi']:.1f}" if tc.get("rsi") is not None else "  RSI: N/A")
     lines.append(f"  Bollinger: upper={tc.get('bb_upper')} lower={tc.get('bb_lower')} %B={tc.get('bb_pct')}%")
-    lines.append(f"  Momentum: 5d={tc.get('ret_5d_pct'):+.2f}% 20d={tc.get('ret_20d_pct'):+.2f}%" if tc.get("ret_5d_pct") is not None else "")
+    r5 = tc.get("ret_5d_pct")
+    r20 = tc.get("ret_20d_pct")
+    if r5 is not None and r20 is not None:
+        lines.append(f"  Momentum: 5d={r5:+.2f}% 20d={r20:+.2f}%")
+    elif r5 is not None:
+        lines.append(f"  Momentum: 5d={r5:+.2f}%")
+    else:
+        lines.append("  Momentum: N/A")
     lines.append(f"  Resistencias clave: {tc.get('resistances')}")
     lines.append(f"  Soportes clave: {tc.get('supports')}")
     lines.append("")
