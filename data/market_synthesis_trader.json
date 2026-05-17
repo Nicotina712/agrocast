@@ -1,58 +1,58 @@
 {
-  "headline": "HOLD en ZSN26: señal compuesta neutra, técnicos vs. China en conflicto",
+  "headline": "HOLD en zona de resistencia: señales mixtas, esperar definicion",
   "stance": "NEUTRAL",
-  "conviction": 13,
+  "conviction": 22,
   "senal_compuesta": {
-    "score": "44/100",
-    "raw": "-0.128",
-    "factores_clave": "ML XGBoost 7d (30%): score=-0.119, retorno esperado -2.38%, confianza 4.8% → arrastra bajista. Demanda China (20%): score=-0.4, crush margin negativo, importaciones flat → bajista. WASDE/Stocks (15%): score=0.0, neutral. Técnico (10%): score=+0.2, RSI 65, golden cross → alcista. Estacionalidad (informativo): +0.1% promedio mayo, sin sesgo claro. Forecast 30d (INFORMATIVO, peso 0%): objetivo 1295 USc/bu, +7.2%."
+    "score": "47/100",
+    "raw": "-0.052",
+    "factores_clave": "ML 7d: NEUTRO score=0.071 (30%); Demanda China: BAJISTA score=-0.4 (20%); WASDE/Stocks: NEUTRO score=0.0 (15%); Técnico: ALCISTA score=0.2 (10%). El peso bajista de China arrastra el compuesto a terreno levemente negativo, mientras técnicos sostienen. Forecast 30d MUY ALCISTA (score=0.901, precio objetivo 1316.8 USc/bu) es INFORMATIVO, peso 0%."
   },
   "tecnico": {
-    "niveles": "Precio spot: 1208 USc/bu (ZSN26). Bollinger%B: 105% → precio perforando banda superior, zona de sobrecompra de corto plazo. MA50 por debajo del precio, MA200 por debajo de MA50 → estructura alcista de medio plazo. Soporte inmediato: zona MA50 (estimado ~1160-1170 USc/bu por contexto). Resistencia: sin referencia técnica explícita en datos, pero %B>100 sugiere extensión.",
-    "rsi": "RSI 65 → zona de momentum positivo pero acercándose a sobrecompra (umbral 70). No hay divergencia bajista confirmada en los datos, pero la combinación %B>100 + RSI 65 genera alerta de agotamiento de impulso.",
-    "momentum": "Momentum 5d y 20d no provistos explícitamente. Precio actual 1208 vs. snapshot del 03/05 en 1187.75 → aprox. +1.7% en 7d, lo que es coherente con presión compradora reciente. Sin datos de momentum cruzado disponibles.",
-    "pattern": "Golden cross activo (MA50 > MA200): señal estructural alcista. Precio por encima de MA50. Bollinger %B = 105%: parabolic extension, históricamente seguida de mean reversion o consolidación. Patrón de tensión: técnicos alcistas vs. fundamentales bajistas."
+    "niveles": "Precio spot JUL26: 1211.0 USc/bu. Bollinger%B=105%: precio opera sobre banda superior, zona de extensión. MA50 y MA200 en golden cross (alcista estructural). Resistencia inmediata: banda superior Bollinger ~1211-1215. Soporte clave: MA50 (estimar ~1160-1170 zona). Próximo soporte dinámico: MA200.",
+    "rsi": "RSI=65, zona de sobrecompra moderada, no extrema. Por encima de 60 sugiere momentum alcista pero con riesgo de reversión si no hay catalizador.",
+    "momentum": "Precio sobre MA50 y MA200 confirma momentum positivo de medio plazo. Sin datos explícitos de momentum 5d/20d en el feed, pero el rally desde ~1187 (2026-05-03) a 1211 implica +1.9% en 14 días.",
+    "pattern": "Golden cross activo (MA50 > MA200): señal alcista estructural. Bollinger%B=105% indica precio en extensión sobre banda superior: riesgo de mean reversion táctica. Sin divergencia RSI confirmada."
   },
   "narrativo": {
-    "evento_activo": "Tipo: oil_energy | Dirección: BAJISTA | Fuerza narrativa: 0.518 (moderada) | Fade risk: 0.0 (bajo, el evento no está en riesgo de revertirse en las próximas 24h según el modelo). Contexto: presión vía canal energía/biofuel. Nota: pese a dirección bajista del evento, la distribución de análogos muestra P(suba) = 60% en 1d, lo que genera asimetría contraintuitiva.",
-    "rango_1d": "Q10: -0.81% (-3.57 USD/ton) | Mediana: +0.09% (+0.42 USD/ton) | Q90: +1.21% (+5.39 USD/ton) | P(suba)=60% | n=20 análogos",
-    "rango_7d": "Q10: -1.47% (-6.51 USD/ton) | Mediana: +0.23% (+1.03 USD/ton) | Q90: +1.49% (+6.59 USD/ton) | P(suba)=55% | n=20 análogos",
-    "analogos": "20 análogos históricos para evento oil_energy bajista. Fade rate 7d global del event memory: 39.1% (es decir, en ~4 de cada 10 casos el evento se revierte en 7d). Tipos dominantes en event memory (1423 eventos): speculative_mom (520), oil_energy (452), macro_fx (441). La dominancia de oil_energy en el histórico da robustez estadística relativa a este tipo de evento."
+    "evento_activo": "Tipo: macro_fx | Dirección: BAJISTA | Fuerza narrativa: 0.471 (moderada) | Fade risk: 0.2 (bajo, evento tiende a sostenerse). Contexto FX/macro presiona a la baja pero el historial de análogos muestra sesgo alcista en precio.",
+    "rango_1d": "Q10=-0.54% / Q90=+0.71% | en USD/ton: -2.34 a +3.07 | Mediana: +1.07 USD/ton | P(suba)=70%. Rango comprimido, menor volatilidad que días sin evento.",
+    "rango_7d": "Q10=-0.57% / Q90=+3.23% | en USD/ton: -2.45 a +13.95 | Mediana: +1.87 USD/ton | P(suba)=75%. Sesgo alcista notable en el horizonte semanal según análogos.",
+    "analogos": "n=20 análogos macro_fx. Pool histórico: 1433 eventos totales, dominados por speculative_mom (523), oil_energy (454), macro_fx (442). Fade rate 7d global: 39.1% (60.9% de eventos no se revierten en 7 días, tendencia persiste)."
   },
   "cross_market": {
-    "oil": "Señal macro oil positiva en noticias: news_macro_oil_signal=+0.346 (alcista para soja vía canal biofuel/demanda energética). Sin precio ni RSI de crude disponibles en cross-market. El evento narrativo oil_energy está catalogado como bajista para ZS, pero la señal de noticias de oil es positiva → contradicción que merece monitoreo. Biofuels signal: +0.113 (levemente positivo).",
-    "dollar": "news_macro_usd_signal: -0.22 → USD levemente bajista en noticias, lo que es marginalmente alcista para commodities denominados en dólares. Sin DXY ni cambio explícito disponible en cross-market.",
-    "corn": "Sin datos de precio de corn ni ratio ZS/ZC disponibles en el snapshot. Data gap crítico para arbitraje spread."
+    "oil": "Signal oil/energy positiva (news_macro_oil_signal=0.3456, 1 artículo). Oil alcista actúa como soporte vía canal biofuel (biodiesel/soja). Sin precio explícito de crudo en el feed, pero la señal es constructiva para soja.",
+    "dollar": "Evento activo macro_fx con dirección bajista: DXY probablemente firme o en alza, presionando commodities denominados en USD. Sin datos explícitos de DXY en cross-market feed. Impacto: viento de frente para precios en USc/bu.",
+    "corn": "Sin datos de corn en cross-market feed. Ratio soja/maíz no calculable. Data gap relevante para arbitraje."
   },
   "fundamentales": {
-    "china": "Crush margin: -154.42 USD/ton (PROFUNDAMENTE NEGATIVO, as_of 09/05/2026). Importaciones YoY: +0.0% (demanda estancada). Demand score: 30/100. Este es el factor bajista más contundente del composite: sin incentivo económico para que los crushers chinos compren soja, la demanda estructural está deprimida.",
-    "wasde": "Signal: NEUTRAL. Stocks finales: 122.4 MMT. Surprise: no disponible. El WASDE no aporta catalizador direccional en este momento.",
-    "supply": "Brasil: exports YTD 31.93 MMT, +5.1% YoY, pace semanal 1.681 MMT/sem (ritmo exportador sólido, presión de oferta sobre precios). Argentina: retenciones y cepo sin dato actualizado (gap). Basis Uruguay: +21.6 USD/ton, z-score=8.84 (estadísticamente anómalo, FAVORABLE para el productor local, posible señal de tensión en basis que puede no ser replicable)."
+    "china": "Crush margin: -154.42 USD/ton (FUERTEMENTE NEGATIVO, as_of 2026-05-09). Importaciones YoY: +0.0% (estancadas). Demand score: 30/100 (BAJISTA). Principal lastre fundamental: la desincentivación de compras chinas por crushings en pérdida es el factor bajista dominante. News signal China débil: 0.225 (1 artículo).",
+    "wasde": "Señal WASDE: NEUTRAL. Stocks finales: 122.4 MMT. Sin surprise reportada. Peso 15% en compuesto, aporte neutro. News USDA signal moderadamente positiva: 0.3978 (2 artículos).",
+    "supply": "Brasil: exports YTD=31.93 MMT, YoY +5.1%, pace semanal=1.681 MMT/sem (as_of 2026-05-09): oferta brasileña fluida, presión de oferta latente. Argentina: retenciones y cepo sin dato disponible (gap). Basis Uruguay: -25.0 USD/ton, z-score=-0.14 (DESFAVORABLE pero casi neutro estadísticamente, estimado histórico)."
   },
   "decision_classifier": {
-    "horizonte_optimo": "El clasificador de decisión muestra que en NINGÚN horizonte la narrativa supera al always-wait: 1d narrativa=+0.025 vs. wait=-0.037 (único horizonte donde narrativa gana, por mínimo margen). 7d: narrativa=+0.762 vs. wait=+2.936. 15d: +0.672 vs. +3.377. 30d: -1.824 vs. +6.837. Conclusión: el modelo histórico dice que ESPERAR ha sido más rentable en todos los horizontes relevantes. Esto refuerza el HOLD.",
-    "p_wait": "Alta. En 7d, 15d y 30d el always-wait supera consistentemente a actuar sobre la narrativa. El único horizonte donde la narrativa aporta valor mínimo es 1d (+0.025 vs. -0.037 del wait), pero el margen es insignificante.",
-    "partial_sell": "No recomendado actuar sobre señal compuesta en este momento. Si el trader tiene posición larga existente: considera stop dinámico por debajo de MA50 como gestión de riesgo, no como señal de venta activa. Sin evidencia de que vender ahora supere a esperar según el backtest del clasificador."
+    "horizonte_optimo": "1d es el único horizonte donde la estrategia narrativa supera al always-wait (0.078 vs 0.022 USD/ton). En 7d, 15d y 30d el always-wait domina ampliamente (2.76, 3.09 y 3.71 USD/ton respectivamente vs valores negativos del modelo narrativo). Conclusión: si hay acción táctica, solo tiene sentido intradiario/muy corto plazo.",
+    "p_wait": "Para horizontes 7d+, la evidencia histórica del backtest favorece fuertemente esperar (always-wait). P(esperar paga en 7d+) es alta basada en el backtest. En 1d, la narrativa agrega mínimo valor pero positivo.",
+    "partial_sell": "No hay señal de venta activa (stance NEUTRAL). Para productores con stock físico: el basis Uruguay desfavorable (-25 USD/ton) y crush china negativo no incentivan pricing agresivo hoy. Partial hedge defensivo solo si el precio rompe por debajo de soporte MA50."
   },
-  "trade_idea": "Sin setup definido, esperar confirmación. La señal compuesta es HOLD con raw=-0.128 y conviction muy baja (13/100). Los técnicos (golden cross, RSI 65, precio sobre MA50) están en conflicto directo con los fundamentales (crush margin China -154 USD/ton, ML bajista). El decision classifier muestra que esperar ha superado a actuar en todos los horizontes de 7d en adelante. El forecast 30d (INFORMATIVO, peso 0% en composite) sugiere objetivo 1295 USc/bu, pero no es accionable por sí solo. Si el trader busca entrada larga especulativa: esperar retroceso hacia zona MA50 (~1160-1170 USc/bu) con volumen decreciente como punto de entrada más favorable, con SL por debajo de MA50 y TP en zona 1295 (referencia forecast). Para posiciones cortas: no hay setup técnico limpio con el golden cross activo; necesitaría quiebre de MA50 para validar tesis bajista.",
+  "trade_idea": "Sin setup definido, esperar confirmación. El compuesto en -0.052 con conviction 22/100 no justifica entrada direccional. Técnicos alcistas (golden cross, precio sobre MA50/MA200) chocan contra Bollinger extendido (105%) y fundamentales chinos débiles. Para traders de futuros ZS JUL26: observar si 1211-1215 actúa como resistencia confirmada con rechazo y volumen vendedor (gatillo para short táctico con SL sobre 1225, TP zona 1185-1190 MA50). Para el lado comprador: esperar pullback a zona 1185-1195 para entrada con mejor RR, SL bajo MA50. FND del JUL26 es 2026-06-30 (36 días): roll a AGO26 (1205.75) en spreads -5.25 USc a considerar si se mantiene posición.",
   "risks": [
-    "Riesgo técnico alcista: Bollinger %B=105% y RSI=65 pueden continuar en territorio extendido en mercados con momentum fuerte; un cierre semanal sobre 1220 USc/bu podría acelerar squeeze hacia 1260-1295.",
-    "Riesgo fundamental bajista: crush margin chino en -154 USD/ton es el peor nivel registrado en los datos; si no hay recuperación de márgenes, la demanda china puede colapsar aún más, rompiendo el soporte técnico.",
-    "Riesgo narrativo: evento oil_energy bajista con fade risk=0.0, pero la señal de noticias de oil es positiva (+0.346); si el petróleo rebota con fuerza, el canal biofuel puede revertir la narrativa bajista rápidamente.",
-    "Riesgo de sesgo del modelo: track record muestra 16 señales pendientes sin verificar, hit rate null. El modelo viene emitiendo stance BAJISTA consecutivamente desde al menos 01/05 mientras el precio subió de 1195 a 1208 USc/bu (+1.1%), sugiriendo posible rezago o sesgo bajista no calibrado."
+    "Crush margin china en -154 USD/ton: si se deteriora más, señal bajista de demanda puede escalar y romper soporte técnico. Mayor riesgo fundamental bajista.",
+    "Bollinger%B=105% con RSI=65: extensión técnica sobre banda superior aumenta probabilidad de mean reversion táctica, especialmente sin catalizador alcista nuevo.",
+    "Evento macro_fx activo (bajista, fuerza 0.471): un rally del DXY o deterioro de condiciones macro EM puede ampliar el rango bajista más allá del Q10 proyectado.",
+    "Oferta Brasil: pace 1.681 MMT/sem con exportaciones YoY +5.1% mantiene presión de oferta global. Cualquier dato de aceleración puede presionar basis y precio CBOT.",
+    "Track record del modelo: dir_accuracy_7d=36.4% (por debajo del 50%, n=11). Las señales de 7 días del modelo han fallado en dirección recientemente. Tomar el forecast direccional con cautela."
   ],
-  "track_record": "Hit rate: null (0 señales verificadas de 16 totales, todas pendientes). El modelo viene emitiendo BAJISTA con conviction 39-45 desde el 01/05/2026 mientras ZSN26 cotiza lateralmente-alcista (1187 → 1208 USc/bu). Esto es una señal de alerta: la narrativa bajista recurrente no ha sido validada por el precio en el corto plazo. Drift monitor: p_buy_recent=0.474 vs. p_buy_hist=0.525, z_delta=-0.13 → sin cambio de régimen estadísticamente significativo por ahora, pero la tendencia reciente es levemente más bajista que el histórico. Calibración ML: dir_accuracy_7d=66.7% (n=6, muestra pequeña), dir_accuracy_14d=100% (n=1, no significativo). MAE 7d: 7.2% → error medio de 7.2% en retorno, considerable para gestión de riesgo.",
+  "track_record": "Hit rate brief LLM: 4/7 verificados = 57.1% (n=7, 11 pendientes). Accountability ML 7d: dir_accuracy=36.4% (n=11, BAJO, modelo ha fallado en dirección más de lo que acertó en muestra reciente). MAE 7d=7.16%, MAE 14d=8.79%. Dir accuracy 14d=66.7% (n=6, más alentador pero muestra pequeña). Drift monitor: p_buy_recent=0.474 vs p_buy_hist=0.525, z_delta=-0.13 (sin cambio de régimen significativo, drift marginal hacia sesgo más neutral/bajista en señales recientes). Historial reciente: múltiples días BAJISTA (may 03-10) con precio que subió de 1187 a 1211, sugiriendo que las señales bajistas no se materializaron en el precio. Cautela extra justificada.",
   "data_gaps": [
-    "Cross-market incompleto: sin precio de crude oil, RSI de crude, precio de corn (ZC) y ratio soja/maíz para arbitraje de spread",
-    "DXY: sin nivel ni cambio del índice dólar para cuantificar impacto FX",
-    "Argentina: retenciones y estado del cepo sin dato actualizado, crítico para estimación de oferta exportable",
-    "WASDE surprise: sin dato de sorpresa vs. consenso del último reporte",
-    "Momentum 5d y 20d explícitos no provistos en el snapshot técnico",
-    "MA50 y MA200 en niveles absolutos no informados, solo referencias relacionales",
-    "Volumen de futuros ZSN26: sin datos de OI ni volumen para confirmar calidad del breakout técnico",
-    "Commodities cross-market (RSI, chg5d, signal): campos vacíos en el snapshot"
+    "DXY y cross-market completo: precio/RSI/chg5d de commodities index no disponible",
+    "Corn ZC: precio y ratio soja/maíz no disponible (arbitraje incalculable)",
+    "Argentina: retenciones y cepo sin dato (relevante para oferta exportable)",
+    "WASDE surprise explícita y stocks desglosados no disponibles",
+    "MA50 y MA200 valores exactos no provistos (niveles de soporte estimados)",
+    "Crush margin China actualizado: dato con rezago al 2026-05-09 (8 días de atraso)",
+    "Datos de momentum 5d y 20d explícitos no incluidos en el feed técnico"
   ],
-  "_generated_at": "2026-05-10T21:59:57.052235",
+  "_generated_at": "2026-05-17T21:22:25.577206",
   "_model": "claude-sonnet-4-6",
   "_brief_type": "trader",
   "_input_keys": [

@@ -1,43 +1,37 @@
 {
-  "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
+  "headline": "Mercado sin rumbo claro: mejor esperar antes de vender",
   "stance": "NEUTRAL",
   "conviction": 22,
-  "key_drivers": [
-    {
-      "driver": "Demanda China",
-      "direction": "-",
-      "why": "Márgenes de crush negativos en China (-154 USD/ton) y sin crecimiento en importaciones (0% interanual sobre 112 MMT), lo que frena el principal motor de demanda global de soja."
-    },
-    {
-      "driver": "Modelo ML (XGBoost 7d)",
-      "direction": "-",
-      "why": "Retorno esperado para la próxima semana de apenas -0.69% con confianza del 1.4%, prácticamente sin señal direccional clara. El modelo no ve catalizador inminente."
-    },
-    {
-      "driver": "WASDE / Stocks Mundiales",
-      "direction": "=",
-      "why": "Stocks finales globales en 122.4 MMT, exactamente en línea con expectativas (sorpresa cero). Sin presión ni alivio desde el lado de la oferta mundial."
-    },
-    {
-      "driver": "Análisis Técnico (Soja)",
-      "direction": "+",
-      "why": "Precio actual de 1208 USc/bu por encima de MA50 y MA200 (golden cross activo), RSI en 64.9 y precio rozando la banda superior de Bollinger. Momentum positivo pero cerca de zona de sobrecompra."
-    }
+  "situacion_hoy": "La soja está cotizando alrededor de 1211 centavos de dólar por bushel (unos 443 dólares por tonelada en Chicago) y el mercado no muestra una dirección definida. Hoy hay un evento de tipo macro y dólar activo que históricamente mueve el precio entre -0.5% y +0.7%, con 70% de probabilidad de que el día cierre en positivo — en plata: entre -2.3 y +3.1 USD/ton. Sin embargo, las señales van para distintos lados y no hay convicción real para actuar.",
+  "que_hacer": {
+    "accion_principal": "Esperar y mantener el stock sin vender por ahora",
+    "porcentaje_sugerido": "0% del stock",
+    "horizonte": "7d",
+    "razon": "El modelo histórico muestra que en situaciones similares esperar rindió más que vender en horizontes de 7 a 30 días, y la señal general es demasiado débil para justificar mover mercadería hoy"
+  },
+  "rangos_esperados": {
+    "hoy_manana": "Entre -0.5% y +0.7% / entre -2.3 y +3.1 USD/ton",
+    "semana": "Entre -0.6% y +3.2% / entre -2.5 y +14 USD/ton",
+    "quincenal": "Entre -1.1% y +6.0% / entre -4.7 y +25.8 USD/ton"
+  },
+  "contexto_clave": [
+    "China no está comprando soja con fuerza: los márgenes de los que procesan soja allá son negativos, lo que frena las compras y presiona el precio hacia abajo",
+    "El precio técnicamente está firme y por encima de sus promedios históricos recientes, lo que podría sostenerlo si aparece demanda nueva",
+    "El modelo de largo plazo (30 días) ve el precio subiendo hasta unos 1265-1317 centavos por bushel, pero eso es orientativo y tiene mucha incertidumbre"
   ],
-  "risks": [
-    "Próximo WASDE podría traer tidings bajistas para la nueva cosecha según analistas de mercado",
-    "Crush chino negativo sostenido puede reducir compras de soja sudamericana en las próximas semanas"
+  "riesgos": [
+    "Si China sigue sin comprar y los márgenes de procesamiento no mejoran, el precio puede ceder más de lo esperado en las próximas semanas",
+    "El dólar y el contexto financiero global pueden mover el precio de la soja para cualquier lado sin que los fundamentos del mercado lo justifiquen"
   ],
-  "tactical_recommendation": "Con la soja en 1208 USc/bu, no es momento de apurarse ni a vender ni a retener especulativamente. Si tenés grano sin precio, considerá fijar entre un 20-30% del stock aprovechando que el precio está técnicamente fuerte y cerca de resistencia (banda superior Bollinger ~1205-1210 USc/bu). Esperá confirmación del próximo WASDE y señales de mejora en el crush chino antes de tomar una postura más agresiva.",
-  "strategic_view": "En el horizonte de 30 a 90 días, el contexto de demanda china débil y stocks mundiales neutrales limita el upside estructural. El modelo de pronóstico ensemble sugiere un potencial alcista en torno a 1290-1317 USc/bu, pero ese escenario requiere que mejoren los márgenes de crush en China y que Brasil no acelere su ritmo exportador; tomalos como referencia optimista, no como precio garantizado.",
+  "honestidad": "El historial verificado de este sistema es de apenas 7 señales comprobadas con 57% de aciertos, lo cual es un número muy chico para sacar conclusiones firmes — tomalo como una referencia más, no como una certeza. El modelo no puede predecir eventos políticos, climáticos repentinos ni decisiones de China que cambien el panorama de un día para el otro.",
   "data_gaps": [
-    "Fecha y contenido del próximo reporte WASDE (mayo 2026) — puede mover el mercado significativamente",
-    "Dato actualizado de importaciones chinas en tiempo real (actualmente estimado con z-score estático)",
-    "Tipo de cambio CNY/USD no disponible, lo que limita la precisión del análisis de demanda china",
-    "Liquidaciones CIARA confirmadas (dato actual es estimación estacional, no cifra oficial de la semana)"
+    "No tenemos el dato actualizado de retenciones en Argentina ni información sobre el cepo cambiario, que pueden afectar mucho el precio que recibís vos como productor",
+    "Los stocks finales mundiales del WASDE no están confirmados con el dato de sorpresa, lo que le quita certeza al análisis de oferta global",
+    "Falta información fresca sobre el basis local en Uruguay y Argentina, que es lo que finalmente determina cuánto te pagan en la balanza"
   ],
-  "_generated_at": "2026-05-10T14:35:15.239023",
+  "_generated_at": "2026-05-17T21:21:51.348728",
   "_model": "claude-sonnet-4-6",
+  "_brief_type": "producer",
   "_input_keys": [
     "news_intel",
     "signal",
@@ -48,7 +42,11 @@
     "wasde",
     "multi_commodity",
     "contract",
+    "narrative_forecast",
+    "event_memory_summary",
+    "drift_monitor",
     "forecast",
-    "accuracy"
+    "accuracy",
+    "llm_track_record"
   ]
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2026-05-17",
+    "timestamp": "2026-05-17T18:25:49.200350",
+    "price_at_verdict": 1211.0,
+    "verdict": "SELL",
+    "confidence": 0.58,
+    "reasoning": "El alineamiento bajista entre fundamentales y técnicos es predominante: crush margins chinos en -154 USD/ton destruyen la demanda del mayor comprador mundial, exportaciones brasileñas aceleradas (+5.1% YoY) saturan la oferta, y el técnico confirma sesgo bajista con precio por debajo de MA20 y compri",
+    "price_range_7d": {
+      "low": 1143,
+      "central": 1163,
+      "high": 1185
+    },
+    "price_range_30d": {
+      "low": 1089,
+      "central": 1130,
+      "high": 1175
+    },
+    "bull_conviction": "?",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  }
+]

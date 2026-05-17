@@ -1,101 +1,96 @@
 {
-  "generated_at": "2026-05-11T20:24:20.424149",
-  "n_articles": 22,
-  "n_high_impact": 1,
-  "composite": 0.0488,
+  "generated_at": "2026-05-17T17:31:20.627031",
+  "n_articles": 25,
+  "n_high_impact": 0,
+  "composite": 0.0435,
   "drivers": {
-    "news_china_demand_signal": 0.0168,
-    "news_china_demand_count": 4,
-    "news_weather_br_signal": -0.225,
-    "news_weather_br_count": 1,
-    "news_weather_ar_signal": 0.0,
-    "news_weather_ar_count": 0,
-    "news_weather_us_signal": 0.0,
-    "news_weather_us_count": 0,
-    "news_supply_global_signal": 0.0012,
-    "news_supply_global_count": 4,
-    "news_usda_report_signal": 0.5128,
+    "news_china_demand_signal": 0.225,
+    "news_china_demand_count": 1,
+    "news_weather_br_signal": 0.0,
+    "news_weather_br_count": 0,
+    "news_weather_ar_signal": 0.055,
+    "news_weather_ar_count": 1,
+    "news_weather_us_signal": 0.11,
+    "news_weather_us_count": 1,
+    "news_supply_global_signal": 0.129,
+    "news_supply_global_count": 5,
+    "news_usda_report_signal": 0.3978,
     "news_usda_report_count": 2,
     "news_policy_ar_signal": -0.045,
     "news_policy_ar_count": 2,
-    "news_policy_us_signal": 0.225,
-    "news_policy_us_count": 1,
+    "news_policy_us_signal": 0.1125,
+    "news_policy_us_count": 2,
     "news_policy_br_signal": 0.0,
     "news_policy_br_count": 0,
-    "news_macro_usd_signal": -0.022,
+    "news_macro_usd_signal": -0.03,
     "news_macro_usd_count": 2,
     "news_macro_oil_signal": 0.3456,
     "news_macro_oil_count": 1,
     "news_logistics_signal": 0.0,
     "news_logistics_count": 0,
     "news_biofuels_signal": 0.0,
-    "news_biofuels_count": 3,
-    "news_geopolitics_signal": 0.1534,
-    "news_geopolitics_count": 4
+    "news_biofuels_count": 1,
+    "news_geopolitics_signal": 0.2853,
+    "news_geopolitics_count": 2
   },
   "top_per_driver": {
     "china_demand": [
       {
-        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
+        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
         "impact": "bullish",
         "magnitude": 3,
         "confidence": 0.75,
-        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
-      },
-      {
-        "title": "Brazil beans offer a better deal for China",
-        "impact": "bearish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.farmprogress.com/commentary/brazil-beans-offer-a-better-deal-for-china"
-      },
-      {
-        "title": "Will this week’s Trump/Xi meeting put beans on boats?",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.65,
-        "url": "https://www.farmprogress.com/commentary/will-this-week-s-trump-xi-meeting-put-beans-on-boats-"
+        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
       }
     ],
-    "weather_br": [
+    "weather_ar": [
       {
-        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
-        "impact": "bearish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
+        "title": "Kharif reset: Farmers may ditch paddy and maize for soybean, pulses amid monsoon fears",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://economictimes.indiatimes.com/news/economy/agriculture/kharif-reset-farmers-may-ditch-paddy-and-maize-for-soybean-pulses-amid-monsoon-fears/articleshow/131045884.cms"
+      }
+    ],
+    "weather_us": [
+      {
+        "title": "Midsouth farmers shift to soybeans as a survival strategy",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.farmprogress.com/soybean/midsouth-farmers-shift-to-soybeans-as-a-survival-strategy"
       }
     ],
     "supply_global": [
       {
-        "title": "May WASDE report to reveal first look at new crop outlook",
+        "title": "Soybeans Closes with Tuesday Gains USDA Tightens Stocks",
         "impact": "bullish",
-        "magnitude": 4,
-        "confidence": 0.85,
-        "url": "https://www.farmprogress.com/max-armstrong/may-wasde-report-to-reveal-first-look-at-new-crop-outlook"
-      },
-      {
-        "title": "Brazil beans offer a better deal for China",
-        "impact": "bearish",
         "magnitude": 3,
         "confidence": 0.75,
-        "url": "https://www.farmprogress.com/commentary/brazil-beans-offer-a-better-deal-for-china"
+        "url": "https://www.barchart.com/story/news/1889214/soybeans-closes-with-tuesday-gains-usda-tightens-stocks"
       },
       {
-        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
-        "impact": "bearish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
+        "title": "Red meat exports add significant value to corn and soybeans",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.6,
+        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
+      },
+      {
+        "title": "Kharif reset: Farmers may ditch paddy and maize for soybean, pulses amid monsoon fears",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://economictimes.indiatimes.com/news/economy/agriculture/kharif-reset-farmers-may-ditch-paddy-and-maize-for-soybean-pulses-amid-monsoon-fears/articleshow/131045884.cms"
       }
     ],
     "usda_report": [
       {
-        "title": "May WASDE report to reveal first look at new crop outlook",
+        "title": "Soybeans Closes with Tuesday Gains USDA Tightens Stocks",
         "impact": "bullish",
-        "magnitude": 4,
-        "confidence": 0.85,
-        "url": "https://www.farmprogress.com/max-armstrong/may-wasde-report-to-reveal-first-look-at-new-crop-outlook"
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.barchart.com/story/news/1889214/soybeans-closes-with-tuesday-gains-usda-tightens-stocks"
       },
       {
         "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
@@ -123,26 +118,33 @@
     ],
     "policy_us": [
       {
-        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
+        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
         "impact": "bullish",
         "magnitude": 3,
         "confidence": 0.75,
-        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
+        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
+      },
+      {
+        "title": "Union Cabinet approves higher MSP for 14 Kharif crops for 2026-27 marketing season",
+        "impact": "neutral",
+        "magnitude": 1,
+        "confidence": 0.15,
+        "url": "https://www.hindustantimes.com/india-news/union-cabinet-approves-higher-msp-for-14-kharif-crops-for-2026-27-marketing-season-101778724639955.html"
       }
     ],
     "macro_usd": [
       {
-        "title": "Grain and Oilseed Futures Slide on Middle East War Optimism",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://financialpost.com/pmn/business-pmn/grain-and-oilseed-futures-slide-on-middle-east-war-optimism"
-      },
-      {
-        "title": "Trade optimism gives soybeans a bump",
+        "title": "Red meat exports add significant value to corn and soybeans",
         "impact": "bullish",
         "magnitude": 2,
-        "confidence": 0.55,
+        "confidence": 0.6,
+        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
+      },
+      {
+        "title": "After high-flying start, grains end week with thud",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
         "url": "https://www.farmprogress.com/markets-and-quotes/afternoon-market-recap"
       }
     ],
@@ -157,20 +159,6 @@
     ],
     "biofuels": [
       {
-        "title": "ADM Sees Biofuels Policy, Renewed China Trade Boosting Profits",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://financialpost.com/pmn/business-pmn/adm-sees-biofuels-policy-renewed-china-trade-boosting-profits"
-      },
-      {
-        "title": "Safra recorde faz cadeia da soja e biodiesel crescer mais de 11% em 2025",
-        "impact": "bearish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.canalrural.com.br/agricultura/safra-recorde-faz-cadeia-da-soja-e-biodiesel-crescer-mais-de-11-em-2025/"
-      },
-      {
         "title": "Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los biocombustibles",
         "impact": "neutral",
         "magnitude": 1,
@@ -180,25 +168,18 @@
     ],
     "geopolitics": [
       {
+        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
+      },
+      {
         "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
         "impact": "bullish",
         "magnitude": 3,
         "confidence": 0.72,
         "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
-      },
-      {
-        "title": "Will this week’s Trump/Xi meeting put beans on boats?",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.65,
-        "url": "https://www.farmprogress.com/commentary/will-this-week-s-trump-xi-meeting-put-beans-on-boats-"
-      },
-      {
-        "title": "Grain and Oilseed Futures Slide on Middle East War Optimism",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://financialpost.com/pmn/business-pmn/grain-and-oilseed-futures-slide-on-middle-east-war-optimism"
       }
     ]
   }
