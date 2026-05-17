@@ -689,6 +689,48 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [INFO] Weekly brief: {_e}")
 
+    # ── 20. Intelligence Engine — debate multi-agente (1x/día) ───
+    # Solo corre si hay ANTHROPIC_API_KEY y si no hay cache fresco (<6h)
+    try:
+        ie_cache = os.path.join(DATA_DIR, "intelligence_engine_verdict.json")
+        run_ie = True
+        if os.path.exists(ie_cache):
+            import json as _json
+            with open(ie_cache) as _f:
+                _cached = _json.load(_f)
+            _ts = _cached.get("timestamp", "")
+            if _ts:
+                from datetime import datetime as _dt
+                _age = (_dt.now() - _dt.fromisoformat(_ts)).total_seconds()
+                if _age < 6 * 3600:  # skip if less than 6h old
+                    run_ie = False
+                    print("   [IE] Skipped — cache is fresh ({:.0f}min old)".format(_age / 60))
+
+        if run_ie and os.environ.get("ANTHROPIC_API_KEY"):
+            from src.intel.intelligence_engine import run_intelligence_engine
+            ie_result = run_intelligence_engine(force=True)
+            verdict = ie_result.get("verdict", {})
+            print(f"   [IE] Verdict: {verdict.get('verdict', '?')} "
+                  f"(conf={verdict.get('confidence', '?')}) "
+                  f"in {ie_result.get('execution_time_seconds', '?')}s")
+        elif not os.environ.get("ANTHROPIC_API_KEY"):
+            print("   [IE] Skipped — no ANTHROPIC_API_KEY")
+    except Exception as _e:
+        print(f"   [WARN] Intelligence Engine: {_e}")
+
+    # ── 21. IE Accountability — verificar veredictos maduros ─────
+    try:
+        from src.intel.ie_accountability import evaluate_verdicts, get_verdict_history
+        n_verified = evaluate_verdicts()
+        if n_verified:
+            print(f"   [IE-Accountability] Verified {n_verified} past verdicts")
+        hist = get_verdict_history()
+        if hist.get("direction_accuracy_7d") is not None:
+            print(f"   [IE-Accountability] Direction accuracy 7d: {hist['direction_accuracy_7d']}% "
+                  f"({hist['verified_7d']} verified)")
+    except Exception as _e:
+        print(f"   [INFO] IE Accountability: {_e}")
+
     print("✅ Pipeline completo")
 
 

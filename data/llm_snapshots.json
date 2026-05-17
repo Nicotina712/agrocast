@@ -185,5 +185,16 @@
     "hit": null,
     "ret_pct": null,
     "verified_at": null
+  },
+  {
+    "date": "2026-05-17",
+    "stance": "NEUTRAL",
+    "conviction": 22,
+    "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
+    "price_at_snapshot": 1208.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
   }
 ]

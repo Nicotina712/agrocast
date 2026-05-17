@@ -1630,6 +1630,16 @@
             <div style="font-size:.85rem;color:#d32f2f;">⏳ Ejecutando debate multi-agente...</div>
             <div style="font-size:.72rem;color:#999;margin-top:4px;">FinBERT clasificando → Sonnet analizando → Agentes debatiendo...</div>
         </div>
+
+        <!-- Verdict History / Track Record -->
+        <details style="margin-top:12px;">
+            <summary style="cursor:pointer;font-size:.75rem;font-weight:600;color:#6a1b9a;">
+                📊 TRACK RECORD — Historial de veredictos y accuracy (click para expandir)
+            </summary>
+            <div id="ie2-history" style="margin-top:10px;font-size:.78rem;color:#333;">
+                <div style="color:#999;">Cargando historial...</div>
+            </div>
+        </details>
     </div>
 
     <!-- ── Current Event Status ──────────────────────────────────── -->
@@ -2839,7 +2849,7 @@ function switchTab(name) {
     if (name === "seasonality") loadSeasonality();
     if (name === "producer")    loadProducer();
     if (name === "trader")      { loadTrader(); loadTraderSynthesis(); }
-    if (name === "intel-engine") { loadIntelEngine(); loadIntelligenceEngineV2(false); }
+    if (name === "intel-engine") { loadIntelEngine(); loadIntelligenceEngineV2(false); loadIE2History(); }
 }
 
 // ── Módulo Productor ────────────────────────────────────────────────
@@ -4377,6 +4387,72 @@ function loadIntelligenceEngineV2(force) {
 }
 
 function runIntelligenceEngine(force) { loadIntelligenceEngineV2(force); }
+
+function loadIE2History() {
+    fetch("/api/intelligence_engine/history").then(r => r.json()).then(h => {
+        const el = document.getElementById("ie2-history");
+        if (!el || !h.ok) return;
+        let html = "";
+        // Stats bar
+        html += `<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;">`;
+        html += `<div style="padding:8px 14px;background:#f3e5f5;border-radius:6px;text-align:center;">
+            <div style="font-size:.6rem;color:#6a1b9a;text-transform:uppercase;">Total veredictos</div>
+            <div style="font-size:1.3rem;font-weight:700;color:#4a148c;">${h.total_verdicts || 0}</div></div>`;
+        html += `<div style="padding:8px 14px;background:#e8eaf6;border-radius:6px;text-align:center;">
+            <div style="font-size:.6rem;color:#283593;text-transform:uppercase;">Verificados 7d</div>
+            <div style="font-size:1.3rem;font-weight:700;color:#1a237e;">${h.verified_7d || 0}</div></div>`;
+        if (h.direction_accuracy_7d !== null) {
+            const accColor = h.direction_accuracy_7d >= 60 ? "#2e7d32" : h.direction_accuracy_7d >= 40 ? "#e65100" : "#c62828";
+            html += `<div style="padding:8px 14px;background:#e8f5e9;border-radius:6px;text-align:center;">
+                <div style="font-size:.6rem;color:#2e7d32;text-transform:uppercase;">Accuracy direccional</div>
+                <div style="font-size:1.3rem;font-weight:700;color:${accColor};">${h.direction_accuracy_7d}%</div></div>`;
+        }
+        if (h.range_accuracy_7d !== null) {
+            html += `<div style="padding:8px 14px;background:#fff3e0;border-radius:6px;text-align:center;">
+                <div style="font-size:.6rem;color:#e65100;text-transform:uppercase;">Accuracy de rango</div>
+                <div style="font-size:1.3rem;font-weight:700;color:#bf360c;">${h.range_accuracy_7d}%</div></div>`;
+        }
+        html += `</div>`;
+
+        // Verdict distribution
+        if (h.verdict_distribution) {
+            html += `<div style="font-size:.72rem;color:#555;margin-bottom:8px;">Distribución: `;
+            html += Object.entries(h.verdict_distribution).map(([k,v]) => {
+                const colors = {STRONG_BUY:"#1b5e20",BUY:"#2e7d32",HOLD:"#757575",SELL:"#c62828",STRONG_SELL:"#b71c1c"};
+                return `<span style="color:${colors[k]||'#333'};font-weight:600;">${k}: ${v}</span>`;
+            }).join(" · ");
+            html += `</div>`;
+        }
+
+        // Recent verdicts table
+        if (h.recent && h.recent.length) {
+            html += `<table style="width:100%;font-size:.72rem;border-collapse:collapse;">`;
+            html += `<tr style="background:#f5f5f5;"><th style="padding:4px 6px;text-align:left;">Fecha</th>
+                <th>Veredicto</th><th>Conf</th><th>Precio</th><th>7d real</th><th>Retorno</th><th>Dir</th></tr>`;
+            h.recent.forEach(r => {
+                const vColors = {STRONG_BUY:"#1b5e20",BUY:"#2e7d32",HOLD:"#757575",SELL:"#c62828",STRONG_SELL:"#b71c1c"};
+                const dirIcon = r.direction_correct_7d === true ? "✓" : r.direction_correct_7d === false ? "✗" : "⏳";
+                const dirColor = r.direction_correct_7d === true ? "#2e7d32" : r.direction_correct_7d === false ? "#c62828" : "#999";
+                html += `<tr style="border-bottom:1px solid #eee;">
+                    <td style="padding:3px 6px;">${r.date}</td>
+                    <td style="text-align:center;font-weight:600;color:${vColors[r.verdict]||'#333'}">${r.verdict}</td>
+                    <td style="text-align:center;">${(r.confidence*100).toFixed(0)}%</td>
+                    <td style="text-align:right;">$${r.price_at_verdict}</td>
+                    <td style="text-align:right;">${r.price_at_7d ? '$'+r.price_at_7d : '—'}</td>
+                    <td style="text-align:right;color:${(r.return_7d_pct||0)>=0?'#2e7d32':'#c62828'}">${r.return_7d_pct !== null ? r.return_7d_pct.toFixed(1)+'%' : '—'}</td>
+                    <td style="text-align:center;font-weight:700;color:${dirColor}">${dirIcon}</td>
+                </tr>`;
+            });
+            html += `</table>`;
+        } else {
+            html += `<div style="color:#999;padding:10px;">Sin veredictos registrados aún. Se acumulan con cada ejecución del debate.</div>`;
+        }
+        el.innerHTML = html;
+    }).catch(() => {
+        const el = document.getElementById("ie2-history");
+        if (el) el.innerHTML = `<span style="color:#999;">Historial no disponible.</span>`;
+    });
+}
 
 function _renderIE2(d) {
     const v = d.verdict || {};

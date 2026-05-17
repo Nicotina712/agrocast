@@ -33,6 +33,7 @@ from .finbert_classifier import classify_batch
 from .knowledge_base import get_knowledge_base
 from .multi_agent_debate import run_debate
 from .debate_repository import save_debate
+from .ie_accountability import save_verdict_snapshot, get_feedback_for_debate, evaluate_verdicts
 
 _BASE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_BASE, "..", ".."))
@@ -147,6 +148,33 @@ def _load_market_context() -> dict:
     except Exception:
         pass
 
+    # ── ML accountability stats ──
+    try:
+        from ..trader.accountability import get_accountability_records
+        acc = get_accountability_records()
+        summary = acc.get("summary", {})
+        if summary.get("dir_accuracy_7d") is not None:
+            ctx["ml_accountability"] = (
+                f"accuracy_dir_7d={summary['dir_accuracy_7d']}% "
+                f"(n={summary.get('n_evaluated_7d', 0)}), "
+                f"mae_7d={summary.get('mae_pct_7d', '?')}%, "
+                f"accuracy_dir_30d={summary.get('dir_accuracy_30d', '?')}%"
+            )
+    except Exception:
+        pass
+
+    # ── LLM synthesis track record ──
+    try:
+        from .llm_accountability import get_summary as llm_summary
+        llm = llm_summary()
+        if llm.get("hit_rate") is not None:
+            ctx["llm_track_record"] = (
+                f"hit_rate={llm['hit_rate']}% "
+                f"(verified={llm['verified']}, pending={llm['pending']})"
+            )
+    except Exception:
+        pass
+
     return ctx
 
 
@@ -245,12 +273,22 @@ def run_intelligence_engine(force: bool = False) -> dict:
     kb_results = kb.search(rag_query, top_k=8)
     print(f"[IE] Retrieved {len(kb_results)} relevant documents from KB")
 
+    # ── Load feedback from previous verdicts ──
+    print("[IE] Loading verdict history feedback...")
+    try:
+        evaluate_verdicts()  # verify any matured verdicts first
+        feedback_text = get_feedback_for_debate()
+    except Exception as e:
+        print(f"[IE] Feedback load failed (non-blocking): {e}")
+        feedback_text = ""
+
     print("[IE] Running Multi-Agent Debate...")
     debate_result = run_debate(
         market_data=market_ctx,
         news_classified=classified,
         kb_results=kb_results,
         current_price=current_price,
+        feedback_text=feedback_text,
     )
 
     elapsed = time.time() - t0
@@ -278,6 +316,14 @@ def run_intelligence_engine(force: bool = False) -> dict:
         print(f"[IE] Debate saved to repository: verdict={saved.get('verdict')} ts={saved.get('timestamp')}")
     except Exception as e:
         print(f"[IE] Debate repository save failed: {e}")
+
+    # ── Save verdict to history for accountability ──
+    try:
+        snap = save_verdict_snapshot(debate_result)
+        if snap:
+            print(f"[IE] Verdict snapshot saved to history: {snap['verdict']}")
+    except Exception as e:
+        print(f"[IE] Verdict snapshot failed (non-blocking): {e}")
 
     gc.collect()
     print(f"[IE] Intelligence Engine complete in {elapsed:.1f}s")

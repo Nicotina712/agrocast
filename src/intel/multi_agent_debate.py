@@ -351,6 +351,10 @@ def _build_market_context(
             lines.append(f"  WASDE: {market_data['wasde']}")
         if "forecast_ml" in market_data:
             lines.append(f"  Forecast ML 7d: {market_data['forecast_ml']}")
+        if "ml_accountability" in market_data:
+            lines.append(f"  ML Track Record: {market_data['ml_accountability']}")
+        if "llm_track_record" in market_data:
+            lines.append(f"  LLM Synthesis Track Record: {market_data['llm_track_record']}")
         if "active_shock" in market_data:
             lines.append(f"  Shock activo: {market_data['active_shock']}")
         lines.append("")
@@ -401,11 +405,14 @@ def run_debate(
     news_classified: list[dict],
     kb_results: list[dict],
     current_price: float,
+    feedback_text: str = "",
 ) -> dict:
     technical_data = _load_technical_context()
     context = _build_market_context(
         market_data, news_classified, kb_results, current_price, technical_data
     )
+    if feedback_text:
+        context += "\n" + feedback_text
 
     bull = _call_agent(BULL_SYSTEM, context, "Bull Analyst")
     bear = _call_agent(BEAR_SYSTEM, context, "Bear Analyst")

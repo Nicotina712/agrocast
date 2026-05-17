@@ -2640,6 +2640,17 @@ def post_debate_evaluate():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/intelligence_engine/history")
+def get_ie_history():
+    """Historial de veredictos del IE con accountability."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.ie_accountability import get_verdict_history
+        return jsonify(get_verdict_history())
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/")
 def home():
     with open(os.path.join(BASE_DIR, "index.html"), encoding="utf-8") as f:
