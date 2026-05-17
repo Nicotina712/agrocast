@@ -2,6 +2,7 @@
 news_server.py - AgroCast PRO
 """
 
+import gc
 import json
 import os
 import sys
@@ -59,6 +60,21 @@ class _NaNSafeJSONProvider(_DefaultJSONProvider):
         return super().dumps(_clean_json_nans(obj), **kwargs)
 
 app.json = _NaNSafeJSONProvider(app)
+
+# ── Memory management for 512MB Render free tier ─────────────────────
+# Force aggressive GC: collect after every Nth request to prevent
+# gradual memory accumulation from DataFrame allocations.
+_request_counter = 0
+_GC_EVERY_N_REQUESTS = 20  # collect every 20 requests
+
+@app.after_request
+def _periodic_gc(response):
+    global _request_counter
+    _request_counter += 1
+    if _request_counter >= _GC_EVERY_N_REQUESTS:
+        _request_counter = 0
+        gc.collect()
+    return response
 
 # ── Favicon stub para silenciar 404 en logs ──────────────────────────
 @app.route("/favicon.ico")
@@ -122,6 +138,9 @@ _FEATURES_PATH   = os.path.join(PROJECT_ROOT, "data", "features.csv")
 _FEATURES_TTL    = 3600  # reload once per hour (pipeline runs every 6h)
 
 def _get_features_df():
+    """Load features.csv with memory optimization for 512MB Render tier.
+    Only keeps last 2 years of data (sufficient for all endpoints).
+    """
     global _features_df, _features_ts
     with _features_lock:
         now = time.time()
@@ -130,7 +149,12 @@ def _get_features_df():
         if not os.path.exists(_FEATURES_PATH):
             return None
         try:
-            _features_df = pd.read_csv(_FEATURES_PATH, parse_dates=["Date"])
+            df = pd.read_csv(_FEATURES_PATH, parse_dates=["Date"])
+            # Keep only last 2 years (~500 rows) instead of full 10yr history
+            # Reduces memory from ~20MB to ~4MB
+            cutoff = pd.Timestamp.now() - pd.Timedelta(days=730)
+            df = df[df["Date"] >= cutoff].reset_index(drop=True)
+            _features_df = df
             _features_ts = now
         except Exception:
             pass
@@ -146,6 +170,38 @@ _ni_lock          = threading.Lock()
 _ni_running       = False
 NEWS_IMPACT_DIR   = os.path.join(PROJECT_ROOT, "artifacts", "news_impact")
 NI_PIPELINE_PATH  = os.path.join(PROJECT_ROOT, "src", "pipeline_news_impact.py")
+
+# ── raw_market.csv singleton cache ────────────────────────────────
+# raw_market.csv is read by 4+ functions (load_history, load_seasonality,
+# /api/producer, /api/llm_analysis). Caching avoids allocating a new
+# DataFrame on every request — critical for 512 MB Render free tier.
+_raw_market_lock = threading.Lock()
+_raw_market_df   = None
+_raw_market_ts   = 0.0
+_RAW_MARKET_PATH = os.path.join(PROJECT_ROOT, "data", "raw_market.csv")
+_RAW_MARKET_TTL  = 3600  # reload once per hour
+
+def _get_raw_market_df():
+    """Cached singleton for raw_market.csv. Thread-safe."""
+    global _raw_market_df, _raw_market_ts
+    with _raw_market_lock:
+        now = time.time()
+        if _raw_market_df is not None and (now - _raw_market_ts) < _RAW_MARKET_TTL:
+            return _raw_market_df
+        if not os.path.exists(_RAW_MARKET_PATH):
+            return None
+        try:
+            _raw_market_df = pd.read_csv(_RAW_MARKET_PATH, parse_dates=["Date"])
+            _raw_market_ts = now
+        except Exception as e:
+            print(f"[WARN] raw_market cache load: {e}")
+        return _raw_market_df
+
+# ── Seasonality cache (changes only when raw_market.csv changes) ──
+_seasonality_lock  = threading.Lock()
+_seasonality_cache = None
+_seasonality_ts    = 0.0
+_SEASONALITY_TTL   = 7200  # 2 hours
 
 
 # ── Pipeline ──────────────────────────────────────────────────────
@@ -271,12 +327,19 @@ def load_seasonality() -> dict:
     - Retorno promedio y mediana por mes calendario
     - Fracción de meses positivos (win rate estacional)
     Usa todo el historial disponible en raw_market.csv.
+    Cacheado por 2h (cálculo pesado, datos no cambian frecuentemente).
     """
-    path = os.path.join(PROJECT_ROOT, "data", "raw_market.csv")
-    if not os.path.exists(path):
+    global _seasonality_cache, _seasonality_ts
+    with _seasonality_lock:
+        now = time.time()
+        if _seasonality_cache is not None and (now - _seasonality_ts) < _SEASONALITY_TTL:
+            return _seasonality_cache
+
+    raw_df = _get_raw_market_df()
+    if raw_df is None or raw_df.empty:
         return {}
     try:
-        df = pd.read_csv(path, parse_dates=["Date"])
+        df = raw_df.copy()
         df = df.sort_values("Date").dropna(subset=["Soybeans"])
 
         # Retorno mensual
@@ -311,7 +374,7 @@ def load_seasonality() -> dict:
         # Período cubierto
         years_covered = int(df["year"].max() - df["year"].min() + 1)
 
-        return {
+        result = {
             "months":        months,
             "best_month":    best,
             "worst_month":   worst,
@@ -319,18 +382,21 @@ def load_seasonality() -> dict:
             "data_from":     str(df["Date"].min())[:7],
             "data_to":       str(df["Date"].max())[:7],
         }
+        with _seasonality_lock:
+            _seasonality_cache = result
+            _seasonality_ts = time.time()
+        return result
     except Exception as e:
         print(f"[WARN] seasonality: {e}")
         return {}
 
 
 def load_history(days: int = 90) -> list:
-    path = os.path.join(PROJECT_ROOT, "data", "raw_market.csv")
-    if not os.path.exists(path):
+    raw_df = _get_raw_market_df()
+    if raw_df is None or raw_df.empty:
         return []
     try:
-        df = pd.read_csv(path, parse_dates=["Date"])
-        df = df.sort_values("Date").tail(days)
+        df = raw_df.sort_values("Date").tail(days)
         return [
             {"Date": str(row["Date"])[:10], "Soybeans": round(float(row["Soybeans"]), 2)}
             for _, row in df.iterrows()
@@ -1034,11 +1100,12 @@ def get_producer():
         sys.path.insert(0, PROJECT_ROOT)
         from src.producer.sell_signal import compute_sell_signal
 
-        # Precio actual
+        # Precio actual (from cached singleton)
         price_usd_bu = None
         try:
-            mkt = pd.read_csv(os.path.join(PROJECT_ROOT, "data", "raw_market.csv"))
-            price_usd_bu = float(mkt["Soybeans"].iloc[-1])
+            mkt = _get_raw_market_df()
+            if mkt is not None and not mkt.empty:
+                price_usd_bu = float(mkt["Soybeans"].iloc[-1])
         except Exception:
             pass
 
@@ -1959,11 +2026,9 @@ def export_brief():
         # Señal actual
         sig_df = None
         try:
-            import pandas as pd
             sig_df = pd.read_csv(os.path.join(PROJECT_ROOT, "artifacts", "signals.csv"))
-            mkt    = pd.read_csv(os.path.join(PROJECT_ROOT, "data", "raw_market.csv"),
-                                  parse_dates=["Date"]).sort_values("Date")
-            price  = float(mkt["Soybeans"].iloc[-1])
+            mkt    = _get_raw_market_df()
+            price  = float(mkt["Soybeans"].iloc[-1]) if mkt is not None else 0
             signal = str(sig_df["signal"].iloc[-1])
             conf   = float(sig_df["confidence"].iloc[-1])
         except Exception:
@@ -2585,7 +2650,11 @@ def get_storage_roi():
 
 @app.route("/api/intelligence_engine", methods=["GET", "POST"])
 def get_intelligence_engine():
-    """Intelligence Engine v2: FinBERT → Sonnet → Multi-Agent Debate → Verdict"""
+    """Intelligence Engine v2: FinBERT → Sonnet → Multi-Agent Debate → Verdict.
+
+    Memory note: this endpoint can spike 100-200MB (KB + Claude API).
+    We force gc.collect() after to reclaim DataFrame/dict allocations.
+    """
     try:
         force = request.method == "POST" or request.args.get("force") == "1"
         sys.path.insert(0, PROJECT_ROOT)
@@ -2597,10 +2666,12 @@ def get_intelligence_engine():
             status=200,
             mimetype="application/json; charset=utf-8",
         )
+        gc.collect()  # Reclaim memory after heavy operation
         return resp
     except Exception as e:
         import traceback
         traceback.print_exc()
+        gc.collect()
         return jsonify({"ok": False, "error": str(e)}), 500
 
 

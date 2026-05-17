@@ -27,8 +27,12 @@ services:
     branch: main
     autoDeploy: true
     buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
-    # --workers 1 keeps RAM low; --threads 4 enough for read-only API
-    startCommand: "gunicorn wsgi:app --workers 1 --threads 4 --timeout 180 --bind 0.0.0.0:$PORT --access-logfile -"
+    # --workers 1 + --threads 2 keeps RAM under 512MB free-tier limit.
+    # --preload reduces per-thread memory by sharing code pages.
+    # --max-requests 500 recycles the worker every 500 requests to prevent
+    # gradual memory growth from DataFrame allocations and import caches.
+    # --max-requests-jitter 50 avoids all workers restarting simultaneously.
+    startCommand: "gunicorn wsgi:app --workers 1 --threads 2 --timeout 180 --preload --max-requests 500 --max-requests-jitter 50 --bind 0.0.0.0:$PORT --access-logfile -"
     healthCheckPath: /healthz
     envVars:
       - key: PYTHON_VERSION
