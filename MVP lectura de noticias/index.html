@@ -4573,24 +4573,60 @@ function _renderIE2(d) {
         if (t.error) {
             techEl.innerHTML = `<div style="color:#c62828;font-size:.82rem;">❌ Error: ${t.error}</div>`;
         } else {
-            let html = `<div style="font-weight:600;margin-bottom:6px;">${t.pattern_summary || t.thesis || ""}</div>`;
-            const biasColor = {"ALCISTA":"#2e7d32","BAJISTA":"#c62828","NEUTRAL":"#757575"}[t.bias] || "#333";
-            html += `<div>Sesgo técnico: <b style="color:${biasColor}">${t.bias || "?"}</b></div>`;
-            if (t.support_levels && t.support_levels.length) {
-                html += `<div style="margin-top:6px;"><b>Soportes:</b> ${t.support_levels.map(s => "$"+s).join(", ")}</div>`;
+            // Map backend fields: primary_trend → trend, key_support/key_resistance → levels
+            const trend = t.primary_trend || t.bias || "?";
+            const trendColor = {"UP":"#2e7d32","DOWN":"#c62828","SIDEWAYS":"#757575",
+                                "ALCISTA":"#2e7d32","BAJISTA":"#c62828","NEUTRAL":"#757575"}[trend] || "#333";
+            const strength = t.trend_strength || "";
+
+            let html = `<div>Tendencia: <b style="color:${trendColor}">${trend}</b>`;
+            if (strength) html += ` <span style="font-size:.72rem;color:#888;">(${strength})</span>`;
+            html += `</div>`;
+
+            // Setup description
+            if (t.setup) html += `<div style="margin-top:6px;font-weight:500;font-size:.78rem;">${t.setup}</div>`;
+
+            // Supports — handle both formats: [{level, type}] or [number]
+            const supports = t.key_support || t.support_levels || [];
+            if (supports.length) {
+                const sLabels = supports.map(s => typeof s === "object" ? `$${s.level} (${s.type})` : `$${s}`);
+                html += `<div style="margin-top:6px;"><b>Soportes:</b> ${sLabels.join(", ")}</div>`;
             }
-            if (t.resistance_levels && t.resistance_levels.length) {
-                html += `<div><b>Resistencias:</b> ${t.resistance_levels.map(r => "$"+r).join(", ")}</div>`;
+
+            // Resistances
+            const resistances = t.key_resistance || t.resistance_levels || [];
+            if (resistances.length) {
+                const rLabels = resistances.map(r => typeof r === "object" ? `$${r.level} (${r.type})` : `$${r}`);
+                html += `<div><b>Resistencias:</b> ${rLabels.join(", ")}</div>`;
             }
-            if (t.key_indicators) {
-                html += `<div style="margin-top:6px;font-size:.72rem;"><b>Indicadores:</b></div>`;
-                Object.entries(t.key_indicators).forEach(([k,v]) => {
-                    html += `<div style="font-size:.72rem;padding-left:8px;">• ${k}: ${v}</div>`;
-                });
+
+            // Momentum signals
+            if (t.momentum_signals && t.momentum_signals.length) {
+                html += `<div style="margin-top:6px;font-size:.72rem;"><b>Momentum:</b></div>`;
+                t.momentum_signals.forEach(s => html += `<div style="font-size:.72rem;padding-left:8px;">• ${s}</div>`);
             }
-            if (t.trade_setup) html += `<div style="margin-top:6px;font-size:.72rem;"><b>Setup:</b> ${t.trade_setup}</div>`;
-            if (t.invalidation_level) html += `<div style="font-size:.72rem;">Invalidación: $${t.invalidation_level}</div>`;
-            if (t.timeframe) html += `<div style="font-size:.72rem;color:#555;">Timeframe: ${t.timeframe}</div>`;
+
+            // Bollinger position
+            if (t.bollinger_position) html += `<div style="font-size:.72rem;"><b>Bollinger:</b> ${t.bollinger_position}</div>`;
+
+            // Price targets
+            if (t.price_target_bullish) html += `<div style="margin-top:4px;font-size:.72rem;">🎯 Target alcista: $${t.price_target_bullish}</div>`;
+            if (t.price_target_bearish) html += `<div style="font-size:.72rem;">🎯 Target bajista: $${t.price_target_bearish}</div>`;
+
+            // Invalidation & confirmation
+            if (t.technical_invalidation) html += `<div style="font-size:.72rem;color:#c62828;">⚠️ Invalidación: $${t.technical_invalidation}</div>`;
+            if (t.confirmation_needed) html += `<div style="font-size:.72rem;color:#555;">🔍 ${t.confirmation_needed}</div>`;
+
+            // Fundamental alignment
+            const alignColor = {"CONFIRMS":"#2e7d32","CONTRADICTS":"#c62828","NEUTRAL":"#888"}[t.fundamental_alignment] || "#555";
+            if (t.fundamental_alignment) html += `<div style="margin-top:4px;font-size:.72rem;"><b>vs Fundamental:</b> <span style="color:${alignColor}">${t.fundamental_alignment}</span></div>`;
+
+            // Key level to watch
+            if (t.key_level_to_watch) html += `<div style="font-size:.72rem;"><b>Nivel clave:</b> $${t.key_level_to_watch}</div>`;
+
+            // Confidence
+            if (t.confidence) html += `<div style="font-size:.72rem;color:#888;">Confianza técnica: ${(t.confidence*100).toFixed(0)}%</div>`;
+
             techEl.innerHTML = html;
         }
     }

@@ -301,28 +301,91 @@ def _clean_json(text: str) -> str:
     return text
 
 
+def _extract_json(text: str) -> dict | None:
+    """Robust JSON extraction from LLM response.
+
+    Handles:
+    - Clean JSON
+    - JSON wrapped in ```json ... ```
+    - JSON with trailing commas
+    - JSON with JS-style comments
+    """
+    # 1. Try direct parse
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # 2. Strip markdown code fences
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        # Remove opening fence (```json or ```)
+        first_newline = stripped.index("\n") if "\n" in stripped else len(stripped)
+        stripped = stripped[first_newline + 1:]
+        # Remove closing fence
+        if "```" in stripped:
+            stripped = stripped[:stripped.rfind("```")]
+        stripped = stripped.strip()
+        try:
+            return json.loads(stripped)
+        except json.JSONDecodeError:
+            pass
+
+    # 3. Find the outermost { ... } with brace matching
+    start = text.find("{")
+    if start == -1:
+        return None
+    depth = 0
+    end = start
+    in_string = False
+    escape = False
+    for i in range(start, len(text)):
+        c = text[i]
+        if escape:
+            escape = False
+            continue
+        if c == "\\":
+            escape = True
+            continue
+        if c == '"' and not escape:
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                end = i + 1
+                break
+
+    if depth != 0:
+        return None  # Unbalanced braces (truncated response)
+
+    candidate = text[start:end]
+    cleaned = _clean_json(candidate)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        return None
+
+
 def _call_agent(system: str, context: str, agent_name: str) -> dict:
     client = _get_client()
     try:
         response = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=2500,
+            max_tokens=3000,
             system=system,
             messages=[{"role": "user", "content": context}],
         )
         text = response.content[0].text
-        try:
-            return json.loads(text)
-        except json.JSONDecodeError:
-            import re
-            m = re.search(r'\{[\s\S]*\}', text)
-            if m:
-                cleaned = _clean_json(m.group())
-                try:
-                    return json.loads(cleaned)
-                except json.JSONDecodeError:
-                    pass
-            return {"error": f"JSON parse failed for {agent_name}", "raw": text[:800]}
+        result = _extract_json(text)
+        if result is not None:
+            return result
+        # All parse attempts failed — return error with more raw context
+        return {"error": f"JSON parse failed for {agent_name}", "raw": text[:1500]}
     except Exception as e:
         return {"error": f"{agent_name} failed: {str(e)}"}
 
