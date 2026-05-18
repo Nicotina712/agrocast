@@ -28,5 +28,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-05-18",
+    "timestamp": "2026-05-18T13:47:48.349460",
+    "price_at_verdict": 1211.0,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "El análisis bajista tiene convicción MEDIA respaldada por fundamentales sólidos (crush margin chino en -154 USD/ton, demanda score 30/100, exportaciones brasileñas récord), mientras el alcista opera con convicción BAJA apoyado en argumentos técnicos débiles. El técnico muestra configuración lateral-",
+    "price_range_7d": {
+      "low": 1148,
+      "central": 1168,
+      "high": 1195
+    },
+    "price_range_30d": {
+      "low": 1095,
+      "central": 1145,
+      "high": 1200
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
