@@ -62,9 +62,9 @@ def _ie_factor() -> dict:
         reasoning = verdict_data.get("reasoning", "")
 
         # Map verdict to score: BUY → +confidence, SELL → -confidence, HOLD → 0
-        if verdict == "BUY":
+        if verdict in ("BUY", "STRONG_BUY"):
             score = float(confidence)
-        elif verdict == "SELL":
+        elif verdict in ("SELL", "STRONG_SELL"):
             score = -float(confidence)
         else:
             score = 0.0

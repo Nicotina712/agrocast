@@ -434,9 +434,11 @@ def _get_ie_signal() -> dict | None:
         if confidence < 0.50:
             return None
 
-        # Map IE verdict to trade signal
-        if verdict in ("BUY", "SELL"):
-            return {"signal": verdict, "confidence": confidence}
+        # Normalize STRONG_ variants
+        if verdict in ("STRONG_BUY", "BUY"):
+            return {"signal": "BUY", "confidence": confidence}
+        elif verdict in ("STRONG_SELL", "SELL"):
+            return {"signal": "SELL", "confidence": confidence}
         return None
     except Exception as e:
         print(f"[PaperTrading] Error reading IE verdict: {e}")

@@ -120,9 +120,9 @@ def _get_ie_probability() -> Optional[tuple]:
         v = data.get("verdict", {})
         verdict = v.get("verdict", "HOLD")
         conf = float(v.get("confidence", 0.5))
-        if verdict == "BUY":
+        if verdict in ("BUY", "STRONG_BUY"):
             p_ie = 0.5 + conf / 2
-        elif verdict == "SELL":
+        elif verdict in ("SELL", "STRONG_SELL"):
             p_ie = 0.5 - conf / 2
         else:
             p_ie = 0.5
