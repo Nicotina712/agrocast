@@ -99,6 +99,24 @@ def _check_api_key() -> bool:
         token = request.args.get("api_key", "")
     return secrets.compare_digest(token, _API_KEY_ENV)
 
+# Paths that don't require auth (frontend, static, health)
+_PUBLIC_PATHS = frozenset(["/", "/landing", "/favicon.ico", "/healthz"])
+
+@app.before_request
+def _enforce_api_key():
+    """Protect /api/* endpoints with API key. Frontend pages are public."""
+    path = request.path
+    # Public paths: frontend pages, static files
+    if path in _PUBLIC_PATHS or not path.startswith("/api/"):
+        return None
+    # LLM gate status is lightweight/public
+    if path == "/api/llm_gate_status":
+        return None
+    # Check API key
+    if not _check_api_key():
+        return jsonify({"ok": False, "error": "Unauthorized — set api_key param or Bearer token"}), 401
+    return None
+
 BASE_DIR          = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT      = os.path.dirname(BASE_DIR)
 ARTIFACTS_DIR     = os.path.join(PROJECT_ROOT, "artifacts")
@@ -298,8 +316,8 @@ def _save_alert_history(history: list) -> None:
 
 
 def _check_signal_change() -> None:
-    """Detecta cambio de señal del modelo y registra alerta persistente."""
-    current = load_signals()
+    """Detecta cambio de señal (IE primary) y registra alerta persistente."""
+    current = load_consolidated_signal()
     if not current:
         return
 
@@ -457,6 +475,78 @@ def load_signals() -> dict | None:
     except Exception as e:
         print(f"[WARN] signals: {e}")
         return None
+
+
+def _load_ie_verdict() -> dict | None:
+    """Load Intelligence Engine verdict as primary signal source.
+
+    Returns dict with {signal, confidence, reasoning, price_range_7d, ...}
+    or None if no fresh verdict available.
+    """
+    ie_path = os.path.join(PROJECT_ROOT, "data", "intelligence_engine_verdict.json")
+    if not os.path.exists(ie_path):
+        return None
+    try:
+        with open(ie_path, "r", encoding="utf-8") as f:
+            ie = json.load(f)
+        v = ie.get("verdict", {})
+        verdict = v.get("verdict", "HOLD")
+        conf = float(v.get("confidence", 0.5))
+
+        # Check freshness: max 48h
+        ts = ie.get("timestamp", "")
+        if ts:
+            from datetime import datetime, timedelta
+            ie_dt = datetime.fromisoformat(ts)
+            if (datetime.now() - ie_dt) > timedelta(hours=48):
+                return None
+
+        # Normalize STRONG_ variants
+        signal_map = {"STRONG_BUY": "BUY", "BUY": "BUY", "HOLD": "HOLD",
+                      "SELL": "SELL", "STRONG_SELL": "SELL"}
+        signal = signal_map.get(verdict, "HOLD")
+
+        # Map to expected_return equivalent for backward compatibility
+        if signal == "BUY":
+            expected_return = conf * 0.5   # positive
+        elif signal == "SELL":
+            expected_return = -conf * 0.5  # negative
+        else:
+            expected_return = 0.0
+
+        return {
+            "signal": signal,
+            "confidence": conf,
+            "expected_return": expected_return,
+            "reasoning": v.get("reasoning", ""),
+            "price_range_7d": v.get("price_range_7d"),
+            "price_range_30d": v.get("price_range_30d"),
+            "recommended_action": v.get("recommended_action"),
+            "position_sizing": v.get("position_sizing"),
+            "timestamp": ie.get("timestamp"),
+            "source": "intelligence_engine",
+        }
+    except Exception as e:
+        print(f"[WARN] IE verdict load: {e}")
+        return None
+
+
+def load_consolidated_signal() -> dict | None:
+    """Load the consolidated signal: IE verdict (primary) with ML fallback.
+
+    This is the single source of truth for signal across all tabs.
+    """
+    ie = _load_ie_verdict()
+    if ie is not None:
+        return ie
+
+    # Fallback to ML model signal
+    ml = load_signals()
+    if ml is not None:
+        ml["source"] = "ml_model"
+        return ml
+
+    return None
 
 
 def _live_front_price() -> float | None:
@@ -908,7 +998,9 @@ def get_news():
         else:
             news_signal = {"signal": "NEUTRAL", "reason": "Mercado sin direccion"}
 
-        model_signal = load_signals()
+        # Consolidated signal: IE primary, ML fallback
+        consolidated_signal = load_consolidated_signal()
+        model_signal = consolidated_signal  # backward compat
         forecast            = load_forecast("legacy")
         forecast_horizons   = load_forecast("horizons")
         price_14d    = load_14d_forecast()
@@ -1053,14 +1145,38 @@ def get_trader():
     GET /api/trader
     Módulo Trader — niveles de riesgo (SL/TP basados en ATR) y
     curva de futuros ZS (term structure).
+
+    Signal source: Intelligence Engine verdict (primary), ML model (fallback).
     """
     try:
         sys.path.insert(0, PROJECT_ROOT)
         capital  = float(request.args.get("capital", 10000))
         risk_pct = float(request.args.get("risk_pct", 1.0))
 
-        from src.trader.risk_manager import get_current_risk_levels
-        risk = get_current_risk_levels(capital_usd=capital, risk_pct=risk_pct)
+        # Use consolidated signal (IE primary, ML fallback)
+        consolidated = load_consolidated_signal()
+        ie_signal = consolidated.get("signal", "HOLD") if consolidated else "HOLD"
+
+        from src.trader.risk_manager import get_current_risk_levels, compute_risk_levels, compute_atr
+        if consolidated and consolidated.get("source") == "intelligence_engine" and ie_signal in ("BUY", "SELL"):
+            # Compute risk levels using IE signal direction
+            mkt = _get_raw_market_df()
+            entry_price = float(mkt["Soybeans"].iloc[-1])
+            atr = float(compute_atr(mkt).iloc[-1])
+            risk = compute_risk_levels(entry_price, atr, ie_signal, capital, risk_pct)
+            risk["signal"] = ie_signal
+            risk["confidence"] = consolidated.get("confidence", 0)
+            risk["signal_source"] = "intelligence_engine"
+        else:
+            risk = get_current_risk_levels(capital_usd=capital, risk_pct=risk_pct)
+            risk["signal_source"] = "ml_model"
+
+        # Attach IE metadata if available
+        if consolidated and consolidated.get("source") == "intelligence_engine":
+            risk["ie_reasoning"] = consolidated.get("reasoning", "")[:200]
+            risk["ie_price_range_7d"] = consolidated.get("price_range_7d")
+            risk["ie_recommended_action"] = (consolidated.get("recommended_action") or {}).get("traders", "")
+            risk["ie_position_sizing"] = consolidated.get("position_sizing")
 
         from src.trader.term_structure import fetch_term_structure
         term = fetch_term_structure()
@@ -1112,7 +1228,8 @@ def get_producer():
         if price_usd_bu is None:
             return jsonify({"ok": False, "error": "Sin datos de precio"}), 503
 
-        model_signal  = load_signals()
+        # Use consolidated signal (IE primary, ML fallback)
+        model_signal  = load_consolidated_signal()
         price_history = load_history(90)
         wasde_dates   = load_wasde_upcoming()
         seasonality   = load_seasonality().get("months")
@@ -2736,7 +2853,11 @@ def get_llm_gate_status():
 @app.route("/")
 def home():
     with open(os.path.join(BASE_DIR, "index.html"), encoding="utf-8") as f:
-        return f.read()
+        html = f.read()
+    # Inject API key so frontend JS can authenticate against /api/* endpoints
+    key_script = f'<script>window.__AGROCAST_API_KEY="{_API_KEY_ENV}";</script>'
+    html = html.replace("</head>", key_script + "</head>", 1)
+    return html
 
 
 @app.route("/landing")

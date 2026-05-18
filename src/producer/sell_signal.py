@@ -239,29 +239,30 @@ def compute_sell_signal(
     scores = {}
     reasoning = []
 
-    # ── Componente 1: Señal del clasificador ──────────────────────
+    # ── Componente 1: Señal del Intelligence Engine (o modelo ML fallback)
     # SELL = buen momento para vender (score alto)
     # HOLD = incierto (score medio)
     # BUY  = precio va a subir, mejor esperar (score bajo)
     sig_map = {"SELL": 80, "HOLD": 50, "BUY": 20}
     if model_signal:
         sig       = model_signal.get("signal", "HOLD")
-        prob_up   = round((0.5 + model_signal.get("expected_return", 0)) * 100)
         conf      = round(model_signal.get("confidence", 0) * 100)
+        is_ie     = model_signal.get("source") == "intelligence_engine"
+        source_name = "El análisis de inteligencia (5 analistas)" if is_ie else "El modelo"
         scores["model"] = sig_map.get(sig, 50)
         if sig == "SELL":
             reasoning.append(
-                f"El modelo anticipa baja de precios (P(sube)={prob_up}%, conf.{conf}%) "
+                f"{source_name} anticipa baja de precios (confianza {conf}%) "
                 f"— favorable para vender ahora."
             )
         elif sig == "BUY":
             reasoning.append(
-                f"El modelo anticipa suba de precios (P(sube)={prob_up}%, conf.{conf}%) "
+                f"{source_name} anticipa suba de precios (confianza {conf}%) "
                 f"— considere esperar antes de vender."
             )
         else:
             reasoning.append(
-                f"Señal mixta del modelo (P(sube)={prob_up}%) — sin dirección clara."
+                f"{source_name} no tiene una dirección clara (confianza {conf}%)."
             )
     else:
         scores["model"] = 50

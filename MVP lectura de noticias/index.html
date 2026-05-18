@@ -1739,6 +1739,18 @@
 </div><!-- /tab-intel-engine -->
 
 <script>
+// ── Auth: wrap fetch to auto-inject API key ────────────────────────
+(function() {
+    const _origFetch = window.fetch;
+    window.fetch = function(url, opts) {
+        if (typeof url === "string" && url.startsWith("/api/") && window.__AGROCAST_API_KEY) {
+            const sep = url.includes("?") ? "&" : "?";
+            url = url + sep + "api_key=" + encodeURIComponent(window.__AGROCAST_API_KEY);
+        }
+        return _origFetch.call(this, url, opts);
+    };
+})();
+
 let chartMain     = null;
 let chartBacktest = null;
 
@@ -2338,13 +2350,15 @@ function renderData(data) {
         }
     }
     if (data.model_signal) {
-        const { signal, expected_return, confidence } = data.model_signal;
+        const { signal, expected_return, confidence, source } = data.model_signal;
         const _sigEl = document.getElementById("kpi-signal");
         _sigEl.innerHTML = signalBadge(signal)
             + (_kpiSignalDiverges ? '<span title="Divergencia: señal corto plazo y forecast 30d van en sentido opuesto" style="color:#f57c00;margin-left:5px;font-size:.85rem;vertical-align:middle;">⚠</span>' : '');
-        const probUp = Math.round((0.5 + expected_return) * 100);
-        document.getElementById("kpi-signal-sub").textContent =
-            `P(sube): ${probUp}% | Conf: ${(confidence * 100).toFixed(0)}%`;
+        const isIE = source === "intelligence_engine";
+        const confPct = (confidence * 100).toFixed(0);
+        document.getElementById("kpi-signal-sub").textContent = isIE
+            ? `Intel Engine | Conf: ${confPct}%`
+            : `P(sube): ${Math.round((0.5 + expected_return) * 100)}% | Conf: ${confPct}%`;
     }
     if (data.market) {
         const s = data.market.sentiment || 0;
@@ -3729,13 +3743,20 @@ function renderTrader(d) {
     const r = d.risk_levels || {};
     const el = (id) => document.getElementById(id);
 
-    // Señal
+    // Señal — uses IE verdict as primary source
     const sigColors = { BUY: "#2e7d32", SELL: "#c62828", HOLD: "#f57f17", FLAT: "#888" };
     if (el("trd-signal")) {
         el("trd-signal").textContent = r.signal || "—";
         el("trd-signal").style.color = sigColors[r.signal] || "#333";
     }
-    if (el("trd-direction")) el("trd-direction").textContent = r.direction || "";
+    const isIE = r.signal_source === "intelligence_engine";
+    if (el("trd-direction")) {
+        const dir = r.direction || "";
+        const srcTag = isIE
+            ? `<span style="font-size:.65rem;background:#e3f2fd;color:#1565c0;padding:1px 5px;border-radius:3px;margin-left:4px;">Intel Engine ${Math.round((r.confidence||0)*100)}%</span>`
+            : `<span style="font-size:.65rem;background:#fff3e0;color:#e65100;padding:1px 5px;border-radius:3px;margin-left:4px;">ML Model</span>`;
+        el("trd-direction").innerHTML = dir + " " + srcTag;
+    }
     if (el("trd-entry"))     el("trd-entry").textContent     = r.entry ? r.entry.toFixed(2) : "—";
 
     // SL/TP
