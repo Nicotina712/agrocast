@@ -3,19 +3,19 @@
   "factors": [
     {
       "name": "Intelligence Engine (5-Agent Debate)",
-      "score": -0.58,
+      "score": -0.52,
       "direction": "MUY BAJISTA",
-      "detail": "Veredicto: SELL \u00b7 Confianza: 58% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1150-1190",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1148-1195",
       "weight": 0.35,
       "raw": {
         "verdict": "SELL",
-        "confidence": 0.58,
+        "confidence": 0.52,
         "price_range_7d": {
-          "low": 1150,
-          "central": 1172,
-          "high": 1190
+          "low": 1148,
+          "central": 1168,
+          "high": 1195
         },
-        "reasoning": "El an\u00e1lisis bajista con convicci\u00f3n MEDIA domina sobre el alcista con convicci\u00f3n BAJA, respaldado por fundamentos deteriorados (crush margin chino en -154 USD/ton, demand score 30/100, importaciones Yo"
+        "reasoning": "El an\u00e1lisis bajista tiene convicci\u00f3n MEDIA respaldada por fundamentales s\u00f3lidos (crush margin chino en -154 USD/ton, demanda score 30/100, exportaciones brasile\u00f1as r\u00e9cord), mientras el alcista opera c"
       }
     },
     {
@@ -42,13 +42,13 @@
     },
     {
       "name": "Modelo ML (XGBoost 7d)",
-      "score": -0.278,
-      "direction": "BAJISTA",
-      "detail": "Retorno esperado: -5.56% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 11.1%",
+      "score": 0.179,
+      "direction": "ALCISTA",
+      "detail": "Retorno esperado: +3.57% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 7.1%",
       "weight": 0.15,
       "raw": {
-        "expected_return": -0.0556,
-        "confidence": 0.1111,
+        "expected_return": 0.0357,
+        "confidence": 0.0714,
         "signal": "HOLD"
       }
     },
@@ -66,13 +66,13 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.754,
+      "score": 0.603,
       "direction": "MUY ALCISTA",
-      "detail": "Precio objetivo: 1265.7 USc/bu \u00b7 Retorno: +7.5% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1248.0 USc/bu \u00b7 Retorno: +6.0% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1265.7437616891957,
-        "return_pct": 7.54
+        "forecast": 1248.0,
+        "return_pct": 6.03
       }
     },
     {
@@ -87,8 +87,8 @@
       }
     }
   ],
-  "composite_score": 35,
-  "composite_raw": -0.295,
+  "composite_score": 40,
+  "composite_raw": -0.205,
   "composite_signal": "SELL",
-  "as_of": "2026-05-17"
+  "as_of": "2026-05-18"
 }

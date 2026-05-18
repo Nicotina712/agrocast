@@ -943,6 +943,91 @@ def get_current_contract_data() -> dict:
 
 # ── Endpoints ─────────────────────────────────────────────────────
 
+@app.route("/api/data_freshness")
+def get_data_freshness():
+    """Returns freshness (age) of each key data source.
+
+    Each source has: last_updated (ISO), age_hours, status (fresh|stale|missing).
+    Status thresholds: fresh <6h, warning 6-24h, stale >24h, missing if file absent.
+    """
+    from datetime import datetime, timezone
+
+    def _file_age(path):
+        if not os.path.exists(path):
+            return {"last_updated": None, "age_hours": None, "status": "missing"}
+        mtime = os.path.getmtime(path)
+        dt = datetime.fromtimestamp(mtime)
+        age_h = (datetime.now() - dt).total_seconds() / 3600
+        status = "fresh" if age_h < 6 else ("warning" if age_h < 24 else "stale")
+        return {
+            "last_updated": dt.isoformat(timespec="minutes"),
+            "age_hours": round(age_h, 1),
+            "status": status,
+        }
+
+    def _json_timestamp(path, ts_key="timestamp"):
+        """Read ISO timestamp from inside a JSON file."""
+        info = _file_age(path)
+        if info["status"] == "missing":
+            return info
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            ts = data.get(ts_key) or data.get("_generated_at") or data.get("as_of")
+            if ts:
+                dt = datetime.fromisoformat(str(ts))
+                age_h = (datetime.now() - dt).total_seconds() / 3600
+                info["last_updated"] = dt.isoformat(timespec="minutes")
+                info["age_hours"] = round(age_h, 1)
+                info["status"] = "fresh" if age_h < 6 else ("warning" if age_h < 24 else "stale")
+        except Exception:
+            pass
+        return info
+
+    data_dir = os.path.join(PROJECT_ROOT, "data")
+
+    sources = {
+        "ie_verdict": _json_timestamp(
+            os.path.join(data_dir, "intelligence_engine_verdict.json"), "timestamp"
+        ),
+        "price_data": _file_age(
+            os.path.join(data_dir, "raw_market.csv")
+        ),
+        "synthesis_producer": _json_timestamp(
+            os.path.join(data_dir, "market_synthesis.json"), "_generated_at"
+        ),
+        "synthesis_trader": _json_timestamp(
+            os.path.join(data_dir, "market_synthesis_trader.json"), "_generated_at"
+        ),
+        "news_intel": _json_timestamp(
+            os.path.join(data_dir, "news_intel.json"), "_generated_at"
+        ),
+        "signal_breakdown": _json_timestamp(
+            os.path.join(data_dir, "signal_breakdown.json"), "as_of"
+        ),
+        "china_demand": _file_age(
+            os.path.join(data_dir, "china_demand.json")
+        ),
+        "wasde": _file_age(
+            os.path.join(data_dir, "wasde_official.json")
+        ),
+        "features": _file_age(
+            os.path.join(data_dir, "features.csv")
+        ),
+    }
+
+    # Overall status: worst of all sources
+    statuses = [s["status"] for s in sources.values()]
+    if "stale" in statuses or "missing" in statuses:
+        overall = "stale"
+    elif "warning" in statuses:
+        overall = "warning"
+    else:
+        overall = "fresh"
+
+    return jsonify({"ok": True, "sources": sources, "overall": overall})
+
+
 @app.route("/api/news")
 def get_news():
     global _last_update, _cache

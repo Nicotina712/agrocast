@@ -83,6 +83,19 @@
         }
         header h1 { font-size: 1.4rem; font-weight: 700; }
         #last-update { font-size: 0.8rem; color: #aab; }
+        #data-freshness { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+        .freshness-dot {
+            display:inline-flex; align-items:center; gap:3px;
+            font-size:.65rem; padding:2px 7px; border-radius:10px;
+            background:rgba(255,255,255,.08); color:#ccc; cursor:default;
+            white-space:nowrap; transition:background .2s;
+        }
+        .freshness-dot:hover { background:rgba(255,255,255,.18); }
+        .freshness-dot .dot { width:6px; height:6px; border-radius:50%; display:inline-block; }
+        .freshness-dot .dot.fresh   { background:#4caf50; }
+        .freshness-dot .dot.warning { background:#ff9800; }
+        .freshness-dot .dot.stale   { background:#f44336; }
+        .freshness-dot .dot.missing { background:#666; }
 
         .main { padding: 20px 24px; max-width: 1280px; margin: 0 auto; }
 
@@ -118,6 +131,7 @@
             header { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 4px; }
             header h1 { font-size: 1.1rem; }
             #last-update { font-size: .72rem; }
+            #data-freshness { display:none !important; }
             #next-event-badge { display: none !important; }
 
             /* Tabs — scroll horizontal */
@@ -329,6 +343,7 @@
     <h1>🌱 AgroCast PRO</h1>
     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
         <span id="last-update">Cargando…</span>
+        <span id="data-freshness"></span>
         <span id="next-event-badge" style="display:none;font-size:.74rem;font-weight:600;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);"></span>
         <a href="/export_brief" target="_blank"
            style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);
@@ -1799,10 +1814,46 @@ async function loadData() {
         loadSatellite();
         loadLookaheadAudit();
         loadDriftMonitor();
+        loadDataFreshness();
     } catch (err) {
         console.error(err);
         document.getElementById("last-update").textContent = "⚠️ Error: " + err.message;
     }
+}
+
+// ── Data freshness indicator ────────────────────────────────────
+async function loadDataFreshness() {
+    try {
+        const res = await fetch("/api/data_freshness");
+        if (!res.ok) return;
+        const d = await res.json();
+        if (!d.ok) return;
+        const labels = {
+            ie_verdict: "IE",
+            price_data: "Precios",
+            synthesis_producer: "Brief Prod",
+            synthesis_trader: "Brief Trader",
+            news_intel: "News Intel",
+            signal_breakdown: "Breakdown",
+            china_demand: "China",
+            wasde: "WASDE",
+        };
+        const container = document.getElementById("data-freshness");
+        if (!container) return;
+        let html = "";
+        for (const [key, label] of Object.entries(labels)) {
+            const src = (d.sources || {})[key];
+            if (!src) continue;
+            const st = src.status || "missing";
+            const age = src.age_hours;
+            let tip = st === "missing" ? "Sin datos"
+                    : age < 1 ? `Hace ${Math.round(age*60)}min`
+                    : age < 24 ? `Hace ${Math.round(age)}h`
+                    : `Hace ${Math.round(age/24)}d`;
+            html += `<span class="freshness-dot" title="${label}: ${tip}"><span class="dot ${st}"></span>${label}</span>`;
+        }
+        container.innerHTML = html;
+    } catch(e) { console.warn("freshness:", e); }
 }
 
 // Estado A/B del forecast (legacy | horizons | compare)
