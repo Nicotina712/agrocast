@@ -3,12 +3,13 @@ src/trader/signal_breakdown.py
 Breakdown explicado del score de confianza de la señal AgroCast.
 
 Desglosa la señal final en sus componentes:
-  1. ML (XGBoost 7d)     — probabilidad de retorno positivo
-  2. Forecast 30d        — dirección del modelo Ridge+ensemble
-  3. Demanda China       — crush margin + importaciones
-  4. WASDE               — sorpresa de stocks mundiales
-  5. Técnico             — RSI, Bollinger, MA crossover (soja)
-  6. Estacionalidad      — patrón histórico del mes actual
+  1. Intelligence Engine — 5-agent debate (fuente primaria, 35%)
+  2. Demanda China       — crush margin + importaciones (20%)
+  3. WASDE               — sorpresa de stocks mundiales (15%)
+  4. ML (XGBoost 7d)     — probabilidad de retorno positivo (15%)
+  5. Técnico             — RSI, Bollinger, MA crossover (10%)
+  6. Forecast 30d        — dirección del modelo Ridge+ensemble (0%, informativo)
+  7. Estacionalidad      — patrón histórico del mes actual (0%, informativo)
 
 Retorna un score compuesto 0–100 con contribución por factor.
 Cache: data/signal_breakdown.json (TTL 4h)
@@ -42,6 +43,70 @@ def _factor_bar(score: float) -> str:
     return "MUY BAJISTA"
 
 
+def _ie_factor() -> dict:
+    """Factor Intelligence Engine: veredicto del debate multi-agente (5 agentes Claude Sonnet).
+
+    Esta es la fuente primaria de verdad del sistema. El IE integra fundamentales,
+    técnicos, análogos históricos y sentimiento en un debate estructurado.
+    """
+    try:
+        ie_path = os.path.join(_PROJECT_ROOT, "data", "intelligence_engine_verdict.json")
+        if not os.path.exists(ie_path):
+            raise FileNotFoundError("IE verdict not found")
+        with open(ie_path, "r", encoding="utf-8") as f:
+            ie = json.load(f)
+
+        verdict_data = ie.get("verdict", {})
+        verdict = verdict_data.get("verdict", "HOLD")
+        confidence = verdict_data.get("confidence", 0.5)
+        reasoning = verdict_data.get("reasoning", "")
+
+        # Map verdict to score: BUY → +confidence, SELL → -confidence, HOLD → 0
+        if verdict == "BUY":
+            score = float(confidence)
+        elif verdict == "SELL":
+            score = -float(confidence)
+        else:
+            score = 0.0
+
+        # Clamp to [-1, 1]
+        score = float(np.clip(score, -1, 1))
+
+        # Extract price range
+        range_7d = verdict_data.get("price_range_7d", {})
+        range_str = ""
+        if range_7d:
+            range_str = f" · Rango 7d: {range_7d.get('low','?')}-{range_7d.get('high','?')}"
+
+        # Check freshness (IE should be from today)
+        ts = ie.get("timestamp", "")
+        age_str = ""
+        if ts:
+            try:
+                ie_dt = datetime.fromisoformat(ts)
+                age_hours = (datetime.now() - ie_dt).total_seconds() / 3600
+                if age_hours > 24:
+                    age_str = f" (hace {int(age_hours)}h)"
+            except Exception:
+                pass
+
+        detail = (f"Veredicto: {verdict} · Confianza: {confidence:.0%} · "
+                  f"Sizing: {verdict_data.get('position_sizing', '?')}%{range_str}{age_str}")
+
+        return {
+            "name":      "Intelligence Engine (5-Agent Debate)",
+            "score":     round(score, 3),
+            "direction": _factor_bar(score),
+            "detail":    detail,
+            "weight":    0.35,
+            "raw":       {"verdict": verdict, "confidence": confidence,
+                         "price_range_7d": range_7d, "reasoning": reasoning[:200]},
+        }
+    except Exception:
+        return {"name": "Intelligence Engine (5-Agent Debate)", "score": 0, "direction": "NEUTRO",
+                "detail": "Sin datos (debate no ejecutado hoy)", "weight": 0.35, "raw": {}}
+
+
 def _ml_factor() -> dict:
     """Factor ML: probabilidad XGBoost de retorno positivo (7d)."""
     try:
@@ -56,12 +121,12 @@ def _ml_factor() -> dict:
             "score":       round(score, 3),
             "direction":   _factor_bar(score),
             "detail":      f"Retorno esperado: {exp_ret*100:+.2f}% · Señal: {signal} · Confianza: {conf:.1%}",
-            "weight":      0.30,
+            "weight":      0.15,
             "raw":         {"expected_return": round(exp_ret, 4), "confidence": round(conf, 4), "signal": signal},
         }
     except Exception:
         return {"name": "Modelo ML (XGBoost 7d)", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.30, "raw": {}}
+                "detail": "Sin datos", "weight": 0.15, "raw": {}}
 
 
 def _forecast_factor() -> dict:
@@ -180,12 +245,12 @@ def _technical_factor() -> dict:
             "score":     round(score, 3),
             "direction": _factor_bar(score),
             "detail":    detail,
-            "weight":    0.10,
+            "weight":    0.15,
             "raw":       {"tech_score": tech_score, "rsi": rsi, "bb_pct": bb},
         }
     except Exception:
         return {"name": "Análisis Técnico", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.10, "raw": {}}
+                "detail": "Sin datos", "weight": 0.15, "raw": {}}
 
 
 def _seasonal_factor() -> dict:
@@ -245,11 +310,12 @@ def get_signal_breakdown() -> dict:
     print("   [Breakdown] Calculando breakdown de señal...")
 
     factors = [
-        _ml_factor(),
-        _forecast_factor(),
+        _ie_factor(),
         _china_factor(),
         _wasde_factor(),
+        _ml_factor(),
         _technical_factor(),
+        _forecast_factor(),
         _seasonal_factor(),
     ]
 

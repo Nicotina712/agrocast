@@ -59,6 +59,7 @@ def _load_context() -> dict:
                 pass
 
     # ── Fuentes originales ──
+    _read_json("data/intelligence_engine_verdict.json", "ie_verdict")
     _read_json("data/news_intel.json",       "news_intel")
     _read_json("data/signal_breakdown.json", "signal")
     _read_json("data/argentina_supply.json", "argentina")
@@ -113,9 +114,38 @@ def _digest_context(ctx: dict) -> str:
     """Pre-digiere el contexto crudo en un resumen estructurado y conciso."""
     lines = []
 
+    # ── 0. Intelligence Engine Verdict (FUENTE PRIMARIA) ──
+    ie = ctx.get("ie_verdict") or {}
+    verdict_data = ie.get("verdict", {})
+    if verdict_data:
+        lines.append("=== INTELLIGENCE ENGINE (FUENTE PRIMARIA - 5-Agent Debate) ===")
+        lines.append(f"  VEREDICTO: {verdict_data.get('verdict', '?')}")
+        lines.append(f"  Confianza: {verdict_data.get('confidence', '?')}")
+        lines.append(f"  Sizing: {verdict_data.get('position_sizing', '?')}%")
+        lines.append(f"  Razonamiento: {verdict_data.get('reasoning', '?')[:300]}")
+        r7 = verdict_data.get("price_range_7d", {})
+        r30 = verdict_data.get("price_range_30d", {})
+        if r7:
+            lines.append(f"  Rango 7d: {r7.get('low')}-{r7.get('central')}-{r7.get('high')} USc/bu")
+        if r30:
+            lines.append(f"  Rango 30d: {r30.get('low')}-{r30.get('central')}-{r30.get('high')} USc/bu")
+        rec = verdict_data.get("recommended_action", {})
+        if rec:
+            lines.append(f"  Recomendacion productores: {rec.get('producers', '?')[:200]}")
+            lines.append(f"  Recomendacion traders: {rec.get('traders', '?')[:200]}")
+        inv = verdict_data.get("invalidation_conditions", [])
+        if inv:
+            lines.append(f"  Invalidacion: {'; '.join(inv[:2])}")
+        lines.append(f"  Timestamp: {ie.get('timestamp', '?')}")
+        lines.append("")
+        lines.append("IMPORTANTE: Tu brief DEBE ser CONSISTENTE con el veredicto del IE.")
+        lines.append("El IE integra fundamentales, tecnicos, analogos historicos y sentimiento.")
+        lines.append("Tu rol es COMUNICAR este veredicto de forma clara, no contradecirlo.")
+        lines.append("")
+
     # ── 1. Señal compuesta ──
     sig = ctx.get("signal") or {}
-    lines.append("=== SENAL COMPUESTA (FUENTE DE VERDAD) ===")
+    lines.append("=== SENAL COMPUESTA (respaldo cuantitativo) ===")
     lines.append(f"  composite_signal: {sig.get('composite_signal', '?')}")
     lines.append(f"  composite_raw: {sig.get('composite_raw', '?')} (rango -1 a +1)")
     lines.append(f"  composite_score: {sig.get('composite_score', '?')}/100")
@@ -303,15 +333,16 @@ Genera un BRIEF EJECUTIVO para el PRODUCTOR. Formato JSON estricto:
 }}
 
 REGLAS CRITICAS:
-- El campo stance DEBE coincidir con la senal compuesta: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
+- El campo stance DEBE coincidir con el VEREDICTO del Intelligence Engine: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
+  El IE es la fuente primaria de verdad. Si el IE dice SELL, el brief dice BAJISTA.
 - PROHIBIDO usar jerga tecnica: nada de RSI, Bollinger, golden cross, spread, crush margin, z-score.
   Traduci todo a lenguaje de campo: "el precio esta fuerte pero cerca de un techo", "la demanda china esta fria".
-- que_hacer DEBE ser concreto con porcentaje. Usa la info del decision classifier y narrative forecast.
-  Si el modelo dice SELL con X%, traducilo a "vender X% del stock".
-  Si dice HOLD/INDIFFERENT, decilo honestamente: "no hay senal clara, mantener posicion".
-- rangos_esperados DEBEN venir de los datos del narrative forecast (Q10/Q90). No inventes numeros.
+- que_hacer DEBE ser concreto con porcentaje. Usa la recomendacion del IE para productores.
+  Si el IE dice SELL con sizing X%, traducilo a "vender X% del stock".
+  Si dice HOLD, decilo honestamente: "no hay senal clara, mantener posicion".
+- rangos_esperados DEBEN venir de los rangos del IE (price_range_7d, price_range_30d) o del narrative forecast.
 - honestidad: menciona el track record real si lo tenes, y se claro sobre lo que el modelo NO puede predecir.
-- conviction: basate en |composite_raw|*100, ajustado por coherencia entre factores y track record.
+- conviction: basate en la confianza del IE (0-1 → 0-100), ajustado por coherencia entre factores.
 - Maximo 3 items en contexto_clave (solo lo que importa, no todo).
 - Devolve SOLO el JSON, sin markdown, sin texto extra.
 """
@@ -371,12 +402,14 @@ Genera un BRIEF TECNICO para el TRADER. Formato JSON estricto:
 }}
 
 REGLAS:
-- stance DEBE coincidir con composite_signal: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
+- stance DEBE coincidir con el VEREDICTO del Intelligence Engine: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
+  El IE es la fuente primaria. Si el IE dice SELL, tu stance es BAJISTA. No lo contradigas.
+- trade_idea DEBE ser consistente con la recomendacion del IE para traders.
 - USA toda la inteligencia disponible. No ignores el narrative forecast, el event memory, ni el track record.
 - Si el drift monitor muestra cambio de regimen, mencionalo.
 - Incluir el Forecast 30d SOLO como referencia informativa con la advertencia de que tiene peso 0%.
 - Si no hay trade idea clara, decilo: "sin setup definido, esperar confirmacion".
-- conviction basada en |composite_raw|*100 ajustada por coherencia.
+- conviction basada en la confianza del IE (0-1 → 0-100), ajustada por coherencia entre factores.
 - Devolve SOLO el JSON, sin markdown, sin texto extra.
 """
 

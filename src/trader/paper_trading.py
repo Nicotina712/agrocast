@@ -405,11 +405,49 @@ def _empty_summary(capital: float) -> dict:
     }
 
 
+def _get_ie_signal() -> dict | None:
+    """
+    Lee el veredicto del Intelligence Engine como fuente primaria de señal.
+    Retorna dict con {signal, confidence} o None si no hay veredicto fresco.
+    """
+    import json
+    ie_path = os.path.join(_PROJECT_ROOT, "data", "intelligence_engine_verdict.json")
+    if not os.path.exists(ie_path):
+        return None
+    try:
+        with open(ie_path, "r", encoding="utf-8") as f:
+            ie = json.load(f)
+        verdict_data = ie.get("verdict", {})
+        verdict = verdict_data.get("verdict", "HOLD")
+        confidence = verdict_data.get("confidence", 0)
+
+        # Check freshness: IE debe tener <48h para usarse
+        ts = ie.get("timestamp", "")
+        if ts:
+            ie_dt = datetime.fromisoformat(ts)
+            age_hours = (datetime.now() - ie_dt).total_seconds() / 3600
+            if age_hours > 48:
+                print(f"[PaperTrading] IE verdict too old ({int(age_hours)}h), ignoring")
+                return None
+
+        # Only trade if confidence > 0.5 (IE is reasonably sure)
+        if confidence < 0.50:
+            return None
+
+        # Map IE verdict to trade signal
+        if verdict in ("BUY", "SELL"):
+            return {"signal": verdict, "confidence": confidence}
+        return None
+    except Exception as e:
+        print(f"[PaperTrading] Error reading IE verdict: {e}")
+        return None
+
+
 def run_paper_trading_cycle(capital: float = 10000, risk_pct: float = 1.0) -> dict:
     """
     Punto de entrada principal — llamado desde el pipeline en cada ciclo.
     1. Cierra trades vencidos
-    2. Evalúa si hay que abrir uno nuevo
+    2. Evalúa si hay que abrir uno nuevo (usando IE verdict como señal primaria)
     Retorna resumen del ciclo.
     """
     from src.trader.risk_manager import get_current_risk_levels
@@ -417,9 +455,32 @@ def run_paper_trading_cycle(capital: float = 10000, risk_pct: float = 1.0) -> di
     # Paso 1: cerrar trades que corresponda
     closed = check_and_close_trades()
 
-    # Paso 2: ver si hay señal nueva para abrir
-    levels = get_current_risk_levels(capital_usd=capital, risk_pct=risk_pct)
-    signal = levels.get("signal", "HOLD")
+    # Paso 2: obtener señal del Intelligence Engine (fuente primaria)
+    ie_sig = _get_ie_signal()
+
+    # Paso 3: calcular niveles de riesgo (ATR, SL, TP) usando la señal del IE
+    if ie_sig:
+        signal = ie_sig["signal"]
+        # Usamos get_current_risk_levels pero overrideamos la señal con la del IE
+        levels = get_current_risk_levels(capital_usd=capital, risk_pct=risk_pct)
+        # Recalcular con la señal correcta del IE
+        from src.trader.risk_manager import compute_risk_levels, compute_atr
+        import pandas as pd
+        try:
+            mkt = pd.read_csv(os.path.join(_PROJECT_ROOT, "data", "raw_market.csv"),
+                              parse_dates=["Date"])
+            mkt = mkt.sort_values("Date").reset_index(drop=True)
+            entry_price = float(mkt["Soybeans"].iloc[-1])
+            atr = float(compute_atr(mkt).iloc[-1])
+            levels = compute_risk_levels(entry_price, atr, signal, capital, risk_pct)
+            levels["signal"] = signal
+        except Exception as e:
+            print(f"[PaperTrading] Error computing risk levels: {e}")
+            levels = {"signal": "HOLD", "stop_loss": None}
+    else:
+        # Fallback: usar señal del modelo ML (comportamiento anterior)
+        levels = get_current_risk_levels(capital_usd=capital, risk_pct=risk_pct)
+        signal = levels.get("signal", "HOLD")
 
     new_trade = None
     if signal in ("BUY", "SELL") and levels.get("stop_loss") is not None:
@@ -439,4 +500,5 @@ def run_paper_trading_cycle(capital: float = 10000, risk_pct: float = 1.0) -> di
         "new_trade_opened":  new_trade is not None,
         "new_trade":         new_trade,
         "signal":            signal,
+        "signal_source":     "intelligence_engine" if ie_sig else "ml_model",
     }

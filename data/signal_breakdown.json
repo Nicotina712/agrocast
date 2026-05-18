@@ -2,26 +2,20 @@
   "ok": true,
   "factors": [
     {
-      "name": "Modelo ML (XGBoost 7d)",
-      "score": 0.071,
-      "direction": "NEUTRO",
-      "detail": "Retorno esperado: +1.41% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 2.8%",
-      "weight": 0.3,
+      "name": "Intelligence Engine (5-Agent Debate)",
+      "score": -0.58,
+      "direction": "MUY BAJISTA",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 58% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1150-1190",
+      "weight": 0.35,
       "raw": {
-        "expected_return": 0.0141,
-        "confidence": 0.0283,
-        "signal": "HOLD"
-      }
-    },
-    {
-      "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.901,
-      "direction": "MUY ALCISTA",
-      "detail": "Precio objetivo: 1316.8 USc/bu \u00b7 Retorno: +9.0% (informativo, no pondera)",
-      "weight": 0.0,
-      "raw": {
-        "forecast": 1316.8115713575228,
-        "return_pct": 9.01
+        "verdict": "SELL",
+        "confidence": 0.58,
+        "price_range_7d": {
+          "low": 1150,
+          "central": 1172,
+          "high": 1190
+        },
+        "reasoning": "El an\u00e1lisis bajista con convicci\u00f3n MEDIA domina sobre el alcista con convicci\u00f3n BAJA, respaldado por fundamentos deteriorados (crush margin chino en -154 USD/ton, demand score 30/100, importaciones Yo"
       }
     },
     {
@@ -47,11 +41,23 @@
       }
     },
     {
+      "name": "Modelo ML (XGBoost 7d)",
+      "score": -0.278,
+      "direction": "BAJISTA",
+      "detail": "Retorno esperado: -5.56% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 11.1%",
+      "weight": 0.15,
+      "raw": {
+        "expected_return": -0.0556,
+        "confidence": 0.1111,
+        "signal": "HOLD"
+      }
+    },
+    {
       "name": "An\u00e1lisis T\u00e9cnico (Soja)",
       "score": 0.2,
       "direction": "ALCISTA",
       "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 65 \u00b7 Bollinger%: 105% \u00b7 precio > MA50; MA50 > MA200 (golden cross)",
-      "weight": 0.1,
+      "weight": 0.15,
       "raw": {
         "tech_score": 1,
         "rsi": 64.9,
@@ -59,19 +65,30 @@
       }
     },
     {
+      "name": "Forecast 30d (Ridge+XGB Ensemble)",
+      "score": 0.754,
+      "direction": "MUY ALCISTA",
+      "detail": "Precio objetivo: 1265.7 USc/bu \u00b7 Retorno: +7.5% (informativo, no pondera)",
+      "weight": 0.0,
+      "raw": {
+        "forecast": 1265.7437616891957,
+        "return_pct": 7.54
+      }
+    },
+    {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.02,
+      "score": 0.032,
       "direction": "NEUTRO",
-      "detail": "May: retorno hist\u00f3rico promedio +0.1% \u00b7 \u00b11\u03c3: [-5.5%, +5.7%]",
+      "detail": "May: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-5.4%, +5.7%]",
       "weight": 0.0,
       "raw": {
         "month": 5,
-        "avg_pct": 0.1
+        "avg_pct": 0.16
       }
     }
   ],
-  "composite_score": 47,
-  "composite_raw": -0.052,
-  "composite_signal": "HOLD",
-  "as_of": "2026-05-11"
+  "composite_score": 35,
+  "composite_raw": -0.295,
+  "composite_signal": "SELL",
+  "as_of": "2026-05-17"
 }
