@@ -58,5 +58,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-05-19",
+    "timestamp": "2026-05-19T13:48:41.680199",
+    "price_at_verdict": 1211.0,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "El peso fundamental bajista domina: márgenes de crushing chino en -$154/ton (7x el umbral crítico) con demand score 30/100 eliminan el comprador marginal más importante del mercado, mientras Brasil satura con 1.68 MMT/semana. El técnico muestra estructura alcista de largo plazo intacta pero el preci",
+    "price_range_7d": {
+      "low": 1165,
+      "central": 1188,
+      "high": 1215
+    },
+    "price_range_30d": {
+      "low": 1130,
+      "central": 1175,
+      "high": 1225
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]

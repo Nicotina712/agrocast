@@ -89,10 +89,11 @@
     "conviction": 32,
     "headline": "Señal bajista moderada con técnicos alcistas creando tensión",
     "price_at_snapshot": 1201.5,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 0.96,
+    "verified_at": "2026-05-19T13:45:55.061213",
+    "price_at_horizon": 1213.0
   },
   {
     "date": "2026-05-03",
@@ -100,10 +101,11 @@
     "conviction": 32,
     "headline": "Señal bajista moderada con técnicos alcistas creando tensión",
     "price_at_snapshot": 1187.75,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 2.13,
+    "verified_at": "2026-05-19T13:45:55.061766",
+    "price_at_horizon": 1213.0
   },
   {
     "date": "2026-05-04",
@@ -111,10 +113,11 @@
     "conviction": 45,
     "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
     "price_at_snapshot": 1211.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 0.17,
+    "verified_at": "2026-05-19T13:45:55.062266",
+    "price_at_horizon": 1213.0
   },
   {
     "date": "2026-05-05",
@@ -122,10 +125,11 @@
     "conviction": 45,
     "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
     "price_at_snapshot": 1211.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -0.04,
+    "verified_at": "2026-05-19T13:45:55.062769",
+    "price_at_horizon": 1210.5
   },
   {
     "date": "2026-05-06",

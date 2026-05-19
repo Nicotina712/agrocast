@@ -1,17 +1,17 @@
 {
-  "as_of": "2026-05-18T13:44:55",
+  "as_of": "2026-05-19T13:45:50",
   "current": {
     "ok": true,
     "is_shock": false,
     "is_near_shock": false,
-    "ret_5d_pct": -1.44,
-    "ret_10d_pct": -0.91,
+    "ret_5d_pct": -0.25,
+    "ret_10d_pct": 1.23,
     "thr_spike_5d_pct": 4.63,
     "thr_spike_10d_pct": 6.76,
     "thr_drop_5d_pct": -4.17,
     "thr_drop_10d_pct": -6.25,
     "thr_near_spike_5d_pct": 2.75,
-    "thr_near_spike_10d_pct": 3.82
+    "thr_near_spike_10d_pct": 3.81
   },
   "analogs_found": 0,
   "recommendation": {
