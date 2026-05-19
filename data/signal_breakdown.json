@@ -66,13 +66,13 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.603,
+      "score": 0.754,
       "direction": "MUY ALCISTA",
-      "detail": "Precio objetivo: 1248.0 USc/bu \u00b7 Retorno: +6.0% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1265.7 USc/bu \u00b7 Retorno: +7.5% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1248.0,
-        "return_pct": 6.03
+        "forecast": 1265.7437616891957,
+        "return_pct": 7.54
       }
     },
     {

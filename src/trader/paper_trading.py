@@ -34,6 +34,12 @@ _LAST_SIG_PATH = os.path.join(_PROJECT_ROOT, "data", "paper_last_signal.json")
 TRADE_HORIZON_DAYS = 14     # días máximos antes de cerrar por timeout
 ZS_CONTRACT_SIZE   = 5000   # bushels por contrato
 
+# ── Realistic trading costs ──────────────────────────────────────────
+# Slippage: market impact at entry and exit (cents/bushel per side)
+SLIPPAGE_CST_PER_SIDE = 0.25   # conservative for liquid front-month ZS
+# Commission: round-trip per contract (typical retail futures broker)
+COMMISSION_PER_CONTRACT_RT = 5.00   # USD per round-trip
+
 _COLUMNS = [
     "id", "signal", "entry_date", "entry_price", "stop_loss", "take_profit",
     "atr", "n_contracts", "capital_at_entry", "risk_usd",
@@ -173,8 +179,8 @@ def check_and_close_trades() -> list:
         current_price = float(mkt["Soybeans"].iloc[-1])
         current_date  = mkt["Date"].iloc[-1].date()
 
-        # Precios de los últimos 7 días para evaluar si SL/TP fue tocado
-        recent_prices = mkt.tail(10)[["Date", "Soybeans"]].copy()
+        # Full price history for SL/TP evaluation (not just last 10 rows)
+        recent_prices = mkt[["Date", "Soybeans"]].copy()
     except Exception as e:
         print(f"[PaperTrading] Error leyendo precios: {e}")
         return []
@@ -218,13 +224,18 @@ def check_and_close_trades() -> list:
             exit_status = "closed_timeout"
 
         if exit_status is not None:
-            # Calcular P&L
+            # Calcular P&L with realistic costs
             if signal == "BUY":
                 pnl_usc = exit_price - entry_px
             else:
                 pnl_usc = entry_px - exit_price
 
+            # Deduct slippage (both sides: entry + exit)
+            pnl_usc -= 2 * SLIPPAGE_CST_PER_SIDE
+
             pnl_usd = pnl_usc * n_cont * ZS_CONTRACT_SIZE / 100
+            # Deduct round-trip commission per contract
+            pnl_usd -= COMMISSION_PER_CONTRACT_RT * n_cont
             pnl_pct = pnl_usd / float(row["capital_at_entry"]) * 100 if row["capital_at_entry"] else 0
             hit     = pnl_usd > 0
 
@@ -308,13 +319,6 @@ def get_paper_portfolio(capital: float = 10000) -> dict:
         gross_loss = abs(float(closed_df[~closed_df["hit"]]["pnl_usd"].sum())) if n_loss > 0 else 0
         profit_factor = round(gross_win / gross_loss, 2) if gross_loss > 0 else None
 
-        # Sharpe anualizado (asumiendo ~52 trades/año como aproximación)
-        if len(trade_rets) >= 3:
-            tr_arr = np.array(trade_rets)
-            sharpe = float(tr_arr.mean() / (tr_arr.std() + 1e-8) * np.sqrt(52))
-        else:
-            sharpe = None
-
         # ── Track-record metadata para uso comercial / marketing ─────
         # inception_date: primera entrada registrada
         # days_alive: días corridos desde inception
@@ -331,6 +335,17 @@ def get_paper_portfolio(capital: float = 10000) -> dict:
         except Exception as _e:
             print(f"[paper_trading] inception parse fail: {_e}")
             inception_str, days_alive = None, 0
+
+        # Sharpe anualizado using actual trade frequency
+        if len(trade_rets) >= 3:
+            tr_arr = np.array(trade_rets)
+            # Estimate annualization factor from actual trading period
+            _trades_per_year = 52  # default fallback
+            if days_alive and days_alive > 0 and n_closed > 1:
+                _trades_per_year = max(1, n_closed / (days_alive / 365.25))
+            sharpe = float(tr_arr.mean() / (tr_arr.std() + 1e-8) * np.sqrt(_trades_per_year))
+        else:
+            sharpe = None
 
         # ── Buy & Hold benchmark sobre el mismo período ──────────────
         # Para que el track record tenga contexto: ¿la estrategia gana

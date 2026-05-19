@@ -328,10 +328,40 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [WARN] fetch_crop_progress: {_e}")
 
-    # ── 6. Limpieza final ─────────────────────────────────────────
-    features = features.ffill().bfill().fillna(0)
+    # ── 6. Limpieza final con validación de completitud ─────────
+    # Forward-fill first, then fill remaining NaN with 0.
+    # Track imputation rate so downstream consumers know data quality.
+    _pre_na = features.isna().sum().sum()
+    _total_cells = features.shape[0] * features.shape[1]
+    features = features.ffill().fillna(0)   # removed bfill (prevents future leak)
+    _impute_rate = round(_pre_na / _total_cells * 100, 2) if _total_cells > 0 else 0
 
-    # ── 6. Guardar features ───────────────────────────────────────
+    # Health check: if >10% of feature cells were imputed, warn loudly
+    _IMPUTE_WARN_PCT = 10.0
+    if _impute_rate > _IMPUTE_WARN_PCT:
+        print(f"   ⚠️  ALERTA: {_impute_rate}% de celdas de features fueron imputadas "
+              f"({_pre_na}/{_total_cells}). Posible degradación de señal.")
+    else:
+        print(f"   ✅ Feature matrix health: {_impute_rate}% imputado ({_pre_na} celdas)")
+
+    # Save imputation metadata for the freshness indicator
+    _health_path = os.path.join(DATA_DIR, "pipeline_health.json")
+    try:
+        import json as _json
+        _health = {
+            "impute_rate_pct": _impute_rate,
+            "total_features": features.shape[1],
+            "total_rows": features.shape[0],
+            "imputed_cells": int(_pre_na),
+            "status": "ok" if _impute_rate <= _IMPUTE_WARN_PCT else "degraded",
+            "timestamp": datetime.now().isoformat(),
+        }
+        with open(_health_path, "w") as _hf:
+            _json.dump(_health, _hf, indent=2)
+    except Exception:
+        pass
+
+    # ── 6b. Guardar features ──────────────────────────────────────
     features_path = os.path.join(DATA_DIR, "features.csv")
     features.to_csv(features_path, index=False)
     print(f"💾 Features guardadas en {features_path}")

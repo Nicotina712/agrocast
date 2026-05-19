@@ -1,6 +1,6 @@
 """
 src/trader/ensemble.py
-Bayesian-style ensemble: combina señal del modelo XGB con el Intelligence Engine,
+Hit-rate-weighted ensemble: combina señal del modelo XGB con el Intelligence Engine,
 ponderando por la accuracy histórica de cada uno.
 
 Jerarquía de señales (post-consolidación):

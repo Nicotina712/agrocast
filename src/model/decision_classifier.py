@@ -151,9 +151,27 @@ def train_decision_classifier(df: pd.DataFrame, cost_pct: float,
 
     X = tr[feats].fillna(0).replace([np.inf, -np.inf], 0)
     y = tr["label_wait_paid"]
+
+    # Temporal split 80/20 with embargo gap >= horizon to prevent target leakage
     split = int(len(tr) * 0.8)
-    X_train, X_val = X.iloc[:split], X.iloc[split:]
-    y_train, y_val = y.iloc[:split], y.iloc[split:]
+    _embargo_days = horizon_days + 5  # horizon + buffer
+    if "Date" in tr.columns:
+        _dates = pd.to_datetime(tr["Date"])
+        _cut = _dates.iloc[split - 1]
+        _embargo_end = _cut + pd.Timedelta(days=_embargo_days)
+        _train_mask = _dates <= _cut
+        _val_mask = _dates > _embargo_end
+        X_train, X_val = X[_train_mask], X[_val_mask]
+        y_train, y_val = y[_train_mask], y[_val_mask]
+        _dropped = len(tr) - len(X_train) - len(X_val)
+        print(f"   [DC] Embargo {_embargo_days}d: train={len(X_train)}, val={len(X_val)}, "
+              f"dropped={_dropped} rows")
+    else:
+        # Fallback: skip rows equal to horizon in the gap
+        X_train = X.iloc[:split]
+        X_val = X.iloc[split + horizon_days:]
+        y_train = y.iloc[:split]
+        y_val = y.iloc[split + horizon_days:]
 
     # Asymmetric loss: peso fp_weight en muestras negativas (label=0)
     sample_w = np.where(y_train == 0, fp_weight, 1.0)

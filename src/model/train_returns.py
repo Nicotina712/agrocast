@@ -139,6 +139,7 @@ def train_returns_model(
         gamma=0.05,
         scale_pos_weight=spw,
         eval_metric="logloss",
+        early_stopping_rounds=20,
         random_state=42,
     )
 
@@ -147,6 +148,8 @@ def train_returns_model(
         eval_set=[(X_val, y_val)],
         verbose=False,
     )
+    _best_iter = getattr(model, "best_iteration", 300)
+    print(f"   [XGB] Early stopping: best_iteration={_best_iter}/300")
 
     # ── Métricas ──────────────────────────────────────────────────
     probs  = model.predict_proba(X_val)[:, 1]
