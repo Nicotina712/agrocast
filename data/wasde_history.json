@@ -1,195 +1,203 @@
-[
-  {
-    "timestamp": "2026-04-22T14:01:03.259216",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-22T20:03:21.235485",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-23T08:01:26.478928",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-23T16:26:47.495440",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-23T22:30:19.855774",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-23T22:30:20.098378",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-24T08:26:21.024374",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-24T14:30:53.816486",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-24T20:35:35.315253",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-25T08:39:17.085626",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-25T14:43:53.960027",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-25T20:47:18.606402",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-26T09:54:31.282401",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-26T15:56:40.531513",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-26T21:59:46.122283",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-26T21:59:48.328331",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-27T08:53:33.949818",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-27T17:21:16.208569",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-28T08:23:13.481717",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-28T14:24:36.080959",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-04-28T20:26:15.108099",
-    "report_date": "2026-04-10",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-05-11T07:49:22.887233",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-05-11T13:51:58.889718",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  },
-  {
-    "timestamp": "2026-05-11T13:51:59.769610",
-    "world_ending_stocks": 122.4,
-    "world_production": 422.0,
-    "world_exports": 175.0,
-    "brazil_exports": 103.0,
-    "argentina_exports": 5.0
-  }
+[
+  {
+    "timestamp": "2026-04-21T05:12:32.241163",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-21T19:11:33.365209",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-22T08:00:40.072900",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-22T14:01:02.431024",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-22T14:01:03.259216",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-22T20:03:21.235485",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-23T08:01:26.478928",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-23T16:26:47.495440",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-23T22:30:19.855774",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-23T22:30:20.098378",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-24T08:26:21.024374",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-24T14:30:53.816486",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-24T20:35:35.315253",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-25T08:39:17.085626",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-25T14:43:53.960027",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-25T20:47:18.606402",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-26T09:54:31.282401",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-26T15:56:40.531513",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-26T21:59:46.122283",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-26T21:59:48.328331",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-27T08:53:33.949818",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-27T17:21:16.208569",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-28T08:23:13.481717",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-28T14:24:36.080959",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  },
+  {
+    "timestamp": "2026-04-28T20:26:15.108099",
+    "report_date": "2026-04-10",
+    "world_ending_stocks": 122.4,
+    "world_production": 422.0,
+    "world_exports": 175.0,
+    "brazil_exports": 103.0,
+    "argentina_exports": 5.0
+  }
 ]

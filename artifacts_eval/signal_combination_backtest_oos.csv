@@ -1,0 +1,32 @@
+combination,has_ml,accuracy,n_trades,avg_pnl_bps,total_pnl_pct,sharpe,buy_pct,sell_pct,hold_pct
+ML + China + WASDE,True,60.9,69,43.1,29.74,1.21,0.0,20.9,79.1
+ML + WASDE,True,58.0,276,95.5,263.52,3.81,70.9,12.7,16.4
+ML,True,56.5,324,79.2,256.52,3.46,85.5,12.7,1.8
+ML + Technical + WASDE,True,55.7,194,82.3,159.72,2.75,50.6,8.2,41.2
+WASDE,False,55.2,241,82.7,199.33,2.98,73.0,0.0,27.0
+ML + Technical + Fundamental,True,54.2,48,22.7,10.91,0.65,1.8,12.7,85.5
+ML + Fundamental,True,54.0,50,38.3,19.14,0.93,2.4,12.7,84.8
+ML + Technical + China + WASDE,True,53.2,47,8.7,4.11,0.22,0.0,14.2,85.8
+ML + Technical,True,52.4,126,25.8,32.47,0.82,25.5,12.7,61.8
+ML + Technical + China + WASDE + Fundamental,True,52.2,46,7.1,3.29,0.18,0.0,13.9,86.1
+Technical + WASDE,False,51.0,153,33.0,50.47,1.01,46.4,0.0,53.6
+ML + China + WASDE + Fundamental,True,47.5,61,-2.3,-1.43,-0.07,0.0,18.5,81.5
+China + WASDE,False,47.4,312,-52.0,-162.35,-2.27,0.0,94.5,5.5
+WASDE + Fundamental,False,46.9,32,-103.5,-33.11,-1.19,9.7,0.0,90.3
+ML + WASDE + Fundamental,True,46.8,79,-46.0,-36.34,-1.1,12.1,11.8,76.1
+ML + China,True,45.1,328,-77.3,-253.51,-3.37,0.0,99.4,0.6
+China,False,44.8,330,-77.7,-256.38,-3.41,0.0,100.0,0.0
+Technical + China,False,44.8,330,-77.7,-256.38,-3.41,0.0,100.0,0.0
+China + Fundamental,False,44.8,330,-77.7,-256.38,-3.41,0.0,100.0,0.0
+Technical + China + Fundamental,False,44.8,330,-77.7,-256.38,-3.41,0.0,100.0,0.0
+Technical + China + WASDE,False,44.5,128,-51.0,-65.28,-1.42,0.0,38.8,61.2
+ML + China + Fundamental,True,44.2,317,-79.7,-252.52,-3.41,0.0,96.1,3.9
+ML + Technical + WASDE + Fundamental,True,43.4,53,-58.4,-30.96,-1.39,6.7,9.4,83.9
+China + WASDE + Fundamental,False,43.0,291,-106.4,-309.64,-4.63,0.0,88.2,11.8
+ML + Technical + China,True,41.9,215,-112.3,-241.43,-3.9,0.0,65.2,34.8
+ML + Technical + China + Fundamental,True,35.9,195,-158.0,-308.07,-5.57,0.0,59.1,40.9
+Technical,False,34.8,66,-107.5,-70.95,-2.32,13.6,6.4,80.0
+Fundamental,False,31.8,173,-205.4,-355.39,-7.11,0.0,52.4,47.6
+Technical + China + WASDE + Fundamental,False,31.1,164,-187.4,-307.36,-5.84,0.0,49.7,50.3
+Technical + Fundamental,False,23.3,60,-311.1,-186.64,-6.33,0.0,18.2,81.8
+Technical + WASDE + Fundamental,False,8.3,12,-357.3,-42.88,-5.17,3.6,0.0,96.4

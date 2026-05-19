@@ -1,186 +1,147 @@
-{
-  "generated_at": "2026-05-17T17:31:20.627031",
-  "n_articles": 25,
-  "n_high_impact": 0,
-  "composite": 0.0435,
-  "drivers": {
-    "news_china_demand_signal": 0.225,
-    "news_china_demand_count": 1,
-    "news_weather_br_signal": 0.0,
-    "news_weather_br_count": 0,
-    "news_weather_ar_signal": 0.055,
-    "news_weather_ar_count": 1,
-    "news_weather_us_signal": 0.11,
-    "news_weather_us_count": 1,
-    "news_supply_global_signal": 0.129,
-    "news_supply_global_count": 5,
-    "news_usda_report_signal": 0.3978,
-    "news_usda_report_count": 2,
-    "news_policy_ar_signal": -0.045,
-    "news_policy_ar_count": 2,
-    "news_policy_us_signal": 0.1125,
-    "news_policy_us_count": 2,
-    "news_policy_br_signal": 0.0,
-    "news_policy_br_count": 0,
-    "news_macro_usd_signal": -0.03,
-    "news_macro_usd_count": 2,
-    "news_macro_oil_signal": 0.3456,
-    "news_macro_oil_count": 1,
-    "news_logistics_signal": 0.0,
-    "news_logistics_count": 0,
-    "news_biofuels_signal": 0.0,
-    "news_biofuels_count": 1,
-    "news_geopolitics_signal": 0.2853,
-    "news_geopolitics_count": 2
-  },
-  "top_per_driver": {
-    "china_demand": [
-      {
-        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
-      }
-    ],
-    "weather_ar": [
-      {
-        "title": "Kharif reset: Farmers may ditch paddy and maize for soybean, pulses amid monsoon fears",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://economictimes.indiatimes.com/news/economy/agriculture/kharif-reset-farmers-may-ditch-paddy-and-maize-for-soybean-pulses-amid-monsoon-fears/articleshow/131045884.cms"
-      }
-    ],
-    "weather_us": [
-      {
-        "title": "Midsouth farmers shift to soybeans as a survival strategy",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://www.farmprogress.com/soybean/midsouth-farmers-shift-to-soybeans-as-a-survival-strategy"
-      }
-    ],
-    "supply_global": [
-      {
-        "title": "Soybeans Closes with Tuesday Gains USDA Tightens Stocks",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.barchart.com/story/news/1889214/soybeans-closes-with-tuesday-gains-usda-tightens-stocks"
-      },
-      {
-        "title": "Red meat exports add significant value to corn and soybeans",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.6,
-        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
-      },
-      {
-        "title": "Kharif reset: Farmers may ditch paddy and maize for soybean, pulses amid monsoon fears",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.55,
-        "url": "https://economictimes.indiatimes.com/news/economy/agriculture/kharif-reset-farmers-may-ditch-paddy-and-maize-for-soybean-pulses-amid-monsoon-fears/articleshow/131045884.cms"
-      }
-    ],
-    "usda_report": [
-      {
-        "title": "Soybeans Closes with Tuesday Gains USDA Tightens Stocks",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.barchart.com/story/news/1889214/soybeans-closes-with-tuesday-gains-usda-tightens-stocks"
-      },
-      {
-        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.72,
-        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
-      }
-    ],
-    "policy_ar": [
-      {
-        "title": "Contratistas en crisis: trabajan sin rentabilidad y con maquinaria obsoleta",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.45,
-        "url": "https://www.todoagro.com.ar/contratistas-en-crisis-trabajan-sin-rentabilidad-y-con-maquinaria-obsoleta/"
-      },
-      {
-        "title": "El SENASA pone orden sobre la «letra chica» de los fitosanitarios",
-        "impact": "neutral",
-        "magnitude": 1,
-        "confidence": 0.25,
-        "url": "https://www.todoagro.com.ar/el-senasa-pone-orden-sobre-la-letra-chica-de-los-fitosanitarios/"
-      }
-    ],
-    "policy_us": [
-      {
-        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
-      },
-      {
-        "title": "Union Cabinet approves higher MSP for 14 Kharif crops for 2026-27 marketing season",
-        "impact": "neutral",
-        "magnitude": 1,
-        "confidence": 0.15,
-        "url": "https://www.hindustantimes.com/india-news/union-cabinet-approves-higher-msp-for-14-kharif-crops-for-2026-27-marketing-season-101778724639955.html"
-      }
-    ],
-    "macro_usd": [
-      {
-        "title": "Red meat exports add significant value to corn and soybeans",
-        "impact": "bullish",
-        "magnitude": 2,
-        "confidence": 0.6,
-        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
-      },
-      {
-        "title": "After high-flying start, grains end week with thud",
-        "impact": "bearish",
-        "magnitude": 2,
-        "confidence": 0.45,
-        "url": "https://www.farmprogress.com/markets-and-quotes/afternoon-market-recap"
-      }
-    ],
-    "macro_oil": [
-      {
-        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.72,
-        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
-      }
-    ],
-    "biofuels": [
-      {
-        "title": "Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los biocombustibles",
-        "impact": "neutral",
-        "magnitude": 1,
-        "confidence": 0.2,
-        "url": "https://www.todoagro.com.ar/cruciferas-alternativa-invernal-biocombustibles-argentina/"
-      }
-    ],
-    "geopolitics": [
-      {
-        "title": "U.S. expects China to commit billions for American farm goods, Greer says",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.75,
-        "url": "https://www.farmprogress.com/marketing/u-s-expects-china-to-commit-billions-for-american-farm-goods-greer-says"
-      },
-      {
-        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
-        "impact": "bullish",
-        "magnitude": 3,
-        "confidence": 0.72,
-        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
-      }
-    ]
-  }
+{
+  "generated_at": "2026-05-18T22:19:17.137056",
+  "n_articles": 15,
+  "n_high_impact": 0,
+  "composite": 0.0293,
+  "drivers": {
+    "news_china_demand_signal": 0.0,
+    "news_china_demand_count": 0,
+    "news_weather_br_signal": -0.1125,
+    "news_weather_br_count": 1,
+    "news_weather_ar_signal": 0.0,
+    "news_weather_ar_count": 0,
+    "news_weather_us_signal": 0.0,
+    "news_weather_us_count": 0,
+    "news_supply_global_signal": -0.0308,
+    "news_supply_global_count": 3,
+    "news_usda_report_signal": 0.3456,
+    "news_usda_report_count": 1,
+    "news_policy_ar_signal": -0.0667,
+    "news_policy_ar_count": 3,
+    "news_policy_us_signal": 0.0,
+    "news_policy_us_count": 0,
+    "news_policy_br_signal": 0.0,
+    "news_policy_br_count": 0,
+    "news_macro_usd_signal": 0.11,
+    "news_macro_usd_count": 1,
+    "news_macro_oil_signal": 0.3456,
+    "news_macro_oil_count": 1,
+    "news_logistics_signal": -0.11,
+    "news_logistics_count": 1,
+    "news_biofuels_signal": 0.0,
+    "news_biofuels_count": 1,
+    "news_geopolitics_signal": 0.3456,
+    "news_geopolitics_count": 1
+  },
+  "top_per_driver": {
+    "weather_br": [
+      {
+        "title": "Atraso na compra de fertilizantes eleva risco para a safra de soja 2026/27",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.canalrural.com.br/agricultura/atraso-na-compra-de-fertilizantes-eleva-risco-para-a-safra-de-soja-2026-27/"
+      }
+    ],
+    "supply_global": [
+      {
+        "title": "Atraso na compra de fertilizantes eleva risco para a safra de soja 2026/27",
+        "impact": "bearish",
+        "magnitude": 3,
+        "confidence": 0.75,
+        "url": "https://www.canalrural.com.br/agricultura/atraso-na-compra-de-fertilizantes-eleva-risco-para-a-safra-de-soja-2026-27/"
+      },
+      {
+        "title": "Red meat exports add significant value to corn and soybeans",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
+      },
+      {
+        "title": "Contratistas en crisis: trabajan sin rentabilidad y con maquinaria obsoleta",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
+        "url": "https://www.todoagro.com.ar/contratistas-en-crisis-trabajan-sin-rentabilidad-y-con-maquinaria-obsoleta/"
+      }
+    ],
+    "usda_report": [
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
+      }
+    ],
+    "policy_ar": [
+      {
+        "title": "Las cerealeras cuestionaron al Gobierno por una fuerte suba en el costo del gas importado",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.lanacion.com.ar/economia/las-cerealeras-cuestionaron-al-gobierno-por-una-fuerte-suba-en-el-costo-del-gas-importado-nid18052026/"
+      },
+      {
+        "title": "Contratistas en crisis: trabajan sin rentabilidad y con maquinaria obsoleta",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.45,
+        "url": "https://www.todoagro.com.ar/contratistas-en-crisis-trabajan-sin-rentabilidad-y-con-maquinaria-obsoleta/"
+      },
+      {
+        "title": "El SENASA pone orden sobre la «letra chica» de los fitosanitarios",
+        "impact": "neutral",
+        "magnitude": 1,
+        "confidence": 0.25,
+        "url": "https://www.todoagro.com.ar/el-senasa-pone-orden-sobre-la-letra-chica-de-los-fitosanitarios/"
+      }
+    ],
+    "macro_usd": [
+      {
+        "title": "Red meat exports add significant value to corn and soybeans",
+        "impact": "bullish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.feedstuffs.com/market-news/red-meat-exports-add-significant-value-to-corn-and-soybeans"
+      }
+    ],
+    "macro_oil": [
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
+      }
+    ],
+    "logistics": [
+      {
+        "title": "Las cerealeras cuestionaron al Gobierno por una fuerte suba en el costo del gas importado",
+        "impact": "bearish",
+        "magnitude": 2,
+        "confidence": 0.55,
+        "url": "https://www.lanacion.com.ar/economia/las-cerealeras-cuestionaron-al-gobierno-por-una-fuerte-suba-en-el-costo-del-gas-importado-nid18052026/"
+      }
+    ],
+    "biofuels": [
+      {
+        "title": "Crucíferas: crecen como alternativa invernal y ganan lugar en el negocio de los biocombustibles",
+        "impact": "neutral",
+        "magnitude": 1,
+        "confidence": 0.2,
+        "url": "https://www.todoagro.com.ar/cruciferas-alternativa-invernal-biocombustibles-argentina/"
+      }
+    ],
+    "geopolitics": [
+      {
+        "title": "Tensión en Medio Oriente y señales mixtas del agro: suben petróleo y fertilizantes, mientras el mercado espera el inform",
+        "impact": "bullish",
+        "magnitude": 3,
+        "confidence": 0.72,
+        "url": "https://www.todoagro.com.ar/tension-en-medio-oriente-y-senales-mixtas-del-agro-suben-petroleo-y-fertilizantes-mientras-el-mercado-espera-el-informe-clave-del-usda/"
+      }
+    ]
+  }
 }

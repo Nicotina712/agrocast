@@ -4,12 +4,17 @@ Breakdown explicado del score de confianza de la señal AgroCast.
 
 Desglosa la señal final en sus componentes:
   1. Intelligence Engine — 5-agent debate (fuente primaria, 35%)
-  2. Demanda China       — crush margin + importaciones (20%)
-  3. WASDE               — sorpresa de stocks mundiales (15%)
-  4. ML (XGBoost 7d)     — probabilidad de retorno positivo (15%)
-  5. Técnico             — RSI, Bollinger, MA crossover (10%)
+  2. Demanda China       — crush margin + importaciones (25%)
+  3. WASDE               — sorpresa de stocks mundiales (20%)
+  4. ML (XGBoost 14d)    — probabilidad de retorno positivo (20%)
+  5. Técnico             — RSI, Bollinger, MA crossover (0%, informativo)
   6. Forecast 30d        — dirección del modelo Ridge+ensemble (0%, informativo)
   7. Estacionalidad      — patrón histórico del mes actual (0%, informativo)
+
+Pesos optimizados por backtest OOS (2025+):
+  - Technical y Fundamental eliminados del composite (r<0 con dirección real)
+  - Redistributido entre IE/China/WASDE/ML
+  - Ref: artifacts_eval/signal_combination_backtest_oos.csv
 
 Retorna un score compuesto 0–100 con contribución por factor.
 Cache: data/signal_breakdown.json (TTL 4h)
@@ -98,7 +103,7 @@ def _ie_factor() -> dict:
             "score":     round(score, 3),
             "direction": _factor_bar(score),
             "detail":    detail,
-            "weight":    0.35,
+            "weight":    0.35,  # primary signal source
             "raw":       {"verdict": verdict, "confidence": confidence,
                          "price_range_7d": range_7d, "reasoning": reasoning[:200]},
         }
@@ -108,7 +113,7 @@ def _ie_factor() -> dict:
 
 
 def _ml_factor() -> dict:
-    """Factor ML: probabilidad XGBoost de retorno positivo (7d)."""
+    """Factor ML: probabilidad XGBoost de retorno positivo (14d)."""
     try:
         sig = pd.read_csv(os.path.join(_PROJECT_ROOT, "artifacts", "signals.csv"))
         exp_ret  = float(sig["expected_return"].iloc[-1])
@@ -117,16 +122,16 @@ def _ml_factor() -> dict:
         # expected_return positivo = bullish, negativo = bearish
         score = float(np.clip(exp_ret * 5, -1, 1))  # escalar a -1..1
         return {
-            "name":        "Modelo ML (XGBoost 7d)",
+            "name":        "Modelo ML (XGBoost 14d)",
             "score":       round(score, 3),
             "direction":   _factor_bar(score),
             "detail":      f"Retorno esperado: {exp_ret*100:+.2f}% · Señal: {signal} · Confianza: {conf:.1%}",
-            "weight":      0.15,
+            "weight":      0.20,
             "raw":         {"expected_return": round(exp_ret, 4), "confidence": round(conf, 4), "signal": signal},
         }
     except Exception:
-        return {"name": "Modelo ML (XGBoost 7d)", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.15, "raw": {}}
+        return {"name": "Modelo ML (XGBoost 14d)", "score": 0, "direction": "NEUTRO",
+                "detail": "Sin datos", "weight": 0.20, "raw": {}}
 
 
 def _forecast_factor() -> dict:
@@ -180,12 +185,12 @@ def _china_factor() -> dict:
             "score":     round(score, 3),
             "direction": _factor_bar(score),
             "detail":    detail,
-            "weight":    0.20,
+            "weight":    0.25,
             "raw":       {"demand_score": demand_score, "crush_signal": crush_sig},
         }
     except Exception:
         return {"name": "Demanda China", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.20, "raw": {}}
+                "detail": "Sin datos", "weight": 0.25, "raw": {}}
 
 
 def _wasde_factor() -> dict:
@@ -211,12 +216,12 @@ def _wasde_factor() -> dict:
             "score":     round(score, 3),
             "direction": _factor_bar(score),
             "detail":    detail,
-            "weight":    0.15,
+            "weight":    0.20,
             "raw":       {"signal": signal, "surprise_score": surp},
         }
     except Exception:
         return {"name": "WASDE / Stocks Mundiales", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.15, "raw": {}}
+                "detail": "Sin datos", "weight": 0.20, "raw": {}}
 
 
 def _technical_factor() -> dict:
@@ -244,13 +249,13 @@ def _technical_factor() -> dict:
             "name":      "Análisis Técnico (Soja)",
             "score":     round(score, 3),
             "direction": _factor_bar(score),
-            "detail":    detail,
-            "weight":    0.15,
+            "detail":    detail + " (informativo, no pondera)",
+            "weight":    0.00,  # OOS backtest: r=-0.20 con dirección real → degrada composite
             "raw":       {"tech_score": tech_score, "rsi": rsi, "bb_pct": bb},
         }
     except Exception:
         return {"name": "Análisis Técnico", "score": 0, "direction": "NEUTRO",
-                "detail": "Sin datos", "weight": 0.15, "raw": {}}
+                "detail": "Sin datos (informativo)", "weight": 0.00, "raw": {}}
 
 
 def _seasonal_factor() -> dict:

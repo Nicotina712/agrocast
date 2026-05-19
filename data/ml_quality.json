@@ -1,27 +1,27 @@
-{
-  "ok": true,
-  "as_of": "2026-05-11T13:51:54.657017",
-  "full": {
-    "n_signals": 1446,
-    "n_signals_high_conf": 0,
-    "hit_rate": 77.5,
-    "hit_rate_high_conf": null,
-    "roc_auc": 0.745,
-    "avg_abs_return_7d_pct": 2.71,
-    "quality_label": "robusto",
-    "period_start": "2016-05-10",
-    "period_end": "2026-04-29"
-  },
-  "recent_12m": {
-    "n_signals": 15,
-    "n_signals_high_conf": 0,
-    "hit_rate": 60.0,
-    "hit_rate_high_conf": null,
-    "roc_auc": 0.098,
-    "avg_abs_return_7d_pct": 1.5,
-    "quality_label": "datos insuficientes",
-    "period_start": "2025-04-29",
-    "period_end": "2026-04-29"
-  },
-  "note": "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample)."
+{
+  "ok": true,
+  "as_of": "2026-05-11T13:51:54.657017",
+  "full": {
+    "n_signals": 1446,
+    "n_signals_high_conf": 0,
+    "hit_rate": 77.5,
+    "hit_rate_high_conf": null,
+    "roc_auc": 0.745,
+    "avg_abs_return_7d_pct": 2.71,
+    "quality_label": "robusto",
+    "period_start": "2016-05-10",
+    "period_end": "2026-04-29"
+  },
+  "recent_12m": {
+    "n_signals": 15,
+    "n_signals_high_conf": 0,
+    "hit_rate": 60.0,
+    "hit_rate_high_conf": null,
+    "roc_auc": 0.098,
+    "avg_abs_return_7d_pct": 1.5,
+    "quality_label": "datos insuficientes",
+    "period_start": "2025-04-29",
+    "period_end": "2026-04-29"
+  },
+  "note": "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample)."
 }

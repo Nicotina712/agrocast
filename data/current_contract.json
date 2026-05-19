@@ -1,1 +1,1 @@
-{"ok": true, "ticker": "ZS=F", "front_contract": "JUL2026", "front_ticker": "ZSN26.CBT", "price": 1211.0, "next_contract": "AGO2026", "next_ticker": "ZSQ26.CBT", "next_price": 1205.75, "spread_usc": -5.25, "days_to_fnd": 36, "fnd_date": "2026-06-30", "generated_at": "2026-05-11T17:09:17"}
+{"ok": true, "ticker": "ZS=F", "front_contract": "JUL2026", "front_ticker": "ZSN26.CBT", "price": null, "next_contract": "AGO2026", "next_ticker": "ZSQ26.CBT", "next_price": 1210.0, "spread_usc": null, "days_to_fnd": 31, "fnd_date": "2026-06-30", "generated_at": "2026-05-18T19:20:36"}

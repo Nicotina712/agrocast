@@ -16,6 +16,21 @@ but with different system prompts defining their analytical mandate.
 import os
 import json
 from datetime import datetime
+
+# Ensure .env is loaded before Anthropic client reads ANTHROPIC_API_KEY
+try:
+    from dotenv import load_dotenv
+    _env_candidates = [
+        os.path.join(os.path.dirname(__file__), "..", "..", ".env"),
+        os.path.join(os.path.dirname(__file__), "..", "..", "MVP lectura de noticias", ".env"),
+    ]
+    for _ep in _env_candidates:
+        if os.path.exists(_ep):
+            load_dotenv(_ep, override=True)
+            break
+except ImportError:
+    pass
+
 from anthropic import Anthropic
 
 _client = None

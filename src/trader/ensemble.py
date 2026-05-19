@@ -34,7 +34,7 @@ _MODEL_HISTORY     = os.path.join(_PROJECT_ROOT, "artifacts", "model_oos_history
 _BUY_THRESH    = 0.58
 _SELL_THRESH   = 0.42
 _DISAGREE_GATE = 0.25
-_IE_BASE_WEIGHT = 0.20  # IE gets base weight even without hit-rate history
+_IE_BASE_WEIGHT = 0.35  # IE gets dominant weight (primary signal, OOS-validated)
 
 _STANCE_MAP = {
     "BULLISH": 0.65,

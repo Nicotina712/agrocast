@@ -18,6 +18,15 @@ import json
 import os
 import time
 from datetime import datetime
+
+# Ensure .env is loaded so ANTHROPIC_API_KEY is available
+try:
+    from dotenv import load_dotenv as _load_dotenv
+    _env_path = os.path.join(os.path.dirname(__file__), "..", "..", ".env")
+    if os.path.exists(_env_path):
+        _load_dotenv(_env_path, override=True)
+except ImportError:
+    pass
 from typing import Optional
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

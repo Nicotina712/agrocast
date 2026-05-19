@@ -24,6 +24,15 @@ import json
 import os
 from datetime import datetime, timedelta
 
+# Ensure .env is loaded so ANTHROPIC_API_KEY is available
+try:
+    from dotenv import load_dotenv as _load_dotenv
+    _env_path = os.path.join(os.path.dirname(__file__), "..", "..", ".env")
+    if os.path.exists(_env_path):
+        _load_dotenv(_env_path, override=True)
+except ImportError:
+    pass
+
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _OUTPUT_DIR   = os.path.join(_PROJECT_ROOT, "data")
 _TTL_HOURS    = 4
@@ -59,7 +68,6 @@ def _load_context() -> dict:
                 pass
 
     # ── Fuentes originales ──
-    _read_json("data/intelligence_engine_verdict.json", "ie_verdict")
     _read_json("data/news_intel.json",       "news_intel")
     _read_json("data/signal_breakdown.json", "signal")
     _read_json("data/argentina_supply.json", "argentina")
@@ -114,38 +122,9 @@ def _digest_context(ctx: dict) -> str:
     """Pre-digiere el contexto crudo en un resumen estructurado y conciso."""
     lines = []
 
-    # ── 0. Intelligence Engine Verdict (FUENTE PRIMARIA) ──
-    ie = ctx.get("ie_verdict") or {}
-    verdict_data = ie.get("verdict", {})
-    if verdict_data:
-        lines.append("=== INTELLIGENCE ENGINE (FUENTE PRIMARIA - 5-Agent Debate) ===")
-        lines.append(f"  VEREDICTO: {verdict_data.get('verdict', '?')}")
-        lines.append(f"  Confianza: {verdict_data.get('confidence', '?')}")
-        lines.append(f"  Sizing: {verdict_data.get('position_sizing', '?')}%")
-        lines.append(f"  Razonamiento: {verdict_data.get('reasoning', '?')[:300]}")
-        r7 = verdict_data.get("price_range_7d", {})
-        r30 = verdict_data.get("price_range_30d", {})
-        if r7:
-            lines.append(f"  Rango 7d: {r7.get('low')}-{r7.get('central')}-{r7.get('high')} USc/bu")
-        if r30:
-            lines.append(f"  Rango 30d: {r30.get('low')}-{r30.get('central')}-{r30.get('high')} USc/bu")
-        rec = verdict_data.get("recommended_action", {})
-        if rec:
-            lines.append(f"  Recomendacion productores: {rec.get('producers', '?')[:200]}")
-            lines.append(f"  Recomendacion traders: {rec.get('traders', '?')[:200]}")
-        inv = verdict_data.get("invalidation_conditions", [])
-        if inv:
-            lines.append(f"  Invalidacion: {'; '.join(inv[:2])}")
-        lines.append(f"  Timestamp: {ie.get('timestamp', '?')}")
-        lines.append("")
-        lines.append("IMPORTANTE: Tu brief DEBE ser CONSISTENTE con el veredicto del IE.")
-        lines.append("El IE integra fundamentales, tecnicos, analogos historicos y sentimiento.")
-        lines.append("Tu rol es COMUNICAR este veredicto de forma clara, no contradecirlo.")
-        lines.append("")
-
     # ── 1. Señal compuesta ──
     sig = ctx.get("signal") or {}
-    lines.append("=== SENAL COMPUESTA (respaldo cuantitativo) ===")
+    lines.append("=== SENAL COMPUESTA (FUENTE DE VERDAD) ===")
     lines.append(f"  composite_signal: {sig.get('composite_signal', '?')}")
     lines.append(f"  composite_raw: {sig.get('composite_raw', '?')} (rango -1 a +1)")
     lines.append(f"  composite_score: {sig.get('composite_score', '?')}/100")
@@ -333,16 +312,15 @@ Genera un BRIEF EJECUTIVO para el PRODUCTOR. Formato JSON estricto:
 }}
 
 REGLAS CRITICAS:
-- El campo stance DEBE coincidir con el VEREDICTO del Intelligence Engine: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
-  El IE es la fuente primaria de verdad. Si el IE dice SELL, el brief dice BAJISTA.
+- El campo stance DEBE coincidir con la senal compuesta: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
 - PROHIBIDO usar jerga tecnica: nada de RSI, Bollinger, golden cross, spread, crush margin, z-score.
   Traduci todo a lenguaje de campo: "el precio esta fuerte pero cerca de un techo", "la demanda china esta fria".
-- que_hacer DEBE ser concreto con porcentaje. Usa la recomendacion del IE para productores.
-  Si el IE dice SELL con sizing X%, traducilo a "vender X% del stock".
-  Si dice HOLD, decilo honestamente: "no hay senal clara, mantener posicion".
-- rangos_esperados DEBEN venir de los rangos del IE (price_range_7d, price_range_30d) o del narrative forecast.
+- que_hacer DEBE ser concreto con porcentaje. Usa la info del decision classifier y narrative forecast.
+  Si el modelo dice SELL con X%, traducilo a "vender X% del stock".
+  Si dice HOLD/INDIFFERENT, decilo honestamente: "no hay senal clara, mantener posicion".
+- rangos_esperados DEBEN venir de los datos del narrative forecast (Q10/Q90). No inventes numeros.
 - honestidad: menciona el track record real si lo tenes, y se claro sobre lo que el modelo NO puede predecir.
-- conviction: basate en la confianza del IE (0-1 → 0-100), ajustado por coherencia entre factores.
+- conviction: basate en |composite_raw|*100, ajustado por coherencia entre factores y track record.
 - Maximo 3 items en contexto_clave (solo lo que importa, no todo).
 - Devolve SOLO el JSON, sin markdown, sin texto extra.
 """
@@ -402,14 +380,12 @@ Genera un BRIEF TECNICO para el TRADER. Formato JSON estricto:
 }}
 
 REGLAS:
-- stance DEBE coincidir con el VEREDICTO del Intelligence Engine: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
-  El IE es la fuente primaria. Si el IE dice SELL, tu stance es BAJISTA. No lo contradigas.
-- trade_idea DEBE ser consistente con la recomendacion del IE para traders.
+- stance DEBE coincidir con composite_signal: BUY->ALCISTA, SELL->BAJISTA, HOLD->NEUTRAL.
 - USA toda la inteligencia disponible. No ignores el narrative forecast, el event memory, ni el track record.
 - Si el drift monitor muestra cambio de regimen, mencionalo.
 - Incluir el Forecast 30d SOLO como referencia informativa con la advertencia de que tiene peso 0%.
 - Si no hay trade idea clara, decilo: "sin setup definido, esperar confirmacion".
-- conviction basada en la confianza del IE (0-1 → 0-100), ajustada por coherencia entre factores.
+- conviction basada en |composite_raw|*100 ajustada por coherencia.
 - Devolve SOLO el JSON, sin markdown, sin texto extra.
 """
 
@@ -418,34 +394,14 @@ def synthesize(force: bool = False, brief_type: str = "producer") -> dict | None
     """Genera o devuelve cache del brief de mercado.
 
     brief_type: "producer" (Dashboard) o "trader" (pestaña Trader)
-
-    Cost gate: only generates 1x/day during market hours.
-    Outside that window, returns cached version.
     """
     path = _output_path(brief_type)
-    component = f"market_synthesis_{brief_type}"
 
-    # Always try cache first
     if not force and _is_fresh(path):
         try:
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
         except Exception:
-            pass
-
-    # Cost gate: 1x/day during market hours only
-    if not force:
-        try:
-            from .market_hours import can_run_llm
-            if not can_run_llm(component):
-                print(f"[synthesis] Skipped {brief_type} — already ran today or market closed")
-                # Return stale cache if available
-                try:
-                    with open(path, "r", encoding="utf-8") as f:
-                        return json.load(f)
-                except Exception:
-                    return None
-        except ImportError:
             pass
 
     api_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
@@ -509,13 +465,6 @@ def synthesize(force: bool = False, brief_type: str = "producer") -> dict | None
                 evaluate_due()
             except Exception as _e:
                 print(f"[synthesis] accountability skip: {_e}")
-
-        # Mark as ran for cost gate
-        try:
-            from .market_hours import mark_llm_ran
-            mark_llm_ran(component)
-        except Exception:
-            pass
 
         return result
 
