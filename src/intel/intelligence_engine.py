@@ -175,6 +175,42 @@ def _load_market_context() -> dict:
     except Exception:
         pass
 
+    # ── Cross-market data (oil, dollar, corn) for Fund Manager ──
+    try:
+        mc_path = os.path.join(_DATA, "multi_commodity.json")
+        if os.path.exists(mc_path):
+            with open(mc_path, encoding="utf-8") as f:
+                ctx["multi_commodity"] = json.load(f)
+    except Exception:
+        pass
+
+    # ── Narrative forecast (event + ranges + decision classifier) ──
+    try:
+        nf_path = os.path.join(_ARTIFACTS, "narrative_forecast", "latest.json")
+        if os.path.exists(nf_path):
+            with open(nf_path, encoding="utf-8") as f:
+                ctx["narrative_forecast"] = json.load(f)
+    except Exception:
+        pass
+
+    # ── Signal breakdown (composite score + factors) ──
+    try:
+        sb_path = os.path.join(_DATA, "signal_breakdown.json")
+        if os.path.exists(sb_path):
+            with open(sb_path, encoding="utf-8") as f:
+                ctx["signal_breakdown"] = json.load(f)
+    except Exception:
+        pass
+
+    # ── Drift monitor ──
+    try:
+        dm_path = os.path.join(_ARTIFACTS, "drift_monitor.json")
+        if os.path.exists(dm_path):
+            with open(dm_path, encoding="utf-8") as f:
+                ctx["drift_monitor"] = json.load(f)
+    except Exception:
+        pass
+
     return ctx
 
 

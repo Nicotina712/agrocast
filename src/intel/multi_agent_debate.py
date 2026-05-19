@@ -160,7 +160,9 @@ Tu trabajo es:
 2. Pesar los argumentos según la calidad de la evidencia (no solo la convicción del analista)
 3. Considerar el assessment de riesgo para calibrar el tamaño de la posición
 4. Usar el análisis técnico como árbitro cuando fundamental y técnico están alineados, y como señal de cautela cuando divergen
-5. Producir un VEREDICTO FINAL unificado
+5. Integrar el análisis cross-market (oil, dollar, corn) para detectar correlaciones activas
+6. Usar los datos del decision classifier (backtests por horizonte) para recomendar horizonte óptimo y decidir si esperar o actuar
+7. Producir un VEREDICTO FINAL unificado CON trade idea concreta si hay señal
 
 Reglas de decisión:
 - Si ambos analistas fundamentales tienen convicción BAJA → HOLD (esperar más información)
@@ -171,6 +173,8 @@ Reglas de decisión:
 - Si el técnico CONTRADICE el fundamental dominante → reducir sizing un nivel
 - Siempre incluir un rango de precios, nunca un punto exacto
 - Siempre incluir horizonte temporal y condiciones de invalidación
+- Los rangos de narrative forecast (Q10/Q90) son tu guía para price targets — no inventes números fuera de esos rangos
+- El trade_idea debe tener niveles concretos de entry, SL, TP derivados del análisis técnico y rangos narrativos
 
 Responde en formato JSON:
 {
@@ -191,8 +195,36 @@ Responde en formato JSON:
     "explanation": "por qué pesaste más un lado"
   },
   "key_watchlist": ["eventos o datos a monitorear esta semana"],
-  "next_review_trigger": "qué evento debería disparar una re-evaluación"
-}"""
+  "next_review_trigger": "qué evento debería disparar una re-evaluación",
+  "cross_market": {
+    "oil": "precio, cambio reciente, impacto en soja vía biofuels/costos",
+    "dollar": "DXY nivel, cambio, impacto en competitividad exportadora",
+    "corn": "ratio soja/maíz, arbitraje, implicancia"
+  },
+  "decision_classifier": {
+    "horizonte_optimo": "1d|7d|15d|30d — cuál horizonte tiene más convicción basado en los backtests",
+    "p_wait": "probabilidad estimada de que ESPERAR sea mejor que actuar ahora (0.0-1.0)",
+    "partial_sell": "recomendación graduada: X% ahora, Y% si se confirma Z"
+  },
+  "trade_idea": {
+    "setup": "descripción del setup en 1-2 oraciones",
+    "direction": "LONG|SHORT|FLAT",
+    "entry": "nivel de entrada en USc/bu",
+    "stop_loss": "nivel SL en USc/bu",
+    "take_profit": "nivel TP en USc/bu",
+    "risk_reward": "ratio R:R",
+    "horizon": "1d|7d|30d",
+    "conviction": "ALTA|MEDIA|BAJA"
+  },
+  "track_record": "resumen del hit rate del modelo, drift, calibración — ser honesto sobre limitaciones",
+  "data_gaps": ["información que falta para tener más certeza"]
+}
+
+NOTA sobre trade_idea:
+- Si NO hay señal clara o el verdict es HOLD → trade_idea.setup = "Sin setup definido, esperar confirmación", direction = "FLAT"
+- Si hay señal: entry = nivel técnico de entrada, SL = debajo de soporte clave (para LONG) o arriba de resistencia (para SHORT), TP = target del rango narrativo Q90/Q10
+- risk_reward debe ser al menos 1.5:1 para recomendar el trade
+"""
 
 
 def _load_technical_context() -> dict:
@@ -481,6 +513,68 @@ def _build_market_context(
 
     if technical_data:
         lines.append(_format_technical_context(technical_data))
+
+    # ── Cross-market data ──
+    mc = market_data.get("multi_commodity") or {}
+    if mc:
+        lines.append("--- Cross-Market (oil, dollar, corn) ---")
+        for k, v in mc.items():
+            if isinstance(v, dict):
+                lines.append(f"  {k}: price={v.get('price','?')} | RSI={v.get('rsi','?')} | "
+                             f"chg5d={v.get('change_5d_pct','?')}% | signal={v.get('signal','?')}")
+        lines.append("")
+
+    # ── Signal breakdown (composite) ──
+    sb = market_data.get("signal_breakdown") or {}
+    if sb:
+        lines.append("--- Senal Compuesta ---")
+        lines.append(f"  composite_signal: {sb.get('composite_signal', '?')}")
+        lines.append(f"  composite_raw: {sb.get('composite_raw', '?')} (rango -1 a +1)")
+        lines.append(f"  composite_score: {sb.get('composite_score', '?')}/100")
+        for f in (sb.get("factors") or []):
+            w = f.get("weight", 0)
+            tag = f"peso {int(w*100)}%" if w > 0 else "INFORMATIVO"
+            lines.append(f"  - {f.get('name')}: score={f.get('score')} dir={f.get('direction')} ({tag})")
+        lines.append("")
+
+    # ── Narrative forecast + decision classifier data ──
+    nf = market_data.get("narrative_forecast") or {}
+    fc = nf.get("forecast") or {}
+    bts = nf.get("backtests") or {}
+    if fc.get("ok"):
+        lines.append("--- Narrative Forecast (evento activo + rangos por analogos) ---")
+        lines.append(f"  Evento activo: {fc.get('event_active')}")
+        lines.append(f"  Tipo: {fc.get('event_type')} | Direccion: {fc.get('event_direction')}")
+        lines.append(f"  Fuerza: {fc.get('narrative_strength')} | Fade risk: {fc.get('fade_risk')}")
+        lines.append(f"  Narrativa: {fc.get('daily_narrative','')}")
+        forecasts = fc.get("forecasts", {})
+        for h in ["1d", "7d", "15d", "30d"]:
+            hf = forecasts.get(h, {})
+            if hf.get("available"):
+                r = hf["range_pct"]
+                lines.append(f"  {h}: Q10={r['q10']}% | mediana={r['median']}% | Q90={r['q90']}% | P(suba)={hf['p_up']*100:.0f}% | n={hf['n_samples']}")
+        lines.append("")
+    if bts:
+        lines.append("--- Decision Classifier Backtests ---")
+        for h in ["1d", "7d", "15d", "30d"]:
+            bt = bts.get(h, {})
+            if bt.get("ok"):
+                nar = bt.get("strategies", {}).get("narrative", {})
+                aw = bt.get("strategies", {}).get("always_wait", {})
+                lines.append(f"  {h}: narrativa={nar.get('mean_pnl_usd_ton','?')} USD/ton vs "
+                             f"always-wait={aw.get('mean_pnl_usd_ton','?')} USD/ton "
+                             f"(n={bt.get('n_decisions','?')}, activo {bt.get('narrative_active_pct','?')}%)")
+        lines.append("")
+
+    # ── Drift monitor ──
+    dm = market_data.get("drift_monitor") or {}
+    regime_shift = dm.get("regime_shift", {})
+    if regime_shift:
+        lines.append("--- Drift Monitor ---")
+        lines.append(f"  p_buy_recent_90d: {regime_shift.get('p_buy_recent_90d','?')}")
+        lines.append(f"  p_buy_historical: {regime_shift.get('p_buy_historical','?')}")
+        lines.append(f"  z_delta: {regime_shift.get('z_delta','?')}")
+        lines.append("")
 
     return "\n".join(lines)
 
