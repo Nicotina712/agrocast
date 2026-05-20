@@ -13,7 +13,7 @@
 #include <Trade\PositionInfo.mqh>
 
 //--- Input parameters
-input string   InpServerURL     = "https://TU-APP.onrender.com";  // AgroCast server URL (sin trailing slash)
+input string   InpServerURL     = "https://agrocast-ho3g.onrender.com";  // AgroCast server URL
 input string   InpSymbol        = "Sbean_N6";     // Symbol (adjust per broker)
 input double   InpLotSize       = 0.01;            // Lot size (min for demo)
 input double   InpMaxRiskPct    = 2.0;             // Max risk % per trade
