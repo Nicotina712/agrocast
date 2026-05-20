@@ -1,0 +1,5215 @@
+{
+  "timestamp": "2026-05-20T14:35:29.086187",
+  "type": "rule_based_backtest",
+  "config": {
+    "days": 200,
+    "capital": 1000.0,
+    "sample_hour_ct": 11
+  },
+  "statistics": {
+    "capital_initial": 1000.0,
+    "capital_final": 892.2,
+    "total_pnl_usd": -107.8,
+    "total_return_pct": -10.78,
+    "max_drawdown_pct": 68.33,
+    "total_samples": 200,
+    "active_trades": 28,
+    "flat_signals": 172,
+    "flat_rate_pct": 86.0,
+    "wins": 14,
+    "losses": 14,
+    "win_rate_pct": 50.0,
+    "avg_win_usd": 59.67,
+    "avg_loss_usd": -67.37,
+    "profit_factor": 0.89,
+    "sharpe_annualized": 0.79,
+    "exit_stats": {
+      "sl_hits": 6,
+      "tp_hits": 4,
+      "timeout_exits": 18
+    },
+    "by_setup": {
+      "breakout": {
+        "trades": 21,
+        "wins": 9,
+        "pnl": -189.1
+      },
+      "pullback": {
+        "trades": 6,
+        "wins": 4,
+        "pnl": -6.0
+      },
+      "reversal": {
+        "trades": 1,
+        "wins": 1,
+        "pnl": 87.3
+      }
+    },
+    "by_confidence": {
+      "MEDIUM": {
+        "trades": 18,
+        "wins": 10,
+        "pnl": 201.4
+      },
+      "HIGH": {
+        "trades": 8,
+        "wins": 3,
+        "pnl": -213.1
+      },
+      "LOW": {
+        "trades": 2,
+        "wins": 1,
+        "pnl": -96.1
+      }
+    },
+    "period": {
+      "start": "2025-07-29",
+      "end": "2026-05-13",
+      "days": 200
+    }
+  },
+  "equity_curve": [
+    {
+      "day": "start",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-07-29",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-07-30",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-07-31",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-01",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-04",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-05",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-06",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-07",
+      "capital": 955.4
+    },
+    {
+      "day": "2025-08-08",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-11",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-12",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-13",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-14",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-15",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-18",
+      "capital": 911.6
+    },
+    {
+      "day": "2025-08-19",
+      "capital": 862.1
+    },
+    {
+      "day": "2025-08-20",
+      "capital": 862.1
+    },
+    {
+      "day": "2025-08-21",
+      "capital": 862.1
+    },
+    {
+      "day": "2025-08-22",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-08-25",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-08-26",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-08-27",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-08-28",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-08-29",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-02",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-03",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-04",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-05",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-08",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-09",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-10",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-11",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-12",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-15",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-16",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-17",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-18",
+      "capital": 809.2
+    },
+    {
+      "day": "2025-09-19",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-22",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-23",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-24",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-25",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-26",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-29",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-09-30",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-01",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-02",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-03",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-06",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-07",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-08",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-09",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-10",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-13",
+      "capital": 831.7
+    },
+    {
+      "day": "2025-10-14",
+      "capital": 654.2
+    },
+    {
+      "day": "2025-10-15",
+      "capital": 489.2
+    },
+    {
+      "day": "2025-10-16",
+      "capital": 489.2
+    },
+    {
+      "day": "2025-10-17",
+      "capital": 489.2
+    },
+    {
+      "day": "2025-10-20",
+      "capital": 489.2
+    },
+    {
+      "day": "2025-10-21",
+      "capital": 316.7
+    },
+    {
+      "day": "2025-10-22",
+      "capital": 316.7
+    },
+    {
+      "day": "2025-10-23",
+      "capital": 329.2
+    },
+    {
+      "day": "2025-10-24",
+      "capital": 499.2
+    },
+    {
+      "day": "2025-10-27",
+      "capital": 499.2
+    },
+    {
+      "day": "2025-10-28",
+      "capital": 499.2
+    },
+    {
+      "day": "2025-10-29",
+      "capital": 499.2
+    },
+    {
+      "day": "2025-10-30",
+      "capital": 521.7
+    },
+    {
+      "day": "2025-10-31",
+      "capital": 656.7
+    },
+    {
+      "day": "2025-11-03",
+      "capital": 661.7
+    },
+    {
+      "day": "2025-11-04",
+      "capital": 661.7
+    },
+    {
+      "day": "2025-11-05",
+      "capital": 661.7
+    },
+    {
+      "day": "2025-11-06",
+      "capital": 661.7
+    },
+    {
+      "day": "2025-11-07",
+      "capital": 661.7
+    },
+    {
+      "day": "2025-11-10",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-11",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-12",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-13",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-14",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-17",
+      "capital": 649.2
+    },
+    {
+      "day": "2025-11-18",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-19",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-20",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-21",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-24",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-25",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-26",
+      "capital": 564.3
+    },
+    {
+      "day": "2025-11-28",
+      "capital": 521.8
+    },
+    {
+      "day": "2025-12-01",
+      "capital": 521.8
+    },
+    {
+      "day": "2025-12-02",
+      "capital": 521.8
+    },
+    {
+      "day": "2025-12-03",
+      "capital": 521.8
+    },
+    {
+      "day": "2025-12-04",
+      "capital": 521.8
+    },
+    {
+      "day": "2025-12-05",
+      "capital": 601.6
+    },
+    {
+      "day": "2025-12-08",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-09",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-10",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-11",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-12",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-15",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-16",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-17",
+      "capital": 619.1
+    },
+    {
+      "day": "2025-12-18",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-19",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-22",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-23",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-24",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-26",
+      "capital": 654.1
+    },
+    {
+      "day": "2025-12-29",
+      "capital": 636.6
+    },
+    {
+      "day": "2025-12-30",
+      "capital": 636.6
+    },
+    {
+      "day": "2025-12-31",
+      "capital": 691.0
+    },
+    {
+      "day": "2026-01-02",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-05",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-06",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-07",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-08",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-09",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-12",
+      "capital": 778.3
+    },
+    {
+      "day": "2026-01-13",
+      "capital": 743.3
+    },
+    {
+      "day": "2026-01-14",
+      "capital": 743.3
+    },
+    {
+      "day": "2026-01-15",
+      "capital": 743.3
+    },
+    {
+      "day": "2026-01-16",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-20",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-21",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-22",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-23",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-26",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-27",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-28",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-29",
+      "capital": 812.2
+    },
+    {
+      "day": "2026-01-30",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-02",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-03",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-04",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-05",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-06",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-09",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-10",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-11",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-12",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-13",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-17",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-18",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-19",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-20",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-23",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-24",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-25",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-26",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-02-27",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-02",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-03",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-04",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-05",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-06",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-09",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-10",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-11",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-12",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-13",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-16",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-17",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-18",
+      "capital": 867.2
+    },
+    {
+      "day": "2026-03-19",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-20",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-23",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-24",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-25",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-26",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-27",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-30",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-03-31",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-01",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-02",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-06",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-07",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-08",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-09",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-10",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-13",
+      "capital": 859.7
+    },
+    {
+      "day": "2026-04-14",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-15",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-16",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-17",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-20",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-21",
+      "capital": 822.2
+    },
+    {
+      "day": "2026-04-22",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-23",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-24",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-27",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-28",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-29",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-04-30",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-01",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-04",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-05",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-06",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-07",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-08",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-11",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-12",
+      "capital": 892.2
+    },
+    {
+      "day": "2026-05-13",
+      "capital": 892.2
+    }
+  ],
+  "trades": [
+    {
+      "day": "2025-07-29",
+      "hour_ct": 11,
+      "price": 1005.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.73,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "elevated",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1005.25,
+        "exit": 1009.71,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1009.71,
+        "tp": 997.82,
+        "contracts": 1,
+        "pnl_pts": -4.46,
+        "pnl_usd": -44.6,
+        "pnl_pct": -4.46,
+        "mfe": 0,
+        "mae": 0,
+        "bars_held": 1
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-07-30",
+      "hour_ct": 11,
+      "price": 1000.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.66,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-07-31",
+      "hour_ct": 11,
+      "price": 988.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.32,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-01",
+      "hour_ct": 11,
+      "price": 990.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.86,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-04",
+      "hour_ct": 11,
+      "price": 994.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.75,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-05",
+      "hour_ct": 11,
+      "price": 992.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.0,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-06",
+      "hour_ct": 11,
+      "price": 982.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.91,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-07",
+      "hour_ct": 11,
+      "price": 993.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.05,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 955.4
+    },
+    {
+      "day": "2025-08-08",
+      "hour_ct": 11,
+      "price": 990.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.63,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 990.0,
+        "exit": 994.38,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 994.38,
+        "tp": 982.71,
+        "contracts": 1,
+        "pnl_pts": -4.38,
+        "pnl_usd": -43.8,
+        "pnl_pct": -4.58,
+        "mfe": 4.0,
+        "mae": -0.5,
+        "bars_held": 3
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-11",
+      "hour_ct": 11,
+      "price": 1010.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.45,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-12",
+      "hour_ct": 11,
+      "price": 1023.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.36,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-13",
+      "hour_ct": 11,
+      "price": 1043.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.1,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-14",
+      "hour_ct": 11,
+      "price": 1030.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.37,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-15",
+      "hour_ct": 11,
+      "price": 1041.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.42,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-18",
+      "hour_ct": 11,
+      "price": 1044.75,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.45,
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Confianza LOW con volatilidad elevated — R:R desfavorable",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 911.6
+    },
+    {
+      "day": "2025-08-19",
+      "hour_ct": 11,
+      "price": 1030.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.7,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1030.75,
+        "exit": 1035.7,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1035.7,
+        "tp": 1022.5,
+        "contracts": 1,
+        "pnl_pts": -4.95,
+        "pnl_usd": -49.5,
+        "pnl_pct": -5.43,
+        "mfe": 0,
+        "mae": -4.25,
+        "bars_held": 3
+      },
+      "capital_after": 862.1
+    },
+    {
+      "day": "2025-08-20",
+      "hour_ct": 11,
+      "price": 1038.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.53,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 862.1
+    },
+    {
+      "day": "2025-08-21",
+      "hour_ct": 11,
+      "price": 1053.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.64,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 862.1
+    },
+    {
+      "day": "2025-08-22",
+      "hour_ct": 11,
+      "price": 1062.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.18,
+      "momentum": "reversing",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1062.0,
+        "exit": 1056.71,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1056.71,
+        "tp": 1070.81,
+        "contracts": 1,
+        "pnl_pts": -5.29,
+        "pnl_usd": -52.9,
+        "pnl_pct": -6.14,
+        "mfe": 0.25,
+        "mae": -4.5,
+        "bars_held": 3
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-08-25",
+      "hour_ct": 11,
+      "price": 1048.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.24,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-08-26",
+      "hour_ct": 11,
+      "price": 1048.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.41,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-08-27",
+      "hour_ct": 11,
+      "price": 1050.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.07,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-08-28",
+      "hour_ct": 11,
+      "price": 1043.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.69,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-08-29",
+      "hour_ct": 11,
+      "price": 1047.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.33,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-02",
+      "hour_ct": 11,
+      "price": 1039.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.95,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-03",
+      "hour_ct": 11,
+      "price": 1032.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.59,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-04",
+      "hour_ct": 11,
+      "price": 1029.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.66,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-05",
+      "hour_ct": 11,
+      "price": 1030.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.22,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-08",
+      "hour_ct": 11,
+      "price": 1031.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.73,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-09",
+      "hour_ct": 11,
+      "price": 1030.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.54,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-10",
+      "hour_ct": 11,
+      "price": 1025.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -1.0,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-11",
+      "hour_ct": 11,
+      "price": 1034.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.09,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-12",
+      "hour_ct": 11,
+      "price": 1042.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.6,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-15",
+      "hour_ct": 11,
+      "price": 1044.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.53,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-16",
+      "hour_ct": 11,
+      "price": 1050.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.19,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-17",
+      "hour_ct": 11,
+      "price": 1043.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.87,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-18",
+      "hour_ct": 11,
+      "price": 1037.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.73,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 809.2
+    },
+    {
+      "day": "2025-09-19",
+      "hour_ct": 11,
+      "price": 1025.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -4.12,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1025.5,
+        "exit": 1023.25,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1031.0,
+        "tp": 1016.34,
+        "contracts": 1,
+        "pnl_pts": 2.25,
+        "pnl_usd": 22.5,
+        "pnl_pct": 2.78,
+        "mfe": 2.5,
+        "mae": -1.75,
+        "bars_held": 4
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-22",
+      "hour_ct": 11,
+      "price": 1010.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.34,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-23",
+      "hour_ct": 11,
+      "price": 1009.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.87,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-24",
+      "hour_ct": 11,
+      "price": 1009.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.68,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-25",
+      "hour_ct": 11,
+      "price": 1008.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.41,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-26",
+      "hour_ct": 11,
+      "price": 1013.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.45,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-29",
+      "hour_ct": 11,
+      "price": 1011.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.11,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-09-30",
+      "hour_ct": 11,
+      "price": 1003.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.44,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-01",
+      "hour_ct": 11,
+      "price": 999.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.77,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-02",
+      "hour_ct": 11,
+      "price": 1037.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 5.0,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-03",
+      "hour_ct": 11,
+      "price": 1045.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.24,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-06",
+      "hour_ct": 11,
+      "price": 1035.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.5,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-07",
+      "hour_ct": 11,
+      "price": 1040.5,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.5,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-08",
+      "hour_ct": 11,
+      "price": 1043.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.91,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-09",
+      "hour_ct": 11,
+      "price": 1038.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.81,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-10",
+      "hour_ct": 11,
+      "price": 1022.0,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.46,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-13",
+      "hour_ct": 11,
+      "price": 1025.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.82,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 831.7
+    },
+    {
+      "day": "2025-10-14",
+      "hour_ct": 11,
+      "price": 1004.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -4.63,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1004.5,
+        "exit": 1022.25,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1022.25,
+        "tp": 974.92,
+        "contracts": 1,
+        "pnl_pts": -17.75,
+        "pnl_usd": -177.5,
+        "pnl_pct": -21.34,
+        "mfe": 0,
+        "mae": 0,
+        "bars_held": 1
+      },
+      "capital_after": 654.2
+    },
+    {
+      "day": "2025-10-15",
+      "hour_ct": 11,
+      "price": 1009.5,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.13,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "SHORT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1009.5,
+        "exit": 1026.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1037.74,
+        "tp": 962.44,
+        "contracts": 1,
+        "pnl_pts": -16.5,
+        "pnl_usd": -165.0,
+        "pnl_pct": -25.22,
+        "mfe": 3.75,
+        "mae": -18.25,
+        "bars_held": 4
+      },
+      "capital_after": 489.2
+    },
+    {
+      "day": "2025-10-16",
+      "hour_ct": 11,
+      "price": 1013.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.17,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 489.2
+    },
+    {
+      "day": "2025-10-17",
+      "hour_ct": 11,
+      "price": 1018.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.15,
+      "momentum": "reversing",
+      "setup_type": "compression",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 489.2
+    },
+    {
+      "day": "2025-10-20",
+      "hour_ct": 11,
+      "price": 1050.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.77,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 489.2
+    },
+    {
+      "day": "2025-10-21",
+      "hour_ct": 11,
+      "price": 1028.5,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.28,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "elevated",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1028.5,
+        "exit": 1045.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1059.83,
+        "tp": 976.28,
+        "contracts": 1,
+        "pnl_pts": -17.25,
+        "pnl_usd": -172.5,
+        "pnl_pct": -35.26,
+        "mfe": 1.0,
+        "mae": -20.25,
+        "bars_held": 3
+      },
+      "capital_after": 316.7
+    },
+    {
+      "day": "2025-10-22",
+      "hour_ct": 11,
+      "price": 1034.25,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.1,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Confianza LOW con volatilidad normal — R:R desfavorable",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 316.7
+    },
+    {
+      "day": "2025-10-23",
+      "hour_ct": 11,
+      "price": 1060.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 4.29,
+      "momentum": "reversing",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1060.5,
+        "exit": 1061.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1031.41,
+        "tp": 1108.99,
+        "contracts": 1,
+        "pnl_pts": 1.25,
+        "pnl_usd": 12.5,
+        "pnl_pct": 3.95,
+        "mfe": 2.5,
+        "mae": -19.25,
+        "bars_held": 4
+      },
+      "capital_after": 329.2
+    },
+    {
+      "day": "2025-10-24",
+      "hour_ct": 11,
+      "price": 1060.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.46,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1060.75,
+        "exit": 1077.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1031.31,
+        "tp": 1109.81,
+        "contracts": 1,
+        "pnl_pts": 17.0,
+        "pnl_usd": 170.0,
+        "pnl_pct": 51.64,
+        "mfe": 17.5,
+        "mae": -20.0,
+        "bars_held": 4
+      },
+      "capital_after": 499.2
+    },
+    {
+      "day": "2025-10-27",
+      "hour_ct": 11,
+      "price": 1087.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 4.76,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Volatilidad extrema (z-score 4.1) — demasiado riesgo",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 499.2
+    },
+    {
+      "day": "2025-10-28",
+      "hour_ct": 11,
+      "price": 1096.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.95,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 499.2
+    },
+    {
+      "day": "2025-10-29",
+      "hour_ct": 11,
+      "price": 1094.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.34,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Volatilidad extrema (z-score 4.0) — demasiado riesgo",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 499.2
+    },
+    {
+      "day": "2025-10-30",
+      "hour_ct": 11,
+      "price": 1107.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 4.06,
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1107.75,
+        "exit": 1110.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1071.45,
+        "tp": 1168.24,
+        "contracts": 1,
+        "pnl_pts": 2.25,
+        "pnl_usd": 22.5,
+        "pnl_pct": 4.51,
+        "mfe": 3.75,
+        "mae": -19.75,
+        "bars_held": 4
+      },
+      "capital_after": 521.7
+    },
+    {
+      "day": "2025-10-31",
+      "hour_ct": 11,
+      "price": 1112.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.51,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1112.5,
+        "exit": 1126.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1083.46,
+        "tp": 1160.9,
+        "contracts": 1,
+        "pnl_pts": 13.5,
+        "pnl_usd": 135.0,
+        "pnl_pct": 25.88,
+        "mfe": 16.25,
+        "mae": -18.75,
+        "bars_held": 4
+      },
+      "capital_after": 656.7
+    },
+    {
+      "day": "2025-11-03",
+      "hour_ct": 11,
+      "price": 1132.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 4.05,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "HIGH",
+      "volatility_regime": "elevated",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1132.5,
+        "exit": 1133.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1110.69,
+        "tp": 1168.85,
+        "contracts": 1,
+        "pnl_pts": 0.5,
+        "pnl_usd": 5.0,
+        "pnl_pct": 0.76,
+        "mfe": 3.25,
+        "mae": -16.0,
+        "bars_held": 3
+      },
+      "capital_after": 661.7
+    },
+    {
+      "day": "2025-11-04",
+      "hour_ct": 11,
+      "price": 1117.5,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.14,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 661.7
+    },
+    {
+      "day": "2025-11-05",
+      "hour_ct": 11,
+      "price": 1130.25,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.42,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Confianza LOW con volatilidad normal — R:R desfavorable",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 661.7
+    },
+    {
+      "day": "2025-11-06",
+      "hour_ct": 11,
+      "price": 1109.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.16,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 661.7
+    },
+    {
+      "day": "2025-11-07",
+      "hour_ct": 11,
+      "price": 1115.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.77,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 661.7
+    },
+    {
+      "day": "2025-11-10",
+      "hour_ct": 11,
+      "price": 1128.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.24,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1128.75,
+        "exit": 1127.5,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1120.04,
+        "tp": 1143.26,
+        "contracts": 1,
+        "pnl_pts": -1.25,
+        "pnl_usd": -12.5,
+        "pnl_pct": -1.89,
+        "mfe": 3.25,
+        "mae": -4.0,
+        "bars_held": 4
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-11",
+      "hour_ct": 11,
+      "price": 1129.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.53,
+      "momentum": "steady",
+      "setup_type": "compression",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-12",
+      "hour_ct": 11,
+      "price": 1130.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.44,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-13",
+      "hour_ct": 11,
+      "price": 1148.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.79,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-14",
+      "hour_ct": 11,
+      "price": 1128.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.16,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-17",
+      "hour_ct": 11,
+      "price": 1153.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.27,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 649.2
+    },
+    {
+      "day": "2025-11-18",
+      "hour_ct": 11,
+      "price": 1156.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.52,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1156.75,
+        "exit": 1148.26,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1148.26,
+        "tp": 1170.9,
+        "contracts": 1,
+        "pnl_pts": -8.49,
+        "pnl_usd": -84.9,
+        "pnl_pct": -13.08,
+        "mfe": 1.5,
+        "mae": -6.25,
+        "bars_held": 3
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-19",
+      "hour_ct": 11,
+      "price": 1138.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.8,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-20",
+      "hour_ct": 11,
+      "price": 1126.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.17,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-21",
+      "hour_ct": 11,
+      "price": 1123.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.36,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-24",
+      "hour_ct": 11,
+      "price": 1125.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.07,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-25",
+      "hour_ct": 11,
+      "price": 1125.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.05,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-26",
+      "hour_ct": 11,
+      "price": 1133.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.02,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 564.3
+    },
+    {
+      "day": "2025-11-28",
+      "hour_ct": 11,
+      "price": 1137.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.94,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1137.75,
+        "exit": 1133.5,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1132.62,
+        "tp": 1146.31,
+        "contracts": 1,
+        "pnl_pts": -4.25,
+        "pnl_usd": -42.5,
+        "pnl_pct": -7.53,
+        "mfe": 4.5,
+        "mae": -4.5,
+        "bars_held": 4
+      },
+      "capital_after": 521.8
+    },
+    {
+      "day": "2025-12-01",
+      "hour_ct": 11,
+      "price": 1129.5,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.24,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 521.8
+    },
+    {
+      "day": "2025-12-02",
+      "hour_ct": 11,
+      "price": 1126.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.0,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 521.8
+    },
+    {
+      "day": "2025-12-03",
+      "hour_ct": 11,
+      "price": 1119.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.54,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 521.8
+    },
+    {
+      "day": "2025-12-04",
+      "hour_ct": 11,
+      "price": 1121.75,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.09,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 521.8
+    },
+    {
+      "day": "2025-12-05",
+      "hour_ct": 11,
+      "price": 1107.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.11,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1107.25,
+        "exit": 1099.27,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1112.04,
+        "tp": 1099.27,
+        "contracts": 1,
+        "pnl_pts": 7.98,
+        "pnl_usd": 79.8,
+        "pnl_pct": 15.29,
+        "mfe": 2.75,
+        "mae": -1.25,
+        "bars_held": 3
+      },
+      "capital_after": 601.6
+    },
+    {
+      "day": "2025-12-08",
+      "hour_ct": 11,
+      "price": 1094.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.54,
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1094.75,
+        "exit": 1093.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1100.27,
+        "tp": 1085.56,
+        "contracts": 1,
+        "pnl_pts": 1.75,
+        "pnl_usd": 17.5,
+        "pnl_pct": 2.91,
+        "mfe": 3.0,
+        "mae": -0.5,
+        "bars_held": 4
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-09",
+      "hour_ct": 11,
+      "price": 1085.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.88,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-10",
+      "hour_ct": 11,
+      "price": 1090.75,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.27,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-11",
+      "hour_ct": 11,
+      "price": 1092.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.67,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-12",
+      "hour_ct": 11,
+      "price": 1080.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.49,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-15",
+      "hour_ct": 11,
+      "price": 1072.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.05,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-16",
+      "hour_ct": 11,
+      "price": 1061.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.11,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-17",
+      "hour_ct": 11,
+      "price": 1059.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.75,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 619.1
+    },
+    {
+      "day": "2025-12-18",
+      "hour_ct": 11,
+      "price": 1052.5,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.07,
+      "momentum": "decelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1052.5,
+        "exit": 1049.0,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1056.89,
+        "tp": 1045.18,
+        "contracts": 1,
+        "pnl_pts": 3.5,
+        "pnl_usd": 35.0,
+        "pnl_pct": 5.65,
+        "mfe": 3.5,
+        "mae": -3.25,
+        "bars_held": 4
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-19",
+      "hour_ct": 11,
+      "price": 1058.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.54,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-22",
+      "hour_ct": 11,
+      "price": 1063.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.4,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-23",
+      "hour_ct": 11,
+      "price": 1063.5,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.01,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-24",
+      "hour_ct": 11,
+      "price": 1076.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.47,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-26",
+      "hour_ct": 11,
+      "price": 1057.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.73,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 654.1
+    },
+    {
+      "day": "2025-12-29",
+      "hour_ct": 11,
+      "price": 1063.5,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.23,
+      "momentum": "reversing",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1063.5,
+        "exit": 1065.25,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1067.89,
+        "tp": 1056.19,
+        "contracts": 1,
+        "pnl_pts": -1.75,
+        "pnl_usd": -17.5,
+        "pnl_pct": -2.68,
+        "mfe": 0.5,
+        "mae": -2.5,
+        "bars_held": 4
+      },
+      "capital_after": 636.6
+    },
+    {
+      "day": "2025-12-30",
+      "hour_ct": 11,
+      "price": 1063.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.66,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 636.6
+    },
+    {
+      "day": "2025-12-31",
+      "hour_ct": 11,
+      "price": 1050.0,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.17,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1050.0,
+        "exit": 1044.56,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1053.27,
+        "tp": 1044.56,
+        "contracts": 1,
+        "pnl_pts": 5.44,
+        "pnl_usd": 54.4,
+        "pnl_pct": 8.55,
+        "mfe": 3.0,
+        "mae": -0.5,
+        "bars_held": 3
+      },
+      "capital_after": 691.0
+    },
+    {
+      "day": "2026-01-02",
+      "hour_ct": 11,
+      "price": 1027.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.1,
+      "momentum": "accelerating",
+      "setup_type": "reversal",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1027.5,
+        "exit": 1036.23,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1022.26,
+        "tp": 1036.23,
+        "contracts": 1,
+        "pnl_pts": 8.73,
+        "pnl_usd": 87.3,
+        "pnl_pct": 12.63,
+        "mfe": 1.75,
+        "mae": 0,
+        "bars_held": 2
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-05",
+      "hour_ct": 11,
+      "price": 1062.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.05,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-06",
+      "hour_ct": 11,
+      "price": 1062.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.35,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-07",
+      "hour_ct": 11,
+      "price": 1067.25,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.36,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-08",
+      "hour_ct": 11,
+      "price": 1062.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.51,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-09",
+      "hour_ct": 11,
+      "price": 1064.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.16,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-12",
+      "hour_ct": 11,
+      "price": 1048.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.28,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 778.3
+    },
+    {
+      "day": "2026-01-13",
+      "hour_ct": 11,
+      "price": 1039.25,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.83,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1039.25,
+        "exit": 1042.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1044.35,
+        "tp": 1030.74,
+        "contracts": 1,
+        "pnl_pts": -3.5,
+        "pnl_usd": -35.0,
+        "pnl_pct": -4.5,
+        "mfe": 1.5,
+        "mae": -3.75,
+        "bars_held": 4
+      },
+      "capital_after": 743.3
+    },
+    {
+      "day": "2026-01-14",
+      "hour_ct": 11,
+      "price": 1045.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.26,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 743.3
+    },
+    {
+      "day": "2026-01-15",
+      "hour_ct": 11,
+      "price": 1056.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.81,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 743.3
+    },
+    {
+      "day": "2026-01-16",
+      "hour_ct": 11,
+      "price": 1055.75,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.21,
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1055.75,
+        "exit": 1062.64,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1051.61,
+        "tp": 1062.64,
+        "contracts": 1,
+        "pnl_pts": 6.89,
+        "pnl_usd": 68.9,
+        "pnl_pct": 9.27,
+        "mfe": 3.25,
+        "mae": -0.5,
+        "bars_held": 3
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-20",
+      "hour_ct": 11,
+      "price": 1058.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.48,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-21",
+      "hour_ct": 11,
+      "price": 1066.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.13,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-22",
+      "hour_ct": 11,
+      "price": 1062.0,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.27,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-23",
+      "hour_ct": 11,
+      "price": 1069.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.78,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-26",
+      "hour_ct": 11,
+      "price": 1063.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.13,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-27",
+      "hour_ct": 11,
+      "price": 1067.5,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.13,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-28",
+      "hour_ct": 11,
+      "price": 1076.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.88,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-29",
+      "hour_ct": 11,
+      "price": 1072.25,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.38,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 812.2
+    },
+    {
+      "day": "2026-01-30",
+      "hour_ct": 11,
+      "price": 1061.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.14,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1061.75,
+        "exit": 1056.25,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1067.33,
+        "tp": 1052.45,
+        "contracts": 1,
+        "pnl_pts": 5.5,
+        "pnl_usd": 55.0,
+        "pnl_pct": 6.77,
+        "mfe": 6.0,
+        "mae": -3.0,
+        "bars_held": 4
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-02",
+      "hour_ct": 11,
+      "price": 1059.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.41,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-03",
+      "hour_ct": 11,
+      "price": 1067.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.73,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-04",
+      "hour_ct": 11,
+      "price": 1090.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.61,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-05",
+      "hour_ct": 11,
+      "price": 1109.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.52,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-06",
+      "hour_ct": 11,
+      "price": 1113.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 1.0,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-09",
+      "hour_ct": 11,
+      "price": 1107.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.9,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-10",
+      "hour_ct": 11,
+      "price": 1119.5,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.91,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-11",
+      "hour_ct": 11,
+      "price": 1123.5,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.29,
+      "momentum": "steady",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Confianza LOW con volatilidad normal — R:R desfavorable",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-12",
+      "hour_ct": 11,
+      "price": 1134.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.5,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-13",
+      "hour_ct": 11,
+      "price": 1133.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.34,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-17",
+      "hour_ct": 11,
+      "price": 1149.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.09,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-18",
+      "hour_ct": 11,
+      "price": 1146.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.29,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-19",
+      "hour_ct": 11,
+      "price": 1153.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.81,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-20",
+      "hour_ct": 11,
+      "price": 1153.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.69,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-23",
+      "hour_ct": 11,
+      "price": 1155.25,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.1,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-24",
+      "hour_ct": 11,
+      "price": 1155.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.75,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-25",
+      "hour_ct": 11,
+      "price": 1162.25,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.04,
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Confianza LOW con volatilidad normal — R:R desfavorable",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-26",
+      "hour_ct": 11,
+      "price": 1157.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.36,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-02-27",
+      "hour_ct": 11,
+      "price": 1167.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.88,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-02",
+      "hour_ct": 11,
+      "price": 1162.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.58,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-03",
+      "hour_ct": 11,
+      "price": 1163.5,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.25,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-04",
+      "hour_ct": 11,
+      "price": 1170.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.01,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-05",
+      "hour_ct": 11,
+      "price": 1178.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.31,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-06",
+      "hour_ct": 11,
+      "price": 1197.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.32,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-09",
+      "hour_ct": 11,
+      "price": 1194.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.68,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-10",
+      "hour_ct": 11,
+      "price": 1201.5,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.6,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-11",
+      "hour_ct": 11,
+      "price": 1222.0,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.33,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-12",
+      "hour_ct": 11,
+      "price": 1228.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.84,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-13",
+      "hour_ct": 11,
+      "price": 1225.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.95,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-16",
+      "hour_ct": 11,
+      "price": 1163.75,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -4.56,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-17",
+      "hour_ct": 11,
+      "price": 1163.25,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.35,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-18",
+      "hour_ct": 11,
+      "price": 1161.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.77,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 867.2
+    },
+    {
+      "day": "2026-03-19",
+      "hour_ct": 11,
+      "price": 1168.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.53,
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1168.5,
+        "exit": 1167.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1161.41,
+        "tp": 1180.32,
+        "contracts": 1,
+        "pnl_pts": -0.75,
+        "pnl_usd": -7.5,
+        "pnl_pct": -0.86,
+        "mfe": 5.25,
+        "mae": -3.5,
+        "bars_held": 4
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-20",
+      "hour_ct": 11,
+      "price": 1161.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.2,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-23",
+      "hour_ct": 11,
+      "price": 1164.25,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.54,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-24",
+      "hour_ct": 11,
+      "price": 1160.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.67,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-25",
+      "hour_ct": 11,
+      "price": 1163.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.82,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-26",
+      "hour_ct": 11,
+      "price": 1173.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.71,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-27",
+      "hour_ct": 11,
+      "price": 1164.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.46,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-30",
+      "hour_ct": 11,
+      "price": 1163.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.73,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-03-31",
+      "hour_ct": 11,
+      "price": 1169.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.1,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-01",
+      "hour_ct": 11,
+      "price": 1164.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.47,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-02",
+      "hour_ct": 11,
+      "price": 1165.75,
+      "trend": "DOWN",
+      "trend_strength": "weak",
+      "trend_score": -1.19,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-06",
+      "hour_ct": 11,
+      "price": 1168.0,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.45,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-07",
+      "hour_ct": 11,
+      "price": 1157.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.27,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-08",
+      "hour_ct": 11,
+      "price": 1159.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.13,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-09",
+      "hour_ct": 11,
+      "price": 1163.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.09,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-10",
+      "hour_ct": 11,
+      "price": 1176.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.41,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-13",
+      "hour_ct": 11,
+      "price": 1166.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -1.9,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 859.7
+    },
+    {
+      "day": "2026-04-14",
+      "hour_ct": 11,
+      "price": 1157.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -2.52,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "HIGH",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1157.5,
+        "exit": 1161.25,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1162.83,
+        "tp": 1148.61,
+        "contracts": 1,
+        "pnl_pts": -3.75,
+        "pnl_usd": -37.5,
+        "pnl_pct": -4.36,
+        "mfe": 1.5,
+        "mae": -4.0,
+        "bars_held": 4
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-15",
+      "hour_ct": 11,
+      "price": 1170.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.1,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-16",
+      "hour_ct": 11,
+      "price": 1167.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.0,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-17",
+      "hour_ct": 11,
+      "price": 1179.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.09,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-20",
+      "hour_ct": 11,
+      "price": 1183.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.01,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-21",
+      "hour_ct": 11,
+      "price": 1191.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.45,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 822.2
+    },
+    {
+      "day": "2026-04-22",
+      "hour_ct": 11,
+      "price": 1185.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.05,
+      "momentum": "steady",
+      "setup_type": "breakout",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "veto_reason": null,
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1185.75,
+        "exit": 1178.75,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1190.6,
+        "tp": 1177.67,
+        "contracts": 1,
+        "pnl_pts": 7.0,
+        "pnl_usd": 70.0,
+        "pnl_pct": 8.51,
+        "mfe": 7.75,
+        "mae": -0.25,
+        "bars_held": 4
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-23",
+      "hour_ct": 11,
+      "price": 1174.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.37,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-24",
+      "hour_ct": 11,
+      "price": 1177.5,
+      "trend": "UP",
+      "trend_strength": "weak",
+      "trend_score": 1.14,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-27",
+      "hour_ct": 11,
+      "price": 1192.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.99,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-28",
+      "hour_ct": 11,
+      "price": 1188.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.56,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-29",
+      "hour_ct": 11,
+      "price": 1197.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 1.91,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-04-30",
+      "hour_ct": 11,
+      "price": 1196.75,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.89,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-01",
+      "hour_ct": 11,
+      "price": 1199.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.47,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-04",
+      "hour_ct": 11,
+      "price": 1222.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.33,
+      "momentum": "reversing",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-05",
+      "hour_ct": 11,
+      "price": 1211.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "trend_score": -2.11,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-06",
+      "hour_ct": 11,
+      "price": 1192.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "trend_score": -3.57,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-07",
+      "hour_ct": 11,
+      "price": 1192.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": -0.34,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-08",
+      "hour_ct": 11,
+      "price": 1208.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 3.41,
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-11",
+      "hour_ct": 11,
+      "price": 1214.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "trend_score": 0.83,
+      "momentum": "steady",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-12",
+      "hour_ct": 11,
+      "price": 1227.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "trend_score": 2.91,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "extreme",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    },
+    {
+      "day": "2026-05-13",
+      "hour_ct": 11,
+      "price": 1231.5,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "trend_score": 2.13,
+      "momentum": "accelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "veto_reason": "Trend Agent emite FLAT — sin setup",
+      "evaluation": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 892.2
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "timestamp": "2026-05-20T15:28:48.035443",
+  "config": {
+    "days": 30,
+    "capital": 1000.0,
+    "sample_hour_ct": 11
+  },
+  "statistics": {
+    "capital_initial": 1000.0,
+    "capital_final": 1087.5,
+    "total_pnl_usd": 87.5,
+    "total_return_pct": 8.75,
+    "max_drawdown_pct": 1.75,
+    "total_samples": 30,
+    "active_trades": 5,
+    "flat_signals": 25,
+    "flat_rate_pct": 83.3,
+    "wins": 4,
+    "losses": 1,
+    "win_rate_pct": 80.0,
+    "avg_win_usd": 26.25,
+    "avg_loss_usd": -17.5,
+    "profit_factor": 6.0,
+    "sharpe_annualized": 13.47,
+    "total_api_time_s": 887.0,
+    "avg_api_time_s": 29.6,
+    "period": {
+      "start": "2026-04-01",
+      "end": "2026-05-13",
+      "days": 30
+    }
+  },
+  "equity_curve": [
+    {
+      "day": "start",
+      "capital": 1000.0
+    },
+    {
+      "day": "2026-04-01",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-02",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-06",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-07",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-08",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-09",
+      "capital": 982.5
+    },
+    {
+      "day": "2026-04-10",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-13",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-14",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-15",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-16",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-17",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-20",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-21",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-22",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-23",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-24",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-27",
+      "capital": 1025.0
+    },
+    {
+      "day": "2026-04-28",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-04-29",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-04-30",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-05-01",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-05-04",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-05-05",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-05-06",
+      "capital": 1055.0
+    },
+    {
+      "day": "2026-05-07",
+      "capital": 1070.0
+    },
+    {
+      "day": "2026-05-08",
+      "capital": 1070.0
+    },
+    {
+      "day": "2026-05-11",
+      "capital": 1070.0
+    },
+    {
+      "day": "2026-05-12",
+      "capital": 1087.5
+    },
+    {
+      "day": "2026-05-13",
+      "capital": 1087.5
+    }
+  ],
+  "trades": [
+    {
+      "day": "2026-04-01",
+      "hour_ct": 11,
+      "price": 1164.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1166.5,
+        "exit_price": 1168.25,
+        "exit_bar": 1,
+        "hit_sl": true,
+        "hit_tp": false,
+        "sl": 1168.25,
+        "tp": 1158.5,
+        "contracts": 1,
+        "pnl_points": -1.75,
+        "pnl_usd": -17.5,
+        "pnl_pct": -1.75,
+        "max_favorable_excursion": 0,
+        "max_adverse_excursion": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 31.8
+    },
+    {
+      "day": "2026-04-02",
+      "hour_ct": 11,
+      "price": 1165.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 29.1
+    },
+    {
+      "day": "2026-04-06",
+      "hour_ct": 11,
+      "price": 1168.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 27.9
+    },
+    {
+      "day": "2026-04-07",
+      "hour_ct": 11,
+      "price": 1157.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "?",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 35.1
+    },
+    {
+      "day": "2026-04-08",
+      "hour_ct": 11,
+      "price": 1159.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 25.7
+    },
+    {
+      "day": "2026-04-09",
+      "hour_ct": 11,
+      "price": 1163.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 982.5,
+      "api_time_s": 28.3
+    },
+    {
+      "day": "2026-04-10",
+      "hour_ct": 11,
+      "price": 1176.25,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1173.75,
+        "exit_price": 1178.0,
+        "exit_bar": 1,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1172.75,
+        "tp": 1178.0,
+        "contracts": 1,
+        "pnl_points": 4.25,
+        "pnl_usd": 42.5,
+        "pnl_pct": 4.33,
+        "max_favorable_excursion": 0,
+        "max_adverse_excursion": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 32.8
+    },
+    {
+      "day": "2026-04-13",
+      "hour_ct": 11,
+      "price": 1166.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "reversal",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "?",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 35.2
+    },
+    {
+      "day": "2026-04-14",
+      "hour_ct": 11,
+      "price": 1157.5,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 31.1
+    },
+    {
+      "day": "2026-04-15",
+      "hour_ct": 11,
+      "price": 1170.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 29.2
+    },
+    {
+      "day": "2026-04-16",
+      "hour_ct": 11,
+      "price": 1167.0,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 25.1
+    },
+    {
+      "day": "2026-04-17",
+      "hour_ct": 11,
+      "price": 1179.25,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 34.9
+    },
+    {
+      "day": "2026-04-20",
+      "hour_ct": 11,
+      "price": 1183.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 28.9
+    },
+    {
+      "day": "2026-04-21",
+      "hour_ct": 11,
+      "price": 1191.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 27.2
+    },
+    {
+      "day": "2026-04-22",
+      "hour_ct": 11,
+      "price": 1185.75,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 25.4
+    },
+    {
+      "day": "2026-04-23",
+      "hour_ct": 11,
+      "price": 1174.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "reversal",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 27.3
+    },
+    {
+      "day": "2026-04-24",
+      "hour_ct": 11,
+      "price": 1177.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 28.2
+    },
+    {
+      "day": "2026-04-27",
+      "hour_ct": 11,
+      "price": 1192.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1025.0,
+      "api_time_s": 29.7
+    },
+    {
+      "day": "2026-04-28",
+      "hour_ct": 11,
+      "price": 1188.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1186.88,
+        "exit_price": 1189.88,
+        "exit_bar": 1,
+        "hit_sl": false,
+        "hit_tp": true,
+        "sl": 1184.88,
+        "tp": 1189.88,
+        "contracts": 1,
+        "pnl_points": 3.0,
+        "pnl_usd": 30.0,
+        "pnl_pct": 2.93,
+        "max_favorable_excursion": 0,
+        "max_adverse_excursion": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 30.9
+    },
+    {
+      "day": "2026-04-29",
+      "hour_ct": 11,
+      "price": 1197.0,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "?",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 28.8
+    },
+    {
+      "day": "2026-04-30",
+      "hour_ct": 11,
+      "price": 1196.75,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 28.4
+    },
+    {
+      "day": "2026-05-01",
+      "hour_ct": 11,
+      "price": 1199.5,
+      "trend": "LATERAL",
+      "trend_strength": "weak",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 26.4
+    },
+    {
+      "day": "2026-05-04",
+      "hour_ct": 11,
+      "price": 1222.75,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 29.0
+    },
+    {
+      "day": "2026-05-05",
+      "hour_ct": 11,
+      "price": 1211.25,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 27.3
+    },
+    {
+      "day": "2026-05-06",
+      "hour_ct": 11,
+      "price": 1192.5,
+      "trend": "DOWN",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "reversal",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "elevated",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1055.0,
+      "api_time_s": 28.3
+    },
+    {
+      "day": "2026-05-07",
+      "hour_ct": 11,
+      "price": 1192.0,
+      "trend": "DOWN",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "pullback",
+      "signal": "SHORT",
+      "confidence": "MEDIUM",
+      "volatility_regime": "elevated",
+      "evaluation": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1195.0,
+        "exit_price": 1193.5,
+        "exit_bar": 4,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1197.25,
+        "tp": 1187.75,
+        "contracts": 1,
+        "pnl_points": 1.5,
+        "pnl_usd": 15.0,
+        "pnl_pct": 1.42,
+        "max_favorable_excursion": 5.0,
+        "max_adverse_excursion": -1.5
+      },
+      "capital_after": 1070.0,
+      "api_time_s": 34.6
+    },
+    {
+      "day": "2026-05-08",
+      "hour_ct": 11,
+      "price": 1208.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "decelerating",
+      "setup_type": "none",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1070.0,
+      "api_time_s": 24.1
+    },
+    {
+      "day": "2026-05-11",
+      "hour_ct": 11,
+      "price": 1214.5,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "low",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1070.0,
+      "api_time_s": 26.8
+    },
+    {
+      "day": "2026-05-12",
+      "hour_ct": 11,
+      "price": 1227.5,
+      "trend": "UP",
+      "trend_strength": "strong",
+      "momentum": "accelerating",
+      "setup_type": "breakout",
+      "signal": "LONG",
+      "confidence": "MEDIUM",
+      "volatility_regime": "extreme",
+      "evaluation": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1223.5,
+        "exit_price": 1225.25,
+        "exit_bar": 2,
+        "hit_sl": false,
+        "hit_tp": false,
+        "sl": 1218.75,
+        "tp": 1232.75,
+        "contracts": 1,
+        "pnl_points": 1.75,
+        "pnl_usd": 17.5,
+        "pnl_pct": 1.64,
+        "max_favorable_excursion": 5.25,
+        "max_adverse_excursion": 0
+      },
+      "capital_after": 1087.5,
+      "api_time_s": 40.0
+    },
+    {
+      "day": "2026-05-13",
+      "hour_ct": 11,
+      "price": 1231.5,
+      "trend": "UP",
+      "trend_strength": "moderate",
+      "momentum": "decelerating",
+      "setup_type": "range",
+      "signal": "FLAT",
+      "confidence": "LOW",
+      "volatility_regime": "normal",
+      "evaluation": {
+        "traded": false,
+        "reason": "FLAT signal or no entry",
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "capital_after": 1087.5,
+      "api_time_s": 28.8
+    }
+  ]
+}
