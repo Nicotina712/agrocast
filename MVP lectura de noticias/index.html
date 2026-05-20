@@ -617,155 +617,77 @@
         </style>
 
         <div style="display:flex;flex-direction:column;gap:14px;">
+            <!-- Key cards: Signal + Accuracy + WASDE -->
             <div class="card">
                 <h2>🧠 Señal del Modelo (IA)</h2>
                 <div id="model_signal" class="loading">—</div>
             </div>
             <div class="card">
-                <h2>🎯 Precisión Histórica (últimos 60d)</h2>
+                <h2>🎯 Precision Historica (60d)</h2>
                 <div id="accuracy-panel"><span class="loading">—</span></div>
             </div>
             <div class="card">
-                <h2>📅 Próximos Reportes WASDE</h2>
+                <h2>📅 Proximos WASDE</h2>
                 <div id="wasde-panel"><span class="loading">—</span></div>
             </div>
+            <!-- Alertas LLM (high-value) -->
             <div class="card">
-                <h2>📰 Señal de Noticias <span style="font-size:.65rem;font-weight:400;color:#888;text-transform:none;letter-spacing:0">VADER · agregado rápido</span></h2>
-                <div id="news_signal" class="loading">—</div>
-                <div style="margin-top:8px;font-size:.7rem;color:#888;line-height:1.5">
-                    Score léxico (rápido, cubre 100% de noticias). Para análisis preciso por driver
-                    ver tab <b>Intel LLM</b> (Claude Haiku).
-                </div>
-            </div>
-            <div class="card">
-                <h2>🚨 Alertas de Mercado <span style="font-size:.65rem;font-weight:400;color:#888;text-transform:none;letter-spacing:0">LLM mag≥3 · conf≥60%</span></h2>
+                <h2>🚨 Alertas <span style="font-size:.65rem;font-weight:400;color:#888;">LLM mag>=3</span></h2>
                 <div id="alerts"><span class="loading">—</span></div>
             </div>
-            <div class="card" id="optstop-card" style="opacity:.85;border-left:3px solid #aaa;">
-                <h2>🔬 Optimal stopping (research)
-                    <span style="font-size:.6rem;font-weight:400;color:#aaa;text-transform:uppercase;letter-spacing:1px;background:#f5f5f5;padding:1px 5px;border-radius:3px;margin-left:6px;">EXPERIMENTAL</span>
-                </h2>
-                <div style="font-size:.7rem;color:#888;margin-bottom:8px;line-height:1.4;">
-                    Política calculada por DP backward induction.
-                    <b>Caveat empírico</b>: en backtests multi-régimen (5 ventanas, 144 obs) coincide
-                    con "always-sell" en el 100 % de los casos. Su valor es académico —
-                    confirma que vender hoy es óptimo bajo el modelo actual.
+            <!-- Secondary: VADER + Optimal Stop collapsed -->
+            <details style="background:#fff;border:1px solid #eee;border-radius:10px;padding:12px 14px;">
+                <summary style="cursor:pointer;font-size:.82rem;font-weight:600;color:#555;">Mas indicadores (VADER, Optimal Stopping)</summary>
+                <div style="margin-top:10px;">
+                    <div style="margin-bottom:12px;">
+                        <div style="font-weight:600;font-size:.82rem;color:#444;margin-bottom:4px;">📰 Sentimiento Noticias (VADER)</div>
+                        <div id="news_signal" class="loading" style="font-size:.88rem;">—</div>
+                    </div>
+                    <div id="optstop-card" style="opacity:.85;border-top:1px solid #eee;padding-top:10px;">
+                        <div style="font-weight:600;font-size:.82rem;color:#444;margin-bottom:4px;">🔬 Optimal Stopping <span style="font-size:.6rem;color:#aaa;background:#f5f5f5;padding:1px 5px;border-radius:3px;">EXPERIMENTAL</span></div>
+                        <div id="optstop-decision" style="font-size:1rem;font-weight:700;margin-bottom:4px;color:#888;">—</div>
+                        <div id="optstop-detail" style="font-size:.78rem;color:#555;line-height:1.4;">—</div>
+                        <canvas id="optstop-sparkline" height="50" style="width:100%;margin-top:6px;"></canvas>
+                    </div>
                 </div>
-                <div id="optstop-decision" style="font-size:1.2rem;font-weight:700;margin-bottom:6px;color:#888;">—</div>
-                <div id="optstop-detail" style="font-size:.8rem;color:#555;line-height:1.4;">—</div>
-                <canvas id="optstop-sparkline" height="60" style="width:100%;margin-top:8px;"></canvas>
-                <div style="font-size:.65rem;color:#888;margin-top:4px;">
-                    Reservation price = precio mínimo a partir del cual conviene vender ese día.
-                </div>
-            </div>
+            </details>
         </div>
     </div>
 
-    <!-- Nota de consistencia -->
-    <div id="consistency-note" style="display:none;margin-bottom:16px;padding:12px 16px;background:#fff8e1;border-left:4px solid #f0a500;border-radius:8px;font-size:.85rem;color:#5a4000;">
-        <b>⚠️ Divergencia detectada:</b> La señal del modelo indica
-        <span id="consistency-signal"></span> mientras el forecast de precios muestra una tendencia distinta.
-        Esto es esperable: el <b>forecast</b> modela la trayectoria estadística de precio
-        (dominada por inercia de mercado), mientras que la <b>señal</b> captura el impacto
-        de noticias y retornos esperados a 14 días. Ante divergencia, la señal tiene mayor
-        valor predictivo para decisiones de corto plazo.
-    </div>
+    <!-- Validacion del modelo (colapsable para reducir ruido) -->
+    <details class="card" style="margin-bottom:16px;" open>
+        <summary style="cursor:pointer;font-weight:700;font-size:1rem;padding:4px 0;color:#1a1a2e;">
+            Validacion del modelo
+            <span id="drift-health-badge" style="font-size:.65rem;font-weight:600;letter-spacing:.5px;padding:3px 8px;border-radius:4px;margin-left:8px;text-transform:uppercase;">—</span>
+            <span style="font-size:.75rem;font-weight:400;color:#888;margin-left:8px;">Drift + Backtesting + Robustez OOS</span>
+        </summary>
 
-    <div class="section-header">
-        <h2>Validación del modelo</h2>
-        <span class="desc">Backtesting honesto + historial de señales</span>
-    </div>
-
-    <!-- Drift Monitor — salud del modelo en producción -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>🩺 Drift Monitor — Salud del modelo en producción <span id="drift-health-badge" style="font-size:.65rem;font-weight:600;letter-spacing:.5px;padding:3px 8px;border-radius:4px;margin-left:6px;text-transform:uppercase;">—</span></h2>
-        <details style="margin-bottom:10px;font-size:.82rem;color:#555;background:#f8f9fa;border-radius:8px;padding:10px 14px;">
-            <summary style="cursor:pointer;font-weight:600;color:#1a1a2e;">¿Qué mide?</summary>
-            <div style="margin-top:8px;line-height:1.6;">
-                Mide accuracy y AUC del modelo sobre los <b>últimos 30/60/90 días</b> (real-time, no histórico).
-                Si la accuracy reciente cae bajo 48% → 🔴 régimen cambió y conviene re-entrenar.
-                Entre 48-55% → 🟡 marginal. ≥55% → 🟢 saludable.
-                También compara la distribución reciente de probabilidades vs la histórica para
-                detectar regime shift estructural.
+        <div style="margin-top:14px;">
+            <!-- Drift Monitor compact -->
+            <div style="margin-bottom:14px;">
+                <div style="font-weight:600;font-size:.88rem;margin-bottom:6px;">🩺 Drift Monitor</div>
+                <div id="drift-monitor-panel"><span class="loading">Calculando...</span></div>
             </div>
-        </details>
-        <div id="drift-monitor-panel"><span class="loading">Calculando…</span></div>
-    </div>
 
-    <!-- Auditoría Look-Ahead / Robustez OOS -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>🔬 Auditoría Look-Ahead — Robustez OOS por cortes temporales</h2>
-        <details style="margin-bottom:10px;font-size:.82rem;color:#555;background:#f8f9fa;border-radius:8px;padding:10px 14px;">
-            <summary style="cursor:pointer;font-weight:600;color:#1a1a2e;">¿Qué mide esta auditoría?</summary>
-            <div style="margin-top:8px;line-height:1.6;">
-                Entrena el modelo solo con datos hasta una fecha de corte y mide AUC en los datos posteriores
-                (que jamás vio). Si el AUC se mantiene en cortes tempranos, la señal es robusta y no producto
-                de overfit a la cola reciente. <b>Una sola feature dominando &gt;40% de importancia</b> sería
-                señal de leakage. Corré: <code style="background:#eee;padding:2px 6px;border-radius:4px;">python -m src.model.audit_lookahead</code>
+            <!-- Backtesting -->
+            <div style="margin-bottom:14px;">
+                <div style="font-weight:600;font-size:.88rem;margin-bottom:6px;">📊 Backtesting</div>
+                <button class="btn" id="btn-backtest" onclick="loadBacktest()" style="margin-bottom:8px;">Ejecutar Backtest</button>
+                <div id="backtest-content"><span class="loading">Presiona el boton para ejecutar.</span></div>
             </div>
-        </details>
-        <div id="lookahead-audit-panel"><span class="loading">—</span></div>
-    </div>
 
-    <!-- Nota unificadora: por qué las métricas no coinciden -->
-    <div class="card" style="margin-bottom:16px;background:#fffbe6;border-left:4px solid #f0a500;">
-        <h2 style="font-size:.95rem;color:#5a4000;">📐 Por qué Backtest, ML Quality y Accountability dan números distintos</h2>
-        <div style="font-size:.82rem;color:#5a4000;line-height:1.7;">
-            Los tres miden cosas distintas — no son contradictorios:
-            <ul style="margin:6px 0 0 18px;padding:0;">
-                <li><b>Backtest (último 20% del histórico):</b> retorno acumulado siguiendo señales <em>en un único período largo y favorable</em>. Es optimista por construcción.</li>
-                <li><b>ML Quality (últimos 12m OOS):</b> hit rate y ROC-AUC sobre la cola reciente. Más conservador, refleja condiciones actuales.</li>
-                <li><b>Accountability (últimos 90d):</b> dirección correcta sobre snapshots reales del pipeline. La muestra es muy chica — usar como tendencia, no como número absoluto.</li>
-            </ul>
-            <b>Regla práctica:</b> creer ML Quality, usar Backtest sólo como referencia histórica, e interpretar Accountability con n &gt; 15.
+            <!-- Lookahead Audit compact -->
+            <details style="margin-bottom:10px;">
+                <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#555;">🔬 Auditoria Look-Ahead (OOS)</summary>
+                <div id="lookahead-audit-panel" style="margin-top:8px;"><span class="loading">—</span></div>
+            </details>
+
+            <!-- Nota explicativa compacta -->
+            <div style="background:#fffbe6;border-left:3px solid #f0a500;border-radius:6px;padding:10px 14px;font-size:.78rem;color:#5a4000;line-height:1.5;">
+                <b>Backtest</b> = retorno historico (optimista). <b>Drift</b> = salud reciente (30/60/90d). <b>Accountability</b> (tab Historial) = predicciones reales vs mercado.
+            </div>
         </div>
-    </div>
-
-    <!-- Backtesting -->
-    <div class="card" style="margin-bottom:16px">
-        <h2>📊 Backtesting — Rendimiento Histórico del Modelo</h2>
-
-        <!-- Explicación colapsable -->
-        <details style="margin-bottom:14px;font-size:.84rem;color:#555;background:#f8f9fa;border-radius:8px;padding:10px 14px;">
-            <summary style="cursor:pointer;font-weight:600;color:#1a1a2e;">¿Qué es el backtesting y cómo interpretarlo?</summary>
-            <div style="margin-top:10px;line-height:1.7;">
-                <p style="margin-bottom:8px">
-                    El backtesting simula cómo habría rendido el modelo si hubieras operado con él en el pasado.
-                    Usa el <b>último 20% del historial</b> (datos que el modelo <em>nunca vio</em> durante el entrenamiento)
-                    para evaluar sus señales de forma honesta.
-                </p>
-                <p style="margin-bottom:8px"><b>¿Cómo funciona la simulación?</b></p>
-                <ul style="padding-left:18px;margin-bottom:8px;">
-                    <li>Se generan señales cada 14 días (sin solapamiento).</li>
-                    <li><b>BUY</b> → se compra soja. El retorno es el cambio real de precio en esos 14 días.</li>
-                    <li><b>SELL</b> → se vende (posición corta). El retorno es el inverso del cambio de precio.</li>
-                    <li><b>HOLD</b> → se queda en efectivo. Retorno = 0.</li>
-                    <li>Se empieza con $10.000 y se compara contra <b>buy &amp; hold</b> (comprar y mantener siempre).</li>
-                </ul>
-                <p style="margin-bottom:8px"><b>¿Qué significan las métricas?</b></p>
-                <ul style="padding-left:18px;">
-                    <li><b>Retorno Modelo:</b> ganancia/pérdida total siguiendo las señales.</li>
-                    <li><b>Buy &amp; Hold:</b> benchmark — comprar soja el primer día y mantener.</li>
-                    <li><b>Alpha (α):</b> diferencia. Si α &gt; 0, el modelo superó al mercado.</li>
-                    <li><b>Win Rate:</b> % de operaciones que resultaron positivas.</li>
-                    <li><b>Sharpe:</b> retorno ajustado por riesgo. &gt;1 es bueno, &gt;2 es excelente.</li>
-                    <li><b>Max Drawdown:</b> mayor caída desde un pico. Mide el peor escenario.</li>
-                </ul>
-                <p style="margin-top:8px;color:#888;font-size:.8rem;">
-                    ⚠️ Resultados pasados no garantizan resultados futuros. El backtest evalúa calidad del modelo, no certeza de ganancias.
-                </p>
-            </div>
-        </details>
-
-        <button class="btn" id="btn-backtest" onclick="loadBacktest()">▶ Ejecutar Backtest</button>
-        <div id="backtest-content"><span class="loading">Presioná el botón para ejecutar el backtest.</span></div>
-    </div>
-
-    <!-- Historial de alertas -->
-    <div class="card" style="margin-bottom:16px">
-        <h2>🔔 Historial de Cambios de Señal</h2>
-        <div id="alert-history"><span class="loading">—</span></div>
-    </div>
+    </details>
 
     <!-- Forecast principal (ETS robusto) -->
     <div class="card" style="margin-bottom:16px;">
@@ -814,83 +736,82 @@
         </div>
     </details>
 
-    <div class="section-header">
-        <h2>Datos externos</h2>
-        <span class="desc">CME, clima, USDA Crop Progress, multi-commodity, basis y demanda global</span>
-    </div>
-
-    <!-- Ensemble (Modelo + LLM) -->
+    <!-- Ensemble (key signal — keep visible) -->
     <div class="card" style="margin-bottom:16px;">
         <h2>🧠 Señal Ensemble (Modelo + LLM)</h2>
         <div id="ensemble-panel"><span class="loading">—</span></div>
     </div>
 
-    <!-- CME Group + USDA Crop Progress -->
-    <div class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-            <h2>📈 CME Group — Open Interest & Volumen</h2>
-            <div id="cme-panel"><span class="loading">—</span></div>
-        </div>
-        <div class="card">
-            <h2>🌱 USDA Crop Progress (soja US)</h2>
-            <div id="cropprogress-panel"><span class="loading">—</span></div>
-        </div>
-    </div>
+    <!-- Datos externos — colapsable para reducir scroll -->
+    <details class="card" style="margin-bottom:16px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:1rem;padding:4px 0;color:#1a1a2e;">
+            Datos externos
+            <span style="font-size:.75rem;font-weight:400;color:#888;margin-left:8px;">CME · Clima · USDA · Fundamentales globales</span>
+        </summary>
+        <div style="margin-top:14px;">
 
-    <!-- NASA POWER (clima/stress regional) -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>🛰️ Clima & Stress de Cultivo (NASA POWER)</h2>
-        <div id="satellite-panel"><span class="loading">—</span></div>
-        <div class="chart-wrap-sm" style="margin-top:8px;"><canvas id="satellite-chart"></canvas></div>
-    </div>
+            <!-- Row 1: Fundamentales clave (China + WASDE + Brasil) -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#c62828;margin-bottom:6px;">🇨🇳 China</div>
+                    <div id="china-demand-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#1565c0;margin-bottom:6px;">📋 WASDE</div>
+                    <div id="wasde-official-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#2e7d32;margin-bottom:6px;">🇧🇷 Brasil</div>
+                    <div id="brazil-exports-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+            </div>
 
-    <!-- Multi-Commodity Signals -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>🌾 Señales Técnicas Multi-Commodity</h2>
-        <div id="multi-commodity-panel"><span class="loading">Cargando...</span></div>
-    </div>
+            <!-- Row 2: Basis + Argentina + USDA Inspections -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#5d4037;margin-bottom:6px;">⚓ Basis UY</div>
+                    <div id="basis-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#e65100;margin-bottom:6px;">🇦🇷 Argentina</div>
+                    <div id="argentina-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#37474f;margin-bottom:6px;">📦 USDA Insp.</div>
+                    <div id="usda-insp-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+            </div>
 
-    <!-- WASDE Stress Test -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>⚡ Stress Test WASDE — Top 5 Reportes Más Volátiles</h2>
-        <div id="wasde-stress-panel"><span class="loading">Cargando...</span></div>
-    </div>
+            <!-- Row 3: CME + Crop Progress -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#1565c0;margin-bottom:6px;">📈 CME OI & Vol</div>
+                    <div id="cme-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#33691e;margin-bottom:6px;">🌱 Crop Progress</div>
+                    <div id="cropprogress-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+            </div>
 
-    <!-- Basis Uruguay + WASDE Oficial -->
-    <div class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-            <h2>⚓ Basis Uruguay/River Plate</h2>
-            <div id="basis-panel"><span class="loading">—</span></div>
+            <!-- Row 4: Clima + Multi-commodity + WASDE Stress -->
+            <div style="margin-bottom:12px;">
+                <div style="font-weight:700;font-size:.78rem;color:#0277bd;margin-bottom:6px;">🛰️ Clima & Stress (NASA POWER)</div>
+                <div id="satellite-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                <div class="chart-wrap-sm" style="margin-top:8px;"><canvas id="satellite-chart"></canvas></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#5d4037;margin-bottom:6px;">🌾 Multi-Commodity</div>
+                    <div id="multi-commodity-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+                <div style="background:#f9f9f9;border-radius:8px;padding:10px 14px;">
+                    <div style="font-weight:700;font-size:.78rem;color:#bf360c;margin-bottom:6px;">⚡ WASDE Stress</div>
+                    <div id="wasde-stress-panel" style="font-size:.82rem;"><span class="loading">—</span></div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <h2>📋 WASDE Oficial (USDA FAS)</h2>
-            <div id="wasde-official-panel"><span class="loading">—</span></div>
-        </div>
-    </div>
-
-    <!-- Brazil Export Pace + China Demand -->
-    <div class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-            <h2>🇧🇷 Pace Exportaciones Brasil</h2>
-            <div id="brazil-exports-panel"><span class="loading">—</span></div>
-        </div>
-        <div class="card">
-            <h2>🇨🇳 Demanda China</h2>
-            <div id="china-demand-panel"><span class="loading">—</span></div>
-        </div>
-    </div>
-
-    <!-- Señal Argentina + USDA Inspecciones -->
-    <div class="grid-2" style="margin-bottom:16px;">
-        <div class="card">
-            <h2>🇦🇷 Señal de Oferta Argentina</h2>
-            <div id="argentina-panel"><span class="loading">—</span></div>
-        </div>
-        <div class="card">
-            <h2>📦 Inspecciones Exportación USDA (semanal)</h2>
-            <div id="usda-insp-panel"><span class="loading">—</span></div>
-        </div>
-    </div>
+    </details>
 
     <div class="section-header">
         <h2>Noticias del día</h2>
@@ -939,50 +860,44 @@
 <div id="tab-seasonality" class="tab-panel">
 <div class="main">
 
-    <div style="background:#e3f2fd;border-left:4px solid #1565c0;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#0d3c6e;line-height:1.7;">
-        <b>Panel Estacional Histórico</b> — Patrón promedio de precios de soja por mes calendario,
-        calculado sobre todo el historial disponible. La soja tiene ciclos estacionales fuertes
-        ligados a las cosechas de EE.UU. (ago–oct) y Brasil (mar–may).
-        <span id="seas-coverage" style="opacity:.7;font-size:.8rem;"></span>
-    </div>
-
-    <!-- KPIs estacionales -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-        <div class="card" style="text-align:center;">
-            <div style="font-size:.75rem;color:#888;margin-bottom:4px;">MEJOR MES HISTÓRICO</div>
-            <div id="seas-best" style="font-size:1.5rem;font-weight:700;color:#2e7d32;">—</div>
-        </div>
-        <div class="card" style="text-align:center;">
-            <div style="font-size:.75rem;color:#888;margin-bottom:4px;">PEOR MES HISTÓRICO</div>
-            <div id="seas-worst" style="font-size:1.5rem;font-weight:700;color:#c62828;">—</div>
-        </div>
-    </div>
-
-    <!-- Gráfico de barras mensual con bandas ±1σ -->
-    <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-            <div style="font-weight:600;font-size:.9rem;">Retorno Promedio Mensual (%)</div>
-            <div id="seas-legend" style="font-size:.7rem;color:#888;"></div>
+    <!-- KPIs + Chart in single card -->
+    <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+            <div>
+                <div style="font-weight:700;font-size:1rem;">Estacionalidad Historica</div>
+                <div style="font-size:.78rem;color:#888;">Retorno promedio por mes. Cosechas EEUU (ago-oct) y Brasil (mar-may). <span id="seas-coverage" style="opacity:.7;"></span></div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:center;">
+                <div style="text-align:center;">
+                    <div style="font-size:.65rem;color:#888;">MEJOR</div>
+                    <div id="seas-best" style="font-size:1.1rem;font-weight:700;color:#2e7d32;">—</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:.65rem;color:#888;">PEOR</div>
+                    <div id="seas-worst" style="font-size:1.1rem;font-weight:700;color:#c62828;">—</div>
+                </div>
+            </div>
         </div>
         <div id="seas-bars" style="display:flex;gap:4px;padding:0 4px;"></div>
         <div style="display:flex;gap:4px;margin-top:2px;padding:0 4px;" id="seas-labels"></div>
+        <div id="seas-legend" style="font-size:.7rem;color:#888;margin-top:6px;text-align:right;"></div>
     </div>
 
-    <!-- Tabla detallada -->
-    <div class="card" style="margin-top:16px;">
-        <div style="font-weight:600;font-size:.9rem;margin-bottom:10px;">Detalle por mes</div>
-        <table class="trades-table" id="seas-table">
+    <!-- Tabla detallada — colapsable -->
+    <details class="card">
+        <summary style="cursor:pointer;font-weight:600;font-size:.9rem;color:#1a1a2e;">Detalle por mes (tabla)</summary>
+        <table class="trades-table" id="seas-table" style="margin-top:10px;">
             <thead><tr>
                 <th>Mes</th>
                 <th style="text-align:right">Ret. Promedio</th>
                 <th style="text-align:right">Mediana</th>
-                <th style="text-align:right">±1σ</th>
+                <th style="text-align:right">+/-1s</th>
                 <th style="text-align:right">Win Rate</th>
-                <th style="text-align:right">Años</th>
+                <th style="text-align:right">Anos</th>
             </tr></thead>
             <tbody></tbody>
         </table>
-    </div>
+    </details>
 
 </div><!-- /main -->
 </div><!-- /tab-seasonality -->
@@ -1057,7 +972,13 @@
   <!-- Costo de almacenamiento -->
   <div class="card" style="margin-bottom:20px;">
     <div style="font-weight:600;margin-bottom:4px;font-size:.9rem;color:#444;">🏪 Costo de Almacenamiento</div>
-    <div style="font-size:.78rem;color:#888;margin-bottom:12px;">Tasa anual configurada: <b id="prod-storage-rate">6%</b> — ¿Cuánto cuesta esperar?</div>
+    <div style="font-size:.78rem;color:#888;margin-bottom:12px;">
+      Tasa anual:
+      <input id="prod-storage-rate-input" type="number" value="6" min="0" max="30" step="0.5"
+        style="width:55px;padding:2px 5px;border:1px solid #ccc;border-radius:4px;font-size:.82rem;font-weight:700;"
+        onchange="recalcStorageCosts()">%
+      <span style="margin-left:8px;color:#aaa;">Editable</span>
+    </div>
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-size:.84rem;">
         <thead>
@@ -1088,13 +1009,19 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="prod-port-costs">
       <div style="background:#f5f5f5;border-radius:8px;padding:12px;text-align:center;">
         <div style="font-size:.75rem;color:#888;margin-bottom:4px;">Nueva Palmira</div>
-        <div id="prod-port-np" style="font-size:1.3rem;font-weight:700;color:#1565c0;">—</div>
-        <div style="font-size:.72rem;color:#aaa;">USD/ton</div>
+        <div style="font-size:1.1rem;font-weight:700;color:#1565c0;">
+          USD <input id="prod-port-np-input" type="number" value="24" min="0" max="100" step="0.5"
+            style="width:55px;padding:2px 5px;border:1px solid #ccc;border-radius:4px;font-size:1rem;font-weight:700;color:#1565c0;text-align:center;"
+            onchange="recalcNetPrice()">/ton
+        </div>
       </div>
       <div style="background:#f5f5f5;border-radius:8px;padding:12px;text-align:center;">
         <div style="font-size:.75rem;color:#888;margin-bottom:4px;">Montevideo</div>
-        <div id="prod-port-mvd" style="font-size:1.3rem;font-weight:700;color:#1565c0;">—</div>
-        <div style="font-size:.72rem;color:#aaa;">USD/ton</div>
+        <div style="font-size:1.1rem;font-weight:700;color:#1565c0;">
+          USD <input id="prod-port-mvd-input" type="number" value="26" min="0" max="100" step="0.5"
+            style="width:55px;padding:2px 5px;border:1px solid #ccc;border-radius:4px;font-size:1rem;font-weight:700;color:#1565c0;text-align:center;"
+            onchange="recalcNetPrice()">/ton
+        </div>
       </div>
     </div>
     <div id="prod-net-price" style="margin-top:12px;padding:10px;background:#e8f5e9;border-radius:8px;font-size:.85rem;color:#1b4332;"></div>
@@ -1537,7 +1464,13 @@
   </div>
 
   <div style="margin-top:10px;font-size:.75rem;color:#999;">
-    Dir. = dirección correcta (el precio real se movió en la dirección pronosticada). — = dato no disponible aún.
+    Dir. = direccion correcta (el precio real se movio en la direccion pronosticada). — = dato no disponible aun.
+  </div>
+
+  <!-- Historial de alertas (movido desde Principal) -->
+  <div class="card" style="margin-top:20px;">
+    <h2>🔔 Historial de Cambios de Señal</h2>
+    <div id="alert-history"><span class="loading">—</span></div>
   </div>
 
 </div>
@@ -2216,27 +2149,11 @@ function renderData(data) {
             }
         }).catch(() => {});
 
-        // ── Nota de consistencia ────────────────────────────────
-        // Solo muestra cuando el forecast de precios y la señal del clasificador
-        // divergen de forma significativa (>3%). Un umbral bajo genera falsos positivos
-        // porque ambos modelos tienen objetivos distintos (precio vs dirección corta).
+        // ── Divergence flag (señal vs forecast) ──
         const signal     = data.model_signal?.signal;
-        const noteEl     = document.getElementById("consistency-note");
-        const forecastUp = pct > 3.0;   // forecast sube más del 3%
-        const forecastDn = pct < -3.0;  // forecast baja más del 3%
-        const diverges   = (signal === "SELL" && forecastUp) || (signal === "BUY" && forecastDn);
-        noteEl.style.display = diverges ? "block" : "none";
-        _kpiSignalDiverges = diverges;
-        if (diverges) {
-            const sigLabel = signal === "SELL"
-                ? "bajista (SELL) — anticipa baja en 14 días"
-                : "alcista (BUY) — anticipa suba en 14 días";
-            const fcLabel  = forecastUp
-                ? `el forecast de 30 días proyecta una suba de ${pct.toFixed(1)}%`
-                : `el forecast de 30 días proyecta una baja de ${Math.abs(pct).toFixed(1)}%`;
-            document.getElementById("consistency-signal").innerHTML =
-                `<b>${sigLabel}</b>, mientras que ${fcLabel}. Ambos modelos son correctos para su horizonte — el clasificador (14 días) tiene prioridad para decisiones de corto plazo.`;
-        }
+        const forecastUp = pct > 3.0;
+        const forecastDn = pct < -3.0;
+        _kpiSignalDiverges = (signal === "SELL" && forecastUp) || (signal === "BUY" && forecastDn);
     }
     if (data.model_signal) {
         const { signal, expected_return, confidence } = data.model_signal;
@@ -2873,16 +2790,18 @@ function renderProducer(d) {
         }).join("");
     }
 
-    // Costos de puerto
+    // Costos de puerto — populate editable inputs
     const pc = d.port_costs || {};
-    if (el("prod-port-np"))  el("prod-port-np").textContent  = pc.nueva_palmira_usd_mt ? `USD ${pc.nueva_palmira_usd_mt}` : "—";
-    if (el("prod-port-mvd")) el("prod-port-mvd").textContent = pc.montevideo_usd_mt    ? `USD ${pc.montevideo_usd_mt}` : "—";
-    const netPriceEl = el("prod-net-price");
-    if (netPriceEl && p.local_usd_ton && pc.nueva_palmira_usd_mt) {
-        const netNP  = (p.local_usd_ton - pc.nueva_palmira_usd_mt).toFixed(2);
-        const netMVD = (p.local_usd_ton - pc.montevideo_usd_mt).toFixed(2);
-        netPriceEl.innerHTML = `<b>Precio neto al productor:</b> USD ${netNP}/ton (vía Nueva Palmira) · USD ${netMVD}/ton (vía Montevideo)`;
-    }
+    const npInput = el("prod-port-np-input");
+    const mvdInput = el("prod-port-mvd-input");
+    if (npInput && pc.nueva_palmira_usd_mt)  npInput.value = pc.nueva_palmira_usd_mt;
+    if (mvdInput && pc.montevideo_usd_mt)    mvdInput.value = pc.montevideo_usd_mt;
+    // Store local price for recalc
+    window._prodLocalUsdTon = p.local_usd_ton || 0;
+    window._prodStorageCosts = d.storage_costs || [];
+    window._prodStorageRate = d.storage_rate_annual || 6;
+    if (el("prod-storage-rate-input")) el("prod-storage-rate-input").value = window._prodStorageRate;
+    recalcNetPrice();
 
     // Señal Argentina ampliada (supply_score + retenciones + CIARA)
     const argEl = el("prod-argentina");
@@ -2930,6 +2849,38 @@ function renderProducer(d) {
     _currentLocalPrice     = localPrice;
     _currentForecastReturn = forecastRet;
     loadStorageRoi(localPrice, forecastRet);
+}
+
+// ── Recalc helpers for editable Producer fields ─────────────────────
+function recalcNetPrice() {
+    const localPrice = window._prodLocalUsdTon || 0;
+    const np = parseFloat(document.getElementById("prod-port-np-input")?.value || 24);
+    const mvd = parseFloat(document.getElementById("prod-port-mvd-input")?.value || 26);
+    const netEl = document.getElementById("prod-net-price");
+    if (netEl && localPrice > 0) {
+        const netNP = (localPrice - np).toFixed(2);
+        const netMVD = (localPrice - mvd).toFixed(2);
+        netEl.innerHTML = `<b>Precio neto al productor:</b> USD ${netNP}/ton (Nueva Palmira) · USD ${netMVD}/ton (Montevideo)`;
+    }
+}
+function recalcStorageCosts() {
+    const rate = parseFloat(document.getElementById("prod-storage-rate-input")?.value || 6);
+    const localPrice = window._prodLocalUsdTon || 0;
+    if (!localPrice) return;
+    const days = [7, 15, 30, 60, 90];
+    const tbody = document.getElementById("prod-storage-tbody");
+    if (!tbody) return;
+    tbody.innerHTML = days.map(d => {
+        const costPct = (rate / 100) * (d / 365) * 100;
+        const costUsd = localPrice * (rate / 100) * (d / 365);
+        const breakEven = costPct;
+        return `<tr style="border-top:1px solid #f0f0f0;">
+            <td style="padding:7px 12px;">${d} dias</td>
+            <td style="padding:7px 12px;font-weight:600;">USD ${costUsd.toFixed(2)}/ton</td>
+            <td style="padding:7px 12px;color:#888;">${costPct.toFixed(2)}%</td>
+            <td style="padding:7px 12px;color:#e65100;">+${breakEven.toFixed(2)}%</td>
+        </tr>`;
+    }).join("");
 }
 
 // ── Forecast Multi-horizonte ────────────────────────────────────────
@@ -4764,7 +4715,12 @@ async function loadAccountability() {
             return `<span class="badge ${cls}">${s}</span>`;
         };
 
-        const rows = (data.records || []).map(r => {
+        const allRecords = data.records || [];
+        const PAGE_SIZE = 20;
+        window._accRecords = allRecords;
+        window._accPage = 1;
+
+        const _buildRow = r => {
             const h7  = r.horizons["7"]  || {};
             const h30 = r.horizons["30"] || {};
             return `<tr>
@@ -4780,11 +4736,39 @@ async function loadAccountability() {
               <td style="padding:7px 10px;color:${h30.error_pct > 0 ? '#1b8a3e' : h30.error_pct < 0 ? '#c0392b' : '#666'};">${fmtErr(h30.error_pct)}</td>
               <td style="padding:7px 10px;text-align:center;">${dirIcon(h30.direction_correct)}</td>
             </tr>`;
-        });
+        };
+
+        const shown = allRecords.slice(0, PAGE_SIZE);
+        const rows = shown.map(_buildRow);
+        let footer = "";
+        if (allRecords.length > PAGE_SIZE) {
+            footer = `<tr id="acc-load-more"><td colspan="11" style="padding:12px;text-align:center;">
+              <button onclick="window._accLoadMore()" style="padding:6px 20px;background:#1565c0;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.82rem;">
+                Ver mas (${allRecords.length - PAGE_SIZE} restantes)
+              </button></td></tr>`;
+        }
+        window._accBuildRow = _buildRow;
+        window._accLoadMore = function() {
+            const next = window._accPage * PAGE_SIZE;
+            const end = next + PAGE_SIZE;
+            const batch = window._accRecords.slice(next, end);
+            const tbody = document.getElementById("acc-tbody");
+            const loadMoreRow = document.getElementById("acc-load-more");
+            if (loadMoreRow) loadMoreRow.remove();
+            tbody.insertAdjacentHTML("beforeend", batch.map(window._accBuildRow).join(""));
+            window._accPage++;
+            const remaining = window._accRecords.length - (window._accPage * PAGE_SIZE);
+            if (remaining > 0) {
+                tbody.insertAdjacentHTML("beforeend", `<tr id="acc-load-more"><td colspan="11" style="padding:12px;text-align:center;">
+                  <button onclick="window._accLoadMore()" style="padding:6px 20px;background:#1565c0;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:.82rem;">
+                    Ver mas (${remaining} restantes)
+                  </button></td></tr>`);
+            }
+        };
 
         document.getElementById("acc-tbody").innerHTML =
-            rows.length ? rows.join("") :
-            `<tr><td colspan="11" style="padding:20px;text-align:center;color:#888;">Sin registros con datos reales disponibles aún.</td></tr>`;
+            rows.length ? rows.join("") + footer :
+            `<tr><td colspan="11" style="padding:20px;text-align:center;color:#888;">Sin registros con datos reales disponibles aun.</td></tr>`;
 
     } catch (e) {
         console.warn("Accountability:", e);
