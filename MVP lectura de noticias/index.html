@@ -5236,8 +5236,9 @@ function _renderQASignal(data) {
     // Timestamp
     const tsEl = document.getElementById("qa-timestamp");
     if (tsEl && data.timestamp) {
-        const age = Math.round((Date.now() - new Date(data.timestamp).getTime()) / 60000);
-        tsEl.textContent = `${data.timestamp.slice(0,16).replace("T"," ")} (hace ${age} min) · ${data.execution_time_seconds||"?"}s`;
+        const tsStr = data.timestamp.slice(0,16).replace("T"," ");
+        const secs = data.execution_time_seconds;
+        tsEl.textContent = `${tsStr} · ${secs ? secs+"s" : ""}`;
     }
 
     // Trend Agent
@@ -5247,7 +5248,9 @@ function _renderQASignal(data) {
 }
 
 function _renderQATrend(t) {
-    if (!t || t.error) return;
+    const cEl = document.getElementById("qa-trend-content");
+    if (!t) return;
+    if (t.error) { if (cEl) cEl.innerHTML = `<i style="color:#c62828;">Error: ${t.error}</i>`; return; }
     const badge = document.getElementById("qa-trend-badge");
     if (badge) {
         const tMap = {UP:{bg:"#c8e6c9",color:"#1b5e20"}, DOWN:{bg:"#ffcdd2",color:"#b71c1c"}, LATERAL:{bg:"#fff9c4",color:"#f57f17"}};
@@ -5255,7 +5258,6 @@ function _renderQATrend(t) {
         badge.textContent = `${t.trend} (${t.trend_strength||"?"})`;
         badge.style.background = tm.bg; badge.style.color = tm.color;
     }
-    const cEl = document.getElementById("qa-trend-content");
     if (!cEl) return;
     let html = "";
     if (t.reasoning) html += `<div style="margin-bottom:8px;">${t.reasoning}</div>`;
@@ -5276,11 +5278,13 @@ function _renderQATrend(t) {
         if (kl.vwap) html += `<b>VWAP:</b> ${kl.vwap}`;
         html += `</div>`;
     }
-    cEl.innerHTML = html;
+    cEl.innerHTML = html || `<i style="color:#888;">Trend: ${t.trend||"?"} (${t.trend_strength||"?"}) — sin detalles adicionales</i>`;
 }
 
 function _renderQARisk(r) {
-    if (!r || r.error) return;
+    const cEl = document.getElementById("qa-risk-content");
+    if (!r) return;
+    if (r.error) { if (cEl) cEl.innerHTML = `<i style="color:#c62828;">Error: ${r.error}</i>`; return; }
     const badge = document.getElementById("qa-risk-badge");
     if (badge) {
         const viable = r.trade_viable;
@@ -5288,7 +5292,6 @@ function _renderQARisk(r) {
         badge.style.background = viable ? "#c8e6c9" : "#ffcdd2";
         badge.style.color = viable ? "#1b5e20" : "#b71c1c";
     }
-    const cEl = document.getElementById("qa-risk-content");
     if (!cEl) return;
     let html = "";
     if (r.reasoning) html += `<div style="margin-bottom:8px;">${r.reasoning}</div>`;
@@ -5310,7 +5313,7 @@ function _renderQARisk(r) {
         if (r.max_hold_bars) html += `<div><b>Max hold:</b> ${r.max_hold_bars} barras</div>`;
         html += `</div>`;
     }
-    cEl.innerHTML = html;
+    cEl.innerHTML = html || `<i style="color:#888;">Vol: ${r.volatility_regime||"?"} — sin detalles adicionales</i>`;
 }
 
 function _renderQAContext(ctx) {
