@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T13:45:50",
+  "generated_at": "2026-05-20T13:46:07",
   "n_datasets": 12,
   "n_missing": 0,
   "by_layer": {
@@ -19,7 +19,7 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-19T13:45:24",
+        "last_updated": "2026-05-20T13:45:00",
         "size_kb": 298.3
       },
       {
@@ -35,9 +35,9 @@
           "cot_index"
         ],
         "exists": true,
-        "row_count": 1949,
-        "last_updated": "2026-05-19T13:44:45",
-        "size_kb": 149.5
+        "row_count": 3913,
+        "last_updated": "2026-05-20T13:45:00",
+        "size_kb": 153.7
       },
       {
         "layer": "bronze",
@@ -53,7 +53,7 @@
         ],
         "exists": true,
         "row_count": 541,
-        "last_updated": "2026-05-19T13:44:45",
+        "last_updated": "2026-05-20T13:45:00",
         "size_kb": 49.0
       },
       {
@@ -68,9 +68,9 @@
           "good_excellent_pct"
         ],
         "exists": true,
-        "row_count": 22,
-        "last_updated": "2026-05-19T13:44:45",
-        "size_kb": 1.5
+        "row_count": 47,
+        "last_updated": "2026-05-20T13:45:00",
+        "size_kb": 1.6
       },
       {
         "layer": "bronze",
@@ -87,8 +87,8 @@
         ],
         "exists": true,
         "row_count": 1,
-        "last_updated": "2026-05-19T13:44:45",
-        "size_kb": 0.8
+        "last_updated": "2026-05-20T13:45:00",
+        "size_kb": 1.0
       },
       {
         "layer": "bronze",
@@ -104,8 +104,8 @@
           "front_volume"
         ],
         "exists": true,
-        "row_count": 24,
-        "last_updated": "2026-05-19T13:45:31",
+        "row_count": 25,
+        "last_updated": "2026-05-20T13:45:49",
         "size_kb": 2.3
       },
       {
@@ -122,9 +122,9 @@
           "iv_put"
         ],
         "exists": true,
-        "row_count": 24,
-        "last_updated": "2026-05-19T13:45:31",
-        "size_kb": 2.0
+        "row_count": 25,
+        "last_updated": "2026-05-20T13:45:49",
+        "size_kb": 2.1
       },
       {
         "layer": "bronze",
@@ -140,7 +140,7 @@
         ],
         "exists": true,
         "row_count": 484,
-        "last_updated": "2026-05-19T13:45:34",
+        "last_updated": "2026-05-20T13:45:00",
         "size_kb": 29.9
       },
       {
@@ -156,9 +156,9 @@
           "enso_phase"
         ],
         "exists": true,
-        "row_count": 27889,
-        "last_updated": "2026-05-19T13:44:45",
-        "size_kb": 672.6
+        "row_count": 55793,
+        "last_updated": "2026-05-20T13:45:00",
+        "size_kb": 727.3
       },
       {
         "layer": "bronze",
@@ -173,8 +173,8 @@
           "news_volume"
         ],
         "exists": true,
-        "row_count": 25,
-        "last_updated": "2026-05-19T13:44:45",
+        "row_count": 47,
+        "last_updated": "2026-05-20T13:45:00",
         "size_kb": 1.1
       }
     ],
@@ -200,8 +200,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-19T13:45:35",
-        "size_kb": 3274.8
+        "last_updated": "2026-05-20T13:45:50",
+        "size_kb": 3598.3
       },
       {
         "layer": "gold",
@@ -219,8 +219,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-19T13:45:50",
-        "size_kb": 140.9
+        "last_updated": "2026-05-20T13:46:07",
+        "size_kb": 127.5
       }
     ]
   }

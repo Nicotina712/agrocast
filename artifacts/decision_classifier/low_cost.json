@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "as_of": "2026-05-19T13:45:38",
+  "as_of": "2026-05-20T13:45:54",
   "profile_name": "low_cost",
   "storage_per_ton_month": 0.0,
   "financing_annual": 0.05,
@@ -12,29 +12,29 @@
       "as_of": "2026-05-19",
       "current_price": 1210.5,
       "cost_pct_used": 0.096,
-      "prob_wait_pays_raw": 0.285,
-      "prob_wait_pays_calibrated": 0.586,
+      "prob_wait_pays_raw": 0.269,
+      "prob_wait_pays_calibrated": 0.585,
       "threshold_active": 0.5,
       "decision_advisory": "INDIFFERENT",
       "confidence": "low",
-      "delta_predicted_pct": -0.537,
-      "delta_predicted_usd_ton": -2.39,
-      "delta_model_mae_val": 0.0275,
+      "delta_predicted_pct": -1.739,
+      "delta_predicted_usd_ton": -7.73,
+      "delta_model_mae_val": 0.0311,
       "partial_decision": "SELL_100",
       "sell_pct": 100,
       "hold_pct": 0,
-      "partial_reason": "Delta esperado -0.54% < cero \u2192 esperar destruye valor",
+      "partial_reason": "Delta esperado -1.74% < cero \u2192 esperar destruye valor",
       "base_rate_wait_train": 48.0,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-19T13:45:38",
+      "trained_at": "2026-05-20T13:45:54",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
         "n_val": 245,
-        "val_acc": 0.592,
-        "val_brier_raw": 0.4651,
-        "val_brier_cal": 0.24
+        "val_acc": 0.588,
+        "val_brier_raw": 0.4533,
+        "val_brier_cal": 0.2383
       },
       "analogs": {
         "ok": true,
@@ -62,7 +62,7 @@
           "2018-03-19",
           "2018-04-25"
         ],
-        "neighbor_dist_med": 1.135,
+        "neighbor_dist_med": 2.088,
         "narrative": "En 20 situaciones hist\u00f3ricas con patr\u00f3n similar (a 7d), esperar fue mejor que vender hoy en 30% de los casos. Delta medio de esperar: $-3.4/ton. Peor caso: $-16.0/ton. Mejor caso: $+18.1/ton."
       }
     },
@@ -71,29 +71,29 @@
       "as_of": "2026-05-19",
       "current_price": 1210.5,
       "cost_pct_used": 0.205,
-      "prob_wait_pays_raw": 0.012,
-      "prob_wait_pays_calibrated": 0.269,
+      "prob_wait_pays_raw": 0.006,
+      "prob_wait_pays_calibrated": 0.5,
       "threshold_active": 0.5,
-      "decision_advisory": "SELL",
-      "confidence": "high",
-      "delta_predicted_pct": -8.1,
-      "delta_predicted_usd_ton": -36.03,
-      "delta_model_mae_val": 0.0478,
+      "decision_advisory": "INDIFFERENT",
+      "confidence": "low",
+      "delta_predicted_pct": -7.809,
+      "delta_predicted_usd_ton": -34.73,
+      "delta_model_mae_val": 0.0502,
       "partial_decision": "SELL_100",
       "sell_pct": 100,
       "hold_pct": 0,
-      "partial_reason": "Delta esperado -8.10% < cero \u2192 esperar destruye valor",
+      "partial_reason": "Delta esperado -7.81% < cero \u2192 esperar destruye valor",
       "base_rate_wait_train": 43.3,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-19T13:45:39",
+      "trained_at": "2026-05-20T13:45:54",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
         "n_val": 239,
-        "val_acc": 0.623,
-        "val_brier_raw": 0.4683,
-        "val_brier_cal": 0.2306
+        "val_acc": 0.544,
+        "val_brier_raw": 0.4814,
+        "val_brier_cal": 0.2444
       },
       "analogs": {
         "ok": true,
@@ -121,7 +121,7 @@
           "2018-03-19",
           "2018-04-25"
         ],
-        "neighbor_dist_med": 1.135,
+        "neighbor_dist_med": 2.088,
         "narrative": "En 20 situaciones hist\u00f3ricas con patr\u00f3n similar (a 15d), esperar fue mejor que vender hoy en 15% de los casos. Delta medio de esperar: $-11.6/ton. Peor caso: $-41.7/ton. Mejor caso: $+25.9/ton."
       }
     },
@@ -130,29 +130,29 @@
       "as_of": "2026-05-19",
       "current_price": 1210.5,
       "cost_pct_used": 0.411,
-      "prob_wait_pays_raw": 0.046,
-      "prob_wait_pays_calibrated": 0.689,
+      "prob_wait_pays_raw": 0.005,
+      "prob_wait_pays_calibrated": 0.671,
       "threshold_active": 0.5,
       "decision_advisory": "WAIT",
       "confidence": "medium",
-      "delta_predicted_pct": -6.184,
-      "delta_predicted_usd_ton": -27.5,
-      "delta_model_mae_val": 0.0607,
+      "delta_predicted_pct": -8.78,
+      "delta_predicted_usd_ton": -39.05,
+      "delta_model_mae_val": 0.071,
       "partial_decision": "SELL_100",
       "sell_pct": 100,
       "hold_pct": 0,
-      "partial_reason": "Delta esperado -6.18% < cero \u2192 esperar destruye valor",
+      "partial_reason": "Delta esperado -8.78% < cero \u2192 esperar destruye valor",
       "base_rate_wait_train": 43.5,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-19T13:45:39",
+      "trained_at": "2026-05-20T13:45:55",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
         "n_val": 229,
-        "val_acc": 0.703,
-        "val_brier_raw": 0.5453,
-        "val_brier_cal": 0.2055
+        "val_acc": 0.69,
+        "val_brier_raw": 0.5981,
+        "val_brier_cal": 0.2097
       },
       "analogs": {
         "ok": true,
@@ -180,12 +180,12 @@
           "2018-03-19",
           "2018-04-25"
         ],
-        "neighbor_dist_med": 1.135,
+        "neighbor_dist_med": 2.088,
         "narrative": "En 20 situaciones hist\u00f3ricas con patr\u00f3n similar (a 30d), esperar fue mejor que vender hoy en 20% de los casos. Delta medio de esperar: $-14.9/ton. Peor caso: $-86.0/ton. Mejor caso: $+37.2/ton."
       }
     }
   },
   "context_note": "Panel INFORMATIVO multi-horizonte. Backtest 5y mostr\u00f3 que esta probabilidad calibrada es la mejor aproximaci\u00f3n predictiva validada (PnL -1.36%/a\u00f1o vs always-sell, el menor gap entre 21 configs probadas), pero SIGUE PERDIENDO al always-sell. Use como segunda opini\u00f3n, no como decisor \u00fanico.",
-  "best_horizon": "15d",
-  "best_horizon_confidence": 0.231
+  "best_horizon": "30d",
+  "best_horizon_confidence": 0.171
 }

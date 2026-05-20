@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "as_of": "2026-05-19T13:45:50",
+  "as_of": "2026-05-20T13:46:07",
   "forecast": {
     "ok": true,
     "as_of": "2026-05-19",
@@ -15,25 +15,25 @@
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -1.295,
-          "q25": -0.236,
-          "median": 0.086,
-          "q75": 0.61,
-          "q90": 1.189
+          "q10": -0.541,
+          "q25": -0.047,
+          "median": 0.183,
+          "q75": 0.699,
+          "q90": 1.355
         },
-        "mean_pct": 0.079,
-        "std_pct": 0.827,
-        "p_up": 0.6,
-        "p_down": 0.4,
-        "direction": "neutral",
-        "confidence": "low",
+        "mean_pct": 0.246,
+        "std_pct": 0.781,
+        "p_up": 0.65,
+        "p_down": 0.35,
+        "direction": "bullish",
+        "confidence": "medium",
         "usd_ton": {
-          "q10": -5.76,
-          "q25": -1.05,
-          "median": 0.38,
-          "q75": 2.72,
-          "q90": 5.29,
-          "mean": 0.35
+          "q10": -2.41,
+          "q25": -0.21,
+          "median": 0.82,
+          "q75": 3.11,
+          "q90": 6.03,
+          "mean": 1.09
         },
         "type_filtered": {
           "n_samples": 441,
@@ -48,25 +48,25 @@
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -1.128,
-          "q25": -0.294,
-          "median": 0.22,
-          "q75": 0.914,
-          "q90": 2.1
+          "q10": -0.17,
+          "q25": 0.062,
+          "median": 0.608,
+          "q75": 1.353,
+          "q90": 1.515
         },
-        "mean_pct": 0.616,
-        "std_pct": 2.808,
-        "p_up": 0.65,
-        "p_down": 0.35,
+        "mean_pct": 1.017,
+        "std_pct": 1.989,
+        "p_up": 0.8,
+        "p_down": 0.2,
         "direction": "bullish",
-        "confidence": "medium",
+        "confidence": "high",
         "usd_ton": {
-          "q10": -5.02,
-          "q25": -1.31,
-          "median": 0.98,
-          "q75": 4.07,
-          "q90": 9.34,
-          "mean": 2.74
+          "q10": -0.76,
+          "q25": 0.28,
+          "median": 2.7,
+          "q75": 6.02,
+          "q90": 6.74,
+          "mean": 4.52
         },
         "type_filtered": {
           "n_samples": 441,
@@ -79,27 +79,27 @@
       },
       "15d": {
         "available": true,
-        "n_samples": 20,
+        "n_samples": 14,
         "range_pct": {
-          "q10": -2.43,
-          "q25": -1.073,
-          "median": 0.28,
-          "q75": 0.875,
-          "q90": 5.162
+          "q10": -2.284,
+          "q25": -1.31,
+          "median": 0.205,
+          "q75": 1.484,
+          "q90": 4.366
         },
-        "mean_pct": 0.648,
-        "std_pct": 3.334,
-        "p_up": 0.55,
-        "p_down": 0.45,
+        "mean_pct": 0.616,
+        "std_pct": 3.52,
+        "p_up": 0.5,
+        "p_down": 0.5,
         "direction": "neutral",
         "confidence": "low",
         "usd_ton": {
-          "q10": -10.81,
-          "q25": -4.77,
-          "median": 1.25,
-          "q75": 3.89,
-          "q90": 22.96,
-          "mean": 2.88
+          "q10": -10.16,
+          "q25": -5.83,
+          "median": 0.91,
+          "q75": 6.6,
+          "q90": 19.42,
+          "mean": 2.74
         },
         "type_filtered": {
           "n_samples": 440,
@@ -114,25 +114,25 @@
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -3.728,
-          "q25": -2.446,
-          "median": 1.336,
-          "q75": 6.552,
+          "q10": -2.679,
+          "q25": 1.02,
+          "median": 4.511,
+          "q75": 5.54,
           "q90": 9.421
         },
-        "mean_pct": 2.323,
-        "std_pct": 5.808,
-        "p_up": 0.65,
-        "p_down": 0.35,
+        "mean_pct": 3.826,
+        "std_pct": 5.121,
+        "p_up": 0.8,
+        "p_down": 0.2,
         "direction": "bullish",
-        "confidence": "medium",
+        "confidence": "high",
         "usd_ton": {
-          "q10": -16.58,
-          "q25": -10.88,
-          "median": 5.94,
-          "q75": 29.14,
+          "q10": -11.92,
+          "q25": 4.54,
+          "median": 20.06,
+          "q75": 24.64,
           "q90": 41.9,
-          "mean": 10.33
+          "mean": 17.02
         },
         "type_filtered": {
           "n_samples": 441,
@@ -144,9 +144,9 @@
         }
       }
     },
-    "daily_narrative": "Evento activo: macro/FX (bajista). En situaciones similares, el rango diario esperado es -1.29% a +1.19% (mediana +0.09%). En USD/ton: -5.8 a +5.3 USD/ton. Probabilidad de suba: 60%.",
+    "daily_narrative": "Evento activo: macro/FX (bajista). En situaciones similares, el rango diario esperado es -0.54% a +1.35% (mediana +0.18%). En USD/ton: -2.4 a +6.0 USD/ton. Probabilidad de suba: 65%. Los eventos tienden a estrechar el rango (menor volatilidad que dias sin evento).",
     "n_analogs_used": 20,
-    "dist_median": 1.321
+    "dist_median": 4.676
   },
   "backtests": {
     "1d": {
@@ -171,9 +171,9 @@
         },
         "narrative": {
           "n_decisions": 252,
-          "mean_pnl_usd_ton": 0.081,
-          "total_pnl_usd_ton": 20.42,
-          "win_rate_pct": 18.7
+          "mean_pnl_usd_ton": 0.058,
+          "total_pnl_usd_ton": 14.68,
+          "win_rate_pct": 17.9
         },
         "oracle": {
           "n_decisions": 252,
