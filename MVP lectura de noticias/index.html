@@ -5164,6 +5164,7 @@ async function loadQuantAgent() {
     _qaLoaded = true;
     try {
         const res = await fetch("/api/quantagent");
+        if (!res.ok || !(res.headers.get("content-type")||"").includes("json")) return;
         const d = await res.json();
         if (!d.ok) return;
 
@@ -5371,21 +5372,30 @@ async function _loadQAPaperTrades() {
 
 async function runQuantAgent() {
     const btn = document.getElementById("qa-run-btn");
-    if (btn) { btn.disabled = true; btn.textContent = "⏳ Ejecutando..."; }
+    const noSig = document.getElementById("qa-no-signal");
+    if (btn) { btn.disabled = true; btn.textContent = "⏳ Ejecutando (puede tardar ~30s)..."; }
+    if (noSig) noSig.innerHTML = '<i style="color:#e65100;">Ejecutando agentes LLM… esto puede tardar 20-40 segundos.</i>';
     try {
         const res = await fetch("/api/quantagent", { method: "POST" });
+        const ct = res.headers.get("content-type") || "";
+        if (!ct.includes("application/json")) {
+            const txt = await res.text();
+            console.error("QA non-JSON response:", txt.slice(0, 200));
+            if (noSig) noSig.innerHTML = '<i style="color:#c62828;">Error: el servidor devolvio una respuesta no-JSON. Puede estar redesplegando — intenta de nuevo en 1 minuto.</i>';
+            return;
+        }
         const d = await res.json();
         if (d.ok) {
             _renderQASignal(d);
             _loadQAPaperTrades();
-            // Update gate
             const gateEl = document.getElementById("qa-gate-status");
             if (gateEl) gateEl.textContent = "Run completado ✅";
         } else {
-            alert("Error: " + (d.error || "unknown"));
+            if (noSig) noSig.innerHTML = `<i style="color:#c62828;">Error: ${d.error || "desconocido"}</i>`;
         }
     } catch(e) {
-        alert("Error: " + e.message);
+        console.error("QA run error:", e);
+        if (noSig) noSig.innerHTML = `<i style="color:#c62828;">Error: ${e.message}. Intenta de nuevo.</i>`;
     } finally {
         if (btn) { btn.disabled = false; btn.textContent = "⚡ Ejecutar agentes"; }
     }
