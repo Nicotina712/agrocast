@@ -2476,6 +2476,35 @@ def api_quantagent():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/quantagent/mt5signal")
+def api_quantagent_mt5signal():
+    """Lightweight signal endpoint for MT5 EA.
+    Returns ONLY the fields the EA needs — minimal payload for WebRequest.
+    """
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.quantagent.runner import get_latest_signal
+        latest = get_latest_signal()
+        if not latest:
+            return jsonify({"signal": "FLAT", "reason": "no_data"})
+
+        sig = latest.get("signal", {})
+        return jsonify({
+            "signal": sig.get("signal", "FLAT"),
+            "entry": sig.get("entry"),
+            "stop_loss": sig.get("stop_loss"),
+            "take_profit": sig.get("take_profit"),
+            "contracts": sig.get("contracts", 0),
+            "confidence": sig.get("confidence", "LOW"),
+            "risk_reward": sig.get("risk_reward"),
+            "volatility_regime": sig.get("volatility_regime"),
+            "timestamp": latest.get("timestamp"),
+            "price_at_signal": latest.get("current_price"),
+        })
+    except Exception as e:
+        return jsonify({"signal": "FLAT", "reason": str(e)}), 500
+
+
 @app.route("/api/quantagent/log")
 def api_quantagent_log():
     """GET: paper trade log with stats."""
