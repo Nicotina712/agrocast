@@ -195,9 +195,11 @@ def _format_bars_for_llm(bars_summary: dict) -> str:
     return "\n".join(lines)
 
 
-def call_trend_agent(bars_summary: dict) -> dict:
+def call_trend_agent(bars_summary: dict, track_record: str = "") -> dict:
     """Call the Trend Agent with price data and return parsed JSON."""
     context = _format_bars_for_llm(bars_summary)
+    if track_record:
+        context += f"\n\n{track_record}"
     client = _get_client()
 
     try:
@@ -220,10 +222,12 @@ def call_trend_agent(bars_summary: dict) -> dict:
         return {"error": str(e)}
 
 
-def call_risk_agent(bars_summary: dict, trend_output: dict) -> dict:
+def call_risk_agent(bars_summary: dict, trend_output: dict, track_record: str = "") -> dict:
     """Call the Risk Agent with price data + Trend Agent's analysis."""
     context = _format_bars_for_llm(bars_summary)
     context += f"\n\n=== ANALISIS DEL TREND AGENT ===\n{json.dumps(trend_output, indent=2, ensure_ascii=False)}"
+    if track_record:
+        context += f"\n\n{track_record}"
 
     client = _get_client()
 

@@ -72,7 +72,29 @@ except ImportError:
 # ── Healthcheck endpoint (Render uses this) ───────────────────────────
 @app.route("/healthz")
 def _healthz():
-    return {"status": "ok", "service": "agrocast"}, 200
+    from datetime import datetime
+    data_dir = Path(os.getenv("DATA_DIR", str(ROOT / "data")))
+    artifacts_dir = Path(os.getenv("ARTIFACTS_DIR", str(ROOT / "artifacts")))
+
+    # Quick freshness check (non-blocking)
+    checks = {}
+    for label, path in [
+        ("forecast", artifacts_dir / "forecast.csv"),
+        ("signals", artifacts_dir / "signals.csv"),
+        ("raw_market", data_dir / "raw_market.csv"),
+    ]:
+        if path.exists():
+            age_h = (datetime.now().timestamp() - path.stat().st_mtime) / 3600
+            checks[label] = {"ok": age_h < 48, "age_hours": round(age_h, 1)}
+        else:
+            checks[label] = {"ok": False, "age_hours": None}
+
+    return {
+        "status": "ok",
+        "service": "agrocast",
+        "server_time": datetime.now().isoformat(),
+        "data_freshness": checks,
+    }, 200
 
 # ── Bootstrap pipeline on first deploy (no artifacts on disk) ─────────
 if os.getenv("BOOTSTRAP_PIPELINE", "0") == "1":

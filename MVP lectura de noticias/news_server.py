@@ -820,7 +820,9 @@ def get_news():
         forecast_horizons   = load_forecast("horizons")
         price_14d    = load_14d_forecast()
 
+        import datetime as _dtm
         partial_data = {
+            "server_time":    _dtm.datetime.now().isoformat(),
             "articles":       articles[:10],
             "market":         market,
             "history":        load_history(90),
@@ -2171,6 +2173,20 @@ def get_ml_quality():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/ie_accountability")
+def get_ie_accountability():
+    """GET /api/ie_accountability — IE verdict history with direction & range accuracy."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.intel.ie_accountability import get_verdict_history
+        import datetime as _dtm
+        result = get_verdict_history()
+        result["server_time"] = _dtm.datetime.now().isoformat()
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 def _ie_verdict_to_trader_format(ie_data: dict) -> dict:
     """Transform enriched IE verdict into the format the trader frontend expects."""
     v = ie_data.get("verdict") or {}
@@ -2458,10 +2474,13 @@ def get_next_event():
 
 @app.route("/api/quantagent", methods=["GET", "POST"])
 def api_quantagent():
-    """GET: latest signal + status. POST: run agents (force)."""
+    """GET: latest signal + status. POST: run agents (force, requires API key)."""
     try:
         sys.path.insert(0, PROJECT_ROOT)
         if request.method == "POST":
+            # POST triggers expensive LLM compute — require auth
+            if not _check_api_key():
+                return jsonify({"ok": False, "error": "unauthorized — API key required for POST"}), 403
             from src.quantagent.runner import run_quantagent
             result = run_quantagent(force=True)
             return jsonify({"ok": True, **result})
@@ -2538,7 +2557,7 @@ def api_quantagent_cron():
                         "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
                         "rth_window": "08:30-13:20 CT"})
 
-    # ── Run agents ──
+    # ── Run agents (runner now auto-evaluates pending trades & fetches fresh bars) ──
     try:
         sys.path.insert(0, PROJECT_ROOT)
         from src.quantagent.runner import run_quantagent
@@ -2558,8 +2577,9 @@ def api_quantagent_log():
     try:
         sys.path.insert(0, PROJECT_ROOT)
         from src.quantagent.paper_log import load_log
+        import datetime as _dtm
         log = load_log()
-        return jsonify({"ok": True, **log})
+        return jsonify({"ok": True, "server_time": _dtm.datetime.now().isoformat(), **log})
     except Exception as e:
         return jsonify({"ok": False, "error": str(e)}), 500
 

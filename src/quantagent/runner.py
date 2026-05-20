@@ -29,12 +29,96 @@ if _ROOT not in sys.path:
 from src.intraday.data.tick_feed import fetch_intraday_bars
 from src.intraday.features.microstructure import build_intraday_features
 from src.quantagent.agents import call_trend_agent, call_risk_agent
-from src.quantagent.paper_log import log_signal, load_log
+from src.quantagent.paper_log import log_signal, load_log, evaluate_pending
 
 _OUT_DIR = os.path.join(_ROOT, "artifacts", "quantagent")
 _SIGNAL_FILE = os.path.join(_OUT_DIR, "latest_signal.json")
 _GATE_FILE = os.path.join(_OUT_DIR, "run_gate.json")
 _MAX_RUNS_PER_DAY = 3
+
+
+def _build_track_record() -> str:
+    """Build a text summary of past QuantAgent performance for LLM feedback."""
+    try:
+        log = load_log()
+        trades = log.get("trades", [])
+        summary = log.get("summary", {})
+
+        if not trades:
+            return ""
+
+        active = [t for t in trades if t.get("signal") != "FLAT"]
+        evaluated = [t for t in active if t.get("evaluated")]
+
+        if not evaluated:
+            n_pending = len(active)
+            if n_pending == 0:
+                return ""
+            return (
+                f"\n=== TRACK RECORD QUANTAGENT (sin evaluar aún) ===\n"
+                f"Señales emitidas: {len(trades)} | Activas (no FLAT): {n_pending} | "
+                f"Evaluadas: 0 (esperando datos de precio)\n"
+            )
+
+        wins = [t for t in evaluated if (t.get("pnl_4h") or 0) > 0]
+        losses = [t for t in evaluated if (t.get("pnl_4h") or 0) < 0]
+        avg_pnl = sum(t.get("pnl_4h", 0) for t in evaluated) / len(evaluated)
+
+        lines = [
+            "\n=== TRACK RECORD QUANTAGENT (verificado) ===",
+            f"Total señales: {len(trades)} | Activas: {len(active)} | Evaluadas: {len(evaluated)}",
+            f"Wins: {len(wins)} | Losses: {len(losses)} | "
+            f"Win Rate: {len(wins)/len(evaluated)*100:.0f}%",
+            f"PnL promedio 4h: {avg_pnl:+.2f} cents/bu",
+        ]
+
+        # By confidence
+        for conf in ("HIGH", "MEDIUM", "LOW"):
+            conf_eval = [t for t in evaluated if t.get("confidence") == conf]
+            if conf_eval:
+                conf_wins = sum(1 for t in conf_eval if (t.get("pnl_4h") or 0) > 0)
+                lines.append(
+                    f"  {conf}: {conf_wins}/{len(conf_eval)} wins "
+                    f"({conf_wins/len(conf_eval)*100:.0f}%)"
+                )
+
+        # SL/TP hit rates
+        sl_hits = [t for t in evaluated if t.get("would_hit_sl")]
+        tp_hits = [t for t in evaluated if t.get("would_hit_tp")]
+        if sl_hits or tp_hits:
+            lines.append(
+                f"SL hit rate: {len(sl_hits)}/{len(evaluated)} | "
+                f"TP hit rate: {len(tp_hits)}/{len(evaluated)}"
+            )
+
+        # Last 5 evaluated
+        lines.append("\nÚltimas 5 señales evaluadas:")
+        for t in reversed(evaluated[-5:]):
+            pnl = t.get("pnl_4h", 0) or 0
+            hit = "✓" if pnl > 0 else "✗"
+            lines.append(
+                f"  {t.get('timestamp', '?')[:16]}: {t['signal']} "
+                f"@ {t.get('price_at_signal', '?')} → "
+                f"4h: {pnl:+.1f} [{hit}] | "
+                f"SL={'hit' if t.get('would_hit_sl') else 'ok'} "
+                f"TP={'hit' if t.get('would_hit_tp') else 'miss'}"
+            )
+
+        # Calibration
+        wr = len(wins) / len(evaluated)
+        if len(evaluated) >= 5 and wr < 0.4:
+            lines.append(
+                "\n⚠️ CALIBRACIÓN: Win rate < 40%. Ser más conservador, favorecer FLAT."
+            )
+        elif len(evaluated) >= 5 and wr > 0.65:
+            lines.append(
+                "\n✓ CALIBRACIÓN: Buen track record (>65%). Mantener nivel de convicción."
+            )
+
+        lines.append("")
+        return "\n".join(lines)
+    except Exception:
+        return ""
 
 
 def _check_gate() -> tuple[bool, str]:
@@ -271,31 +355,51 @@ def run_quantagent(force: bool = False) -> dict:
 
     t0 = time.time()
 
-    # 1. Fetch and build features
-    print("[QA] Fetching 60m bars...")
-    bars = fetch_intraday_bars(interval="60m", use_cache=True, cache_max_age_min=60)
+    # 1. Fetch and build features (force fresh data, no stale cache)
+    print("[QA] Fetching 60m bars (fresh)...")
+    bars = fetch_intraday_bars(interval="60m", use_cache=True, cache_max_age_min=15)
     if bars.empty:
         return {"error": "No bars available"}
 
     print("[QA] Building features...")
     feat = build_intraday_features(bars, interval="60m")
 
+    # 1b. Evaluate pending paper trades against new bars
+    print("[QA] Evaluating pending paper trades...")
+    try:
+        n_eval = evaluate_pending(bars)
+        if n_eval:
+            print(f"[QA] Evaluated {n_eval} pending trades against actual prices")
+    except Exception as e:
+        print(f"[QA] Evaluate pending failed (non-blocking): {e}")
+
+    # 1c. Load track record for agent feedback
+    track_record = _build_track_record()
+
     # 2. Summarize for LLM
     summary = _build_bars_summary(feat)
     current_price = summary.get("current_state", {}).get("close", 0)
 
-    # 3. Call agents
+    # 3. Call agents (with track record feedback)
     print("[QA] Calling Trend Agent...")
-    trend = call_trend_agent(summary)
+    trend = call_trend_agent(summary, track_record=track_record)
     print(f"[QA] Trend: {trend.get('trend', '?')} | Setup: {trend.get('setup', {}).get('direction', '?')}")
 
     print("[QA] Calling Risk Agent...")
-    risk = call_risk_agent(summary, trend)
+    risk = call_risk_agent(summary, trend, track_record=track_record)
     print(f"[QA] Risk: viable={risk.get('trade_viable', '?')} | vol={risk.get('volatility_regime', '?')}")
 
     # 4. Synthesize
     signal = _synthesize_signal(trend, risk, current_price)
     elapsed = time.time() - t0
+
+    # Load evaluation stats for the response
+    eval_stats = {}
+    try:
+        eval_log = load_log()
+        eval_stats = eval_log.get("summary", {})
+    except Exception:
+        pass
 
     result = {
         "timestamp": datetime.now().isoformat(),
@@ -310,6 +414,7 @@ def run_quantagent(force: bool = False) -> dict:
             "session_range": summary.get("session_range"),
             "multi_day": summary.get("multi_day"),
         },
+        "evaluation_stats": eval_stats,
         "execution_time_seconds": round(elapsed, 1),
         "from_cache": False,
     }
