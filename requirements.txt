@@ -41,3 +41,6 @@ psycopg2-binary>=2.9
 
 # ── Performance (parquet I/O) ────────────────────────────
 pyarrow>=15.0
+
+# ── Timezone (cron RTH window check) ────────────────────
+pytz>=2024.1

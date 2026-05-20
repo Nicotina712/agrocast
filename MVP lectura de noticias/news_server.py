@@ -2505,6 +2505,53 @@ def api_quantagent_mt5signal():
         return jsonify({"signal": "FLAT", "reason": str(e)}), 500
 
 
+@app.route("/api/quantagent/cron", methods=["GET", "POST"])
+def api_quantagent_cron():
+    """Auto-execution endpoint for external cron services.
+    Protected by CRON_SECRET token. Checks RTH window before running.
+    Usage: GET /api/quantagent/cron?token=<CRON_SECRET>
+    Schedule: 09:00, 11:00, 13:00 CT (Mon-Fri)
+    """
+    from datetime import datetime as _dt
+    import pytz
+
+    # ── Auth ──
+    token = request.args.get("token") or request.headers.get("X-Cron-Token", "")
+    expected = os.environ.get("CRON_SECRET", "")
+    if not expected or not secrets.compare_digest(token, expected):
+        return jsonify({"ok": False, "error": "unauthorized"}), 403
+
+    # ── RTH window check (08:30-13:20 CT, Mon-Fri) ──
+    ct = pytz.timezone("US/Central")
+    now_ct = _dt.now(ct)
+    weekday = now_ct.weekday()  # 0=Mon, 6=Sun
+    hour_min = now_ct.hour * 60 + now_ct.minute  # minutes since midnight
+    rth_open = 8 * 60 + 30   # 08:30 CT
+    rth_close = 13 * 60 + 20  # 13:20 CT
+
+    if weekday >= 5:  # Sat/Sun
+        return jsonify({"ok": True, "skipped": True, "reason": "weekend",
+                        "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT")})
+
+    if hour_min < rth_open or hour_min > rth_close:
+        return jsonify({"ok": True, "skipped": True, "reason": "outside_rth",
+                        "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
+                        "rth_window": "08:30-13:20 CT"})
+
+    # ── Run agents ──
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.quantagent.runner import run_quantagent
+        result = run_quantagent(force=True)
+        return jsonify({"ok": True, "skipped": False,
+                        "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
+                        **result})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/quantagent/log")
 def api_quantagent_log():
     """GET: paper trade log with stats."""

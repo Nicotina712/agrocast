@@ -60,3 +60,5 @@ services:
         sync: false
       - key: AGROCAST_API_KEY
         sync: false
+      - key: CRON_SECRET
+        sync: false
