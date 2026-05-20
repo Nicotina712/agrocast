@@ -202,7 +202,7 @@ def call_trend_agent(bars_summary: dict) -> dict:
 
     try:
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=1200,
             system=TREND_AGENT_SYSTEM,
             messages=[{"role": "user", "content": context}],
@@ -229,7 +229,7 @@ def call_risk_agent(bars_summary: dict, trend_output: dict) -> dict:
 
     try:
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-sonnet-4-6",
             max_tokens=1000,
             system=RISK_AGENT_SYSTEM,
             messages=[{"role": "user", "content": context}],
