@@ -2341,6 +2341,29 @@ def get_market_synthesis():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/ie_debate")
+def get_ie_debate():
+    """GET /api/ie_debate — Full multi-agent debate data (agents + verdict)."""
+    try:
+        ie_path = os.path.join(PROJECT_ROOT, "data", "intelligence_engine_verdict.json")
+        if not os.path.exists(ie_path):
+            return jsonify({"ok": False, "error": "IE verdict not available"}), 404
+        with open(ie_path, "r", encoding="utf-8") as f:
+            ie_data = json.load(f)
+        return jsonify({
+            "ok": True,
+            "timestamp": ie_data.get("timestamp"),
+            "current_price": ie_data.get("current_price"),
+            "agents": ie_data.get("agents", {}),
+            "verdict": ie_data.get("verdict", {}),
+            "context_summary": ie_data.get("context_summary", {}),
+            "pipeline": ie_data.get("pipeline", {}),
+            "execution_time_seconds": ie_data.get("execution_time_seconds"),
+        })
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/news_intel")
 def get_news_intel():
     """GET /api/news_intel — Análisis LLM de noticias agregado por driver."""

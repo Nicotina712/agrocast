@@ -1084,6 +1084,96 @@
     <div id="trader-synthesis-content" style="margin-top:8px"><i style="color:#888">Cargando brief tecnico…</i></div>
   </div>
 
+  <!-- ── Multi-Agent Debate Panel ──────────────────────────────── -->
+  <div class="card" style="margin-bottom:18px;border-left:4px solid #7b1fa2;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span style="font-size:.6rem;font-weight:600;color:#7b1fa2;text-transform:uppercase;letter-spacing:1.5px;
+                   background:#f3e5f5;padding:2px 6px;border-radius:3px;">DEBATE 5 AGENTES</span>
+      <span style="font-size:.7rem;color:#6a7a92;">Bull · Bear · Risk · Technical → Fund Manager</span>
+      <span id="debate-timestamp" style="margin-left:auto;font-size:.65rem;color:#aaa;"></span>
+    </div>
+
+    <!-- Verdict banner -->
+    <div id="debate-verdict-banner" style="display:none;margin-bottom:14px;padding:12px 16px;border-radius:8px;
+         background:linear-gradient(135deg,#f5f5f5,#fff);border:1px solid #e0e0e0;">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div id="debate-verdict-badge" style="font-size:1.1rem;font-weight:800;padding:6px 16px;border-radius:6px;"></div>
+        <div style="flex:1;min-width:200px;">
+          <div id="debate-verdict-reasoning" style="font-size:.82rem;color:#444;line-height:1.5;"></div>
+        </div>
+        <div id="debate-confidence" style="text-align:center;min-width:60px;">
+          <div style="font-size:.6rem;text-transform:uppercase;color:#888;letter-spacing:1px;">Conf.</div>
+          <div id="debate-conf-value" style="font-size:1.4rem;font-weight:700;"></div>
+        </div>
+      </div>
+      <!-- Bull/Bear balance bar -->
+      <div id="debate-balance-row" style="display:none;margin-top:10px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:.72rem;">
+          <span id="debate-bull-pct" style="color:#2e7d32;font-weight:700;min-width:32px;"></span>
+          <div style="flex:1;height:10px;border-radius:5px;overflow:hidden;background:#eee;display:flex;">
+            <div id="debate-bull-bar" style="background:linear-gradient(90deg,#66bb6a,#43a047);transition:width .5s;"></div>
+            <div id="debate-bear-bar" style="background:linear-gradient(90deg,#ef5350,#c62828);transition:width .5s;"></div>
+          </div>
+          <span id="debate-bear-pct" style="color:#c62828;font-weight:700;min-width:32px;text-align:right;"></span>
+        </div>
+        <div id="debate-balance-explanation" style="font-size:.7rem;color:#777;margin-top:4px;line-height:1.4;"></div>
+      </div>
+    </div>
+
+    <!-- Agent cards grid -->
+    <div id="debate-agents-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <!-- Bull -->
+      <div id="debate-bull-card" class="debate-agent-card" style="padding:10px 12px;border-radius:6px;border:1px solid #c8e6c9;background:#f1f8e9;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="font-size:.95rem;">📈</span>
+          <span style="font-size:.7rem;font-weight:700;color:#2e7d32;text-transform:uppercase;letter-spacing:.5px;">Bull Analyst</span>
+          <span id="debate-bull-conviction" style="margin-left:auto;font-size:.6rem;padding:1px 6px;border-radius:3px;"></span>
+        </div>
+        <div id="debate-bull-thesis" style="font-size:.78rem;color:#333;line-height:1.45;margin-bottom:6px;"></div>
+        <div id="debate-bull-targets" style="font-size:.7rem;color:#555;"></div>
+        <details style="margin-top:6px;">
+          <summary style="font-size:.65rem;color:#888;cursor:pointer;">Argumentos detallados</summary>
+          <div id="debate-bull-args" style="font-size:.72rem;color:#555;margin-top:4px;line-height:1.4;"></div>
+        </details>
+      </div>
+      <!-- Bear -->
+      <div id="debate-bear-card" class="debate-agent-card" style="padding:10px 12px;border-radius:6px;border:1px solid #ffcdd2;background:#fce4ec;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="font-size:.95rem;">📉</span>
+          <span style="font-size:.7rem;font-weight:700;color:#c62828;text-transform:uppercase;letter-spacing:.5px;">Bear Analyst</span>
+          <span id="debate-bear-conviction" style="margin-left:auto;font-size:.6rem;padding:1px 6px;border-radius:3px;"></span>
+        </div>
+        <div id="debate-bear-thesis" style="font-size:.78rem;color:#333;line-height:1.45;margin-bottom:6px;"></div>
+        <div id="debate-bear-targets" style="font-size:.7rem;color:#555;"></div>
+        <details style="margin-top:6px;">
+          <summary style="font-size:.65rem;color:#888;cursor:pointer;">Argumentos detallados</summary>
+          <div id="debate-bear-args" style="font-size:.72rem;color:#555;margin-top:4px;line-height:1.4;"></div>
+        </details>
+      </div>
+      <!-- Risk -->
+      <div id="debate-risk-card" class="debate-agent-card" style="padding:10px 12px;border-radius:6px;border:1px solid #ffe0b2;background:#fff8e1;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="font-size:.95rem;">⚠️</span>
+          <span style="font-size:.7rem;font-weight:700;color:#e65100;text-transform:uppercase;letter-spacing:.5px;">Risk Assessor</span>
+          <span id="debate-risk-regime" style="margin-left:auto;font-size:.6rem;padding:1px 6px;border-radius:3px;background:#fff3e0;color:#e65100;"></span>
+        </div>
+        <div id="debate-risk-content" style="font-size:.78rem;color:#333;line-height:1.45;"></div>
+      </div>
+      <!-- Technical -->
+      <div id="debate-tech-card" class="debate-agent-card" style="padding:10px 12px;border-radius:6px;border:1px solid #bbdefb;background:#e3f2fd;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+          <span style="font-size:.95rem;">📊</span>
+          <span style="font-size:.7rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:.5px;">Technical Analyst</span>
+          <span id="debate-tech-bias" style="margin-left:auto;font-size:.6rem;padding:1px 6px;border-radius:3px;background:#e3f2fd;color:#1565c0;"></span>
+        </div>
+        <div id="debate-tech-content" style="font-size:.78rem;color:#333;line-height:1.45;"></div>
+      </div>
+    </div>
+
+    <!-- Pipeline meta -->
+    <div id="debate-meta" style="font-size:.65rem;color:#aaa;display:flex;gap:12px;flex-wrap:wrap;"></div>
+  </div>
+
   <div style="background:#e3f2fd;border-left:4px solid #1565c0;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#0d3c6e;line-height:1.7;">
     <b>Modulo Trader</b> — Herramienta para operar futuros ZS (soybeans CBOT).<br>
     Stop Loss y Take Profit calculados con ATR(14). Curva de futuros (term structure).<br>
@@ -3574,6 +3664,7 @@ async function loadTrader() {
         loadCotAnalogs();
         loadCurveHistory();
         loadTraderStability();
+        loadDebatePanel();
     } catch(e) { console.error("trader fetch error:", e); }
 }
 
@@ -4554,6 +4645,163 @@ function _renderTraderSynthesis(el, d) {
 
     el.innerHTML = html;
 }
+
+// ── Multi-Agent Debate Panel ─────────────────────────────────────────
+async function loadDebatePanel() {
+    try {
+        const res = await fetch("/api/ie_debate");
+        const d = await res.json();
+        if (!d.ok) return;
+
+        const v = d.verdict || {};
+        const agents = d.agents || {};
+
+        // Timestamp
+        const tsEl = document.getElementById("debate-timestamp");
+        if (tsEl && d.timestamp) tsEl.textContent = d.timestamp.slice(0,16).replace("T"," ");
+
+        // Verdict banner
+        const banner = document.getElementById("debate-verdict-banner");
+        if (banner) {
+            banner.style.display = "block";
+            const vMap = {
+                STRONG_BUY:  {label:"COMPRA FUERTE",bg:"#1b5e20",color:"#fff"},
+                BUY:         {label:"COMPRA",bg:"#2e7d32",color:"#fff"},
+                HOLD:        {label:"MANTENER",bg:"#f57f17",color:"#fff"},
+                SELL:        {label:"VENTA",bg:"#c62828",color:"#fff"},
+                STRONG_SELL: {label:"VENTA FUERTE",bg:"#b71c1c",color:"#fff"},
+            };
+            const vm = vMap[v.verdict] || {label:v.verdict||"?",bg:"#888",color:"#fff"};
+            const badge = document.getElementById("debate-verdict-badge");
+            if (badge) { badge.textContent = vm.label; badge.style.background = vm.bg; badge.style.color = vm.color; }
+
+            const rEl = document.getElementById("debate-verdict-reasoning");
+            if (rEl) rEl.textContent = v.reasoning || "";
+
+            const confEl = document.getElementById("debate-conf-value");
+            if (confEl) {
+                const pct = Math.round((v.confidence||0)*100);
+                confEl.textContent = pct + "%";
+                confEl.style.color = pct >= 60 ? "#2e7d32" : pct >= 40 ? "#f57f17" : "#c62828";
+            }
+
+            // Balance bar
+            const bb = v.bull_bear_balance || {};
+            if (bb.bull_weight != null) {
+                const balRow = document.getElementById("debate-balance-row");
+                if (balRow) balRow.style.display = "block";
+                const bPct = Math.round(bb.bull_weight*100);
+                const ePct = Math.round(bb.bear_weight*100);
+                const bullBar = document.getElementById("debate-bull-bar");
+                const bearBar = document.getElementById("debate-bear-bar");
+                if (bullBar) bullBar.style.width = bPct + "%";
+                if (bearBar) bearBar.style.width = ePct + "%";
+                document.getElementById("debate-bull-pct").textContent = bPct + "%";
+                document.getElementById("debate-bear-pct").textContent = ePct + "%";
+                const explEl = document.getElementById("debate-balance-explanation");
+                if (explEl && bb.explanation) explEl.textContent = bb.explanation;
+            }
+        }
+
+        // Agent cards
+        _renderDebateAgent("bull", agents.bull, {emoji:"📈", color:"#2e7d32"});
+        _renderDebateAgent("bear", agents.bear, {emoji:"📉", color:"#c62828"});
+        _renderDebateRisk(agents.risk);
+        _renderDebateTech(agents.technical);
+
+        // Meta
+        const metaEl = document.getElementById("debate-meta");
+        if (metaEl) {
+            const cs = d.context_summary || {};
+            const p = d.pipeline || {};
+            metaEl.innerHTML = [
+                `Articulos: ${cs.articles_analyzed||0} (${cs.articles_escalated||0} escalados)`,
+                `Noticias: ${cs.bull_news||0} alcistas / ${cs.bear_news||0} bajistas`,
+                `RAG docs: ${cs.kb_documents_retrieved||0}`,
+                `Tier-1: ${p.tier1_method||"?"}`,
+                d.execution_time_seconds ? `Tiempo: ${d.execution_time_seconds}s` : "",
+            ].filter(Boolean).join(" · ");
+        }
+    } catch(e) { console.error("debate panel error:", e); }
+}
+
+function _renderDebateAgent(side, agent, opts) {
+    if (!agent) return;
+    const convMap = {ALTA:{bg:"#c8e6c9",color:"#1b5e20"}, MEDIA:{bg:"#fff9c4",color:"#f57f17"}, BAJA:{bg:"#ffcdd2",color:"#c62828"}};
+    const conv = convMap[agent.conviction] || {bg:"#eee",color:"#666"};
+
+    const convEl = document.getElementById(`debate-${side}-conviction`);
+    if (convEl) { convEl.textContent = agent.conviction||"?"; convEl.style.background = conv.bg; convEl.style.color = conv.color; }
+
+    const thEl = document.getElementById(`debate-${side}-thesis`);
+    if (thEl) thEl.textContent = agent.thesis || "";
+
+    const tgEl = document.getElementById(`debate-${side}-targets`);
+    if (tgEl) {
+        const t7 = agent.price_target_7d || {};
+        const t30 = agent.price_target_30d || {};
+        tgEl.innerHTML = `<b>7d:</b> ${t7.low||"?"} – ${t7.high||"?"} · <b>30d:</b> ${t30.low||"?"} – ${t30.high||"?"}`;
+    }
+
+    const argsEl = document.getElementById(`debate-${side}-args`);
+    if (argsEl && agent.arguments) {
+        let html = "";
+        for (const a of agent.arguments) {
+            html += `<div style="margin-bottom:5px;padding-left:8px;border-left:2px solid ${opts.color}22;">
+                <b>${a.point||""}</b><br>
+                <span style="color:#666;">${a.evidence||""}</span>
+                ${a.historical_support ? `<br><span style="color:#888;font-size:.68rem;">↳ ${a.historical_support}</span>` : ""}
+            </div>`;
+        }
+        if (agent.key_risk_to_thesis) {
+            html += `<div style="margin-top:6px;padding:4px 8px;background:#fff3e0;border-radius:4px;font-size:.68rem;">
+                <b>Riesgo a la tesis:</b> ${agent.key_risk_to_thesis}</div>`;
+        }
+        argsEl.innerHTML = html;
+    }
+}
+
+function _renderDebateRisk(risk) {
+    if (!risk) return;
+    const regEl = document.getElementById("debate-risk-regime");
+    if (regEl) regEl.textContent = risk.regime || "?";
+
+    const cEl = document.getElementById("debate-risk-content");
+    if (!cEl) return;
+    let html = "";
+    if (risk.volatility_assessment) html += `<div><b>Volatilidad:</b> ${risk.volatility_assessment}</div>`;
+    if (risk.event_risk_next_7d) html += `<div><b>Riesgo evento 7d:</b> ${risk.event_risk_next_7d}</div>`;
+    if (risk.max_recommended_exposure) html += `<div><b>Exposicion max:</b> ${risk.max_recommended_exposure}</div>`;
+    if (risk.key_risk_factors && risk.key_risk_factors.length) {
+        html += `<div style="margin-top:4px;"><b>Factores clave:</b></div><ul style="margin:2px 0 0 16px;padding:0;">`;
+        for (const f of risk.key_risk_factors.slice(0,4)) html += `<li>${typeof f === "string" ? f : (f.factor||f.risk||JSON.stringify(f))}</li>`;
+        html += `</ul>`;
+    }
+    cEl.innerHTML = html || "<i>Sin datos</i>";
+}
+
+function _renderDebateTech(tech) {
+    if (!tech) return;
+    const biasEl = document.getElementById("debate-tech-bias");
+    if (biasEl) {
+        const trend = tech.primary_trend || tech.directional_bias || "?";
+        biasEl.textContent = trend;
+        biasEl.style.color = trend.toLowerCase().includes("alcist") || trend.toLowerCase().includes("bull") ? "#2e7d32" :
+                             trend.toLowerCase().includes("bajist") || trend.toLowerCase().includes("bear") ? "#c62828" : "#1565c0";
+    }
+
+    const cEl = document.getElementById("debate-tech-content");
+    if (!cEl) return;
+    let html = "";
+    if (tech.primary_trend) html += `<div><b>Tendencia:</b> ${tech.primary_trend} (fuerza: ${tech.trend_strength||"?"})</div>`;
+    if (tech.key_support) html += `<div><b>Soporte:</b> ${Array.isArray(tech.key_support) ? tech.key_support.join(", ") : tech.key_support}</div>`;
+    if (tech.key_resistance) html += `<div><b>Resistencia:</b> ${Array.isArray(tech.key_resistance) ? tech.key_resistance.join(", ") : tech.key_resistance}</div>`;
+    if (tech.setup) html += `<div><b>Setup:</b> ${tech.setup}</div>`;
+    if (tech.bollinger_position) html += `<div><b>Bollinger:</b> ${tech.bollinger_position}</div>`;
+    if (tech._commentary) html += `<div style="margin-top:4px;font-style:italic;color:#555;font-size:.72rem;">${tech._commentary}</div>`;
+    cEl.innerHTML = html || "<i>Sin datos</i>";
+}
+
 
 async function loadNewsIntel() {
     const sumEl  = document.getElementById("intel-summary");
