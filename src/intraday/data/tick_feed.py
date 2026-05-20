@@ -147,7 +147,7 @@ def fetch_intraday_bars(
         df.to_csv(path.replace(".parquet", ".csv"), index=False)
 
     print(f"[tick_feed] OK {symbol} {interval}: {len(df)} bars "
-          f"[{df['datetime'].min()} → {df['datetime'].max()}]")
+          f"[{df['datetime'].min()} -> {df['datetime'].max()}]")
     return df
 
 
