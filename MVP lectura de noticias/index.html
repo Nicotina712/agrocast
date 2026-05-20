@@ -1084,6 +1084,47 @@
     <div id="trader-synthesis-content" style="margin-top:8px"><i style="color:#888">Cargando brief tecnico…</i></div>
   </div>
 
+  <!-- ── Trader Cockpit: niveles técnicos + USDA calendar + volatilidad ── -->
+  <div class="card" style="margin-bottom:18px;border-left:4px solid #ff6f00;background:linear-gradient(135deg,#fff8e1 0%,#fff 100%);">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span style="font-size:.6rem;font-weight:600;color:#ff6f00;text-transform:uppercase;letter-spacing:1.5px;
+                   background:#fff3e0;padding:2px 6px;border-radius:3px;">TRADER COCKPIT</span>
+      <span style="font-size:.7rem;color:#6a7a92;">Niveles clave · Eventos · Volatilidad · Convicción</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <!-- Col 1: Technical Levels -->
+      <div id="tc-levels" style="padding:10px;border-radius:6px;border:1px solid #c8e6c9;background:#f9fdf9;">
+        <div style="font-size:.65rem;font-weight:700;color:#2e7d32;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">📊 Niveles Clave</div>
+        <div id="tc-levels-content" style="font-size:.78rem;color:#333;line-height:1.6;">Cargando…</div>
+      </div>
+
+      <!-- Col 2: USDA Calendar + Conviction -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div id="tc-events" style="padding:10px;border-radius:6px;border:1px solid #bbdefb;background:#f5f9ff;flex:1;">
+          <div style="font-size:.65rem;font-weight:700;color:#1565c0;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">📅 Próximos Eventos USDA</div>
+          <div id="tc-events-content" style="font-size:.76rem;color:#333;line-height:1.5;">Cargando…</div>
+        </div>
+        <div id="tc-conviction" style="padding:10px;border-radius:6px;border:1px solid #e1bee7;background:#fdf5ff;">
+          <div style="font-size:.65rem;font-weight:700;color:#7b1fa2;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">🎯 Convicción del Debate</div>
+          <div id="tc-conviction-content" style="font-size:.78rem;color:#333;">Cargando…</div>
+        </div>
+      </div>
+
+      <!-- Col 3: Volatility + Invalidation -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div id="tc-vol" style="padding:10px;border-radius:6px;border:1px solid #ffe0b2;background:#fffbf5;flex:1;">
+          <div style="font-size:.65rem;font-weight:700;color:#e65100;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;">⚡ Volatilidad</div>
+          <div id="tc-vol-content" style="font-size:.78rem;color:#333;line-height:1.5;">Cargando…</div>
+        </div>
+        <div id="tc-invalidation" style="padding:10px;border-radius:6px;border:1px solid #ffcdd2;background:#fff5f5;">
+          <div style="font-size:.65rem;font-weight:700;color:#c62828;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;">🚫 Invalidación</div>
+          <div id="tc-invalidation-content" style="font-size:.72rem;color:#555;line-height:1.4;">Cargando…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── Multi-Agent Debate Panel ──────────────────────────────── -->
   <div class="card" style="margin-bottom:18px;border-left:4px solid #7b1fa2;">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -3664,6 +3705,7 @@ async function loadTrader() {
         loadCotAnalogs();
         loadCurveHistory();
         loadTraderStability();
+        loadTraderCockpit();
         loadDebatePanel();
     } catch(e) { console.error("trader fetch error:", e); }
 }
@@ -4645,6 +4687,164 @@ function _renderTraderSynthesis(el, d) {
 
     el.innerHTML = html;
 }
+
+// ── Trader Cockpit ──────────────────────────────────────────────────
+async function loadTraderCockpit() {
+    // Fetch debate data + events + signal in parallel
+    const [debateRes, eventsRes, signalRes] = await Promise.allSettled([
+        fetch("/api/ie_debate").then(r=>r.json()),
+        fetch("/api/next_event").then(r=>r.json()),
+        fetch("/api/signal_breakdown").then(r=>r.json()),
+    ]);
+
+    const debate = debateRes.status === "fulfilled" ? debateRes.value : null;
+    const events = eventsRes.status === "fulfilled" ? eventsRes.value : null;
+    const signal = signalRes.status === "fulfilled" ? signalRes.value : null;
+
+    // ── 1. Technical Levels ──
+    const levelsEl = document.getElementById("tc-levels-content");
+    if (levelsEl && debate?.ok) {
+        const tech = debate.agents?.technical || {};
+        const supports = tech.key_support || [];
+        const resistances = tech.key_resistance || [];
+        const price = debate.current_price || 0;
+
+        let html = "";
+        if (resistances.length) {
+            html += `<div style="margin-bottom:6px;">`;
+            for (const r of resistances.slice().reverse()) {
+                const lv = typeof r === "object" ? r.level : r;
+                const tp = typeof r === "object" ? r.type : "";
+                const st = typeof r === "object" ? r.strength : "";
+                const dist = price ? ((lv - price) / price * 100).toFixed(1) : "?";
+                html += `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #e8e8e8;">
+                    <span style="color:#c62828;">▲ ${lv}</span>
+                    <span style="font-size:.68rem;color:#888;">${tp} ${st === "major" ? "⭐" : ""}</span>
+                    <span style="font-size:.68rem;color:#999;">+${dist}%</span>
+                </div>`;
+            }
+            html += `</div>`;
+        }
+        html += `<div style="text-align:center;padding:4px 0;font-weight:700;font-size:.9rem;background:#f0f4ff;border-radius:4px;margin:4px 0;">
+            ● ${price} <span style="font-size:.65rem;color:#888;">actual</span></div>`;
+        if (supports.length) {
+            html += `<div style="margin-top:6px;">`;
+            for (const s of supports) {
+                const lv = typeof s === "object" ? s.level : s;
+                const tp = typeof s === "object" ? s.type : "";
+                const st = typeof s === "object" ? s.strength : "";
+                const dist = price ? ((lv - price) / price * 100).toFixed(1) : "?";
+                html += `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #e8e8e8;">
+                    <span style="color:#2e7d32;">▼ ${lv}</span>
+                    <span style="font-size:.68rem;color:#888;">${tp} ${st === "major" ? "⭐" : ""}</span>
+                    <span style="font-size:.68rem;color:#999;">${dist}%</span>
+                </div>`;
+            }
+            html += `</div>`;
+        }
+        if (tech.key_level_to_watch) {
+            html += `<div style="margin-top:6px;padding:4px 6px;background:#fff3e0;border-radius:4px;font-size:.7rem;">
+                <b>👁 Watch:</b> ${tech.key_level_to_watch}</div>`;
+        }
+        levelsEl.innerHTML = html || "<i>Sin datos técnicos</i>";
+    }
+
+    // ── 2. USDA Calendar ──
+    const evEl = document.getElementById("tc-events-content");
+    if (evEl && events?.ok) {
+        const upcoming = events.upcoming || [];
+        if (upcoming.length === 0) {
+            evEl.innerHTML = "<i>Sin eventos próximos</i>";
+        } else {
+            let html = "";
+            for (const ev of upcoming.slice(0, 4)) {
+                const urgClass = ev.urgent ? "color:#c62828;font-weight:700;" : ev.soon ? "color:#e65100;" : "color:#333;";
+                const kindLabel = {
+                    "WASDE": "🌾 WASDE", "Quarterly Stocks": "📦 Stocks",
+                    "Prospective Plantings": "🌱 Plantings", "Acreage": "🌱 Acreage",
+                    "Crop Production": "🌿 Crop Prod"
+                }[ev.kind] || ev.kind;
+                html += `<div style="display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #e8e8e8;${urgClass}">
+                    <span>${kindLabel}</span>
+                    <span style="font-size:.72rem;">${ev.date.slice(5)}</span>
+                    <span style="font-size:.72rem;font-weight:600;">${ev.days_ahead}d</span>
+                </div>`;
+            }
+            // Warning if event within 2 days
+            const nextUrgent = upcoming.find(e => e.urgent);
+            if (nextUrgent) {
+                html += `<div style="margin-top:6px;padding:4px 6px;background:#ffebee;border-radius:4px;font-size:.7rem;color:#c62828;">
+                    ⚠ <b>${nextUrgent.kind}</b> en ${nextUrgent.days_ahead}d — esperar volatilidad elevada</div>`;
+            }
+            evEl.innerHTML = html;
+        }
+    }
+
+    // ── 3. Conviction ──
+    const convEl = document.getElementById("tc-conviction-content");
+    if (convEl && debate?.ok) {
+        const v = debate.verdict || {};
+        const agents = debate.agents || {};
+        const bullConv = agents.bull?.conviction || "?";
+        const bearConv = agents.bear?.conviction || "?";
+        const techConf = agents.technical?.confidence;
+        const riskExp = agents.risk?.max_recommended_exposure;
+
+        const confPct = Math.round((v.confidence || 0) * 100);
+        const convColor = confPct >= 60 ? "#2e7d32" : confPct >= 40 ? "#e65100" : "#c62828";
+        const convLabel = confPct >= 60 ? "ALTA" : confPct >= 40 ? "MEDIA" : "BAJA";
+
+        let html = `<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
+            <span style="font-size:1.3rem;font-weight:800;color:${convColor};">${confPct}%</span>
+            <span style="font-size:.75rem;padding:2px 8px;border-radius:3px;background:${convColor}22;color:${convColor};font-weight:600;">${convLabel}</span>
+        </div>`;
+        html += `<div style="font-size:.7rem;color:#666;line-height:1.4;">
+            Bull: <b>${bullConv}</b> · Bear: <b>${bearConv}</b>
+            ${techConf != null ? ` · Tech: <b>${Math.round(techConf*100)}%</b>` : ""}
+            ${riskExp ? `<br>Exposición máx: <b>${riskExp}</b>` : ""}
+        </div>`;
+        convEl.innerHTML = html;
+    }
+
+    // ── 4. Volatility + Invalidation ──
+    const volEl = document.getElementById("tc-vol-content");
+    if (volEl) {
+        let html = "";
+        // From signal breakdown
+        if (signal?.ok) {
+            const techFactor = signal.factors?.find(f => f.name?.includes("cnico"));
+            if (techFactor?.raw) {
+                html += `<div><b>RSI:</b> ${techFactor.raw.rsi?.toFixed(0) || "?"} · <b>Bollinger%:</b> ${techFactor.raw.bb_pct?.toFixed(0) || "?"}%</div>`;
+            }
+        }
+        // From debate — tech agent
+        if (debate?.ok) {
+            const tech = debate.agents?.technical || {};
+            if (tech.bollinger_position) {
+                const bpMap = {upper_band:"Banda superior ⚠",middle:"Zona media",lower_band:"Banda inferior ⚠"};
+                html += `<div><b>Bollinger:</b> ${bpMap[tech.bollinger_position] || tech.bollinger_position}</div>`;
+            }
+            // Expected vol from signal
+            const risk = debate.agents?.risk || {};
+            if (risk.volatility_assessment) html += `<div><b>Vol:</b> ${risk.volatility_assessment}</div>`;
+            if (risk.event_risk_next_7d) html += `<div><b>Riesgo 7d:</b> ${risk.event_risk_next_7d}</div>`;
+        }
+        volEl.innerHTML = html || "<i>Sin datos</i>";
+    }
+
+    const invEl = document.getElementById("tc-invalidation-content");
+    if (invEl && debate?.ok) {
+        const conds = debate.verdict?.invalidation_conditions || [];
+        if (conds.length) {
+            invEl.innerHTML = conds.slice(0, 3).map(c =>
+                `<div style="padding:2px 0;border-bottom:1px dashed #ffcdd2;">• ${c}</div>`
+            ).join("");
+        } else {
+            invEl.innerHTML = "<i>Sin condiciones definidas</i>";
+        }
+    }
+}
+
 
 // ── Multi-Agent Debate Panel ─────────────────────────────────────────
 async function loadDebatePanel() {
