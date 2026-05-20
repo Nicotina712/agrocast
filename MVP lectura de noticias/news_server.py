@@ -2456,6 +2456,38 @@ def get_next_event():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+@app.route("/api/quantagent", methods=["GET", "POST"])
+def api_quantagent():
+    """GET: latest signal + status. POST: run agents (force)."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        if request.method == "POST":
+            from src.quantagent.runner import run_quantagent
+            result = run_quantagent(force=True)
+            return jsonify({"ok": True, **result})
+        else:
+            from src.quantagent.runner import get_latest_signal, get_status
+            latest = get_latest_signal()
+            status = get_status()
+            return jsonify({"ok": True, "latest": latest, "status": status})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/quantagent/log")
+def api_quantagent_log():
+    """GET: paper trade log with stats."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.quantagent.paper_log import load_log
+        log = load_log()
+        return jsonify({"ok": True, **log})
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/monthly_forecast")
 def get_monthly_forecast():
     """GET /api/monthly_forecast — Forecast robusto ETS/seasonal-naive a 90d."""

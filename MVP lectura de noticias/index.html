@@ -350,6 +350,7 @@
     <button class="tab-btn"        onclick="switchTab('news-impact')">🧠 Intel LLM</button>
     <button class="tab-btn"        onclick="switchTab('historial')">📋 Historial</button>
     <button class="tab-btn"        onclick="switchTab('intel-engine')">🔍 Intel Engine</button>
+    <button class="tab-btn"        onclick="switchTab('quantagent')" style="background:#fff3e0;border:1px dashed #ff9800;">⚡ QuantAgent</button>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -1703,6 +1704,157 @@
     </div>
 </div><!-- /tab-intel-engine -->
 
+<!-- ══════════════════════════════════════════════════════════
+     TAB: QuantAgent-lite — LLM Price Action Prototype
+     ══════════════════════════════════════════════════════════ -->
+<div id="tab-quantagent" class="tab-panel">
+
+    <!-- Prototype banner -->
+    <div style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);border-left:4px solid #ff9800;border-radius:8px;padding:14px 18px;margin-bottom:18px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span style="font-size:1.1rem;">⚡</span>
+            <b style="color:#e65100;">QuantAgent-lite — Prototipo</b>
+            <span style="font-size:.6rem;padding:2px 8px;border-radius:10px;background:#ff9800;color:#fff;font-weight:600;">FASE 1</span>
+        </div>
+        <div style="font-size:.8rem;color:#5d4037;line-height:1.5;">
+            2 agentes LLM (Trend + Risk) analizan <b>solo price action</b> en barras de 60 min.<br>
+            Sin noticias, sin sentimiento, sin fundamentales — puro OHLCV.<br>
+            <span style="opacity:.7;">Basado en QuantAgent (arXiv:2509.09995, ICML 2025). Max 3 ejecuciones/dia. Paper trade mode.</span>
+        </div>
+    </div>
+
+    <!-- Signal + Run button -->
+    <div class="card" style="margin-bottom:18px;border-left:4px solid #1565c0;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="font-size:.6rem;font-weight:600;color:#1565c0;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#e3f2fd;padding:2px 6px;border-radius:3px;">SENAL ACTUAL</span>
+            <span id="qa-gate-status" style="margin-left:auto;font-size:.65rem;color:#888;"></span>
+            <button id="qa-run-btn" onclick="runQuantAgent()"
+                    style="border:1px solid #ff9800;background:#fff;color:#ff9800;border-radius:4px;padding:4px 12px;font-size:.72rem;cursor:pointer;font-weight:600;">
+                ⚡ Ejecutar agentes</button>
+        </div>
+
+        <!-- Signal banner -->
+        <div id="qa-signal-banner" style="display:none;margin-bottom:14px;padding:14px 16px;border-radius:8px;
+             background:#f5f5f5;border:1px solid #e0e0e0;">
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+                <div id="qa-signal-badge" style="font-size:1.2rem;font-weight:800;padding:8px 20px;border-radius:6px;"></div>
+                <div style="flex:1;min-width:200px;">
+                    <div id="qa-signal-reason" style="font-size:.82rem;color:#444;line-height:1.5;"></div>
+                    <div id="qa-signal-params" style="font-size:.75rem;color:#666;margin-top:6px;"></div>
+                </div>
+                <div id="qa-signal-confidence" style="text-align:center;">
+                    <div style="font-size:.55rem;text-transform:uppercase;color:#888;letter-spacing:1px;">Confianza</div>
+                    <div id="qa-conf-value" style="font-size:1.3rem;font-weight:700;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="qa-no-signal" style="color:#888;font-size:.85rem;"><i>Sin senal generada aun. Click "Ejecutar agentes" para correr el analisis.</i></div>
+        <div id="qa-timestamp" style="font-size:.65rem;color:#aaa;margin-top:6px;"></div>
+    </div>
+
+    <!-- Agent outputs grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+        <!-- Trend Agent -->
+        <div class="card" style="border-left:4px solid #2e7d32;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+                <span style="font-size:.95rem;">📈</span>
+                <span style="font-size:.7rem;font-weight:700;color:#2e7d32;text-transform:uppercase;letter-spacing:.5px;">Trend Agent</span>
+                <span id="qa-trend-badge" style="margin-left:auto;font-size:.6rem;padding:2px 8px;border-radius:3px;"></span>
+            </div>
+            <div id="qa-trend-content" style="font-size:.78rem;color:#333;line-height:1.5;">
+                <i style="color:#888;">Esperando ejecucion…</i>
+            </div>
+        </div>
+
+        <!-- Risk Agent -->
+        <div class="card" style="border-left:4px solid #e65100;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+                <span style="font-size:.95rem;">🛡️</span>
+                <span style="font-size:.7rem;font-weight:700;color:#e65100;text-transform:uppercase;letter-spacing:.5px;">Risk Agent</span>
+                <span id="qa-risk-badge" style="margin-left:auto;font-size:.6rem;padding:2px 8px;border-radius:3px;"></span>
+            </div>
+            <div id="qa-risk-content" style="font-size:.78rem;color:#333;line-height:1.5;">
+                <i style="color:#888;">Esperando ejecucion…</i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market context snapshot -->
+    <details class="card" style="margin-bottom:18px;">
+        <summary style="cursor:pointer;font-size:.75rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;">
+            Contexto de mercado (datos enviados a los agentes)
+        </summary>
+        <div id="qa-market-context" style="font-size:.75rem;color:#555;margin-top:10px;line-height:1.5;">
+            <i>Disponible despues de ejecutar</i>
+        </div>
+    </details>
+
+    <!-- Paper trade log -->
+    <div class="card" style="border-left:4px solid #7b1fa2;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="font-size:.6rem;font-weight:600;color:#7b1fa2;text-transform:uppercase;letter-spacing:1.5px;
+                         background:#f3e5f5;padding:2px 6px;border-radius:3px;">PAPER TRADES</span>
+            <span style="font-size:.7rem;color:#6a7a92;">Performance tracking vs XGBoost baseline</span>
+        </div>
+
+        <!-- Stats row -->
+        <div id="qa-stats-row" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px;">
+            <div style="text-align:center;padding:8px;background:#f8f9fa;border-radius:6px;">
+                <div style="font-size:.6rem;text-transform:uppercase;color:#888;">Senales</div>
+                <div id="qa-stat-total" style="font-size:1.1rem;font-weight:700;">—</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:#f8f9fa;border-radius:6px;">
+                <div style="font-size:.6rem;text-transform:uppercase;color:#888;">Activas</div>
+                <div id="qa-stat-active" style="font-size:1.1rem;font-weight:700;">—</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:#f8f9fa;border-radius:6px;">
+                <div style="font-size:.6rem;text-transform:uppercase;color:#888;">Win Rate</div>
+                <div id="qa-stat-winrate" style="font-size:1.1rem;font-weight:700;">—</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:#f8f9fa;border-radius:6px;">
+                <div style="font-size:.6rem;text-transform:uppercase;color:#888;">Avg PnL 4h</div>
+                <div id="qa-stat-pnl" style="font-size:1.1rem;font-weight:700;">—</div>
+            </div>
+            <div style="text-align:center;padding:8px;background:#f8f9fa;border-radius:6px;">
+                <div style="font-size:.6rem;text-transform:uppercase;color:#888;">Pendientes</div>
+                <div id="qa-stat-pending" style="font-size:1.1rem;font-weight:700;">—</div>
+            </div>
+        </div>
+
+        <!-- Trade log table -->
+        <div id="qa-trade-log" style="max-height:300px;overflow-y:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:.72rem;">
+                <thead>
+                    <tr style="background:#f5f5f5;position:sticky;top:0;">
+                        <th style="padding:4px 6px;text-align:left;">Fecha</th>
+                        <th style="padding:4px 6px;">Senal</th>
+                        <th style="padding:4px 6px;">Conf.</th>
+                        <th style="padding:4px 6px;">Entry</th>
+                        <th style="padding:4px 6px;">SL</th>
+                        <th style="padding:4px 6px;">TP</th>
+                        <th style="padding:4px 6px;">PnL 4h</th>
+                        <th style="padding:4px 6px;">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="qa-trade-tbody"></tbody>
+            </table>
+        </div>
+        <div id="qa-no-trades" style="color:#888;font-size:.78rem;text-align:center;padding:12px;">
+            Sin paper trades registrados aun.
+        </div>
+    </div>
+
+    <div style="padding:10px;font-size:.7rem;color:#6a7a92;line-height:1.4;border-top:1px solid #e0e6ee;margin-top:12px;">
+        <b>Nota:</b> QuantAgent-lite es un prototipo experimental. Los agentes Trend y Risk reciben exclusivamente datos OHLCV
+        (sin noticias ni fundamentales). El objetivo es evaluar si LLMs pueden generar alpha en horizontes cortos usando
+        solo price action. Costo estimado: ~$0.20 por ejecucion (~$9/mes con 3 runs/dia).
+        Fase 1: 30 dias de paper trading para medir si hay alpha incremental vs XGBoost (AUC baseline: 0.529).
+    </div>
+
+</div><!-- /tab-quantagent -->
+
 <script>
 let chartMain     = null;
 let chartBacktest = null;
@@ -2795,7 +2947,7 @@ function switchTab(name) {
     document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
     document.getElementById("tab-" + name).classList.add("active");
-    const tabs = ["principal", "producer", "trader", "seasonality", "news-impact", "historial", "intel-engine"];
+    const tabs = ["principal", "producer", "trader", "seasonality", "news-impact", "historial", "intel-engine", "quantagent"];
     const idx  = tabs.indexOf(name);
     const btns = document.querySelectorAll(".tab-btn");
     if (btns[idx]) btns[idx].classList.add("active");
@@ -2804,6 +2956,7 @@ function switchTab(name) {
     if (name === "producer")    loadProducer();
     if (name === "trader")      { loadTrader(); loadTraderSynthesis(); }
     if (name === "intel-engine") loadIntelEngine();
+    if (name === "quantagent")  loadQuantAgent();
 }
 
 // ── Módulo Productor ────────────────────────────────────────────────
@@ -5000,6 +5153,242 @@ function _renderDebateTech(tech) {
     if (tech.bollinger_position) html += `<div><b>Bollinger:</b> ${tech.bollinger_position}</div>`;
     if (tech._commentary) html += `<div style="margin-top:4px;font-style:italic;color:#555;font-size:.72rem;">${tech._commentary}</div>`;
     cEl.innerHTML = html || "<i>Sin datos</i>";
+}
+
+
+// ── QuantAgent-lite ──────────────────────────────────────────────────
+let _qaLoaded = false;
+
+async function loadQuantAgent() {
+    if (_qaLoaded) return;
+    _qaLoaded = true;
+    try {
+        const res = await fetch("/api/quantagent");
+        const d = await res.json();
+        if (!d.ok) return;
+
+        // Gate status
+        const gateEl = document.getElementById("qa-gate-status");
+        if (gateEl && d.status?.gate) {
+            const g = d.status.gate;
+            gateEl.textContent = `Runs hoy: ${g.runs_today}/${g.max_runs} ${g.can_run ? "✅" : "⛔ limite alcanzado"}`;
+        }
+
+        // Render latest signal if exists
+        if (d.latest) _renderQASignal(d.latest);
+
+        // Load paper trades
+        _loadQAPaperTrades();
+    } catch(e) { console.error("quantagent load error:", e); }
+}
+
+function _renderQASignal(data) {
+    const sig = data.signal || {};
+    const banner = document.getElementById("qa-signal-banner");
+    const noSig = document.getElementById("qa-no-signal");
+
+    if (!sig.signal || sig.signal === "error") {
+        if (noSig) noSig.style.display = "block";
+        return;
+    }
+
+    if (banner) banner.style.display = "block";
+    if (noSig) noSig.style.display = "none";
+
+    // Signal badge
+    const badge = document.getElementById("qa-signal-badge");
+    if (badge) {
+        const sMap = {
+            LONG:  {label:"LONG 📈", bg:"#2e7d32", color:"#fff"},
+            SHORT: {label:"SHORT 📉", bg:"#c62828", color:"#fff"},
+            FLAT:  {label:"FLAT ⏸", bg:"#757575", color:"#fff"},
+        };
+        const sm = sMap[sig.signal] || {label:sig.signal, bg:"#888", color:"#fff"};
+        badge.textContent = sm.label; badge.style.background = sm.bg; badge.style.color = sm.color;
+    }
+
+    // Reason
+    const reasonEl = document.getElementById("qa-signal-reason");
+    if (reasonEl) reasonEl.textContent = sig.reason || "";
+
+    // Params
+    const paramsEl = document.getElementById("qa-signal-params");
+    if (paramsEl && sig.signal !== "FLAT") {
+        paramsEl.innerHTML = [
+            sig.entry ? `<b>Entry:</b> ${sig.entry}` : "",
+            sig.stop_loss ? `<b>SL:</b> ${sig.stop_loss}` : "",
+            sig.take_profit ? `<b>TP:</b> ${sig.take_profit}` : "",
+            sig.risk_reward ? `<b>R:R:</b> ${sig.risk_reward}` : "",
+            sig.contracts ? `<b>Contratos MZS:</b> ${sig.contracts}` : "",
+            sig.volatility_regime ? `<b>Vol:</b> ${sig.volatility_regime}` : "",
+        ].filter(Boolean).join(" · ");
+    }
+
+    // Confidence
+    const confEl = document.getElementById("qa-conf-value");
+    if (confEl) {
+        const cMap = {HIGH:{label:"ALTA",color:"#2e7d32"}, MEDIUM:{label:"MEDIA",color:"#e65100"}, LOW:{label:"BAJA",color:"#c62828"}};
+        const cm = cMap[sig.confidence] || {label:sig.confidence||"?",color:"#888"};
+        confEl.textContent = cm.label; confEl.style.color = cm.color;
+    }
+
+    // Timestamp
+    const tsEl = document.getElementById("qa-timestamp");
+    if (tsEl && data.timestamp) {
+        const age = Math.round((Date.now() - new Date(data.timestamp).getTime()) / 60000);
+        tsEl.textContent = `${data.timestamp.slice(0,16).replace("T"," ")} (hace ${age} min) · ${data.execution_time_seconds||"?"}s`;
+    }
+
+    // Trend Agent
+    _renderQATrend(data.trend_agent);
+    _renderQARisk(data.risk_agent);
+    _renderQAContext(data.bars_summary);
+}
+
+function _renderQATrend(t) {
+    if (!t || t.error) return;
+    const badge = document.getElementById("qa-trend-badge");
+    if (badge) {
+        const tMap = {UP:{bg:"#c8e6c9",color:"#1b5e20"}, DOWN:{bg:"#ffcdd2",color:"#b71c1c"}, LATERAL:{bg:"#fff9c4",color:"#f57f17"}};
+        const tm = tMap[t.trend] || {bg:"#eee",color:"#666"};
+        badge.textContent = `${t.trend} (${t.trend_strength||"?"})`;
+        badge.style.background = tm.bg; badge.style.color = tm.color;
+    }
+    const cEl = document.getElementById("qa-trend-content");
+    if (!cEl) return;
+    let html = "";
+    if (t.reasoning) html += `<div style="margin-bottom:8px;">${t.reasoning}</div>`;
+    if (t.momentum) html += `<div><b>Momentum:</b> ${t.momentum}</div>`;
+    const setup = t.setup || {};
+    if (setup.type && setup.type !== "none") {
+        html += `<div style="margin-top:6px;padding:6px 8px;background:#f5f7fb;border-radius:4px;">
+            <b>Setup:</b> ${setup.type} → <b>${setup.direction||"?"}</b> (${setup.confidence||"?"})<br>
+            <span style="font-size:.72rem;color:#666;">${setup.description||""}</span>`;
+        if (setup.entry_zone) html += `<br><b>Entry zone:</b> ${setup.entry_zone.low||"?"} – ${setup.entry_zone.high||"?"}`;
+        html += `</div>`;
+    }
+    const kl = t.key_levels || {};
+    if (kl.resistance || kl.support) {
+        html += `<div style="margin-top:6px;font-size:.72rem;">`;
+        if (kl.resistance) html += `<b>R:</b> ${Array.isArray(kl.resistance) ? kl.resistance.join(", ") : kl.resistance} `;
+        if (kl.support) html += `<b>S:</b> ${Array.isArray(kl.support) ? kl.support.join(", ") : kl.support} `;
+        if (kl.vwap) html += `<b>VWAP:</b> ${kl.vwap}`;
+        html += `</div>`;
+    }
+    cEl.innerHTML = html;
+}
+
+function _renderQARisk(r) {
+    if (!r || r.error) return;
+    const badge = document.getElementById("qa-risk-badge");
+    if (badge) {
+        const viable = r.trade_viable;
+        badge.textContent = viable ? "VIABLE ✅" : "VETO ⛔";
+        badge.style.background = viable ? "#c8e6c9" : "#ffcdd2";
+        badge.style.color = viable ? "#1b5e20" : "#b71c1c";
+    }
+    const cEl = document.getElementById("qa-risk-content");
+    if (!cEl) return;
+    let html = "";
+    if (r.reasoning) html += `<div style="margin-bottom:8px;">${r.reasoning}</div>`;
+    html += `<div><b>Volatilidad:</b> ${r.volatility_regime||"?"}</div>`;
+    if (r.atr_assessment) html += `<div><b>ATR:</b> ${r.atr_assessment}</div>`;
+    if (r.session_risk) html += `<div><b>Riesgo sesion:</b> ${r.session_risk}</div>`;
+    if (!r.trade_viable && r.veto_reason) {
+        html += `<div style="margin-top:6px;padding:4px 8px;background:#ffebee;border-radius:4px;color:#c62828;">
+            <b>Veto:</b> ${r.veto_reason}</div>`;
+    }
+    if (r.trade_viable) {
+        const sl = r.stop_loss || {};
+        const tp = r.take_profit || {};
+        const ps = r.position_size || {};
+        html += `<div style="margin-top:6px;padding:6px 8px;background:#f5f7fb;border-radius:4px;font-size:.72rem;">`;
+        if (sl.price) html += `<div><b>SL:</b> ${sl.price} (${sl.type||"?"}) — riesgo $${sl.risk_usd||"?"}</div>`;
+        if (tp.price) html += `<div><b>TP:</b> ${tp.price} — R:R ${tp.risk_reward||"?"}</div>`;
+        if (ps.contracts_mzs) html += `<div><b>Size:</b> ${ps.contracts_mzs} MZS (${ps.risk_pct||"?"}% capital)</div>`;
+        if (r.max_hold_bars) html += `<div><b>Max hold:</b> ${r.max_hold_bars} barras</div>`;
+        html += `</div>`;
+    }
+    cEl.innerHTML = html;
+}
+
+function _renderQAContext(ctx) {
+    const el = document.getElementById("qa-market-context");
+    if (!el || !ctx) return;
+    let html = "";
+    const cs = ctx.current_state || {};
+    html += `<div><b>Precio:</b> ${cs.close||"?"} | <b>Hora CT:</b> ${cs.hour_ct||"?"}:00 | <b>RTH:</b> ${cs.is_rth?"Si":"No"} | <b>Min cierre:</b> ${cs.mins_to_close||"?"}</div>`;
+    const ind = ctx.indicators || {};
+    html += `<div style="margin-top:6px;"><b>RSI:</b> ${ind.rsi_14||"?"} · <b>ATR:</b> ${ind.atr_14||"?"} · <b>EMA cross:</b> ${ind.ema_cross||"?"} · <b>Vol z:</b> ${ind.vol_zscore_30||"?"} · <b>VWAP dist:</b> ${ind.vwap_dist||"?"}</div>`;
+    const md = ctx.multi_day || [];
+    if (md.length) {
+        html += `<div style="margin-top:6px;"><b>Ultimos dias:</b></div><div style="font-family:monospace;font-size:.68rem;">`;
+        for (const d of md) html += `${d.date}: O=${d.open} H=${d.high} L=${d.low} C=${d.close} ret=${d.daily_return}%<br>`;
+        html += `</div>`;
+    }
+    el.innerHTML = html;
+}
+
+async function _loadQAPaperTrades() {
+    try {
+        const res = await fetch("/api/quantagent/log");
+        const d = await res.json();
+        if (!d.ok) return;
+        const s = d.summary || {};
+        const el = (id) => document.getElementById(id);
+
+        el("qa-stat-total").textContent = s.total_signals ?? "—";
+        el("qa-stat-active").textContent = s.active_signals ?? "—";
+        el("qa-stat-winrate").textContent = s.win_rate != null ? s.win_rate + "%" : "—";
+        el("qa-stat-pnl").textContent = s.avg_pnl_4h != null ? (s.avg_pnl_4h > 0 ? "+" : "") + s.avg_pnl_4h : "—";
+        el("qa-stat-pending").textContent = s.pending_evaluation ?? "—";
+
+        const trades = d.trades || [];
+        const tbody = document.getElementById("qa-trade-tbody");
+        const noTrades = document.getElementById("qa-no-trades");
+        if (!trades.length) { if (noTrades) noTrades.style.display = "block"; return; }
+        if (noTrades) noTrades.style.display = "none";
+
+        let rows = "";
+        for (const t of trades.slice().reverse().slice(0, 30)) {
+            const sigColor = t.signal === "LONG" ? "#2e7d32" : t.signal === "SHORT" ? "#c62828" : "#888";
+            const pnlColor = (t.pnl_4h||0) > 0 ? "#2e7d32" : (t.pnl_4h||0) < 0 ? "#c62828" : "#888";
+            const status = t.evaluated ? (t.pnl_4h > 0 ? "✅ Win" : t.pnl_4h < 0 ? "❌ Loss" : "➖") : "⏳";
+            rows += `<tr style="border-bottom:1px solid #f0f0f0;">
+                <td style="padding:3px 6px;">${(t.timestamp||"").slice(0,16).replace("T"," ")}</td>
+                <td style="padding:3px 6px;text-align:center;color:${sigColor};font-weight:600;">${t.signal}</td>
+                <td style="padding:3px 6px;text-align:center;">${t.confidence||"?"}</td>
+                <td style="padding:3px 6px;text-align:center;">${t.entry||"—"}</td>
+                <td style="padding:3px 6px;text-align:center;">${t.stop_loss||"—"}</td>
+                <td style="padding:3px 6px;text-align:center;">${t.take_profit||"—"}</td>
+                <td style="padding:3px 6px;text-align:center;color:${pnlColor};font-weight:600;">${t.pnl_4h != null ? t.pnl_4h : "—"}</td>
+                <td style="padding:3px 6px;text-align:center;">${status}</td>
+            </tr>`;
+        }
+        if (tbody) tbody.innerHTML = rows;
+    } catch(e) { console.error("QA log error:", e); }
+}
+
+async function runQuantAgent() {
+    const btn = document.getElementById("qa-run-btn");
+    if (btn) { btn.disabled = true; btn.textContent = "⏳ Ejecutando..."; }
+    try {
+        const res = await fetch("/api/quantagent", { method: "POST" });
+        const d = await res.json();
+        if (d.ok) {
+            _renderQASignal(d);
+            _loadQAPaperTrades();
+            // Update gate
+            const gateEl = document.getElementById("qa-gate-status");
+            if (gateEl) gateEl.textContent = "Run completado ✅";
+        } else {
+            alert("Error: " + (d.error || "unknown"));
+        }
+    } catch(e) {
+        alert("Error: " + e.message);
+    } finally {
+        if (btn) { btn.disabled = false; btn.textContent = "⚡ Ejecutar agentes"; }
+    }
 }
 
 
