@@ -2584,6 +2584,118 @@ def api_quantagent_log():
         return jsonify({"ok": False, "error": str(e)}), 500
 
 
+# ── Harvest Plan (Plan de Cosecha Inteligente) ────────────────────
+
+@app.route("/api/harvest_plan", methods=["GET", "POST"])
+def api_harvest_plan():
+    """GET: current plan summary. POST: create new plan."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.harvest_plan import create_plan, get_plan_summary, check_triggers, send_plan_alerts
+        import datetime as _dtm
+
+        if request.method == "POST":
+            data = request.get_json(force=True, silent=True) or {}
+            plan = create_plan(
+                crop_tons=float(data.get("crop_tons", 500)),
+                cost_of_production_usd_ton=float(data.get("cost_of_production", 350)),
+                target_avg_price_usd_ton=float(data["target_price"]) if data.get("target_price") else None,
+                campaign=data.get("campaign"),
+                storage_cost_pct_annual=float(data.get("storage_cost_pct", 6.0)),
+                financing_rate_pct_annual=float(data.get("financing_rate_pct", 0)),
+            )
+            return jsonify({"ok": True, "plan": get_plan_summary(plan)})
+        else:
+            summary = get_plan_summary()
+            summary["server_time"] = _dtm.datetime.now().isoformat()
+            return jsonify(summary)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/harvest_plan/check")
+def api_harvest_plan_check():
+    """Check triggers against current market conditions and send alerts."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.harvest_plan import check_triggers, send_plan_alerts
+        from src.producer.sell_signal import get_sell_signal
+
+        # Get current price and signal
+        sell_data = get_sell_signal()
+        current_price = sell_data.get("local_price_usd_ton", 0) if sell_data.get("ok") else 0
+        sell_signal = sell_data.get("signal_text", "ESPERAR") if sell_data.get("ok") else "ESPERAR"
+
+        result = check_triggers(current_price, sell_signal)
+
+        # Auto-send alerts if any triggered
+        if result.get("alerts"):
+            sent = send_plan_alerts(result["alerts"])
+            result["alerts_sent"] = sent
+
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/harvest_plan/confirm", methods=["POST"])
+def api_harvest_plan_confirm():
+    """Confirm execution of a triggered tranche."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.harvest_plan import confirm_execution
+        data = request.get_json(force=True, silent=True) or {}
+        tranche_id = int(data.get("tranche_id", 0))
+        price = float(data.get("price", 0))
+        if not tranche_id or not price:
+            return jsonify({"ok": False, "error": "tranche_id and price required"}), 400
+        return jsonify(confirm_execution(tranche_id, price))
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/harvest_plan/skip", methods=["POST"])
+def api_harvest_plan_skip():
+    """Skip/postpone a triggered tranche."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.harvest_plan import skip_tranche
+        data = request.get_json(force=True, silent=True) or {}
+        tranche_id = int(data.get("tranche_id", 0))
+        reason = data.get("reason", "")
+        if not tranche_id:
+            return jsonify({"ok": False, "error": "tranche_id required"}), 400
+        return jsonify(skip_tranche(tranche_id, reason))
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.route("/api/harvest_plan/performance")
+def api_harvest_plan_performance():
+    """Compare plan performance vs benchmarks."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.harvest_plan import get_plan_performance_vs_benchmark
+        return jsonify(get_plan_performance_vs_benchmark())
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+# ── Basis Forecast (GARCH-based dynamic basis) ────────────────────
+
+@app.route("/api/basis_forecast")
+def api_basis_forecast():
+    """GET /api/basis_forecast — Dynamic basis forecast with GARCH volatility."""
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.data.basis_forecast import forecast_basis
+        return jsonify(forecast_basis())
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/monthly_forecast")
 def get_monthly_forecast():
     """GET /api/monthly_forecast — Forecast robusto ETS/seasonal-naive a 90d."""

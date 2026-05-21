@@ -672,6 +672,25 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [INFO] WhatsApp no configurado: {_e}")
 
+    # ── 13b. Harvest Plan — check triggers & send alerts ──────────
+    try:
+        from src.producer.harvest_plan import check_triggers, send_plan_alerts
+        from src.producer.sell_signal import get_sell_signal
+        sell_data = get_sell_signal()
+        if sell_data.get("ok"):
+            hp_result = check_triggers(
+                current_price_usd_ton=sell_data.get("local_price_usd_ton", 0),
+                sell_signal=sell_data.get("signal_text", "ESPERAR"),
+            )
+            if hp_result.get("alerts"):
+                sent = send_plan_alerts(hp_result["alerts"])
+                print(f"   [HarvestPlan] {len(hp_result['alerts'])} triggers fired, "
+                      f"{sent} alerts sent")
+            else:
+                print(f"   [HarvestPlan] No triggers fired")
+    except Exception as _e:
+        print(f"   [INFO] Harvest plan: {_e}")
+
     # ── 14. Señal Argentina ampliada (cepo + retenciones + CIARA) ──
     try:
         from src.data.fetch_argentina import get_argentina_supply_signal
@@ -682,12 +701,22 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [INFO] Argentina signal: {_e}")
 
-    # ── 15. Basis Uruguay (caché 24h) ─────────────────────────────
+    # ── 15. Basis Uruguay (caché 24h) + Basis Forecast (GARCH) ────
     try:
         from src.data.fetch_basis_uruguay import get_basis_uruguay
         get_basis_uruguay()
     except Exception as _e:
         print(f"   [INFO] Basis Uruguay: {_e}")
+
+    try:
+        from src.data.basis_forecast import forecast_basis
+        bf = forecast_basis()
+        if bf.get("ok"):
+            cs = bf["current_state"]
+            print(f"   [BasisForecast] Basis={cs['basis_usd_ton']} USD/ton | "
+                  f"Régimen={cs['regime']} | Z={cs['zscore_5y']:.1f}")
+    except Exception as _e:
+        print(f"   [INFO] Basis forecast: {_e}")
 
     # ── 16. WASDE API oficial (caché 6h) ──────────────────────────
     try:

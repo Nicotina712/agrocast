@@ -202,6 +202,21 @@ def make_features(
         d["ret_14d_fwd"] = safe_pct_change(d[target_col], 14).shift(-14)
         d["ret_30d_fwd"] = safe_pct_change(d[target_col], 30).shift(-30)
 
+    # ── Signal Decomposition (CEEMDAN/STL/HP features) ──────────
+    try:
+        from src.features.signal_decomposition import add_decomposition_features, add_multi_scale_features
+        d = add_decomposition_features(d, target_col=target_col, method="stl")
+        d = add_multi_scale_features(d, target_col=target_col)
+    except Exception as _e:
+        print(f"[WARN] signal_decomposition: {_e}")
+
+    # ── Basis features (seasonal, momentum, FX) ──────────────────
+    try:
+        from src.data.basis_forecast import add_basis_features
+        d = add_basis_features(d)
+    except Exception as _e:
+        print(f"[WARN] basis_features: {_e}")
+
     # ── Limpieza ─────────────────────────────────────────────────
     d = d.dropna(subset=[target_col])
     d = d.ffill().fillna(0)

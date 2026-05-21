@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "timestamp": "2026-05-20T23:17:05.914418",
+  "from_cache": false,
+  "current_state": {
+    "basis_usd_ton": -25.0,
+    "cbot_usd_ton": 444.79,
+    "local_est_usd_ton": 419.79,
+    "zscore_5y": -0.51,
+    "regime": "wide",
+    "regime_label": "Amplio (descuento moderado)",
+    "garch_vol": 0.481,
+    "mean_5y": -22.88,
+    "std_5y": 4.12
+  },
+  "seasonal_pattern": {
+    "1": -20,
+    "2": -18,
+    "3": -17,
+    "4": -22,
+    "5": -25,
+    "6": -28,
+    "7": -30,
+    "8": -28,
+    "9": -25,
+    "10": -22,
+    "11": -20,
+    "12": -19
+  },
+  "forecasts": {
+    "7d": {
+      "horizon_days": 7,
+      "current_basis": -25.0,
+      "expected_basis": -25.01,
+      "change_expected": -0.01,
+      "quantiles": {
+        "q10": -26.48,
+        "q25": -25.8,
+        "q50": -25.01,
+        "q75": -24.23,
+        "q90": -23.53
+      },
+      "prob_tighter_pct": 49.6,
+      "hedge_recommendation": "NEUTRAL — basis estable",
+      "garch_daily_vol": 0.481
+    },
+    "15d": {
+      "horizon_days": 15,
+      "current_basis": -25.0,
+      "expected_basis": -24.99,
+      "change_expected": 0.01,
+      "quantiles": {
+        "q10": -27.23,
+        "q25": -26.18,
+        "q50": -25.01,
+        "q75": -23.8,
+        "q90": -22.74
+      },
+      "prob_tighter_pct": 49.8,
+      "hedge_recommendation": "NEUTRAL — basis estable",
+      "garch_daily_vol": 0.481
+    },
+    "30d": {
+      "horizon_days": 30,
+      "current_basis": -25.0,
+      "expected_basis": -26.73,
+      "change_expected": -1.73,
+      "quantiles": {
+        "q10": -30.14,
+        "q25": -28.51,
+        "q50": -26.73,
+        "q75": -24.97,
+        "q90": -23.31
+      },
+      "prob_tighter_pct": 25.4,
+      "hedge_recommendation": "NEUTRAL — basis estable",
+      "garch_daily_vol": 0.481
+    }
+  }
+}
