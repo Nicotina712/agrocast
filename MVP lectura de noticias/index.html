@@ -935,6 +935,47 @@
     <div id="storage-roi-panel"><span class="loading">—</span></div>
   </div>
 
+  <!-- Plan de Cosecha Inteligente -->
+  <div class="card" style="margin-bottom:20px;border:2px solid #2e7d32;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+      <div>
+        <h2 style="margin:0;color:#2e7d32;">📋 Plan de Cosecha Inteligente</h2>
+        <div style="font-size:.78rem;color:#888;margin-top:2px;">Venta escalonada en 5 tranches · pre-commitment basado en Vollmer (2019)</div>
+      </div>
+      <button onclick="loadHarvestPlan()" class="btn" style="background:#2e7d32;color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.82rem;">↻ Actualizar</button>
+    </div>
+    <div id="harvest-plan-panel">
+      <div id="harvest-plan-content" style="display:none;"></div>
+      <div id="harvest-plan-empty">
+        <div style="text-align:center;padding:20px;color:#888;">
+          <div style="font-size:.9rem;margin-bottom:14px;">No hay plan activo. Creá uno para gestionar la venta de tu cosecha.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:500px;margin:0 auto 14px;">
+            <div>
+              <label style="font-size:.75rem;color:#666;">Toneladas</label>
+              <input id="hp-tons" type="number" value="500" min="10" step="10" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:.9rem;text-align:center;">
+            </div>
+            <div>
+              <label style="font-size:.75rem;color:#666;">Costo prod. (USD/ton)</label>
+              <input id="hp-cost" type="number" value="350" min="100" step="5" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:.9rem;text-align:center;">
+            </div>
+            <div>
+              <label style="font-size:.75rem;color:#666;">Precio obj. (USD/ton)</label>
+              <input id="hp-target" type="number" value="420" min="200" step="5" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:.9rem;text-align:center;">
+            </div>
+          </div>
+          <button onclick="createHarvestPlan()" style="padding:8px 24px;background:#2e7d32;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;">Crear Plan de Cosecha</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pronóstico de Basis GARCH -->
+  <div class="card" style="margin-bottom:20px;">
+    <h2>📊 Pronóstico de Basis (GARCH + Monte Carlo)</h2>
+    <div style="font-size:.78rem;color:#888;margin-bottom:12px;">Descuento Uruguay vs Chicago · volatilidad dinámica · régimen actual</div>
+    <div id="basis-forecast-panel"><span class="loading">Cargando...</span></div>
+  </div>
+
   <!-- Nota de configuración -->
   <div style="background:#fff8e1;border-left:4px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.82rem;color:#5d4037;">
     <b>⚙️ Configuración</b><br>
@@ -2729,8 +2770,164 @@ async function loadProducer() {
         if (!d.ok) { console.error("producer error:", d.error); return; }
         _producerLoaded = true;
         renderProducer(d);
-        loadProducerBestWindow(); // calcula la mejor ventana de fijación
+        loadProducerBestWindow();
+        loadHarvestPlan();
+        loadBasisForecast();
     } catch(e) { console.error("producer fetch error:", e); }
+}
+
+// ── Plan de Cosecha Inteligente ──────────────────────────────────
+async function loadHarvestPlan() {
+    try {
+        const r = await fetch("/api/harvest_plan");
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const d = await r.json();
+        const panel = document.getElementById("harvest-plan-content");
+        const empty = document.getElementById("harvest-plan-empty");
+        if (!d.ok || !d.plan || !d.plan.active) {
+            panel.style.display = "none";
+            empty.style.display = "block";
+            return;
+        }
+        empty.style.display = "none";
+        panel.style.display = "block";
+        const p = d.plan;
+        const tranches = p.tranches || [];
+        const executed = tranches.filter(t => t.executed);
+        const pending = tranches.filter(t => !t.executed);
+        const pctDone = executed.reduce((s,t) => s + t.pct, 0);
+        let html = `
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
+                <div style="background:#e8f5e9;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#2e7d32;font-weight:600;">Campaña</div>
+                    <div style="font-size:1rem;font-weight:700;">${p.campaign}</div>
+                </div>
+                <div style="background:#e3f2fd;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#1565c0;font-weight:600;">Toneladas</div>
+                    <div style="font-size:1rem;font-weight:700;">${p.crop_tons}</div>
+                </div>
+                <div style="background:#fff3e0;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#e65100;font-weight:600;">Vendido</div>
+                    <div style="font-size:1rem;font-weight:700;">${pctDone}%</div>
+                </div>
+                <div style="background:#f3e5f5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#7b1fa2;font-weight:600;">Precio prom.</div>
+                    <div style="font-size:1rem;font-weight:700;">$${(p.weighted_avg_price || 0).toFixed(0)}</div>
+                </div>
+            </div>
+            <div style="background:#f5f5f5;border-radius:8px;height:12px;overflow:hidden;margin-bottom:14px;">
+                <div style="height:100%;width:${pctDone}%;background:linear-gradient(90deg,#2e7d32,#66bb6a);border-radius:8px;transition:width .5s;"></div>
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+                <thead><tr style="background:#f5f5f5;">
+                    <th style="padding:6px 10px;text-align:left;">#</th>
+                    <th style="padding:6px 10px;text-align:left;">Tranche</th>
+                    <th style="padding:6px 10px;text-align:center;">%</th>
+                    <th style="padding:6px 10px;text-align:center;">Tons</th>
+                    <th style="padding:6px 10px;text-align:center;">Trigger</th>
+                    <th style="padding:6px 10px;text-align:center;">Estado</th>
+                </tr></thead><tbody>`;
+        tranches.forEach(t => {
+            const status = t.executed
+                ? `<span style="color:#2e7d32;font-weight:600;">✅ $${(t.execution_price||0).toFixed(0)}</span>`
+                : `<span style="color:#888;">⏳ Pendiente</span>`;
+            const trigLabel = {price_target:"🎯 Precio",seasonal_window:"📅 Estacional",model_signal:"🤖 Modelo",time_deadline:"⏰ Deadline",manual:"✋ Manual"}[t.trigger]||t.trigger;
+            html += `<tr style="border-bottom:1px solid #eee;">
+                <td style="padding:6px 10px;">${t.id}</td>
+                <td style="padding:6px 10px;">${t.label}</td>
+                <td style="padding:6px 10px;text-align:center;">${t.pct}%</td>
+                <td style="padding:6px 10px;text-align:center;">${t.tons}</td>
+                <td style="padding:6px 10px;text-align:center;">${trigLabel}</td>
+                <td style="padding:6px 10px;text-align:center;">${status}</td>
+            </tr>`;
+        });
+        html += `</tbody></table>`;
+        if (p.cost_of_production_usd_ton) {
+            html += `<div style="margin-top:10px;font-size:.78rem;color:#666;">
+                Costo prod: $${p.cost_of_production_usd_ton}/ton · Objetivo: $${p.target_avg_price_usd_ton}/ton
+            </div>`;
+        }
+        panel.innerHTML = html;
+    } catch(e) {
+        document.getElementById("harvest-plan-content").innerHTML =
+            `<div style="color:#c00;font-size:.85rem;">Error: ${e.message}</div>`;
+    }
+}
+
+async function createHarvestPlan() {
+    const tons = parseFloat(document.getElementById("hp-tons").value) || 500;
+    const cost = parseFloat(document.getElementById("hp-cost").value) || 350;
+    const target = parseFloat(document.getElementById("hp-target").value) || 420;
+    try {
+        const r = await fetch("/api/harvest_plan", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({crop_tons: tons, cost_of_production: cost, target_avg_price: target})
+        });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const d = await r.json();
+        if (d.ok) { loadHarvestPlan(); }
+        else { alert("Error: " + (d.error || "desconocido")); }
+    } catch(e) { alert("Error creando plan: " + e.message); }
+}
+
+// ── Pronóstico de Basis GARCH ─────────────────────────────────────
+async function loadBasisForecast() {
+    const el = document.getElementById("basis-forecast-panel");
+    try {
+        const r = await fetch("/api/basis_forecast");
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const d = await r.json();
+        if (!d.ok) { el.innerHTML = `<span style="color:#888;">${d.error||"Sin datos"}</span>`; return; }
+        const s = d.current_state;
+        const regimeColors = {very_tight:"#2e7d32",tight:"#66bb6a",normal:"#888",wide:"#e65100",very_wide:"#c62828"};
+        const regimeColor = regimeColors[s.regime] || "#888";
+        let html = `
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
+                <div style="background:#f5f5f5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#888;">Basis actual</div>
+                    <div style="font-size:1.1rem;font-weight:700;">${s.basis_usd_ton} USD/ton</div>
+                </div>
+                <div style="background:#f5f5f5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#888;">Régimen</div>
+                    <div style="font-size:.9rem;font-weight:700;color:${regimeColor};">${s.regime_label}</div>
+                </div>
+                <div style="background:#f5f5f5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#888;">Z-score (5Y)</div>
+                    <div style="font-size:1.1rem;font-weight:700;">${s.zscore_5y}</div>
+                </div>
+                <div style="background:#f5f5f5;border-radius:8px;padding:10px;text-align:center;">
+                    <div style="font-size:.72rem;color:#888;">Vol GARCH</div>
+                    <div style="font-size:1.1rem;font-weight:700;">${s.garch_vol}</div>
+                </div>
+            </div>`;
+        // Forecasts by horizon
+        html += `<table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+            <thead><tr style="background:#f5f5f5;">
+                <th style="padding:6px 10px;">Horizonte</th>
+                <th style="padding:6px 10px;text-align:center;">Basis esperado</th>
+                <th style="padding:6px 10px;text-align:center;">Cambio</th>
+                <th style="padding:6px 10px;text-align:center;">IC 80%</th>
+                <th style="padding:6px 10px;text-align:center;">P(mejora)</th>
+                <th style="padding:6px 10px;text-align:left;">Recomendación</th>
+            </tr></thead><tbody>`;
+        for (const [key, fc] of Object.entries(d.forecasts || {})) {
+            const q = fc.quantiles;
+            const chgColor = fc.change_expected > 0 ? "#2e7d32" : fc.change_expected < 0 ? "#c62828" : "#888";
+            html += `<tr style="border-bottom:1px solid #eee;">
+                <td style="padding:6px 10px;font-weight:600;">${key}</td>
+                <td style="padding:6px 10px;text-align:center;">${fc.expected_basis} USD/ton</td>
+                <td style="padding:6px 10px;text-align:center;color:${chgColor};font-weight:600;">${fc.change_expected > 0 ? "+" : ""}${fc.change_expected}</td>
+                <td style="padding:6px 10px;text-align:center;">[${q.q10}, ${q.q90}]</td>
+                <td style="padding:6px 10px;text-align:center;">${fc.prob_tighter_pct}%</td>
+                <td style="padding:6px 10px;font-size:.78rem;">${fc.hedge_recommendation}</td>
+            </tr>`;
+        }
+        html += `</tbody></table>`;
+        el.innerHTML = html;
+    } catch(e) {
+        el.innerHTML = `<div style="color:#c00;font-size:.85rem;">Error: ${e.message}</div>`;
+    }
 }
 
 // "Best month to lock-in price" — específico para Productor
