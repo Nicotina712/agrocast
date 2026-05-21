@@ -409,12 +409,6 @@
         </div>
     </div>
 
-    <!-- Resumen ejecutivo -->
-    <div class="card" id="executive-summary-card" style="margin-bottom:16px;display:none;">
-        <h2>💡 Resumen Ejecutivo — ¿Qué dice el modelo hoy?</h2>
-        <div id="executive-summary-bullets" style="line-height:1.8;"></div>
-    </div>
-
     <div class="section-header">
         <h2>Pronóstico de mercado</h2>
         <span class="desc">Precio actual, señal del modelo, forecasts a 7/30/90 días</span>
@@ -588,8 +582,8 @@
                 <h2 style="margin:0;">📈 Precio Real + Forecast 30 días (USD/bushel)</h2>
                 <div id="forecast-ab-toggle" style="display:none;font-size:.7rem;">
                     <span style="color:#888;margin-right:6px;">Modelo:</span>
-                    <button data-variant="legacy"   class="ab-btn ab-active">Legacy (Ridge+XGB)</button>
-                    <button data-variant="horizons" class="ab-btn">Nuevo (retornos+conformal)</button>
+                    <button data-variant="legacy"   class="ab-btn">Legacy (Ridge+XGB)</button>
+                    <button data-variant="horizons" class="ab-btn ab-active">Nuevo (retornos+conformal)</button>
                     <button data-variant="compare"  class="ab-btn">Comparar</button>
                 </div>
             </div>
@@ -624,10 +618,6 @@
                 <div id="model_signal" class="loading">—</div>
             </div>
             <div class="card">
-                <h2>🎯 Precision Historica (60d)</h2>
-                <div id="accuracy-panel"><span class="loading">—</span></div>
-            </div>
-            <div class="card">
                 <h2>📅 Proximos WASDE</h2>
                 <div id="wasde-panel"><span class="loading">—</span></div>
             </div>
@@ -636,113 +626,10 @@
                 <h2>🚨 Alertas <span style="font-size:.65rem;font-weight:400;color:#888;">LLM mag>=3</span></h2>
                 <div id="alerts"><span class="loading">—</span></div>
             </div>
-            <!-- Secondary: VADER + Optimal Stop collapsed -->
-            <details style="background:#fff;border:1px solid #eee;border-radius:10px;padding:12px 14px;">
-                <summary style="cursor:pointer;font-size:.82rem;font-weight:600;color:#555;">Mas indicadores (VADER, Optimal Stopping)</summary>
-                <div style="margin-top:10px;">
-                    <div style="margin-bottom:12px;">
-                        <div style="font-weight:600;font-size:.82rem;color:#444;margin-bottom:4px;">📰 Sentimiento Noticias (VADER)</div>
-                        <div id="news_signal" class="loading" style="font-size:.88rem;">—</div>
-                    </div>
-                    <div id="optstop-card" style="opacity:.85;border-top:1px solid #eee;padding-top:10px;">
-                        <div style="font-weight:600;font-size:.82rem;color:#444;margin-bottom:4px;">🔬 Optimal Stopping <span style="font-size:.6rem;color:#aaa;background:#f5f5f5;padding:1px 5px;border-radius:3px;">EXPERIMENTAL</span></div>
-                        <div id="optstop-decision" style="font-size:1rem;font-weight:700;margin-bottom:4px;color:#888;">—</div>
-                        <div id="optstop-detail" style="font-size:.78rem;color:#555;line-height:1.4;">—</div>
-                        <canvas id="optstop-sparkline" height="50" style="width:100%;margin-top:6px;"></canvas>
-                    </div>
-                </div>
-            </details>
         </div>
     </div>
-
-    <!-- Validacion del modelo (colapsable para reducir ruido) -->
-    <details class="card" style="margin-bottom:16px;" open>
-        <summary style="cursor:pointer;font-weight:700;font-size:1rem;padding:4px 0;color:#1a1a2e;">
-            Validacion del modelo
-            <span id="drift-health-badge" style="font-size:.65rem;font-weight:600;letter-spacing:.5px;padding:3px 8px;border-radius:4px;margin-left:8px;text-transform:uppercase;">—</span>
-            <span style="font-size:.75rem;font-weight:400;color:#888;margin-left:8px;">Drift + Backtesting + Robustez OOS</span>
-        </summary>
-
-        <div style="margin-top:14px;">
-            <!-- Drift Monitor compact -->
-            <div style="margin-bottom:14px;">
-                <div style="font-weight:600;font-size:.88rem;margin-bottom:6px;">🩺 Drift Monitor</div>
-                <div id="drift-monitor-panel"><span class="loading">Calculando...</span></div>
-            </div>
-
-            <!-- Backtesting -->
-            <div style="margin-bottom:14px;">
-                <div style="font-weight:600;font-size:.88rem;margin-bottom:6px;">📊 Backtesting</div>
-                <button class="btn" id="btn-backtest" onclick="loadBacktest()" style="margin-bottom:8px;">Ejecutar Backtest</button>
-                <div id="backtest-content"><span class="loading">Presiona el boton para ejecutar.</span></div>
-            </div>
-
-            <!-- Lookahead Audit compact -->
-            <details style="margin-bottom:10px;">
-                <summary style="cursor:pointer;font-weight:600;font-size:.85rem;color:#555;">🔬 Auditoria Look-Ahead (OOS)</summary>
-                <div id="lookahead-audit-panel" style="margin-top:8px;"><span class="loading">—</span></div>
-            </details>
-
-            <!-- Nota explicativa compacta -->
-            <div style="background:#fffbe6;border-left:3px solid #f0a500;border-radius:6px;padding:10px 14px;font-size:.78rem;color:#5a4000;line-height:1.5;">
-                <b>Backtest</b> = retorno historico (optimista). <b>Drift</b> = salud reciente (30/60/90d). <b>Accountability</b> (tab Historial) = predicciones reales vs mercado.
-            </div>
-        </div>
-    </details>
 
     <!-- Forecast principal (ETS robusto) -->
-    <div class="card" style="margin-bottom:16px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-            <h2 style="margin:0;">📈 Forecast 90 días (modelo principal · ETS / Holt-Winters)</h2>
-            <span id="mfc-method-badge" style="font-size:.72rem;padding:3px 10px;border-radius:12px;background:#eee;color:#666;">—</span>
-        </div>
-        <div style="font-size:.78rem;color:#666;margin-bottom:10px;">
-            Series temporales con tendencia + estacionalidad anual. Sin saturación técnica del Ridge.
-        </div>
-        <div class="chart-wrap-sm"><canvas id="monthly-forecast-chart"></canvas></div>
-        <div style="display:flex;justify-content:space-between;font-size:.72rem;color:#888;margin-top:8px;flex-wrap:wrap;gap:6px;">
-            <span>Línea = forecast central</span>
-            <span>Banda = ±1.5σ residual</span>
-            <span id="mfc-summary">—</span>
-        </div>
-    </div>
-
-    <!-- Comparación: Multi-horizonte legacy (Ridge+XGB) -->
-    <details class="card" style="margin-bottom:16px;" id="multihorizon-card">
-        <summary style="cursor:pointer;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;color:#888;font-weight:600;">
-            Comparación: forecast Ridge+XGB (modelo legacy)
-        </summary>
-        <div style="font-size:.78rem;color:#888;margin:10px 0;">
-            Mantenemos esta vista como referencia. El modelo principal arriba (ETS) es más robusto a 30/90d.
-        </div>
-        <div id="multihorizon-panel" class="mh-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-            <div style="text-align:center;padding:14px;background:#f8f9fa;border-radius:8px;">
-                <div style="font-size:.72rem;text-transform:uppercase;color:#888;margin-bottom:6px;">7 días</div>
-                <div id="mh-7d-price" style="font-size:1.2rem;font-weight:700;">—</div>
-                <div id="mh-7d-ret" style="font-size:.8rem;margin-top:4px;">—</div>
-                <div id="mh-7d-range" style="font-size:.7rem;color:#888;margin-top:4px;">—</div>
-            </div>
-            <div style="text-align:center;padding:14px;background:#f8f9fa;border-radius:8px;">
-                <div style="font-size:.72rem;text-transform:uppercase;color:#888;margin-bottom:6px;">30 días</div>
-                <div id="mh-30d-price" style="font-size:1.2rem;font-weight:700;">—</div>
-                <div id="mh-30d-ret" style="font-size:.8rem;margin-top:4px;">—</div>
-                <div id="mh-30d-range" style="font-size:.7rem;color:#888;margin-top:4px;">—</div>
-            </div>
-            <div style="text-align:center;padding:14px;background:#f8f9fa;border-radius:8px;">
-                <div style="font-size:.72rem;text-transform:uppercase;color:#888;margin-bottom:6px;">90 días</div>
-                <div id="mh-90d-price" style="font-size:1.2rem;font-weight:700;">—</div>
-                <div id="mh-90d-ret" style="font-size:.8rem;margin-top:4px;">—</div>
-                <div id="mh-90d-range" style="font-size:.7rem;color:#888;margin-top:4px;">—</div>
-            </div>
-        </div>
-    </details>
-
-    <!-- Ensemble (key signal — keep visible) -->
-    <div class="card" style="margin-bottom:16px;">
-        <h2>🧠 Señal Ensemble (Modelo + LLM)</h2>
-        <div id="ensemble-panel"><span class="loading">—</span></div>
-    </div>
-
     <!-- Datos externos — colapsable para reducir scroll -->
     <details class="card" style="margin-bottom:16px;">
         <summary style="cursor:pointer;font-weight:700;font-size:1rem;padding:4px 0;color:#1a1a2e;">
@@ -1898,12 +1785,9 @@ async function loadData() {
         loadNewsIntel();
         loadNextEvent();
         loadMonthlyForecast();
-        loadEnsemble();
         loadCME();
         loadCropProgress();
         loadSatellite();
-        loadLookaheadAudit();
-        loadDriftMonitor();
     } catch (err) {
         console.error(err);
         document.getElementById("last-update").textContent = "⚠️ Error: " + err.message;
@@ -1912,7 +1796,7 @@ async function loadData() {
 
 // Estado A/B del forecast (legacy | horizons | compare)
 let _abVariant = (() => {
-    try { return localStorage.getItem("forecast_ab_variant") || "legacy"; }
+    try { return localStorage.getItem("forecast_ab_variant") || "horizons"; }
     catch (_) { return "legacy"; }
 })();
 let _lastRender = null;
@@ -2378,60 +2262,6 @@ function renderData(data) {
             }
         }).catch(() => {});
 
-        // Optimal stopping decision card (DP backward induction)
-        fetch("/api/optimal_stopping?horizon=30&n_paths=600").then(r => r.json()).then(d => {
-            if (!d.ok) return;
-            const decEl = document.getElementById("optstop-decision");
-            const detEl = document.getElementById("optstop-detail");
-            const colorMap = { SELL_NOW: "#c62828", WAIT: "#2e7d32", INDIFFERENT: "#f0a500" };
-            const labelMap = { SELL_NOW: "VENDER hoy", WAIT: "ESPERAR", INDIFFERENT: "Indeciso" };
-            if (decEl) {
-                decEl.textContent = labelMap[d.decision_now] || d.decision_now;
-                decEl.style.color = colorMap[d.decision_now] || "#888";
-            }
-            if (detEl) {
-                detEl.innerHTML =
-                    `Precio hoy: <b>$${d.p_now_usd_ton}</b>/ton · ` +
-                    `Reservation: <b>$${d.reservation_today_usd_ton}</b>/ton<br>` +
-                    `E[V*] óptimo: <b>$${d.expected_value_optimal_usd_ton}</b> · ` +
-                    `vs always-wait: <span style="color:${d.lift_optimal_vs_wait_pct >= 0 ? '#2e7d32' : '#c62828'}">${d.lift_optimal_vs_wait_pct >= 0 ? '+' : ''}${d.lift_optimal_vs_wait_pct}%</span>`;
-            }
-            // Sparkline del reservation curve
-            const cv = document.getElementById("optstop-sparkline");
-            if (cv && d.reservation_curve && d.reservation_curve.length > 0) {
-                const ctx = cv.getContext("2d");
-                const W = cv.clientWidth || 240, H = 60;
-                cv.width = W * 2; cv.height = H * 2;
-                ctx.scale(2, 2);
-                ctx.clearRect(0, 0, W, H);
-                const arr = d.reservation_curve;
-                const min = Math.min(...arr, d.p_now_usd_ton);
-                const max = Math.max(...arr, d.p_now_usd_ton);
-                const range = Math.max(max - min, 1);
-                // Linea reservation
-                ctx.strokeStyle = "#1976d2";
-                ctx.lineWidth = 1.6;
-                ctx.beginPath();
-                arr.forEach((v, i) => {
-                    const x = (i / (arr.length - 1)) * W;
-                    const y = H - ((v - min) / range) * (H - 6) - 3;
-                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                });
-                ctx.stroke();
-                // Línea horizontal del precio actual
-                const yp = H - ((d.p_now_usd_ton - min) / range) * (H - 6) - 3;
-                ctx.strokeStyle = "rgba(198,40,40,.7)";
-                ctx.setLineDash([3, 3]);
-                ctx.beginPath(); ctx.moveTo(0, yp); ctx.lineTo(W, yp); ctx.stroke();
-                ctx.setLineDash([]);
-                // Etiquetas
-                ctx.font = "10px sans-serif"; ctx.fillStyle = "#888";
-                ctx.fillText("d1", 2, H - 2); ctx.fillText("d30", W - 22, H - 2);
-                ctx.fillStyle = "#1976d2"; ctx.fillText(`reservation`, 2, 12);
-                ctx.fillStyle = "#c62828"; ctx.fillText(`precio actual`, W - 80, yp - 3);
-            }
-        }).catch(() => {});
-
         // ── Divergence flag (señal vs forecast) ──
         const signal     = data.model_signal?.signal;
         const forecastUp = pct > 3.0;
@@ -2541,78 +2371,6 @@ function renderData(data) {
                 <span>${a.timestamp} — <b>${a.prev}</b> → ${signalBadge(a.signal)}</span>
                 <span style="font-size:.75rem;color:#888">Ret: ${fmtPct(a.return)} | Conf: ${a.confidence}%</span>
             </div>`).join("");
-    }
-
-    // ── Resumen ejecutivo ───────────────────────────────────────
-    const bullets = data.executive_summary || [];
-    const esCard  = document.getElementById("executive-summary-card");
-    if (bullets.length > 0) {
-        esCard.style.display = "block";
-        document.getElementById("executive-summary-bullets").innerHTML =
-            bullets.map((b, i) => `
-                <div style="display:flex;gap:12px;padding:10px 0;border-bottom:${i < bullets.length-1 ? '1px solid #f0f0f0' : 'none'}">
-                    <span style="font-size:1.2rem;flex-shrink:0">${["1️⃣","2️⃣","3️⃣"][i]||"•"}</span>
-                    <span style="font-size:.875rem;color:#333;line-height:1.6">${b}</span>
-                </div>`).join("");
-    } else {
-        esCard.style.display = "none";
-    }
-
-    // ── Precisión histórica ─────────────────────────────────────
-    const acc   = data.accuracy;
-    const accEl = document.getElementById("accuracy-panel");
-    if (acc && acc.n_signals > 0 && acc.accuracy != null) {
-        const accCls  = acc.accuracy >= 55 ? "green" : acc.accuracy >= 45 ? "gray" : "red";
-        const nSamples = acc.n_days || acc.n_signals;
-        const sampleNote = nSamples < 5
-            ? `<span style="display:inline-block;background:#c0392b;color:#fff;padding:3px 8px;border-radius:4px;font-size:.72rem;font-weight:700;">🚫 NO ESTADÍSTICAMENTE VÁLIDO (n=${nSamples}) — ignorá este número</span>`
-            : nSamples < 15
-            ? `<span style="color:#e67e22;font-size:.72rem;font-weight:600">⚠ Muestra pequeña (${nSamples} puntos) — resultado poco estable</span>`
-            : `<span style="color:#aaa;font-size:.72rem">${nSamples} muestras · 1 c/14d · últimos 90d</span>`;
-        accEl.innerHTML = `
-            <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
-                <div>
-                    <div style="font-size:.65rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px">Reciente (90d)</div>
-                    <div style="font-size:2rem;font-weight:700" class="${accCls}">${acc.accuracy}%</div>
-                </div>
-                <div style="font-size:.8rem;color:#666;line-height:1.6">
-                    <b>${acc.n_correct}</b> de <b>${acc.n_signals}</b> señales correctas<br>
-                    ${sampleNote}
-                </div>
-            </div>
-            <div class="conf-bar-wrap">
-                <div class="conf-bar" style="width:${acc.accuracy}%;background:${acc.accuracy>=55?'#1b8a3e':acc.accuracy>=45?'#f0a500':'#c0392b'}"></div>
-            </div>
-            <div style="margin-top:8px;font-size:.75rem;color:#aaa">
-                🟢 BUY: ${acc.buy_signals || 0} &nbsp;·&nbsp; 🔴 SELL: ${acc.sell_signals || 0}
-            </div>
-            <div style="margin-top:10px;padding:8px 10px;background:#f0f4ff;border-radius:6px;font-size:.76rem;color:#555;line-height:1.6">
-                💡 <b>Contexto:</b> El backtest walk-forward sobre el historial completo muestra
-                <b id="acc-bt-wr">—</b> de win rate y <b id="acc-bt-alpha">—</b> de alpha.
-                <span style="color:#888">Ejecutá el backtest ↓ para ver el detalle completo.</span>
-            </div>
-            <details style="margin-top:8px;font-size:.76rem;color:#777;background:#f8f9fa;border-radius:6px;padding:8px 10px;">
-                <summary style="cursor:pointer;font-weight:600;color:#555;">¿Cómo se calcula? ¿Por qué difiere del backtest?</summary>
-                <div style="margin-top:6px;line-height:1.6">
-                    <p>Muestreo <b>cada 14 días</b> (sin solapamiento) sobre los últimos 90 días con retorno ya confirmado.
-                    Se verifica si la señal activa (BUY/SELL) coincidió con el movimiento real 14 días después. HOLD no cuenta.</p>
-                    <p style="margin-top:6px;color:#e67e22">⚠ Si n &lt; 15 → resultado poco estable. <b style="color:#c0392b">Si n &lt; 5 → estadísticamente inválido, ignorar.</b></p>
-                    <hr style="border:none;border-top:1px solid #ddd;margin:8px 0;">
-                    <p><b>¿Por qué este número difiere del backtest?</b></p>
-                    <p>Son ventanas distintas:<br>
-                    • <b>Precisión (aquí):</b> últimos 90 días — mide el rendimiento reciente del modelo en condiciones de mercado actuales.<br>
-                    • <b>Backtest walk-forward:</b> último 20% del historial completo (2+ años) — mide rendimiento sobre un período más largo y diverso.<br>
-                    Es normal que difieran: el mercado cambia y el modelo puede comportarse mejor o peor en distintos regímenes.</p>
-                </div>
-            </details>`;
-    } else if (acc && acc.n_signals === 0) {
-        accEl.innerHTML = `
-            <span style="color:#aaa;font-size:.85rem">
-                Sin señales activas (BUY/SELL) en los últimos 90 días.<br>
-                El modelo generó solo HOLD en ese período.
-            </span>`;
-    } else {
-        accEl.innerHTML = `<span style="color:#aaa;font-size:.85rem">Calculando…</span>`;
     }
 
     // ── Calendario WASDE ────────────────────────────────────────
@@ -4647,10 +4405,11 @@ async function loadLlmAccountability() {
 async function loadSynthesis() {
     try {
         const r = await fetch("/api/market_synthesis");
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();
         _renderSynthesis(d);
     } catch (e) {
-        _renderSynthesis({ error: e.message });
+        _renderSynthesis({ error: "No se pudo cargar el brief. Reintentá en unos minutos." });
     }
 }
 
@@ -4659,10 +4418,11 @@ async function refreshSynthesis() {
     if (btn) { btn.disabled = true; btn.textContent = "⏳ Generando…"; }
     try {
         const r = await fetch("/api/market_synthesis", { method: "POST" });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();
         _renderSynthesis(d);
     } catch (e) {
-        _renderSynthesis({ error: e.message });
+        _renderSynthesis({ error: "No se pudo regenerar el brief. Reintentá en unos minutos." });
     } finally {
         if (btn) { btn.disabled = false; btn.textContent = "↻ Re-generar"; }
     }
@@ -4677,10 +4437,11 @@ async function loadTraderSynthesis() {
     if (!el) return;
     try {
         const r = await fetch("/api/market_synthesis?type=trader");
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();
         _renderTraderSynthesis(el, d);
     } catch (e) {
-        el.innerHTML = `<i style="color:#888">${e.message}</i>`;
+        el.innerHTML = `<i style="color:#888">No se pudo cargar el brief. Reintentá en unos minutos.</i>`;
     }
 }
 
@@ -4691,10 +4452,11 @@ async function refreshTraderSynthesis() {
     if (btn) { btn.disabled = true; btn.textContent = "Generando..."; }
     try {
         const r = await fetch("/api/market_synthesis?type=trader", { method: "POST" });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();
         _renderTraderSynthesis(el, d);
     } catch (e) {
-        if (el) el.innerHTML = `<i style="color:#c62828">${e.message}</i>`;
+        if (el) el.innerHTML = `<i style="color:#c62828">No se pudo regenerar el brief. Reintentá en unos minutos.</i>`;
     } finally {
         if (btn) { btn.disabled = false; btn.textContent = "Re-generar"; }
     }
