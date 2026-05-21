@@ -770,7 +770,10 @@ def get_news():
             return jsonify(_cache)
 
         print("[>>] Actualizando cache...")
-        run_pipeline_background()
+        # Skip pipeline on Render (AGROCAST_FAST_START=1) — pipeline runs
+        # via GitHub Actions cron, not from web requests (OOM on 512MB)
+        if os.environ.get("AGROCAST_FAST_START", "0") != "1":
+            run_pipeline_background()
 
         try:
             news_data = fetcher.update_news()
