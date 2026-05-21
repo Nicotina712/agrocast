@@ -137,10 +137,11 @@
     "conviction": 45,
     "headline": "Señal bajista corto plazo: momento de vender o cubrir posición",
     "price_at_snapshot": 1200.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -0.04,
+    "verified_at": "2026-05-21T13:35:46.534747",
+    "price_at_horizon": 1199.75
   },
   {
     "date": "2026-05-07",
@@ -148,10 +149,11 @@
     "conviction": 45,
     "headline": "Señal bajista dominante: modelo ML y demanda china presionan precios",
     "price_at_snapshot": 1200.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -0.17,
+    "verified_at": "2026-05-21T13:35:46.535198",
+    "price_at_horizon": 1198.25
   },
   {
     "date": "2026-05-08",
