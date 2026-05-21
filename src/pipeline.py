@@ -675,19 +675,31 @@ def run_pipeline() -> None:
     # ── 13b. Harvest Plan — check triggers & send alerts ──────────
     try:
         from src.producer.harvest_plan import check_triggers, send_plan_alerts
-        from src.producer.sell_signal import get_sell_signal
-        sell_data = get_sell_signal()
-        if sell_data.get("ok"):
-            hp_result = check_triggers(
-                current_price_usd_ton=sell_data.get("local_price_usd_ton", 0),
-                sell_signal=sell_data.get("signal_text", "ESPERAR"),
-            )
-            if hp_result.get("alerts"):
-                sent = send_plan_alerts(hp_result["alerts"])
-                print(f"   [HarvestPlan] {len(hp_result['alerts'])} triggers fired, "
-                      f"{sent} alerts sent")
-            else:
-                print(f"   [HarvestPlan] No triggers fired")
+        from src.data.basis_forecast import BUSHELS_PER_TON, SEASONAL_BASIS
+        # Get current price in USD/ton from pipeline data
+        _price_usc_bu = float(features["Soybeans"].iloc[-1])
+        _price_usd_ton = _price_usc_bu * BUSHELS_PER_TON / 100
+        _month = pd.to_datetime(features["Date"].iloc[-1]).month
+        _basis = SEASONAL_BASIS.get(_month, -25)
+        _local_price_usd_ton = _price_usd_ton + _basis
+        # Get signal from ensemble if available
+        _sell_signal = "ESPERAR"
+        try:
+            _ens_signal = ens.get("signal_ensemble", "HOLD") if 'ens' in dir() else "HOLD"
+            _sell_signal = {"SELL": "VENDER", "BUY": "ESPERAR", "HOLD": "ESPERAR"}.get(
+                _ens_signal, "ESPERAR")
+        except Exception:
+            pass
+        hp_result = check_triggers(
+            current_price_usd_ton=_local_price_usd_ton,
+            sell_signal=_sell_signal,
+        )
+        if hp_result.get("alerts"):
+            sent = send_plan_alerts(hp_result["alerts"])
+            print(f"   [HarvestPlan] {len(hp_result['alerts'])} triggers fired, "
+                  f"{sent} alerts sent")
+        else:
+            print(f"   [HarvestPlan] No triggers fired")
     except Exception as _e:
         print(f"   [INFO] Harvest plan: {_e}")
 

@@ -1,42 +1,42 @@
-{
-  "report_year": 2026,
-  "marketing_year": "2025/26",
-  "report_date": "2026-04-10",
-  "released_at": "2026-04-10T17:00:00+00:00",
-  "world": {
-    "production_mmt": 422.0,
-    "exports_mmt": 175.0,
-    "consumption_mmt": 328.0,
-    "ending_stocks_mmt": 122.4
-  },
-  "argentina": {
-    "production_mmt": 49.0,
-    "exports_mmt": 5.0
-  },
-  "brazil": {
-    "production_mmt": 169.0,
-    "exports_mmt": 103.0
-  },
-  "usa": {
-    "production_mmt": 115988.6,
-    "exports_mmt": 54.4
-  },
-  "china": {
-    "imports_mmt": 109.0
-  },
-  "surprise": {
-    "score": 0.0,
-    "surprise_z": 0.0,
-    "expected": 122.4,
-    "actual": 122.4,
-    "direction": "NEUTRAL",
-    "n_history": 24
-  },
-  "surprise_z": 0.0,
-  "signal": "NEUTRAL",
-  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.0%) \u2192 NEUTRAL.",
-  "data_source": "usda_nass",
-  "history_n": 25,
-  "history_n_unique": 24,
-  "as_of": "2026-05-18T16:58:41.545081"
+{
+  "report_year": 2026,
+  "marketing_year": "2025/26",
+  "report_date": "2026-04-10",
+  "released_at": "2026-04-10T17:00:00+00:00",
+  "world": {
+    "production_mmt": 422.0,
+    "exports_mmt": 175.0,
+    "consumption_mmt": 328.0,
+    "ending_stocks_mmt": 122.4
+  },
+  "argentina": {
+    "production_mmt": 49.0,
+    "exports_mmt": 5.0
+  },
+  "brazil": {
+    "production_mmt": 169.0,
+    "exports_mmt": 103.0
+  },
+  "usa": {
+    "production_mmt": 115988.6,
+    "exports_mmt": 54.4
+  },
+  "china": {
+    "imports_mmt": 109.0
+  },
+  "surprise": {
+    "score": 0.0,
+    "surprise_z": 0.0,
+    "expected": 122.4,
+    "actual": 122.4,
+    "direction": "NEUTRAL",
+    "n_history": 24
+  },
+  "surprise_z": 0.0,
+  "signal": "NEUTRAL",
+  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.0%) \u2192 NEUTRAL.",
+  "data_source": "usda_nass",
+  "history_n": 25,
+  "history_n_unique": 24,
+  "as_of": "2026-05-21T08:17:36.106784"
 }

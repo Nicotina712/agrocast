@@ -1,63 +1,63 @@
-{
-  "imports_mmt_current": 114.0,
-  "imports_mmt_prev": 112.0,
-  "imports_yoy_pct": 1.8,
-  "imports_zscore": 1.26,
-  "crush_margin": {
-    "margin_usd_ton": -150.27,
-    "soy_price_usd_ton": 445.34,
-    "meal_price_usd_ton": 334.6,
-    "signal": "NEGATIVO",
-    "note": "Margen negativo (-150.3 USD/ton) \u2014 presi\u00f3n sobre demanda de soja para crush."
-  },
-  "cny_usd": null,
-  "cny_signal": null,
-  "cny_note": null,
-  "demand_score": 30,
-  "demand_signal": "DEBIL",
-  "interpretation": "Se\u00f1ales de demanda china d\u00e9bil \u2014 m\u00e1rgenes de crush negativos o ca\u00edda de importaciones.",
-  "data_source": "usda_fas_psd_csv",
-  "history": [
-    {
-      "Market_Year": 2017,
-      "imports_mmt": 94.093
-    },
-    {
-      "Market_Year": 2018,
-      "imports_mmt": 82.537
-    },
-    {
-      "Market_Year": 2019,
-      "imports_mmt": 98.532
-    },
-    {
-      "Market_Year": 2020,
-      "imports_mmt": 99.74
-    },
-    {
-      "Market_Year": 2021,
-      "imports_mmt": 90.297
-    },
-    {
-      "Market_Year": 2022,
-      "imports_mmt": 104.5
-    },
-    {
-      "Market_Year": 2023,
-      "imports_mmt": 112.0
-    },
-    {
-      "Market_Year": 2024,
-      "imports_mmt": 108.0
-    },
-    {
-      "Market_Year": 2025,
-      "imports_mmt": 112.0
-    },
-    {
-      "Market_Year": 2026,
-      "imports_mmt": 114.0
-    }
-  ],
-  "as_of": "2026-05-18"
+{
+  "imports_mmt_current": 114.0,
+  "imports_mmt_prev": 112.0,
+  "imports_yoy_pct": 1.8,
+  "imports_zscore": 1.26,
+  "crush_margin": {
+    "margin_usd_ton": -149.62,
+    "soy_price_usd_ton": 440.19,
+    "meal_price_usd_ton": 329.5,
+    "signal": "NEGATIVO",
+    "note": "Margen negativo (-149.6 USD/ton) \u2014 presi\u00f3n sobre demanda de soja para crush."
+  },
+  "cny_usd": null,
+  "cny_signal": null,
+  "cny_note": null,
+  "demand_score": 30,
+  "demand_signal": "DEBIL",
+  "interpretation": "Se\u00f1ales de demanda china d\u00e9bil \u2014 m\u00e1rgenes de crush negativos o ca\u00edda de importaciones.",
+  "data_source": "usda_fas_psd_csv",
+  "history": [
+    {
+      "Market_Year": 2017,
+      "imports_mmt": 94.093
+    },
+    {
+      "Market_Year": 2018,
+      "imports_mmt": 82.537
+    },
+    {
+      "Market_Year": 2019,
+      "imports_mmt": 98.532
+    },
+    {
+      "Market_Year": 2020,
+      "imports_mmt": 99.74
+    },
+    {
+      "Market_Year": 2021,
+      "imports_mmt": 90.297
+    },
+    {
+      "Market_Year": 2022,
+      "imports_mmt": 104.5
+    },
+    {
+      "Market_Year": 2023,
+      "imports_mmt": 112.0
+    },
+    {
+      "Market_Year": 2024,
+      "imports_mmt": 108.0
+    },
+    {
+      "Market_Year": 2025,
+      "imports_mmt": 112.0
+    },
+    {
+      "Market_Year": 2026,
+      "imports_mmt": 114.0
+    }
+  ],
+  "as_of": "2026-05-21"
 }

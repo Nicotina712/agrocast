@@ -27,7 +27,7 @@ def _cache_is_fresh() -> bool:
 
     IMPORTANTE: No usar mtime del archivo (se actualiza con git operations).
     En su lugar, verificar la última fecha dentro del CSV.
-    Considerar fresco si la última fecha de datos es de hoy o del último día hábil.
+    Considerar fresco si incluye el último día hábil (Mon-Fri).
     """
     if not os.path.exists(_CACHE_PATH):
         return False
@@ -37,10 +37,15 @@ def _cache_is_fresh() -> bool:
             return False
         last_date = df["Date"].max().date()
         today = datetime.now().date()
-        days_stale = (today - last_date).days
-        # Fresh if data is from today or within 3 calendar days (covers weekends)
-        # Stale if more than 3 days old (should have at least 1 trading day in 3 cal days)
-        return days_stale <= 3
+        # Find the most recent business day (Mon-Fri)
+        latest_biz = today
+        while latest_biz.weekday() >= 5:  # Sat=5, Sun=6
+            latest_biz -= timedelta(days=1)
+        # Fresh only if data includes the latest business day
+        # (allow 1 day grace for market data delay — e.g. today's data
+        #  may not be available until after market close)
+        days_stale = (latest_biz - last_date).days
+        return days_stale <= 1
     except Exception:
         # If we can't read/parse the file, treat as stale to force refresh
         return False

@@ -7,44 +7,44 @@
     "vol_window": "vol_60d",
     "vol_now": 0.0112,
     "vol_p33": 0.0096,
-    "vol_p66": 0.0104,
+    "vol_p66": 0.0105,
     "news_velocity_7d": 1.0,
-    "iv_atm": 0.2534,
+    "iv_atm": 0.002,
     "ma90_slope": 0.00749,
-    "price_vs_ma90": 0.0576
+    "price_vs_ma90": 0.0437
   },
-  "as_of": "2026-05-20T13:45:52",
+  "as_of": "2026-05-21T08:24:19",
   "hmm": {
     "ok": true,
     "n_states": 3,
     "lookback_days": 1440,
     "current_state": "low_vol",
-    "current_proba": 0.774,
+    "current_proba": 0.877,
     "state_probs": {
-      "low_vol": 0.774,
+      "low_vol": 0.877,
       "high_vol": 0.0,
-      "medium_vol": 0.226
+      "medium_vol": 0.123
     },
     "state_freq": {
-      "low_vol": 1067,
-      "high_vol": 68,
-      "medium_vol": 305
+      "low_vol": 1167,
+      "high_vol": 65,
+      "medium_vol": 208
     },
     "transition_matrix": [
       [
-        0.98,
+        0.986,
         0.0,
-        0.02
+        0.014
       ],
       [
         0.0,
-        0.956,
-        0.044
+        0.954,
+        0.046
       ],
       [
-        0.069,
-        0.01,
-        0.921
+        0.077,
+        0.014,
+        0.909
       ]
     ],
     "transition_labels": [
@@ -52,6 +52,6 @@
       "high_vol",
       "medium_vol"
     ],
-    "explanation": "Mercado en estado 'low_vol' con probabilidad 77%. En la \u00faltima ventana (1440d), 1067 d\u00edas estuvieron en este r\u00e9gimen."
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 88%. En la \u00faltima ventana (1440d), 1167 d\u00edas estuvieron en este r\u00e9gimen."
   }
 }

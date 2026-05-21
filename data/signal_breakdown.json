@@ -1,77 +1,94 @@
-{
-  "ok": true,
-  "factors": [
-    {
-      "name": "Modelo ML (XGBoost 7d)",
-      "score": -0.729,
-      "direction": "MUY BAJISTA",
-      "detail": "Retorno esperado: -14.58% \u00b7 Se\u00f1al: SELL \u00b7 Confianza: 29.2%",
-      "weight": 0.3,
-      "raw": {
-        "expected_return": -0.1458,
-        "confidence": 0.2917,
-        "signal": "SELL"
-      }
-    },
-    {
-      "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.833,
-      "direction": "MUY ALCISTA",
-      "detail": "Precio objetivo: 1312.9 USc/bu \u00b7 Retorno: +8.3% (informativo, no pondera)",
-      "weight": 0.0,
-      "raw": {
-        "forecast": 1312.92,
-        "return_pct": 8.33
-      }
-    },
-    {
-      "name": "Demanda China",
-      "score": -0.4,
-      "direction": "BAJISTA",
-      "detail": "Score demanda: 30/100 \u00b7 Crush: NEGATIVO \u00b7 Importaciones YoY: +1.8%",
-      "weight": 0.2,
-      "raw": {
-        "demand_score": 30,
-        "crush_signal": "NEGATIVO"
-      }
-    },
-    {
-      "name": "WASDE / Stocks Mundiales",
-      "score": 0.0,
-      "direction": "NEUTRO",
-      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 122.4 MMT",
-      "weight": 0.15,
-      "raw": {
-        "signal": "NEUTRAL",
-        "surprise_score": 0
-      }
-    },
-    {
-      "name": "An\u00e1lisis T\u00e9cnico (Soja)",
-      "score": 0.4,
-      "direction": "ALCISTA",
-      "detail": "Score t\u00e9cnico: +2 \u00b7 RSI: 50 \u00b7 Bollinger%: 40% \u00b7 precio > MA50; MA50 > MA200 (golden cross)",
-      "weight": 0.1,
-      "raw": {
-        "tech_score": 2,
-        "rsi": 49.9,
-        "bb_pct": 40.5
-      }
-    },
-    {
-      "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.036,
-      "direction": "NEUTRO",
-      "detail": "May: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-5.3%, +5.7%]",
-      "weight": 0.0,
-      "raw": {
-        "month": 5,
-        "avg_pct": 0.18
-      }
-    }
-  ],
-  "composite_score": 33,
-  "composite_raw": -0.345,
-  "composite_signal": "SELL",
-  "as_of": "2026-05-18"
+{
+  "ok": true,
+  "factors": [
+    {
+      "name": "Intelligence Engine (5-Agent Debate)",
+      "score": -0.52,
+      "direction": "MUY BAJISTA",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 42h)",
+      "weight": 0.35,
+      "raw": {
+        "verdict": "SELL",
+        "confidence": 0.52,
+        "price_range_7d": {
+          "low": 1165,
+          "central": 1188,
+          "high": 1215
+        },
+        "reasoning": "El peso fundamental bajista domina: m\u00e1rgenes de crushing chino en -$154/ton (7x el umbral cr\u00edtico) con demand score 30/100 eliminan el comprador marginal m\u00e1s importante del mercado, mientras Brasil sa"
+      }
+    },
+    {
+      "name": "Demanda China",
+      "score": -0.4,
+      "direction": "BAJISTA",
+      "detail": "Score demanda: 30/100 \u00b7 Crush: NEGATIVO \u00b7 Importaciones YoY: +1.8%",
+      "weight": 0.25,
+      "raw": {
+        "demand_score": 30,
+        "crush_signal": "NEGATIVO"
+      }
+    },
+    {
+      "name": "WASDE / Stocks Mundiales",
+      "score": 0.0,
+      "direction": "NEUTRO",
+      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 122.4 MMT",
+      "weight": 0.2,
+      "raw": {
+        "signal": "NEUTRAL",
+        "surprise_score": 0
+      }
+    },
+    {
+      "name": "Modelo ML (XGBoost 14d)",
+      "score": 0.17,
+      "direction": "ALCISTA",
+      "detail": "Retorno esperado: +3.40% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 6.8%",
+      "weight": 0.2,
+      "raw": {
+        "expected_return": 0.034,
+        "confidence": 0.068,
+        "signal": "HOLD"
+      }
+    },
+    {
+      "name": "An\u00e1lisis T\u00e9cnico (Soja)",
+      "score": 0.2,
+      "direction": "ALCISTA",
+      "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 61 \u00b7 Bollinger%: 89% \u00b7 precio > MA50; MA50 > MA200 (golden cross) (informativo, no pondera)",
+      "weight": 0.0,
+      "raw": {
+        "tech_score": 1,
+        "rsi": 60.7,
+        "bb_pct": 88.9
+      }
+    },
+    {
+      "name": "Forecast 30d (Ridge+XGB Ensemble)",
+      "score": -0.094,
+      "direction": "NEUTRO",
+      "detail": "Precio objetivo: 1199.1 USc/bu \u00b7 Retorno: -0.9% (informativo, no pondera)",
+      "weight": 0.0,
+      "raw": {
+        "forecast": 1199.1064012965876,
+        "return_pct": -0.94
+      }
+    },
+    {
+      "name": "Estacionalidad Hist\u00f3rica",
+      "score": 0.04,
+      "direction": "NEUTRO",
+      "detail": "May: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-5.3%, +5.7%]",
+      "weight": 0.0,
+      "raw": {
+        "month": 5,
+        "avg_pct": 0.2
+      }
+    }
+  ],
+  "composite_score": 38,
+  "composite_raw": -0.248,
+  "composite_signal": "SELL",
+  "as_of": "2026-05-21"
 }
