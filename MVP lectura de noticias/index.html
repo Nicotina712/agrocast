@@ -1893,6 +1893,12 @@ function renderData(data) {
             const priceEl = document.getElementById("kpi-price");
             if (priceEl && ct.price != null)
                 priceEl.textContent = `$${ct.price.toFixed(2)} | ${ct.front_contract}`;
+            // Update date to live timestamp when current_contract responds
+            const dateEl = document.getElementById("kpi-price-date");
+            if (dateEl && ct.generated_at) {
+                const liveDate = ct.generated_at.slice(0, 10);
+                dateEl.textContent = `al ${liveDate} · USD/bushel`;
+            }
             _applyRolloverIndicator(ct);
         })
         .catch(() => {});
@@ -2866,7 +2872,7 @@ async function createHarvestPlan() {
         const r = await fetch("/api/harvest_plan", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({crop_tons: tons, cost_of_production: cost, target_avg_price: target})
+            body: JSON.stringify({crop_tons: tons, cost_of_production: cost, target_price: target})
         });
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();

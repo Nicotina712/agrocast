@@ -760,16 +760,13 @@ def get_current_contract_data() -> dict:
 
 # ── Endpoints ─────────────────────────────────────────────────────
 
-@app.route("/api/news")
-def get_news():
-    global _last_update, _cache
-    now = time.time()
+_news_refresh_in_progress = False
 
-    with _cache_lock:
-        if now - _last_update <= CACHE_TTL and _cache:
-            return jsonify(_cache)
-
-        print("[>>] Actualizando cache...")
+def _refresh_news_cache():
+    """Background refresh of news cache — runs in a thread so /api/news never blocks."""
+    global _last_update, _cache, _news_refresh_in_progress
+    try:
+        print("[>>] Actualizando cache en background...")
         # Skip pipeline on Render (AGROCAST_FAST_START=1) — pipeline runs
         # via GitHub Actions cron, not from web requests (OOM on 512MB)
         if os.environ.get("AGROCAST_FAST_START", "0") != "1":
@@ -790,7 +787,6 @@ def get_news():
         else:
             sentiment = 0.0
 
-        # Volumen real = batch fresco de hoy (no la memoria acumulada de 50)
         fresh_count = news_data.get("fresh_count", len(articles))
         raw_count   = news_data.get("raw_count", 0)
         market = {
@@ -800,7 +796,6 @@ def get_news():
             "memory_size":   len(articles),
         }
 
-        # Persistir sentimiento diario para el módulo news-impact
         try:
             sys.path.insert(0, PROJECT_ROOT)
             from src.features.news_history import save_daily_sentiment
@@ -843,10 +838,73 @@ def get_news():
             "accuracy":       compute_signal_accuracy(),
         }
         partial_data["executive_summary"] = generate_executive_summary(partial_data)
-        _cache = partial_data
-        _last_update = now
 
-    return jsonify(_cache)
+        with _cache_lock:
+            _cache = partial_data
+            _last_update = time.time()
+        print("[OK] Cache actualizado en background")
+    except Exception as e:
+        print(f"[ERROR] Background refresh: {e}")
+    finally:
+        _news_refresh_in_progress = False
+
+
+def _build_instant_cache() -> dict:
+    """Build a fast response from disk artifacts only (no network calls).
+    Used when no cache exists yet so the frontend gets data immediately."""
+    import datetime as _dtm
+    model_signal = load_signals()
+    forecast = load_forecast("legacy")
+    forecast_horizons = load_forecast("horizons")
+    price_14d = load_14d_forecast()
+    hist = load_history(90)
+
+    return {
+        "server_time":    _dtm.datetime.now().isoformat(),
+        "articles":       [],
+        "market":         {"sentiment": 0, "volume": 0, "raw_volume": 0, "memory_size": 0},
+        "history":        hist,
+        "forecast":       forecast,
+        "forecast_horizons": forecast_horizons,
+        "forecast_variants_available": [
+            v for v, lst in (("legacy", forecast), ("horizons", forecast_horizons)) if lst
+        ],
+        "signal":         {"signal": "NEUTRAL", "reason": "Cargando noticias..."},
+        "model_signal":   model_signal,
+        "alerts":         [],
+        "alert_history":  _load_alert_history()[-10:],
+        "price_target_14d": price_14d,
+        "wasde_upcoming": load_wasde_upcoming(),
+        "accuracy":       compute_signal_accuracy(),
+        "executive_summary": None,
+        "_loading_news":  True,
+    }
+
+
+@app.route("/api/news")
+def get_news():
+    global _last_update, _cache, _news_refresh_in_progress
+    now = time.time()
+
+    with _cache_lock:
+        cache_fresh = (now - _last_update <= CACHE_TTL) and _cache
+
+    # Fresh cache → return immediately
+    if cache_fresh:
+        return jsonify(_cache)
+
+    # Stale cache exists → return it and trigger background refresh
+    if _cache:
+        if not _news_refresh_in_progress:
+            _news_refresh_in_progress = True
+            threading.Thread(target=_refresh_news_cache, daemon=True).start()
+        return jsonify(_cache)
+
+    # No cache at all (cold start) → return instant data from disk, kick off refresh
+    if not _news_refresh_in_progress:
+        _news_refresh_in_progress = True
+        threading.Thread(target=_refresh_news_cache, daemon=True).start()
+    return jsonify(_build_instant_cache())
 
 
 @app.route("/api/backtest")
