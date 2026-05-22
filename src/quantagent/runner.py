@@ -31,6 +31,14 @@ from src.intraday.features.microstructure import build_intraday_features
 from src.quantagent.agents import call_trend_agent, call_risk_agent
 from src.quantagent.paper_log import log_signal, load_log, evaluate_pending
 
+# Try MT5 for real-time data (falls back to yfinance automatically)
+_USE_MT5 = False
+try:
+    from src.intraday.data.mt5_bridge import fetch_intraday_bars_mt5, initialize as mt5_init
+    _USE_MT5 = True
+except ImportError:
+    pass
+
 _OUT_DIR = os.path.join(_ROOT, "artifacts", "quantagent")
 _DATA_DIR = os.path.join(_ROOT, "data")
 _ARTIFACTS_DIR = os.path.join(_ROOT, "artifacts")
@@ -493,9 +501,19 @@ def run_quantagent(force: bool = False) -> dict:
 
     t0 = time.time()
 
-    # 1. Fetch and build features (force fresh data, no stale cache)
-    print("[QA] Fetching 60m bars (fresh)...")
-    bars = fetch_intraday_bars(interval="60m", use_cache=True, cache_max_age_min=15)
+    # 1. Fetch and build features (MT5 real-time preferred, yfinance fallback)
+    data_source = "yfinance"
+    if _USE_MT5:
+        print("[QA] Fetching 60m bars (MT5 real-time)...")
+        bars = fetch_intraday_bars_mt5(interval="60m", n_bars=500)
+        if not bars.empty:
+            data_source = "mt5"
+        else:
+            print("[QA] MT5 failed, falling back to yfinance...")
+            bars = fetch_intraday_bars(interval="60m", use_cache=True, cache_max_age_min=15)
+    else:
+        print("[QA] Fetching 60m bars (yfinance)...")
+        bars = fetch_intraday_bars(interval="60m", use_cache=True, cache_max_age_min=15)
     if bars.empty:
         return {"error": "No bars available"}
 
@@ -568,6 +586,7 @@ def run_quantagent(force: bool = False) -> dict:
         },
         "evaluation_stats": eval_stats,
         "has_fundamental_context": bool(fundamental_context),
+        "data_source": data_source,
         "execution_time_seconds": round(elapsed, 1),
         "from_cache": False,
     }
