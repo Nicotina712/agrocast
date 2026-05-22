@@ -2825,6 +2825,7 @@ async function loadHarvestPlan() {
                     <th style="padding:6px 10px;text-align:center;">%</th>
                     <th style="padding:6px 10px;text-align:center;">Tons</th>
                     <th style="padding:6px 10px;text-align:center;">Trigger</th>
+                    <th style="padding:6px 10px;text-align:center;">Precio Obj.</th>
                     <th style="padding:6px 10px;text-align:center;">Estado</th>
                 </tr></thead><tbody>`;
         tranches.forEach(t => {
@@ -2840,6 +2841,7 @@ async function loadHarvestPlan() {
                 <td style="padding:6px 10px;text-align:center;">${t.pct}%</td>
                 <td style="padding:6px 10px;text-align:center;">${t.tons}</td>
                 <td style="padding:6px 10px;text-align:center;">${trigLabel}</td>
+                <td style="padding:6px 10px;text-align:center;">${t.price_target ? '$'+t.price_target.toFixed(0) : '—'}</td>
                 <td style="padding:6px 10px;text-align:center;">${status}</td>
             </tr>`;
         });
