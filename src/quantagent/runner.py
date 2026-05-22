@@ -32,6 +32,8 @@ from src.quantagent.agents import call_trend_agent, call_risk_agent
 from src.quantagent.paper_log import log_signal, load_log, evaluate_pending
 
 _OUT_DIR = os.path.join(_ROOT, "artifacts", "quantagent")
+_DATA_DIR = os.path.join(_ROOT, "data")
+_ARTIFACTS_DIR = os.path.join(_ROOT, "artifacts")
 _SIGNAL_FILE = os.path.join(_OUT_DIR, "latest_signal.json")
 _GATE_FILE = os.path.join(_OUT_DIR, "run_gate.json")
 _MAX_RUNS_PER_DAY = 3
@@ -119,6 +121,142 @@ def _build_track_record() -> str:
         return "\n".join(lines)
     except Exception:
         return ""
+
+
+def _build_fundamental_context() -> str:
+    """Build a text summary of fundamental/macro context for LLM agents.
+    This is INFORMATIONAL only — the agents decide how much weight to give it.
+    Reads cached data files that are updated by the pipeline (every ~6h).
+    """
+    lines = []
+    lines.append("\n=== CONTEXTO FUNDAMENTAL (informativo, NO usar como veto) ===\n")
+
+    # 1. Daily model signal (from ML pipeline)
+    try:
+        sig_path = os.path.join(_ARTIFACTS_DIR, "signals.csv")
+        if os.path.exists(sig_path):
+            df = pd.read_csv(sig_path)
+            if not df.empty:
+                last = df.iloc[-1]
+                sig = last.get("signal", "?")
+                conf = last.get("confidence", "?")
+                exp_ret = last.get("expected_return", "?")
+                lines.append(f"Modelo ML diario: senal={sig}, confianza={conf}, retorno_esperado={exp_ret}")
+    except Exception:
+        pass
+
+    # 2. Regime detection
+    try:
+        reg_path = os.path.join(_ARTIFACTS_DIR, "regime.json")
+        if os.path.exists(reg_path):
+            with open(reg_path) as f:
+                reg = json.load(f)
+            lines.append(f"Regimen de mercado: {reg.get('regime', '?')} (metodo: {reg.get('method', '?')})")
+    except Exception:
+        pass
+
+    # 3. WASDE / Fundamentals
+    try:
+        wasde_path = os.path.join(_DATA_DIR, "wasde_official.json")
+        if os.path.exists(wasde_path):
+            with open(wasde_path) as f:
+                w = json.load(f)
+            lines.append(f"WASDE: ending_stocks={w.get('ending_stocks_mbu', '?')} Mbu, "
+                         f"surprise={w.get('surprise_signal', '?')}, as_of={w.get('as_of', '?')}")
+    except Exception:
+        pass
+
+    # 4. China demand
+    try:
+        china_path = os.path.join(_DATA_DIR, "china_demand.json")
+        if os.path.exists(china_path):
+            with open(china_path) as f:
+                china = json.load(f)
+            cm = china.get("crush_margin", {})
+            lines.append(f"China: crush_margin={cm.get('margin_usd_ton', '?')} USD/ton ({cm.get('signal', '?')}), "
+                         f"demanda_score={china.get('demand_score', '?')}/100")
+    except Exception:
+        pass
+
+    # 5. COT positioning
+    try:
+        cot_path = os.path.join(_DATA_DIR, "cot_soybeans.csv")
+        if os.path.exists(cot_path):
+            df = pd.read_csv(cot_path)
+            if not df.empty:
+                last = df.iloc[-1]
+                # Find relevant columns
+                idx_col = next((c for c in df.columns if "index" in c.lower()), None)
+                if idx_col:
+                    cot_idx = last[idx_col]
+                    extreme = ""
+                    if cot_idx > 80:
+                        extreme = " (EXTREMO BULL — contrarian bearish)"
+                    elif cot_idx < 20:
+                        extreme = " (EXTREMO BEAR — contrarian bullish)"
+                    lines.append(f"COT index: {cot_idx:.0f}/100{extreme}")
+    except Exception:
+        pass
+
+    # 6. Implied volatility
+    try:
+        cvol_path = os.path.join(_DATA_DIR, "cvol_history.csv")
+        if os.path.exists(cvol_path):
+            df = pd.read_csv(cvol_path)
+            if not df.empty:
+                last = df.iloc[-1]
+                iv_col = next((c for c in df.columns if c != "Date"), None)
+                if iv_col:
+                    iv = last[iv_col]
+                    sma20 = df[iv_col].tail(20).mean()
+                    zscore = (iv - sma20) / df[iv_col].tail(20).std() if df[iv_col].tail(20).std() > 0 else 0
+                    regime = "extreme" if zscore > 2 else ("elevated" if zscore > 1 else ("low" if zscore < -1 else "normal"))
+                    lines.append(f"IV implicita: {iv:.1f}% (zscore={zscore:.1f}, regimen={regime})")
+    except Exception:
+        pass
+
+    # 7. Daily swing context (SMA cross from raw_market)
+    try:
+        mkt_path = os.path.join(_DATA_DIR, "raw_market.csv")
+        if os.path.exists(mkt_path):
+            df = pd.read_csv(mkt_path)
+            if "Soybeans" in df.columns and len(df) > 20:
+                sma5 = df["Soybeans"].tail(5).mean()
+                sma20 = df["Soybeans"].tail(20).mean()
+                mom5 = (df["Soybeans"].iloc[-1] - df["Soybeans"].iloc[-6]) / df["Soybeans"].iloc[-6] * 100
+                mom20 = (df["Soybeans"].iloc[-1] - df["Soybeans"].iloc[-21]) / df["Soybeans"].iloc[-21] * 100
+                cross = "bullish" if sma5 > sma20 else "bearish"
+                lines.append(f"Swing diario: SMA5={sma5:.0f} vs SMA20={sma20:.0f} ({cross}), "
+                             f"momentum 5d={mom5:+.1f}%, 20d={mom20:+.1f}%")
+    except Exception:
+        pass
+
+    # 8. Event proximity
+    try:
+        today = date.today()
+        if 9 <= today.day <= 13:
+            lines.append("ALERTA: Posible ventana WASDE (10-12 del mes). Volatilidad puede aumentar.")
+    except Exception:
+        pass
+
+    # 9. Active shock
+    try:
+        shock_path = os.path.join(_ARTIFACTS_DIR, "active_shock.json")
+        if os.path.exists(shock_path):
+            with open(shock_path) as f:
+                shock = json.load(f)
+            if shock.get("active"):
+                lines.append(f"SHOCK ACTIVO: tipo={shock.get('shock_type', '?')}, "
+                             f"direccion={shock.get('direction', '?')}, "
+                             f"magnitud={shock.get('magnitude_pct', '?')}%")
+    except Exception:
+        pass
+
+    if len(lines) <= 1:  # Only header
+        return ""
+
+    lines.append("")
+    return "\n".join(lines)
 
 
 def _check_gate() -> tuple[bool, str]:
@@ -376,17 +514,31 @@ def run_quantagent(force: bool = False) -> dict:
     # 1c. Load track record for agent feedback
     track_record = _build_track_record()
 
+    # 1d. Load fundamental context (non-blocking)
+    print("[QA] Loading fundamental context...")
+    fundamental_context = ""
+    try:
+        fundamental_context = _build_fundamental_context()
+        if fundamental_context:
+            print(f"[QA] Fundamental context loaded ({len(fundamental_context)} chars)")
+        else:
+            print("[QA] No fundamental context available")
+    except Exception as e:
+        print(f"[QA] Fundamental context failed (non-blocking): {e}")
+
     # 2. Summarize for LLM
     summary = _build_bars_summary(feat)
     current_price = summary.get("current_state", {}).get("close", 0)
 
-    # 3. Call agents (with track record feedback)
+    # 3. Call agents (with track record + fundamental context)
+    extra_context = track_record + fundamental_context
+
     print("[QA] Calling Trend Agent...")
-    trend = call_trend_agent(summary, track_record=track_record)
+    trend = call_trend_agent(summary, track_record=extra_context)
     print(f"[QA] Trend: {trend.get('trend', '?')} | Setup: {trend.get('setup', {}).get('direction', '?')}")
 
     print("[QA] Calling Risk Agent...")
-    risk = call_risk_agent(summary, trend, track_record=track_record)
+    risk = call_risk_agent(summary, trend, track_record=extra_context)
     print(f"[QA] Risk: viable={risk.get('trade_viable', '?')} | vol={risk.get('volatility_regime', '?')}")
 
     # 4. Synthesize
@@ -415,6 +567,7 @@ def run_quantagent(force: bool = False) -> dict:
             "multi_day": summary.get("multi_day"),
         },
         "evaluation_stats": eval_stats,
+        "has_fundamental_context": bool(fundamental_context),
         "execution_time_seconds": round(elapsed, 1),
         "from_cache": False,
     }
