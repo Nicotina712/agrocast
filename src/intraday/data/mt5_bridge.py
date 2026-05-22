@@ -420,6 +420,29 @@ def place_order(
     order_type = mt5.ORDER_TYPE_BUY if direction.upper() == "BUY" else mt5.ORDER_TYPE_SELL
     price = tick.ask if direction.upper() == "BUY" else tick.bid
 
+    # Auto-detect filling mode supported by the symbol
+    # filling_mode is a bitmask: bit0=FOK, bit1=IOC
+    # ORDER_FILLING_FOK=0, ORDER_FILLING_IOC=1, ORDER_FILLING_RETURN=2
+    sym_info = mt5.symbol_info(sym)
+    filling = mt5.ORDER_FILLING_IOC  # default
+    if sym_info:
+        fm = sym_info.filling_mode
+        if fm & 2:    # bit 1 → IOC supported
+            filling = mt5.ORDER_FILLING_IOC
+        elif fm & 1:  # bit 0 → FOK supported
+            filling = mt5.ORDER_FILLING_FOK
+        else:
+            filling = mt5.ORDER_FILLING_RETURN
+
+    # Respect symbol volume constraints
+    if sym_info:
+        vol_min = sym_info.volume_min
+        vol_step = sym_info.volume_step
+        if volume < vol_min:
+            volume = vol_min
+        # Round to nearest step
+        volume = round(round(volume / vol_step) * vol_step, 8)
+
     request = {
         "action": mt5.TRADE_ACTION_DEAL,
         "symbol": sym,
@@ -432,7 +455,7 @@ def place_order(
         "magic": magic,
         "comment": comment,
         "type_time": mt5.ORDER_TIME_GTC,
-        "type_filling": mt5.ORDER_FILLING_IOC,
+        "type_filling": filling,
     }
 
     if dry_run:

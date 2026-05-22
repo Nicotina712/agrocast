@@ -55,6 +55,7 @@ from src.intraday.data.mt5_bridge import (
     get_live_tick,
     get_account_info,
     get_positions,
+    place_order,
     diagnose as mt5_diagnose,
 )
 from src.intraday.features.microstructure import build_intraday_features
@@ -81,6 +82,8 @@ RTH_END_CT = (13, 20)    # 13:20 CT
 CT_OFFSET_HOURS = -5     # CT = UTC-5 (CDT during summer)
 MIN_BARS_REQUIRED = 30   # need at least 30 bars for features
 POST_TO_API = os.environ.get("QA_POST_API", "")  # optional: Render URL
+EXECUTE_TRADES = os.environ.get("QA_EXECUTE", "0") == "1"  # set via --execute flag
+DEFAULT_VOLUME = float(os.environ.get("QA_VOLUME", "1"))  # lot size (Sbean_N6 min=1)
 
 _LIVE_STATE_FILE = os.path.join(_OUT_DIR, "live_state.json")
 _LIVE_LOG_FILE = os.path.join(_OUT_DIR, "live_log.jsonl")
@@ -503,6 +506,53 @@ def run_live_cycle(force_llm: bool = False) -> dict:
         "elapsed": round(elapsed, 1),
     })
 
+    # 10b. EXECUTE on MT5 (demo or live)
+    if EXECUTE_TRADES and signal.get("signal") in ("LONG", "SHORT"):
+        direction = "BUY" if signal["signal"] == "LONG" else "SELL"
+        sl_price = signal.get("stop_loss")
+        tp_price = signal.get("take_profit")
+        volume = DEFAULT_VOLUME
+
+        print(f"\n[EXEC] Placing {direction} order | Vol: {volume} | "
+              f"SL: {sl_price} | TP: {tp_price}")
+
+        try:
+            order_result = place_order(
+                direction=direction,
+                volume=volume,
+                sl=sl_price,
+                tp=tp_price,
+                comment=f"QA_{signal.get('confidence', 'X')[:1]}",
+                dry_run=False,
+            )
+            result["execution"] = order_result
+
+            if order_result.get("ok"):
+                print(f"[EXEC] ORDER FILLED | Ticket: {order_result.get('order')} | "
+                      f"Price: {order_result.get('price')} | Vol: {order_result.get('volume')}")
+                _log_live_event("execution", {
+                    "direction": direction,
+                    "fill_price": order_result.get("price"),
+                    "ticket": order_result.get("order"),
+                    "volume": order_result.get("volume"),
+                    "signal_price": signal.get("entry"),
+                    "slippage": round((order_result.get("price", 0) - (signal.get("entry") or 0)), 2)
+                        if signal.get("entry") else None,
+                })
+            else:
+                print(f"[EXEC] ORDER FAILED | Code: {order_result.get('retcode')} | "
+                      f"Reason: {order_result.get('comment', order_result.get('error'))}")
+                _log_live_event("exec_failed", {
+                    "direction": direction,
+                    "retcode": order_result.get("retcode"),
+                    "error": order_result.get("comment", order_result.get("error")),
+                })
+        except Exception as e:
+            print(f"[EXEC] Order error: {e}")
+            _log_live_event("exec_error", {"error": str(e)})
+    elif EXECUTE_TRADES and signal.get("signal") == "FLAT":
+        print("[EXEC] Signal is FLAT - no order placed")
+
     # 11. Optional: POST to Render API
     if POST_TO_API:
         try:
@@ -551,6 +601,9 @@ def run_loop(cycle_minutes: int = None):
     print(f"[LIVE] RTH: {RTH_START_CT[0]}:{RTH_START_CT[1]:02d} - "
           f"{RTH_END_CT[0]}:{RTH_END_CT[1]:02d} CT")
     print(f"[LIVE] Max LLM calls/day: {MAX_LLM_CALLS_PER_DAY}")
+    print(f"[LIVE] Execute trades: {'YES' if EXECUTE_TRADES else 'NO (paper only)'}")
+    if EXECUTE_TRADES:
+        print(f"[LIVE] Volume: {DEFAULT_VOLUME} lots")
     print(f"[LIVE] Press Ctrl+C to stop")
     print(f"{'='*60}\n")
 
@@ -606,8 +659,28 @@ def main():
     parser.add_argument("--loop", action="store_true", help="Run continuous loop")
     parser.add_argument("--cycle", type=int, default=None, help="Cycle interval in minutes")
     parser.add_argument("--force", action="store_true", help="Force LLM call (bypass gate)")
+    parser.add_argument("--execute", action="store_true", help="Execute trades on MT5 (demo/live)")
+    parser.add_argument("--volume", type=float, default=None, help="Lot size (default 0.01)")
     parser.add_argument("--diagnose", action="store_true", help="Run MT5 diagnostic only")
     args = parser.parse_args()
+
+    # Enable execution mode
+    if args.execute:
+        global EXECUTE_TRADES, DEFAULT_VOLUME
+        EXECUTE_TRADES = True
+        if args.volume:
+            DEFAULT_VOLUME = args.volume
+        acc = None
+        try:
+            mt5_init()
+            acc = get_account_info()
+        except Exception:
+            pass
+        mode = acc.get("trade_mode", "?") if acc else "?"
+        balance = acc.get("balance", "?") if acc else "?"
+        print(f"\n*** EXECUTION MODE ON ***")
+        print(f"*** Account: {mode.upper()} | Balance: ${balance} | Volume: {DEFAULT_VOLUME} lots ***")
+        print(f"*** Trades will be placed automatically on MT5 ***\n")
 
     if args.diagnose:
         print("=== MT5 Live Runner Diagnostic ===\n")
