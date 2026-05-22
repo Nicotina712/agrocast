@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "as_of": "2026-05-21T13:35:33",
+  "as_of": "2026-05-22T13:15:52",
   "profile_name": "high_cost",
   "storage_per_ton_month": 10.0,
   "financing_annual": 0.15,
@@ -27,7 +27,7 @@
       "base_rate_wait_train": 35.8,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-21T13:35:33",
+      "trained_at": "2026-05-22T13:15:52",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
@@ -86,7 +86,7 @@
       "base_rate_wait_train": 30.3,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-21T13:35:33",
+      "trained_at": "2026-05-22T13:15:52",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
@@ -145,7 +145,7 @@
       "base_rate_wait_train": 23.4,
       "fp_weight": 2.0,
       "context_note": "Panel INFORMATIVO. Combinaci\u00f3n P(WAIT) calibrada + delta esperado (Fase 2). El backtest hist\u00f3rico mostr\u00f3 que las predicciones direccionales no superan al always-sell con significancia. Use como segunda opini\u00f3n.",
-      "trained_at": "2026-05-21T13:35:34",
+      "trained_at": "2026-05-22T13:15:53",
       "n_train": 1004,
       "val_metrics": {
         "n_train": 1004,
