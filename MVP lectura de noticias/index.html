@@ -2373,7 +2373,7 @@ function renderData(data) {
 
     // VADER fallback (síncrono, se ve mientras llega el intel LLM)
     const renderVaderFallback = () => {
-        if (!data.signal) return;
+        if (!data.signal || !newsSignalEl) return;
         const cls = clsMap[data.signal.signal] || "badge-neut";
         newsSignalEl.innerHTML = `
             <div style="margin-bottom:6px"><span class="badge ${cls}">${data.signal.signal}</span></div>
@@ -2385,7 +2385,7 @@ function renderData(data) {
     fetch("/api/news_intel").then(r => r.json()).then(intel => {
         const composite = intel && intel.ok ? intel.composite : null;
         const nArts     = intel && intel.ok ? intel.n_articles : 0;
-        if (composite === null || composite === undefined || nArts < 5) return;
+        if (composite === null || composite === undefined || nArts < 5 || !newsSignalEl) return;
         const lbl = composite > 0.05 ? "ALCISTA" : composite < -0.05 ? "BAJISTA" : "NEUTRAL";
         const cls = clsMap[lbl];
         newsSignalEl.innerHTML = `
@@ -2947,8 +2947,9 @@ async function loadProducerBestWindow() {
         if (!d.ok || !d.forecast || d.forecast.length < 7) return;
         const points = d.forecast;  // [{Date, point, lo, hi}]
         // Tomamos el peak (mejor precio proyectado) en próximos 90d
-        const peak = points.reduce((a, b) => (b.point > a.point ? b : a), points[0]);
-        const todayPx = points[0].point;
+        const peak = points.reduce((a, b) => ((b.point || 0) > (a.point || 0) ? b : a), points[0]);
+        if (!peak || peak.point == null) return;
+        const todayPx = points[0].point || peak.point;
         const delta_usc = peak.point - todayPx;
         const delta_pct = (delta_usc / todayPx) * 100;
         const dateStr = peak.Date;
