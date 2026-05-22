@@ -517,6 +517,13 @@ def run_quantagent(force: bool = False) -> dict:
     if bars.empty:
         return {"error": "No bars available"}
 
+    # MT5 returns DatetimeIndex; microstructure expects 'datetime' column
+    if "datetime" not in bars.columns and data_source == "mt5":
+        bars = bars.reset_index()
+        idx_col = bars.columns[0]
+        if idx_col != "datetime":
+            bars = bars.rename(columns={idx_col: "datetime"})
+
     print("[QA] Building features...")
     feat = build_intraday_features(bars, interval="60m")
 

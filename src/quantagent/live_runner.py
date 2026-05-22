@@ -322,9 +322,17 @@ def run_live_cycle(force_llm: bool = False) -> dict:
     print(f"[LIVE] Got {len(bars)} bars | Current price: {current_price:.2f}")
 
     # 3. Build features
+    #    MT5 bridge returns DatetimeIndex; microstructure expects 'datetime' column
     print("[LIVE] Building microstructure features...")
     try:
-        feat = build_intraday_features(bars, interval="60m")
+        bars_for_feat = bars.copy()
+        if "datetime" not in bars_for_feat.columns:
+            bars_for_feat = bars_for_feat.reset_index()
+            # The index from MT5 becomes a column — rename to 'datetime'
+            idx_col = bars_for_feat.columns[0]
+            if idx_col != "datetime":
+                bars_for_feat = bars_for_feat.rename(columns={idx_col: "datetime"})
+        feat = build_intraday_features(bars_for_feat, interval="60m")
         print(f"[LIVE] Features built: {feat.shape}")
     except Exception as e:
         err = f"Feature build failed: {e}"
