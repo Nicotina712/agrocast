@@ -2531,6 +2531,7 @@ def api_quantagent_mt5signal():
 def api_quantagent_cron():
     """Auto-execution endpoint for external cron services.
     Protected by CRON_SECRET token. Checks RTH window before running.
+    Fire-and-forget: responds in <2s, runs pipeline in background thread.
     Usage: GET /api/quantagent/cron?token=<CRON_SECRET>
     Schedule: 09:00, 11:00, 13:00 CT (Mon-Fri)
     """
@@ -2560,18 +2561,27 @@ def api_quantagent_cron():
                         "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
                         "rth_window": "08:30-13:20 CT"})
 
-    # ── Run agents (runner now auto-evaluates pending trades & fetches fresh bars) ──
-    try:
-        sys.path.insert(0, PROJECT_ROOT)
-        from src.quantagent.runner import run_quantagent
-        result = run_quantagent(force=True)
-        return jsonify({"ok": True, "skipped": False,
-                        "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
-                        **result})
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({"ok": False, "error": str(e)}), 500
+    # ── Fire-and-forget: respond immediately, run in background ──
+    def _run_qa_background():
+        try:
+            sys.path.insert(0, PROJECT_ROOT)
+            from src.quantagent.runner import run_quantagent
+            result = run_quantagent(force=True)
+            sig = result.get("signal", {})
+            print(f"[QA-CRON] Done — signal={sig.get('signal','?')} "
+                  f"conf={sig.get('confidence','?')} "
+                  f"time={result.get('execution_time_seconds','?')}s")
+        except Exception as e:
+            import traceback
+            print(f"[QA-CRON] ERROR: {e}")
+            traceback.print_exc()
+
+    t = threading.Thread(target=_run_qa_background, daemon=True)
+    t.start()
+
+    return jsonify({"ok": True, "skipped": False, "async": True,
+                    "time_ct": now_ct.strftime("%Y-%m-%d %H:%M CT"),
+                    "message": "QuantAgent running in background"})
 
 
 @app.route("/api/quantagent/log")
