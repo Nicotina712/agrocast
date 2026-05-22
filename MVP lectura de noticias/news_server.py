@@ -972,14 +972,19 @@ def api_current_contract():
             return jsonify(_contract_cache)
 
         # Intentar leer desde archivo en disco (sobrevive reinicios)
+        # Use generated_at inside JSON, not file mtime (mtime resets on deploy)
         if os.path.exists(CONTRACT_CACHE_PATH):
             try:
-                mtime = os.path.getmtime(CONTRACT_CACHE_PATH)
-                if now - mtime <= CONTRACT_TTL:
-                    with open(CONTRACT_CACHE_PATH, encoding="utf-8") as f:
-                        _contract_cache = _json.load(f)
-                    _contract_ts = mtime
-                    return jsonify(_contract_cache)
+                with open(CONTRACT_CACHE_PATH, encoding="utf-8") as f:
+                    disk_data = _json.load(f)
+                gen_at = disk_data.get("generated_at", "")
+                if gen_at:
+                    import datetime as _dtm
+                    gen_ts = _dtm.datetime.fromisoformat(gen_at).timestamp()
+                    if now - gen_ts <= CONTRACT_TTL:
+                        _contract_cache = disk_data
+                        _contract_ts = gen_ts
+                        return jsonify(_contract_cache)
             except Exception:
                 pass
 
