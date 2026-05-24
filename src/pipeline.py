@@ -369,7 +369,7 @@ def run_pipeline() -> None:
     # ── 7. Modelo de precios ──────────────────────────────────────
     # Si ROLLING_WINDOW_YEARS está seteado (ej. por el job mensual del scheduler),
     # se entrena con ventana deslizante en lugar de datos acumulativos.
-    _rolling_years = int(os.getenv("ROLLING_WINDOW_YEARS", "3")) or None
+    _rolling_years = int(os.getenv("ROLLING_WINDOW_YEARS", "5")) or None
     if _rolling_years:
         print(f"   📅 Rolling retrain activado: ventana {_rolling_years} años")
     train_model(features, target="Soybeans", artifacts_dir=ARTIFACTS_DIR,
