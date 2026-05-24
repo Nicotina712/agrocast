@@ -1,0 +1,11 @@
+# .gitignore adicional para VPS
+# En el VPS, data/ y artifacts/ son LOCALES y no deben ser sobreescritos por git pull
+#
+# Para activar en el VPS:
+#   cd /opt/agrocast
+#   git update-index --skip-worktree data/
+#   git update-index --skip-worktree artifacts/
+#
+# Esto le dice a git que IGNORE cambios locales en esas carpetas
+# pero siga trackeando los archivos en el repo.
+# Así el pipeline puede escribir datos frescos sin que git pull los sobreescriba.
