@@ -202,10 +202,10 @@ def make_features(
         d["ret_14d_fwd"] = safe_pct_change(d[target_col], 14).shift(-14)
         d["ret_30d_fwd"] = safe_pct_change(d[target_col], 30).shift(-30)
 
-    # ── Signal Decomposition (CEEMDAN/STL/HP features) ──────────
+    # ── Signal Decomposition (rolling 252d, regime-adaptive) ─────
     try:
         from src.features.signal_decomposition import add_decomposition_features, add_multi_scale_features
-        d = add_decomposition_features(d, target_col=target_col, method="stl")
+        d = add_decomposition_features(d, target_col=target_col, method="rolling", window=252)
         d = add_multi_scale_features(d, target_col=target_col)
     except Exception as _e:
         print(f"[WARN] signal_decomposition: {_e}")

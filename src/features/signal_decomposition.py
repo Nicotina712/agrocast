@@ -100,8 +100,9 @@ def _stl_decompose(series: pd.Series, period: int = 21) -> tuple[np.ndarray, np.
 def add_decomposition_features(
     df: pd.DataFrame,
     target_col: str = "Soybeans",
-    method: str = "auto",
+    method: str = "rolling",
     prefix: str = "decomp_",
+    window: int = 252,
 ) -> pd.DataFrame:
     """
     Add signal decomposition features to the feature DataFrame.
@@ -109,8 +110,19 @@ def add_decomposition_features(
     Args:
         df: DataFrame with Date and target_col columns
         target_col: Column to decompose
-        method: "hp" (Hodrick-Prescott), "stl" (STL), "rolling", or "auto"
+        method: "rolling" (default), "hp" (Hodrick-Prescott), "stl" (STL global)
         prefix: Column name prefix for new features
+        window: Rolling window in trading days for trend (default 252 = ~1 year).
+                Only used when method="rolling". The cycle window is window // 4.
+
+    Notas de diseño:
+        Se cambió el default de "stl" (global, usa toda la historia) a "rolling"
+        (ventana deslizante de 252d). El STL global sesga las features cycle/position
+        con el pico de precios de 2022, invirtiendo su signo en el régimen bajista
+        2023-2026. Con rolling 252d:
+          trend = MA(252d) → nivel reciente de precio
+          cycle = MA(63d) - MA(252d) → spread MACD-like, adaptativo al régimen
+          residual = precio - MA(63d) → ruido de alta frecuencia
 
     Returns:
         DataFrame with added decomposition features
@@ -131,17 +143,16 @@ def add_decomposition_features(
     # Fill NaN for decomposition (forward-fill then zero)
     clean = pd.Series(series).ffill().fillna(0).values
 
-    if method == "auto":
-        method = "stl"  # Prefer STL if statsmodels available
-
     if method == "hp":
         # HP filter for daily data (lambda adjusted per Ravn & Uhlig)
         trend, cycle = _hp_filter(clean, lamb=6_500_000)
         residual = clean - trend - cycle
     elif method == "stl":
+        # STL global — mantener por backward-compat pero NO usar como default:
+        # sesga cycle/position con regímenes históricos distantes (ej. pico 2022).
         trend, cycle, residual = _stl_decompose(pd.Series(clean), period=21)
-    else:  # "rolling"
-        trend, cycle, residual = _rolling_decompose(clean, window=60)
+    else:  # "rolling" — default, regime-adaptive
+        trend, cycle, residual = _rolling_decompose(clean, window=window)
 
     # Add features
     df[f"{prefix}trend"] = trend
