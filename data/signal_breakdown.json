@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": -0.52,
       "direction": "MUY BAJISTA",
-      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 42h)",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 126h)",
       "weight": 0.35,
       "raw": {
         "verdict": "SELL",
@@ -42,14 +42,14 @@
     },
     {
       "name": "Modelo ML (XGBoost 14d)",
-      "score": 0.17,
-      "direction": "ALCISTA",
-      "detail": "Retorno esperado: +3.40% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 6.8%",
+      "score": -0.42,
+      "direction": "BAJISTA",
+      "detail": "Retorno esperado: -8.41% \u00b7 Se\u00f1al: SELL \u00b7 Confianza: 16.8%",
       "weight": 0.2,
       "raw": {
-        "expected_return": 0.034,
-        "confidence": 0.068,
-        "signal": "HOLD"
+        "expected_return": -0.0841,
+        "confidence": 0.1681,
+        "signal": "SELL"
       }
     },
     {
@@ -66,29 +66,29 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.094,
+      "score": -0.024,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1199.1 USc/bu \u00b7 Retorno: -0.9% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1195.4 USc/bu \u00b7 Retorno: -0.2% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1199.1064012965876,
-        "return_pct": -0.94
+        "forecast": 1195.4268208049864,
+        "return_pct": -0.24
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.04,
+      "score": 0.044,
       "direction": "NEUTRO",
       "detail": "May: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-5.3%, +5.7%]",
       "weight": 0.0,
       "raw": {
         "month": 5,
-        "avg_pct": 0.2
+        "avg_pct": 0.22
       }
     }
   ],
-  "composite_score": 38,
-  "composite_raw": -0.248,
+  "composite_score": 32,
+  "composite_raw": -0.366,
   "composite_signal": "SELL",
-  "as_of": "2026-05-21"
+  "as_of": "2026-05-24"
 }
