@@ -32,6 +32,74 @@ NON_FEATURE_COLS = {"Date", "Soybeans",
 TARGET_REG = "ret_14d_fwd"  # horizonte 14d (más señal, menos ruido que 7d)
 VOL_TARGET = "realized_vol_14d"  # head adicional: vol esperada (sizing/conviction)
 EMBARGO_DAYS = 18                # = horizonte (14) + buffer evento (4)
+MAX_RETURN_FEATURES = 40         # Tope de features tras selección por consistencia
+
+
+def _select_return_features(
+    X_train: pd.DataFrame,
+    y_train: pd.Series,
+    dates_train: pd.Series | None = None,
+    max_features: int = MAX_RETURN_FEATURES,
+) -> list[str]:
+    """
+    Selecciona las top `max_features` features con señal consistente.
+
+    Lógica:
+      - Computa correlación con el target en TODO el training set (r_full).
+      - Computa correlación en el 40% más reciente del training (r_recent).
+      - Mantiene solo features con signo consistente: r_full × r_recent > 0.
+        Esto descarta features cuya señal se invirtió en el régimen actual
+        (ej. decomp_cycle con STL global era +0.042 histórico / -0.247 reciente).
+      - Ordena por score = (|r_full| + |r_recent|) / 2.
+      - Fallback a top-N por |r_full| si quedan < 10 candidatas.
+
+    Sin data leakage: usa solo X_train / y_train, nunca val.
+    """
+    y_float = y_train.astype(float)
+    full_corr = X_train.corrwith(y_float)
+
+    # Mitad reciente del training (40% más nuevo por fecha o por posición)
+    if dates_train is not None and len(dates_train) > 60:
+        cutoff = pd.to_datetime(dates_train).quantile(0.60)
+        recent_mask = pd.to_datetime(dates_train) >= cutoff
+    else:
+        recent_mask = pd.Series(
+            [False] * int(len(X_train) * 0.6) + [True] * int(len(X_train) * 0.4),
+            index=X_train.index,
+        )
+
+    if recent_mask.sum() > 30:
+        X_rec = X_train[recent_mask.values]
+        y_rec = y_train[recent_mask.values]
+        recent_corr = X_rec.corrwith(y_rec.astype(float))
+    else:
+        recent_corr = full_corr
+
+    candidates = []
+    for col in X_train.columns:
+        r_full   = full_corr.get(col, float("nan"))
+        r_recent = recent_corr.get(col, float("nan"))
+        if pd.isna(r_full) or pd.isna(r_recent):
+            continue
+        if abs(r_full) > 0.02 and r_full * r_recent > 0:
+            score = (abs(r_full) + abs(r_recent)) / 2
+            candidates.append((col, score))
+
+    candidates.sort(key=lambda x: -x[1])
+    selected = [c[0] for c in candidates[:max_features]]
+
+    # Fallback: si quedan muy pocas, usar top por |r_full|
+    if len(selected) < 10:
+        selected = (
+            full_corr.abs()
+            .sort_values(ascending=False)
+            .head(max_features)
+            .index.tolist()
+        )
+        print(f"   [FeatureSel] Fallback a top-{max_features} por |r_full| "
+              f"(solo {len(selected)} candidatas consistentes)")
+
+    return selected
 
 
 def train_returns_model(
@@ -123,6 +191,21 @@ def train_returns_model(
         if y_vol is not None:
             y_vol_train = y_vol.iloc[:split]
             y_vol_val   = y_vol.iloc[split:]
+
+    # ── Selección de features (solo sobre training, sin data leakage) ──
+    # Reduce de ~195 a top-40 features con señal consistente entre la
+    # ventana completa de training y la mitad más reciente.
+    # Descarta features cuyo signo de correlación se invirtió (régimen flip).
+    dates_train_ser = df_dates[train_mask].reset_index(drop=True) if "Date" in df.columns else None
+    selected_feats  = _select_return_features(X_train, y_train, dates_train_ser)
+    n_before        = len(feature_cols)
+    feature_cols    = selected_feats
+    X_train         = X_train[selected_feats]
+    X_val           = X_val[selected_feats]
+    if y_vol is not None:
+        pass  # y_vol_train / y_vol_val no cambian
+    print(f"   [FeatureSel] {len(selected_feats)}/{n_before} features "
+          f"seleccionadas (consistentes en 5y y reciente)")
 
     # scale_pos_weight balancea clases si hay desbalance
     n_neg = (y_train == 0).sum()
