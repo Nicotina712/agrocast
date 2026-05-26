@@ -582,7 +582,16 @@ def run_pipeline() -> None:
     except Exception as _e:
         print(f"   [INFO] monthly_robust: {_e}")
 
+    # ── 10. Señales ───────────────────────────────────────────────
+    signals = predict_returns(features, artifacts_dir=MODEL_ARTIFACTS_DIR)
+
+    signals_path = os.path.join(ARTIFACTS_DIR, "signals.csv")
+    signals.to_csv(signals_path, index=False)
+    print(f"💾 Señales guardadas en {signals_path}")
+
     # ── 9b. Snapshot de accountability ───────────────────────────
+    # IMPORTANTE: se ejecuta DESPUÉS de predict_returns para que
+    # get_signal_breakdown() lea signals.csv fresco (no el del run anterior).
     try:
         from src.trader.accountability import save_forecast_snapshot
         from src.trader.signal_breakdown import get_signal_breakdown
@@ -595,13 +604,6 @@ def run_pipeline() -> None:
         )
     except Exception as _e:
         print(f"   [INFO] Accountability snapshot: {_e}")
-
-    # ── 10. Señales ───────────────────────────────────────────────
-    signals = predict_returns(features, artifacts_dir=MODEL_ARTIFACTS_DIR)
-
-    signals_path = os.path.join(ARTIFACTS_DIR, "signals.csv")
-    signals.to_csv(signals_path, index=False)
-    print(f"💾 Señales guardadas en {signals_path}")
 
     # ── 10.bis ETL manifest (Fix #11 Bronze/Silver/Gold) ──────────
     try:
@@ -761,31 +763,25 @@ def run_pipeline() -> None:
         print(f"   [INFO] Weekly brief: {_e}")
 
     # ── 20. Intelligence Engine — debate multi-agente (1x/día) ───
-    # Solo corre si hay ANTHROPIC_API_KEY y si no hay cache fresco (<6h)
+    # Corre siempre que haya ANTHROPIC_API_KEY. force=True bypasea el cache
+    # interno (TTL 1h) y el gate de market_hours — apropiado porque el
+    # pipeline ya solo corre 1x/día vía GitHub Actions.
+    # El flag IE_SKIP=1 permite omitirlo en ejecuciones locales de test.
     try:
-        ie_cache = os.path.join(DATA_DIR, "intelligence_engine_verdict.json")
-        run_ie = True
-        if os.path.exists(ie_cache):
-            import json as _json
-            with open(ie_cache) as _f:
-                _cached = _json.load(_f)
-            _ts = _cached.get("timestamp", "")
-            if _ts:
-                from datetime import datetime as _dt
-                _age = (_dt.now() - _dt.fromisoformat(_ts)).total_seconds()
-                if _age < 6 * 3600:  # skip if less than 6h old
-                    run_ie = False
-                    print("   [IE] Skipped — cache is fresh ({:.0f}min old)".format(_age / 60))
-
-        if run_ie and os.environ.get("ANTHROPIC_API_KEY"):
+        if os.environ.get("IE_SKIP") == "1":
+            print("   [IE] Skipped — IE_SKIP=1")
+        elif os.environ.get("ANTHROPIC_API_KEY"):
             from src.intel.intelligence_engine import run_intelligence_engine
             ie_result = run_intelligence_engine(force=True)
             verdict = ie_result.get("verdict", {})
+            from_cache = ie_result.get("from_cache", False)
             print(f"   [IE] Verdict: {verdict.get('verdict', '?')} "
                   f"(conf={verdict.get('confidence', '?')}) "
+                  f"{'[desde cache] ' if from_cache else ''}"
                   f"in {ie_result.get('execution_time_seconds', '?')}s")
-        elif not os.environ.get("ANTHROPIC_API_KEY"):
-            print("   [IE] Skipped — no ANTHROPIC_API_KEY")
+        else:
+            print("   [IE] Skipped — ANTHROPIC_API_KEY no configurado "
+                  "(agregar como secret en GitHub Actions → Settings → Secrets)")
     except Exception as _e:
         print(f"   [WARN] Intelligence Engine: {_e}")
 
