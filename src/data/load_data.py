@@ -70,8 +70,8 @@ def _detect_and_flag_rollovers(df: pd.DataFrame) -> set:
         return set()
 
     work = df.copy().sort_values("Date").reset_index(drop=True)
-    work["soy_ret"]  = work["Soybeans"].pct_change()
-    work["corn_ret"] = work["Maize"].pct_change() if "Maize" in work.columns else 0.0
+    work["soy_ret"]  = work["Soybeans"].pct_change(fill_method=None)
+    work["corn_ret"] = work["Maize"].pct_change(fill_method=None) if "Maize" in work.columns else 0.0
 
     # Criterio 1: soja se mueve mucho más que maíz (patrón de rollover)
     crit1 = (
@@ -162,7 +162,26 @@ def load_all_data() -> pd.DataFrame:
             print(f"❌ Error descargando {ticker}: {e}")
 
     if "Soybeans" not in frames:
-        raise RuntimeError("No se pudieron descargar datos de soja (ZS=F). Revisa la conexión.")
+        # ── Fallback: usar caché stale si existe ─────────────────
+        # yfinance falla a veces en CI/CD (IPs bloqueadas por Yahoo Finance,
+        # rate limiting, o cambios de API). Si hay datos en caché (aunque sean
+        # stale), los usamos para que el pipeline pueda continuar con datos
+        # ligeramente desactualizados en lugar de crashear.
+        if os.path.exists(_CACHE_PATH):
+            try:
+                df_stale = pd.read_csv(_CACHE_PATH, parse_dates=["Date"])
+                stale_days = (
+                    pd.Timestamp.today().date() - df_stale["Date"].max().date()
+                ).days
+                print(f"⚠️  yfinance falló (ZS=F). Usando caché stale ({stale_days}d antigua).")
+                print(f"   ACCION: revisar si Yahoo Finance está bloqueando las IPs del runner.")
+                return df_stale
+            except Exception as _fe:
+                pass
+        raise RuntimeError(
+            "No se pudieron descargar datos de soja (ZS=F) y no hay caché disponible. "
+            "Revisa la conexión o configura YFINANCE_FALLBACK_PATH."
+        )
 
     # ── Merge ────────────────────────────────────────────────────
     df = frames["Soybeans"]

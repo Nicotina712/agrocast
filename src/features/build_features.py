@@ -92,13 +92,13 @@ def make_features(
     d["rsi_14"] = compute_rsi(d[target_col], 14)
 
     # ── Volatilidad realizada ────────────────────────────────────
-    d["vol_10d"] = d[target_col].pct_change().rolling(10).std().fillna(0)
-    d["vol_30d"] = d[target_col].pct_change().rolling(30).std().fillna(0)
+    d["vol_10d"] = d[target_col].pct_change(fill_method=None).rolling(10).std().fillna(0)
+    d["vol_30d"] = d[target_col].pct_change(fill_method=None).rolling(30).std().fillna(0)
     # vol_60d agregada tras experimento H1: el naive 60d le gana al naive 30d
     # por +25 % en MAE de predicción de σ futura (ver experiments_h1_h2_h6).
     # Es el baseline de vol más fuerte y debe estar disponible para los
     # detectores de régimen y bandas.
-    d["vol_60d"] = d[target_col].pct_change().rolling(60).std().fillna(0)
+    d["vol_60d"] = d[target_col].pct_change(fill_method=None).rolling(60).std().fillna(0)
 
     # ── Features de spike y co-driver (post-spike fade research) ──
     # Test empírico (scripts/test_post_spike_fade.py) mostró:
