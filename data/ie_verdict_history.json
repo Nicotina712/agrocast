@@ -19,15 +19,15 @@
     "bull_conviction": "?",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1186.0,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": -2.06,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": true,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-05-18",
@@ -49,15 +49,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1186.0,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": -2.06,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": true,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   },
   {
     "date": "2026-05-19",
@@ -79,14 +79,14 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1186.0,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": -2.06,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": true,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   }
 ]
