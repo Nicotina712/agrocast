@@ -1,0 +1,30 @@
+---
+🌱 **AgroCast PRO — Brief Semanal 01/06/2026**
+
+📊 **Señal actual:** HOLD con 65% de confianza
+💲 **Precio Chicago:** 444,79 USc/bu
+
+**¿Qué pasó la semana pasada?**
+El mercado se mantuvo relativamente estable con presión bajista moderada desde China. Los márgenes de crush negativos (-149,6 USD/ton) desalentaron la demanda de oleaginosas, mientras que Brasil mantiene un ritmo de exportación normal (+5,1% YoY). Argentina operó sin volatilidad cambiaria relevante, con retenciones en 33% — nivel histórico.
+
+**Top 3 drivers esta semana:**
+
+1. **Demanda China débil y márgenes de crush negativos** — Las importaciones chinas están en 114 MMT, apenas +1,8% YoY. Con márgenes de procesamiento negativos, la trituradora de soja no tiene incentivos para comprar, presionando precios globales a la baja.
+
+2. **Basis amplio en Uruguay (-25 USD/ton)** — El descuento respecto a Chicago está en niveles desfavorables (zscore -0,51), muy por debajo del promedio quinquenal (-22,89). Esto penaliza al productor local y sugiere esperar mejora antes de comercializar volúmenes grandes.
+
+3. **Próximas proyecciones WASDE (13/06 y 10/07)** — Dentro de dos semanas llega el informe oficial de la USDA que puede reajustar expectativas sobre oferta global. Brasil aún tiene 36 semanas de exportaciones por delante; cualquier revisión de proyecciones argentinas o brasileñas será crítica.
+
+**Señales clave del modelo:**
+• **Argentina:** Cepo inactivo, brecha cambiaria controlada (-1%), retenciones normales. Oferta neutral, sin presión ni oportunidad especulativa.
+• **Brasil:** Exportaciones en ritmo normal (1,815 MMT/semana), 37% del programa anual completado. Sin sorpresas estacionales.
+• **Basis Uruguay:** Demasiado amplio; desaconseja ventas agresivas hoy. Espacio para mejora antes del cierre de campaña.
+• **China:** Demanda débil con márgenes de crush en rojo; riesgo bajista dominante en corto plazo.
+
+**📅 Calendario de la semana:**
+• **13 de junio:** WASDE USDA (proyecciones de cosechas y oferta global).
+
+**💡 Recomendación para el productor:**
+**No vendas volúmenes grandes esta semana.** El basis está castigado (-25 USD/ton) y la demanda china débil presiona precios a la baja. Esperá a que el basis mejore naturalmente (target: -20 USD/ton o mejor) y monitoreá el WASDE del 13/06; cualquier recorte de producción en Brasil o Argentina podría revertir la presión bajista y ofrecerte mejores puntos de venta.
+
+---

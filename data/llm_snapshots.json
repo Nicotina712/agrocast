@@ -209,9 +209,10 @@
     "conviction": 22,
     "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
     "price_at_snapshot": 1208.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -2.21,
+    "verified_at": "2026-06-01T16:17:15.511223",
+    "price_at_horizon": 1181.25
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T14:28:10",
+  "generated_at": "2026-06-01T16:17:01",
   "n_datasets": 12,
   "n_missing": 0,
   "by_layer": {
@@ -19,7 +19,7 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-29T14:27:44",
+        "last_updated": "2026-06-01T16:16:32",
         "size_kb": 298.3
       },
       {
@@ -36,7 +36,7 @@
         ],
         "exists": true,
         "row_count": 3913,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:15:42",
         "size_kb": 153.7
       },
       {
@@ -52,9 +52,9 @@
           "insp_soy_yoy"
         ],
         "exists": true,
-        "row_count": 542,
-        "last_updated": "2026-05-29T14:27:46",
-        "size_kb": 49.1
+        "row_count": 543,
+        "last_updated": "2026-06-01T16:16:33",
+        "size_kb": 49.2
       },
       {
         "layer": "bronze",
@@ -69,7 +69,7 @@
         ],
         "exists": true,
         "row_count": 24,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:15:42",
         "size_kb": 1.6
       },
       {
@@ -87,7 +87,7 @@
         ],
         "exists": true,
         "row_count": 1,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:15:42",
         "size_kb": 0.9
       },
       {
@@ -104,9 +104,9 @@
           "front_volume"
         ],
         "exists": true,
-        "row_count": 29,
-        "last_updated": "2026-05-29T14:27:53",
-        "size_kb": 2.7
+        "row_count": 30,
+        "last_updated": "2026-06-01T16:16:40",
+        "size_kb": 2.8
       },
       {
         "layer": "bronze",
@@ -122,9 +122,9 @@
           "iv_put"
         ],
         "exists": true,
-        "row_count": 29,
-        "last_updated": "2026-05-29T14:27:54",
-        "size_kb": 2.4
+        "row_count": 30,
+        "last_updated": "2026-06-01T16:16:41",
+        "size_kb": 2.5
       },
       {
         "layer": "bronze",
@@ -140,7 +140,7 @@
         ],
         "exists": true,
         "row_count": 484,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:16:44",
         "size_kb": 29.8
       },
       {
@@ -157,7 +157,7 @@
         ],
         "exists": true,
         "row_count": 55793,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:15:42",
         "size_kb": 727.3
       },
       {
@@ -174,7 +174,7 @@
         ],
         "exists": true,
         "row_count": 47,
-        "last_updated": "2026-05-29T14:27:01",
+        "last_updated": "2026-06-01T16:15:42",
         "size_kb": 1.1
       }
     ],
@@ -200,8 +200,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-29T14:27:54",
-        "size_kb": 4318.9
+        "last_updated": "2026-06-01T16:16:45",
+        "size_kb": 4319.0
       },
       {
         "layer": "gold",
@@ -219,8 +219,8 @@
         ],
         "exists": true,
         "row_count": 2513,
-        "last_updated": "2026-05-29T14:28:10",
-        "size_kb": 122.0
+        "last_updated": "2026-06-01T16:17:01",
+        "size_kb": 126.0
       }
     ]
   }

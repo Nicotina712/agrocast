@@ -20,11 +20,11 @@
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
     "verified_7d": true,
-    "verified_14d": false,
+    "verified_14d": true,
     "price_at_7d": 1186.0,
-    "price_at_14d": null,
+    "price_at_14d": 1181.25,
     "return_7d_pct": -2.06,
-    "return_14d_pct": null,
+    "return_14d_pct": -2.46,
     "direction_correct_7d": true,
     "direction_correct_14d": null,
     "range_hit_7d": false
@@ -50,11 +50,11 @@
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
     "verified_7d": true,
-    "verified_14d": false,
+    "verified_14d": true,
     "price_at_7d": 1186.0,
-    "price_at_14d": null,
+    "price_at_14d": 1181.25,
     "return_7d_pct": -2.06,
-    "return_14d_pct": null,
+    "return_14d_pct": -2.46,
     "direction_correct_7d": true,
     "direction_correct_14d": null,
     "range_hit_7d": true
@@ -88,5 +88,35 @@
     "direction_correct_7d": true,
     "direction_correct_14d": null,
     "range_hit_7d": true
+  },
+  {
+    "date": "2026-06-01",
+    "timestamp": "2026-06-01T16:20:55.400253",
+    "price_at_verdict": 1198.25,
+    "verdict": "SELL",
+    "confidence": 0.68,
+    "reasoning": "La convergencia de señales bajistas fundamentales (crush margin chino -149.62 USD/ton, exportaciones brasileñas +5.1% YoY, señal compuesta -0.366) con la confirmación técnica (precio bajo MA20, momentum negativo, %B=25.5%) justifica una posición vendedora moderada. El analista bajista tiene convicci",
+    "price_range_7d": {
+      "low": 1159,
+      "central": 1175,
+      "high": 1194
+    },
+    "price_range_30d": {
+      "low": 1130,
+      "central": 1165,
+      "high": 1210
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
