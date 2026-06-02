@@ -118,5 +118,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-02",
+    "timestamp": "2026-06-02T15:04:00.712972",
+    "price_at_verdict": 1198.25,
+    "verdict": "SELL",
+    "confidence": 0.72,
+    "reasoning": "El analista bajista tiene convicción ALTA respaldada por crush margins chinos en -149.62 USD/ton (severo), oferta brasileña récord, señal ML SELL con 75% de confianza, y un track record del sistema de 100% en señales SELL recientes (3/3). El analista alcista tiene convicción BAJA y sus mejores argum",
+    "price_range_7d": {
+      "low": 1155,
+      "central": 1173,
+      "high": 1190
+    },
+    "price_range_30d": {
+      "low": 1130,
+      "central": 1165,
+      "high": 1198
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "ALTA",
+    "position_sizing": "50%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]

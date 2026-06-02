@@ -1,18 +1,18 @@
 {
-  "p_model": 0.3922,
+  "p_model": 0.125,
   "p_llm": 0.5,
-  "p_ie": null,
-  "p_ensemble": 0.3922,
+  "p_ie": 0.16,
+  "p_ensemble": 0.16,
   "w_model": 0.0,
   "w_llm": 0.0,
-  "w_ie": 0.0,
-  "ie_verdict": null,
-  "ie_confidence": null,
+  "w_ie": 0.35,
+  "ie_verdict": "SELL",
+  "ie_confidence": 0.68,
   "model_hit_rate": null,
-  "llm_hit_rate": 0.3529,
-  "disagreement": 0.1078,
+  "llm_hit_rate": 0.3333,
+  "disagreement": 0.035,
   "abstain": false,
   "signal_ensemble": "SELL",
-  "signal_source": "ml_model",
-  "agreement_score": 0.8922
+  "signal_source": "intelligence_engine",
+  "agreement_score": 0.965
 }
