@@ -1,21 +1,50 @@
 {
-  "as_of": "2026-06-02T15:00:25",
+  "as_of": "2026-06-03T15:17:33",
   "current": {
     "ok": true,
-    "is_shock": false,
-    "is_near_shock": false,
-    "ret_5d_pct": -1.27,
-    "ret_10d_pct": 0.36,
-    "thr_spike_5d_pct": 4.59,
+    "is_shock": true,
+    "is_strong_shock": false,
+    "is_near_shock": true,
+    "shock_type": "oil_collapse",
+    "shock_direction": "down",
+    "window_active": "10d",
+    "ret_5d_pct": -2.76,
+    "ret_10d_pct": -4.71,
+    "oil_5d_pct": 8.24,
+    "oil_10d_pct": -10.93,
+    "soyoil_5d_pct": 4.66,
+    "soyoil_10d_pct": 4.41,
+    "thr_spike_5d_pct": 4.56,
     "thr_spike_10d_pct": 6.62,
     "thr_drop_5d_pct": -4.17,
     "thr_drop_10d_pct": -6.25,
-    "thr_near_spike_5d_pct": 2.71,
-    "thr_near_spike_10d_pct": 3.77
+    "thr_near_spike_5d_pct": 2.7,
+    "thr_near_spike_10d_pct": 3.76,
+    "shock_date": "2026-06-03",
+    "shock_price": 1152.5,
+    "ret_active_pct": -4.71,
+    "oil_active_pct": -10.93
   },
-  "analogs_found": 0,
+  "analogs_found": 46,
+  "analog_stats": {
+    "n": 46,
+    "ret_30d_q25_pct": -7.1625,
+    "ret_30d_med_pct": -2.9450000000000003,
+    "ret_30d_q75_pct": 0.51,
+    "peak_day_med": 19,
+    "peak_day_q25": 3,
+    "peak_day_q75": 26,
+    "peak_gain_med_pct": -5.99,
+    "half_fade_med": 12,
+    "survived_30d_pct": 58.69565217391305,
+    "confidence": "high"
+  },
   "recommendation": {
-    "action": "NO_SHOCK",
-    "message": "Sin shock activo. Use el modelo regular."
+    "action": "INFO_AMBIGUOUS",
+    "advisory": "info_only",
+    "message": "Shock bajista detectado con 46 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 19 post-shock (rango Q25-Q75: d\u00eda 3-26, ganancia mediana -6.0%). Retorno mediano a 30d: -2.9% (banda Q25-Q75: -7.2% a +0.5%). Sobrevive 30d: 59% de los casos.",
+    "tactical": "An\u00e1logos con outcomes mixtos. La se\u00f1al no es lo suficientemente clara para ning\u00fan tipo de acci\u00f3n direccional.",
+    "confidence": "high",
+    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
   }
 }
