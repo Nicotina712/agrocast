@@ -3,90 +3,90 @@
     "2023-12-31": {
       "n_train": 1905,
       "n_test": 596,
-      "auc": 0.6343,
-      "accuracy": 0.5604,
-      "p_mean": 0.6454,
-      "p_std": 0.2344,
-      "top1_share": 0.0233,
+      "auc": 0.6203,
+      "accuracy": 0.5621,
+      "p_mean": 0.5823,
+      "p_std": 0.2586,
+      "top1_share": 0.0255,
       "top5_features": {
-        "SoybeanMeal": 0.02329999953508377,
-        "ms_short_trend": 0.019600000232458115,
-        "insp_soy_bu": 0.019200000911951065,
-        "soy_corn_ratio": 0.01889999955892563,
-        "brl_usd": 0.018400000408291817
+        "enso_phase": 0.025499999523162842,
+        "local_price_est_usd_ton": 0.022700000554323196,
+        "enso_oni": 0.02160000056028366,
+        "ms_short_trend": 0.02160000056028366,
+        "decomp_trend_dist_pct": 0.020800000056624413
       },
       "signal_dist": {
-        "BUY": 0.617,
-        "SELL": 0.2,
-        "HOLD": 0.183
+        "BUY": 0.529,
+        "SELL": 0.287,
+        "HOLD": 0.185
       }
     },
     "2024-12-31": {
       "n_train": 2157,
       "n_test": 344,
-      "auc": 0.516,
-      "accuracy": 0.5029,
-      "p_mean": 0.3854,
-      "p_std": 0.2115,
-      "top1_share": 0.0243,
+      "auc": 0.5764,
+      "accuracy": 0.5727,
+      "p_mean": 0.407,
+      "p_std": 0.2238,
+      "top1_share": 0.0368,
       "top5_features": {
-        "SoybeanMeal": 0.024299999698996544,
-        "decomp_trend_dist_pct": 0.02160000056028366,
-        "wasde_bull_bias": 0.021400000900030136,
-        "insp_soy_4wk_avg": 0.019700000062584877,
-        "cot_regime_long": 0.01860000006854534
+        "enso_phase": 0.03680000081658363,
+        "Soybeans_lag1": 0.024000000208616257,
+        "enso_oni": 0.02280000038444996,
+        "SoybeanMeal": 0.021299999207258224,
+        "ms_short_trend": 0.0210999995470047
       },
       "signal_dist": {
-        "BUY": 0.212,
-        "SELL": 0.608,
-        "HOLD": 0.18
+        "BUY": 0.241,
+        "SELL": 0.581,
+        "HOLD": 0.177
       }
     },
     "2025-06-30": {
       "n_train": 2280,
       "n_test": 220,
-      "auc": 0.5387,
-      "accuracy": 0.5273,
-      "p_mean": 0.4957,
-      "p_std": 0.2228,
-      "top1_share": 0.0267,
+      "auc": 0.557,
+      "accuracy": 0.5091,
+      "p_mean": 0.5099,
+      "p_std": 0.2754,
+      "top1_share": 0.0404,
       "top5_features": {
-        "ms_short_trend": 0.02669999934732914,
-        "insp_soy_4wk_avg": 0.023900000378489494,
-        "basis_zscore": 0.020500000566244125,
-        "SoybeanMeal": 0.019300000742077827,
-        "trends_interest": 0.01850000023841858
+        "enso_phase": 0.04039999842643738,
+        "enso_oni": 0.023600000888109207,
+        "month_sin": 0.023499999195337296,
+        "SoybeanMeal": 0.01899999938905239,
+        "insp_soy_4wk_avg": 0.018200000748038292
       },
       "signal_dist": {
-        "BUY": 0.391,
-        "SELL": 0.4,
-        "HOLD": 0.209
+        "BUY": 0.468,
+        "SELL": 0.459,
+        "HOLD": 0.073
       }
     }
   },
   "global": {
     "n_train": 2010,
     "n_test": 491,
-    "auc": 0.5463,
-    "accuracy": 0.5092,
-    "p_mean": 0.6456,
-    "p_std": 0.2369,
-    "top1_share": 0.0227,
+    "auc": 0.5852,
+    "accuracy": 0.5418,
+    "p_mean": 0.5616,
+    "p_std": 0.2851,
+    "top1_share": 0.0255,
     "top5_features": {
-      "insp_soy_4wk_avg": 0.022700000554323196,
-      "Maize_lag7": 0.022199999541044235,
-      "decomp_trend_dist_pct": 0.021199999377131462,
-      "insp_soy_zscore": 0.01979999989271164,
-      "SoybeanMeal": 0.019300000742077827
+      "local_price_est_usd_ton": 0.025499999523162842,
+      "enso_phase": 0.022199999541044235,
+      "enso_oni": 0.02199999988079071,
+      "soy_corn_ratio": 0.0203000009059906,
+      "trends_interest": 0.019099999219179153
     },
     "signal_dist": {
-      "BUY": 0.621,
-      "SELL": 0.202,
-      "HOLD": 0.177
+      "BUY": 0.487,
+      "SELL": 0.34,
+      "HOLD": 0.173
     }
   },
   "embargo_days": 18,
   "flags": [
-    "AUC m\u00ednimo 0.516 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
+    "Sin alertas evidentes"
   ]
 }
