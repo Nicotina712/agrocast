@@ -1,0 +1,6439 @@
+{
+  "timestamp": "2026-05-24T11:57:52.260779",
+  "type": "v2_vs_v3_comparison",
+  "config": {
+    "days": 200,
+    "capital": 1000.0,
+    "sample_hour": 11
+  },
+  "period": {
+    "start": "2025-07-31",
+    "end": "2026-05-15"
+  },
+  "v2_stats": {
+    "label": "V2 (Price Only)",
+    "capital_final": 1195.3,
+    "total_pnl": 195.3,
+    "total_return_pct": 19.53,
+    "max_drawdown_pct": 4.6,
+    "total_samples": 199,
+    "active": 11,
+    "flat": 188,
+    "flat_rate": 94.5,
+    "wins": 8,
+    "losses": 3,
+    "win_rate": 72.7,
+    "avg_win": 31.6,
+    "avg_loss": -19.17,
+    "profit_factor": 4.4,
+    "sharpe": 7.47,
+    "exits": {
+      "timeout": 8,
+      "tp": 2,
+      "trailing_be": 1
+    },
+    "by_setup": {
+      "reversal": {
+        "n": 2,
+        "w": 2,
+        "pnl": 117.5
+      },
+      "breakout": {
+        "n": 8,
+        "w": 6,
+        "pnl": 105.3
+      },
+      "pullback": {
+        "n": 1,
+        "w": 0,
+        "pnl": -27.5
+      }
+    }
+  },
+  "v3_stats": {
+    "label": "V3 (Price + Fund)",
+    "capital_final": 1060.3,
+    "total_pnl": 60.3,
+    "total_return_pct": 6.03,
+    "max_drawdown_pct": 4.73,
+    "total_samples": 199,
+    "active": 8,
+    "flat": 191,
+    "flat_rate": 96.0,
+    "wins": 5,
+    "losses": 3,
+    "win_rate": 62.5,
+    "avg_win": 23.56,
+    "avg_loss": -19.17,
+    "profit_factor": 2.05,
+    "sharpe": 4.0,
+    "exits": {
+      "tp": 1,
+      "timeout": 6,
+      "trailing_be": 1
+    },
+    "by_setup": {
+      "breakout": {
+        "n": 7,
+        "w": 5,
+        "pnl": 87.8
+      },
+      "pullback": {
+        "n": 1,
+        "w": 0,
+        "pnl": -27.5
+      }
+    }
+  },
+  "overlay_impact": {
+    "upgrades": 2,
+    "downgrades": 0,
+    "vetoes": 3,
+    "event_adjustments": 1,
+    "aligned_trades": 6,
+    "conflicting_trades": 3,
+    "neutral_trades": 2
+  },
+  "v2_equity": [
+    {
+      "day": "start",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-07-31",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-01",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-04",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-05",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-06",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-07",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-08",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-11",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-12",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-13",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-14",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-15",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-18",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-19",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-20",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-21",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-22",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-25",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-26",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-27",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-28",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-08-29",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-02",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-03",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-04",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-05",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-08",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-09",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-10",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-11",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-12",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-15",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-16",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-17",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-18",
+      "capital": 1012.5
+    },
+    {
+      "day": "2025-09-19",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-22",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-23",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-24",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-25",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-26",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-29",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-09-30",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-01",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-02",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-03",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-06",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-07",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-08",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-09",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-10",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-13",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-14",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-15",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-16",
+      "capital": 1030.0
+    },
+    {
+      "day": "2025-10-17",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-20",
+      "capital": 1137.8
+    },
+    {
+      "day": "2025-10-21",
+      "capital": 1137.8
+    },
+    {
+      "day": "2025-10-22",
+      "capital": 1137.8
+    },
+    {
+      "day": "2025-10-23",
+      "capital": 1140.3
+    },
+    {
+      "day": "2025-10-24",
+      "capital": 1140.3
+    },
+    {
+      "day": "2025-10-27",
+      "capital": 1140.3
+    },
+    {
+      "day": "2025-10-28",
+      "capital": 1140.3
+    },
+    {
+      "day": "2025-10-29",
+      "capital": 1140.3
+    },
+    {
+      "day": "2025-10-30",
+      "capital": 1112.8
+    },
+    {
+      "day": "2025-10-31",
+      "capital": 1112.8
+    },
+    {
+      "day": "2025-11-03",
+      "capital": 1117.8
+    },
+    {
+      "day": "2025-11-04",
+      "capital": 1117.8
+    },
+    {
+      "day": "2025-11-05",
+      "capital": 1117.8
+    },
+    {
+      "day": "2025-11-06",
+      "capital": 1117.8
+    },
+    {
+      "day": "2025-11-07",
+      "capital": 1117.8
+    },
+    {
+      "day": "2025-11-10",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-11",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-12",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-13",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-14",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-17",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-18",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-19",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-20",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-21",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-24",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-25",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-26",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-11-28",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-01",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-02",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-03",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-04",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-05",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-08",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-09",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-10",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-11",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-12",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-15",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-16",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-17",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-18",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-19",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-22",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-23",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-24",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-26",
+      "capital": 1097.8
+    },
+    {
+      "day": "2025-12-29",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-12-30",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-12-31",
+      "capital": 1087.8
+    },
+    {
+      "day": "2026-01-02",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-05",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-06",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-07",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-08",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-09",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-12",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-13",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-14",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-15",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-16",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-20",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-21",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-22",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-23",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-26",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-27",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-28",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-01-29",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-02",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-03",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-04",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-05",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-06",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-09",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-10",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-11",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-12",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-13",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-17",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-18",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-19",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-20",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-23",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-24",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-25",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-26",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-02-27",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-02",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-03",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-04",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-05",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-06",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-09",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-10",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-11",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-12",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-13",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-16",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-17",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-18",
+      "capital": 1192.8
+    },
+    {
+      "day": "2026-03-19",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-20",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-23",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-24",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-25",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-26",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-27",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-30",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-03-31",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-01",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-02",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-06",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-07",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-08",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-09",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-10",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-13",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-14",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-15",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-16",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-17",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-20",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-21",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-22",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-23",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-24",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-27",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-28",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-29",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-04-30",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-01",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-04",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-05",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-06",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-07",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-08",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-11",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-12",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-13",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-14",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-15",
+      "capital": 1195.3
+    }
+  ],
+  "v3_equity": [
+    {
+      "day": "start",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-07-31",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-01",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-04",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-05",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-06",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-07",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-08",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-11",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-12",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-13",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-14",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-15",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-18",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-19",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-20",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-21",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-22",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-25",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-26",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-27",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-28",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-08-29",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-02",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-03",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-04",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-05",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-08",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-09",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-10",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-11",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-12",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-15",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-16",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-17",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-18",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-19",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-22",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-23",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-24",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-25",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-26",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-29",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-09-30",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-01",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-02",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-03",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-06",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-07",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-08",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-09",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-10",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-13",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-14",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-15",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-16",
+      "capital": 1000.0
+    },
+    {
+      "day": "2025-10-17",
+      "capital": 1080.3
+    },
+    {
+      "day": "2025-10-20",
+      "capital": 1107.8
+    },
+    {
+      "day": "2025-10-21",
+      "capital": 1107.8
+    },
+    {
+      "day": "2025-10-22",
+      "capital": 1107.8
+    },
+    {
+      "day": "2025-10-23",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-24",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-27",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-28",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-29",
+      "capital": 1110.3
+    },
+    {
+      "day": "2025-10-30",
+      "capital": 1082.8
+    },
+    {
+      "day": "2025-10-31",
+      "capital": 1082.8
+    },
+    {
+      "day": "2025-11-03",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-11-04",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-11-05",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-11-06",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-11-07",
+      "capital": 1087.8
+    },
+    {
+      "day": "2025-11-10",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-11",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-12",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-13",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-14",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-17",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-18",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-19",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-20",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-21",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-24",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-25",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-26",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-11-28",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-01",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-02",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-03",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-04",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-05",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-08",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-09",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-10",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-11",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-12",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-15",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-16",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-17",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-18",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-19",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-22",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-23",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-24",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-26",
+      "capital": 1067.8
+    },
+    {
+      "day": "2025-12-29",
+      "capital": 1057.8
+    },
+    {
+      "day": "2025-12-30",
+      "capital": 1057.8
+    },
+    {
+      "day": "2025-12-31",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-02",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-05",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-06",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-07",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-08",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-09",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-12",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-13",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-14",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-15",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-16",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-20",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-21",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-22",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-23",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-26",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-27",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-28",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-01-29",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-02",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-03",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-04",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-05",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-06",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-09",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-10",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-11",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-12",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-13",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-17",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-18",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-19",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-20",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-23",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-24",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-25",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-26",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-02-27",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-02",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-03",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-04",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-05",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-06",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-09",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-10",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-11",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-12",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-13",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-16",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-17",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-18",
+      "capital": 1057.8
+    },
+    {
+      "day": "2026-03-19",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-20",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-23",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-24",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-25",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-26",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-27",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-30",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-03-31",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-01",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-02",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-06",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-07",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-08",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-09",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-10",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-13",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-14",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-15",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-16",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-17",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-20",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-21",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-22",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-23",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-24",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-27",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-28",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-29",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-04-30",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-01",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-04",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-05",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-06",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-07",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-08",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-11",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-12",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-13",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-14",
+      "capital": 1060.3
+    },
+    {
+      "day": "2026-05-15",
+      "capital": 1060.3
+    }
+  ],
+  "v3_trades": [
+    {
+      "day": "2025-07-31",
+      "price": 988.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-01",
+      "price": 990.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-04",
+      "price": 994.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-05",
+      "price": 992.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-06",
+      "price": 982.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-07",
+      "price": 993.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-08",
+      "price": 990.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-11",
+      "price": 1010.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-12",
+      "price": 1023.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-13",
+      "price": 1043.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-14",
+      "price": 1030.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-15",
+      "price": 1041.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "reversal",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-18",
+      "price": 1044.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-19",
+      "price": 1030.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-20",
+      "price": 1038.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-21",
+      "price": 1053.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-22",
+      "price": 1062.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-25",
+      "price": 1048.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-26",
+      "price": 1048.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-27",
+      "price": 1050.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-28",
+      "price": 1043.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-08-29",
+      "price": 1047.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-02",
+      "price": 1039.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-03",
+      "price": 1032.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-04",
+      "price": 1029.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-05",
+      "price": 1030.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-08",
+      "price": 1031.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-09",
+      "price": 1030.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-10",
+      "price": 1025.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-11",
+      "price": 1034.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-12",
+      "price": 1042.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-15",
+      "price": 1044.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-16",
+      "price": 1050.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-17",
+      "price": 1043.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-18",
+      "price": 1037.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-19",
+      "price": 1025.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "breakout",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-22",
+      "price": 1010.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-23",
+      "price": 1009.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-24",
+      "price": 1009.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-25",
+      "price": 1008.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-26",
+      "price": 1013.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-29",
+      "price": 1011.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-09-30",
+      "price": 1003.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-01",
+      "price": 999.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-02",
+      "price": 1037.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-03",
+      "price": 1026.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-06",
+      "price": 1035.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-07",
+      "price": 1040.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-08",
+      "price": 1043.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-09",
+      "price": 1038.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-10",
+      "price": 1022.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-13",
+      "price": 1025.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.08,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-14",
+      "price": 1022.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.08,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-15",
+      "price": 1027.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -1.08,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-16",
+      "price": 1031.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "fund_score": -0.58,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-17",
+      "price": 1036.25,
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1036.25,
+        "exit": 1044.28,
+        "exit_type": "tp",
+        "contracts": 1,
+        "pnl_pts": 8.03,
+        "pnl_usd": 80.3,
+        "pnl_pct": 8.03,
+        "mfe": 2.25,
+        "mae": -0.25,
+        "bars_held": 3
+      },
+      "cap": 1080.3,
+      "fund_score": -0.08,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-20",
+      "price": 1050.0,
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1050.0,
+        "exit": 1052.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 2.75,
+        "pnl_usd": 27.5,
+        "pnl_pct": 2.55,
+        "mfe": 3.25,
+        "mae": -1.0,
+        "bars_held": 3
+      },
+      "cap": 1107.8,
+      "fund_score": 0.92,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-21",
+      "price": 1046.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1107.8,
+      "fund_score": 1.42,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-22",
+      "price": 1050.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1107.8,
+      "fund_score": 1.92,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-23",
+      "price": 1060.5,
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1060.5,
+        "exit": 1060.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 0.25,
+        "pnl_usd": 2.5,
+        "pnl_pct": 0.23,
+        "mfe": 2.5,
+        "mae": -2.0,
+        "bars_held": 3
+      },
+      "cap": 1110.3,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-24",
+      "price": 1060.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1110.3,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-27",
+      "price": 1087.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1110.3,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-28",
+      "price": 1096.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1110.3,
+      "fund_score": 2.42,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-10-29",
+      "price": 1094.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1110.3,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-10-30",
+      "price": 1107.75,
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "pullback",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1107.75,
+        "exit": 1105.0,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -2.75,
+        "pnl_usd": -27.5,
+        "pnl_pct": -2.48,
+        "mfe": 3.75,
+        "mae": -3.25,
+        "bars_held": 3
+      },
+      "cap": 1082.8,
+      "fund_score": 1.85,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-10-31",
+      "price": 1112.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1082.8,
+      "fund_score": 1.85,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-03",
+      "price": 1132.5,
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1132.5,
+        "exit": 1133.0,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 0.5,
+        "pnl_usd": 5.0,
+        "pnl_pct": 0.46,
+        "mfe": 3.25,
+        "mae": -1.25,
+        "bars_held": 3
+      },
+      "cap": 1087.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-04",
+      "price": 1117.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1087.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-05",
+      "price": 1130.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1087.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-06",
+      "price": 1109.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1087.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-07",
+      "price": 1115.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1087.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-10",
+      "price": 1128.75,
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1128.75,
+        "exit": 1126.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -2.0,
+        "pnl_usd": -20.0,
+        "pnl_pct": -1.84,
+        "mfe": 3.25,
+        "mae": -4.0,
+        "bars_held": 3
+      },
+      "cap": 1067.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-11",
+      "price": 1129.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-12",
+      "price": 1130.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-13",
+      "price": 1148.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-14",
+      "price": 1128.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-17",
+      "price": 1153.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-18",
+      "price": 1156.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 2.27,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-19",
+      "price": 1138.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.77,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.52,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-20",
+      "price": 1126.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-21",
+      "price": 1123.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 1.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-24",
+      "price": 1125.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.85,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-25",
+      "price": 1125.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-26",
+      "price": 1133.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-11-28",
+      "price": 1137.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.85,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-01",
+      "price": 1129.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-02",
+      "price": 1126.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-03",
+      "price": 1119.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": 0.35,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-04",
+      "price": 1121.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -0.15,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-05",
+      "price": 1107.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-08",
+      "price": 1094.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-09",
+      "price": 1085.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-10",
+      "price": 1090.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-11",
+      "price": 1092.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-12",
+      "price": 1080.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-15",
+      "price": 1072.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.65,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-16",
+      "price": 1061.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -2.15,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-17",
+      "price": 1059.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -2.15,
+      "fund_flags": {
+        "cot_extreme": "BULL_EXTREME",
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": -0.3
+      }
+    },
+    {
+      "day": "2025-12-18",
+      "price": 1052.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-19",
+      "price": 1058.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-22",
+      "price": 1063.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-23",
+      "price": 1063.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-24",
+      "price": 1076.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-26",
+      "price": 1057.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1067.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-29",
+      "price": 1063.5,
+      "signal": "SHORT",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1063.5,
+        "exit": 1064.5,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -1.0,
+        "pnl_usd": -10.0,
+        "pnl_pct": -0.94,
+        "mfe": 0.5,
+        "mae": -2.5,
+        "bars_held": 3
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-30",
+      "price": 1063.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2025-12-31",
+      "price": 1050.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-02",
+      "price": 1027.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "reversal",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-05",
+      "price": 1062.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-06",
+      "price": 1062.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-07",
+      "price": 1067.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-08",
+      "price": 1062.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-09",
+      "price": 1064.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-12",
+      "price": 1048.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-13",
+      "price": 1039.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-14",
+      "price": 1045.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-15",
+      "price": 1056.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-16",
+      "price": 1055.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-20",
+      "price": 1058.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": -0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-21",
+      "price": 1066.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-22",
+      "price": 1062.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-23",
+      "price": 1069.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-26",
+      "price": 1063.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-27",
+      "price": 1067.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-28",
+      "price": 1076.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-01-29",
+      "price": 1072.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-02",
+      "price": 1059.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "breakout",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-03",
+      "price": 1067.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-04",
+      "price": 1090.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-05",
+      "price": 1109.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-06",
+      "price": 1113.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-09",
+      "price": 1107.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-10",
+      "price": 1119.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-11",
+      "price": 1123.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-12",
+      "price": 1134.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-13",
+      "price": 1133.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-17",
+      "price": 1149.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-18",
+      "price": 1146.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-19",
+      "price": 1153.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-20",
+      "price": 1153.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-23",
+      "price": 1155.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-24",
+      "price": 1155.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-25",
+      "price": 1162.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-26",
+      "price": 1157.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-02-27",
+      "price": 1167.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-02",
+      "price": 1162.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-03",
+      "price": 1163.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-04",
+      "price": 1170.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-05",
+      "price": 1178.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-06",
+      "price": 1197.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-09",
+      "price": 1194.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-10",
+      "price": 1201.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-11",
+      "price": 1222.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-12",
+      "price": 1228.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 1.86,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-13",
+      "price": 1225.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 2.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 2.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-16",
+      "price": 1163.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-17",
+      "price": 1163.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-18",
+      "price": 1161.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1057.8,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-19",
+      "price": 1168.5,
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1168.5,
+        "exit": 1168.75,
+        "exit_type": "trailing_be",
+        "contracts": 1,
+        "pnl_pts": 0.25,
+        "pnl_usd": 2.5,
+        "pnl_pct": 0.24,
+        "mfe": 5.0,
+        "mae": -1.25,
+        "bars_held": 2
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-20",
+      "price": 1161.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-23",
+      "price": 1164.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.64,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-24",
+      "price": 1160.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-25",
+      "price": 1163.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-26",
+      "price": 1173.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-27",
+      "price": 1164.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-30",
+      "price": 1163.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-03-31",
+      "price": 1169.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.64,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-01",
+      "price": 1164.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-02",
+      "price": 1165.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-06",
+      "price": 1168.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-07",
+      "price": 1157.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.64,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-08",
+      "price": 1159.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -1.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": -1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-09",
+      "price": 1163.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.5,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": -0.5,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-10",
+      "price": 1176.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-13",
+      "price": 1166.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.0,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": 0.0,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-14",
+      "price": 1157.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-15",
+      "price": 1170.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-16",
+      "price": 1167.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-17",
+      "price": 1179.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-20",
+      "price": 1183.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-21",
+      "price": 1191.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-22",
+      "price": 1185.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-23",
+      "price": 1174.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-24",
+      "price": 1177.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": -0.14,
+      "fund_flags": {
+        "iv_regime": "unknown",
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-27",
+      "price": 1192.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-28",
+      "price": 1188.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-29",
+      "price": 1197.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 0.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-04-30",
+      "price": 1196.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-01",
+      "price": 1199.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-04",
+      "price": 1222.75,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-05",
+      "price": 1211.25,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-06",
+      "price": 1192.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-07",
+      "price": 1192.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-08",
+      "price": 1208.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-11",
+      "price": 1214.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-12",
+      "price": 1227.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-13",
+      "price": 1231.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 1.36,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": true,
+        "event_type": "WASDE"
+      },
+      "fund_components": {
+        "swing": 1.5,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-14",
+      "price": 1184.5,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    },
+    {
+      "day": "2026-05-15",
+      "price": 1176.0,
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1060.3,
+      "fund_score": 0.86,
+      "fund_flags": {
+        "iv_regime": "normal",
+        "iv_zscore": 0.22360679774998216,
+        "event_imminent": false
+      },
+      "fund_components": {
+        "swing": 1.0,
+        "model_signal": -0.17,
+        "cot": 0.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "instrument": "UK100",
+  "fetched_at": "2026-06-02T00:39:01.338216+00:00",
+  "count": 12,
+  "articles": [
+    {
+      "title": "What is oil price prediction for Monday? Oil prices fall as US-Iran ceasefire talks support market sentiment",
+      "url": "https://economictimes.indiatimes.com/news/international/us/what-is-oil-price-prediction-for-monday-oil-prices-fall-as-us-iran-ceasefire-talks-support-market-sentiment/articleshow/131406928.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-30T09:32:38Z",
+      "description": "What is oil price prediction for Monday? Oil prices ended lower on Friday as investors reacted to signs of progress in talks between the United States and Iran. Markets focused on the possibility of an extended ceasefire and the reopening of shipping routes t…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "energy_prices",
+          "global_risk",
+          "geopolitics"
+        ],
+        "confidence": 0.65,
+        "key_quote": "Oil prices ended lower on Friday as investors reacted to signs of progress in talks between the United States and Iran",
+        "rationale": "Caída de precios energéticos por reducción de riesgo geopolítico beneficia al FTSE 100: (1) Alivio inflacionario reduce presión sobre BoE para alzas de tasas, favorable para valuaciones; (2) Empresas energéticas FTSE (Shell, BP) ven margen presionado pero mercado descuenta mejor ambiente macro; (3) GBP se fortalece con riesgo geopolítico menor, beneficiando multilatinas FTSE; (4) Ceasefire reduce volatilidad que presionaba inversión. Impacto moderado: magnitude=2 porque si bien reduce riesgo sistémico, el FTSE es defensivo y no es beneficiario directo de baja de petróleo. Confidence 0.65 por incertidumbre en consolidación de negociaciones.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:04.911466",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Show HN: Simple news aggregator with source bias meters",
+      "url": "https://unbiasthenews.com",
+      "source": "Unbiasthenews.com",
+      "publishedAt": "2026-05-29T18:21:24Z",
+      "description": "Article URL: https://unbiasthenews.com\nComments URL: https://news.ycombinator.com/item?id=48327194\nPoints: 2\n# Comments: 0",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Simple news aggregator with source bias meters",
+        "rationale": "La noticia trata sobre una herramienta de agregación de noticias con medidores de sesgo editorial. No contiene información relevante sobre política monetaria del BoE, datos macroeconómicos del Reino Unido, movimiento de GBP, riesgos geopolíticos, precios energéticos ni ganancias corporativas de empresas FTSE 100. Es contenido técnico/software sin conexión directa con los fundamentales del índice bursátil británico. Bajo engagement (2 puntos, 0 comentarios) refuerza su insignificancia para mercados financieros.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:11.224289",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Markets end the week on the up",
+      "url": "https://www.irishtimes.com/business/2026/05/29/markets-end-the-week-on-the-up/",
+      "source": "The Irish Times",
+      "publishedAt": "2026-05-29T17:02:56Z",
+      "description": "Traders buoyed by talk of deal to reopen Strait of Hormuz",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "energy_prices"
+        ],
+        "confidence": 0.55,
+        "key_quote": "Traders buoyed by talk of deal to reopen Strait of Hormuz",
+        "rationale": "La noticia de potencial reapertura del Estrecho de Ormuz reduce riesgo geopolítico y presión en precios energéticos. FTSE 100 tiene exposición significativa a energía (Shell, BP) que se beneficiaría de menores costos de petróleo. Sin embargo, el impacto es moderado porque: (1) es solo 'talk' de acuerdo, no confirmado, (2) la fuente es The Irish Times sin detalles específicos sobre el deal, (3) otros factores macro UK (BoE, GBP, earnings) no son mencionados. El movimiento es más bien especulativo de corto plazo que fundamental.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:17.147299",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Japanese and Korean markets hit record highs as U.S. and Iran extend ceasefire",
+      "url": "https://fortune.com/2026/05/29/japanese-korean-markets-hit-record-highs-us-iran-war/",
+      "source": "Fortune",
+      "publishedAt": "2026-05-29T11:48:27Z",
+      "description": "Optimism over the conclusion of the war in Iran brought both currencies to record highs, as inflation in Japan grew slower than expected.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "geopolitics"
+        ],
+        "confidence": 0.45,
+        "key_quote": "Optimism over the conclusion of the war in Iran brought both currencies to record highs, as inflation in Japan grew slower than expected.",
+        "rationale": "La resolución del conflicto Iran-USA reduce riesgo geopolítico global, lo que típicamente beneficia activos de riesgo como el FTSE 100. Sin embargo, el impacto es moderado porque: (1) la noticia se enfoca en mercados asiáticos, no UK; (2) no afecta directamente política BoE, macro UK, GBP, energía o ganancias corporativas FTSE; (3) el beneficio es principalmente por menor prima de riesgo sistémico. El efecto es transitorio (7d) y modesto en magnitud.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:22.313772",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Alexis, Nikos and the (new) polls, everyone against everyone but also plus Adonis’s blue flirtations, Bally’s suitcases for London, and what the shipowners are buying and selling",
+      "url": "https://en.protothema.gr/2026/05/29/alexis-nikos-and-the-new-polls-everyone-against-everyone-but-also-plus-adoniss-blue-flirtations-ballys-suitcases-for-london-and-what-the-shipowners-are-buying-and-selling/",
+      "source": "Protothema.gr",
+      "publishedAt": "2026-05-29T05:23:00Z",
+      "description": "PPC, Helsinki, and the Data Center\nThe post Alexis, Nikos and the (new) polls, everyone against everyone but also plus Adonis’s blue flirtations, Bally’s suitcases for London, and what the shipowners are buying and selling appeared first on ProtoThema English.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics"
+        ],
+        "confidence": 0.15,
+        "key_quote": "PPC, Helsinki, and the Data Center",
+        "rationale": "La noticia trata sobre política griega interna (encuestas, partidos PPC), referencias a Helsinki y centros de datos, así como actividades de navieros. No contiene información relevante sobre política del Bank of England, macrodatos UK (GDP, CPI, empleo), movimientos del GBP, riesgos sistémicos globales que afecten Londres, precios energéticos o ganancias corporativas del FTSE 100. El contenido es principalmente especulativo y referencias a política doméstica griega sin conexión directa con los fundamentales del índice UK100.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:26.827886",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Oil prices bounce higher after new US strikes on Iran",
+      "url": "https://www.digitaljournal.com/business/oil-prices-bounce-higher-after-new-us-strikes-on-iran/article",
+      "source": "Digital Journal",
+      "publishedAt": "2026-05-28T18:15:27Z",
+      "description": "An American official said the military had shot down four Iranian drones and struck a control centre in the southern city of Bandar Abbas.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "energy_prices",
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Oil prices bounce higher after new US strikes on Iran",
+        "rationale": "El FTSE 100 tiene exposición significativa a energía (Shell, BP). Tensiones US-Iran elevan precios de petróleo, beneficiando integrados de energía. Sin embargo, el impacto es moderado porque: (1) strikes limitados a drones/infraestructura sin escalación masiva, (2) mercado ya anticipaba riesgos geopolíticos en Oriente Medio, (3) alivio de tensiones podría revertir ganancias en energía. Horizonte 7d por volatilidad geopolítica. Confianza 0.72 dado que energía es ~15% del FTSE pero datos macro UK y BoE policy no son afectados directamente.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:32.326364",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "A diversified 11-asset portfolio outperformed both US stocks, the classic 60/40 mix in 2025. Is it time to diversify?",
+      "url": "https://finance.yahoo.com/markets/options/articles/diversified-11-asset-portfolio-outperformed-110000664.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-28T11:00:00Z",
+      "description": "Here's what the assets were and whether you should hold them.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "A diversified 11-asset portfolio outperformed both US stocks, the classic 60/40 mix in 2025",
+        "rationale": "La noticia es un artículo de educación financiera general sobre diversificación de carteras que no menciona específicamente el FTSE 100, datos macroeconómicos UK, política del BoE, GBP, energía o empresas del índice. Es contenido genérico sobre estrategia de inversión global sin catalistas directos para el mercado accionario británico.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:37.563764",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "Hedge funds control over half of electronic gilts trading, Tradeweb reports",
+      "url": "https://cryptobriefing.com/hedge-funds-dominate-electronic-gilts-trading/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-28T10:06:39Z",
+      "description": "Hedge funds' dominance in electronic gilts trading could heighten market volatility and liquidity risks, especially during financial stress events.\nThe post Hedge funds control over half of electronic gilts trading, Tradeweb reports appeared first on Crypto B…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.2,
+        "key_quote": "Hedge funds' dominance in electronic gilts trading could heighten market volatility and liquidity risks, especially during financial stress events.",
+        "rationale": "La noticia trata sobre la estructura de mercado de gilts (bonos del gobierno UK) y concentración de hedge funds en trading electrónico. Mientras que esto tiene implicaciones potenciales para volatilidad del mercado de deuda soberana UK, el impacto directo en el FTSE 100 (índice de grandes corporaciones) es indirecto y marginal. Los gilts y equities son mercados distintos. El FTSE podría verse afectado solo si hay stress financiero severo que afecte condiciones de crédito corporativo, pero la noticia es más sobre estructura de mercado que sobre un evento de estrés actual. Impacto muy bajo en el corto plazo para equities.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:43.604447",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "World markets decline after US strikes on Iranian drone targets",
+      "url": "https://www.thehindubusinessline.com/markets/world-markets-decline-after-us-strikes-on-iranian-drone-targets/article71032700.ece",
+      "source": "BusinessLine",
+      "publishedAt": "2026-05-28T09:48:19Z",
+      "description": "Oil prices rebounded after a sharp fall a day earlier, while Asian and European equities weakened amid uncertainty over a possible US-Iran deal",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "energy_prices",
+          "geopolitics"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Oil prices rebounded after a sharp fall a day earlier, while Asian and European equities weakened amid uncertainty over a possible US-Iran deal",
+        "rationale": "El conflicto US-Iran genera incertidumbre geopolítica que debilita mercados europeos. FTSE 100 es sensible a riesgo global y volatilidad: (1) Energy prices volátiles afectan directamente a Shell, BP y mineras; (2) Empresas FTSE con ingresos en USD se benefician de debilidad GBP por flight-to-safety pero sufren por demanda global deprimida; (3) Uncertainty reduce apetito por riesgo en equities UK; (4) Posible escalada geopolítica presiona commodities y economía global, impactando ganancias corporativas de multinationales FTSE. Impacto moderado (magnitude=3) porque mercados UK ya pricearon parcialmente riesgos geopolíticos, pero la debilidad de Asian/European equities confirma momentum negativo a corto plazo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:49.399058",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "FTSE 100 Drops 0.95 Percent to 10,404.87 on May 28 as Geopolitical Tensions Hit London Markets",
+      "url": "https://www.ibtimes.com.au/ftse-100-falls-geopolitical-tensions-commodity-weakness-1869621",
+      "source": "Ibtimes.com.au",
+      "publishedAt": "2026-05-28T07:54:16Z",
+      "description": "The FTSE 100 Index fell 0.95% due to geopolitical tensions and commodity-linked stock weakness, reflecting broader market declines amid Middle East uncertainty and fluctuating commodity prices.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "energy_prices",
+          "geopolitics"
+        ],
+        "confidence": 0.75,
+        "key_quote": "FTSE 100 Index fell 0.95% due to geopolitical tensions and commodity-linked stock weakness, reflecting broader market declines amid Middle East uncertainty and fluctuating commodity prices",
+        "rationale": "Las tensiones geopolíticas en Oriente Medio afectan directamente al FTSE 100 por dos canales: (1) exposición a precios energéticos volátiles que impactan sectores commodity-heavy del índice (mining, oil & gas representan ~20% del FTSE); (2) riesgo global reduce apetito por renta variable UK. La caída de 0.95% es consistente con movimientos de volatilidad media. Horizonte de 7 días porque tensiones geopolíticas típicamente mantienen presión 1-2 semanas hasta resolución o habituación del mercado. Confianza moderada-alta (0.75) dado que la noticia es retrospectiva del movimiento del día, pero el riesgo geopolítico persiste.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:16:55.281689",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "European stocks to open lower as traders assess chances of Iran peace deal",
+      "url": "https://www.cnbc.com/2026/05/28/european-markets-stoxx-600-ftse-dax-cac-iran-latest-news-.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-28T05:04:51Z",
+      "description": "European stocks are expected to open in negative territory on Thursday as investors assess the prospects of a peace deal to end the Iran war.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "energy_prices",
+          "geopolitics"
+        ],
+        "confidence": 0.55,
+        "key_quote": "European stocks are expected to open in negative territory on Thursday as investors assess the prospects of a peace deal to end the Iran war",
+        "rationale": "La incertidumbre geopolítica sobre un posible acuerdo de paz Irán genera cautela en mercados europeos. El FTSE 100 es sensible a: (1) Riesgo geopolítico que afecta flujos de inversión globales hacia Londres, (2) Volatilidad de precios energéticos (petróleo) si hay escalada vs alivio de tensiones, (3) Debilidad general en risk-on sentiment que presiona sectores cíclicos del índice. Sin embargo, el impacto es moderado porque: la noticia es especulativa (assessment de chances, no confirmación), un acuerdo de paz sería positivo para energía y crecimiento global a mediano plazo, y el FTSE tiene exposición defensiva (utilities, pharma, FMCG) que limita caídas. Magnitude 2 refleja ruido táctico más que shock estructural.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:17:01.702459",
+        "_instrument": "UK100"
+      }
+    },
+    {
+      "title": "UK Petrol Prices Hit Highest Level Since 2022",
+      "url": "https://oilprice.com/Energy/Energy-General/UK-Petrol-Prices-Hit-Highest-Level-Since-2022.html",
+      "source": "OilPrice.com",
+      "publishedAt": "2026-05-27T14:00:00Z",
+      "description": "Petrol prices in the UK have hit a new high since the Iran war began, as the price of oil jumped back up to $100 per barrel following fresh US strikes. The average price of a litre of petrol is now 159.43p in the UK, according to motoring services firm the RA…",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "energy_prices",
+          "global_risk",
+          "uk_macro"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Petrol prices in the UK have hit a new high since the Iran war began, as the price of oil jumped back up to $100 per barrel",
+        "rationale": "Precios de petróleo elevados incrementan costos operativos para empresas FTSE (transporte, logística, manufactura), presionan márgenes de ganancia y erosionan poder adquisitivo del consumidor UK, impactando negativamente retail y consumer stocks. La inflación energética también restringe margen de maniobra del BoE para recortes de tasas, manteniendo presión en valuaciones. El riesgo geopolítico (Irán) añade volatilidad. Afecta directamente competitividad de grandes caps FTSE con exposure a energía y consumo doméstico.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:17:07.413532",
+        "_instrument": "UK100"
+      }
+    }
+  ]
+}

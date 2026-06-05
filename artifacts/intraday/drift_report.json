@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-05-22T14:21:16.354770",
+  "drift_detected": false,
+  "needs_retrain": false,
+  "reason": null,
+  "previous_metrics": {
+    "mean_auc": 0.5292,
+    "mean_acc": 0.526,
+    "n_total": 2830,
+    "retrain_timestamp": null
+  }
+}

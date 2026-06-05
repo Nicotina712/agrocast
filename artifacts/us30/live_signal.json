@@ -1,0 +1,16 @@
+{
+  "signal": "FLAT",
+  "entry": null,
+  "sl": null,
+  "tp": null,
+  "lots": null,
+  "confidence": "LOW",
+  "rr": null,
+  "risk_usd": null,
+  "reasoning": "EXTREME_OVERSOLD_RSI_23.6 + POOR_RR_0.69 + LAST_HOUR_LIQUIDITY_RISK + COUNTERTREND_SHORT_IN_CAPITULATION. RSI at 23.6 (previous bars: 10.6, 13.2) indicates potential violent bounce imminent. Setup requires pullback to 51270-51290 but current price 51245 already below entry zone - chasing momentum into oversold extreme. Only 60 mins to close increases gap risk and reduces follow-through probability. Target 51215 (session low) only 30pts away while stop must be 51350 (80pts above) for EMA21 clearance. Cumulative delta -0.708 shows exhaustion selling, not healthy trend continuation. Volume ratio 0.72 suggests lighter conviction. Risk of short squeeze if buyers step in at psychological 51200 level. RECOMMENDATION: Wait for pullback to 51280+ with rejection confirmation, OR await Monday open for cleaner setup with full session liquidity.",
+  "us30_regime": "BEAR_TREND",
+  "risk_on_off": "RISK_OFF",
+  "timestamp": "2026-06-05T13:04:20.070296",
+  "symbol": "US30",
+  "price": 51245.3
+}

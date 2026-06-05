@@ -1,9 +1,11 @@
 {
-  "timestamp": "2026-05-20T14:02:37.406392",
-  "current_price": 1199.0,
+  "timestamp": "2026-06-05T11:16:19.428232",
+  "mode": "live",
+  "data_source": "mt5",
+  "current_price": 1126.375,
   "signal": {
     "signal": "FLAT",
-    "reason": "Trend Agent emite setup FLAT con confianza LOW y sin zona de entrada definida. No hay breakout confirmado ni del soporte 1197.25 ni de la resistencia 1202.75/VWAP. El precio está en compresión de rango (7.25 pts de rango vs ATR 4.24) sin dirección técnica accionable. Cum delta negativo es consistente con tendencia bajista pero no constituye trigger de entrada sin ruptura estructural confirmada. R:R no puede calcularse sin nivel de entrada definido; por tanto no se cumple el mínimo 1.5:1 requerido.",
+    "reason": "Trend Agent emite FLAT con confianza LOW y sin entry_zone definida. No existe setup direccional accionable: precio comprimido en rango 6.75 pts (1123.45–1130.20), oscilando alrededor del VWAP sin breakout confirmado ni expansión de volumen. Con solo 80 minutos para cierre RTH y momentum decelerando, el R:R mínimo 1.5:1 no es alcanzable con stops estructurales válidos dentro del tiempo de sesión disponible. Fundamentales bajistas de fondo (crush margin chino -147 USD/ton, demanda score 30/100) tampoco habilitan long; delta acumulado negativo (-3249) tampoco valida short desde estos niveles sin confirmación de ruptura.",
     "entry": null,
     "stop_loss": null,
     "take_profit": null,
@@ -16,18 +18,18 @@
     "momentum": "decelerating",
     "key_levels": {
       "resistance": [
-        1202.75,
-        1204.5
+        1127.45,
+        1130.2
       ],
       "support": [
-        1197.25,
-        1193.5
+        1123.45,
+        1120.0
       ],
-      "vwap": 1200.4
+      "vwap": 1126.96
     },
     "setup": {
       "type": "range",
-      "description": "Precio comprimido entre 1197.25 (low sesion) y 1202.75 (open/resistencia inmediata), cotizando por debajo de VWAP (1200.40) y debajo de EMA9 (1202.52) y EMA26 (1205.72). RSI en 39.8 indica debilidad pero sin sobreventa extrema. Cumulative delta negativo en ambas ventanas (-53965 a 5 barras, -47385 a 20 barras) confirma presion vendedora sostenida. Sin catalizador de breakout visible: esperar ruptura del rango actual.",
+      "description": "Precio consolidando en rango comprimido 1123.45-1130.20 (6.75 pts) tras caída sostenida de 5 días desde 1198. Actualmente por debajo de VWAP (1126.96) y ambas EMAs (EMA9=1127.38, EMA26=1132.75). Delta acumulado fuertemente negativo (-3249 en 20 barras) confirma presión vendedora pero momentum de caída se está frenando: RSI en 45.2 sin nuevos mínimos relevantes. Cuerpos bajistas dominantes pero la barra actual muestra mecha inferior (0.38) sugiriendo absorción puntual. No hay setup direccional claro: breakout sobre 1130.20 habilitaría long hacia 1136; quiebre de 1123.45 habilitaría short hacia 1120. Con 80 minutos para cierre RTH, la baja volatilidad (vol z-score -0.60, ATR actual vs media sin expansión notable) no favorece un breakout intradiario de alta convicción.",
       "direction": "FLAT",
       "entry_zone": {
         "low": null,
@@ -35,13 +37,14 @@
       },
       "confidence": "LOW"
     },
-    "reasoning": "La tendencia intradiaria es bajista moderada: precio ha caído desde 1215+ en sesiones previas hasta 1199 hoy, con sesión abriendo en gap-down (1202.75 vs cierre anterior 1210.25) y acelerando la caída. Sin embargo, el momentum está desacelerando — RSI cayó desde niveles >50 hace 12 barras hasta 39.8 ahora, y las últimas 3 barras muestran retornos decrecientes (-0.04%, no -0.31%). El precio está atrapado en un rango estrecho de 7.25pts por debajo del VWAP y con delta negativo persistente, pero sin setup claro de entrada: un SHORT requeriría ruptura confirmada de 1197.25 hacia 1193.50, y un LONG requeriría recuperación sobre VWAP+1202.75. Con 140 min para cierre RTH y volatilidad comprimida (ATR actual 4.24 vs media 5.02), la relación riesgo/recompensa no justifica posición en este momento."
+    "fundamental_alignment": "conflicting",
+    "reasoning": "La tendencia diaria es bajista sostenida (-5.6% en 5 días, SMA5 < SMA20, momentum 5d = -2.0%) y el delta acumulado negativo confirma flujo vendedor intradiario, pero el precio está en zona de compresión/consolidación sin impulso claro en ninguna dirección. El modelo ML emite BUY con confianza muy baja (0.30) y el régimen es 'shock', lo que crea conflicto con el setup bajista; sin embargo, el crush margin chino negativo (-147 USD/ton) y demanda score de 30/100 son fundamentales bajistas de fondo. Con precio oscillando ±3 pts alrededor del VWAP y menos de 90 minutos para el cierre RTH, la relación riesgo/recompensa no justifica entrada — preferible FLAT y esperar confirmación de breakout con expansión de volumen."
   },
   "risk_agent": {
-    "volatility_regime": "low",
-    "atr_assessment": "ATR actual 4.24 vs media 30 barras 5.02 — contracción del 15.5%; volatilidad comprimida por debajo de la norma reciente",
+    "volatility_regime": "normal",
+    "atr_assessment": "ATR actual 3.40 vs media 30 barras 3.16 — leve expansión (~7.4%), sin señal de régimen extremo; vol z-score -0.60 confirma volatilidad por debajo de la media reciente",
     "trade_viable": false,
-    "veto_reason": "Trend Agent emite setup FLAT con confianza LOW y sin zona de entrada definida. No hay breakout confirmado ni del soporte 1197.25 ni de la resistencia 1202.75/VWAP. El precio está en compresión de rango (7.25 pts de rango vs ATR 4.24) sin dirección técnica accionable. Cum delta negativo es consistente con tendencia bajista pero no constituye trigger de entrada sin ruptura estructural confirmada. R:R no puede calcularse sin nivel de entrada definido; por tanto no se cumple el mínimo 1.5:1 requerido.",
+    "veto_reason": "Trend Agent emite FLAT con confianza LOW y sin entry_zone definida. No existe setup direccional accionable: precio comprimido en rango 6.75 pts (1123.45–1130.20), oscilando alrededor del VWAP sin breakout confirmado ni expansión de volumen. Con solo 80 minutos para cierre RTH y momentum decelerando, el R:R mínimo 1.5:1 no es alcanzable con stops estructurales válidos dentro del tiempo de sesión disponible. Fundamentales bajistas de fondo (crush margin chino -147 USD/ton, demanda score 30/100) tampoco habilitan long; delta acumulado negativo (-3249) tampoco valida short desde estos niveles sin confirmación de ruptura.",
     "stop_loss": {
       "price": null,
       "type": "structure",
@@ -54,93 +57,167 @@
     "position_size": {
       "contracts_mzs": 0,
       "risk_pct": 0.0,
-      "rationale": "Sin trade activo. En caso de ruptura SHORT confirmada de 1197.25: SL estructural en 1200.50 (sobre VWAP + buffer), riesgo ~3.25 pts = $32.50/contrato MZS → max $200/0.0325*1000 = 6.15 contratos → ajustado a 6 MZS (1.95% capital). En caso de ruptura LONG sobre 1202.75+VWAP: SL en 1199.00 (low sesión reciente), riesgo ~3.75 pts = $37.50/contrato → 5 MZS (1.88% capital). Ambos escenarios son hipotéticos hasta confirmación de ruptura."
+      "rationale": "Sin trade activo. Si se produjera breakout confirmado sobre 1130.20 (long) o bajo 1123.45 (short) con expansión de volumen: SL estructural a ~1.5×ATR (≈5.1 pts = $51/MZS), sizing máximo 3 contratos MZS (riesgo $153 = 1.53% capital). Ajuste fundamental: fundamentals bajistas en contexto long reducirían a 2 contratos; régimen 'shock' exige sizing conservador."
     },
-    "session_risk": "moderate",
-    "max_hold_bars": 2,
-    "reasoning": "El mercado está en régimen de contracción de volatilidad (ATR 4.24 vs media 5.02) con precio encapsulado en rango de 7.25 pts, operando por debajo de VWAP y ambas EMAs con delta acumulado negativo persistente. Aunque la tendencia de fondo es bajista moderada, la ausencia de un catalizador técnico claro y la baja confianza del Trend Agent impiden abrir posición. Con 140 minutos restantes de sesión RTH hay tiempo suficiente para esperar confirmación: la estrategia óptima es monitorear ruptura de 1197.25 (SHORT) o recuperación sobre 1202.75+VWAP (LONG) antes de actuar."
+    "session_risk": "high",
+    "max_hold_bars": 1,
+    "reasoning": "El mercado está en fase de consolidación comprimida tras una caída sostenida de -5.6% en 5 días, sin catalizador intradiario ni expansión de volatilidad que justifique una entrada con convicción. Con 80 minutos para el cierre RTH y un solo bar potencial disponible para gestionar el trade, cualquier entrada especulativa violaría la regla de R:R mínimo 1.5:1 dentro del tiempo disponible. La postura correcta es FLAT, monitorear ruptura de rango con volumen en sesión overnight o apertura del día siguiente."
   },
   "bars_summary": {
     "current_state": {
-      "close": 1199.0,
-      "session_date": "2026-05-20",
-      "hour_ct": 11,
-      "mins_to_close": 140.0,
+      "close": 1126.38,
+      "session_date": "2026-06-05",
+      "hour_ct": 12,
+      "mins_to_close": 80.0,
       "is_rth": true
     },
     "indicators": {
-      "rsi_14": 39.8148,
-      "atr_14": 4.2377,
-      "atr_mean_30": 5.0183,
-      "ema_fast": 1202.5197,
-      "ema_slow": 1205.7243,
-      "ema_cross": -0.0027,
-      "realized_vol_30": 0.0022,
-      "vol_zscore_30": 0.9371,
-      "vwap_session": 1200.3951,
-      "vwap_dist": -0.0012,
-      "body_pct": -0.1333,
-      "upper_wick": 0.5333,
-      "lower_wick": 0.3333,
-      "cum_delta_5": -53965.0,
-      "cum_delta_20": -47385.0
+      "rsi_14": 45.2351,
+      "atr_14": 3.3962,
+      "atr_mean_30": 3.1611,
+      "ema_fast": 1127.3761,
+      "ema_slow": 1132.7462,
+      "ema_cross": -0.0048,
+      "realized_vol_30": 0.0025,
+      "vol_zscore_30": -0.5984,
+      "vwap_session": 1126.9617,
+      "vwap_dist": -0.0013,
+      "body_pct": -0.6154,
+      "upper_wick": 0.0,
+      "lower_wick": 0.3846,
+      "cum_delta_5": -1076.0,
+      "cum_delta_20": -3249.0
     },
     "returns": {
-      "ret_1": -0.0004,
-      "ret_3": -0.0031,
-      "ret_12": -0.0069,
-      "session_return": -0.312
+      "ret_1": -0.0018,
+      "ret_3": -0.0009,
+      "ret_12": -0.0035,
+      "session_return": -0.133
     },
     "session_range": {
-      "open": 1202.75,
-      "high": 1204.5,
-      "low": 1197.25,
-      "range": 7.25,
-      "range_pct": 0.605
+      "open": 1126.95,
+      "high": 1130.2,
+      "low": 1123.45,
+      "range": 6.75,
+      "range_pct": 0.6
     },
     "multi_day": [
       {
-        "date": "2026-05-14",
-        "open": 1198.25,
-        "high": 1199.75,
-        "low": 1181.5,
-        "close": 1193.5,
-        "daily_return": -0.4
+        "date": "2026-05-29",
+        "open": 1198.45,
+        "high": 1198.95,
+        "low": 1185.2,
+        "close": 1185.7,
+        "daily_return": -1.06
       },
       {
-        "date": "2026-05-15",
-        "open": 1185.25,
-        "high": 1185.25,
-        "low": 1172.25,
-        "close": 1177.0,
-        "daily_return": -0.7
+        "date": "2026-06-02",
+        "open": 1174.82,
+        "high": 1178.2,
+        "low": 1162.2,
+        "close": 1167.45,
+        "daily_return": -0.63
       },
       {
-        "date": "2026-05-18",
-        "open": 1207.0,
-        "high": 1218.5,
-        "low": 1206.75,
-        "close": 1212.0,
-        "daily_return": 0.41
+        "date": "2026-06-03",
+        "open": 1167.95,
+        "high": 1171.7,
+        "low": 1158.2,
+        "close": 1158.2,
+        "daily_return": -0.83
       },
       {
-        "date": "2026-05-19",
-        "open": 1215.75,
-        "high": 1216.75,
-        "low": 1208.0,
-        "close": 1210.25,
-        "daily_return": -0.45
+        "date": "2026-06-04",
+        "open": 1146.7,
+        "high": 1148.95,
+        "low": 1123.2,
+        "close": 1123.95,
+        "daily_return": -1.98
       },
       {
-        "date": "2026-05-20",
-        "open": 1202.75,
-        "high": 1204.5,
-        "low": 1197.25,
-        "close": 1199.0,
-        "daily_return": -0.31
+        "date": "2026-06-05",
+        "open": 1126.95,
+        "high": 1130.2,
+        "low": 1123.45,
+        "close": 1125.45,
+        "daily_return": -0.13
       }
     ]
   },
-  "execution_time_seconds": 36.4,
-  "from_cache": false
+  "has_fundamental_context": true,
+  "execution_time_seconds": 33.9,
+  "from_cache": false,
+  "live_stats": {
+    "llm_calls_today": 6,
+    "cycles_today": 45,
+    "rth": true,
+    "mins_to_close": 245
+  },
+  "positions": [
+    {
+      "ticket": 1688575124,
+      "symbol": "Sbean_N6",
+      "type": "SELL",
+      "volume": 1.0,
+      "price_open": 1127.2,
+      "price_current": 1127.55,
+      "sl": 1131.0,
+      "tp": 1123.45,
+      "profit": -1.4,
+      "swap": 0.0,
+      "time": "2026-06-05 17:00:03+00:00",
+      "magic": 20260522,
+      "comment": "QA_M"
+    },
+    {
+      "ticket": 1688579411,
+      "symbol": "Sbean_N6",
+      "type": "SELL",
+      "volume": 1.0,
+      "price_open": 1126.82,
+      "price_current": 1127.55,
+      "sl": 1131.5,
+      "tp": 1123.45,
+      "profit": -2.92,
+      "swap": 0.0,
+      "time": "2026-06-05 17:00:45+00:00",
+      "magic": 20260522,
+      "comment": "QA_M"
+    }
+  ],
+  "account": {
+    "login": 52847298,
+    "server": "ICMarketsSC-Demo",
+    "balance": 1019.21,
+    "equity": 1014.89,
+    "margin": 90.16,
+    "free_margin": 924.73,
+    "leverage": 1000,
+    "profit": -4.32,
+    "currency": "USD",
+    "trade_mode": "demo"
+  },
+  "evaluation_stats": {
+    "total_signals": 6,
+    "active_signals": 2,
+    "flat_signals": 4,
+    "evaluated": 2,
+    "pending_evaluation": 0,
+    "wins": 2,
+    "losses": 0,
+    "win_rate": 100.0,
+    "avg_pnl_4h": 3.02,
+    "by_confidence": {
+      "HIGH": 0,
+      "MEDIUM": 2,
+      "LOW": 0
+    },
+    "by_setup_type": {
+      "pullback": 2
+    },
+    "signal_distribution": {
+      "FLAT": 4,
+      "SHORT": 2
+    }
+  }
 }

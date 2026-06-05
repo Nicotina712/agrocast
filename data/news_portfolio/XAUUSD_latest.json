@@ -1,0 +1,390 @@
+{
+  "instrument": "XAUUSD",
+  "fetched_at": "2026-06-02T00:33:42.920241+00:00",
+  "count": 18,
+  "articles": [
+    {
+      "title": "Husker Wrestling: Ridge Lovett Beats Olympic Medalist Punia at RAF 09 in Dallas",
+      "url": "https://www.cornnation.com/nebraska-husker-wrestling/97542/husker-wrestling-ridge-lovett-beats-olympic-medalist-punia-at-raf-09-in-dallas",
+      "source": "Corn Nation",
+      "publishedAt": "2026-06-01T00:30:00Z",
+      "description": "With Final X looming, Lovett earns big win in his RAF debut; Taylor and Minto fall to Penn State legends in theirs",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.0,
+        "key_quote": "Ridge Lovett Beats Olympic Medalist Punia at RAF 09 in Dallas",
+        "rationale": "La noticia trata sobre competencias de lucha libre universitaria (wrestling) en Estados Unidos. No contiene información sobre inflación, política monetaria de la Fed, tasas de interés reales, tensiones geopolíticas, compras de bancos centrales, movimientos del USD, o demanda de activos de refugio seguro. No tiene relevancia alguna para el precio del oro (XAUUSD).",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:02.912423",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Crypto exchange Coinbase to introduce INR rails in India",
+      "url": "https://economictimes.indiatimes.com/tech/technology/crypto-exchange-coinbase-to-introduce-inr-rails-in-india/articleshow/131428579.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:30:00Z",
+      "description": "Coinbase has launched direct rupee deposits and withdrawals in India, a move that gives it a significant advantage over rivals like Binance. The exchange aims to capture a large share of both retail and institutional customers by offering over 500 crypto asse…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Coinbase has launched direct rupee deposits and withdrawals in India",
+        "rationale": "La noticia trata sobre la expansión operativa de un exchange de criptomonedas en India. No tiene relación directa con los fundamentos macroeconómicos del oro (inflación, política Fed, tasas reales, geopolítica sistémica, compras de bancos centrales, fortaleza del USD o demanda de refugio seguro). Es un evento microeconómico específico del sector cripto que no impacta el precio del XAUUSD. Potencialmente podría afectar competencia cripto-oro a muy largo plazo como activos alternativos, pero el efecto es negligible y especulativo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:08.670708",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Oil, Dollar Climb With US-Iran Deal Still Elusive: Markets Wrap",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-dollar-climb-with-us-iran-deal-still-elusive-markets-wrap",
+      "source": "Financial Post",
+      "publishedAt": "2026-06-01T00:27:26Z",
+      "description": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "safe_haven",
+          "macro_usd"
+        ],
+        "confidence": 0.72,
+        "key_quote": "tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough",
+        "rationale": "Las tensiones geopolíticas sin resolución en Medio Oriente impulsan demanda de activos refugio (oro). Sin embargo, el fortalecimiento del USD ejerce presión bajista simultánea sobre XAUUSD. El efecto neto es alcista moderado (~3/5) porque la prima de riesgo geopolítico compensa parcialmente la apreciación del dólar. El horizonte es de 7 días porque depende de evoluciones en negociaciones y narrativa de riesgo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:13.909373",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "proofrag added to PyPI",
+      "url": "https://pypi.org/project/proofrag/",
+      "source": "Pypi.org",
+      "publishedAt": "2026-06-01T00:20:27Z",
+      "description": "Point your agent at your docs and your RAG app; get a golden test set + an LLM-as-judge & retrieval scorecard, in one command.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "proofrag added to PyPI - Point your agent at your docs and your RAG app",
+        "rationale": "Esta noticia trata sobre el lanzamiento de una librería Python (proofrag) para testing de aplicaciones RAG (Retrieval-Augmented Generation). No tiene conexión alguna con los factores fundamentales que mueven el precio del oro: inflación, política monetaria de la Fed, tasas reales, tensiones geopolíticas, compras de bancos centrales, fortaleza del USD, o demanda de refugio seguro. Es un evento puramente tecnológico irrelevante para XAUUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:21.925822",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Trump Spins D.C. Legal Brain Drain As Win Against Left-Wing 'Lunatics'",
+      "url": "https://www.huffpost.com/entry/trump-government-lawyer-exodus-deep-state-lunatics_n_6a1cba84e4b0ea2d03d1b116",
+      "source": "HuffPost",
+      "publishedAt": "2026-06-01T00:20:03Z",
+      "description": "A New York Times report published Sunday showed a staggering 10,000 lawyers have left work in federal government since late 2024.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "A staggering 10,000 lawyers have left work in federal government since late 2024",
+        "rationale": "La noticia sobre salida de abogados del gobierno federal es principalmente política doméstica estadounidense. No tiene impacto directo en los drivers macro del oro: no afecta CPI/PPI, política de tasas de la Fed, dinámmica USD, tensiones geopolíticas relevantes, compras de bancos centrales, o demanda de refugio seguro. Es ruido político sin conexión con condiciones monetarias, inflacionarias o de riesgo sistémico que mueven XAUUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:28.066688",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "The OTHER sibling that will be at Peter Phillips's wedding: Zara Tindall's half-sister Stephanie, 28, parties with her royal relatives and shares their love of horses and exotic holidays",
+      "url": "https://www.dailymail.com/news/royals/article-15858405/The-sibling-Peter-Phillipss-wedding-Zara-Tindalls-half-sister-Stephanie-28-parties-royal-relatives-shares-love-horses-exotic-holidays.html",
+      "source": "Dailymail.com",
+      "publishedAt": "2026-06-01T00:06:53Z",
+      "description": "The Worcester-based eventing pro seems to share an especially warm relationship with Peter, with Stephanie describing him as 'the best big brother out there'.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "The Worcester-based eventing pro seems to share an especially warm relationship with Peter, with Stephanie describing him as 'the best big brother out there'.",
+        "rationale": "Noticia sobre evento social de la familia real británica sin relevancia macroeconomica, geopolitica o monetaria. No contiene informacion sobre inflacion, politica de tasas, tensiones internacionales, compras de bancos centrales, fortaleza del USD o demanda de activos refugio. Es ruido total para el analisis de XAUUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:24.956622",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Why pain biomarkers cannot replace the patient experience",
+      "url": "https://www.nature.com/articles/s41593-026-02324-x",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "Using neuroimaging to understand the mechanisms of pain is an important task. But we must understand that the gold standard of measuring pain will always be the self-report.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "the gold standard of measuring pain will always be the self-report",
+        "rationale": "La noticia trata sobre biomarcadores de dolor y neuroimaging en contexto médico. No tiene relación con macroeconomía, política monetaria, geopolítica, demanda de oro físico o factores que afecten XAUUSD. La mención de 'gold standard' es meramente idiomática (referencia al estándar de referencia en medicina), no al commodity oro. Sin impacto en precios de oro.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:29.558937",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Scholars Explore Central Bank Independence, Structure and Future Risk at Hoover Monetary Policy Conference",
+      "url": "https://www.hoover.org/news/scholars-explore-central-bank-independence-structure-and-future-risk-hoover-monetary-policy",
+      "source": "Hoover.org",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "The Hoover Institution convened its annual Hoover Monetary Policy Conference May 7-8, 2026, with scholars gathering to explore themes of Independence, Structure, and Risks Ahead for Central Banks. Michael Bordo, John Cochrane and Valerie Ramey organized the c…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "30d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "scholars gathering to explore themes of Independence, Structure, and Risks Ahead for Central Banks",
+        "rationale": "Evento académico sin anuncios de política monetaria concreta. Discusión teórica sobre independencia y estructura de bancos centrales carece de impacto inmediato en tasas reales, inflación o política USD. Sin datos económicos ni decisiones de política, el efecto sobre XAUUSD es marginal. Potencial impacto limitado a narrativa de largo plazo si emergieran cambios estructurales en frameworks de bancos centrales, pero información insuficiente para determinar esto.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:34.527326",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Hydrophobic liquid electrolyte interphases for efficient aqueous zinc batteries",
+      "url": "https://www.nature.com/articles/s41565-026-02187-0",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "A hydrophobic, electrode‑philic ether additive self‑assembles into a nanoscale liquid electrolyte interphase that decouples interfacial and bulk electrolyte behaviour, suppresses water‑driven parasitic reactions and enables efficient aqueous zinc batteries.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "hydrophobic liquid electrolyte interphases for efficient aqueous zinc batteries",
+        "rationale": "Noticia sobre avance tecnológico en baterías de zinc acuoso. No impacta directamente en inflación, política monetaria, tasas reales, tensiones geopolíticas, compras de bancos centrales, fortaleza del USD ni demanda de refugio seguro. Es investigación de materiales sin implicaciones macroeconómicas inmediatas para XAUUSD. Zinc es metal industrial, no oro. Impacto potencial solo en demanda industrial futura si la tecnología se masifica (horizonte 12+ meses), pero especulativo y débil.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:39.250092",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Deep brain stimulation induces white matter remodeling and functional changes to brain-wide networks",
+      "url": "https://www.nature.com/articles/s41593-026-02301-4",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "In a nonhuman primate model, Fujimoto et al. show that deep brain stimulation promotes white matter remodeling and reorganizes brain-wide functional networks, detailing a mechanism through which this neuromodulation therapy may treat depression.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "deep brain stimulation promotes white matter remodeling and reorganizes brain-wide functional networks",
+        "rationale": "Noticia de investigación neurocientífica sin conexión directa con factores macroeconómicos, inflación, política monetaria, geopolítica, fortaleza del USD o demanda de activos refugio. No impacta el precio del oro (XAUUSD). Clasificada como ruido informativo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:43.312848",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Hollywood Needs To Hurry Up And Adapt Andy Weir's Gripping Heist Short Story",
+      "url": "https://www.slashfilm.com/2183152/hollywood-should-adapt-andy-weir-short-story-randomize/",
+      "source": "/FILM",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "After The Martian and Project Hail Mary, another Andy Weir film adaptation is all but guaranteed. Hollywood should look at his short story about a heist.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Hollywood Needs To Hurry Up And Adapt Andy Weir's Gripping Heist Short Story",
+        "rationale": "Esta noticia trata sobre adaptaciones cinematográficas de obras de Andy Weir y no tiene relación alguna con factores que afecten el precio del oro (XAUUSD). No contiene información sobre inflación, política monetaria, tensiones geopolíticas, compras de bancos centrales, fortaleza del dólar o demanda de refugio seguro. Es completamente irrelevante para el análisis macroeconómico del mercado de metales preciosos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:47.773306",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Developmental chronology of mouse embryo from 2-cell stage through birth",
+      "url": "https://www.nature.com/articles/s41556-026-01971-3",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "Cao, Lin, Feng, Chen, Wu and colleagues develop a mouse developmental single-cell atlas covering 2-cell stage through to birth.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Developmental chronology of mouse embryo from 2-cell stage through birth",
+        "rationale": "Noticia de investigación biológica/embrionaria sin conexión directa con mercados financieros, inflación, política monetaria, geopolítica o demanda de oro. No impacta variables macro relevantes para XAUUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:52.039849",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Ducks’ Granlund, Solberg Win Medals at 2026 Men’s Worlds",
+      "url": "https://thehockeynews.com/nhl/anaheim-ducks/latest-news/ducks-granlund-solberg-win-medals-at-2026-worlds",
+      "source": "The Hockey News",
+      "publishedAt": "2026-05-31T23:53:50Z",
+      "description": "Mikael Granlund and Team Finland won gold versus Switzerland, while Stian Solberg and Team Norway beat Team Canada in the bronze medal game.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Mikael Granlund and Team Finland won gold versus Switzerland",
+        "rationale": "Esta noticia sobre medallas de hockey en el Mundial 2026 carece de relevancia para los mercados de oro. No contiene información sobre inflación, política monetaria, tensiones geopolíticas que impacten mercados, compras de bancos centrales, movimientos del USD o demanda de refugio seguro. Es un evento deportivo sin conexión con factores macroeconómicos o geopolíticos que afecten XAUUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:14:57.632351",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Tammy Hembrow to replace Charlotte Crosby as Aussie Shore 'boss' - while show axes cast and moves to Gold Coast party mansion owned by famous prankster with 11.1M followers",
+      "url": "https://www.dailymail.com/tvshowbiz/article-15854143/Tammy-Hembrow-replaces-Charlotte-Crosby-Aussie-Shore-Gold-Coast-party-mansion.html",
+      "source": "Dailymail.com",
+      "publishedAt": "2026-05-31T23:52:51Z",
+      "description": "Tammy, 32, will step into the show's coveted 'boss' role after Charlotte, 36, bowed out of filming for the new season.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Tammy Hembrow to replace Charlotte Crosby as Aussie Shore 'boss'",
+        "rationale": "Noticia de entretenimiento sobre cambios en elenco de reality show australiano. Sin relevancia macroeconomica, inflacionaria, monetaria, geopolitica, de politica Fed, debilidad USD, compras de bancos centrales o demanda de refugio seguro. No afecta fundamentales del oro ni dinamica de mercados financieros globales.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:15:02.259914",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Oil Climbs, Dollar Strengthens With No Iran Deal: Markets Wrap",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-climbs-dollar-strengthens-with-no-iran-deal-markets-wrap",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-31T23:41:09Z",
+      "description": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "macro_usd",
+          "geopolitics"
+        ],
+        "confidence": 0.55,
+        "key_quote": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+        "rationale": "El fortalecimiento del USD es directamente negativo para el oro (cotizado en dólares), contrarrestando parcialmente el efecto bullish de las tensiones geopolíticas. Aunque la tensión Irán-USA típicamente genera demanda de refugio seguro, el movimiento alcista del dólar (activo seguro competidor) domina el impacto neto. El efecto es moderado porque las tensiones sin escalada material son de bajo magnitude.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:15:10.725625",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "HPE&#x2019;s stock soars toward record gain as earnings show a networking bonanza",
+      "url": "https://www.marketwatch.com/story/hpes-stock-soars-toward-record-gain-as-earnings-show-a-networking-bonanza-2bde2d3a?mod=mw_rss_topstories",
+      "source": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "publishedAt": "Tue, 02 Jun 2026 00:21:00 GMT",
+      "description": "The artificial-intelligence buildout is driving intense demand for networking and servers, and Hewlett Packard Enterprise is reaping the rewards.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "The artificial-intelligence buildout is driving intense demand for networking and servers, and Hewlett Packard Enterprise is reaping the rewards.",
+        "rationale": "La noticia sobre ganancias de HPE en el sector de networking y servidores es un evento corporativo específico del sector tecnológico que no tiene conexión directa con los fundamentales del oro. No impacta inflación, política monetaria, tasas reales, tensiones geopolíticas, compras de bancos centrales, fortaleza del USD, ni demanda de activos refugio. El desempeño de una empresa de hardware es irrelevante para la valuación de metales preciosos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:32.852323",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Trump tells CNBC: &apos;I don&apos;t care&apos; if Iran negotiations are over",
+      "url": "https://www.cnbc.com/2026/06/01/trump-iran-war-negotiations-oil-israel-interview.html",
+      "source": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "publishedAt": "Mon, 01 Jun 2026 20:12:48 GMT",
+      "description": "",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "safe_haven"
+        ],
+        "confidence": 0.72,
+        "key_quote": "I don't care if Iran negotiations are over",
+        "rationale": "La postura hawkish de Trump respecto a negociaciones con Irán incrementa riesgo geopolítico en Medio Oriente. Escalada de tensiones impulsa demanda de activos refugio seguro (oro). El colapso de diplomacia aumenta probabilidad de conflicto regional, lo que históricamente beneficia al oro como hedge. Además, potencial volatilidad de USD y tasas reales por respuesta de mercados a riesgos geopolíticos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:15:42.604011",
+        "_instrument": "XAUUSD"
+      }
+    },
+    {
+      "title": "Asia-Pacific stocks open lower as uncertainty over U.S.-Iran peace talks dents sentiment",
+      "url": "https://www.cnbc.com/2026/06/02/asia-pacific-markets-today-kospi-nikkei-225-hang-seng-index.html",
+      "source": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "publishedAt": "Tue, 02 Jun 2026 00:14:04 GMT",
+      "description": "",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "safe_haven"
+        ],
+        "confidence": 0.72,
+        "key_quote": "uncertainty over U.S.-Iran peace talks dents sentiment",
+        "rationale": "La incertidumbre en negociaciones EE.UU.-Irán genera riesgo geopolítico que incrementa demanda de activos de refugio seguro. El oro se beneficia de volatilidad en mercados accionarios y tensiones regionales que elevan primas de riesgo. La apertura bajista en Asia-Pacífico refuerza rotación hacia activos defensivos. Efecto relevante en horizonte semanal pero moderado por falta de escalada clara.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:33:42.618738",
+        "_instrument": "XAUUSD"
+      }
+    }
+  ]
+}

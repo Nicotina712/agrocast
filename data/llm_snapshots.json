@@ -161,10 +161,11 @@
     "conviction": 39,
     "headline": "Señal bajista clara: momento de vender soja antes de más caída",
     "price_at_snapshot": 1193.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": 0.29,
+    "verified_at": "2026-06-05T12:46:04.821691",
+    "price_at_horizon": 1196.5
   },
   {
     "date": "2026-05-09",
@@ -172,10 +173,11 @@
     "conviction": 39,
     "headline": "Señal bajista clara: momento de vender soja antes de más caída",
     "price_at_snapshot": 1206.25,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": -1.68,
+    "verified_at": "2026-06-05T12:46:04.821691",
+    "price_at_horizon": 1186.0
   },
   {
     "date": "2026-05-10",
@@ -183,10 +185,11 @@
     "conviction": 39,
     "headline": "Señal bajista clara: momento de vender soja antes de más caída",
     "price_at_snapshot": 1208.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": true,
+    "ret_pct": -1.82,
+    "verified_at": "2026-06-05T12:46:04.821691",
+    "price_at_horizon": 1186.0
   },
   {
     "date": "2026-05-11",
@@ -194,10 +197,11 @@
     "conviction": 22,
     "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
     "price_at_snapshot": 1208.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -1.82,
+    "verified_at": "2026-06-05T12:46:04.821691",
+    "price_at_horizon": 1186.0
   },
   {
     "date": "2026-05-17",
@@ -205,9 +209,10 @@
     "conviction": 22,
     "headline": "Mercado en pausa: señales mixtas piden cautela antes de actuar",
     "price_at_snapshot": 1208.0,
-    "verified": false,
-    "hit": null,
-    "ret_pct": null,
-    "verified_at": null
+    "verified": true,
+    "hit": false,
+    "ret_pct": -2.26,
+    "verified_at": "2026-06-05T12:46:04.821691",
+    "price_at_horizon": 1180.75
   }
 ]

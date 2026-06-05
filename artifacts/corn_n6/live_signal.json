@@ -1,0 +1,17 @@
+{
+  "signal": "FLAT",
+  "entry": null,
+  "sl": null,
+  "tp": null,
+  "lots": null,
+  "confidence": "LOW",
+  "rr": null,
+  "risk_usd": null,
+  "reasoning": "POST-SESSION TIMING RISK: CT time 15:45 is well after 13:20 CT CBOT close. Electronic trading has extremely low liquidity (vol_ratio 0.04, only 2 contracts last bar). Post-session corn prone to illiquid gaps and poor fills. Additionally, unknown fundamental context (weather/USDA/export data) creates blind-spot risk. While technical setup shows bear continuation (price below all EMAs, negative VWAP, session range breakdown), the combination of post-session illiquidity and fundamental uncertainty violates risk protocol. Recommend waiting for next liquid session (19:00 CT electronic open or 08:30 CT day session).",
+  "oil_regime": "BEAR_TREND",
+  "opec_dynamic": "DOVISH",
+  "risk_on_off": "RISK_OFF",
+  "timestamp": "2026-06-04T14:47:05.537251",
+  "symbol": "Corn_N6",
+  "price": 422.19
+}

@@ -1,0 +1,425 @@
+{
+  "instrument": "US500",
+  "fetched_at": "2026-06-02T00:43:11.508582+00:00",
+  "count": 19,
+  "articles": [
+    {
+      "title": "Intelligent Monitoring and Dynamic Regulation Equipment and Software Development for the Equal-Pressure Fully Mechanized Mining Face in the Sandaogou Coal Mine",
+      "url": "https://www.nature.com/articles/s41598-026-43952-4",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "Scientific Reports - Intelligent Monitoring and Dynamic Regulation Equipment and Software Development for the Equal-Pressure Fully Mechanized Mining Face in the Sandaogou Coal Mine",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Intelligent Monitoring and Dynamic Regulation Equipment and Software Development for the Equal-Pressure Fully Mechanized Mining Face in the Sandaogou Coal Mine",
+        "rationale": "Noticia sobre desarrollo tecnológico en minería de carbón china (Sandaogou Coal Mine). No tiene impacto directo en S&P 500: no afecta política Fed, datos macro USA, ganancias de empresas tech/US, CPI/NFP, ni riesgo sistémico global. Es un avance técnico sectorial de China sin relevancia para valuación de índice estadounidense.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:41:53.513822",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Stock market today: Live updates",
+      "url": "https://www.cnbc.com/2026/05/31/stock-market-today-live-updates.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-31T22:02:57Z",
+      "description": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+        "rationale": "La noticia es retrospectiva y genérica, sin datos específicos, catalizadores nuevos o información accionable sobre Fed, macro USA, earnings tech, inflación o riesgo global. Solo confirma performance pasada del mercado sin proporcionar fundamentos para movimientos futuros del S&P 500.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:41:57.054145",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Bond Trader Bets on Fed Hike Poised for Gut Check From Jobs Data",
+      "url": "https://finance.yahoo.com/economy/policy/articles/bond-trader-bets-fed-hike-190000197.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-31T19:00:00Z",
+      "description": "(Bloomberg) -- Bond traders are looking to a key jobs report this week to confirm their wagers that the US economy is strong enough to push the Federal...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "fed_policy",
+          "us_macro"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Bond traders are looking to a key jobs report this week to confirm their wagers that the US economy is strong enough to push the Federal",
+        "rationale": "Los datos de empleo (NFP) son críticos para la decisión de política monetaria de la Fed. Si el reporte confirma fortaleza económica, justificaría posibles aumentos de tasas. Para el S&P 500, tasas más altas típicamente presionan valuaciones de tech (alto PER), pero una economía fuerte sin inflación descontrolada apoyaría ganancias corporativas. El mercado mantiene exposición alcista si los datos evitan sorpresas negativas. Magnitud 3 por ser dato macro relevante pero esperado, no shock.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:01.064170",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Wall Street Week Ahead",
+      "url": "https://seekingalpha.com/article/4910428-wall-street-week-ahead",
+      "source": "Seeking Alpha",
+      "publishedAt": "2026-05-31T12:21:42Z",
+      "description": "Track this week’s market catalysts: May jobs report, key economic data, big tech/AI events, IPOs, and earnings from AVGO, CRWD, HPE & more—read now.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "us_macro",
+          "earnings",
+          "tech_sector"
+        ],
+        "confidence": 0.2,
+        "key_quote": "May jobs report, key economic data, big tech/AI events, IPOs, and earnings from AVGO, CRWD, HPE & more",
+        "rationale": "Se trata de un resumen genérico de catalizadores semanales sin información específica, datos concretos o sorpresas. No proporciona direccionalidad clara. El impacto dependerá de los resultados reales de NFP, CPI y earnings cuando se publiquen, no de este anuncio anticipatorio que es mero recordatorio de eventos conocidos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:04.475284",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Here’s the percentage of Americans who are millionaires — it’s likely higher than you think. Are you part of the group?",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/percentage-americans-millionaires-likely-higher-120500547.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-31T12:05:00Z",
+      "description": "If you’re not, there are a few ways to break in.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Here's the percentage of Americans who are millionaires — it's likely higher than you think",
+        "rationale": "Noticia de carácter informativo/entretenimiento sin datos macroeconómicos relevantes, eventos corporativos, decisiones de política monetaria o movimientos de mercado específicos. No contiene información sobre Fed, CPI, NFP, earnings de tech, riesgo geopolítico ni volatilidad sistémica que impacte directamente el S&P 500. Es contenido aspiracional dirigido a lectores minoristas, sin catalalizadores de mercado cuantificables.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:07.852845",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "If Rates Fall Further, Here’s What Happens to the KRE Regional Banking ETF",
+      "url": "https://247wallst.com/investing/2026/05/31/if-rates-fall-further-heres-what-happens-to-the-kre-regional-banking-etf/",
+      "source": "24/7 Wall St.",
+      "publishedAt": "2026-05-31T11:18:33Z",
+      "description": "The SPDR S&P Regional Banking ETF (NYSEARCA:KRE) has quietly become one of 2026’s better-performing financial trades, rising roughly 9% year to date and 28% ...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "fed_policy",
+          "us_macro"
+        ],
+        "confidence": 0.55,
+        "key_quote": "If Rates Fall Further, Here's What Happens to the KRE Regional Banking ETF",
+        "rationale": "La noticia sugiere que bancos regionales (KRE) se benefician de caídas de tasas. Esto implica expectativas de reducción de tasas por la Fed, lo que tendría impacto mixto en S&P 500: positivo para valuaciones y crecimiento (tech), pero negativo para márgenes bancarios. El efecto neto es ligeramente bullish dado el rally YTD del KRE, pero la magnitud es moderada porque: (1) el impacto es sectorial (financiero), no sistémico, (2) tasas más bajas benefician a tech/growth que pesan 30%+ en el índice, (3) el desempeño del KRE ya está priced-in. Confidence moderada por la ambigüedad del titular sin datos concretos de tasas.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:12.797532",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Will the base metals remain hot?",
+      "url": "https://www.thehindubusinessline.com/portfolio/will-the-base-metals-remain-hot/article71042294.ece",
+      "source": "BusinessLine",
+      "publishedAt": "2026-05-30T15:51:39Z",
+      "description": "Upside at risk. While supply disruptions can support rally, possible interest rate hikes later in the year can halt the same",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "fed_policy",
+          "global_risk"
+        ],
+        "confidence": 0.35,
+        "key_quote": "possible interest rate hikes later in the year can halt the same",
+        "rationale": "La noticia sobre metales base tiene impacto indirecto en S&P 500. Afecta principalmente a sectores cíclicos (materials, industrials) y a empresas exportadoras sensibles a precios de commodities. El riesgo de alzas de tasas de la Fed es más relevante para el índice que la dinámica de metales en sí. Sin embargo, el efecto es marginal ya que la noticia es genérica sobre direccionalidad sin datos específicos de inflación, producción o decisiones monetarias confirmadas.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:16.881704",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Tax Aware Dividend Stacking: How a $750,000 Roth Portfolio Pays $42,000 Federally Tax Free",
+      "url": "https://247wallst.com/personal-finance/2026/05/30/tax-aware-dividend-stacking-how-a-750000-roth-portfolio-pays-42000-federally-tax-free/",
+      "source": "24/7 Wall St.",
+      "publishedAt": "2026-05-30T15:21:51Z",
+      "description": "A 65 year old retiree sitting on $750,000 inside a Roth IRA can engineer roughly $42,000 of annual dividend income that escapes federal tax entirely. No...",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "A 65 year old retiree sitting on $750,000 inside a Roth IRA can engineer roughly $42,000 of annual dividend income that escapes federal tax entirely",
+        "rationale": "Esta noticia es contenido educativo/de planificación fiscal personal dirigido a inversores minoristas. No contiene información sobre política de la Fed, datos macroeconómicos USA, ganancias corporativas, indicadores de inflación/empleo, o movimientos de riesgo sistémico que afecten directamente a los precios del S&P 500. Es relevante a nivel individual pero carece de catalysts que muevan el índice en el corto plazo. El impacto es asignación de capital individual, no demanda/oferta agregada de equities.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:20.765857",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "America In Focus: Inflation gauge hits multiyear high as American consumer confidence slides",
+      "url": "https://abcnews.com/Business/wireStory/america-focus-inflation-gauge-hits-multiyear-high-american-133448745",
+      "source": "Abcnews.com",
+      "publishedAt": "2026-05-30T14:53:58Z",
+      "description": "A key inflation gauge accelerated in April to the highest level in three years, squeezing Americans’ finances and creating political challenges for President Trump and congressional Republicans with midterm elections just five months away",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 4,
+        "horizon": "30d",
+        "drivers": [
+          "us_macro",
+          "fed_policy"
+        ],
+        "confidence": 0.85,
+        "key_quote": "A key inflation gauge accelerated in April to the highest level in three years, squeezing Americans' finances",
+        "rationale": "Aceleración inflacionaria a máximos de 3 años impacta negativamente el S&P 500 por múltiples canales: (1) presión para mantener tasas de interés elevadas más tiempo, afectando valuaciones de tech y growth; (2) compresión de márgenes corporativos por costos crecientes; (3) debilitamiento de confianza del consumidor limita demanda futura; (4) presión política sobre Fed para actuar agresivamente. Tech sector especialmente vulnerable a tasas más altas. Horizonte 30d porque las decisiones de política monetaria toman tiempo, pero el mercado reprecifica forward-looking inmediatamente.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:25.244133",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "The Two Bucket Income Portfolio That Pays $5,000 a Month Plus a Cash Reserve to Survive 2008 Style Drawdowns",
+      "url": "https://247wallst.com/personal-finance/2026/05/30/the-two-bucket-income-portfolio-that-pays-5000-a-month-plus-a-cash-reserve-to-survive-2008-style-drawdowns/",
+      "source": "24/7 Wall St.",
+      "publishedAt": "2026-05-30T13:18:25Z",
+      "description": "Generating $5,000 per month in passive income works out to $60,000 annually, a level many retirees target to cover core expenses without relying heavily on...",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Generating $5,000 per month in passive income works out to $60,000 annually, a level many retirees target",
+        "rationale": "Artículo de educación financiera/estrategia de inversión personal. No contiene información macro, cambios de política Fed, datos económicos relevantes, earnings de empresas tech, CPI/NFP, ni movimientos geopolíticos que impacten el S&P 500. Es contenido editorial sobre planificación de retiro que no afecta valuaciones ni sentimiento de mercado institucional. Impacto nulo en precio del índice.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:28.853973",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Analysis: An end to the Iran war may be just the beginning of a new era of U.S. inequality",
+      "url": "https://www.cnbc.com/2026/05/30/iran-war-inequality-affordability-ceasefire-analysis.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-30T12:00:01Z",
+      "description": "Stocks have boomed while consumers have paid the costs of high energy prices.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "global_risk"
+        ],
+        "confidence": 0.35,
+        "key_quote": "Stocks have boomed while consumers have paid the costs of high energy prices.",
+        "rationale": "La noticia analiza desigualdad y costos energéticos derivados de tensiones en Irán. Impacto indirecto en S&P 500: potencial reducción de volatilidad geopolítica (positivo para equities), pero presión sobre márgenes corporativos por costos energéticos y consumo debilitado (negativo). El impacto macro es difuso y temporal. Sin anuncios concretos de resolución de conflicto, el mercado ya ha priceado parcialmente estos riesgos. Relevancia moderada para large-caps pero no determinante en corto plazo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:36.031387",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "What is US stock market prediction for Monday? Wall street ends at record highs as AI stocks and Dell lead market rally",
+      "url": "https://economictimes.indiatimes.com/news/international/us/what-is-us-stock-market-prediction-for-monday-wall-street-ends-at-record-highs-as-ai-stocks-and-dell-lead-market-rally/articleshow/131407211.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-30T10:05:38Z",
+      "description": "What is US stock market prediction for Monday? US stock market prediction for Monday remains linked to momentum from Wall Street's latest record close. Major indexes ended Friday, the week, and the month with gains. Technology stocks led the rally after Dell …",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "1d",
+        "drivers": [
+          "tech_sector",
+          "earnings",
+          "us_macro"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Major indexes ended Friday, the week, and the month with gains. Technology stocks led the rally after Dell",
+        "rationale": "Cierre en máximos históricos con liderazgo del sector tech (AI stocks, Dell) genera momentum positivo para apertura del lunes. El patrón de ganancias sostenidas (día, semana, mes) refuerza sentimiento alcista. Sin embargo, es impulso técnico de corto plazo sin catalizadores fundamentales nuevos (Fed policy, macro data, earnings surprises). Magnitude=3 por ser movimiento relevante pero basado en momentum intradiario, no en cambios de valuación o expectativas macroeconómicas estructurales.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:39.860910",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Wall Street Week Ahead: Jobs report on tap for soaring US stocks as rate path, bond yields eyed as risks",
+      "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/wall-st-week-ahead-jobs-report-on-tap-for-soaring-us-stocks-as-rate-path-bond-yields-eyed-as-risks/articleshow/131403469.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-30T03:38:57Z",
+      "description": "Indian markets are watching US economic indicators next week. Investors are concerned about rising inflation and potential interest rate hikes. The upcoming jobs report and Broadcom's earnings will be crucial. These events could impact the ongoing rally in US…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "us_macro",
+          "fed_policy",
+          "earnings"
+        ],
+        "confidence": 0.45,
+        "key_quote": "The upcoming jobs report and Broadcom's earnings will be crucial. These events could impact the ongoing rally in US",
+        "rationale": "La noticia menciona catalizadores relevantes (NFP y earnings de Broadcom) que típicamente mueven el S&P 500, pero el artículo está enfocado en mercados indios y carece de detalles específicos sobre expectativas, consenso económico o posicionamiento del mercado. El impacto es potencial pero sin claridad sobre direccionalidad. Los datos macro (NFP) y earnings tech son drivers válidos pero la cobertura superficial reduce confianza.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:44.099389",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Gas prices sink as oil set for 20% drop — largest one-month decline since 2020",
+      "url": "https://nypost.com/2026/05/29/business/gas-prices-sink-as-oil-set-for-20-drop-largest-1-month-decline-since-2020/",
+      "source": "New York Post",
+      "publishedAt": "2026-05-29T20:43:20Z",
+      "description": "Prices at gas pumps are starting to sink and oil is on track to drop 20% in May as investors remain optimistic that a ceasefire deal to end the Iran war is near.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "us_macro",
+          "global_risk",
+          "geopolitics"
+        ],
+        "confidence": 0.72,
+        "key_quote": "oil is on track to drop 20% in May as investors remain optimistic that a ceasefire deal to end the Iran war is near",
+        "rationale": "La caída de precios de petróleo/gas reduce presiones inflacionarias (impacto positivo en CPI forward), mejora márgenes de empresas con altos costos operativos, y alivia preocupaciones de estanflación. Para el S&P 500, esto es constructivo: menor presión de tasas de la Fed, mejor sentimiento de riesgo global, y alivio en costos de transporte/energía. El ceasefire geopolítico reduce volatilidad de tail-risk. Efecto moderado (no shock) porque el mercado ya anticipaba movimientos de petróleo; confianza media-alta por dependencia de confirmación del deal Iran.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:48.947722",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Wall Street ends higher, crude prices ease on potential US-Iran truce extension",
+      "url": "https://finance.yahoo.com/news/oil-eyes-weekly-drop-hormuz-020658431.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-29T20:42:17Z",
+      "description": "By Stephen Culp NEW YORK, May 29 (Reuters) - U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "global_risk",
+          "us_macro"
+        ],
+        "confidence": 0.65,
+        "key_quote": "U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a week",
+        "rationale": "La extensión potencial del acuerdo US-Iran reduce prima de riesgo geopolítico y presión inflacionaria vía petróleo. Precios de crudo más bajos favorecen márgenes corporativos y moderan presiones CPI, positivo para la narrativa Fed. S&P 500 sigue momentum alcista global pero impacto es moderado (magnitude 2) porque: (1) la noticia es especulativa ('potential'), (2) movimientos de riesgo geopolítico típicamente generan volatilidad corta sin trend estructural, (3) el alivio de precios energéticos ya está parcialmente descontado en valuaciones tech. Horizonte 7d porque el efecto se disipa sin catalizadores adicionales.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:53.534009",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "HPE&#x2019;s stock soars toward record gain as earnings show a networking bonanza",
+      "url": "https://www.marketwatch.com/story/hpes-stock-soars-toward-record-gain-as-earnings-show-a-networking-bonanza-2bde2d3a?mod=mw_rss_topstories",
+      "source": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "publishedAt": "Tue, 02 Jun 2026 00:21:00 GMT",
+      "description": "The artificial-intelligence buildout is driving intense demand for networking and servers, and Hewlett Packard Enterprise is reaping the rewards.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "earnings",
+          "tech_sector"
+        ],
+        "confidence": 0.75,
+        "key_quote": "The artificial-intelligence buildout is driving intense demand for networking and servers, and Hewlett Packard Enterprise is reaping the rewards.",
+        "rationale": "HPE es componente del S&P 500 con ganancia hacia máximos históricos. Los earnings muestran demanda sostenida por infraestructura de IA (networking/servers), validando tesis de capex tech. Este resultado positivo beneficia sector de hardware/infraestructura dentro del índice y refuerza narrativa de gasto en IA. Efecto directo limitado por peso de HPE (~0.1% del índice) pero indicativo de salud earnings en tech infrastructure, relevante para múltiplo del sector.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:42:57.945426",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "As Micron&#x2019;s stock blows past $1,000, Wall Street sees more gains in store",
+      "url": "https://www.marketwatch.com/story/as-microns-stock-blows-past-1-000-wall-street-sees-more-gains-in-store-755a51f9?mod=mw_rss_topstories",
+      "source": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "publishedAt": "Mon, 01 Jun 2026 23:14:00 GMT",
+      "description": "Micron stands to benefit from a favorable pricing environment, low competition &#x2014; and now a new Nvidia chip, analysts say.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "tech_sector",
+          "earnings",
+          "us_macro"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Micron stands to benefit from a favorable pricing environment, low competition — and now a new Nvidia chip, analysts say.",
+        "rationale": "Micron es componente clave del S&P 500 y su fortaleza en memoria (DRAM/NAND) refleja demanda de IA/data centers impulsada por Nvidia. Favorable pricing environment + low competition sugiere márgenes operacionales mejorados y earnings upside. El rally de Micron >$1000 es señal de confianza en sector tech y validación de narrativa AI. Impacto positivo en índice por peso de Magnificent 7 y supply chain de semiconductores, pero limitado a 30d por volatilidad sector.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:43:03.011609",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "HPE skyrockets 30% on biggest earnings beat since 2018",
+      "url": "https://www.cnbc.com/2026/06/01/hpe-stock-earnings-q2.html",
+      "source": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "publishedAt": "Mon, 01 Jun 2026 21:30:07 GMT",
+      "description": "",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "earnings",
+          "tech_sector"
+        ],
+        "confidence": 0.72,
+        "key_quote": "HPE skyrockets 30% on biggest earnings beat since 2018",
+        "rationale": "HPE es componente del S&P 500 con peso en sector tech/hardware. Un beat earnings del 30% genera rotación positiva en el sector tecnológico e impulsa confianza en resultados corporativos. El contexto 'biggest since 2018' sugiere sorpresa material. Sin embargo, el impacto en US500 es moderado porque HPE representa ~0.1-0.2% del índice. El movimiento afecta principalmente el sentiment tech en el corto plazo (7d) antes de que se diluya con otros fundamentales macro (Fed, CPI, NFP).",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:43:06.836664",
+        "_instrument": "US500"
+      }
+    },
+    {
+      "title": "Anthropic confidentially files IPO prospectus with SEC, prepping Wall Street for landmark AI deal",
+      "url": "https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html",
+      "source": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "publishedAt": "Mon, 01 Jun 2026 18:33:49 GMT",
+      "description": "",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "tech_sector",
+          "earnings",
+          "us_macro"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Anthropic confidentially files IPO prospectus with SEC, prepping Wall Street for landmark AI deal",
+        "rationale": "El IPO de Anthropic señala maduración del ecosistema AI y refuerza narrativa de crecimiento tech. Impacta positivamente a S&P 500 por: (1) validación de inversión en IA generativa, (2) potencial demanda de capex en infraestructura tech y semiconductores, (3) sentimiento favorable hacia mega-cap tech que domina índice. Efecto moderado porque Anthropic no es componente del S&P 500, pero el IPO refuerza ciclo de liquidez y confianza en sector tech que representa ~30% del índice. Magnitude=3 (relevante pero no shock) dado que es movimiento positivo de sector pero sin catalista macroeconómico inmediato.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:43:11.207458",
+        "_instrument": "US500"
+      }
+    }
+  ]
+}

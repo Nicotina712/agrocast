@@ -42,7 +42,7 @@ try:
     from dotenv import load_dotenv
     env_path = os.path.join(PROJECT_ROOT, ".env")
     if os.path.exists(env_path):
-        load_dotenv(env_path)
+        load_dotenv(env_path, override=True)
         print("[OK] .env cargado desde " + env_path)
 except ImportError:
     print("[WARN] python-dotenv no instalado; .env no se cargara automaticamente")

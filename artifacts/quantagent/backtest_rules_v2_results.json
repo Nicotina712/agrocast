@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20T14:42:25.139433",
+  "timestamp": "2026-05-24T11:55:14.956269",
   "type": "rule_based_v2",
   "config": {
     "days": 200,
@@ -18,71 +18,63 @@
   ],
   "statistics": {
     "capital_initial": 1000.0,
-    "capital_final": 1017.3,
-    "total_pnl": 17.3,
-    "total_return_pct": 1.73,
-    "max_drawdown_pct": 19.66,
-    "total_samples": 200,
-    "active": 9,
-    "flat": 191,
-    "flat_rate": 95.5,
-    "wins": 5,
-    "losses": 4,
-    "win_rate": 55.6,
-    "avg_win": 49.46,
-    "avg_loss": -57.5,
-    "profit_factor": 1.08,
-    "sharpe": 1.04,
+    "capital_final": 1195.3,
+    "total_pnl": 195.3,
+    "total_return_pct": 19.53,
+    "max_drawdown_pct": 4.6,
+    "total_samples": 199,
+    "active": 11,
+    "flat": 188,
+    "flat_rate": 94.5,
+    "wins": 8,
+    "losses": 3,
+    "win_rate": 72.7,
+    "avg_win": 31.6,
+    "avg_loss": -19.17,
+    "profit_factor": 4.4,
+    "sharpe": 7.47,
     "exits": {
-      "timeout": 7,
-      "tp": 1,
+      "timeout": 8,
+      "tp": 2,
       "trailing_be": 1
     },
     "by_setup": {
+      "reversal": {
+        "n": 2,
+        "w": 2,
+        "pnl": 117.5
+      },
       "breakout": {
-        "n": 6,
-        "w": 3,
-        "pnl": -177.5
+        "n": 8,
+        "w": 6,
+        "pnl": 105.3
       },
       "pullback": {
-        "n": 2,
-        "w": 1,
-        "pnl": 90.0
-      },
-      "reversal": {
         "n": 1,
-        "w": 1,
-        "pnl": 104.8
+        "w": 0,
+        "pnl": -27.5
       }
     },
     "by_confidence": {
       "MEDIUM": {
-        "n": 6,
-        "w": 3,
-        "pnl": 182.3
+        "n": 9,
+        "w": 6,
+        "pnl": 187.8
       },
       "HIGH": {
-        "n": 3,
+        "n": 2,
         "w": 2,
-        "pnl": -165.0
+        "pnl": 7.5
       }
     },
     "period": {
-      "start": "2025-07-29",
-      "end": "2026-05-13"
+      "start": "2025-07-31",
+      "end": "2026-05-15"
     }
   },
   "equity_curve": [
     {
       "day": "start",
-      "capital": 1000.0
-    },
-    {
-      "day": "2025-07-29",
-      "capital": 1000.0
-    },
-    {
-      "day": "2025-07-30",
       "capital": 1000.0
     },
     {
@@ -131,788 +123,758 @@
     },
     {
       "day": "2025-08-15",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-18",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-19",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-20",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-21",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-22",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-25",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-26",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-27",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-28",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-08-29",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-02",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-03",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-04",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-05",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-08",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-09",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-10",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-11",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-12",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-15",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-16",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-17",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-18",
-      "capital": 1000.0
+      "capital": 1012.5
     },
     {
       "day": "2025-09-19",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-22",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-23",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-24",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-25",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-26",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-29",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-09-30",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-01",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-02",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-03",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-06",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-07",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-08",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-09",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-10",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-13",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-14",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-15",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-16",
-      "capital": 1017.5
+      "capital": 1030.0
     },
     {
       "day": "2025-10-17",
-      "capital": 1017.5
+      "capital": 1110.3
     },
     {
       "day": "2025-10-20",
-      "capital": 1017.5
+      "capital": 1137.8
     },
     {
       "day": "2025-10-21",
-      "capital": 1017.5
+      "capital": 1137.8
     },
     {
       "day": "2025-10-22",
-      "capital": 1017.5
+      "capital": 1137.8
     },
     {
       "day": "2025-10-23",
-      "capital": 845.0
+      "capital": 1140.3
     },
     {
       "day": "2025-10-24",
-      "capital": 845.0
+      "capital": 1140.3
     },
     {
       "day": "2025-10-27",
-      "capital": 845.0
+      "capital": 1140.3
     },
     {
       "day": "2025-10-28",
-      "capital": 845.0
+      "capital": 1140.3
     },
     {
       "day": "2025-10-29",
-      "capital": 845.0
+      "capital": 1140.3
     },
     {
       "day": "2025-10-30",
-      "capital": 817.5
+      "capital": 1112.8
     },
     {
       "day": "2025-10-31",
-      "capital": 935.0
+      "capital": 1112.8
     },
     {
       "day": "2025-11-03",
-      "capital": 940.0
+      "capital": 1117.8
     },
     {
       "day": "2025-11-04",
-      "capital": 940.0
+      "capital": 1117.8
     },
     {
       "day": "2025-11-05",
-      "capital": 940.0
+      "capital": 1117.8
     },
     {
       "day": "2025-11-06",
-      "capital": 940.0
+      "capital": 1117.8
     },
     {
       "day": "2025-11-07",
-      "capital": 940.0
+      "capital": 1117.8
     },
     {
       "day": "2025-11-10",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-11",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-12",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-13",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-14",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-17",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-18",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-19",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-20",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-21",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-24",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-25",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-26",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-11-28",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-01",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-02",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-03",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-04",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-05",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-08",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-09",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-10",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-11",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-12",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-15",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-16",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-17",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-18",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-19",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-22",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-23",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-24",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-26",
-      "capital": 920.0
+      "capital": 1097.8
     },
     {
       "day": "2025-12-29",
-      "capital": 910.0
+      "capital": 1087.8
     },
     {
       "day": "2025-12-30",
-      "capital": 910.0
+      "capital": 1087.8
     },
     {
       "day": "2025-12-31",
-      "capital": 910.0
+      "capital": 1087.8
     },
     {
       "day": "2026-01-02",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-05",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-06",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-07",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-08",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-09",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-12",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-13",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-14",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-15",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-16",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-20",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-21",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-22",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-23",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-26",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-27",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-28",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-01-29",
-      "capital": 1014.8
-    },
-    {
-      "day": "2026-01-30",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-02",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-03",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-04",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-05",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-06",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-09",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-10",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-11",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-12",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-13",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-17",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-18",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-19",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-20",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-23",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-24",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-25",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-26",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-02-27",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-02",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-03",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-04",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-05",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-06",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-09",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-10",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-11",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-12",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-13",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-16",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-17",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-18",
-      "capital": 1014.8
+      "capital": 1192.8
     },
     {
       "day": "2026-03-19",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-20",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-23",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-24",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-25",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-26",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-27",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-30",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-03-31",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-01",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-02",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-06",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-07",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-08",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-09",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-10",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-13",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-14",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-15",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-16",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-17",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-20",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-21",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-22",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-23",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-24",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-27",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-28",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-29",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-04-30",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-01",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-04",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-05",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-06",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-07",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-08",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-11",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-12",
-      "capital": 1017.3
+      "capital": 1195.3
     },
     {
       "day": "2026-05-13",
-      "capital": 1017.3
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-14",
+      "capital": 1195.3
+    },
+    {
+      "day": "2026-05-15",
+      "capital": 1195.3
     }
   ],
   "trades": [
-    {
-      "day": "2025-07-29",
-      "price": 1005.25,
-      "trend": "DOWN",
-      "trend_str": "moderate",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "elevated",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1000.0
-    },
-    {
-      "day": "2025-07-30",
-      "price": 1000.25,
-      "trend": "DOWN",
-      "trend_str": "strong",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "low",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1000.0
-    },
     {
       "day": "2025-07-31",
       "price": 988.25,
@@ -938,7 +900,7 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
@@ -989,7 +951,7 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
@@ -1023,7 +985,7 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
@@ -1105,6 +1067,49 @@
       "price": 1041.25,
       "trend": "UP",
       "trend_str": "moderate",
+      "setup": "reversal",
+      "signal": "SHORT",
+      "conf": "MEDIUM",
+      "vol_regime": "low",
+      "veto": null,
+      "eval": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1041.25,
+        "exit": 1040.0,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 1.25,
+        "pnl_usd": 12.5,
+        "pnl_pct": 1.25,
+        "mfe": 1.5,
+        "mae": -2.5,
+        "bars_held": 3
+      },
+      "cap": 1012.5
+    },
+    {
+      "day": "2025-08-18",
+      "price": 1044.75,
+      "trend": "UP",
+      "trend_str": "weak",
+      "setup": "pullback",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "normal",
+      "veto": "Low confidence — skip",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1012.5
+    },
+    {
+      "day": "2025-08-19",
+      "price": 1030.75,
+      "trend": "DOWN",
+      "trend_str": "strong",
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
@@ -1115,41 +1120,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
-    },
-    {
-      "day": "2025-08-18",
-      "price": 1044.75,
-      "trend": "UP",
-      "trend_str": "weak",
-      "setup": "pullback",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "elevated",
-      "veto": "Vol extreme z=2.2",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1000.0
-    },
-    {
-      "day": "2025-08-19",
-      "price": 1030.75,
-      "trend": "DOWN",
-      "trend_str": "strong",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "normal",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-20",
@@ -1159,14 +1130,14 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-21",
@@ -1183,7 +1154,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-22",
@@ -1200,7 +1171,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-25",
@@ -1217,7 +1188,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-26",
@@ -1234,7 +1205,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-27",
@@ -1244,14 +1215,14 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-28",
@@ -1268,7 +1239,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-08-29",
@@ -1285,7 +1256,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-02",
@@ -1302,7 +1273,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-03",
@@ -1319,7 +1290,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-04",
@@ -1336,7 +1307,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-05",
@@ -1346,14 +1317,14 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-08",
@@ -1370,7 +1341,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-09",
@@ -1387,7 +1358,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-10",
@@ -1397,14 +1368,14 @@
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-11",
@@ -1421,7 +1392,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-12",
@@ -1438,7 +1409,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-15",
@@ -1455,7 +1426,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-16",
@@ -1472,7 +1443,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-17",
@@ -1489,7 +1460,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-18",
@@ -1506,7 +1477,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1000.0
+      "cap": 1012.5
     },
     {
       "day": "2025-09-19",
@@ -1527,12 +1498,12 @@
         "contracts": 1,
         "pnl_pts": 1.75,
         "pnl_usd": 17.5,
-        "pnl_pct": 1.75,
+        "pnl_pct": 1.73,
         "mfe": 2.25,
         "mae": -1.75,
         "bars_held": 3
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-22",
@@ -1549,7 +1520,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-23",
@@ -1566,7 +1537,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-24",
@@ -1583,7 +1554,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-25",
@@ -1600,7 +1571,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-26",
@@ -1617,7 +1588,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-29",
@@ -1634,7 +1605,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-09-30",
@@ -1651,7 +1622,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-01",
@@ -1668,7 +1639,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-02",
@@ -1685,28 +1656,11 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-03",
-      "price": 1045.25,
-      "trend": "UP",
-      "trend_str": "strong",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "low",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1017.5
-    },
-    {
-      "day": "2025-10-06",
-      "price": 1035.75,
+      "price": 1026.75,
       "trend": "LATERAL",
       "trend_str": "weak",
       "setup": "range",
@@ -1719,24 +1673,41 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
-      "day": "2025-10-07",
-      "price": 1040.5,
+      "day": "2025-10-06",
+      "price": 1035.75,
       "trend": "UP",
-      "trend_str": "weak",
+      "trend_str": "moderate",
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
-      "vol_regime": "normal",
+      "vol_regime": "low",
       "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
+    },
+    {
+      "day": "2025-10-07",
+      "price": 1040.5,
+      "trend": "UP",
+      "trend_str": "strong",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "low",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1030.0
     },
     {
       "day": "2025-10-08",
@@ -1753,7 +1724,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-09",
@@ -1770,7 +1741,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-10",
@@ -1787,7 +1758,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-13",
@@ -1804,13 +1775,13 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-14",
-      "price": 1004.5,
-      "trend": "DOWN",
-      "trend_str": "strong",
+      "price": 1022.5,
+      "trend": "LATERAL",
+      "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
@@ -1821,12 +1792,12 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-15",
-      "price": 1009.5,
-      "trend": "DOWN",
+      "price": 1027.25,
+      "trend": "LATERAL",
       "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
@@ -1838,29 +1809,12 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
     },
     {
       "day": "2025-10-16",
-      "price": 1013.75,
-      "trend": "LATERAL",
-      "trend_str": "weak",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "extreme",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1017.5
-    },
-    {
-      "day": "2025-10-17",
-      "price": 1018.25,
-      "trend": "LATERAL",
+      "price": 1031.5,
+      "trend": "UP",
       "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
@@ -1872,45 +1826,63 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1030.0
+    },
+    {
+      "day": "2025-10-17",
+      "price": 1036.25,
+      "trend": "UP",
+      "trend_str": "moderate",
+      "setup": "breakout",
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "vol_regime": "normal",
+      "veto": null,
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1036.25,
+        "exit": 1044.28,
+        "exit_type": "tp",
+        "contracts": 1,
+        "pnl_pts": 8.03,
+        "pnl_usd": 80.3,
+        "pnl_pct": 7.8,
+        "mfe": 2.25,
+        "mae": -0.25,
+        "bars_held": 3
+      },
+      "cap": 1110.3
     },
     {
       "day": "2025-10-20",
       "price": 1050.0,
       "trend": "UP",
       "trend_str": "strong",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "low",
-      "veto": "FLAT — sin setup",
+      "setup": "breakout",
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "vol_regime": "elevated",
+      "veto": null,
       "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1050.0,
+        "exit": 1052.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 2.75,
+        "pnl_usd": 27.5,
+        "pnl_pct": 2.48,
+        "mfe": 3.25,
+        "mae": -1.0,
+        "bars_held": 3
       },
-      "cap": 1017.5
+      "cap": 1137.8
     },
     {
       "day": "2025-10-21",
-      "price": 1028.5,
-      "trend": "DOWN",
-      "trend_str": "moderate",
-      "setup": "breakout",
-      "signal": "FLAT",
-      "conf": "MEDIUM",
-      "vol_regime": "elevated",
-      "veto": "Vol extreme z=2.1",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1017.5
-    },
-    {
-      "day": "2025-10-22",
-      "price": 1034.25,
+      "price": 1046.5,
       "trend": "DOWN",
       "trend_str": "weak",
       "setup": "range",
@@ -1923,7 +1895,24 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.5
+      "cap": 1137.8
+    },
+    {
+      "day": "2025-10-22",
+      "price": 1050.0,
+      "trend": "LATERAL",
+      "trend_str": "weak",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "elevated",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1137.8
     },
     {
       "day": "2025-10-23",
@@ -1932,30 +1921,30 @@
       "trend_str": "strong",
       "setup": "breakout",
       "signal": "LONG",
-      "conf": "HIGH",
-      "vol_regime": "normal",
+      "conf": "MEDIUM",
+      "vol_regime": "elevated",
       "veto": null,
       "eval": {
         "traded": true,
         "direction": "LONG",
         "entry": 1060.5,
-        "exit": 1043.25,
+        "exit": 1060.75,
         "exit_type": "timeout",
         "contracts": 1,
-        "pnl_pts": -17.25,
-        "pnl_usd": -172.5,
-        "pnl_pct": -16.95,
+        "pnl_pts": 0.25,
+        "pnl_usd": 2.5,
+        "pnl_pct": 0.22,
         "mfe": 2.5,
-        "mae": -19.25,
+        "mae": -2.0,
         "bars_held": 3
       },
-      "cap": 845.0
+      "cap": 1140.3
     },
     {
       "day": "2025-10-24",
       "price": 1060.75,
-      "trend": "UP",
-      "trend_str": "moderate",
+      "trend": "LATERAL",
+      "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
@@ -1966,30 +1955,13 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 845.0
+      "cap": 1140.3
     },
     {
       "day": "2025-10-27",
       "price": 1087.25,
       "trend": "UP",
       "trend_str": "strong",
-      "setup": "breakout",
-      "signal": "FLAT",
-      "conf": "HIGH",
-      "vol_regime": "extreme",
-      "veto": "Vol extreme z=4.1",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 845.0
-    },
-    {
-      "day": "2025-10-28",
-      "price": 1096.25,
-      "trend": "UP",
-      "trend_str": "strong",
       "setup": "range",
       "signal": "FLAT",
       "conf": "LOW",
@@ -2000,24 +1972,41 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 845.0
+      "cap": 1140.3
     },
     {
-      "day": "2025-10-29",
-      "price": 1094.75,
+      "day": "2025-10-28",
+      "price": 1096.25,
       "trend": "UP",
-      "trend_str": "moderate",
-      "setup": "breakout",
+      "trend_str": "weak",
+      "setup": "range",
       "signal": "FLAT",
-      "conf": "MEDIUM",
-      "vol_regime": "extreme",
-      "veto": "Vol extreme z=4.0",
+      "conf": "LOW",
+      "vol_regime": "elevated",
+      "veto": "FLAT — sin setup",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 845.0
+      "cap": 1140.3
+    },
+    {
+      "day": "2025-10-29",
+      "price": 1094.75,
+      "trend": "LATERAL",
+      "trend_str": "weak",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "normal",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1140.3
     },
     {
       "day": "2025-10-30",
@@ -2038,38 +2027,29 @@
         "contracts": 1,
         "pnl_pts": -2.75,
         "pnl_usd": -27.5,
-        "pnl_pct": -3.25,
+        "pnl_pct": -2.41,
         "mfe": 3.75,
-        "mae": -19.75,
+        "mae": -3.25,
         "bars_held": 3
       },
-      "cap": 817.5
+      "cap": 1112.8
     },
     {
       "day": "2025-10-31",
       "price": 1112.5,
       "trend": "UP",
-      "trend_str": "strong",
+      "trend_str": "moderate",
       "setup": "pullback",
-      "signal": "LONG",
-      "conf": "MEDIUM",
+      "signal": "FLAT",
+      "conf": "LOW",
       "vol_regime": "low",
-      "veto": null,
+      "veto": "Low confidence — skip",
       "eval": {
-        "traded": true,
-        "direction": "LONG",
-        "entry": 1112.5,
-        "exit": 1124.25,
-        "exit_type": "timeout",
-        "contracts": 1,
-        "pnl_pts": 11.75,
-        "pnl_usd": 117.5,
-        "pnl_pct": 14.37,
-        "mfe": 13.25,
-        "mae": -18.75,
-        "bars_held": 3
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
       },
-      "cap": 935.0
+      "cap": 1112.8
     },
     {
       "day": "2025-11-03",
@@ -2090,50 +2070,16 @@
         "contracts": 1,
         "pnl_pts": 0.5,
         "pnl_usd": 5.0,
-        "pnl_pct": 0.53,
+        "pnl_pct": 0.45,
         "mfe": 3.25,
-        "mae": -16.0,
+        "mae": -1.25,
         "bars_held": 3
       },
-      "cap": 940.0
+      "cap": 1117.8
     },
     {
       "day": "2025-11-04",
       "price": 1117.5,
-      "trend": "DOWN",
-      "trend_str": "weak",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "low",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 940.0
-    },
-    {
-      "day": "2025-11-05",
-      "price": 1130.25,
-      "trend": "UP",
-      "trend_str": "weak",
-      "setup": "pullback",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "normal",
-      "veto": "Low confidence — skip",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 940.0
-    },
-    {
-      "day": "2025-11-06",
-      "price": 1109.25,
       "trend": "DOWN",
       "trend_str": "moderate",
       "setup": "range",
@@ -2146,7 +2092,41 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 940.0
+      "cap": 1117.8
+    },
+    {
+      "day": "2025-11-05",
+      "price": 1130.25,
+      "trend": "LATERAL",
+      "trend_str": "weak",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "normal",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1117.8
+    },
+    {
+      "day": "2025-11-06",
+      "price": 1109.25,
+      "trend": "DOWN",
+      "trend_str": "strong",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "low",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1117.8
     },
     {
       "day": "2025-11-07",
@@ -2163,7 +2143,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 940.0
+      "cap": 1117.8
     },
     {
       "day": "2025-11-10",
@@ -2184,12 +2164,12 @@
         "contracts": 1,
         "pnl_pts": -2.0,
         "pnl_usd": -20.0,
-        "pnl_pct": -2.13,
+        "pnl_pct": -1.79,
         "mfe": 3.25,
         "mae": -4.0,
         "bars_held": 3
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-11",
@@ -2206,7 +2186,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-12",
@@ -2223,7 +2203,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-13",
@@ -2240,7 +2220,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-14",
@@ -2257,7 +2237,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-17",
@@ -2274,7 +2254,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-18",
@@ -2291,7 +2271,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-19",
@@ -2308,7 +2288,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-20",
@@ -2325,7 +2305,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-21",
@@ -2342,7 +2322,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-24",
@@ -2359,7 +2339,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-25",
@@ -2376,7 +2356,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-26",
@@ -2393,7 +2373,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-11-28",
@@ -2410,7 +2390,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-01",
@@ -2427,7 +2407,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-02",
@@ -2444,7 +2424,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-03",
@@ -2461,7 +2441,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-04",
@@ -2478,7 +2458,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-05",
@@ -2495,7 +2475,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-08",
@@ -2512,7 +2492,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-09",
@@ -2529,7 +2509,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-10",
@@ -2546,7 +2526,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-11",
@@ -2563,7 +2543,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-12",
@@ -2580,7 +2560,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-15",
@@ -2597,7 +2577,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-16",
@@ -2614,7 +2594,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-17",
@@ -2631,7 +2611,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-18",
@@ -2648,7 +2628,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-19",
@@ -2665,7 +2645,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-22",
@@ -2682,7 +2662,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-23",
@@ -2699,7 +2679,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-24",
@@ -2716,7 +2696,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-26",
@@ -2733,7 +2713,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 920.0
+      "cap": 1097.8
     },
     {
       "day": "2025-12-29",
@@ -2754,12 +2734,12 @@
         "contracts": 1,
         "pnl_pts": -1.0,
         "pnl_usd": -10.0,
-        "pnl_pct": -1.09,
+        "pnl_pct": -0.91,
         "mfe": 0.5,
         "mae": -2.5,
         "bars_held": 3
       },
-      "cap": 910.0
+      "cap": 1087.8
     },
     {
       "day": "2025-12-30",
@@ -2776,7 +2756,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 910.0
+      "cap": 1087.8
     },
     {
       "day": "2025-12-31",
@@ -2793,7 +2773,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 910.0
+      "cap": 1087.8
     },
     {
       "day": "2026-01-02",
@@ -2809,17 +2789,17 @@
         "traded": true,
         "direction": "LONG",
         "entry": 1027.5,
-        "exit": 1037.98,
+        "exit": 1038.0,
         "exit_type": "tp",
         "contracts": 1,
-        "pnl_pts": 10.48,
-        "pnl_usd": 104.8,
-        "pnl_pct": 11.52,
+        "pnl_pts": 10.5,
+        "pnl_usd": 105.0,
+        "pnl_pct": 9.65,
         "mfe": 1.75,
         "mae": 0,
         "bars_held": 2
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-05",
@@ -2836,7 +2816,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-06",
@@ -2853,7 +2833,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-07",
@@ -2870,7 +2850,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-08",
@@ -2887,7 +2867,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-09",
@@ -2904,7 +2884,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-12",
@@ -2921,7 +2901,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-13",
@@ -2938,7 +2918,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-14",
@@ -2955,7 +2935,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-15",
@@ -2972,7 +2952,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-16",
@@ -2989,7 +2969,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-20",
@@ -3006,7 +2986,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-21",
@@ -3023,7 +3003,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-22",
@@ -3040,7 +3020,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-23",
@@ -3057,7 +3037,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-26",
@@ -3074,7 +3054,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-27",
@@ -3091,7 +3071,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-28",
@@ -3108,7 +3088,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-01-29",
@@ -3125,29 +3105,29 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
-      "day": "2026-01-30",
-      "price": 1061.75,
+      "day": "2026-02-02",
+      "price": 1059.5,
       "trend": "DOWN",
       "trend_str": "moderate",
-      "setup": "range",
+      "setup": "breakout",
       "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "normal",
-      "veto": "FLAT — sin setup",
+      "conf": "MEDIUM",
+      "vol_regime": "extreme",
+      "veto": "Vol extreme z=3.1",
       "eval": {
         "traded": false,
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
-      "day": "2026-02-02",
-      "price": 1059.0,
-      "trend": "LATERAL",
+      "day": "2026-02-03",
+      "price": 1067.75,
+      "trend": "UP",
       "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
@@ -3159,24 +3139,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
-    },
-    {
-      "day": "2026-02-03",
-      "price": 1067.75,
-      "trend": "UP",
-      "trend_str": "moderate",
-      "setup": "range",
-      "signal": "FLAT",
-      "conf": "LOW",
-      "vol_regime": "low",
-      "veto": "FLAT — sin setup",
-      "eval": {
-        "traded": false,
-        "pnl_usd": 0,
-        "pnl_pct": 0
-      },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-04",
@@ -3193,7 +3156,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-05",
@@ -3210,12 +3173,12 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-06",
-      "price": 1113.0,
-      "trend": "LATERAL",
+      "price": 1113.5,
+      "trend": "UP",
       "trend_str": "weak",
       "setup": "range",
       "signal": "FLAT",
@@ -3227,7 +3190,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-09",
@@ -3244,7 +3207,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-10",
@@ -3261,7 +3224,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-11",
@@ -3278,7 +3241,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-12",
@@ -3295,7 +3258,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-13",
@@ -3312,7 +3275,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-17",
@@ -3329,7 +3292,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-18",
@@ -3346,7 +3309,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-19",
@@ -3363,7 +3326,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-20",
@@ -3380,7 +3343,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-23",
@@ -3397,7 +3360,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-24",
@@ -3414,7 +3377,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-25",
@@ -3431,7 +3394,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-26",
@@ -3448,7 +3411,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-02-27",
@@ -3465,7 +3428,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-02",
@@ -3482,7 +3445,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-03",
@@ -3499,7 +3462,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-04",
@@ -3516,7 +3479,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-05",
@@ -3533,7 +3496,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-06",
@@ -3550,7 +3513,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-09",
@@ -3567,7 +3530,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-10",
@@ -3584,7 +3547,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-11",
@@ -3601,7 +3564,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-12",
@@ -3618,7 +3581,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-13",
@@ -3635,7 +3598,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-16",
@@ -3652,7 +3615,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-17",
@@ -3669,7 +3632,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-18",
@@ -3686,7 +3649,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1014.8
+      "cap": 1192.8
     },
     {
       "day": "2026-03-19",
@@ -3707,12 +3670,12 @@
         "contracts": 1,
         "pnl_pts": 0.25,
         "pnl_usd": 2.5,
-        "pnl_pct": 0.25,
+        "pnl_pct": 0.21,
         "mfe": 5.0,
         "mae": -1.25,
         "bars_held": 2
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-20",
@@ -3729,7 +3692,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-23",
@@ -3746,7 +3709,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-24",
@@ -3763,7 +3726,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-25",
@@ -3780,7 +3743,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-26",
@@ -3797,7 +3760,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-27",
@@ -3814,7 +3777,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-30",
@@ -3831,7 +3794,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-03-31",
@@ -3848,7 +3811,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-01",
@@ -3865,7 +3828,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-02",
@@ -3882,7 +3845,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-06",
@@ -3899,7 +3862,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-07",
@@ -3916,7 +3879,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-08",
@@ -3933,7 +3896,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-09",
@@ -3950,7 +3913,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-10",
@@ -3967,7 +3930,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-13",
@@ -3984,7 +3947,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-14",
@@ -4001,7 +3964,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-15",
@@ -4018,7 +3981,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-16",
@@ -4035,7 +3998,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-17",
@@ -4052,7 +4015,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-20",
@@ -4069,7 +4032,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-21",
@@ -4086,7 +4049,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-22",
@@ -4103,7 +4066,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-23",
@@ -4120,7 +4083,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-24",
@@ -4137,7 +4100,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-27",
@@ -4154,7 +4117,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-28",
@@ -4171,7 +4134,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-29",
@@ -4188,7 +4151,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-04-30",
@@ -4205,7 +4168,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-01",
@@ -4222,7 +4185,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-04",
@@ -4239,7 +4202,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-05",
@@ -4256,7 +4219,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-06",
@@ -4273,7 +4236,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-07",
@@ -4290,7 +4253,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-08",
@@ -4307,7 +4270,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-11",
@@ -4324,7 +4287,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-12",
@@ -4341,7 +4304,7 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
     },
     {
       "day": "2026-05-13",
@@ -4358,7 +4321,41 @@
         "pnl_usd": 0,
         "pnl_pct": 0
       },
-      "cap": 1017.3
+      "cap": 1195.3
+    },
+    {
+      "day": "2026-05-14",
+      "price": 1184.5,
+      "trend": "DOWN",
+      "trend_str": "strong",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "normal",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1195.3
+    },
+    {
+      "day": "2026-05-15",
+      "price": 1176.0,
+      "trend": "DOWN",
+      "trend_str": "strong",
+      "setup": "range",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "vol_regime": "normal",
+      "veto": "FLAT — sin setup",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1195.3
     }
   ]
 }

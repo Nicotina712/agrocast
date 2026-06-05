@@ -260,6 +260,43 @@ def _build_fundamental_context() -> str:
     except Exception:
         pass
 
+    # 10. Intelligence Engine verdict (multi-agent debate)
+    # Structure: ie["verdict"] = Fund Manager dict with keys: verdict, confidence,
+    #   bull_bear_balance, price_range_7d, invalidation_conditions, etc.
+    try:
+        ie_path = os.path.join(_DATA_DIR, "intelligence_engine_verdict.json")
+        if os.path.exists(ie_path):
+            with open(ie_path) as f:
+                ie = json.load(f)
+            # Warn if verdict is stale (>48h)
+            ts = ie.get("timestamp", "")
+            age_note = ""
+            if ts:
+                from datetime import datetime as _dt
+                age_h = (_dt.now() - _dt.fromisoformat(ts)).total_seconds() / 3600
+                if age_h > 48:
+                    age_note = f" [STALE: {age_h:.0f}h]"
+            fm = ie.get("verdict", {})  # Fund Manager output
+            if not isinstance(fm, dict) or "error" in fm:
+                lines.append(f"IE Multi-Agent{age_note}: parse error — veredicto no disponible")
+            else:
+                signal = fm.get("verdict", fm.get("signal", "?"))
+                conf = fm.get("confidence", "?")
+                bbb = fm.get("bull_bear_balance", {})
+                bull_w = bbb.get("bull_weight", "?") if isinstance(bbb, dict) else "?"
+                bear_w = bbb.get("bear_weight", "?") if isinstance(bbb, dict) else "?"
+                p7d = fm.get("price_range_7d", {}) or {}
+                lines.append(
+                    f"IE Multi-Agent (debate 5 agentes){age_note}: senal={signal}, confianza={conf}, "
+                    f"bull/bear={bull_w}/{bear_w}, "
+                    f"rango_7d=[{p7d.get('low','?')}-{p7d.get('high','?')}]"
+                )
+                conds = fm.get("invalidation_conditions", [])
+                if conds:
+                    lines.append(f"  IE invalidacion_1: {str(conds[0])[:120]}")
+    except Exception:
+        pass
+
     if len(lines) <= 1:  # Only header
         return ""
 

@@ -1,0 +1,16 @@
+{
+  "signal": "FLAT",
+  "entry": null,
+  "sl": null,
+  "tp": null,
+  "lots": null,
+  "confidence": "LOW",
+  "rr": null,
+  "risk_usd": null,
+  "reasoning": "Price at extreme oversold (RSI 22.1) and session low - no immediate short entry viable. Setup requires WAIT for mean-reversion bounce into 7548-7556 resistance zone. Current price 7527.7 is too extended below VWAP (-0.28%) for new short. Would be chasing momentum into support zone near psychological 7500 level with poor risk-reward. Counter-trend long also rejected due to strong downtrend (below all EMAs), RISK_OFF regime, negative cumulative delta (-0.242), and distribution pattern.",
+  "sp500_regime": "DISTRIBUTION",
+  "risk_on_off": "RISK_OFF",
+  "timestamp": "2026-06-05T10:38:28.548679",
+  "symbol": "US500",
+  "price": 7527.7
+}

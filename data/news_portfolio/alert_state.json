@@ -1,0 +1,82 @@
+{
+  "ETHUSD": {
+    "seen_hashes": [
+      "bb4519edc5b7"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:37.963609+00:00"
+  },
+  "XAUUSD": {
+    "seen_hashes": [
+      "c36ccf6fb6ca"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:38.891124+00:00"
+  },
+  "BRENT_N6": {
+    "seen_hashes": [
+      "77eeb5d359b1"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:39.624328+00:00"
+  },
+  "WTI_N6": {
+    "seen_hashes": [
+      "77eeb5d359b1"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:40.356142+00:00"
+  },
+  "UK100": {
+    "seen_hashes": [
+      "b49e650c1d7a"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:43.847289+00:00"
+  },
+  "US30": {
+    "seen_hashes": [
+      "25332ecfd0d1"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:44.691809+00:00"
+  },
+  "US500": {
+    "seen_hashes": [
+      "677f8454ffce"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:45.462730+00:00"
+  },
+  "USTEC": {
+    "seen_hashes": [
+      "d979462774ae"
+    ],
+    "alerts_today": {
+      "date": "2026-06-02",
+      "count": 1
+    },
+    "last_alert_utc": "2026-06-02T00:48:46.278745+00:00"
+  }
+}

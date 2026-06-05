@@ -418,12 +418,12 @@ def _extract_json(text: str) -> dict | None:
         return None
 
 
-def _call_agent(system: str, context: str, agent_name: str) -> dict:
+def _call_agent(system: str, context: str, agent_name: str, max_tokens: int = 3000) -> dict:
     client = _get_client()
     try:
         response = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=3000,
+            max_tokens=max_tokens,
             system=system,
             messages=[{"role": "user", "content": context}],
         )
@@ -607,7 +607,7 @@ def run_debate(
         f"--- ANALISTA TÉCNICO CHARTISTA ---\n{json.dumps(tech, indent=2, ensure_ascii=False)}\n"
     )
 
-    verdict = _call_agent(FUND_MANAGER_SYSTEM, manager_context, "Fund Manager")
+    verdict = _call_agent(FUND_MANAGER_SYSTEM, manager_context, "Fund Manager", max_tokens=5000)
 
     return {
         "timestamp": datetime.now().isoformat(),

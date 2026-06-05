@@ -1,0 +1,333 @@
+{
+  "instrument": "WTI_N6",
+  "fetched_at": "2026-06-02T00:38:12.318285+00:00",
+  "count": 15,
+  "articles": [
+    {
+      "title": "Oil prices jump over 2% as Israel intensifies military operations in Lebanon",
+      "url": "https://www.thehindubusinessline.com/markets/commodities/oil-prices-jump-over-2-as-israel-intensifies-military-operations-in-lebanon/article71046769.ece",
+      "source": "BusinessLine",
+      "publishedAt": "2026-06-01T00:33:04Z",
+      "description": "Oil prices surged over 2% as Israel intensified operations in Lebanon, raising fears of supply disruptions and renewed risks in the Strait of Hormuz.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.82,
+        "key_quote": "Oil prices surged over 2% as Israel intensified operations in Lebanon, raising fears of supply disruptions and renewed risks in the Strait of Hormuz",
+        "rationale": "Escalación geopolítica en Oriente Medio genera riesgo sistémico de disrupción en suministro global. Strait of Hormuz representa ~21% del flujo petrolero mundial. Tensión Israel-Líbano-Irán eleva prima de riesgo y volatilidad en WTI. Impacto inmediato en corto plazo (7d) por repricing de risk premium, aunque oferta física no está afectada directamente. Magnitude 4 por relevancia geopolítica sin shock operacional confirmado aún.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:09.839350",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Oil prices rise more than 2% as Israel steps up incursion into Lebanon",
+      "url": "https://economictimes.indiatimes.com/markets/commodities/news/oil-prices-rise-more-than-2-as-israel-steps-up-incursion-into-lebanon/articleshow/131431610.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:31:33Z",
+      "description": "Oil prices surged over 2% as intensified fighting between Israel and Hezbollah in Lebanon overshadowed hopes for a ceasefire extension with Iran. Stepped-up conflict, despite a prior truce, dimmed expectations for a deal, while concerns over mines in the Stra…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "other"
+        ],
+        "confidence": 0.85,
+        "key_quote": "Oil prices surged over 2% as intensified fighting between Israel and Hezbollah in Lebanon overshadowed hopes for a ceasefire extension with Iran",
+        "rationale": "Escalación geopolítica en Levante genera prima de riesgo en oferta regional. Riesgo de disrupción en infraestructura petrolífera y rutas de transporte (Estrecho de Ormuz implícito). Deterioro de negociaciones Iran nuclear eleva incertidumbre sobre sanciones y producción OPEC. El movimiento +2% refleja repricing inmediato de tail risk en suministro global. Impacto temporal (7d) hasta evaluación de severidad de conflicto y posibles mediaciones.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:14.804099",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "US stock Market on Monday: S&P 500, Dow Jones, Nasdaq to jump big on June 1? Here are critical factors",
+      "url": "https://economictimes.indiatimes.com/news/international/us/us-stock-market-on-monday-sp-500-dow-jones-nasdaq-to-jump-big-on-june-1-here-are-critical-factors/articleshow/131431569.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:30:20Z",
+      "description": "Nasdaq, S&P 500, Dow Jones investors must know that MSCI's ​gauge of stocks across the globe rose 5.75 points, or 0.51 per cent, to 1,130.47.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "macro_demand"
+        ],
+        "confidence": 0.15,
+        "key_quote": "MSCI's gauge of stocks across the globe rose 5.75 points, or 0.51 per cent, to 1,130.47",
+        "rationale": "La noticia trata sobre índices bursátiles globales (MSCI, S&P 500, Nasdaq) sin mencionar factores específicos del petróleo WTI. El movimiento del 0.51% en MSCI podría indicar sentimiento macro positivo que teóricamente afecta demanda industrial, pero la noticia carece de contexto sobre inventarios EIA, producción shale, posición OPEC+, o tensiones geopolíticas. El impacto en WTI sería indirecto y marginal.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:20.556685",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Iran war disrupts global oil supply, prices surge amid Strait of Hormuz crisis",
+      "url": "https://cryptobriefing.com/iran-war-disrupts-global-oil-supply-prices-surge-amid-strait-of-hormuz-crisis/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-31T21:02:18Z",
+      "description": "The crisis underscores the vulnerability of global energy markets to geopolitical tensions, potentially destabilizing economies worldwide.\nThe post Iran war disrupts global oil supply, prices surge amid Strait of Hormuz crisis appeared first on Crypto Briefin…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "us_inventory",
+          "macro_demand"
+        ],
+        "confidence": 0.85,
+        "key_quote": "Iran war disrupts global oil supply, prices surge amid Strait of Hormuz crisis",
+        "rationale": "Tensión geopolítica en Estrecho de Hormuz (ruta crítica: 21% suministro global). Riesgo de interrupción de supply eleva primas de riesgo en WTI. Afecta directamente oferta global y costos de transporte. Impacto en demanda industrial USA por incertidumbre macro. Horizonte 7d por volatilidad esperada; no alcanza magnitud 5 por falta de confirmación de escalada real versus amenaza retórica.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:25.525192",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "June Labeled ‘Crunch Point’ as Energy Reserves Burn Through and Rate Hikes Loom",
+      "url": "https://247wallst.com/investing/2026/05/31/june-labeled-crunch-point-as-energy-reserves-burn-through-and-rate-hikes-loom/",
+      "source": "24/7 Wall St.",
+      "publishedAt": "2026-05-31T16:35:58Z",
+      "description": "The host of Reuters Morning Bid opened the week with a framing that might make investors pause. The current macro environment looks calmer on the surface...",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "macro_demand",
+          "us_inventory"
+        ],
+        "confidence": 0.55,
+        "key_quote": "June Labeled 'Crunch Point' as Energy Reserves Burn Through and Rate Hikes Loom",
+        "rationale": "Las subidas de tasas de interés comprimen la demanda macroeconómica industrial en USA, reduciendo consumo de crudo. La quema de reservas energéticas sugiere presión de oferta, pero el contexto de desaceleración económica por endurecimiento monetario es más relevante para WTI. El impacto es moderado (magnitude=2) porque la noticia es genérica sin datos específicos de inventarios EIA, producción shale o acciones OPEC+. Horizonte 30d refleja que los efectos de tasas se materializan con rezago.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:29.681712",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Iran conflict disrupts Gulf energy, impacts crude oil prices globally",
+      "url": "https://cryptobriefing.com/iran-conflict-disrupts-gulf-energy-impacts-crude-oil-prices-globally/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-31T10:02:22Z",
+      "description": "Geopolitical tensions in the Gulf could lead to sustained volatility in global energy markets, affecting economic stability worldwide.\nThe post Iran conflict disrupts Gulf energy, impacts crude oil prices globally appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Geopolitical tensions in the Gulf could lead to sustained volatility in global energy markets, affecting economic stability worldwide.",
+        "rationale": "Tensiones Iran-Gulf afectan directamente suministro de crudo. El Golfo Pérsico representa ~30% del flujo mundial de petróleo. Conflicto genera riesgo de disrupciones en producción/transporte, creando premium de riesgo. Impacto relevante pero sin evidencia de shocks inmediatos (bloqueos, ataques a infraestructura). Horizonte 7d por volatilidad esperada mientras se desarrolla situación. Confianza moderada-alta: fuente es secundaria (Crypto Briefing), falta detalle específico de escalada o impacto cuantificado en barriles.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:34.056244",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Draft US-Iran deal proposes reopening Hormuz, easing sanctions",
+      "url": "https://cryptobriefing.com/draft-us-iran-deal-proposes-reopening-hormuz-easing-sanctions/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-31T02:56:22Z",
+      "description": "The draft deal could stabilize regional tensions, potentially lowering oil prices and enhancing global energy security through diplomatic means.\nThe post Draft US-Iran deal proposes reopening Hormuz, easing sanctions appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 4,
+        "horizon": "30d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.75,
+        "key_quote": "The draft deal could stabilize regional tensions, potentially lowering oil prices and enhancing global energy security through diplomatic means.",
+        "rationale": "Un acuerdo US-Iran que reabre el Estrecho de Hormuz y flexibiliza sanciones eliminaría una prima de riesgo geopolítico significativa. Esto aumentaría la oferta potencial de crudo iranú (5-6 MMbbl/d bloqueados actualmente) y reduciría la volatilidad, presionando precios a la baja. El impacto es relevante pero condicionado a la materialización del acuerdo (draft). El horizonte es 30d porque requiere confirmación y implementación progresiva. Confianza 0.75 por la naturaleza de 'borrador' y complejidades diplomáticas.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:38.705561",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Strait of Hormuz closure threatens global oil supply amid Iran-US tensions",
+      "url": "https://cryptobriefing.com/strait-of-hormuz-closure-threatens-global-oil-supply-amid-iran-us-tensions/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-31T02:13:55Z",
+      "description": "The closure exacerbates global energy insecurity, potentially leading to oil shortages, price hikes, and heightened geopolitical tensions.\nThe post Strait of Hormuz closure threatens global oil supply amid Iran-US tensions appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.75,
+        "key_quote": "The closure exacerbates global energy insecurity, potentially leading to oil shortages, price hikes, and heightened geopolitical tensions.",
+        "rationale": "El cierre del Estrecho de Ormuz amenaza ~21% del suministro mundial de petróleo. Escenario de corte de suministro genera shock de oferta inmediato. Tensiones Irán-USA elevan prima de riesgo geopolítico. Impacto en demanda industrial USA por salto de precios, pero efecto oferta domina en corto plazo. WTI sube por reducción de flujos globales y aumento de volatilidad. Magnitud 4 (no es cierre confirmado=no es 5). Horizonte 7d: mercado reprecia rápidamente ante riesgo geopolítico.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:43.208858",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Strait of Hormuz oil exports unlikely to return to prewar levels amid tensions",
+      "url": "https://cryptobriefing.com/strait-of-hormuz-oil-exports-unlikely-to-return-to-prewar-levels-amid-tensions/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-30T13:06:01Z",
+      "description": "Geopolitical tensions in the Strait of Hormuz may lead to sustained higher oil prices, impacting global energy markets and economic stability.\nThe post Strait of Hormuz oil exports unlikely to return to prewar levels amid tensions appeared first on Crypto Bri…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "90d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Geopolitical tensions in the Strait of Hormuz may lead to sustained higher oil prices, impacting global energy markets and economic stability",
+        "rationale": "El Estrecho de Ormuz canaliza ~21% del petróleo mundial. Tensiones que reduzcan exportaciones por debajo de niveles preconflicto generan constricción de oferta estructural. Esto sostiene primas de riesgo geopolítico en WTI a mediano plazo (90d). El impacto es relevante pero no shock inmediato sin escalada acción (4/5). La confianza es moderada-alta (0.75) porque el titular es prospectivo ('unlikely to return') no confirmando disrupción actual, pero sí indicando persistencia de riesgo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:47.924003",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Parabolic Semiconductor Rally: What Breaks The Trade?",
+      "url": "https://realinvestmentadvice.com/resources/blog/parabolic-semiconductor-rally-what-breaks-the-trade/",
+      "source": "Realinvestmentadvice.com",
+      "publishedAt": "2026-05-30T09:16:00Z",
+      "description": " At a Glance\n\n\n<ul><!-- wp:list-item -->\r\n\n<li>Parabolic Semiconductor Rally: What Breaks The Trade?</li>\n\r\n\n\r\n\n<li>Market Brief & Technical Review</li>\n\r\n\n\r\n\n<li>From Lance's Desk: Dollar Dominance Remains Alive And Well (Part 1) - RIA</li>\n\r\n\n\r\n\n<li>Marke…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.1,
+        "key_quote": "Parabolic Semiconductor Rally: What Breaks The Trade?",
+        "rationale": "La noticia trata sobre rallies en semiconductores y análisis técnico de mercados amplios. No contiene información específica sobre inventarios EIA, producción shale, decisiones OPEC+, demanda industrial de petróleo o tensiones geopolíticas que afecten WTI. El sector semiconductor tiene correlación indirecta y débil con precios de crudo. Sin datos fundamentales relevantes para petróleo, el impacto es ruido de mercado.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:51.280443",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Oil prices tumble 11% for biggest weekly drop in 7 weeks. Where is liquid gold headed from here?",
+      "url": "https://economictimes.indiatimes.com/markets/commodities/news/oil-prices-tumble-11-for-biggest-weekly-drop-in-7-weeks-where-is-liquid-gold-headed-from-here/articleshow/131404176.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-30T05:08:32Z",
+      "description": "Global markets rallied as oil prices hit seven-week lows. Hopes for a peace deal between the US, Israel, and Iran eased inflation fears. Brent crude and WTI saw sharp declines. Diplomatic efforts continue, but differing descriptions of a potential deal persis…",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.85,
+        "key_quote": "Hopes for a peace deal between the US, Israel, and Iran eased inflation fears. Brent crude and WTI saw sharp declines.",
+        "rationale": "La desescalada geopolítica en Medio Oriente reduce el riesgo premium sobre WTI. La reducción de tensiones US-Israel-Irán elimina temores de disrupción de suministro y contención inflacionaria. La caída del 11% semanal refleja repricing de riesgo geopolítico. Impacto relevante pero reversible si negociaciones fracasan. Horizonte 7d por volatilidad diplomática pendiente.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:54.952119",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Pentagon chief warns US ready to resume strikes on Iran amid stalled talks",
+      "url": "https://cryptobriefing.com/pentagon-chief-warns-us-ready-to-resume-strikes-on-iran-amid-stalled-talks/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-30T04:02:54Z",
+      "description": "Increased U.S.-Iran tensions could disrupt global oil markets, heightening geopolitical instability and impacting international economic dynamics.\nThe post Pentagon chief warns US ready to resume strikes on Iran amid stalled talks appeared first on Crypto Bri…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Pentagon chief warns US ready to resume strikes on Iran amid stalled talks",
+        "rationale": "Escalation de tensiones US-Iran genera riesgo de disrupción en suministro global de petróleo. Iran es productor OPEC+ relevante (~3.5M bbl/d). Amenaza de strikes aumenta prima de riesgo geopolítico en WTI. Mercado precifica mayor volatilidad y posible reducción de oferta. El horizonte 7d refleja que talks stalled implica riesgo inmediato pero no certeza de acción militar. Confianza moderada-alta debido a historial de fluctuaciones sin escalada definitiva en este conflicto.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:37:59.095167",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "US imposes new Iran sanctions, impacting US-Iran deal prospects",
+      "url": "https://cryptobriefing.com/us-imposes-new-iran-sanctions-impacting-us-iran-deal-prospects/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-29T22:35:27Z",
+      "description": "The new US sanctions on Iran heighten geopolitical tensions, potentially hindering diplomatic progress and affecting global oil markets.\nThe post US imposes new Iran sanctions, impacting US-Iran deal prospects appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "geopolitics"
+        ],
+        "confidence": 0.72,
+        "key_quote": "The new US sanctions on Iran heighten geopolitical tensions, potentially hindering diplomatic progress and affecting global oil markets.",
+        "rationale": "Las nuevas sanciones a Irán aumentan tensiones geopolíticas y reducen probabilidad de acuerdo nuclear. Esto limita potencial incremento de exportaciones iraníes (actual ~2.5M bpd), manteniendo oferta global constringida. El riesgo de escalada regional (Estrecho de Ormuz) genera prima de riesgo en WTI. Efecto positivo en precios en horizonte 30d, aunque magnitud moderada dado que mercado ya precia parcialmente tensiones Irán. Confianza limitada (0.72) por ambigüedad en detalles de sanciones y respuesta OPEC+.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:38:03.512646",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "Japan crude imports plummet 66% amid Middle East supply disruptions",
+      "url": "https://cryptobriefing.com/japan-crude-imports-plummet-66-amid-middle-east-supply-disruptions/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-29T22:27:58Z",
+      "description": "Japan's import decline highlights global energy vulnerability, potentially driving up oil prices and emphasizing geopolitical risk impacts.\nThe post Japan crude imports plummet 66% amid Middle East supply disruptions appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "macro_demand"
+        ],
+        "confidence": 0.55,
+        "key_quote": "Japan's import decline highlights global energy vulnerability, potentially driving up oil prices and emphasizing geopolitical risk impacts",
+        "rationale": "La caída del 66% en importaciones japonesas señala disrupciones en Medio Oriente que reducen oferta global. Sin embargo, el impacto en WTI es limitado porque: (1) Japan representa ~3-4% de demanda global de crudo, (2) la noticia es indirecta (efecto regional, no directo en mercado US), (3) falta claridad sobre duración/magnitud de disrupciones de oferta OPEC+. El factor geopolítico es real pero la fuente (Crypto Briefing) sugiere cobertura financiera especulativa, no análisis de mercado energético especializado. Impacto moderado en horizonte corto si las disrupciones escalan a otros importadores o si OPEC+ responde con recortes adicionales.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:38:08.229385",
+        "_instrument": "WTI_N6"
+      }
+    },
+    {
+      "title": "The “Iran Deal” Deception",
+      "url": "https://dailyreckoning.com/the-iran-deal-deception/",
+      "source": "Dailyreckoning.com",
+      "publishedAt": "2026-05-29T22:00:55Z",
+      "description": "This post The “Iran Deal” Deception appeared first on Daily Reckoning.\nFor the 6th time, the crisis is over!\nThe post The “Iran Deal” Deception appeared first on Daily Reckoning.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "geopolitics"
+        ],
+        "confidence": 0.15,
+        "key_quote": "For the 6th time, the crisis is over!",
+        "rationale": "La noticia carece de contenido sustantivo sobre negociaciones del acuerdo nuclear iraní. Sin detalles sobre sanciones, restricciones de exportación de crudo iraní, o cambios en capacidad de producción, no hay fundamento para estimar impacto en oferta WTI. El tono sarcástico sugiere escepticismo sobre resoluciones de crisis, pero no proporciona información de mercado accionable. Requeriría confirmación de Reuters/Bloomberg sobre términos específicos para evaluar supply risk geopolítico.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:38:12.012309",
+        "_instrument": "WTI_N6"
+      }
+    }
+  ]
+}

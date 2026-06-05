@@ -1,31 +1,31 @@
 {
   "horizons": {
     "7d": {
-      "alpha": 0.0,
-      "delta": 15.798518899083142,
-      "n_train": 1134,
+      "alpha": 0.9,
+      "delta": 5.400033482909308,
+      "n_train": 1133,
       "n_val": 124,
       "val_metrics": {
-        "mae_rw": 22.7520866079616,
-        "mae_ens": 22.7520866079616,
+        "mae_rw": 22.355658975081745,
+        "mae_ens": 21.32770484076464,
+        "lift_pct": 4.598183106402246,
+        "coverage_pct": 79.83870967741935
+      },
+      "path": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\MVP\\artifacts\\horizons\\model_h7d.joblib"
+    },
+    "30d": {
+      "alpha": 0.0,
+      "delta": 48.77055308818817,
+      "n_train": 1133,
+      "n_val": 124,
+      "val_metrics": {
+        "mae_rw": 45.440204468508,
+        "mae_ens": 45.440204468508,
         "lift_pct": 0.0,
         "coverage_pct": 79.83870967741935
       },
-      "path": "artifacts/horizons\\model_h7d.joblib"
-    },
-    "30d": {
-      "alpha": 0.45,
-      "delta": 31.014458614587788,
-      "n_train": 1134,
-      "n_val": 124,
-      "val_metrics": {
-        "mae_rw": 58.48765467521104,
-        "mae_ens": 56.670294963948,
-        "lift_pct": 3.1072535244489696,
-        "coverage_pct": 79.83870967741935
-      },
-      "path": "artifacts/horizons\\model_h30d.joblib"
+      "path": "C:\\Users\\Lenovo\\OneDrive\\Escritorio\\MVP\\artifacts\\horizons\\model_h30d.joblib"
     }
   },
-  "trained_at": "2026-05-04T17:19:53"
+  "trained_at": "2026-06-05T12:41:03"
 }

@@ -1,14 +1,14 @@
 {
   "usda_projection_mmt": 103.0,
-  "exported_ytd_mmt": 38.11,
-  "pct_completed": 37.0,
+  "exported_ytd_mmt": 44.81,
+  "pct_completed": 43.5,
   "yoy_pct": 5.1,
-  "weekly_pace_mmt": 1.815,
-  "weeks_to_complete": 36.0,
-  "week_of_year": 21,
+  "weekly_pace_mmt": 1.948,
+  "weeks_to_complete": 30.0,
+  "week_of_year": 23,
   "signal": "NORMAL",
-  "interpretation": "Brasil export\u00f3 38.1 MMT (37.0% de proyecci\u00f3n USDA 103.0 MMT). Pace en l\u00ednea con expectativas estacionales. YoY: +5.1%.",
+  "interpretation": "Brasil export\u00f3 44.8 MMT (43.5% de proyecci\u00f3n USDA 103.0 MMT). Pace en l\u00ednea con expectativas estacionales. YoY: +5.1%.",
   "data_source": "seasonal_estimate",
   "monthly_breakdown": [],
-  "as_of": "2026-05-21"
+  "as_of": "2026-06-05"
 }

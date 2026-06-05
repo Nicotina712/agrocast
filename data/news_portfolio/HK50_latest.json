@@ -1,0 +1,42 @@
+{
+  "instrument": "HK50",
+  "fetched_at": "2026-06-02T01:53:41.700614+00:00",
+  "count": 5,
+  "articles": [
+    {
+      "title": "Show HN: Simple news aggregator with source bias meters",
+      "url": "https://unbiasthenews.com",
+      "source": "Unbiasthenews.com",
+      "publishedAt": "2026-05-29T18:21:24Z",
+      "description": "Article URL: https://unbiasthenews.com\nComments URL: https://news.ycombinator.com/item?id=48327194\nPoints: 2\n# Comments: 0"
+    },
+    {
+      "title": "Boeing could be the biggest winner on Trump’s trip to Beijing",
+      "url": "https://fortune.com/2026/05/14/boeing-china-500-planes-trump/",
+      "source": "Fortune",
+      "publishedAt": "2026-05-14T09:55:54Z",
+      "description": "Also: All the news and watercooler chat from Fortune."
+    },
+    {
+      "title": "AI boom keeping markets elevated despite geopolitical noise: Mark Matthews",
+      "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/ai-boom-keeping-markets-elevated-despite-geopolitical-noise-mark-matthews/articleshow/130884241.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-07T07:25:01Z",
+      "description": "Financial markets are increasingly prioritizing artificial intelligence-driven growth and corporate earnings over geopolitical tensions, according to Mark Matthews. He highlights extraordinary earnings, particularly in tech, fueling market highs despite Middl…"
+    },
+    {
+      "title": "HSBC first-quarter pre-tax profit misses estimates on wider-than-expected credit losses",
+      "url": "https://www.cnbc.com/2026/05/05/hsbc-q1-earnings-banking-finance.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-05T04:09:58Z",
+      "description": "Europe's largest lender HSBC on Tuesday reported first-quarter pre-tax profit of $9.4 billion, marginally missing analysts' estimates."
+    },
+    {
+      "title": "China’s investment-driven role in global growth is underestimated, study says",
+      "url": "https://www.scmp.com/economy/china-economy/article/3355562/chinas-investment-driven-role-global-growth-underestimated-study-says?utm_source=rss_feed",
+      "source": "https://www.scmp.com/rss/5/feed",
+      "publishedAt": "Mon, 01 Jun 2026 12:00:15 +0000",
+      "description": "China’s contribution to global growth is underestimated while the yuan is positioned to emerge as a fundamentally strong global currency, according to a new study from a prominent Beijing-based think tank.\nResearchers from the China Finance 40 Forum (CF40) – comprising senior regulators and financial experts – said the country’s investment scale could be as much as 3.4 times that of the United Sta"
+    }
+  ]
+}

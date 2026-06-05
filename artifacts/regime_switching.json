@@ -2,18 +2,18 @@
   "ok": true,
   "n_states": 2,
   "current_state": "low_vol",
-  "current_state_prob": 0.76,
+  "current_state_prob": 0.938,
   "state_probs_today": {
-    "low_vol": 0.76,
-    "high_vol": 0.24
+    "low_vol": 0.938,
+    "high_vol": 0.062
   },
   "regime_means": [
-    0.000718,
-    -0.002192
+    0.000654,
+    -0.002258
   ],
   "regime_sigmas": [
-    0.01057,
-    0.02297
+    0.01065,
+    0.02322
   ],
   "regime_labels_order": [
     "low_vol",
@@ -22,25 +22,25 @@
   "transition_matrix": [
     [
       [
-        0.9833445796697345
+        0.9836109360765023
       ],
       [
-        0.08012494784146756
+        0.08328917055896597
       ]
     ],
     [
       [
-        0.016655420330265458
+        0.016389063923497704
       ],
       [
-        0.9198750521585324
+        0.916710829441034
       ]
     ]
   ],
   "alpha_adjustment": 0.0,
   "alpha_advice": "mantener \u03b1 nominal (r\u00e9gimen estable)",
   "n_obs_fitted": 1499,
-  "log_likelihood": 4427.47,
-  "aic": -8842.94,
-  "bic": -8811.07
+  "log_likelihood": 4423.11,
+  "aic": -8834.22,
+  "bic": -8802.34
 }

@@ -1,0 +1,191 @@
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbUySY75aFHQeHynZXBJj'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbUzaxnycEiAorZ1E6PX8'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV1jMNs4yYQ3p4vV76Wt'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV2sj6AouocpFrUz4mXB'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV426mVW8zye2qLGBAnK'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV5AUmukPDnBVmsybJUZ'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV6Jrgs8vHAZQGRoT7Gf'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV7TEkWAvX3mTqZrXgwg'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\resources\messages\messages.py", line 1003, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1374, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_base_client.py", line 1147, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbV8bcQLbJA4RoFZC3zCZ'}
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 463, in main
+    args = parser.parse_args()
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\live_runner.py", line 332, in run_cycle
+  File "C:\Users\Lenovo\OneDrive\Escritorio\MVP\templates_nuevos_mercados\XAUUSD\agents.py", line 261, in call_trend_agent
+    resp = client.messages.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\anthropic\_utils\_utils.py", line 294, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^

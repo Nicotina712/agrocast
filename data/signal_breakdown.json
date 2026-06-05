@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": -0.52,
       "direction": "MUY BAJISTA",
-      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 126h)",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 406h)",
       "weight": 0.35,
       "raw": {
         "verdict": "SELL",
@@ -42,13 +42,13 @@
     },
     {
       "name": "Modelo ML (XGBoost 14d)",
-      "score": -0.42,
-      "direction": "BAJISTA",
-      "detail": "Retorno esperado: -8.41% \u00b7 Se\u00f1al: SELL \u00b7 Confianza: 16.8%",
+      "score": -1.0,
+      "direction": "MUY BAJISTA",
+      "detail": "Retorno esperado: -45.45% \u00b7 Se\u00f1al: SELL \u00b7 Confianza: 90.9%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.0841,
-        "confidence": 0.1681,
+        "expected_return": -0.4545,
+        "confidence": 0.9091,
         "signal": "SELL"
       }
     },
@@ -66,29 +66,29 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.024,
+      "score": 0.065,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1195.4 USc/bu \u00b7 Retorno: -0.2% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1135.3 USc/bu \u00b7 Retorno: +0.7% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1195.4268208049864,
-        "return_pct": -0.24
+        "forecast": 1135.2857932477564,
+        "return_pct": 0.65
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.044,
-      "direction": "NEUTRO",
-      "detail": "May: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-5.3%, +5.7%]",
+      "score": -0.192,
+      "direction": "BAJISTA",
+      "detail": "Jun: retorno hist\u00f3rico promedio -1.0% \u00b7 \u00b11\u03c3: [-7.6%, +5.7%]",
       "weight": 0.0,
       "raw": {
-        "month": 5,
-        "avg_pct": 0.22
+        "month": 6,
+        "avg_pct": -0.96
       }
     }
   ],
-  "composite_score": 32,
-  "composite_raw": -0.366,
+  "composite_score": 26,
+  "composite_raw": -0.482,
   "composite_signal": "SELL",
-  "as_of": "2026-05-24"
+  "as_of": "2026-06-05"
 }

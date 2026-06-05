@@ -1,8 +1,8 @@
 {
-  "p_model": 0.65,
+  "p_model": 0.0455,
   "p_llm": 0.5,
   "p_ie": null,
-  "p_ensemble": 0.65,
+  "p_ensemble": 0.0455,
   "w_model": 0.0,
   "w_llm": 0.0,
   "w_ie": 0.0,
@@ -10,9 +10,9 @@
   "ie_confidence": null,
   "model_hit_rate": null,
   "llm_hit_rate": 0.3077,
-  "disagreement": 0.15,
-  "abstain": false,
-  "signal_ensemble": "BUY",
+  "disagreement": 0.4545,
+  "abstain": true,
+  "signal_ensemble": "ABSTAIN",
   "signal_source": "ml_model",
-  "agreement_score": 0.85
+  "agreement_score": 0.5455
 }

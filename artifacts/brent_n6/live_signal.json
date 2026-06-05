@@ -1,0 +1,16 @@
+{
+  "signal": "FLAT",
+  "entry": null,
+  "sl": null,
+  "tp": null,
+  "lots": null,
+  "confidence": "LOW",
+  "rr": null,
+  "risk_usd": null,
+  "reasoning": "NO SETUP: Multiple risk factors compound to make this trade non-viable. (1) TIME: 18:45 CT is post-London close, outside prime 03:00-11:00 CT window. Volume ratio 0.44 confirms thin liquidity. (2) TREND: SIDEWAYS/WEAK per trend agent - no directional bias, price chopping in tight range. Setup type: NONE with LOW confidence. (3) VOLATILITY: ATR $0.231 is extremely compressed (below typical $0.30-1.80 range). Minimum $0.60 stop represents 2.6x current ATR - disproportionate to market movement. (4) POSITION: Price at $95.15 trapped between resistance $95.43 (session high) and support $95.00 (psychological) with only $0.28 upside before hitting ceiling. (5) CATALYSTS: All fundamental drivers unknown (EIA, OPEC, geopolitics, spreads). Trading blind without macro context in range-bound regime invites whipsaw. (6) RSI 52 neutral, BB% 62.8 mid-range, momentum decelerating - no conviction signals. Recommendation: Wait for London open tomorrow with higher volume, clearer directional break above $95.43 resistance or below $94.18 support, and fundamental clarity before risking capital.",
+  "oil_regime": "RANGE",
+  "brent_wti_spread": "STABLE",
+  "timestamp": "2026-06-05T10:33:18.320307",
+  "symbol": "BRENT_Q6",
+  "price": 95.15
+}

@@ -1,0 +1,327 @@
+{
+  "instrument": "ETHUSD",
+  "fetched_at": "2026-06-02T00:32:34.378976+00:00",
+  "count": 15,
+  "articles": [
+    {
+      "title": "Emerging roles of ferroptosis in modulating the immune landscape of glial tumours",
+      "url": "https://www.nature.com/articles/s41556-026-01972-2",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "This Review discusses the roles of ferroptosis in shaping the immune landscape in glial tumours and highlights potential strategies that combine ferroptosis induction with immunotherapy for a durable control of gliomas.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "This Review discusses the roles of ferroptosis in shaping the immune landscape in glial tumours",
+        "rationale": "Noticia de investigación oncológica en Nature sin relación alguna con Ethereum, blockchain, DeFi, regulación cripto, adopción institucional de ETH o macroeconomía relevante para criptoactivos. Sin impacto en ETHUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:11.648855",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Hydrophobic liquid electrolyte interphases for efficient aqueous zinc batteries",
+      "url": "https://www.nature.com/articles/s41565-026-02187-0",
+      "source": "Nature.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "A hydrophobic, electrode‑philic ether additive self‑assembles into a nanoscale liquid electrolyte interphase that decouples interfacial and bulk electrolyte behaviour, suppresses water‑driven parasitic reactions and enables efficient aqueous zinc batteries.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "hydrophobic liquid electrolyte interphases for efficient aqueous zinc batteries",
+        "rationale": "Esta noticia trata sobre avances en química de baterías de zinc acuosas, un campo completamente ajeno a Ethereum. No tiene relación con upgrades de red (Shanghai, Dencun), DeFi, regulación crypto, adopción institucional de ETH, correlación BTC o EIPs. Es investigación de materiales en Nature que no impacta la blockchain de Ethereum ni su ecosistema. Clasificado como ruido para ETHUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:17.678249",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Ethereum Bears In Pole Position: $1,850 Could Be The Next Landing Spot",
+      "url": "https://bitcoinist.com/ethereum-bears-in-pole-position-1850-landing-spot/",
+      "source": "Bitcoinist",
+      "publishedAt": "2026-05-31T23:30:15Z",
+      "description": "The price performance of Ethereum was disappointing for most of May, as the bears seemed to be in full control. It doesn’t seem like much will change for the “King of Altcoins” in the new month, which appears to be a mere continuation of the established downw…",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "macro_usd"
+        ],
+        "confidence": 0.45,
+        "key_quote": "The price performance of Ethereum was disappointing for most of May, as the bears seemed to be in full control",
+        "rationale": "El análisis técnico señala presión bajista continua con posible target en $1,850. Sin embargo, es un análisis de momentum sin catalizadores fundamentales concretos (no menciona upgrades, regulación o adopción institucional). La magnitude es baja porque es especulación técnica sin drivers estructurales. La confianza es moderada dado que depende de condiciones macro (USD) y sentimiento de corto plazo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:22.749086",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Trump Says He 'Saved' Crypto, But Did Bitcoin, Ethereum, XRP Actually Benefit?",
+      "url": "https://finance.yahoo.com/markets/crypto/articles/trump-says-saved-crypto-did-220041192.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-31T22:00:41Z",
+      "description": "President Trump on Wednesday posted on Truth Social that he saved the American crypto industry from Gary Gensler’s “Anti-Crypto Army,” declaring America is...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "regulation",
+          "institutional_adoption",
+          "macro_usd"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Trump posted on Truth Social that he saved the American crypto industry from Gary Gensler's 'Anti-Crypto Army,' declaring America is open for crypto",
+        "rationale": "La declaración de Trump sobre cambio regulatorio post-Gensler reduce incertidumbre de política anti-crypto en EE.UU. Esto beneficia a ETH por: (1) mejora de framework regulatorio para staking y DeFi, (2) facilita adopción institucional en mercado estadounidense, (3) claridad sobre tratamiento de smart contracts y tokens. El impacto es moderado porque es retórica política sin detalles específicos de EIP o upgrades técnicos. Horizon 30d captura implementación de políticas. Magnitude 3 (relevante pero no shock) porque depende de acciones concretas futuras.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:29.044380",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Web3 Has No Safe AI. DMind AI Just Quantified the Gap -- and KDD 2026 Made It Official.",
+      "url": "https://www.prnewswire.com/news-releases/web3-has-no-safe-ai-dmind-ai-just-quantified-the-gap--and-kdd-2026-made-it-official-302786392.html",
+      "source": "PRNewswire",
+      "publishedAt": "2026-05-31T22:00:00Z",
+      "description": "The first peer-reviewed Web3 AI benchmark tests 31 top models — including GPT-5, Claude, and Gemini — across 3,543 expert questions. The verdict: no system is ready for the field's highest-stakes tasks. SINGAPORE, May 31, 2026 /PRNewswire/ -- Medical AI has M…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "The first peer-reviewed Web3 AI benchmark tests 31 top models — including GPT-5, Claude, and Gemini — across 3,543 expert questions.",
+        "rationale": "La noticia trata sobre benchmarks de seguridad en IA para Web3, sin mención directa de upgrades de Ethereum, DeFi, regulación cripto, adopción institucional de ETH, correlación BTC o EIPs. Es contenido tangencial sobre infraestructura de IA que no impacta directamente valuación, tokenomics, utilidad de red o factores macro-cripto de ETH/USD. Clasificado como ruido de mercado.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:36.859440",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "HongCoin investors recover $2M in locked ETH after nine years",
+      "url": "https://cryptobriefing.com/hongcoin-investors-recover-locked-eth-nine-years/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-31T21:39:37Z",
+      "description": "The HongCoin recovery underscores the importance of updating legacy smart contracts to prevent vulnerabilities and protect investor funds.\nThe post HongCoin investors recover $2M in locked ETH after nine years appeared first on Crypto Briefing.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "The HongCoin recovery underscores the importance of updating legacy smart contracts to prevent vulnerabilities and protect investor funds.",
+        "rationale": "Se trata de una recuperación de fondos locked en un contrato antiguo (HongCoin), un evento histórico pero aislado sin implicaciones sistémicas para ETH. No afecta fundamentales de red, adopción institucional, regulación o DeFi en general. Es ruido positivo anecdótico que no mueve mercados.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:45.316180",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Bitcoin ETFs Post $1.42B Weekly Outflows To Close May Bloodbath",
+      "url": "https://bitcoinist.com/bitcoin-etfs-1-42b-weekly-outflows-bloodbath-may/",
+      "source": "Bitcoinist",
+      "publishedAt": "2026-05-31T21:30:53Z",
+      "description": "US Bitcoin Spot ETFs reported net outflows of $1.42 billion in the final week of May, extending the persistent negative trend observed throughout most of the month. The bearish performance by these investment funds aligns with Bitcoin’s price struggles, when …",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "macro_usd",
+          "institutional_adoption"
+        ],
+        "confidence": 0.55,
+        "key_quote": "US Bitcoin Spot ETFs reported net outflows of $1.42 billion in the final week of May, extending the persistent negative trend observed throughout most of the month",
+        "rationale": "Los outflows de Bitcoin ETFs señalan debilidad institucional y pérdida de confianza. Aunque la noticia es sobre BTC, ETH presenta correlación positiva con Bitcoin (~0.7-0.8), por lo que outflows masivos de capital institucional afectan negativamente el sentimiento general del mercado cripto. Sin embargo, el impacto es moderado ya que: 1) Ethereum posee narrativas de valor independiente (DeFi, upgrades), 2) Los retiros de mayo podrían ser profit-taking estacional, 3) La adopción institucional en ETH aún es inferior a BTC. El efecto es principalmente técnico-sentimental en el corto plazo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:50.593056",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Is Solana or XRP the Real Ethereum Killer?",
+      "url": "https://247wallst.com/investing/2026/05/31/is-solana-or-xrp-the-real-ethereum-killer/",
+      "source": "24/7 Wall St.",
+      "publishedAt": "2026-05-31T20:48:56Z",
+      "description": "Solana (CRYPTO: SOL) is now processing more weekly DEX volume than Ethereum (CRYPTO: ETH). XRP (CRYPTO: XRP) clears cross-border transactions in less than...",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "defi",
+          "macro_usd"
+        ],
+        "confidence": 0.45,
+        "key_quote": "Solana is now processing more weekly DEX volume than Ethereum",
+        "rationale": "La noticia sugiere pérdida de dominancia de ETH en volumen DEX semanal hacia Solana, afectando narrativa de liderazgo en DeFi. Sin embargo, el impacto es moderado porque: (1) volumen semanal es métrica volátil vs. TVL fundamentals, (2) Ethereum mantiene dominancia en valor total locked y ecosistema maduro, (3) no hay catalysts técnicos de red o regulatorios inmediatos. El sentiment es negativo en corto plazo pero sin crisis estructural.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:31:55.412530",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Dollar-Cost Averaging Strategy Explained: How Smart Crypto Investors Build Wealth in Volatile Markets",
+      "url": "https://bitcoinfoundation.org/news/blockchain-news/dollar-cost-averaging-strategy-explained-how-smart-crypto-investors-build-wealth-in-volatile-markets/",
+      "source": "Bitcoinfoundation.org",
+      "publishedAt": "2026-05-31T20:21:05Z",
+      "description": "Waiting pays off in crypto more than guessing the right moments. When prices sprint ahead, stories shift overnight, yet solid coins still crash deep before...\nThe post Dollar-Cost Averaging Strategy Explained: How Smart Crypto Investors Build Wealth in Volati…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "30d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Waiting pays off in crypto more than guessing the right moments",
+        "rationale": "Artículo educativo sobre estrategia de inversión (DCA) sin noticias fundamentales de ETH. No contiene información sobre upgrades de red, cambios regulatorios, adopción institucional, movimientos DeFi o eventos específicos que afecten el precio de ETHUSD. Es contenido genérico de divulgación financiera que no genera catalizadores de mercado directos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:00.746860",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Ruvi AI (RUVI) Introduces Staking in Its Latest Ecosystem Upgrade, Expanding Utility for Token Holders",
+      "url": "https://www.globenewswire.com/news-release/2026/05/31/3303947/0/en/Ruvi-AI-RUVI-Introduces-Staking-in-Its-Latest-Ecosystem-Upgrade-Expanding-Utility-for-Token-Holders.html",
+      "source": "GlobeNewswire",
+      "publishedAt": "2026-05-31T20:00:00Z",
+      "description": "DUBAI, United Arab Emirates, May 31, 2026 (GLOBE NEWSWIRE) -- Markets are pricing roughly 97.5% odds of no rate cut at the upcoming Federal Reserve meeting, so the Fed is widely expected to hold. Bitcoin recently dipped hard on risk-off liquidations before re…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Ruvi AI (RUVI) Introduces Staking in Its Latest Ecosystem Upgrade",
+        "rationale": "La noticia se enfoca en un token alterno (RUVI) no relacionado con Ethereum directamente. Aunque menciona presión macro (Fed, BTC liquidations), el core de la noticia carece de impacto directo en ETH: no trata upgrades de Ethereum, cambios en DeFi relevantes, regulación específica de ETH, o adopción institucional de Ethereum. El contexto macro (rates, BTC) es incidental y ya reflejado en mercados.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:06.592441",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "chroot-distro added to PyPI",
+      "url": "https://pypi.org/project/chroot-distro/",
+      "source": "Pypi.org",
+      "publishedAt": "2026-05-31T19:35:26Z",
+      "description": "chroot-distro is a lightweight Linux container management utility built around chroot.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "chroot-distro is a lightweight Linux container management utility built around chroot",
+        "rationale": "La noticia refiere a una utilidad de gestión de contenedores Linux en PyPI, sin conexión directa con Ethereum, DeFi, upgrades de red, regulación cripto o adopción institucional. No impacta métricas fundamentales de ETH ni cataliza movimientos de precio en horizontes relevantes.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:11.057403",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "pragmagraph added to PyPI",
+      "url": "https://pypi.org/project/pragmagraph/",
+      "source": "Pypi.org",
+      "publishedAt": "2026-05-31T19:27:52Z",
+      "description": "Standalone observed-fact graph substrate for code and document structure",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Standalone observed-fact graph substrate for code and document structure",
+        "rationale": "La adición de 'pragmagraph' a PyPI es una librería de Python para estructuras de grafos de código y documentos. No tiene relación directa con Ethereum, upgrades de red, DeFi, regulación, adopción institucional, correlación BTC o EIPs. Es un herramienta de desarrollo general sin impacto específico en la red Ethereum o su precio.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:15.337962",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "mmflow-sdk added to PyPI",
+      "url": "https://pypi.org/project/mmflow-sdk/",
+      "source": "Pypi.org",
+      "publishedAt": "2026-05-31T19:22:32Z",
+      "description": "Python SDK for the mmflow market-data API — REST, SSE streams, and a typed WebSocket client.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Python SDK for the mmflow market-data API — REST, SSE streams, and a typed WebSocket client",
+        "rationale": "La noticia refiere a una herramienta de desarrollador (SDK) para acceder a datos de mercado de mmflow. No tiene conexión directa con upgrades de Ethereum, cambios de red, DeFi protocol, regulación, adopción institucional o eventos macroeconómicos. Es un desarrollo técnico marginal de infraestructura sin impacto inmediato en la demanda, utilidad o narrativa de ETH. El potencial impacto es indirecto y de muy largo plazo si mejora el ecosistema de herramientas, pero extremadamente débil.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:20.621427",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Bitcoin’s First CME Gap-Free Monday Puts a Popular Trading Signal to the Test",
+      "url": "https://beincrypto.com/bitcoin-first-cme-gap-free-monday/",
+      "source": "BeInCrypto",
+      "publishedAt": "2026-05-31T17:46:49Z",
+      "description": "Bitcoin starts its first gap-free Monday as CME's 24/7 futures trading ends weekend gaps, testing a popular trader signal.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "macro_usd"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Bitcoin starts its first gap-free Monday as CME's 24/7 futures trading ends weekend gaps",
+        "rationale": "La noticia trata exclusivamente sobre cambios en la estructura de trading de futuros de Bitcoin en CME (operación 24/7 eliminando gaps de fin de semana). Este cambio afecta la dinámica técnica de BTC pero tiene impacto indirecto y marginal en ETH. Aunque existe correlación BTC-ETH, este es un evento estructural de microestructura de mercado sin catalíticos fundamentales (upgrade, regulación, DeFi, adopción institucional). No hay información específica sobre Ethereum, sus upgrades (EIP), ecosistema DeFi o desarrollos de red que justifiquen movimiento de precio en ETHUSD.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:28.112796",
+        "_instrument": "ETHUSD"
+      }
+    },
+    {
+      "title": "Kraken ‘plans’ regulated perp contracts as rivals are quick off the blocks",
+      "url": "https://cointelegraph.com/news/kraken-plans-regulated-perp-contracts-as-rivals-are-quick-off-the-blocks",
+      "source": "Cointelegraph",
+      "publishedAt": "2026-05-31T17:40:00Z",
+      "description": "While rivals like Kalshi and Coinbase were quick to respond to CFTC approval of US institutional trading in Bitcoin perpetual futures contracts, Kraken said it \"expects\" to launch within 30 days.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "30d",
+        "drivers": [
+          "regulation",
+          "institutional_adoption"
+        ],
+        "confidence": 0.25,
+        "key_quote": "Kraken said it 'expects' to launch within 30 days",
+        "rationale": "La noticia sobre Kraken planificando lanzar contratos perpetuos regulados es relevante para adopción institucional pero NO impacta directamente a ETH. La aprobación CFTC fue específicamente para futuros de Bitcoin, no Ethereum. El lanzamiento de derivados spot/perps de BTC en plataformas reguladas es un catalizador macro positivo para cripto en general (legitimación regulatoria) pero Kraken apenas 'espera' lanzar (sin confirmación clara ni timeline preciso). El efecto es indirecto, débil y ya parcialmente priced-in dado que Coinbase y Kalshi ya se movieron. Confianza baja: magnitude mínima por ser noticia sin impacto directo en ETH.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:32:34.065514",
+        "_instrument": "ETHUSD"
+      }
+    }
+  ]
+}

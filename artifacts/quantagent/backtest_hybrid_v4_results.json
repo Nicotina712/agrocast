@@ -1,0 +1,2787 @@
+{
+  "timestamp": "2026-05-24T12:07:16.223643",
+  "type": "v4_hybrid_backtest",
+  "config": {
+    "days": 200,
+    "capital": 1000.0,
+    "sample_hour": 11
+  },
+  "period": {
+    "start": "2025-07-31",
+    "end": "2026-05-15"
+  },
+  "v2_stats": {
+    "capital_final": 1195.3,
+    "total_pnl": 195.3,
+    "total_return_pct": 19.53,
+    "max_drawdown_pct": 4.6,
+    "active": 11,
+    "flat": 188,
+    "flat_rate": 94.5,
+    "wins": 8,
+    "losses": 3,
+    "win_rate": 72.7,
+    "avg_win": 31.6,
+    "avg_loss": -19.17,
+    "profit_factor": 4.4,
+    "sharpe": 7.47,
+    "exits": {
+      "timeout": 8,
+      "tp": 2,
+      "trailing_be": 1
+    },
+    "by_setup": {
+      "reversal": {
+        "n": 2,
+        "w": 2,
+        "pnl": 117.5
+      },
+      "breakout": {
+        "n": 8,
+        "w": 6,
+        "pnl": 105.3
+      },
+      "pullback": {
+        "n": 1,
+        "w": 0,
+        "pnl": -27.5
+      }
+    }
+  },
+  "v4_stats": {
+    "capital_final": 1200.3,
+    "total_pnl": 200.3,
+    "total_return_pct": 20.03,
+    "max_drawdown_pct": 10.13,
+    "active": 10,
+    "flat": 189,
+    "flat_rate": 95.0,
+    "wins": 5,
+    "losses": 5,
+    "win_rate": 50.0,
+    "avg_win": 65.06,
+    "avg_loss": -25.0,
+    "profit_factor": 2.6,
+    "sharpe": 6.43,
+    "exits": {
+      "timeout": 8,
+      "tp": 2
+    },
+    "by_setup": {
+      "pullback": {
+        "n": 1,
+        "w": 0,
+        "pnl": -7.5
+      },
+      "breakout": {
+        "n": 8,
+        "w": 4,
+        "pnl": 102.8
+      },
+      "reversal": {
+        "n": 1,
+        "w": 1,
+        "pnl": 105.0
+      }
+    }
+  },
+  "v4_trades": [
+    {
+      "day": "2025-07-31",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-01",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 1
+    },
+    {
+      "day": "2025-08-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "reversal",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1000.0,
+      "conf_factors": 1
+    },
+    {
+      "day": "2025-08-18",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "pullback",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1044.75,
+        "exit": 1044.0,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -0.75,
+        "pnl_usd": -7.5,
+        "pnl_pct": -0.75,
+        "mfe": 1.25,
+        "mae": -4.75,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 992.5,
+      "conf_factors": 3
+    },
+    {
+      "day": "2025-08-19",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-21",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-25",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-28",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-08-29",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-02",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-03",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-18",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 992.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-19",
+      "signal": "SHORT",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1025.5,
+        "exit": 1019.5,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 6.0,
+        "pnl_usd": 60.0,
+        "pnl_pct": 6.05,
+        "mfe": 6.75,
+        "mae": -1.75,
+        "bars_held": 8,
+        "be_activated": true,
+        "trail_activated": false
+      },
+      "cap": 1052.5,
+      "conf_factors": 2
+    },
+    {
+      "day": "2025-09-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-25",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-29",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-09-30",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-01",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-02",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-03",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1052.5,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-17",
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1036.25,
+        "exit": 1044.28,
+        "exit_type": "tp",
+        "contracts": 1,
+        "pnl_pts": 8.03,
+        "pnl_usd": 80.3,
+        "pnl_pct": 7.63,
+        "mfe": 2.25,
+        "mae": -0.25,
+        "bars_held": 3,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1132.8,
+      "conf_factors": 1
+    },
+    {
+      "day": "2025-10-20",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1050.0,
+        "exit": 1052.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 2.75,
+        "pnl_usd": 27.5,
+        "pnl_pct": 2.43,
+        "mfe": 3.75,
+        "mae": -1.0,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1160.3,
+      "conf_factors": 3
+    },
+    {
+      "day": "2025-10-21",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1160.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1160.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-23",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1060.5,
+        "exit": 1059.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -0.75,
+        "pnl_usd": -7.5,
+        "pnl_pct": -0.65,
+        "mfe": 2.5,
+        "mae": -2.0,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1152.8,
+      "conf_factors": 3
+    },
+    {
+      "day": "2025-10-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-28",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-29",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-30",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-10-31",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1152.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-03",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1132.5,
+        "exit": 1125.5,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -7.0,
+        "pnl_usd": -70.0,
+        "pnl_pct": -6.07,
+        "mfe": 3.25,
+        "mae": -7.75,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1082.8,
+      "conf_factors": 4
+    },
+    {
+      "day": "2025-11-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1082.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1082.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1082.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1082.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-10",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1128.75,
+        "exit": 1128.25,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -0.5,
+        "pnl_usd": -5.0,
+        "pnl_pct": -0.46,
+        "mfe": 3.25,
+        "mae": -4.0,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1077.8,
+      "conf_factors": 3
+    },
+    {
+      "day": "2025-11-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-18",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-19",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-21",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-25",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-11-28",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-01",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-02",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 1
+    },
+    {
+      "day": "2025-12-03",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-18",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-19",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1077.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-29",
+      "signal": "SHORT",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "SHORT",
+        "entry": 1063.5,
+        "exit": 1067.0,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": -3.5,
+        "pnl_usd": -35.0,
+        "pnl_pct": -3.25,
+        "mfe": 0.5,
+        "mae": -4.25,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1042.8,
+      "conf_factors": 2
+    },
+    {
+      "day": "2025-12-30",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1042.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2025-12-31",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1042.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-02",
+      "signal": "LONG",
+      "conf": "MEDIUM",
+      "setup": "reversal",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1027.5,
+        "exit": 1038.0,
+        "exit_type": "tp",
+        "contracts": 1,
+        "pnl_pts": 10.5,
+        "pnl_usd": 105.0,
+        "pnl_pct": 10.07,
+        "mfe": 1.75,
+        "mae": 0,
+        "bars_held": 2,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1147.8,
+      "conf_factors": 2
+    },
+    {
+      "day": "2026-01-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "pullback",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 1
+    },
+    {
+      "day": "2026-01-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-21",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-28",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-01-29",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-02",
+      "signal": "FLAT",
+      "conf": "MEDIUM",
+      "setup": "breakout",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 2
+    },
+    {
+      "day": "2026-02-03",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-18",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-19",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-25",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-02-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-02",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-03",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "none",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-18",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1147.8,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-19",
+      "signal": "LONG",
+      "conf": "HIGH",
+      "setup": "breakout",
+      "eval": {
+        "traded": true,
+        "direction": "LONG",
+        "entry": 1168.5,
+        "exit": 1173.75,
+        "exit_type": "timeout",
+        "contracts": 1,
+        "pnl_pts": 5.25,
+        "pnl_usd": 52.5,
+        "pnl_pct": 4.57,
+        "mfe": 6.0,
+        "mae": -3.5,
+        "bars_held": 8,
+        "be_activated": false,
+        "trail_activated": false
+      },
+      "cap": 1200.3,
+      "conf_factors": 3
+    },
+    {
+      "day": "2026-03-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-25",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-26",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-30",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-03-31",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-01",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-02",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-09",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-10",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-16",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-17",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-20",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-21",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-22",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-23",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-24",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-27",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-28",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-29",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-04-30",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-01",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-04",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-05",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-06",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-07",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-08",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-11",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-12",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-13",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-14",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    },
+    {
+      "day": "2026-05-15",
+      "signal": "FLAT",
+      "conf": "LOW",
+      "setup": "range",
+      "eval": {
+        "traded": false,
+        "pnl_usd": 0,
+        "pnl_pct": 0
+      },
+      "cap": 1200.3,
+      "conf_factors": 0
+    }
+  ]
+}

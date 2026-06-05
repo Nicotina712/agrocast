@@ -1,0 +1,301 @@
+{
+  "instrument": "Corn_N6",
+  "fetched_at": "2026-06-02T00:48:27.211341+00:00",
+  "count": 14,
+  "articles": [
+    {
+      "title": "AHL Notebook: Wilkes-Barre Scranton’s Embarrassing Playoff Attendance, Coaches On The Move, TJ Hughes & More",
+      "url": "https://thehockeynews.com/ahl/latest-news/ahl-notebook-wilkes-barre-scranton-s-embarrassing-playoff-attendance-coaches-on-the-move-tj-hughes-more",
+      "source": "The Hockey News",
+      "publishedAt": "2026-06-01T00:23:42Z",
+      "description": "The Wilkes-Barre Scranton Penguins aren't selling tickets despite an Eastern Conference Final appearance, and it's a bad look for the team and the league. Plus, a look at some assistant coaches to keep an eye on, TJ Hughes as a difference-maker for the Eagles…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Wilkes-Barre Scranton Penguins aren't selling tickets despite an Eastern Conference Final appearance",
+        "rationale": "La noticia trata sobre asistencia a partidos de hockey (AHL) y movimientos de entrenadores. No tiene relación alguna con fundamentos de maíz CBOT: no menciona USDA, clima, producción agrícola, demanda de etanol, China u otros factores relevantes para precios de commodities agrícolas. Es ruido completamente ajeno al mercado de granos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:39.829461",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Kellogg's Nutri Grain Choc Original Snack Bars (Pack of 5) $1.94 ($1.75 Sub & Save) + Delivery ($0 Prime/$59 Spend) @ Amazon AU",
+      "url": "https://www.ozbargain.com.au/node/961371",
+      "source": "Ozbargain.com.au",
+      "publishedAt": "2026-06-01T00:15:42Z",
+      "description": "61% off normal price after sub & save = $0.35 per 22g bar. Features: Kellogg's Nutri-Grain Choc snack bars are made with mini bolts of corn, oats, wheat, and a layer of choc. …",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Kellogg's Nutri Grain Choc Original Snack Bars ($1.94) made with mini bolts of corn, oats, wheat, and a layer of choc @ Amazon AU",
+        "rationale": "Noticia de promoción retail de barras de snack en Australia. No contiene información sobre oferta/demanda de maíz CBOT, reportes USDA, condiciones climáticas en Corn Belt, producción en Brasil/Argentina, demanda China, demanda de etanol o exportaciones desde Ucrania. Es contenido de e-commerce local sin relevancia fundamental para el mercado de futuros de maíz estadounidense.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:43.055648",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Omega-3s Linked to Increased Inflammation Markers",
+      "url": "https://articles.mercola.com/sites/articles/archive/2026/06/01/omega-3s-linked-to-increased-inflammation-markers.aspx",
+      "source": "Mercola.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "You’ve likely been told that omega-3s are your go-to remedy for inflammation — that taking fish oil will protect your heart, sharpen your brain, and extend your life. But what if the story isn’t that simple?\n\nFor years, the narrative around omega-3 fats has b…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "You've likely been told that omega-3s are your go-to remedy for inflammation — that taking fish oil will protect your heart, sharpen your brain, and extend your life.",
+        "rationale": "La noticia trata sobre salud humana y suplementos de omega-3 (aceite de pescado). No tiene relación directa con maíz CBOT, oferta/demanda agrícola, condiciones climáticas de productores, demanda de etanol a partir de maíz, o dinámicas geopolíticas de exportación. El contenido es de nutrición humana/salud, no de commodities agrícolas. Impacto negligible en el precio del maíz.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:46.558626",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Microplastics and Pharmaceuticals To Be Added to List of US Drinking Water Contaminants",
+      "url": "https://articles.mercola.com/sites/articles/archive/2026/06/01/microplastics-pharmaceuticals-drinking-water.aspx",
+      "source": "Mercola.com",
+      "publishedAt": "2026-06-01T00:00:00Z",
+      "description": "For years, concerns about microplastics and pharmaceutical residues in drinking water were treated as fringe worries; the kind of thing that made headlines briefly before fading from public attention. That era is over. Federal agencies are now formally acknow…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Federal agencies are now formally acknowledging microplastics and pharmaceutical residues in drinking water",
+        "rationale": "La noticia sobre contaminantes en agua potable (microplásticos y residuos farmacéuticos) no tiene impacto directo en los fundamentales del maíz CBOT. No afecta oferta/demanda de maíz, precios agrícolas, rendimientos de cosecha, demanda de etanol, exportaciones o dinámicas geopolíticas relevantes para el commodity. Potencial impacto muy indirecto y de largo plazo si afectara costos de irrigación, pero sin evidencia en la noticia.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:50.181451",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "HUGE Changes Hit Disney World Restaurants This Week",
+      "url": "https://www.disneyfoodblog.com/2026/05/31/huge-changes-hit-disney-world-restaurants-this-week/",
+      "source": "disneyfoodblog.com",
+      "publishedAt": "2026-05-31T22:00:20Z",
+      "description": "What a WEEK we’ve had in Disney World. SO much new stuff has arrived in the parks, like Rock ‘n’ Roller Coaster Starring the Muppets, Cool KIDS’ SUMMER, Bluey’s Wild World, and more. Some of these events even brought us some new food and drinks, including new…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "HUGE Changes Hit Disney World Restaurants This Week",
+        "rationale": "La noticia trata sobre cambios en restaurantes de Disney World y nuevas atracciones temáticas. No tiene relación alguna con mercados de commodities agrícolas, reportes USDA, condiciones climáticas en zonas productoras de maíz, demanda de etanol, exportaciones globales de granos, o dinámicas de oferta/demanda del maíz CBOT. Es contenido del sector entretenimiento/turismo completamente desvinculado del mercado de maíz.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:54.108508",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Amazing Color Photos Of The Great Depression In America (18 pics)",
+      "url": "https://izismile.com/2026/06/01/amazing_color_photos_of_the_great_depression_in_america_18_pics.html",
+      "source": "Izismile.com",
+      "publishedAt": "2026-05-31T22:00:17Z",
+      "description": "The depression originated in the United States, after a fall in stock prices that began around September 4, 1929. It was the longest, deepest, and most widespread depression of the 20th century. Take a look how it was in the USA.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "The depression originated in the United States, after a fall in stock prices that began around September 4, 1929.",
+        "rationale": "Noticia histórica sobre la Gran Depresión (1929). Sin información sobre oferta/demanda actual de maíz, reportes USDA, condiciones climáticas presentes, producción de Brasil/Argentina, demanda China, demanda de etanol, o exportaciones de Ucrania. No contiene datos fundamentales que afecten los precios CBOT de maíz en ningún horizonte temporal. Es contenido retrospectivo sin relevancia para análisis de mercado actual.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:47:57.434033",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Food Find: Mom’s Banana Puddin’",
+      "url": "https://trailcooking.com/2026/05/31/food-find-moms-banana-puddin/",
+      "source": "Trailcooking.com",
+      "publishedAt": "2026-05-31T21:10:48Z",
+      "description": "We reviewed PackitGourmet’s Mom’s Banana Puddin’ back in 2018, and that might as well be forever, am I right? Summer is on the way, and dessert is always a favorite thing after a hard day. Mom’s Banana Puddin’ is sold as a single-serving; sharing is easy – ju…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Mom's Banana Puddin' is sold as a single-serving; sharing is easy",
+        "rationale": "La noticia trata sobre un producto de postre de banana sin relevancia para mercados de commodities agrícolas. No contiene información sobre oferta/demanda de maíz, reportes USDA, condiciones climáticas en zonas productoras, demanda China, producción brasileña/argentina, demanda de etanol ni exportaciones de Ucrania. No impacta el precio del maíz CBOT.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:00.680631",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "REVIEW: Yep, We’re Gonna Need MORE Hot Cheetos on Epic Universe Snacks",
+      "url": "https://allears.net/2026/05/31/review-yep-were-gonna-need-more-hot-cheetos-on-epic-universe-snacks/",
+      "source": "allears.net",
+      "publishedAt": "2026-05-31T21:02:20Z",
+      "description": "We tried an all-new snack in Epic Universe at The Burning Blade Tavern!",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "We tried an all-new snack in Epic Universe at The Burning Blade Tavern!",
+        "rationale": "La noticia trata sobre un snack en un parque temático (Epic Universe). No contiene información sobre reportes USDA, condiciones climáticas en zonas productoras, producción de Brasil/Argentina, demanda china, demanda de etanol, exportaciones de Ucrania, o cualquier factor fundamental que afecte al maíz CBOT. Es ruido informativo sin relevancia para el precio del commodity.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:03.818768",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "REVIEW: This Epic Universe Snack is Served With A Shovel…And Honestly, It’s The Best Thing Ever",
+      "url": "https://www.disneyfoodblog.com/2026/05/31/review-this-epic-universe-snack-is-served-with-a-shovel-and-honestly-its-the-best-thing-ever/",
+      "source": "disneyfoodblog.com",
+      "publishedAt": "2026-05-31T21:01:24Z",
+      "description": "A new dip and chips have landed in Dark Universe.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "A new dip and chips have landed in Dark Universe.",
+        "rationale": "La noticia trata sobre un snack en un parque temático de Disney y no tiene relación con factores fundamentales del maíz CBOT: no menciona oferta/demanda global, reportes USDA, condiciones climáticas agrícolas, producción regional, demanda china, etanol o exportaciones. Es contenido de entretenimiento sin impacto en el mercado de commodities.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:06.858152",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "14.75-Ounce Amazon Grocery Canned Cream Style Corn $0.85 w/ S&S + Free Shipping w/ Prime or on $35+",
+      "url": "https://slickdeals.net/f/19580265-14-75-ounce-amazon-grocery-canned-cream-style-corn-0-85-w-s-s-free-shipping-w-prime-or-on-35",
+      "source": "Slickdeals.net",
+      "publishedAt": "2026-05-31T19:51:51Z",
+      "description": "Amazon [amazon.com] has *14.75-Ounce Amazon Grocery Canned Cream Style Corn* on sale for $0.89 - 5% off when you checkout via Subscribe & Save = *$0.85*. Shipping is free w/ Prime or on orders $35+.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "14.75-Ounce Amazon Grocery Canned Cream Style Corn $0.85 w/ S&S",
+        "rationale": "Esta noticia es un anuncio promocional de retail sobre maíz enlatado al consumidor final en Amazon. No tiene impacto en CBOT Corn porque: (1) es un producto procesado/valor agregado, no maíz commodity; (2) es una promoción puntual de descuento, no señal de oferta/demanda macro; (3) no refleja factores fundamentales del mercado (USDA, clima, producción, exportaciones, demanda industrial). El precio de maíz commodity se determina por supply/demand global, no por ofertas retail.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:12.328953",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "\"She Was Never The Same Again\": 16 First-Person Accounts Of What It Was Truly Like To Live Through The Great Depression",
+      "url": "https://www.buzzfeed.com/carleysuthers/older-people-share-great-depression-stories",
+      "source": "Buzzfeed",
+      "publishedAt": "2026-05-31T17:31:02Z",
+      "description": "\"It must have been dreadful for everyone, and my mom was traumatized for the rest of her life...\"View Entire Post ›",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "She Was Never The Same Again: 16 First-Person Accounts Of What It Was Truly Like To Live Through The Great Depression",
+        "rationale": "Noticia histórica sobre experiencias personales durante la Gran Depresión. Sin datos sobre oferta/demanda actual de maíz, clima del Corn Belt, producción sudamericana, demanda china/etanol, o dinámicas geopolíticas. No contiene información relevante para valorización de futuros de maíz CBOT.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:15.602874",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "Betty Crocker Cornbread and Muffin Mix, Pack of 9 – Just $7.57!",
+      "url": "https://www.commonsensewithmoney.com/betty-crocker-cornbread-muffin-mix-pack-9-just-7-57-2/",
+      "source": "Commonsensewithmoney.com",
+      "publishedAt": "2026-05-31T16:30:23Z",
+      "description": "Looking for some summer break lunch time deals – how about making corn bread or muffins? I love these! Check out the GREAT price! The price below is listed with the 15% Subscribe & Save savings! \nCheck out Amazon’s deal on th...",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Betty Crocker Cornbread and Muffin Mix, Pack of 9 – Just $7.57!",
+        "rationale": "Noticia sobre promoción de producto de consumo final (mezcla para panificación) sin relevancia para mercado CBOT. No contiene información sobre oferta/demanda agregada, reportes USDA, condiciones climáticas, producción global, demanda industrial o etanol. Es ruido de mercado que no impacta precios de commodities de maíz.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:19.459808",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "I drive from Canada to the US to shop at Trader Joe's. These 9 items make the trip worthwhile.",
+      "url": "https://www.businessinsider.com/trader-joes-favorite-things-to-buy-from-canadian-mom-2026-5",
+      "source": "Business Insider",
+      "publishedAt": "2026-05-31T12:37:01Z",
+      "description": "My family loves Trader Joe's, so twice a month, I drive from Canada to the US to buy items like the fettuccine Alfredo and pork gyoza potstickers.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "I drive from Canada to the US to buy items like the fettuccine Alfredo and pork gyoza potstickers",
+        "rationale": "La noticia trata sobre hábitos de consumo minorista de un consumidor canadiense en Trader Joe's. No contiene información sobre oferta/demanda de maíz, reportes USDA, condiciones climáticas en regiones productoras, producción en Brasil/Argentina, demanda china, demanda de etanol ni exportaciones desde Ucrania. Es un artículo de interés humano sin relevancia para los fundamentales del maíz CBOT.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:22.788552",
+        "_instrument": "Corn_N6"
+      }
+    },
+    {
+      "title": "The Rise Of The Blue-Chip Tortilla Chip",
+      "url": "https://www.forbes.com/sites/chloesorvino/2026/05/29/masa-ancient-crunch-rise-of-the-blue-chip-tortilla-chip/",
+      "source": "Forbes",
+      "publishedAt": "2026-05-31T10:00:00Z",
+      "description": "Thanks to a push from Joe Rogan, Tucker Carlson and MAHA influencers, Ancient Crunch sells 500,000 bags of its $13 seed-oil-free Masa chips every month. The founders hope to build the LVMH of healthy snack foods.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "90d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Ancient Crunch sells 500,000 bags of its $13 seed-oil-free Masa chips every month",
+        "rationale": "La noticia trata sobre una marca premium de chips de tortilla/masa que crece por influencers. Aunque usa maíz como materia prima, el volumen de 500k bolsas/mes es insignificante versus los millones de toneladas del mercado CBOT. No hay información sobre cambios en demanda agregada de maíz, precios pagados a productores, o impacto en suministro global. Es un dato de marketing empresarial sin relevancia material para futuros de maíz.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:48:26.909071",
+        "_instrument": "Corn_N6"
+      }
+    }
+  ]
+}

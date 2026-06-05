@@ -1,0 +1,20 @@
+{
+  "signal": "FLAT",
+  "entry": 30010,
+  "sl": 30100.03,
+  "tp": 29890,
+  "lots": 0.34,
+  "confidence": "MEDIUM",
+  "rr": 1.33,
+  "risk_usd": 20.4,
+  "reasoning": "Classic bear flag squeeze after waterfall decline. RSI 23.8 = deeply oversold but in distribution regime oversold can persist. Optimal short on mean-reversion bounce toward VWAP (30120) or EMA9 (30045). Entry zone 29990-30020 offers 2:1+ R/R targeting retest of session low 29942 then 29900 psychological. Volume ratio 0.32 shows exhaustion but sellers still control. Invalidation above 30050 (halfway to EMA9) where bears lose control. Note: 4.5 hours to close provides time for continuation. Watch for dead-cat bounce into 30000 resistance then fade. Tight stop critical given oversold RSI - countertrend rally risk exists but trend structure favors shorts on bounces. | Regime: HIGH | ATR5m: 69.07pts | DISTRIBUTION / NEUTRAL / RISK_OFF",
+  "ustec_regime": "DISTRIBUTION",
+  "ai_sentiment": "NEUTRAL",
+  "risk_on_off": "RISK_OFF",
+  "timestamp": "2026-06-05T10:36:44.134678",
+  "symbol": "USTEC",
+  "price": 29961.2,
+  "sl_enforced": true,
+  "sl_original": 30070.0,
+  "veto_reason": "SL expansion destroyed R:R: 1.33"
+}

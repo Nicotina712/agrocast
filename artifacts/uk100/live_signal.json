@@ -1,0 +1,20 @@
+{
+  "signal": "FLAT",
+  "entry": 10402.4,
+  "sl": 10381.5952,
+  "tp": 10442.4,
+  "lots": 1.01,
+  "confidence": "MEDIUM",
+  "rr": 1.92,
+  "risk_usd": 20.2,
+  "reasoning": "FTSE showing textbook bullish structure: breakout from tight EMA cluster, consistent higher lows (10385.9 → 10388.4 → 10392.2 → 10396.7), acceleration in recent bars (+0.04%, +0.10%, +0.22% sequential gains). Volume ratio at 0.32 is moderate but cumulative delta at +0.134 confirms net buying pressure. Current pullback to 10402.4 from 10416.4 session high offers entry near EMA cluster support zone. Prime London session time (09:52 CT = 14:52 BST) with 190 minutes remaining provides sufficient time for move development. Entry on pullback to 10395-10405 zone with stop below 10385 (confluence of prior consolidation low and EMA support). Target 10425-10450 (psychological resistance). Risk-on environment evident from upward momentum. ATR at 9.94 points supports 20-30 point initial target. Monitor for GBP strength which could cap upside, but current price action suggests institutional buying into London afternoon. | Regime: LOW | ATR5m: 9.94pts | BULL_TREND / NEUTRAL / RISK_ON",
+  "uk100_regime": "BULL_TREND",
+  "gbp_impact": "NEUTRAL",
+  "risk_on_off": "RISK_ON",
+  "timestamp": "2026-06-05T11:52:46.666776",
+  "symbol": "UK100",
+  "price": 10402.4,
+  "sl_enforced": true,
+  "sl_original": 10382.4,
+  "veto_reason": "SL expansion destroyed R:R: 1.92"
+}

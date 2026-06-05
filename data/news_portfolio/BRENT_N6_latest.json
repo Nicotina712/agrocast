@@ -1,0 +1,290 @@
+{
+  "instrument": "BRENT_N6",
+  "fetched_at": "2026-06-02T00:35:55.516931+00:00",
+  "count": 13,
+  "articles": [
+    {
+      "title": "Oil prices jump over 2% as Israel intensifies military operations in Lebanon",
+      "url": "https://www.thehindubusinessline.com/markets/commodities/oil-prices-jump-over-2-as-israel-intensifies-military-operations-in-lebanon/article71046769.ece",
+      "source": "BusinessLine",
+      "publishedAt": "2026-06-01T00:33:04Z",
+      "description": "Oil prices surged over 2% as Israel intensified operations in Lebanon, raising fears of supply disruptions and renewed risks in the Strait of Hormuz.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "supply_disruption"
+        ],
+        "confidence": 0.85,
+        "key_quote": "Oil prices surged over 2% as Israel intensified operations in Lebanon, raising fears of supply disruptions and renewed risks in the Strait of Hormuz",
+        "rationale": "Escalada militar en Líbano genera riesgo de contagio regional hacia el Estrecho de Hormus (chokepoint crítico: 21% del petróleo global). Temor a interrupción de suministro y potencial cierre de rutas marítimas. Impacto inmediato en prima de riesgo geopolítico. Efecto relevante pero con duración limitada a resolución del conflicto (7-30 días)",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:34:49.508756",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Oil prices rise more than 2% as Israel steps up incursion into Lebanon",
+      "url": "https://economictimes.indiatimes.com/markets/commodities/news/oil-prices-rise-more-than-2-as-israel-steps-up-incursion-into-lebanon/articleshow/131431610.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:31:33Z",
+      "description": "Oil prices surged over 2% as intensified fighting between Israel and Hezbollah in Lebanon overshadowed hopes for a ceasefire extension with Iran. Stepped-up conflict, despite a prior truce, dimmed expectations for a deal, while concerns over mines in the Stra…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "supply_disruption"
+        ],
+        "confidence": 0.85,
+        "key_quote": "Oil prices surged over 2% as intensified fighting between Israel and Hezbollah in Lebanon overshadowed hopes for a ceasefire extension with Iran",
+        "rationale": "Escalación de tensiones Israel-Hezbollah-Irán en Medio Oriente eleva riesgo de disrupción en suministros críticos. La región es estratégica para flujos petrolíferos globales. Fracaso de negociaciones de tregua con Irán reduce probabilidad de alivio geopolítico. Minas en Estrecho (presumiblemente Ormuz) amenazan rutas marítimas vitales. El movimiento de +2% refleja repricing inmediato de prime de riesgo. Efecto sustancial pero no shock total por ser escalada parcial. Horizonte 7d por potencial de evolución rápida de conflicto.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:34:55.676869",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "US stock Market on Monday: S&P 500, Dow Jones, Nasdaq to jump big on June 1? Here are critical factors",
+      "url": "https://economictimes.indiatimes.com/news/international/us/us-stock-market-on-monday-sp-500-dow-jones-nasdaq-to-jump-big-on-june-1-here-are-critical-factors/articleshow/131431569.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:30:20Z",
+      "description": "Nasdaq, S&P 500, Dow Jones investors must know that MSCI's ​gauge of stocks across the globe rose 5.75 points, or 0.51 per cent, to 1,130.47.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "macro_demand"
+        ],
+        "confidence": 0.15,
+        "key_quote": "MSCI's gauge of stocks across the globe rose 5.75 points, or 0.51 per cent, to 1,130.47",
+        "rationale": "La noticia trata sobre mercados accionarios globales (S&P 500, Dow Jones, Nasdaq) sin mencionar específicamente factores que afecten la oferta o demanda de crudo Brent. Un movimiento alcista moderado en índices globales podría sugerir mejora en sentimiento de riesgo y potencial demanda de energía, pero el impacto es indirecto y débil. No hay información sobre OPEC+, geopolítica energética, sanciones, inventarios EIA, datos de China u otros drivers críticos del petróleo. El artículo no proporciona suficiente evidencia de impacto en Brent.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:01.273215",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Oil, Dollar Climb With US-Iran Deal Still Elusive: Markets Wrap",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-dollar-climb-with-us-iran-deal-still-elusive-markets-wrap",
+      "source": "Financial Post",
+      "publishedAt": "2026-06-01T00:27:26Z",
+      "description": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "sanctions"
+        ],
+        "confidence": 0.75,
+        "key_quote": "tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough",
+        "rationale": "La ausencia de progreso en negociaciones US-Irán mantiene elevada la prima de riesgo geopolítico en el Brent. Tensiones sin resolver en Medio Oriente históricamente soportan precios de crudo por temor a interrupciones de suministro (Irán es productor significativo, aunque sancionado). El fortalecimiento del dólar contrarresta parcialmente el efecto bullish, pero el factor geopolítico domina el movimiento de corto plazo. Impacto moderado-relevante en 7 días; si las tensiones se intensifican, podría escalar a magnitude 4-5.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:06.463718",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Nifty has a positive undertone, but Street waits for a decisive breakout",
+      "url": "https://economictimes.indiatimes.com/markets/stocks/news/nifty-has-a-positive-undertone-but-street-waits-for-a-decisive-breakout/articleshow/131431525.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-06-01T00:18:47Z",
+      "description": "Nifty is trading in a consolidation zone between 23,200 and 24,050. Analysts suggest buying on dips with a target of 23,900. Key sectors like banking and auto are showing strength. Specific stock recommendations include Tata Power, Sona BLW, L&T, Indian Energ…",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "other"
+        ],
+        "confidence": 0.05,
+        "key_quote": "Nifty is trading in a consolidation zone between 23,200 and 24,050",
+        "rationale": "La noticia trata exclusivamente sobre el índice Nifty (mercado accionario indio) y recomendaciones de acciones específicas. No contiene información relevante sobre oferta/demanda de petróleo Brent, decisiones OPEC+, tensiones geopolíticas en Medio Oriente, sanciones a Rusia/Irán, inventarios EIA, demanda china de crudo, o disrupciones en rutas marítimas. El movimiento del Nifty tiene correlación muy débil y no causal con Brent en horizontes cortos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:11.707939",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Oil Climbs, Dollar Strengthens With No Iran Deal: Markets Wrap",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-climbs-dollar-strengthens-with-no-iran-deal-markets-wrap",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-31T23:41:09Z",
+      "description": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "sanctions"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Oil climbed and the dollar strengthened as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+        "rationale": "La ausencia de acuerdo nuclear US-Iran mantiene incertidumbre sobre sanciones a producción iraní y riesgo geopolítico en Medio Oriente. Esto sostiene premio de riesgo en Brent. El fortalecimiento del dólar es efecto secundario, pero presiona demanda en largo plazo. Horizonte 7d por potencial escalada o cambios en negociaciones.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:16.841695",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Oil Rises From Six-Week Low Amid Uncertainty Over US-Iran Deal",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-rises-from-six-week-low-amid-uncertainty-over-us-iran-deal-2",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-31T23:15:41Z",
+      "description": "Oil rose from a six-week low amid uncertainty over the outlook for a peace deal to end the war in Iran.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "sanctions"
+        ],
+        "confidence": 0.65,
+        "key_quote": "Oil rose from a six-week low amid uncertainty over the outlook for a peace deal to end the war in Iran",
+        "rationale": "La incertidumbre sobre un acuerdo US-Iran genera volatilidad. Si se logra un deal, podría aumentar la oferta de crudo iranî (actualmente bajo sanciones), presionando precios a la baja. El repunte desde mínimos de 6 semanas sugiere compras técnicas y cobertura de riesgos geopolíticos. El impacto es moderado porque: (1) la noticia es sobre uncertainty, no confirmación de acuerdo, (2) no hay cierre de rutas ni disrupciones inmediatas de suministro, (3) el movimiento es recuperación técnica desde sobrevendido. Horizonte 7d por la volatilidad esperada mientras se negocian términos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:22.215292",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Wall Street may have solved a nagging mystery in global oil markets as doomsday scenarios have yet to arrive",
+      "url": "https://fortune.com/2026/05/31/oil-prices-mystery-supply-iran-war-inventories-china-stockpiles-refinery-imports/",
+      "source": "Fortune",
+      "publishedAt": "2026-05-31T22:40:09Z",
+      "description": "China has quietly emerged as the global oil market's stealthy swing consumer, potentially holding off doomsday a while longer.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "macro_demand",
+          "other"
+        ],
+        "confidence": 0.55,
+        "key_quote": "China has quietly emerged as the global oil market's stealthy swing consumer, potentially holding off doomsday a while longer",
+        "rationale": "La noticia sugiere que China está moderando su demanda de petróleo de manera flexible, actuando como consumidor 'swing' que evita crisis de oferta. Esto implica que no hay presión alcista inmediata por escasez de demanda global, pero tampoco impulsa precios al alza. El tono de 'doomsday scenarios have yet to arrive' indica que mercados esperaban perturbaciones de suministro que no se materializaron, reduciendo urgencia compradora. Impacto bajista moderado: debilita narrativa de déficit de oferta a corto plazo. Confianza moderada: la noticia es interpretativa sobre comportamiento chino sin datos cuantitativos específicos de compras o inventarios.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:28.743851",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Oil Climbs as US-Iran Ceasefire Remains Elusive: Markets Wrap",
+      "url": "https://financialpost.com/pmn/business-pmn/oil-climbs-as-us-iran-ceasefire-remains-elusive-markets-wrap",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-31T22:34:38Z",
+      "description": "Oil climbed as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "supply_disruption"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Oil climbed as tensions remained elevated in the Middle East, with negotiations over a permanent US-Iran ceasefire showing little sign of a breakthrough.",
+        "rationale": "Las tensiones geopolíticas sostenidas entre EE.UU. e Irán generan prima de riesgo en Brent. La falta de progreso en negociaciones de tregua mantiene abierto el escenario de escalada, incluyendo riesgo de disrupciones de suministro (Estrecho de Ormuz, instalaciones iraníes). Esto sostiene demanda defensiva de crudo. Sin embargo, magnitude=3 refleja que no hay evento disruptivo confirmado aún, solo tensión elevada que presiona precios moderadamente en horizontes cortos (1-7 días).",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:34.604797",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Stock market today: Live updates",
+      "url": "https://www.cnbc.com/2026/05/31/stock-market-today-live-updates.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-31T22:02:57Z",
+      "description": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "macro_demand"
+        ],
+        "confidence": 0.15,
+        "key_quote": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+        "rationale": "La noticia trata sobre desempeño general de mercados accionarios sin mencionar factores específicos de oferta/demanda de petróleo, geopolítica energética, inventarios, OPEC+, sanciones o tensiones en el Medio Oriente. Aunque mercados alcistas podrían sugerir mayor demanda macroeconómica futura, es demasiado genérico y no proporciona data cuantitativa de demanda de crudo. El impacto en Brent es marginal y especulativo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:39.263738",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Wall Street Risk Rally Powers Past War Stalemate",
+      "url": "https://financialpost.com/pmn/business-pmn/wall-street-risk-rally-powers-past-war-stalemate-2",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-31T21:28:14Z",
+      "description": "Three months into the Iran war, it has become all but impossible to damp the bullish spirit driving global markets for risky assets.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics"
+        ],
+        "confidence": 0.25,
+        "key_quote": "Three months into the Iran war, it has become all but impossible to damp the bullish spirit driving global markets for risky assets.",
+        "rationale": "La noticia menciona un conflicto Irán-Israel en estancamiento que no está generando disrupciones de suministro observables ni cambios en la estructura de oferta/demanda de petróleo. El sentimiento alcista en Wall Street hacia activos de riesgo típicamente favorecería demanda de commodities, pero la frase sugiere normalización del conflicto (stalemate) sin escalada que presione precios. Falta información específica sobre cierres de estrechos, sanciones nuevas, o decisiones OPEC+ que justifiquen movimiento direccional fuerte en Brent.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:45.056451",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "May rewired global energy markets",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/may-rewired-global-energy-markets-163050787.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-31T16:30:50Z",
+      "description": "(By Oil & Gas 360) – May was supposed to be about stabilization. Instead, it became another month dominated by geopolitical disruption, […]",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "geopolitics",
+          "supply_disruption"
+        ],
+        "confidence": 0.65,
+        "key_quote": "May was supposed to be about stabilization. Instead, it became another month dominated by geopolitical disruption",
+        "rationale": "La noticia señala que mayo estuvo marcado por disrupciones geopolíticas inesperadas en lugar de estabilización esperada. Esto típicamente presiona alcista el Brent debido a: (1) incertidumbre sobre oferta global, (2) riesgo de cortes de suministro en regiones productoras clave, (3) prima de riesgo geopolítico. Sin embargo, la confianza moderada (0.65) refleja que falta especificidad sobre qué disrupciones exactas y su magnitud relativa. El horizonte de 30d es apropiado para que estas tensiones geopolíticas se trasladen a datos de producción y flujos comerciales verificables.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:50.181999",
+        "_instrument": "BRENT_N6"
+      }
+    },
+    {
+      "title": "Many big oil tankers remain stuck in the Strait of Hormuz &#x2014; and may not return once they escape",
+      "url": "https://www.marketwatch.com/story/many-big-oil-tankers-remain-stuck-in-strait-of-hormuz-and-may-not-return-once-they-escape-5b344e49?mod=mw_rss_topstories",
+      "source": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "publishedAt": "Mon, 01 Jun 2026 21:27:00 GMT",
+      "description": "There&#x2019;s doubt massive tankers, once the backbone of global crude flows, will be returning in quite the same numbers to the Middle East.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 4,
+        "horizon": "30d",
+        "drivers": [
+          "supply_disruption",
+          "geopolitics",
+          "other"
+        ],
+        "confidence": 0.85,
+        "key_quote": "There's doubt massive tankers, once the backbone of global crude flows, will be returning in quite the same numbers to the Middle East.",
+        "rationale": "El bloqueo de grandes tanqueros en el Estrecho de Hormuz reduce la capacidad de transporte de crudo desde Medio Oriente (25-30% del suministro global). Si los buques no regresan en números similares, se crea un cuello de botella estructural que eleva costos de flete y restringe oferta física. Esto presiona al alza Brent en horizontes de 30-90 días. El factor geopolítico (ataques Houthis/tensiones regionales) agrega persistencia al shock. Magnitude=4 por impacto material en logística de suministro sin ser colapso total.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:35:55.214076",
+        "_instrument": "BRENT_N6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+{
+  "instrument": "US30",
+  "fetched_at": "2026-06-02T00:41:03.799584+00:00",
+  "count": 16,
+  "articles": [
+    {
+      "title": "Stock market today: Live updates",
+      "url": "https://www.cnbc.com/2026/05/31/stock-market-today-live-updates.html",
+      "source": "CNBC",
+      "publishedAt": "2026-05-31T22:02:57Z",
+      "description": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+      "intel": {
+        "price_impact": "neutral",
+        "magnitude": 1,
+        "horizon": "1d",
+        "drivers": [
+          "us_macro"
+        ],
+        "confidence": 0.2,
+        "key_quote": "Stocks wrapped up a strong May, with all three major indexes posting solid gains.",
+        "rationale": "Noticia genérica de cierre mensual sin datos específicos macro, decisiones de política monetaria, resultados corporativos o eventos geopolíticos concretos. La afirmación de 'ganancias sólidas' es retrospectiva y no proporciona catalizadores nuevos para movimiento futuro del Dow Jones. Falta información cuantitativa, contexto sobre drivers específicos o expectativas forward-looking.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:39:53.215503",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "What is US stock market prediction for Monday? Wall street ends at record highs as AI stocks and Dell lead market rally",
+      "url": "https://economictimes.indiatimes.com/news/international/us/what-is-us-stock-market-prediction-for-monday-wall-street-ends-at-record-highs-as-ai-stocks-and-dell-lead-market-rally/articleshow/131407211.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-30T10:05:38Z",
+      "description": "What is US stock market prediction for Monday? US stock market prediction for Monday remains linked to momentum from Wall Street's latest record close. Major indexes ended Friday, the week, and the month with gains. Technology stocks led the rally after Dell …",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "1d",
+        "drivers": [
+          "us_macro",
+          "earnings"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Major indexes ended Friday, the week, and the month with gains. Technology stocks led the rally after Dell",
+        "rationale": "El cierre en máximos históricos con liderazgo de tecnología (Dell, AI stocks) genera momentum positivo para apertura del lunes. El Dow Jones tiene exposición a mega-cap tech (Apple, Microsoft, Nvidia indirectamente). El patrón de ganancias semanales/mensuales típicamente sostiene rally el siguiente sesión. Sin embargo, la magnitud es moderada (3) porque: (1) es momentum corto plazo sin catalizadores macro nuevos, (2) falta claridad sobre NFP/CPI próximos, (3) riesgos de aranceles/geopolítica aún sin resolución. Confianza moderada (0.72) dado que la noticia es cualitativa y carece de datos cuantitativos específicos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:39:58.308246",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Wall Street ends higher, crude prices ease on potential US-Iran truce extension",
+      "url": "https://finance.yahoo.com/news/oil-eyes-weekly-drop-hormuz-020658431.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-29T20:42:17Z",
+      "description": "By Stephen Culp NEW YORK, May 29 (Reuters) - U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.65,
+        "key_quote": "U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a... [on potential US-Iran truce extension]",
+        "rationale": "La potencial extensión de tregua US-Iran reduce riesgo geopolítico y presión inflacionaria por petróleo. Menor volatilidad de commodities favorece el Dow Jones (componentes energéticas y defensivas se estabilizan). El movimiento es moderado porque: (1) es especulativo ('potential'), (2) el impact macro es secundario vs. decisiones Fed, (3) el mercado ya está pricing parte del escenario. Confianza moderada por falta de confirmación oficial y dependencia de resolución de negociaciones.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:02.479727",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "US stocks today: US stocks hits new closing highs on tech strength, Middle East deal hopes",
+      "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/us-stocks-today-us-stocks-hits-new-closing-highs-on-tech-strength-middle-east-deal-hopes/articleshow/131398367.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-29T20:04:43Z",
+      "description": "Wall Street ended at record highs on Friday, driven by strong tech earnings and optimism around AI-led growth. Dell’s upbeat forecast lifted chip and software stocks, while investors tracked developments on a potential US-Iran deal. Despite inflation concerns…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "earnings",
+          "us_macro",
+          "geopolitics"
+        ],
+        "confidence": 0.75,
+        "key_quote": "Wall Street ended at record highs on Friday, driven by strong tech earnings and optimism around AI-led growth. Dell's upbeat forecast lifted chip and software stocks",
+        "rationale": "El Dow Jones se beneficia de ganancias corporativas sólidas en tech (Dell) que impulsan sectores amplios como semiconductores y software. La fortaleza en earnings corporativas es fundamentalmente positiva para valuaciones. El optimismo geopolítico sobre un potencial acuerdo US-Iran reduce riesgo de escenarios de estrés. Sin embargo, las preocupaciones inflacionarias mencionadas limitan el upside a mediano plazo. La magnitud es relevante (3) ya que combina tres drivers positivos pero sin ser un catalizador de shock.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:06.476777",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Stocks rise as Trump heads to Situation Room for final determination on Iran deal",
+      "url": "https://cryptobriefing.com/stocks-rise-trump-iran-deal-determination/",
+      "source": "Crypto Briefing",
+      "publishedAt": "2026-05-29T17:31:09Z",
+      "description": "The potential de-escalation in US-Iran tensions could stabilize global markets, but the lack of sanctions relief raises questions about long-term viability.\nThe post Stocks rise as Trump heads to Situation Room for final determination on Iran deal appeared fi…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.65,
+        "key_quote": "The potential de-escalation in US-Iran tensions could stabilize global markets",
+        "rationale": "La de-escalación de tensiones geopolíticas US-Iran reduce prima de riesgo global, favoreciendo apetito por riesgo en equities. El Dow Jones se beneficia de menor volatilidad de energía y menor demanda de activos safe-haven. Sin embargo, la falta de alivio de sanciones limita upside a largo plazo y genera incertidumbre sobre sostenibilidad del acuerdo, conteniendo el movimiento alcista en magnitud 3 (relevante pero no shock). Impacto principal en 7 días mientras se define la posición final de Trump.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:10.310074",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Wall Street follows global stocks higher, crude prices ease on potential US-Iran truce extension",
+      "url": "https://www.channelnewsasia.com/business/wall-street-follows-global-stocks-higher-crude-prices-ease-potential-us-iran-truce-extension-6148811",
+      "source": "CNA",
+      "publishedAt": "2026-05-29T15:16:11Z",
+      "description": "NEW YORK, May 29 : The S&P 500 followed world shares higher and crude prices retreated on Friday as investors neared the end of a holiday-shortened week with renewed hopes of progress toward a peaceful resolution to the Iran war.The Dow joined the S&P 500 in …",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.72,
+        "key_quote": "crude prices retreated on Friday as investors neared the end of a holiday-shortened week with renewed hopes of progress toward a peaceful resolution to the Iran war",
+        "rationale": "La reducción de tensión geopolítica en Irán alivia el riesgo premium de petróleo, mejorando el sentimiento global de riesgo. Esto beneficia al Dow a través de: 1) Costos energéticos más bajos para empresas, mejorando márgenes corporativos; 2) Reducción de volatilidad en mercados globales, favoreciendo entrada de capital; 3) Alineación con movimiento alcista de S&P 500 y acciones globales. El impacto es moderado (magnitude 3) porque depende de la confirmación del acuerdo y afecta indirectamente; el horizonte 7d refleja que los mercados pueden revaluar rápidamente si las negociaciones se rompen. La confianza 0.72 refleja que es positiva pero requiere seguimiento de desarrollos diplomáticos.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:14.813442",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Wall Street follows world stocks higher, crude prices ease on potential US-Iran truce extension",
+      "url": "https://www.channelnewsasia.com/business/wall-street-follows-world-stocks-higher-crude-prices-ease-potential-us-iran-truce-extension-6148811",
+      "source": "CNA",
+      "publishedAt": "2026-05-29T15:16:11Z",
+      "description": "NEW YORK, May 29 : U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a holiday-shortened week with renewed hopes of progress toward a peaceful resolution to the Iran war.A narrow, tech-led rally lifte…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.65,
+        "key_quote": "U.S. stocks followed world shares higher and crude prices retreated on Friday as investors neared the end of a holiday-shortened week with renewed hopes of progress toward a peaceful resolution to the Iran war",
+        "rationale": "La noticia refleja un alivio de tensión geopolítica (potencial tregua US-Iran) que reduce el riesgo de escalada y presión inflacionaria por commodities. La baja en precios de crudo favorece márgenes corporativos y disminuye presión sobre política Fed. Sin embargo, el impacto es moderado porque: (1) es especulativo ('renewed hopes'), (2) el rally está liderado por tech (sector específico, no confirmación broad-based), (3) efecto de viernes en semana acortada con volumen reducido. El Dow Jones, con exposición a energía y financieras, podría beneficiarse modestamente pero el momentum es frágil. Horizonte 7d dado que sentimiento geopolítico es volátil.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:19.679629",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Dow Jones Edges Higher to 50,707 on Modest Gains as Markets Eye US-Iran Optimism",
+      "url": "https://www.ibtimes.com.au/dow-jones-closes-higher-us-iran-optimism-1869704",
+      "source": "Ibtimes.com.au",
+      "publishedAt": "2026-05-29T13:31:39Z",
+      "description": "The Dow Jones closed slightly higher, buoyed by optimism over U.S.-Iran talks and steady corporate earnings, amid mixed sector performances and cautious investor sentiment.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "earnings"
+        ],
+        "confidence": 0.55,
+        "key_quote": "Dow Jones closed slightly higher, buoyed by optimism over U.S.-Iran talks and steady corporate earnings",
+        "rationale": "El índice responde positivamente a dos factores: (1) optimismo en negociaciones US-Iran reduce riesgo geopolítico de conflicto escalado en Medio Oriente, lo que disminuye volatilidad y prima de riesgo; (2) earnings corporativas estables sostienen valuaciones. Sin embargo, el movimiento es modesto (edge higher), reflejando cautela de inversores y falta de catalistas macro claros (Fed, datos económicos). El impacto es limitado a corto plazo (7d) por la naturaleza preliminary de las conversaciones diplomáticas y ausencia de noticias sobre política monetaria o datos macroeconómicos USA relevantes que serían drivers estructurales mayores para US30.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:24.280712",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "US stocks gain ground, adding to their records, as Dell soars",
+      "url": "https://finance.yahoo.com/markets/world-indices/articles/asian-shares-mostly-higher-hopes-031624203.html",
+      "source": "Yahoo Entertainment",
+      "publishedAt": "2026-05-29T03:16:24Z",
+      "description": "Wall Street pushed further into the record books Friday, as the major stock indexes extended the market’s recent winning streak and closed out a solid month ...",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "earnings",
+          "us_macro"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Wall Street pushed further into the record books Friday, as the major stock indexes extended the market's recent winning streak",
+        "rationale": "El Dow Jones responde positivamente a la extensión de racha alcista y nuevos máximos históricos. Dell como componente del índice muestra fortaleza en sector tecnológico/industrial. El cierre sólido de mes sugiere momentum positivo en earnings corporativas y confianza en valuaciones. Magnitude 3 por ser movimiento de continuidad (relevante pero no shock), con horizonte 7d mientras se consolida el patrón alcista. Confidence 0.72 moderada por falta de catalizadores específicos macro/Fed en la noticia.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:28.296873",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Wall Street pushes to more records as profits keep piling up for US companies",
+      "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/wall-street-pushes-to-more-records-as-profits-keep-piling-up-for-us-companies/articleshow/131375475.cms",
+      "source": "The Times of India",
+      "publishedAt": "2026-05-28T17:30:51Z",
+      "description": "U.S. stocks hovered near record highs as strong corporate earnings, led by Snowflake and Dollar Tree, offset macro concerns. Oil price volatility tied to U.S.-Iran tensions, easing Treasury yields, and weak housing data signaled economic strain, even as resil…",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "earnings",
+          "us_macro",
+          "geopolitics",
+          "trade_policy"
+        ],
+        "confidence": 0.72,
+        "key_quote": "U.S. stocks hovered near record highs as strong corporate earnings, led by Snowflake and Dollar Tree, offset macro concerns",
+        "rationale": "El Dow Jones se ve impulsado principalmente por ganancias corporativas sólidas que compensan preocupaciones macroeconómicas. La debilidad en datos de vivienda y volatilidad de petróleo (tensiones U.S.-Iran) generan headwinds, pero la resiliencia de earnings de compañías grandes del índice (financieras, industriales, tecnología) sostiene el rally. Yields bajando alivia presión de valuaciones. El equilibrio actual es alcista pero con vulnerabilidades en macro que podrían cambiar la narrativa en 7-30 días si las ganancias decepcionar o geopolitical risk escala.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:32.825735",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "US inflation surges to three-year high amid tensions with Iran",
+      "url": "https://www.aljazeera.com/economy/2026/5/28/us-inflation-surges-to-three-year-high-amid-tensions-with-iran",
+      "source": "Al Jazeera English",
+      "publishedAt": "2026-05-28T16:54:57Z",
+      "description": "Heightened petrol prices led the inflationary pressures, with prices that jumped 5.5 percent in April.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 4,
+        "horizon": "30d",
+        "drivers": [
+          "us_macro",
+          "geopolitics",
+          "fed_policy"
+        ],
+        "confidence": 0.85,
+        "key_quote": "US inflation surges to three-year high amid tensions with Iran. Heightened petrol prices led the inflationary pressures, with prices that jumped 5.5 percent in April.",
+        "rationale": "Inflación en máximo de 3 años presiona expectativas de tasas más altas de la Fed. El salto de 5.5% en precios petroleros por tensiones geopolíticas con Irán amplifica presiones inflacionarias y riesgo de política monetaria más restrictiva. Esto pesa negativamente sobre múltiplos de valoración del Dow Jones. La magnitud es 4 (relevante a significativo) porque combina shock inflacionario con riesgo geopolítico que afecta directamente expectativas de política Fed y márgenes corporativos a corto plazo.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:36.880917",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "US Stocks Reverse Losses on Iran Deal Report as Oil Pares Gains",
+      "url": "https://financialpost.com/pmn/business-pmn/us-stocks-reverse-losses-on-iran-deal-report-as-oil-pares-gains",
+      "source": "Financial Post",
+      "publishedAt": "2026-05-28T16:22:56Z",
+      "description": "Stocks rebounded from earlier losses on Thursday, as investors reacted to a reported deal between the US and Iran.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "global_risk"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Stocks rebounded from earlier losses on Thursday, as investors reacted to a reported deal between the US and Iran",
+        "rationale": "Un acuerdo US-Iran reduce la prima de riesgo geopolítico y alivia preocupaciones sobre conflictividad en Oriente Medio, que impacta directamente en precios de petróleo y volatilidad global. La reversión de pérdidas sugiere que inversores institucionales consideran este desarrollo positivo para valuaciones de large-caps del Dow Jones. El impacto es moderado (magnitude 3) porque es un rumor aún no confirmado oficialmente y el efecto típicamente se disipa en 7-10 días. La confianza de 0.72 refleja que noticias geopolíticas tienen relación directa pero variable con el índice según contexto macro subyacente.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:41.160153",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Iran War Pushed Up The Fed's Favorite Measure Of Inflation In April",
+      "url": "https://www.investopedia.com/iran-war-pushed-up-the-feds-favorite-measure-of-inflation-in-april-11985249",
+      "source": "Investopedia",
+      "publishedAt": "2026-05-28T13:51:18Z",
+      "description": "Consumer prices as measured by Personal Consumption Expenditures rose in April, the highest annual increase in nearly three years.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 3,
+        "horizon": "30d",
+        "drivers": [
+          "us_macro",
+          "fed_policy",
+          "geopolitics"
+        ],
+        "confidence": 0.72,
+        "key_quote": "Consumer prices as measured by Personal Consumption Expenditures rose in April, the highest annual increase in nearly three years.",
+        "rationale": "El PCE (medida de inflación preferida por la Fed) alcanza máximos en casi 3 años, probablemente impulsado por presiones geopolíticas (Irán). Esto reduce la probabilidad de recortes de tasas en el corto plazo y presiona al Dow Jones por: (1) expectativas de tasas más altas por más tiempo, (2) deterioro de valuaciones de empresas, (3) menores márgenes corporativos por inflación de costos. El riesgo geopolítico agrega volatilidad. Afecta directamente la política monetaria futura de la Fed, factor crítico para equities.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:45.619373",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Dow Jones Falls 242 Points as Geopolitical Tensions and Inflation Worries Pressure Wall Street",
+      "url": "https://www.ibtimes.com.au/dow-jones-drops-us-iran-tensions-inflation-concerns-1869650",
+      "source": "Ibtimes.com.au",
+      "publishedAt": "2026-05-28T13:34:07Z",
+      "description": "The Dow Jones fell 241.85 points due to U.S.-Iran tensions and inflation concerns, with energy stocks rising and financials declining. Analysts expect continued volatility amid geopolitical and economic uncertainties.",
+      "intel": {
+        "price_impact": "bearish",
+        "magnitude": 3,
+        "horizon": "7d",
+        "drivers": [
+          "geopolitics",
+          "us_macro",
+          "global_risk"
+        ],
+        "confidence": 0.75,
+        "key_quote": "The Dow Jones fell 241.85 points due to U.S.-Iran tensions and inflation concerns, with energy stocks rising and financials declining",
+        "rationale": "La caída de 242 puntos refleja presión combinada de tensiones geopolíticas (US-Iran) que generan incertidumbre y flujos hacia activos defensivos, junto con preocupaciones inflacionarias que afectan valuaciones y márgenes corporativos. La divergencia sectorial (energía positiva, financieros negativos) indica rotación de riesgo. El horizonte de 7 días es apropiado porque estas tensiones tienden a mantener volatilidad elevated a corto plazo, aunque sin ser un shock sistémico (magnitude 3, no 5)",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:50.061635",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "As Micron&#x2019;s stock blows past $1,000, Wall Street sees more gains in store",
+      "url": "https://www.marketwatch.com/story/as-microns-stock-blows-past-1-000-wall-street-sees-more-gains-in-store-755a51f9?mod=mw_rss_topstories",
+      "source": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "publishedAt": "Mon, 01 Jun 2026 23:14:00 GMT",
+      "description": "Micron stands to benefit from a favorable pricing environment, low competition &#x2014; and now a new Nvidia chip, analysts say.",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "earnings",
+          "us_macro"
+        ],
+        "confidence": 0.65,
+        "key_quote": "Micron stands to benefit from a favorable pricing environment, low competition — and now a new Nvidia chip, analysts say.",
+        "rationale": "La noticia sobre Micron impacta positivamente el Dow Jones de forma indirecta. Micron es componente del índice y su fortaleza refleja demanda en semiconductores de memoria (DRAM/NAND) impulsada por IA (nuevo chip Nvidia). El entorno de precios favorable y baja competencia sugieren márgenes sólidos para Q próximos, positivo para earnings corporativos. Sin embargo, el impacto es moderado porque: (1) Micron representa ~1.3% del Dow, (2) la noticia es específica del sector tech/semiconductores, no un catalizador macro para todo el índice, (3) ya está reflejado parcialmente en el precio actual (stock en $1000+). El horizonte 30d asume que mejoras en earnings tardan en cristalizar. Confianza moderada debido a dependencia de ciclos IA y dinámicas geopolíticas en chips.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:40:55.193880",
+        "_instrument": "US30"
+      }
+    },
+    {
+      "title": "Anthropic confidentially files IPO prospectus with SEC, prepping Wall Street for landmark AI deal",
+      "url": "https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html",
+      "source": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "publishedAt": "Mon, 01 Jun 2026 18:33:49 GMT",
+      "description": "",
+      "intel": {
+        "price_impact": "bullish",
+        "magnitude": 2,
+        "horizon": "30d",
+        "drivers": [
+          "earnings",
+          "other"
+        ],
+        "confidence": 0.45,
+        "key_quote": "Anthropic confidentially files IPO prospectus with SEC, prepping Wall Street for landmark AI deal",
+        "rationale": "El IPO de Anthropic es positivo para el sector tecnológico y podría beneficiar a empresas Dow con exposición a IA (MSFT, NVDA, AAPL) a través de ecosistema y demanda de chips. Sin embargo, impacto directo en Dow Jones es limitado: Anthropic no es componente del índice, la noticia es prospectiva (no cierre aún), y el efecto es principalmente sectorial en tech/semiconductores. Magnitud moderada por ser catalizador de sentimiento alcista en IA, pero confianza limitada porque el IPO aún no se materializa. Horizonte 30d por timing de potencial cierre.",
+        "_source": "claude",
+        "_cached_at": "2026-06-02T00:41:03.498066",
+        "_instrument": "US30"
+      }
+    }
+  ]
+}

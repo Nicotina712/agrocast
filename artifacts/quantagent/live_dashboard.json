@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-05-22T14:21:36.486935",
+  "status": "live",
+  "latest_signal": {
+    "time": "2026-05-20T14:02:37.406392",
+    "signal": "FLAT",
+    "confidence": "LOW",
+    "price": 1199.0,
+    "entry": null,
+    "sl": null,
+    "tp": null,
+    "mode": "batch",
+    "data_source": "yfinance"
+  },
+  "mt5": {
+    "connected": true,
+    "account": {
+      "login": 52847298,
+      "server": "ICMarketsSC-Demo",
+      "balance": 1013.4,
+      "equity": 1013.4,
+      "margin": 0.0,
+      "free_margin": 1013.4,
+      "leverage": 1000,
+      "profit": 0.0,
+      "currency": "USD",
+      "trade_mode": "demo"
+    },
+    "positions": []
+  },
+  "model": {
+    "mean_auc": 0.5292,
+    "retrain_timestamp": null,
+    "n_features": 33
+  }
+}
