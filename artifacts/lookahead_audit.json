@@ -1,88 +1,88 @@
 {
   "cutoffs": {
     "2023-12-31": {
-      "n_train": 1905,
-      "n_test": 596,
-      "auc": 0.6203,
-      "accuracy": 0.5621,
-      "p_mean": 0.5823,
-      "p_std": 0.2586,
-      "top1_share": 0.0255,
+      "n_train": 1904,
+      "n_test": 598,
+      "auc": 0.6182,
+      "accuracy": 0.5702,
+      "p_mean": 0.5903,
+      "p_std": 0.2517,
+      "top1_share": 0.0249,
       "top5_features": {
-        "enso_phase": 0.025499999523162842,
-        "local_price_est_usd_ton": 0.022700000554323196,
+        "enso_phase": 0.024900000542402267,
+        "local_price_est_usd_ton": 0.021900000050663948,
         "enso_oni": 0.02160000056028366,
-        "ms_short_trend": 0.02160000056028366,
-        "decomp_trend_dist_pct": 0.020800000056624413
+        "ms_long_trend": 0.020500000566244125,
+        "decomp_trend_dist_pct": 0.019500000402331352
       },
       "signal_dist": {
-        "BUY": 0.529,
-        "SELL": 0.287,
-        "HOLD": 0.185
+        "BUY": 0.554,
+        "SELL": 0.266,
+        "HOLD": 0.181
       }
     },
     "2024-12-31": {
-      "n_train": 2157,
-      "n_test": 344,
-      "auc": 0.5764,
-      "accuracy": 0.5727,
-      "p_mean": 0.407,
-      "p_std": 0.2238,
-      "top1_share": 0.0368,
+      "n_train": 2156,
+      "n_test": 346,
+      "auc": 0.556,
+      "accuracy": 0.5202,
+      "p_mean": 0.4448,
+      "p_std": 0.2457,
+      "top1_share": 0.0413,
       "top5_features": {
-        "enso_phase": 0.03680000081658363,
-        "Soybeans_lag1": 0.024000000208616257,
-        "enso_oni": 0.02280000038444996,
-        "SoybeanMeal": 0.021299999207258224,
-        "ms_short_trend": 0.0210999995470047
+        "enso_phase": 0.04129999876022339,
+        "cot_regime_long": 0.02449999935925007,
+        "ms_short_trend": 0.02239999920129776,
+        "enso_oni": 0.02239999920129776,
+        "Soybeans_Open": 0.019500000402331352
       },
       "signal_dist": {
-        "BUY": 0.241,
-        "SELL": 0.581,
-        "HOLD": 0.177
+        "BUY": 0.324,
+        "SELL": 0.491,
+        "HOLD": 0.185
       }
     },
     "2025-06-30": {
-      "n_train": 2280,
-      "n_test": 220,
-      "auc": 0.557,
-      "accuracy": 0.5091,
-      "p_mean": 0.5099,
-      "p_std": 0.2754,
-      "top1_share": 0.0404,
+      "n_train": 2279,
+      "n_test": 222,
+      "auc": 0.5814,
+      "accuracy": 0.5225,
+      "p_mean": 0.5587,
+      "p_std": 0.2734,
+      "top1_share": 0.0394,
       "top5_features": {
-        "enso_phase": 0.04039999842643738,
-        "enso_oni": 0.023600000888109207,
-        "month_sin": 0.023499999195337296,
-        "SoybeanMeal": 0.01899999938905239,
-        "insp_soy_4wk_avg": 0.018200000748038292
+        "enso_phase": 0.039400000125169754,
+        "Soybeans_Low": 0.02290000021457672,
+        "ms_short_trend": 0.022700000554323196,
+        "enso_oni": 0.019300000742077827,
+        "SoybeanMeal": 0.01889999955892563
       },
       "signal_dist": {
-        "BUY": 0.468,
-        "SELL": 0.459,
-        "HOLD": 0.073
+        "BUY": 0.5,
+        "SELL": 0.387,
+        "HOLD": 0.113
       }
     }
   },
   "global": {
-    "n_train": 2010,
+    "n_train": 2011,
     "n_test": 491,
-    "auc": 0.5852,
-    "accuracy": 0.5418,
-    "p_mean": 0.5616,
-    "p_std": 0.2851,
-    "top1_share": 0.0255,
+    "auc": 0.5776,
+    "accuracy": 0.556,
+    "p_mean": 0.5774,
+    "p_std": 0.2809,
+    "top1_share": 0.0324,
     "top5_features": {
-      "local_price_est_usd_ton": 0.025499999523162842,
-      "enso_phase": 0.022199999541044235,
-      "enso_oni": 0.02199999988079071,
-      "soy_corn_ratio": 0.0203000009059906,
-      "trends_interest": 0.019099999219179153
+      "enso_phase": 0.03240000084042549,
+      "enso_oni": 0.024000000208616257,
+      "local_price_est_usd_ton": 0.022600000724196434,
+      "cot_regime_long": 0.019200000911951065,
+      "Soybeans_lag1": 0.01850000023841858
     },
     "signal_dist": {
-      "BUY": 0.487,
-      "SELL": 0.34,
-      "HOLD": 0.173
+      "BUY": 0.527,
+      "SELL": 0.326,
+      "HOLD": 0.147
     }
   },
   "embargo_days": 18,
