@@ -796,11 +796,94 @@
 <div id="tab-producer" class="tab-panel">
 <div class="main">
 
-  <div style="background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#1b4332;line-height:1.7;">
-    <b>🌾 Módulo Productor</b> — Herramienta para productores de soja en Uruguay.<br>
-    Responde la pregunta clave: <b>¿Es este el momento correcto para vender mi cosecha?</b><br>
-    <span style="opacity:.7;font-size:.8rem;">Considera señal del modelo, estacionalidad histórica, precio relativo y calendario WASDE.</span>
-  </div>
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- PANEL DEL PRODUCTOR — vista limpia, lenguaje simple           -->
+  <!-- Consume /api/producer_brief. Las herramientas técnicas        -->
+  <!-- detalladas quedan más abajo para quien quiera profundizar.    -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <div id="pb-container">
+
+    <!-- SECCIÓN 1 — SITUACIÓN HOY (hero) -->
+    <div id="pb-hero" class="card" style="margin-bottom:16px;padding:0;overflow:hidden;border:none;box-shadow:0 4px 20px rgba(0,0,0,.08);">
+      <div id="pb-hero-top" style="padding:22px 24px;background:linear-gradient(135deg,#1b4332,#2e7d32);color:#fff;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div style="font-size:.8rem;opacity:.85;text-transform:uppercase;letter-spacing:.1em;">Precio de la soja hoy</div>
+          <div id="pb-updated" style="font-size:.72rem;opacity:.7;"></div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:8px;">
+          <div id="pb-price-usd" style="font-size:2.6rem;font-weight:800;line-height:1;">—</div>
+          <div style="font-size:.95rem;opacity:.9;">USD/ton</div>
+          <div id="pb-trend" style="font-size:1rem;font-weight:600;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.18);">—</div>
+        </div>
+        <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:12px;font-size:.9rem;opacity:.92;">
+          <div>🇺🇾 <span id="pb-price-uyu">—</span> UYU/ton</div>
+          <div>📊 Chicago <span id="pb-price-usc">—</span> USc/bu</div>
+        </div>
+      </div>
+      <!-- Banda de momento -->
+      <div id="pb-momento" style="padding:18px 24px;display:flex;align-items:center;gap:16px;">
+        <div id="pb-momento-icon" style="font-size:2.2rem;">⏳</div>
+        <div style="flex:1;">
+          <div id="pb-momento-title" style="font-size:1.15rem;font-weight:800;">—</div>
+          <div id="pb-momento-text" style="font-size:.9rem;color:#444;margin-top:3px;line-height:1.5;">—</div>
+          <div id="pb-momento-src" style="font-size:.72rem;color:#999;margin-top:5px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2 — ¿QUÉ HAGO CON MI COSECHA? -->
+    <div class="card" style="margin-bottom:16px;border-left:4px solid #2e7d32;">
+      <div style="font-size:.78rem;color:#2e7d32;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:8px;">📋 Recomendación para vos</div>
+      <div id="pb-accionable" style="font-size:.95rem;color:#333;line-height:1.65;">—</div>
+    </div>
+
+    <!-- SECCIÓN 3 — VENTANA ÓPTIMA -->
+    <div id="pb-window-card" class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#fff8e1,#ffecb3);border-left:4px solid #f0a500;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
+        <div>
+          <div style="font-size:.78rem;color:#7c5c00;text-transform:uppercase;letter-spacing:.06em;font-weight:700;">📅 Mejor ventana para vender</div>
+          <div id="pb-window-range" style="margin-top:5px;font-size:1.25rem;font-weight:800;color:#5a4000;">—</div>
+          <div id="pb-window-note" style="font-size:.82rem;color:#7c5c00;margin-top:3px;">—</div>
+        </div>
+        <div style="text-align:right;">
+          <div id="pb-window-price" style="font-size:1.1rem;font-weight:700;color:#5a4000;">—</div>
+          <div style="font-size:.72rem;color:#7c5c00;">precio estimado</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:.72rem;color:#7c5c00;font-style:italic;">
+        ⚠ Es una proyección probabilística, no una certeza. Conviene escalonar la venta, no fijar todo de una vez.
+      </div>
+    </div>
+
+    <!-- SECCIÓN 4 — QUÉ ESTÁ PASANDO -->
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:.78rem;color:#555;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:10px;">🌍 Qué está pasando en el mercado</div>
+      <div id="pb-drivers" style="display:flex;flex-direction:column;gap:8px;"></div>
+      <div id="pb-event" style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;background:#fff3e0;border:1px solid #ffcc80;font-size:.85rem;color:#7c4a00;"></div>
+    </div>
+
+    <!-- SECCIÓN 5 — PRECIO NETO -->
+    <div class="card" style="margin-bottom:16px;">
+      <div style="font-size:.78rem;color:#555;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:10px;">🧮 Cuánto te queda en el bolsillo</div>
+      <table style="width:100%;font-size:.88rem;border-collapse:collapse;">
+        <tr><td style="padding:5px 0;color:#666;">Precio local</td><td style="text-align:right;font-weight:600;"><span id="pb-net-local">—</span> USD/ton</td></tr>
+        <tr><td style="padding:5px 0;color:#666;">Flete a puerto</td><td style="text-align:right;color:#c62828;">− <span id="pb-net-flete">—</span></td></tr>
+        <tr><td style="padding:5px 0;color:#666;">Otros gastos</td><td style="text-align:right;color:#c62828;">− <span id="pb-net-otros">—</span></td></tr>
+        <tr style="border-top:2px solid #2e7d32;"><td style="padding:8px 0;font-weight:800;color:#1b4332;">PRECIO NETO</td><td style="text-align:right;font-weight:800;color:#1b4332;font-size:1.05rem;"><span id="pb-net-usd">—</span> USD/ton</td></tr>
+        <tr><td></td><td style="text-align:right;font-size:.8rem;color:#999;"><span id="pb-net-uyu">—</span> UYU/ton</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /pb-container -->
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- HERRAMIENTAS DETALLADAS (técnicas) — colapsable               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <details style="margin-bottom:20px;">
+    <summary style="cursor:pointer;padding:12px 16px;background:#f5f5f5;border-radius:8px;font-size:.85rem;font-weight:600;color:#555;">
+      🔧 Herramientas detalladas (semáforo técnico, almacenamiento, plan de cosecha)
+    </summary>
+    <div style="margin-top:16px;">
 
   <!-- Semáforo de venta -->
   <div class="card" style="text-align:center;margin-bottom:20px;">
@@ -990,6 +1073,9 @@
     <code style="background:#fff3cd;padding:2px 6px;border-radius:3px;">WHATSAPP_TO_NUMBER=whatsapp:+598XXXXXXXX</code>
     — alertas por WhatsApp (requiere Twilio)
   </div>
+
+    </div><!-- /details inner -->
+  </details>
 
 </div>
 </div><!-- /tab-producer -->
@@ -2770,6 +2856,8 @@ let _producerLoaded = false;
 
 async function loadProducer() {
     if (_producerLoaded) return;
+    // Panel limpio del productor (prioritario)
+    loadProducerBrief();
     try {
         const res = await fetch("/api/producer");
         const d   = await res.json();
@@ -2780,6 +2868,110 @@ async function loadProducer() {
         loadHarvestPlan();
         loadBasisForecast();
     } catch(e) { console.error("producer fetch error:", e); }
+}
+
+// ── Panel limpio del productor (lenguaje simple) ─────────────────
+async function loadProducerBrief() {
+    try {
+        const r = await fetch("/api/producer_brief");
+        const d = await r.json();
+        if (!d.ok) { console.warn("producer_brief:", d.error); return; }
+        renderProducerBrief(d);
+    } catch(e) { console.error("producer_brief fetch error:", e); }
+}
+
+function renderProducerBrief(d) {
+    const fmt = (n, dec=0) => (n===null||n===undefined) ? "—" :
+        Number(n).toLocaleString("es-UY", {minimumFractionDigits:dec, maximumFractionDigits:dec});
+
+    // SECCIÓN 1 — precio + tendencia
+    const p = d.precio_hoy || {};
+    document.getElementById("pb-price-usd").textContent = fmt(p.usd_ton);
+    document.getElementById("pb-price-uyu").textContent = fmt(p.uyu_ton);
+    document.getElementById("pb-price-usc").textContent = fmt(p.usc_bu, 1);
+    const t = d.tendencia || {};
+    const trendEl = document.getElementById("pb-trend");
+    if (t.pct_30d !== null && t.pct_30d !== undefined) {
+        trendEl.textContent = `${t.arrow} ${t.pct_30d > 0 ? "+" : ""}${t.pct_30d}% (30 días)`;
+    } else { trendEl.textContent = "—"; }
+    if (d.generated_at) {
+        const dt = new Date(d.generated_at);
+        document.getElementById("pb-updated").textContent =
+            "Actualizado " + dt.toLocaleString("es-UY", {day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+    }
+
+    // Banda de momento — color según acción para el productor
+    const m = d.momento || {};
+    const momIcons = {VENDER:"🔴", ESPERAR:"🟡", NO_VENDER:"🟢"};
+    const momBg    = {VENDER:"#ffebee", ESPERAR:"#fffde7", NO_VENDER:"#e8f5e9"};
+    const momBar   = document.getElementById("pb-momento");
+    momBar.style.background = momBg[m.momento] || "#f5f5f5";
+    document.getElementById("pb-momento-icon").textContent = momIcons[m.momento] || "⏳";
+    document.getElementById("pb-momento-title").textContent = m.titulo || "—";
+    document.getElementById("pb-momento-text").textContent = m.explicacion || "";
+    const srcEl = document.getElementById("pb-momento-src");
+    if (m.fuente) {
+        srcEl.textContent = `Según: ${m.fuente}` + (m.confianza ? ` · confianza ${m.confianza}%` : "");
+    } else { srcEl.textContent = ""; }
+
+    // SECCIÓN 2 — accionable
+    const accEl = document.getElementById("pb-accionable");
+    accEl.textContent = d.accionable_detallado ||
+        (m.explicacion || "Sin recomendación detallada disponible en este momento.");
+
+    // SECCIÓN 3 — ventana óptima
+    const w = d.ventana_optima;
+    const wCard = document.getElementById("pb-window-card");
+    if (w) {
+        document.getElementById("pb-window-range").textContent = w.ventana_es || "—";
+        document.getElementById("pb-window-price").textContent =
+            w.precio_estimado_usc ? `${fmt(w.precio_estimado_usc)} USc/bu` : "—";
+        let note = "";
+        if (w.delta_pct !== null && w.delta_pct !== undefined) {
+            note = w.mejora
+                ? `📈 ${w.delta_pct > 0 ? "+" : ""}${w.delta_pct}% sobre el precio de hoy — ventana favorable`
+                : `Proyección ${w.delta_pct > 0 ? "+" : ""}${w.delta_pct}% vs hoy — sin mejora clara, no conviene retener esperando`;
+        }
+        document.getElementById("pb-window-note").textContent = note;
+        wCard.style.display = "";
+    } else {
+        wCard.style.display = "none";
+    }
+
+    // SECCIÓN 4 — drivers
+    const dEl = document.getElementById("pb-drivers");
+    dEl.innerHTML = "";
+    (d.drivers_simple || []).forEach(dr => {
+        const row = document.createElement("div");
+        row.style.cssText = "display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;";
+        row.innerHTML = `
+            <div style="font-size:1.1rem;line-height:1.2;">${dr.icono}</div>
+            <div style="flex:1;">
+                <div style="font-weight:600;font-size:.9rem;color:#333;">${dr.etiqueta}</div>
+                <div style="font-size:.8rem;color:#777;">${dr.detalle} — <i>${dr.efecto}</i></div>
+            </div>`;
+        dEl.appendChild(row);
+    });
+    if (!(d.drivers_simple || []).length) {
+        dEl.innerHTML = `<div style="color:#999;font-size:.85rem;">Sin factores destacados por ahora.</div>`;
+    }
+
+    // Próximo evento
+    const ev = d.proximo_evento;
+    const evEl = document.getElementById("pb-event");
+    if (ev) {
+        const urg = ev.inminente ? "⚠️ " : "🗓️ ";
+        evEl.innerHTML = `${urg}<b>${ev.nombre}</b> el ${ev.fecha_es} (en ${ev.dias_para} día${ev.dias_para===1?"":"s"}). ${ev.impacto}.`;
+        evEl.style.display = "";
+    } else { evEl.style.display = "none"; }
+
+    // SECCIÓN 5 — precio neto
+    const n = d.precio_neto || {};
+    document.getElementById("pb-net-local").textContent = fmt(n.precio_local_usd, 1);
+    document.getElementById("pb-net-flete").textContent = fmt(n.flete_usd, 1);
+    document.getElementById("pb-net-otros").textContent = fmt(n.otros_usd, 1);
+    document.getElementById("pb-net-usd").textContent   = fmt(n.neto_usd_ton, 1);
+    document.getElementById("pb-net-uyu").textContent   = fmt(n.neto_uyu_ton);
 }
 
 // ── Plan de Cosecha Inteligente ──────────────────────────────────

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "agrocast",
+      "runtimeExecutable": "C:\\Users\\Lenovo\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+      "runtimeArgs": ["news_server.py"],
+      "cwd": "MVP lectura de noticias",
+      "port": 8000
+    }
+  ]
+}

@@ -1124,6 +1124,33 @@ def get_producer():
 _PRODUCER_DECISIONS_PATH = os.path.join(PROJECT_ROOT, "data", "producer_decisions.csv")
 
 
+@app.route("/api/producer_brief")
+def get_producer_brief():
+    """
+    GET /api/producer_brief
+    Brief unificado en LENGUAJE DEL PRODUCTOR (capa de producto comercial).
+    Agrega toda la inteligencia del motor (IE, ML, forecast, basis, WASDE,
+    noticias) y la traduce a una respuesta clara: precio hoy, momento de
+    venta, ventana óptima, drivers simples, próximo evento y precio neto.
+
+    Query params opcionales:
+        flete  — costo de flete a puerto (USD/ton)
+        otros  — otros gastos (USD/ton)
+    """
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.producer_brief import build_producer_brief
+        flete = request.args.get("flete", type=float)
+        otros = request.args.get("otros", type=float)
+        brief = build_producer_brief(flete=flete, otros=otros)
+        status = 200 if brief.get("ok") else 503
+        return jsonify(brief), status
+    except Exception as e:
+        print(f"[ERROR] /api/producer_brief: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/producer_decision", methods=["POST", "GET"])
 def producer_decision():
     """
