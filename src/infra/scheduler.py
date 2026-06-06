@@ -52,18 +52,20 @@ def _run_pipeline():
 
 
 def _run_weekly_brief():
-    """Genera y envía el brief semanal si es lunes."""
-    logger.info("[Scheduler] Ejecutando brief semanal…")
+    """Genera y envía el informe SEMANAL DEL PRODUCTOR (lenguaje simple) si es lunes.
+    Es lo que el productor recibe sin entrar al dashboard. Determinista (no
+    depende de LLM)."""
+    logger.info("[Scheduler] Ejecutando informe semanal del productor…")
     try:
         sys.path.insert(0, _PROJECT_ROOT)
-        from src.alerts.weekly_brief import generate_weekly_brief
-        result = generate_weekly_brief()
+        from src.alerts.weekly_brief import generate_producer_weekly
+        result = generate_producer_weekly()
         if result:
-            logger.info("[Scheduler] Brief enviado ✅")
+            logger.info("[Scheduler] Informe del productor enviado ✅")
         else:
-            logger.info("[Scheduler] Brief omitido (no es lunes o ya enviado)")
+            logger.info("[Scheduler] Informe omitido (no es lunes o ya enviado)")
     except Exception as e:
-        logger.error(f"[Scheduler] Brief error: {e}")
+        logger.error(f"[Scheduler] Informe error: {e}")
 
 
 def _check_wasde_alert():

@@ -1124,6 +1124,30 @@ def get_producer():
 _PRODUCER_DECISIONS_PATH = os.path.join(PROJECT_ROOT, "data", "producer_decisions.csv")
 
 
+@app.route("/api/producer_weekly", methods=["GET", "POST"])
+def api_producer_weekly():
+    """
+    GET  /api/producer_weekly  → previsualiza el informe del productor (no envía).
+    POST /api/producer_weekly  → genera y ENVÍA por Telegram + WhatsApp (force).
+    Informe semanal en lenguaje simple — lo que el productor recibe sin entrar.
+    """
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.alerts.weekly_brief import build_producer_message, generate_producer_weekly
+        if request.method == "POST":
+            sent = generate_producer_weekly(force=True)
+            return jsonify({"ok": bool(sent), "enviado": bool(sent), "mensaje": sent})
+        # GET → preview
+        msg = build_producer_message(html=False)
+        if not msg:
+            return jsonify({"ok": False, "error": "Sin datos para el informe"}), 503
+        return jsonify({"ok": True, "preview": msg})
+    except Exception as e:
+        print(f"[ERROR] /api/producer_weekly: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/data_engine")
 def get_data_engine():
     """

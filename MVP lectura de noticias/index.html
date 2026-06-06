@@ -915,6 +915,18 @@
       </table>
     </div>
 
+    <!-- SECCIÓN 6 — Informe semanal (WhatsApp/Telegram) -->
+    <div class="card" style="margin-bottom:16px;background:#f1f8e9;border-left:4px solid #7cb342;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="font-size:.9rem;font-weight:700;color:#33691e;">📲 Informe semanal por WhatsApp / Telegram</div>
+          <div style="font-size:.8rem;color:#558b2f;margin-top:2px;">Cada lunes recibís este resumen sin entrar al panel.</div>
+        </div>
+        <button onclick="previewProducerWeekly()" style="padding:8px 16px;background:#7cb342;color:#fff;border:none;border-radius:6px;font-size:.82rem;font-weight:600;cursor:pointer;white-space:nowrap;">Ver vista previa</button>
+      </div>
+      <pre id="pb-weekly-preview" style="display:none;margin-top:12px;padding:12px 14px;background:#fff;border:1px solid #c5e1a5;border-radius:8px;font-family:inherit;font-size:.82rem;color:#333;white-space:pre-wrap;line-height:1.5;"></pre>
+    </div>
+
   </div><!-- /pb-container -->
 
   <!-- ════════════════════════════════════════════════════════════ -->
@@ -2981,6 +2993,20 @@ async function loadProducer() {
         loadHarvestPlan();
         loadBasisForecast();
     } catch(e) { console.error("producer fetch error:", e); }
+}
+
+// ── Vista previa del informe semanal del productor ───────────────
+async function previewProducerWeekly() {
+    const el = document.getElementById("pb-weekly-preview");
+    el.style.display = "block";
+    el.textContent = "Generando vista previa…";
+    try {
+        const r = await fetch("/api/producer_weekly");
+        const d = await r.json();
+        el.textContent = d.ok ? d.preview : ("No disponible: " + (d.error || "error"));
+    } catch(e) {
+        el.textContent = "Error al generar la vista previa.";
+    }
 }
 
 // ── Motor de Datos & Aprendizaje (uso interno) ───────────────────

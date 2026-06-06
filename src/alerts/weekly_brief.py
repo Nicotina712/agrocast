@@ -139,6 +139,147 @@ def _load_context() -> dict:
     return ctx
 
 
+# ─────────────────────────────────────────────────────────────────────────
+# Mensaje del productor (determinista, lenguaje simple) — Tarea C
+# Espeja lo que el productor ve en el panel, sin jerga técnica.
+# No depende de LLM: siempre funciona si hay datos.
+# ─────────────────────────────────────────────────────────────────────────
+def _fmt_num(n, dec=0):
+    if n is None:
+        return "—"
+    try:
+        return f"{float(n):,.{dec}f}".replace(",", "@").replace(".", ",").replace("@", ".")
+    except Exception:
+        return str(n)
+
+
+def build_producer_message(html: bool = True) -> str | None:
+    """
+    Construye el informe del productor en lenguaje simple a partir del
+    producer_brief. `html=True` para Telegram (negritas <b>), False para
+    WhatsApp (negritas *texto*).
+    """
+    try:
+        from src.producer.producer_brief import build_producer_brief
+        b = build_producer_brief()
+    except Exception as e:
+        print(f"[Brief productor] error build_producer_brief: {e}")
+        return None
+    if not b or not b.get("ok"):
+        return None
+
+    def B(t):  # negrita según canal
+        return f"<b>{t}</b>" if html else f"*{t}*"
+
+    today = date.today()
+    p = b.get("precio_hoy", {})
+    m = b.get("momento", {})
+    w = b.get("ventana_optima")
+    ev = b.get("proximo_evento")
+    neto = b.get("precio_neto", {})
+    t = b.get("tendencia", {})
+
+    mom_icon = {"VENDER": "🔴", "ESPERAR": "🟡", "NO_VENDER": "🟢"}.get(m.get("momento"), "📊")
+
+    lines = []
+    lines.append(f"🌾 {B('AgroCast — Informe del Productor')}")
+    lines.append(f"📅 {today.strftime('%d/%m/%Y')}")
+    lines.append("")
+
+    # Precio
+    trend_txt = ""
+    if t.get("pct_30d") is not None:
+        trend_txt = f" ({t.get('arrow','')} {'+' if t.get('pct_30d',0) > 0 else ''}{t.get('pct_30d')}% en 30 días)"
+    lines.append(f"💲 {B('Precio de la soja hoy')}")
+    lines.append(f"   {B(_fmt_num(p.get('usd_ton'), 0) + ' USD/ton')}{trend_txt}")
+    lines.append(f"   {_fmt_num(p.get('uyu_ton'), 0)} UYU/ton · Chicago {_fmt_num(p.get('usc_bu'), 0)} USc/bu")
+    lines.append("")
+
+    # Momento
+    lines.append(f"{mom_icon} {B(m.get('titulo', '—'))}")
+    if m.get("explicacion"):
+        lines.append(f"   {m['explicacion']}")
+    lines.append("")
+
+    # Ventana óptima — solo si proyecta mejora real (coherente con el momento)
+    if w and w.get("ventana_es") and w.get("mejora"):
+        delta = w.get("delta_pct")
+        delta_txt = f" (+{delta}% sobre hoy)" if delta else ""
+        lines.append(f"📅 {B('Mejor ventana para vender')}")
+        lines.append(f"   {w['ventana_es']}: precio estimado "
+                     f"{_fmt_num(w.get('precio_estimado_usc'), 0)} USc/bu{delta_txt}")
+        lines.append("")
+
+    # Qué está pasando
+    drivers = b.get("drivers_simple", [])
+    if drivers:
+        lines.append(f"🌍 {B('Qué está pasando en el mercado')}")
+        for d in drivers[:4]:
+            lines.append(f"   {d.get('icono','')} {d.get('etiqueta','')}: {d.get('efecto','')}")
+        lines.append("")
+
+    # Próximo evento
+    if ev:
+        urg = "⚠️" if ev.get("inminente") else "🗓️"
+        lines.append(f"{urg} {B('Atención')}: {ev.get('nombre')} el {ev.get('fecha_es')} "
+                     f"(en {ev.get('dias_para')} días). {ev.get('impacto')}.")
+        lines.append("")
+
+    # Precio neto
+    lines.append(f"🧮 {B('Precio neto estimado')} (descontando flete y gastos)")
+    lines.append(f"   {B(_fmt_num(neto.get('neto_usd_ton'), 0) + ' USD/ton')} · {_fmt_num(neto.get('neto_uyu_ton'), 0)} UYU/ton")
+    lines.append("")
+    lines.append("— AgroCast · inteligencia de mercado de soja")
+
+    return "\n".join(lines)
+
+
+def generate_producer_weekly(force: bool = False) -> str | None:
+    """
+    Genera y envía el informe semanal del productor en lenguaje simple.
+    Determinista (no requiere LLM). Solo corre los lunes salvo force=True.
+    """
+    today = date.today()
+    if not force and today.weekday() != 0:
+        return None
+    if not force and _was_sent_this_week():
+        print("[Brief productor] Ya enviado esta semana — omitiendo.")
+        return None
+
+    msg_tg = build_producer_message(html=True)
+    msg_wa = build_producer_message(html=False)
+    if not msg_tg:
+        print("[Brief productor] Sin datos para construir el informe.")
+        return None
+
+    # Telegram
+    try:
+        from src.alerts.telegram_bot import _send_message
+        _send_message(msg_tg, parse_mode="HTML")
+        print("[Brief productor] Enviado por Telegram ✅")
+    except Exception as e:
+        print(f"[Brief productor] Telegram error: {e}")
+
+    # WhatsApp
+    try:
+        from src.alerts.whatsapp_bot import send_whatsapp
+        send_whatsapp(msg_wa)
+        print("[Brief productor] Enviado por WhatsApp ✅")
+    except Exception as e:
+        print(f"[Brief productor] WhatsApp error: {e}")
+
+    # Guardar copia
+    try:
+        path = os.path.join(_PROJECT_ROOT, "data", f"brief_productor_{today.isoformat()}.txt")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(msg_wa)
+    except Exception:
+        pass
+
+    _mark_sent()
+    return msg_tg
+
+
 def _build_prompt(ctx: dict) -> str:
     today = date.today()
     week  = today.isocalendar()[1]
