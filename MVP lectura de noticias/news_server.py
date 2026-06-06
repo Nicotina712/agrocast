@@ -1124,6 +1124,109 @@ def get_producer():
 _PRODUCER_DECISIONS_PATH = os.path.join(PROJECT_ROOT, "data", "producer_decisions.csv")
 
 
+@app.route("/api/data_engine")
+def get_data_engine():
+    """
+    GET /api/data_engine — Estado de los MOTORES DE DATOS y APRENDIZAJE (uso interno).
+    Consolida la frescura de datasets (ETL), la recolección de noticias que
+    alimenta el reaprendizaje, y el estado de entrenamiento/salud del modelo.
+    """
+    import glob
+    from datetime import datetime as _dt
+    out = {"ok": True, "generated_at": _dt.now().isoformat(timespec="seconds")}
+
+    def _age_hours(iso):
+        try:
+            return round((_dt.now() - _dt.fromisoformat(str(iso)[:19])).total_seconds() / 3600, 1)
+        except Exception:
+            return None
+
+    # ── 1. Datasets (ETL manifest) ──────────────────────────────
+    try:
+        with open(os.path.join(PROJECT_ROOT, "data", "etl_manifest.json"), encoding="utf-8") as f:
+            man = json.load(f)
+        datasets = []
+        for layer, items in (man.get("by_layer") or {}).items():
+            for it in items:
+                age = _age_hours(it.get("last_updated"))
+                datasets.append({
+                    "name":     it.get("name"),
+                    "layer":    layer,
+                    "source":   it.get("source"),
+                    "frequency": it.get("frequency"),
+                    "rows":     it.get("row_count"),
+                    "exists":   it.get("exists"),
+                    "age_hours": age,
+                    "fresh":    (age is not None and age < 30) if it.get("frequency") == "daily" else (age is not None and age < 24 * 14),
+                })
+        out["datasets"] = {
+            "total":   man.get("n_datasets"),
+            "missing": man.get("n_missing"),
+            "updated_at": man.get("generated_at"),
+            "items":   datasets,
+        }
+    except Exception as e:
+        out["datasets"] = {"error": str(e)}
+
+    # ── 2. Motor de noticias (memoria de reaprendizaje) ─────────
+    try:
+        cache_files = glob.glob(os.path.join(PROJECT_ROOT, "data", "intel_cache", "*.json"))
+        news = {"articulos_analizados_acumulados": len(cache_files)}
+        ni_path = os.path.join(PROJECT_ROOT, "data", "news_intel.json")
+        if os.path.exists(ni_path):
+            with open(ni_path, encoding="utf-8") as f:
+                ni = json.load(f)
+            news["ultimo_snapshot"] = {
+                "n_articles":     ni.get("n_articles"),
+                "n_high_impact":  ni.get("n_high_impact"),
+                "composite":      ni.get("composite"),
+                "generated_at":   ni.get("generated_at"),
+                "age_hours":      _age_hours(ni.get("generated_at")),
+            }
+        hist_path = os.path.join(PROJECT_ROOT, "data", "news_intel_history.csv")
+        if os.path.exists(hist_path):
+            hdf = pd.read_csv(hist_path)
+            news["dias_de_historia"] = len(hdf)
+            news["rango_historia"] = [str(hdf["Date"].iloc[0]), str(hdf["Date"].iloc[-1])] if len(hdf) else None
+        out["motor_noticias"] = news
+    except Exception as e:
+        out["motor_noticias"] = {"error": str(e)}
+
+    # ── 3. Aprendizaje (entrenamiento + salud del modelo) ───────
+    learn = {}
+    try:
+        meta_path = os.path.join(ARTIFACTS_DIR, "horizons", "horizons_meta.json")
+        if os.path.exists(meta_path):
+            learn["modelo_entrenado_hace_h"] = _age_hours(
+                _dt.fromtimestamp(os.path.getmtime(meta_path)).isoformat())
+    except Exception:
+        pass
+    try:
+        mlq = compute_signal_accuracy()
+        if mlq:
+            learn["accuracy_reciente"] = mlq.get("accuracy")
+            learn["n_signals"] = mlq.get("n_signals")
+    except Exception:
+        pass
+    try:
+        drift_path = os.path.join(ARTIFACTS_DIR, "drift_monitor.json")
+        if os.path.exists(drift_path):
+            with open(drift_path, encoding="utf-8") as f:
+                dr = json.load(f)
+            b30 = (dr.get("buckets") or {}).get("30d") or {}
+            learn["drift_30d"] = {
+                "accuracy": b30.get("accuracy"),
+                "auc":      b30.get("auc"),
+                "status":   dr.get("status") or dr.get("health"),
+                "age_hours": _age_hours(_dt.fromtimestamp(os.path.getmtime(drift_path)).isoformat()),
+            }
+    except Exception:
+        pass
+    out["aprendizaje"] = learn
+
+    return jsonify(out)
+
+
 @app.route("/api/producer_brief")
 def get_producer_brief():
     """

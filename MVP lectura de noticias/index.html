@@ -391,6 +391,7 @@
     <button class="tab-btn layer-engine" data-tab="news-impact"  onclick="switchTab('news-impact')">🧠 Intel LLM</button>
     <button class="tab-btn layer-engine" data-tab="intel-engine" onclick="switchTab('intel-engine')">🔍 Intel Engine</button>
     <button class="tab-btn layer-engine" data-tab="quantagent"   onclick="switchTab('quantagent')">⚡ QuantAgent</button>
+    <button class="tab-btn layer-engine" data-tab="data-engine"  onclick="switchTab('data-engine')">🗄️ Datos & Aprendizaje</button>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -1909,6 +1910,75 @@
 
 </div><!-- /tab-quantagent -->
 
+<!-- ══════════════════════════════════════════════════════════
+     TAB MOTOR: Datos & Aprendizaje (uso interno)
+     Registro de los motores de datos y noticias que alimentan
+     el reaprendizaje de los modelos.
+     ══════════════════════════════════════════════════════════ -->
+<div id="tab-data-engine" class="tab-panel">
+<div class="main">
+
+  <div style="background:#2d2520;border-left:4px solid #ff9800;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#ffe0b2;line-height:1.7;">
+    <b>🗄️ Motores de Datos & Aprendizaje</b> — Uso interno.<br>
+    Registro de las fuentes que alimentan los modelos y su reaprendizaje:
+    frescura de datasets, memoria de noticias analizadas y salud del entrenamiento.
+  </div>
+
+  <!-- Resumen de aprendizaje -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Datasets OK</div>
+      <div id="de-ds-ok" style="font-size:1.6rem;font-weight:700;color:#2e7d32;">—</div>
+      <div style="font-size:.7rem;color:#aaa;">de <span id="de-ds-total">—</span> totales</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Noticias analizadas</div>
+      <div id="de-news-total" style="font-size:1.6rem;font-weight:700;color:#1565c0;">—</div>
+      <div style="font-size:.7rem;color:#aaa;">acumuladas (memoria)</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Modelo entrenado</div>
+      <div id="de-model-age" style="font-size:1.6rem;font-weight:700;color:#7b1fa2;">—</div>
+      <div style="font-size:.7rem;color:#aaa;">hace</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Accuracy reciente</div>
+      <div id="de-accuracy" style="font-size:1.6rem;font-weight:700;color:#e65100;">—</div>
+      <div style="font-size:.7rem;color:#aaa;"><span id="de-nsignals">—</span> señales</div>
+    </div>
+  </div>
+
+  <!-- Motor de noticias -->
+  <div class="card" style="margin-bottom:20px;">
+    <h2 style="margin-top:0;">🗞️ Motor de Noticias (reaprendizaje)</h2>
+    <div style="font-size:.8rem;color:#888;margin-bottom:12px;">
+      Cada noticia se analiza con LLM y se cachea permanentemente. Esta memoria
+      alimenta las features de sentimiento que reentrenan los modelos.
+    </div>
+    <div id="de-news-detail" style="font-size:.88rem;color:#444;line-height:1.8;">—</div>
+  </div>
+
+  <!-- Tabla de datasets -->
+  <div class="card" style="margin-bottom:20px;">
+    <h2 style="margin-top:0;">📦 Frescura de Datasets</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+        <thead><tr style="background:#f5f5f5;text-align:left;">
+          <th style="padding:7px 10px;">Dataset</th>
+          <th style="padding:7px 10px;">Capa</th>
+          <th style="padding:7px 10px;">Fuente</th>
+          <th style="padding:7px 10px;text-align:center;">Filas</th>
+          <th style="padding:7px 10px;text-align:center;">Antigüedad</th>
+          <th style="padding:7px 10px;text-align:center;">Estado</th>
+        </tr></thead>
+        <tbody id="de-datasets-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div><!-- /tab-data-engine -->
+
 <script>
 let chartMain     = null;
 let chartBacktest = null;
@@ -2860,6 +2930,7 @@ loadData();
 setInterval(loadData, 5 * 60 * 1000);
 
 // Productor es el tab por defecto (capa producto) — cargar al arrancar
+loadProducerBrief();
 loadProducer();
 
 // Fetch backtest silenciosamente al cargar para poblar contexto del panel de precisión
@@ -2887,10 +2958,11 @@ function switchTab(name) {
     if (btn) btn.classList.add("active");
     if (name === "news-impact") { loadNewsImpact(); loadNewsIntel(); loadSynthesis(); }
     if (name === "seasonality") loadSeasonality();
-    if (name === "producer")    loadProducer();
+    if (name === "producer")    { loadProducerBrief(); loadProducer(); }
     if (name === "trader")      { loadTrader(); loadTraderSynthesis(); }
     if (name === "intel-engine") loadIntelEngine();
     if (name === "quantagent")  loadQuantAgent();
+    if (name === "data-engine") loadDataEngine();
 }
 
 // ── Módulo Productor ────────────────────────────────────────────────
@@ -2899,8 +2971,6 @@ let _producerLoaded = false;
 
 async function loadProducer() {
     if (_producerLoaded) return;
-    // Panel limpio del productor (prioritario)
-    loadProducerBrief();
     try {
         const res = await fetch("/api/producer");
         const d   = await res.json();
@@ -2911,6 +2981,62 @@ async function loadProducer() {
         loadHarvestPlan();
         loadBasisForecast();
     } catch(e) { console.error("producer fetch error:", e); }
+}
+
+// ── Motor de Datos & Aprendizaje (uso interno) ───────────────────
+let _dataEngineLoaded = false;
+async function loadDataEngine() {
+    try {
+        const r = await fetch("/api/data_engine");
+        const d = await r.json();
+        if (!d.ok) { console.warn("data_engine:", d.error); return; }
+        const fmtAge = (h) => h === null || h === undefined ? "—"
+            : h < 48 ? `${Math.round(h)} h` : `${Math.round(h/24)} d`;
+
+        // KPIs
+        const ds = d.datasets || {};
+        document.getElementById("de-ds-total").textContent = ds.total ?? "—";
+        const okCount = (ds.items || []).filter(i => i.fresh).length;
+        document.getElementById("de-ds-ok").textContent = okCount;
+        const news = d.motor_noticias || {};
+        document.getElementById("de-news-total").textContent =
+            news.articulos_analizados_acumulados ?? "—";
+        const learn = d.aprendizaje || {};
+        document.getElementById("de-model-age").textContent = fmtAge(learn.modelo_entrenado_hace_h);
+        document.getElementById("de-accuracy").textContent =
+            learn.accuracy_reciente != null ? learn.accuracy_reciente + "%" : "—";
+        document.getElementById("de-nsignals").textContent = learn.n_signals ?? "—";
+
+        // Detalle de noticias
+        const snap = news.ultimo_snapshot || {};
+        document.getElementById("de-news-detail").innerHTML = `
+            📚 <b>${news.articulos_analizados_acumulados ?? "—"}</b> noticias analizadas y cacheadas (memoria permanente).<br>
+            🗓️ Historia de sentimiento: <b>${news.dias_de_historia ?? "—"}</b> días
+            ${news.rango_historia ? `(${news.rango_historia[0]} → ${news.rango_historia[1]})` : ""}.<br>
+            📰 Último snapshot: <b>${snap.n_articles ?? "—"}</b> artículos
+            (${snap.n_high_impact ?? 0} de alto impacto), hace ${fmtAge(snap.age_hours)}.`;
+
+        // Tabla de datasets
+        const tb = document.getElementById("de-datasets-tbody");
+        tb.innerHTML = "";
+        (ds.items || []).forEach(it => {
+            const badge = it.fresh
+                ? `<span style="color:#2e7d32;font-weight:600;">🟢 Fresco</span>`
+                : `<span style="color:#c62828;font-weight:600;">🔴 Stale</span>`;
+            const layerColor = {bronze:"#a1887f", silver:"#90a4ae", gold:"#ffb300"}[it.layer] || "#888";
+            const tr = document.createElement("tr");
+            tr.style.borderBottom = "1px solid #eee";
+            tr.innerHTML = `
+                <td style="padding:6px 10px;font-weight:600;">${it.name}</td>
+                <td style="padding:6px 10px;"><span style="color:${layerColor};font-weight:600;">${it.layer}</span></td>
+                <td style="padding:6px 10px;color:#777;font-size:.78rem;">${it.source || "—"}</td>
+                <td style="padding:6px 10px;text-align:center;">${it.rows != null ? it.rows.toLocaleString("es-UY") : "—"}</td>
+                <td style="padding:6px 10px;text-align:center;">${fmtAge(it.age_hours)}</td>
+                <td style="padding:6px 10px;text-align:center;">${badge}</td>`;
+            tb.appendChild(tr);
+        });
+        _dataEngineLoaded = true;
+    } catch(e) { console.error("data_engine fetch error:", e); }
 }
 
 // ── Panel limpio del productor (lenguaje simple) ─────────────────
