@@ -74,6 +74,20 @@ def run_pipeline() -> None:
     df             = load_all_data()
     last_real_date = df["Date"].max()
 
+    # ── 1b. Refrescar contrato front-month (precio CME live) ──────
+    # Root-fix del bug de precio congelado: el endpoint web ya no se llama
+    # tras la migración, así que el pipeline regenera current_contract.json
+    # en cada corrida (live CME, fallback al último cierre de raw_market).
+    # Debe correr ANTES del Intelligence Engine (paso 20) y QuantAgent, que
+    # leen este archivo como precio actual de soja.
+    try:
+        from src.data.refresh_contract import refresh_current_contract
+        cc = refresh_current_contract()
+        print(f"   ✅ current_contract.json refrescado: {cc.get('front_contract')} "
+              f"@ {cc.get('price')} usc/bu (source={cc.get('source')})")
+    except Exception as _e:
+        print(f"   [WARN] refresh_contract: {_e}")
+
     # ── 2. Features de mercado ────────────────────────────────────
     # SoybeanMeal y SoybeanOil NO van como exog (generarían lags crudos muy
     # correlacionados con el target en nivel). En cambio, build_features
