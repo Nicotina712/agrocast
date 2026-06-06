@@ -286,6 +286,34 @@
         .tab-panel      { display: none; }
         .tab-panel.active { display: block; }
 
+        /* ── Agrupación de tabs por capa (Producto / Mercado / Motor) ── */
+        .tab-bar { align-items: center; flex-wrap: wrap; }
+        .tab-group-label {
+            font-size: .6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: rgba(255,255,255,.35);
+            padding: 0 6px 0 14px;
+            align-self: center;
+            white-space: nowrap;
+        }
+        .tab-divider {
+            width: 1px;
+            height: 22px;
+            background: rgba(255,255,255,.12);
+            margin: 0 4px;
+            align-self: center;
+        }
+        /* Capa Producto — destacada (verde, es el producto comercial) */
+        .tab-btn.layer-product { color: #a5d6a7; }
+        .tab-btn.layer-product.active { color: #fff; border-bottom-color: #4caf50; }
+        /* Capa Motor — uso interno, look técnico atenuado */
+        .tab-btn.layer-engine { color: rgba(255,179,71,.6); font-size: .76rem; }
+        .tab-btn.layer-engine:hover { color: rgba(255,179,71,.95); }
+        .tab-btn.layer-engine.active { color: #ffb347; border-bottom-color: #ff9800; }
+        .tab-group-label.engine { color: rgba(255,152,0,.5); }
+
         /* ── News Impact Module ── */
         .ni-comparison {
             display: grid;
@@ -341,22 +369,34 @@
     </div>
 </header>
 
-<!-- Tab bar -->
+<!-- Tab bar — organizada en 3 capas: Producto · Mercado · Motor (uso interno) -->
 <nav class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('principal')">📊 Dashboard</button>
-    <button class="tab-btn"        onclick="switchTab('producer')">🌾 Productor</button>
-    <button class="tab-btn"        onclick="switchTab('trader')">📈 Trader</button>
-    <button class="tab-btn"        onclick="switchTab('seasonality')">📅 Estacionalidad</button>
-    <button class="tab-btn"        onclick="switchTab('news-impact')">🧠 Intel LLM</button>
-    <button class="tab-btn"        onclick="switchTab('historial')">📋 Historial</button>
-    <button class="tab-btn"        onclick="switchTab('intel-engine')">🔍 Intel Engine</button>
-    <button class="tab-btn"        onclick="switchTab('quantagent')" style="background:#fff3e0;border:1px dashed #ff9800;">⚡ QuantAgent</button>
+    <!-- CAPA PRODUCTO (comercial) -->
+    <span class="tab-group-label">Producto</span>
+    <button class="tab-btn layer-product active" data-tab="producer" onclick="switchTab('producer')">🌾 Mi Cosecha</button>
+
+    <span class="tab-divider"></span>
+
+    <!-- CAPA MERCADO (panorama de soporte) -->
+    <span class="tab-group-label">Mercado</span>
+    <button class="tab-btn" data-tab="principal"   onclick="switchTab('principal')">📊 Panorama</button>
+    <button class="tab-btn" data-tab="seasonality" onclick="switchTab('seasonality')">📅 Estacionalidad</button>
+    <button class="tab-btn" data-tab="historial"   onclick="switchTab('historial')">📋 Historial</button>
+
+    <span class="tab-divider"></span>
+
+    <!-- CAPA MOTOR (inteligencia interna · uso propio) -->
+    <span class="tab-group-label engine">⚙ Motor · uso interno</span>
+    <button class="tab-btn layer-engine" data-tab="trader"       onclick="switchTab('trader')">📈 Trader</button>
+    <button class="tab-btn layer-engine" data-tab="news-impact"  onclick="switchTab('news-impact')">🧠 Intel LLM</button>
+    <button class="tab-btn layer-engine" data-tab="intel-engine" onclick="switchTab('intel-engine')">🔍 Intel Engine</button>
+    <button class="tab-btn layer-engine" data-tab="quantagent"   onclick="switchTab('quantagent')">⚡ QuantAgent</button>
 </nav>
 
 <!-- ══════════════════════════════════════════════════════════
      TAB 1: Dashboard Principal (existente, sin cambios)
      ══════════════════════════════════════════════════════════ -->
-<div id="tab-principal" class="tab-panel active">
+<div id="tab-principal" class="tab-panel">
 <div class="main">
 
     <!-- ── HERO: Brief ejecutivo del mercado (Claude Sonnet) ────────── -->
@@ -793,7 +833,7 @@
 <!-- ══════════════════════════════════════════════════════════
      TAB: Módulo Productor
      ══════════════════════════════════════════════════════════ -->
-<div id="tab-producer" class="tab-panel">
+<div id="tab-producer" class="tab-panel active">
 <div class="main">
 
   <!-- ════════════════════════════════════════════════════════════ -->
@@ -2819,6 +2859,9 @@ setForecastVariant(_abVariant);
 loadData();
 setInterval(loadData, 5 * 60 * 1000);
 
+// Productor es el tab por defecto (capa producto) — cargar al arrancar
+loadProducer();
+
 // Fetch backtest silenciosamente al cargar para poblar contexto del panel de precisión
 (async () => {
     try {
@@ -2837,11 +2880,11 @@ setInterval(loadData, 5 * 60 * 1000);
 function switchTab(name) {
     document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
     document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.getElementById("tab-" + name).classList.add("active");
-    const tabs = ["principal", "producer", "trader", "seasonality", "news-impact", "historial", "intel-engine", "quantagent"];
-    const idx  = tabs.indexOf(name);
-    const btns = document.querySelectorAll(".tab-btn");
-    if (btns[idx]) btns[idx].classList.add("active");
+    const panel = document.getElementById("tab-" + name);
+    if (panel) panel.classList.add("active");
+    // Marcar botón activo por data-tab (robusto al reordenamiento/divisores)
+    const btn = document.querySelector(`.tab-btn[data-tab="${name}"]`);
+    if (btn) btn.classList.add("active");
     if (name === "news-impact") { loadNewsImpact(); loadNewsIntel(); loadSynthesis(); }
     if (name === "seasonality") loadSeasonality();
     if (name === "producer")    loadProducer();
