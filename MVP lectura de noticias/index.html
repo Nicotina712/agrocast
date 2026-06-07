@@ -1018,6 +1018,18 @@
       </div>
     </div>
 
+    <!-- SECCIÓN 5b1 — ¿GUARDAR O VENDER? (almacenamiento) -->
+    <div id="pb-storage-card" class="card" style="display:none;margin-bottom:16px;border-left:4px solid #888;">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div id="pb-storage-icon" style="font-size:1.8rem;">📦</div>
+        <div style="flex:1;">
+          <div style="font-size:.78rem;color:#555;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:3px;">¿Guardar o vender ahora?</div>
+          <div id="pb-storage-title" style="font-size:1rem;font-weight:700;color:#333;">—</div>
+          <div id="pb-storage-detail" style="font-size:.86rem;color:#555;margin-top:4px;line-height:1.5;">—</div>
+        </div>
+      </div>
+    </div>
+
     <!-- SECCIÓN 5b2 — CLIMA / RIESGO DE RINDE -->
     <div id="pb-clima-card" class="card" style="display:none;margin-bottom:16px;border-left:4px solid #888;">
       <div style="display:flex;align-items:flex-start;gap:14px;">
@@ -3412,6 +3424,21 @@ function renderMargen(mg) {
     document.getElementById("pb-margen-bar").style.width = pct + "%";
 }
 
+function renderStorage(s) {
+    const card = document.getElementById("pb-storage-card");
+    if (!s) { card.style.display = "none"; return; }
+    card.style.display = "block";
+    const cfg = {
+        green:  {icon:"🟢", border:"#2e7d32"},
+        yellow: {icon:"🟡", border:"#f0a500"},
+        red:    {icon:"🔴", border:"#c62828"},
+    }[s.semaforo] || {icon:"📦", border:"#888"};
+    card.style.borderLeftColor = cfg.border;
+    document.getElementById("pb-storage-icon").textContent = cfg.icon;
+    document.getElementById("pb-storage-title").textContent = s.titulo || "—";
+    document.getElementById("pb-storage-detail").textContent = s.mensaje || "";
+}
+
 function renderClima(c) {
     const card = document.getElementById("pb-clima-card");
     if (!c) { card.style.display = "none"; return; }
@@ -3515,6 +3542,9 @@ function renderProducerBrief(d) {
 
     // Clima / riesgo de rinde
     renderClima(d.clima);
+
+    // Almacenamiento (guardar o vender)
+    renderStorage(d.almacenamiento);
 
     // SECCIÓN 2 — accionable
     const accEl = document.getElementById("pb-accionable");

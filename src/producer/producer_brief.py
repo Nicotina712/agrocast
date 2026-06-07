@@ -423,6 +423,79 @@ def _basis_intelligence() -> dict | None:
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# Decisión de almacenamiento — ¿conviene guardar o vender?
+# Traduce el ROI de almacenamiento (costo silo + financiero + riesgo calidad)
+# vs la apreciación proyectada del precio, a una decisión simple.
+# ─────────────────────────────────────────────────────────────────────────
+def _forecast_return_30d(current_usc_bu: float | None) -> float | None:
+    """Retorno proyectado a ~30 días (%) desde el monthly_forecast."""
+    if not current_usc_bu:
+        return None
+    try:
+        df = pd.read_csv(os.path.join(_ARTIFACTS, "monthly_forecast.csv"))
+        if df.empty or "forecast" not in df.columns:
+            return None
+        # Tomar el valor a ~30 días (o el último disponible)
+        idx = min(29, len(df) - 1)
+        px_30 = float(df["forecast"].iloc[idx])
+        return round((px_30 - current_usc_bu) / current_usc_bu * 100, 2)
+    except Exception:
+        return None
+
+
+def _storage_decision(price_local_usd_ton: float, current_usc_bu: float | None) -> dict | None:
+    try:
+        from src.producer.sell_signal import compute_storage_roi
+    except Exception:
+        return None
+    ret30 = _forecast_return_30d(current_usc_bu)
+    roi = compute_storage_roi(
+        price_usd_ton=price_local_usd_ton,
+        forecast_return_pct=ret30,
+        days_list=[30, 60],
+    )
+    if not roi:
+        return None
+    r30 = roi[0]
+    costo = r30.get("total_cost_usd")
+    # Umbral de suba necesaria para empatar el costo de guardar 30d
+    break_even_pct = round((costo / price_local_usd_ton) * 100, 2) if price_local_usd_ton else None
+    rec = r30.get("recommendation")
+    if rec == "ALMACENAR":
+        semaforo, titulo = "green", "Conviene guardar"
+    elif rec == "VENDER":
+        semaforo, titulo = "red", "No conviene guardar"
+    else:
+        semaforo, titulo = "yellow", "Guardar es marginal"
+
+    # Mensaje conversacional
+    msg = f"Guardar 30 días te cuesta ~${costo:.1f}/ton. "
+    if break_even_pct is not None:
+        msg += f"Para que valga la pena, el precio tiene que subir más de {break_even_pct:.1f}% en ese plazo. "
+    if ret30 is not None:
+        if ret30 > 0:
+            msg += f"Proyección actual: +{ret30:.1f}%. "
+        else:
+            msg += f"Proyección actual: {ret30:.1f}% (a la baja). "
+    if rec == "VENDER":
+        msg += "El costo de guardar supera lo que se espera ganar."
+    elif rec == "ALMACENAR":
+        msg += "La suba esperada cubre el costo de guardar."
+    else:
+        msg += "Depende de tu necesidad de liquidez."
+
+    return {
+        "semaforo":          semaforo,
+        "titulo":            titulo,
+        "costo_30d_usd_ton": round(costo, 1) if costo is not None else None,
+        "suba_necesaria_pct": break_even_pct,
+        "proyeccion_30d_pct": ret30,
+        "recomendacion":     rec,
+        "mensaje":           msg,
+    }
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Inteligencia climática — riesgo sobre el RINDE del productor.
 # Previene el error más caro: vender a futuro una cosecha que el clima no
 # entrega. En el Río de la Plata, El Niño = más lluvia = favorable para soja;
@@ -705,6 +778,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     basis_intel = _basis_intelligence()
     track = _track_record()
     clima = _climate_intelligence()
+    storage = _storage_decision(prices["usd_ton"], price_usc)
 
     # Accionable narrativo: priorizar el texto del IE (ya está en lenguaje productor)
     accionable = None
@@ -759,6 +833,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "basis": basis_intel,
         "track_record": track,
         "clima": clima,
+        "almacenamiento": storage,
         "ventana_optima": best_win,
         "accionable_detallado": accionable,
         "drivers_simple": drivers,
