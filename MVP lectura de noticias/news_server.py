@@ -1251,6 +1251,39 @@ def get_data_engine():
     return jsonify(out)
 
 
+@app.route("/api/producer_profile", methods=["GET", "POST"])
+def api_producer_profile():
+    """
+    Perfil "Mi Campo" del productor (hectáreas, rinde, costo).
+    GET  → devuelve el perfil actual (o {ok:true, profile:null} si no existe).
+    POST → guarda/actualiza. body: {hectareas, rinde_ton_ha, costo, costo_mode, campania}
+    Desbloquea el cálculo de margen y break-even.
+    """
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.producer_profile import load_profile, save_profile
+        if request.method == "POST":
+            body = request.get_json(silent=True) or {}
+            try:
+                hectareas = float(body.get("hectareas"))
+                rinde     = float(body.get("rinde_ton_ha"))
+                costo     = float(body.get("costo"))
+            except (TypeError, ValueError):
+                return jsonify({"ok": False, "error": "hectareas, rinde_ton_ha y costo son requeridos y numéricos"}), 400
+            if hectareas <= 0 or rinde <= 0 or costo <= 0:
+                return jsonify({"ok": False, "error": "Los valores deben ser mayores a 0"}), 400
+            mode = body.get("costo_mode", "ton")
+            campania = body.get("campania")
+            p = save_profile(hectareas, rinde, costo, mode, campania)
+            return jsonify({"ok": True, "profile": p})
+        # GET
+        return jsonify({"ok": True, "profile": load_profile()})
+    except Exception as e:
+        print(f"[ERROR] /api/producer_profile: {e}")
+        import traceback; traceback.print_exc()
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/producer_brief")
 def get_producer_brief():
     """

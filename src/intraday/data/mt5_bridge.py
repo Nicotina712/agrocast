@@ -491,6 +491,88 @@ def place_order(
 
 
 # =========================================================================
+#  CLOSE POSITION
+# =========================================================================
+
+def close_position(
+    ticket:  int,
+    symbol:  Optional[str] = None,
+    comment: str = "close",
+    magic:   int = 20260522,
+    dry_run: bool = False,
+) -> dict:
+    """Close an open MT5 position by ticket number (opposite market order)."""
+    if not initialize():
+        return {"ok": False, "error": "MT5 not connected"}
+    sym = _resolve_symbol(symbol)
+    if not sym:
+        return {"ok": False, "error": "Symbol not resolved"}
+    positions = mt5.positions_get(ticket=ticket)
+    if not positions:
+        return {"ok": False, "error": f"Position {ticket} not found"}
+    pos = positions[0]
+    close_type  = mt5.ORDER_TYPE_SELL if pos.type == 0 else mt5.ORDER_TYPE_BUY
+    tick        = mt5.symbol_info_tick(sym)
+    close_price = tick.bid if pos.type == 0 else tick.ask
+    sym_info    = mt5.symbol_info(sym)
+    filling     = mt5.ORDER_FILLING_IOC
+    if sym_info:
+        fm = sym_info.filling_mode
+        if fm & 2:   filling = mt5.ORDER_FILLING_IOC
+        elif fm & 1: filling = mt5.ORDER_FILLING_FOK
+        else:        filling = mt5.ORDER_FILLING_RETURN
+    request = {
+        "action":       mt5.TRADE_ACTION_DEAL,
+        "position":     ticket,
+        "symbol":       sym,
+        "volume":       pos.volume,
+        "type":         close_type,
+        "price":        close_price,
+        "deviation":    20,
+        "magic":        magic,
+        "comment":      comment,
+        "type_time":    mt5.ORDER_TIME_GTC,
+        "type_filling": filling,
+    }
+    if dry_run:
+        check = mt5.order_check(request)
+        if check is None:
+            return {"ok": False, "error": str(mt5.last_error()), "dry_run": True}
+        return {"ok": check.retcode in (mt5.TRADE_RETCODE_DONE, 0),
+                "retcode": check.retcode, "dry_run": True, "ticket": ticket}
+    result = mt5.order_send(request)
+    if result is None:
+        return {"ok": False, "error": str(mt5.last_error())}
+    return {"ok": result.retcode == mt5.TRADE_RETCODE_DONE,
+            "retcode": result.retcode, "order": result.order,
+            "deal": result.deal, "price": result.price, "ticket": ticket}
+
+
+def modify_position_sl(ticket: int, new_sl: float, new_tp: float = None) -> bool:
+    """Modifica el SL (y opcionalmente TP) de una posición abierta. Para trailing stop."""
+    if not initialize():
+        return False
+    positions = mt5.positions_get(ticket=ticket)
+    if not positions:
+        return False
+    pos = positions[0]
+    sym_info = mt5.symbol_info(pos.symbol)
+    digits = sym_info.digits if sym_info else 5
+    request = {
+        "action":   mt5.TRADE_ACTION_SLTP,
+        "position": ticket,
+        "symbol":   pos.symbol,
+        "sl":       round(float(new_sl), digits),
+        "tp":       round(float(new_tp), digits) if new_tp else pos.tp,
+    }
+    try:
+        result = mt5.order_send(request)
+        return result is not None and result.retcode == mt5.TRADE_RETCODE_DONE
+    except Exception:
+        return False
+
+
+# =========================================================================
 #  DIAGNOSTICS
 # =========================================================================
 

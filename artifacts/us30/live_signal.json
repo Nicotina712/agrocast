@@ -7,10 +7,10 @@
   "confidence": "LOW",
   "rr": null,
   "risk_usd": null,
-  "reasoning": "EXTREME_OVERSOLD_RSI_23.6 + POOR_RR_0.69 + LAST_HOUR_LIQUIDITY_RISK + COUNTERTREND_SHORT_IN_CAPITULATION. RSI at 23.6 (previous bars: 10.6, 13.2) indicates potential violent bounce imminent. Setup requires pullback to 51270-51290 but current price 51245 already below entry zone - chasing momentum into oversold extreme. Only 60 mins to close increases gap risk and reduces follow-through probability. Target 51215 (session low) only 30pts away while stop must be 51350 (80pts above) for EMA21 clearance. Cumulative delta -0.708 shows exhaustion selling, not healthy trend continuation. Volume ratio 0.72 suggests lighter conviction. Risk of short squeeze if buyers step in at psychological 51200 level. RECOMMENDATION: Wait for pullback to 51280+ with rejection confirmation, OR await Monday open for cleaner setup with full session liquidity.",
-  "us30_regime": "BEAR_TREND",
+  "reasoning": "AFTER-HOURS SESSION: Current time 17:35 CT (18:35 ET) is outside NYSE regular hours (09:30-16:00 ET). After-hours US30 trading has severely reduced liquidity, wider spreads, and unpredictable price action. Trend agent correctly identifies NO SETUP with LOW confidence. Market closed 0 minutes ago. Additionally, trend analysis shows DISTRIBUTION/RISK_OFF regime with price below all EMAs and VWAP, but RSI 39.9 indicates recent bounce from extreme oversold (7.0→11.6→33.1→39.9), suggesting potential short-term reversal exhaustion. Volume ratio 0.87 below average confirms reduced participation. WAIT for tomorrow's 09:30 ET open to assess: (1) overnight gap behavior, (2) 09:35-09:40 ET stabilization post-opening volatility, (3) VWAP reclaim/rejection at 51057, (4) key resistance 50960-51000 zone reaction. No high-probability edge exists in after-hours environment. Preserve capital for regular session setups.",
+  "us30_regime": "DISTRIBUTION",
   "risk_on_off": "RISK_OFF",
-  "timestamp": "2026-06-05T13:04:20.070296",
+  "timestamp": "2026-06-05T16:39:25.060641",
   "symbol": "US30",
-  "price": 51245.3
+  "price": 50886.0
 }

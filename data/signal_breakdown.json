@@ -3,19 +3,19 @@
   "factors": [
     {
       "name": "Intelligence Engine (5-Agent Debate)",
-      "score": -0.52,
+      "score": -0.78,
       "direction": "MUY BAJISTA",
-      "detail": "Veredicto: SELL \u00b7 Confianza: 52% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1165-1215 (hace 406h)",
+      "detail": "Veredicto: SELL \u00b7 Confianza: 78% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1080-1140 (hace 30h)",
       "weight": 0.35,
       "raw": {
         "verdict": "SELL",
-        "confidence": 0.52,
+        "confidence": 0.78,
         "price_range_7d": {
-          "low": 1165,
-          "central": 1188,
-          "high": 1215
+          "low": 1080,
+          "central": 1111,
+          "high": 1140
         },
-        "reasoning": "El peso fundamental bajista domina: m\u00e1rgenes de crushing chino en -$154/ton (7x el umbral cr\u00edtico) con demand score 30/100 eliminan el comprador marginal m\u00e1s importante del mercado, mientras Brasil sa"
+        "reasoning": "La convergencia de se\u00f1ales bajistas es amplia y consistente: crush margin chino en -140 USD/ton, exportaciones brasile\u00f1as r\u00e9cord (+5.1% YoY), r\u00e9gimen de shock especulativo bajista con P(suba 30d)=5%, "
       }
     },
     {
@@ -87,8 +87,8 @@
       }
     }
   ],
-  "composite_score": 26,
-  "composite_raw": -0.482,
+  "composite_score": 21,
+  "composite_raw": -0.573,
   "composite_signal": "SELL",
-  "as_of": "2026-06-05"
+  "as_of": "2026-06-06"
 }

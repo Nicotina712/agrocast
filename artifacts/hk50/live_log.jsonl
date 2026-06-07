@@ -466,3 +466,53 @@
 {"timestamp": "2026-06-05T12:17:22.363741", "ct_time": "10:17", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
 {"timestamp": "2026-06-05T12:47:22.691030", "ct_time": "10:47", "type": "cycle", "price": 24682.4, "is_prime": true, "is_weekend": false, "mins_left": 193, "bars_count": 72}
 {"timestamp": "2026-06-05T12:47:22.693941", "ct_time": "10:47", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T13:17:22.869811", "ct_time": "11:17", "type": "cycle", "price": 24637.4, "is_prime": true, "is_weekend": false, "mins_left": 163, "bars_count": 72}
+{"timestamp": "2026-06-05T13:17:22.876578", "ct_time": "11:17", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T13:47:23.078817", "ct_time": "11:47", "type": "cycle", "price": 24609.4, "is_prime": true, "is_weekend": false, "mins_left": 133, "bars_count": 72}
+{"timestamp": "2026-06-05T13:47:23.085798", "ct_time": "11:47", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T14:17:23.650167", "ct_time": "12:17", "type": "cycle", "price": 24634.9, "is_prime": true, "is_weekend": false, "mins_left": 103, "bars_count": 72}
+{"timestamp": "2026-06-05T14:17:23.666057", "ct_time": "12:17", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T14:47:23.827329", "ct_time": "12:47", "type": "cycle", "price": 24646.9, "is_prime": true, "is_weekend": false, "mins_left": 73, "bars_count": 72}
+{"timestamp": "2026-06-05T14:47:23.827329", "ct_time": "12:47", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T15:17:23.951109", "ct_time": "13:17", "type": "cycle", "price": 24614.4, "is_prime": true, "is_weekend": false, "mins_left": 43, "bars_count": 72}
+{"timestamp": "2026-06-05T15:17:23.970513", "ct_time": "13:17", "type": "llm_gate", "reason": "max 16 calls/day reached", "state_date": "2026-06-05", "llm_calls": 16}
+{"timestamp": "2026-06-05T15:47:24.156016", "ct_time": "13:47", "type": "cycle", "price": 24599.9, "is_prime": true, "is_weekend": false, "mins_left": 13, "bars_count": 72}
+{"timestamp": "2026-06-05T15:47:24.162001", "ct_time": "13:47", "type": "too_late", "mins_left": 13}
+{"timestamp": "2026-06-05T16:17:24.352026", "ct_time": "14:17", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T16:17:24.364991", "ct_time": "14:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T16:47:24.499916", "ct_time": "14:47", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T16:47:24.499916", "ct_time": "14:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T17:17:24.961629", "ct_time": "15:17", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T17:17:24.978339", "ct_time": "15:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T17:47:25.357110", "ct_time": "15:47", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T17:47:25.372732", "ct_time": "15:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T18:17:25.611740", "ct_time": "16:17", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:17:25.611740", "ct_time": "16:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T18:47:25.901301", "ct_time": "16:47", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:47:25.904615", "ct_time": "16:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T19:17:26.138496", "ct_time": "17:17", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:17:26.154118", "ct_time": "17:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T19:43:38.076574", "ct_time": "17:43", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:43:38.117476", "ct_time": "17:43", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T20:40:41.896427", "ct_time": "18:40", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T20:40:42.052981", "ct_time": "18:40", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:02:17.709824", "ct_time": "19:02", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:02:17.776607", "ct_time": "19:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:32:17.905174", "ct_time": "19:32", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:32:17.905174", "ct_time": "19:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:02:18.019879", "ct_time": "20:02", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:02:18.035501", "ct_time": "20:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:32:18.165794", "ct_time": "20:32", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:32:18.197038", "ct_time": "20:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:02:18.318899", "ct_time": "21:02", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:02:18.318899", "ct_time": "21:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:32:18.465286", "ct_time": "21:32", "type": "cycle", "price": 24596.9, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:32:18.480908", "ct_time": "21:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T00:02:18.573331", "ct_time": "22:02", "type": "cycle", "price": 24596.9, "is_prime": true, "is_weekend": false, "mins_left": 958, "bars_count": 72}
+{"timestamp": "2026-06-06T00:02:55.254674", "ct_time": "22:02", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "sp500_regime": "BEAR_TREND"}
+{"timestamp": "2026-06-06T00:32:55.397696", "ct_time": "22:32", "type": "cycle", "price": 24596.9, "is_prime": true, "is_weekend": false, "mins_left": 928, "bars_count": 72}
+{"timestamp": "2026-06-06T00:33:23.997646", "ct_time": "22:33", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "sp500_regime": "BEAR_TREND"}
+{"timestamp": "2026-06-06T01:03:24.072093", "ct_time": "23:03", "type": "cycle", "price": 24596.9, "is_prime": true, "is_weekend": false, "mins_left": 897, "bars_count": 72}
+{"timestamp": "2026-06-06T01:03:24.510189", "ct_time": "23:03", "type": "agent_error", "agent": "trend", "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbmLoYFrFyqyjXDU16A9E'}", "exc_type": "BadRequestError"}
+{"timestamp": "2026-06-06T01:33:24.648368", "ct_time": "23:33", "type": "cycle", "price": 24596.9, "is_prime": true, "is_weekend": false, "mins_left": 867, "bars_count": 72}
+{"timestamp": "2026-06-06T01:33:24.976420", "ct_time": "23:33", "type": "agent_error", "agent": "trend", "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CbmP6GNaSrWXJAfhaMwET'}", "exc_type": "BadRequestError"}

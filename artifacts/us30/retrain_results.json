@@ -1,0 +1,32 @@
+{
+  "symbol": "US30",
+  "timestamp": "2026-06-05T20:26:59.031308",
+  "n_bars": 2000,
+  "cv_results": [
+    {
+      "fold": 1,
+      "train_n": 333,
+      "test_n": 333,
+      "accuracy": 0.5586
+    },
+    {
+      "fold": 2,
+      "train_n": 666,
+      "test_n": 333,
+      "accuracy": 0.7147
+    },
+    {
+      "fold": 3,
+      "train_n": 999,
+      "test_n": 333,
+      "accuracy": 0.4144
+    },
+    {
+      "fold": 4,
+      "train_n": 1332,
+      "test_n": 333,
+      "accuracy": 0.6426
+    }
+  ],
+  "mean_acc": 0.5826
+}

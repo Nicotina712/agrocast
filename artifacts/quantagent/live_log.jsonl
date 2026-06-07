@@ -78,3 +78,84 @@
 {"timestamp": "2026-06-05T12:32:21.728141", "ct_time": "10:32", "type": "monitor", "price": 1127.745, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
 {"timestamp": "2026-06-05T12:47:21.928980", "ct_time": "10:47", "type": "monitor", "price": 1126.125, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
 {"timestamp": "2026-06-05T13:02:22.095516", "ct_time": "11:02", "type": "monitor", "price": 1124.625, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T13:17:22.164799", "ct_time": "11:17", "type": "monitor", "price": 1122.625, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T13:32:22.354490", "ct_time": "11:32", "type": "monitor", "price": 1118.875, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T13:47:23.047887", "ct_time": "11:47", "type": "monitor", "price": 1118.625, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T14:02:23.180492", "ct_time": "12:02", "type": "monitor", "price": 1119.125, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T14:17:23.732341", "ct_time": "12:17", "type": "monitor", "price": 1118.125, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T14:32:23.806898", "ct_time": "12:32", "type": "monitor", "price": 1119.125, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T14:47:23.921065", "ct_time": "12:47", "type": "monitor", "price": 1118.625, "bars": 500, "rth": true, "skip_reason": "max 6 LLM calls/day reached (6)"}
+{"timestamp": "2026-06-05T15:02:24.247281", "ct_time": "13:02", "type": "monitor", "price": 1119.745, "bars": 500, "rth": true, "skip_reason": "too close to RTH close (18 min remaining)"}
+{"timestamp": "2026-06-05T15:17:24.440063", "ct_time": "13:17", "type": "monitor", "price": 1121.245, "bars": 500, "rth": true, "skip_reason": "too close to RTH close (3 min remaining)"}
+{"timestamp": "2026-06-05T15:32:25.146089", "ct_time": "13:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T16:02:25.340844", "ct_time": "14:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T16:32:25.455941", "ct_time": "14:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T17:02:25.582810", "ct_time": "15:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T17:32:26.235960", "ct_time": "15:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T18:02:26.377321", "ct_time": "16:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T18:32:26.458926", "ct_time": "16:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T19:02:26.612051", "ct_time": "17:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T19:32:26.897642", "ct_time": "17:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T19:34:51.158652", "ct_time": "17:34", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T19:43:37.194216", "ct_time": "17:43", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T20:13:37.692509", "ct_time": "18:13", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T20:40:42.738573", "ct_time": "18:40", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T21:02:21.235979", "ct_time": "19:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T21:32:21.324900", "ct_time": "19:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T22:02:21.476140", "ct_time": "20:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T22:32:21.563689", "ct_time": "20:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T23:02:21.642186", "ct_time": "21:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-05T23:32:21.805693", "ct_time": "21:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T00:02:21.917740", "ct_time": "22:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T00:32:22.024407", "ct_time": "22:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T01:02:22.113602", "ct_time": "23:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T01:32:22.240006", "ct_time": "23:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T02:02:22.329943", "ct_time": "00:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T02:32:22.408365", "ct_time": "00:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T03:02:22.516772", "ct_time": "01:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T03:32:22.606714", "ct_time": "01:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T04:02:22.692371", "ct_time": "02:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T04:32:22.753446", "ct_time": "02:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T05:02:22.842043", "ct_time": "03:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T05:32:22.924820", "ct_time": "03:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T06:02:23.012153", "ct_time": "04:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T06:32:23.114469", "ct_time": "04:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T07:02:23.186679", "ct_time": "05:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T07:32:23.262040", "ct_time": "05:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T08:02:23.328506", "ct_time": "06:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T08:32:23.429214", "ct_time": "06:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T09:02:23.519288", "ct_time": "07:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T09:32:23.598341", "ct_time": "07:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T10:02:23.702097", "ct_time": "08:02", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T10:32:23.775576", "ct_time": "08:32", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T10:41:02.390918", "ct_time": "08:41", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T10:56:02.607105", "ct_time": "08:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T11:11:02.695203", "ct_time": "09:11", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T11:26:02.887912", "ct_time": "09:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T11:41:02.975897", "ct_time": "09:41", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T11:56:03.141240", "ct_time": "09:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T12:11:07.581065", "ct_time": "10:11", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T12:26:08.448492", "ct_time": "10:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T12:41:09.055192", "ct_time": "10:41", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T12:56:09.164575", "ct_time": "10:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T13:11:10.147873", "ct_time": "11:11", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T13:26:10.843789", "ct_time": "11:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T13:41:10.961481", "ct_time": "11:41", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T13:56:11.100716", "ct_time": "11:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T14:11:11.290114", "ct_time": "12:11", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T14:26:11.539821", "ct_time": "12:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T14:41:11.933748", "ct_time": "12:41", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "weekend"}
+{"timestamp": "2026-06-06T14:56:12.495653", "ct_time": "12:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "too close to RTH close (24 min remaining)"}
+{"timestamp": "2026-06-06T15:11:12.755311", "ct_time": "13:11", "type": "monitor", "price": 1122.375, "bars": 500, "rth": true, "skip_reason": "too close to RTH close (9 min remaining)"}
+{"timestamp": "2026-06-06T15:26:14.193289", "ct_time": "13:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T15:56:14.739068", "ct_time": "13:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T16:26:14.935022", "ct_time": "14:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T16:56:15.084384", "ct_time": "14:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T17:26:15.279831", "ct_time": "15:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T17:56:15.381072", "ct_time": "15:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T18:26:15.504160", "ct_time": "16:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T18:56:15.818225", "ct_time": "16:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T19:26:15.979032", "ct_time": "17:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T19:56:16.162518", "ct_time": "17:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T20:26:16.295510", "ct_time": "18:26", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}
+{"timestamp": "2026-06-06T20:56:16.514956", "ct_time": "18:56", "type": "monitor", "price": 1122.375, "bars": 500, "rth": false, "skip_reason": "outside RTH"}

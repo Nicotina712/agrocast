@@ -1,0 +1,32 @@
+{
+  "symbol": "UK100",
+  "timestamp": "2026-06-05T20:30:53.047876",
+  "n_bars": 2000,
+  "cv_results": [
+    {
+      "fold": 1,
+      "train_n": 333,
+      "test_n": 333,
+      "accuracy": 0.2733
+    },
+    {
+      "fold": 2,
+      "train_n": 666,
+      "test_n": 333,
+      "accuracy": 0.3874
+    },
+    {
+      "fold": 3,
+      "train_n": 999,
+      "test_n": 333,
+      "accuracy": 0.6456
+    },
+    {
+      "fold": 4,
+      "train_n": 1332,
+      "test_n": 333,
+      "accuracy": 0.3363
+    }
+  ],
+  "mean_acc": 0.4106
+}

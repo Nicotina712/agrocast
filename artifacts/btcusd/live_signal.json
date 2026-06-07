@@ -7,8 +7,8 @@
   "confidence": "LOW",
   "rr": null,
   "risk_usd": null,
-  "reasoning": "Setup requires counter-trend bounce to resistance zone ($61,150-$61,400) before entry. Current price $60,685 is at oversold extreme (RSI 31.8) sitting on lower BB. Chasing shorts here violates mean-reversion risk management. Price must rally $465-$715 first to reach proposed SHORT entry zone against VWAP/EMA resistance. Additionally, timing risk is elevated with 540 minutes (9 hours) to session close during active volatility. Recommended action: WAIT for bounce to $61,150-$61,400 resistance, then re-evaluate SHORT with stop above $61,920 (EMA21). Alternatively, aggressive long scalp targeting $61,500-$62,000 is viable but contradicts PRIMARY trend direction (DOWN/STRONG). No immediate entry justified at current levels.",
-  "timestamp": "2026-06-05T12:17:55.014630",
+  "reasoning": "WEEKEND RISK: Trading on Saturday 19:00 CT with extremely low volume (vol_ratio: 0.39) and thin liquidity creates unacceptable gap/slippage risk. Cumulative delta negative (-0.141) shows underlying selling pressure despite price recovery. Setup requires <$200 stop which violates BTC minimum $500 stop rule due to high whipsaw probability. Price still below EMA50 resistance ($60,931) - not a confirmed breakout. MEDIUM confidence setup does not justify weekend execution risk. Wait for Monday regular session with normal liquidity and volume confirmation above $60,931.",
+  "timestamp": "2026-06-06T18:20:04.418199",
   "symbol": "BTCUSD",
-  "price": 60685.65
+  "price": 60806.4
 }

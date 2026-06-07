@@ -1,75 +1,78 @@
-{
-  "ok": true,
-  "commodities": {
-    "Soybeans": {
-      "label": "Soja",
-      "unit": "USc/bu",
-      "ticker": "ZS=F",
-      "emoji": "\ud83c\udf31",
-      "price": 1212.0,
-      "chg_1d_pct": 2.97,
-      "chg_5d_pct": 1.02,
-      "ma20": 1185.51,
-      "ma50": 1176.09,
-      "ma200": 1091.86,
-      "rsi": 60.7,
-      "bb_upper": 1219.53,
-      "bb_lower": 1151.49,
-      "bb_pct": 88.9,
-      "signal": "HOLD",
-      "score": 1,
-      "signals_list": [
-        "precio > MA50",
-        "MA50 > MA200 (golden cross)",
-        "precio en banda superior Bollinger"
-      ]
-    },
-    "Maize": {
-      "label": "Ma\u00edz",
-      "unit": "USc/bu",
-      "ticker": "ZC=F",
-      "emoji": "\ud83c\udf3d",
-      "price": 477.25,
-      "chg_1d_pct": 4.72,
-      "chg_5d_pct": 3.58,
-      "ma20": 461.2,
-      "ma50": 456.13,
-      "ma200": 430.46,
-      "rsi": 56.7,
-      "bb_upper": 476.22,
-      "bb_lower": 446.18,
-      "bb_pct": 103.4,
-      "signal": "BUY",
-      "score": 2,
-      "signals_list": [
-        "precio > MA50",
-        "MA50 > MA200 (golden cross)",
-        "precio en banda superior Bollinger"
-      ]
-    },
-    "Wheat": {
-      "label": "Trigo",
-      "unit": "USc/bu",
-      "ticker": "ZW=F",
-      "emoji": "\ud83c\udf3e",
-      "price": 664.75,
-      "chg_1d_pct": 4.56,
-      "chg_5d_pct": 6.83,
-      "ma20": 627.26,
-      "ma50": 608.0,
-      "ma200": 545.09,
-      "rsi": 54.4,
-      "bb_upper": 670.84,
-      "bb_lower": 583.69,
-      "bb_pct": 93.0,
-      "signal": "BUY",
-      "score": 2,
-      "signals_list": [
-        "precio > MA50",
-        "MA50 > MA200 (golden cross)",
-        "precio en banda superior Bollinger"
-      ]
-    }
-  },
-  "as_of": "2026-05-18"
+{
+  "ok": true,
+  "commodities": {
+    "Soybeans": {
+      "label": "Soja",
+      "unit": "USc/bu",
+      "ticker": "ZS=F",
+      "emoji": "\ud83c\udf31",
+      "price": 1128.0,
+      "chg_1d_pct": -0.13,
+      "chg_5d_pct": -4.95,
+      "ma20": 1184.86,
+      "ma50": 1176.58,
+      "ma200": 1103.97,
+      "rsi": 33.0,
+      "bb_upper": 1234.74,
+      "bb_lower": 1134.99,
+      "bb_pct": -7.0,
+      "signal": "BUY",
+      "score": 2,
+      "signals_list": [
+        "precio < MA50",
+        "MA50 > MA200 (golden cross)",
+        "RSI sobrevendido (33)",
+        "precio en banda inferior Bollinger"
+      ]
+    },
+    "Maize": {
+      "label": "Ma\u00edz",
+      "unit": "USc/bu",
+      "ticker": "ZC=F",
+      "emoji": "\ud83c\udf3d",
+      "price": 420.0,
+      "chg_1d_pct": -1.06,
+      "chg_5d_pct": -5.99,
+      "ma20": 453.73,
+      "ma50": 454.62,
+      "ma200": 434.88,
+      "rsi": 29.4,
+      "bb_upper": 484.67,
+      "bb_lower": 422.78,
+      "bb_pct": -4.5,
+      "signal": "BUY",
+      "score": 2,
+      "signals_list": [
+        "precio < MA50",
+        "MA50 > MA200 (golden cross)",
+        "RSI sobrevendido (29)",
+        "precio en banda inferior Bollinger"
+      ]
+    },
+    "Wheat": {
+      "label": "Trigo",
+      "unit": "USc/bu",
+      "ticker": "ZW=F",
+      "emoji": "\ud83c\udf3e",
+      "price": 581.5,
+      "chg_1d_pct": -0.04,
+      "chg_5d_pct": -4.75,
+      "ma20": 629.16,
+      "ma50": 614.48,
+      "ma200": 552.36,
+      "rsi": 27.4,
+      "bb_upper": 686.46,
+      "bb_lower": 571.87,
+      "bb_pct": 8.4,
+      "signal": "BUY",
+      "score": 2,
+      "signals_list": [
+        "precio < MA50",
+        "MA50 > MA200 (golden cross)",
+        "RSI sobrevendido (27)",
+        "precio en banda inferior Bollinger"
+      ]
+    }
+  },
+  "as_of": "2026-06-06"
 }

@@ -1125,3 +1125,95 @@
 {"timestamp": "2026-06-05T12:17:21.185344", "ct_time": "10:17", "type": "cycle", "price": 60685.65, "is_prime": true, "is_weekend": false, "mins_left": 703, "bars_count": 100}
 {"timestamp": "2026-06-05T12:17:55.333710", "ct_time": "10:17", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
 {"timestamp": "2026-06-05T12:47:55.620378", "ct_time": "10:47", "type": "cycle", "price": 60184.64, "is_prime": true, "is_weekend": false, "mins_left": 673, "bars_count": 100}
+{"timestamp": "2026-06-05T13:18:23.450586", "ct_time": "11:18", "type": "cycle", "price": 60985.0, "is_prime": true, "is_weekend": false, "mins_left": 642, "bars_count": 100}
+{"timestamp": "2026-06-05T13:18:23.466208", "ct_time": "11:18", "type": "vol_filter", "atr_now": 869.56134, "atr_mean": 628.41732, "atr_zscore": 1.95, "threshold": 1.5, "reason": "ATR z-score 1.95 > 1.5 — high-vol regime, skip"}
+{"timestamp": "2026-06-05T13:48:23.693786", "ct_time": "11:48", "type": "cycle", "price": 60935.34, "is_prime": true, "is_weekend": false, "mins_left": 612, "bars_count": 100}
+{"timestamp": "2026-06-05T13:48:23.709326", "ct_time": "11:48", "type": "vol_filter", "atr_now": 850.50218, "atr_mean": 637.15119, "atr_zscore": 1.63, "threshold": 1.5, "reason": "ATR z-score 1.63 > 1.5 — high-vol regime, skip"}
+{"timestamp": "2026-06-05T14:18:23.826685", "ct_time": "12:18", "type": "cycle", "price": 60783.06, "is_prime": true, "is_weekend": false, "mins_left": 582, "bars_count": 100}
+{"timestamp": "2026-06-05T14:18:23.826685", "ct_time": "12:18", "type": "vol_filter", "atr_now": 880.60942, "atr_mean": 646.98824, "atr_zscore": 1.7, "threshold": 1.5, "reason": "ATR z-score 1.70 > 1.5 — high-vol regime, skip"}
+{"timestamp": "2026-06-05T14:48:23.923833", "ct_time": "12:48", "type": "cycle", "price": 60674.74, "is_prime": true, "is_weekend": false, "mins_left": 552, "bars_count": 100}
+{"timestamp": "2026-06-05T15:18:50.723852", "ct_time": "13:18", "type": "cycle", "price": 60468.32, "is_prime": true, "is_weekend": false, "mins_left": 522, "bars_count": 100}
+{"timestamp": "2026-06-05T15:19:18.128929", "ct_time": "13:19", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T15:49:18.235650", "ct_time": "13:49", "type": "cycle", "price": 59743.46, "is_prime": true, "is_weekend": false, "mins_left": 491, "bars_count": 100}
+{"timestamp": "2026-06-05T15:49:46.819721", "ct_time": "13:49", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T16:19:46.966182", "ct_time": "14:19", "type": "cycle", "price": 59164.46, "is_prime": true, "is_weekend": false, "mins_left": 461, "bars_count": 100}
+{"timestamp": "2026-06-05T16:20:18.023468", "ct_time": "14:20", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T16:50:18.125202", "ct_time": "14:50", "type": "cycle", "price": 60213.78, "is_prime": true, "is_weekend": false, "mins_left": 430, "bars_count": 100}
+{"timestamp": "2026-06-05T17:20:45.041243", "ct_time": "15:20", "type": "cycle", "price": 60965.9, "is_prime": true, "is_weekend": false, "mins_left": 400, "bars_count": 100}
+{"timestamp": "2026-06-05T17:20:45.041243", "ct_time": "15:20", "type": "vol_filter", "atr_now": 935.52525, "atr_mean": 704.66851, "atr_zscore": 1.56, "threshold": 1.5, "reason": "ATR z-score 1.56 > 1.5 — high-vol regime, skip"}
+{"timestamp": "2026-06-05T17:50:45.210093", "ct_time": "15:50", "type": "cycle", "price": 61716.63, "is_prime": true, "is_weekend": false, "mins_left": 370, "bars_count": 100}
+{"timestamp": "2026-06-05T18:21:10.759165", "ct_time": "16:21", "type": "cycle", "price": 61479.58, "is_prime": true, "is_weekend": false, "mins_left": 339, "bars_count": 100}
+{"timestamp": "2026-06-05T18:51:40.368483", "ct_time": "16:51", "type": "cycle", "price": 61479.58, "is_prime": true, "is_weekend": false, "mins_left": 309, "bars_count": 100}
+{"timestamp": "2026-06-05T19:22:07.667865", "ct_time": "17:22", "type": "cycle", "price": 61608.46, "is_prime": true, "is_weekend": false, "mins_left": 278, "bars_count": 100}
+{"timestamp": "2026-06-05T19:22:51.461700", "ct_time": "17:22", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T19:43:28.239385", "ct_time": "17:43", "type": "cycle", "price": 61781.85, "is_prime": true, "is_weekend": false, "mins_left": 257, "bars_count": 100}
+{"timestamp": "2026-06-05T19:44:05.594768", "ct_time": "17:44", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T20:17:25.606671", "ct_time": "18:17", "type": "cycle", "price": 61235.22, "is_prime": true, "is_weekend": false, "mins_left": 226, "bars_count": 100}
+{"timestamp": "2026-06-05T20:17:58.344534", "ct_time": "18:17", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T20:40:41.834426", "ct_time": "18:40", "type": "cycle", "price": 60689.01, "is_prime": true, "is_weekend": false, "mins_left": 200, "bars_count": 100}
+{"timestamp": "2026-06-05T21:02:19.391672", "ct_time": "19:02", "type": "cycle", "price": 61234.41, "is_prime": true, "is_weekend": false, "mins_left": 178, "bars_count": 100}
+{"timestamp": "2026-06-05T21:03:03.924399", "ct_time": "19:03", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-05T21:33:04.013118", "ct_time": "19:33", "type": "cycle", "price": 61334.33, "is_prime": true, "is_weekend": false, "mins_left": 147, "bars_count": 100}
+{"timestamp": "2026-06-05T21:33:34.544803", "ct_time": "19:33", "type": "signal", "signal": "FLAT", "entry": 61334, "sl": 60843.328, "tp": 61950, "lots": 0.05, "confidence": "MEDIUM", "rr": 1.26, "risk_usd": 19.2, "btc_regime": "CONSOLIDATION"}
+{"timestamp": "2026-06-05T22:03:34.644175", "ct_time": "20:03", "type": "cycle", "price": 61341.98, "is_prime": true, "is_weekend": false, "mins_left": 117, "bars_count": 100}
+{"timestamp": "2026-06-05T22:33:34.782538", "ct_time": "20:33", "type": "cycle", "price": 61240.9, "is_prime": true, "is_weekend": false, "mins_left": 87, "bars_count": 100}
+{"timestamp": "2026-06-05T23:03:34.870770", "ct_time": "21:03", "type": "cycle", "price": 60965.01, "is_prime": true, "is_weekend": false, "mins_left": 57, "bars_count": 100}
+{"timestamp": "2026-06-05T23:33:34.964184", "ct_time": "21:33", "type": "cycle", "price": 60912.83, "is_prime": true, "is_weekend": false, "mins_left": 27, "bars_count": 100}
+{"timestamp": "2026-06-06T00:03:35.056707", "ct_time": "22:03", "type": "cycle", "price": 60853.13, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 100}
+{"timestamp": "2026-06-06T00:33:35.138638", "ct_time": "22:33", "type": "cycle", "price": 60549.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 100}
+{"timestamp": "2026-06-06T01:03:35.230513", "ct_time": "23:03", "type": "cycle", "price": 60776.86, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 100}
+{"timestamp": "2026-06-06T01:33:35.442095", "ct_time": "23:33", "type": "cycle", "price": 59656.68, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 100}
+{"timestamp": "2026-06-06T02:03:35.531757", "ct_time": "00:03", "type": "cycle", "price": 59810.04, "is_prime": false, "is_weekend": true, "mins_left": 1317, "bars_count": 100}
+{"timestamp": "2026-06-06T02:33:35.641661", "ct_time": "00:33", "type": "cycle", "price": 60625.99, "is_prime": false, "is_weekend": true, "mins_left": 1287, "bars_count": 100}
+{"timestamp": "2026-06-06T03:03:35.718530", "ct_time": "01:03", "type": "cycle", "price": 61172.51, "is_prime": false, "is_weekend": true, "mins_left": 1257, "bars_count": 100}
+{"timestamp": "2026-06-06T03:33:35.834423", "ct_time": "01:33", "type": "cycle", "price": 60997.05, "is_prime": false, "is_weekend": true, "mins_left": 1227, "bars_count": 100}
+{"timestamp": "2026-06-06T04:03:35.931850", "ct_time": "02:03", "type": "cycle", "price": 60757.22, "is_prime": false, "is_weekend": true, "mins_left": 1197, "bars_count": 100}
+{"timestamp": "2026-06-06T04:33:36.019971", "ct_time": "02:33", "type": "cycle", "price": 60904.02, "is_prime": false, "is_weekend": true, "mins_left": 1167, "bars_count": 100}
+{"timestamp": "2026-06-06T05:03:36.260121", "ct_time": "03:03", "type": "cycle", "price": 60850.15, "is_prime": true, "is_weekend": true, "mins_left": 1137, "bars_count": 100}
+{"timestamp": "2026-06-06T05:33:36.749780", "ct_time": "03:33", "type": "cycle", "price": 61293.14, "is_prime": true, "is_weekend": true, "mins_left": 1107, "bars_count": 100}
+{"timestamp": "2026-06-06T06:03:37.441473", "ct_time": "04:03", "type": "cycle", "price": 61195.77, "is_prime": true, "is_weekend": true, "mins_left": 1077, "bars_count": 100}
+{"timestamp": "2026-06-06T06:33:37.960786", "ct_time": "04:33", "type": "cycle", "price": 61243.93, "is_prime": true, "is_weekend": true, "mins_left": 1047, "bars_count": 100}
+{"timestamp": "2026-06-06T07:03:38.480108", "ct_time": "05:03", "type": "cycle", "price": 60711.2, "is_prime": true, "is_weekend": true, "mins_left": 1017, "bars_count": 100}
+{"timestamp": "2026-06-06T07:33:38.877802", "ct_time": "05:33", "type": "cycle", "price": 60373.45, "is_prime": true, "is_weekend": true, "mins_left": 987, "bars_count": 100}
+{"timestamp": "2026-06-06T08:03:39.294131", "ct_time": "06:03", "type": "cycle", "price": 60656.5, "is_prime": true, "is_weekend": true, "mins_left": 957, "bars_count": 100}
+{"timestamp": "2026-06-06T08:33:39.682415", "ct_time": "06:33", "type": "cycle", "price": 60757.73, "is_prime": true, "is_weekend": true, "mins_left": 927, "bars_count": 100}
+{"timestamp": "2026-06-06T09:03:40.216997", "ct_time": "07:03", "type": "cycle", "price": 60963.32, "is_prime": true, "is_weekend": true, "mins_left": 897, "bars_count": 100}
+{"timestamp": "2026-06-06T09:33:40.732530", "ct_time": "07:33", "type": "cycle", "price": 60752.63, "is_prime": true, "is_weekend": true, "mins_left": 867, "bars_count": 100}
+{"timestamp": "2026-06-06T10:03:41.234179", "ct_time": "08:03", "type": "cycle", "price": 60984.78, "is_prime": true, "is_weekend": true, "mins_left": 837, "bars_count": 100}
+{"timestamp": "2026-06-06T10:33:42.133260", "ct_time": "08:33", "type": "cycle", "price": 60713.4, "is_prime": true, "is_weekend": true, "mins_left": 807, "bars_count": 100}
+{"timestamp": "2026-06-06T10:41:02.373427", "ct_time": "08:41", "type": "cycle", "price": 60829.6, "is_prime": true, "is_weekend": true, "mins_left": 800, "bars_count": 100}
+{"timestamp": "2026-06-06T10:41:52.232071", "ct_time": "08:41", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T11:11:52.423270", "ct_time": "09:11", "type": "cycle", "price": 60919.15, "is_prime": true, "is_weekend": true, "mins_left": 769, "bars_count": 100}
+{"timestamp": "2026-06-06T11:12:22.745807", "ct_time": "09:12", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T11:42:22.817637", "ct_time": "09:42", "type": "cycle", "price": 60917.75, "is_prime": true, "is_weekend": true, "mins_left": 738, "bars_count": 100}
+{"timestamp": "2026-06-06T11:42:55.529018", "ct_time": "09:42", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T12:12:55.673902", "ct_time": "10:12", "type": "cycle", "price": 60600.68, "is_prime": true, "is_weekend": true, "mins_left": 708, "bars_count": 100}
+{"timestamp": "2026-06-06T12:13:26.697269", "ct_time": "10:13", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T12:43:26.870605", "ct_time": "10:43", "type": "cycle", "price": 60833.41, "is_prime": true, "is_weekend": true, "mins_left": 677, "bars_count": 100}
+{"timestamp": "2026-06-06T12:43:58.788565", "ct_time": "10:43", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T13:13:59.628336", "ct_time": "11:13", "type": "cycle", "price": 60767.56, "is_prime": true, "is_weekend": true, "mins_left": 647, "bars_count": 100}
+{"timestamp": "2026-06-06T13:14:34.955187", "ct_time": "11:14", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T13:44:35.104653", "ct_time": "11:44", "type": "cycle", "price": 60671.81, "is_prime": true, "is_weekend": true, "mins_left": 616, "bars_count": 100}
+{"timestamp": "2026-06-06T13:45:02.108783", "ct_time": "11:45", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T14:15:02.363752", "ct_time": "12:15", "type": "cycle", "price": 60625.59, "is_prime": true, "is_weekend": true, "mins_left": 585, "bars_count": 100}
+{"timestamp": "2026-06-06T14:45:05.043392", "ct_time": "12:45", "type": "cycle", "price": 60680.58, "is_prime": true, "is_weekend": true, "mins_left": 555, "bars_count": 100}
+{"timestamp": "2026-06-06T14:45:36.292033", "ct_time": "12:45", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T15:15:36.623318", "ct_time": "13:15", "type": "cycle", "price": 60451.73, "is_prime": true, "is_weekend": true, "mins_left": 525, "bars_count": 100}
+{"timestamp": "2026-06-06T15:16:12.124470", "ct_time": "13:16", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T15:46:12.681649", "ct_time": "13:46", "type": "cycle", "price": 60592.83, "is_prime": true, "is_weekend": true, "mins_left": 494, "bars_count": 100}
+{"timestamp": "2026-06-06T15:46:50.735117", "ct_time": "13:46", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T16:16:50.896965", "ct_time": "14:16", "type": "cycle", "price": 60635.81, "is_prime": true, "is_weekend": true, "mins_left": 464, "bars_count": 100}
+{"timestamp": "2026-06-06T16:17:28.520954", "ct_time": "14:17", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T16:47:28.674677", "ct_time": "14:47", "type": "cycle", "price": 60645.19, "is_prime": true, "is_weekend": true, "mins_left": 433, "bars_count": 100}
+{"timestamp": "2026-06-06T16:48:04.347234", "ct_time": "14:48", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T17:18:04.479626", "ct_time": "15:18", "type": "cycle", "price": 60556.95, "is_prime": true, "is_weekend": true, "mins_left": 402, "bars_count": 100}
+{"timestamp": "2026-06-06T17:18:42.213669", "ct_time": "15:18", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T17:48:42.417612", "ct_time": "15:48", "type": "cycle", "price": 60612.43, "is_prime": true, "is_weekend": true, "mins_left": 372, "bars_count": 100}
+{"timestamp": "2026-06-06T17:49:24.943536", "ct_time": "15:49", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T18:19:25.090047", "ct_time": "16:19", "type": "cycle", "price": 60806.4, "is_prime": true, "is_weekend": true, "mins_left": 341, "bars_count": 100}
+{"timestamp": "2026-06-06T18:20:04.418199", "ct_time": "16:20", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": null, "confidence": "LOW", "rr": null, "risk_usd": null, "btc_regime": null}
+{"timestamp": "2026-06-06T18:50:04.600698", "ct_time": "16:50", "type": "cycle", "price": 60825.73, "is_prime": true, "is_weekend": true, "mins_left": 310, "bars_count": 100}
+{"timestamp": "2026-06-06T19:20:04.887266", "ct_time": "17:20", "type": "cycle", "price": 60692.52, "is_prime": true, "is_weekend": true, "mins_left": 280, "bars_count": 100}
+{"timestamp": "2026-06-06T19:50:04.965564", "ct_time": "17:50", "type": "cycle", "price": 60612.65, "is_prime": true, "is_weekend": true, "mins_left": 250, "bars_count": 100}
+{"timestamp": "2026-06-06T20:20:05.198974", "ct_time": "18:20", "type": "cycle", "price": 60611.31, "is_prime": true, "is_weekend": true, "mins_left": 220, "bars_count": 100}
+{"timestamp": "2026-06-06T20:50:05.424229", "ct_time": "18:50", "type": "cycle", "price": 60832.43, "is_prime": true, "is_weekend": true, "mins_left": 190, "bars_count": 100}

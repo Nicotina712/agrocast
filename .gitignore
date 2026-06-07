@@ -42,3 +42,6 @@ logs/
 # ── OS / archive ─────────────────────────────────────────
 _archivo/
 *.tmp
+
+# Perfil del productor (dato de usuario, no versionar)
+data/producer_profile.json

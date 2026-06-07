@@ -214,5 +214,16 @@
     "ret_pct": -2.26,
     "verified_at": "2026-06-05T12:46:04.821691",
     "price_at_horizon": 1180.75
+  },
+  {
+    "date": "2026-06-06",
+    "stance": "BAJISTA",
+    "conviction": 23,
+    "headline": "Señal bajista moderada: mejor vender una parte ahora",
+    "price_at_snapshot": 1128.0,
+    "verified": false,
+    "hit": null,
+    "ret_pct": null,
+    "verified_at": null
   }
 ]

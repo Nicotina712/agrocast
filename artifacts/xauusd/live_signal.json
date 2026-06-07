@@ -5,42 +5,42 @@
   "tp": null,
   "lots": 0.0,
   "confidence": "LOW",
-  "reasoning": "MÚLTIPLES VETOS CONCURRENTES: (1) Trend Agent emite señal FLAT con confianza LOW — sin setup confirmado. (2) Solo 60 minutos para cierre de sesión Gold — riesgo de gap/slippage en cierre; política interna recomienda no abrir posiciones con <30 min, y 60 min es insuficiente para un trade estructural con R:R adecuado dado el ATR elevado. (3) Setup propuesto es reversal contra tendencia bajista fuerte (strong DOWN) sin confirmación técnica — no hay cierre por encima de 4351, no hay divergencia RSI confirmada, no hay catalizador fundamental conocido. (4) Contexto fundamental completamente desconocido (DXY, yields, VIX, próximos eventos macro) — riesgo de evento binario no cuantificable. (5) Cum delta 20b de -145,386 indica presión vendedora estructural; entrar LONG aquí sería operar contra el flujo institucional dominante. (6) R:R proyectado insuficiente: target natural en 4351-4355 (~13-17 pts) vs stop necesario bajo 4330.35 (~9 pts mínimo bajo estructura) → R:R ~1.4:1, por debajo del mínimo requerido de 1.5:1 dado el ATR expandido.",
+  "reasoning": "MÚLTIPLES VETOS: (1) SESIÓN CERRADA — mins_to_close=0, regla fija prohíbe abrir posiciones con <30 min para cierre o en cierre de sesión. (2) HORARIO FUERA DE VENTANA — 20:00 CT está fuera de la ventana operativa permitida (07:00-11:30 CT). (3) SETUP FLAT — Trend Agent asigna dirección FLAT con confianza LOW; sin edge direccional claro. (4) LIQUIDEZ REDUCIDA — fuera de overlap London-NY, spreads elevados y profundidad de mercado insuficiente para Gold intradiario. (5) CONTEXTO FUNDAMENTAL DESCONOCIDO — sin datos de DXY, yields reales ni calendario macro verificado; riesgo de evento no priceado.",
   "trend_analysis": {
     "trend": "DOWN",
-    "trend_strength": "strong",
+    "trend_strength": "moderate",
     "momentum": "decelerating",
     "key_levels": {
       "resistance": [
-        4351.73,
-        4369.69
+        4347.04,
+        4379.07
       ],
       "support": [
-        4330.35,
+        4323.34,
         4300.0
       ],
-      "vwap": 4414.54,
+      "vwap": 4405.2,
       "nearest_round": 4300.0
     },
     "setup": {
-      "type": "reversal",
-      "description": "RSI en zona de sobreventa extrema (20.1) con lower wick dominante en la ultima barra (0.544 vs body 0.329), sugiriendo absorcion de vendedores y posible rebote tecnico de corto plazo. Sin embargo, precio esta un 1.72% por debajo del VWAP de sesion (4414.54), EMA9 (4355.37) cruzada por debajo de EMA26 (4394.86), y cum delta acumulado profundamente negativo (-145386 en 20 barras). El momentum bajista es estructural, no coyuntural. La desaceleracion del momentum (ret 1bar: +0.07% vs ret 12bar: -1.82%) y el RSI en 20 sugieren que el move bajista esta maduro, pero NO hay confirmacion de reversal — solo posible dead-cat bounce hacia zona 4351-4355.",
+      "type": "range",
+      "description": "Precio en zona de consolidación baja tras caída intradiaria. Las últimas 6 barras muestran compresión entre 4323-4347 con un intento de rebote en la barra anterior (4325→4344) que se está deteniendo. RSI en 30.6 indica sobreventa pero sin señal de reversión confirmada. Precio está un 1.44% por debajo del VWAP (4405.20) — sesgo bajista estructural claro. EMA9 (4344.34) por debajo de EMA26 (4379.07) con cross negativo. Cum delta acumulado muy negativo (-185k en 20 barras) confirma presión vendedora dominante. El rebote actual parece técnico/oversold bounce sin convicción. Hora CT 20:00 = fuera de ventana London-NY overlap — liquidez reducida, evitar nuevas entradas.",
       "direction": "FLAT",
       "entry_zone": {
-        "low": 4330.35,
-        "high": 4351.73
+        "low": 0,
+        "high": 0
       },
       "confidence": "LOW"
     },
     "fundamental_alignment": "neutral",
     "dxy_bias": "neutral",
-    "reasoning": "El Oro lleva 12 barras en caida libre (-1.82%), con RSI colapsado a 20.1 y precio 1.72% bajo VWAP — la presion vendedora es dominante y estructural segun el cum delta (-145K en 20 barras). La ultima barra muestra lower wick significativa (H:4339.82 / L:4330.35 / C:4338.62), indicando absorcion parcial en los minimos, pero sin volumen confirmaotrio ni cierre por encima de resistencia inmediata (4351). Con solo 60 minutos para cierre de sesion, contexto fundamental desconocido y setup sin confirmacion, la decision correcta es FLAT — el RSI extremo avisa agotamiento vendedor pero no es suficiente para entrar LONG contra tendencia bajista tan fuerte sin catalizador claro."
+    "reasoning": "Tendencia intradiaria bajista con precio 1.44% bajo VWAP y EMA bearish cross, pero RSI en zona de sobreventa (30.6) sugiere momentum bajista desacelerando. El rebote de las últimas 2 barras (4325→4341) parece un bounce técnico sin confirmación de reversión — delta acumulado sigue muy negativo (-185k). Estamos fuera de la sesión London-NY (20:00 CT), liquidez reducida y contexto fundamental desconocido: no hay edge claro para iniciar posición. FLAT hasta próxima apertura de sesión con volumen."
   },
   "risk_analysis": {
-    "volatility_regime": "elevated",
-    "atr_assessment": "ATR actual $14.46 vs media 30b $10.41 — expansión del 39%, volatilidad por encima de rango normal. No alcanza umbral extremo (>$25) pero requiere stops más amplios y sizing conservador.",
+    "volatility_regime": "normal",
+    "atr_assessment": "ATR actual $13.71 vs media 30b $11.24 — expansión moderada (~22% sobre media), dentro del rango típico de Gold en 60m ($8-20). No requiere reducción por volatilidad.",
     "trade_viable": false,
-    "veto_reason": "MÚLTIPLES VETOS CONCURRENTES: (1) Trend Agent emite señal FLAT con confianza LOW — sin setup confirmado. (2) Solo 60 minutos para cierre de sesión Gold — riesgo de gap/slippage en cierre; política interna recomienda no abrir posiciones con <30 min, y 60 min es insuficiente para un trade estructural con R:R adecuado dado el ATR elevado. (3) Setup propuesto es reversal contra tendencia bajista fuerte (strong DOWN) sin confirmación técnica — no hay cierre por encima de 4351, no hay divergencia RSI confirmada, no hay catalizador fundamental conocido. (4) Contexto fundamental completamente desconocido (DXY, yields, VIX, próximos eventos macro) — riesgo de evento binario no cuantificable. (5) Cum delta 20b de -145,386 indica presión vendedora estructural; entrar LONG aquí sería operar contra el flujo institucional dominante. (6) R:R proyectado insuficiente: target natural en 4351-4355 (~13-17 pts) vs stop necesario bajo 4330.35 (~9 pts mínimo bajo estructura) → R:R ~1.4:1, por debajo del mínimo requerido de 1.5:1 dado el ATR expandido.",
+    "veto_reason": "MÚLTIPLES VETOS: (1) SESIÓN CERRADA — mins_to_close=0, regla fija prohíbe abrir posiciones con <30 min para cierre o en cierre de sesión. (2) HORARIO FUERA DE VENTANA — 20:00 CT está fuera de la ventana operativa permitida (07:00-11:30 CT). (3) SETUP FLAT — Trend Agent asigna dirección FLAT con confianza LOW; sin edge direccional claro. (4) LIQUIDEZ REDUCIDA — fuera de overlap London-NY, spreads elevados y profundidad de mercado insuficiente para Gold intradiario. (5) CONTEXTO FUNDAMENTAL DESCONOCIDO — sin datos de DXY, yields reales ni calendario macro verificado; riesgo de evento no priceado.",
     "stop_loss": {
       "price": null,
       "type": "structure",
@@ -56,13 +56,13 @@
       "lots": 0.0,
       "oz_equivalent": 0,
       "risk_pct": 0.0,
-      "rationale": "Trade vetado — no se asigna sizing. Si el veto se levantara en re-evaluación futura: stop hipotético bajo 4328 (8 pts bajo mínimo 4330.35 con buffer de 2 pts para evitar ruido), stop_distance = ~10.62 pts → lots = 20.26 / (10.62 × 100) = 0.0191 → 0.02 lotes. Este cálculo es REFERENCIAL únicamente."
+      "rationale": "Sizing = 0. Trade vetado por múltiples condiciones de riesgo. No se calcula sizing cuando trade_viable=false. Capital $1,013 protegido íntegramente."
     },
     "session_risk": "high",
     "max_hold_bars": 0,
-    "reasoning": "El Risk Agent veta el trade de forma unilateral e independiente del Trend Agent (que ya emitió FLAT). La confluencia de factores negativos es inequívoca: tendencia bajista fuerte sin señal de reversión confirmada, ventana temporal insuficiente (60 min al cierre), contexto fundamental opaco con potencial evento macro no identificado, ATR expandido que infla el costo del stop y degrada el R:R por debajo de 1.5:1, y flujo institucional netamente vendedor según cum delta. El RSI en 20.1 y la lower wick son señales de alerta de agotamiento vendedor, NO señales de entrada — el Oro requiere confirmación de estructura (cierre por encima de 4351 mínimo) antes de considerar cualquier posición LONG. Capital preservado: $1,013 intacto. Re-evaluar en próxima sesión con contexto fundamental claro y estructura de precio confirmada."
+    "reasoning": "El Risk Agent emite VETO TOTAL. Son las 20:00 CT con 0 minutos para cierre de sesión Gold — la regla de los 30 minutos y el horario fuera de ventana operativa (post 11:30 CT) son condiciones de riesgo no negociables. Adicionalmente, el Trend Agent confirma setup FLAT con confianza LOW y delta acumulado muy negativo (-185k en 20 barras) que invalida cualquier intento de long en oversold bounce. Próxima ventana operativa válida: apertura sesión London (~02:00 CT) o NY open (~08:30 CT) del día siguiente, con contexto fundamental verificado y volumen confirmado."
   },
-  "timestamp": "2026-06-05T13:04:01.764247",
+  "timestamp": "2026-06-05T14:05:59.944857",
   "symbol": "XAUUSD",
-  "price": 4338.62
+  "price": 4341.83
 }

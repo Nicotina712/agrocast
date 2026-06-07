@@ -1,0 +1,32 @@
+{
+  "symbol": "HK50",
+  "timestamp": "2026-06-05T20:33:27.285111",
+  "n_bars": 2000,
+  "cv_results": [
+    {
+      "fold": 1,
+      "train_n": 333,
+      "test_n": 333,
+      "accuracy": 0.4384
+    },
+    {
+      "fold": 2,
+      "train_n": 666,
+      "test_n": 333,
+      "accuracy": 0.4024
+    },
+    {
+      "fold": 3,
+      "train_n": 999,
+      "test_n": 333,
+      "accuracy": 0.4414
+    },
+    {
+      "fold": 4,
+      "train_n": 1332,
+      "test_n": 333,
+      "accuracy": 0.3874
+    }
+  ],
+  "mean_acc": 0.4174
+}

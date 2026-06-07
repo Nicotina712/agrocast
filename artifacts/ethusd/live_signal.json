@@ -7,11 +7,11 @@
   "confidence": "LOW",
   "rr": null,
   "risk_usd": null,
-  "reasoning": "NO SETUP: Trend agent explicitly rejected both LONG and SHORT entries. LONG forbidden due to RISK_OFF regime + BTC_LEADING dynamics (ETH will amplify BTC downside 1.3-1.8x). SHORT rejected despite bearish structure due to: (1) RSI 37.2 near oversold, (2) price -2.9% below VWAP already stretched, (3) only $30 to session low $1628.84 = poor risk/reward, (4) declining volume 3788→1748 shows selling exhaustion, (5) LOW confidence environment. Market is weak but chase risk too high at current levels. Require either: (a) bounce to $1672-1680 resistance for trend-continuation SHORT, or (b) BTC stabilization + ETH reclaim EMA9 $1665.54 and VWAP for reversal LONG. No edge in current price action.",
+  "reasoning": "MULTIPLE CRITICAL VIOLATIONS: (1) RISK_OFF + BTC_LEADING regime prohibits LONG positions - ETH amplifies BTC downside 1.3-1.8x in this regime. (2) Weekend trading with volume_ratio 0.4 (60% below normal) creates unreliable price action and gap risk. (3) Trend agent setup=NONE with confidence=LOW - no qualified entry pattern. (4) Price below all EMAs (9/21/50) and VWAP (-0.80%) in established downtrend. (5) Negative cumulative delta (-0.372) confirms distribution. (6) ATR14 at $11.24 is compressed but recent bars show $8-18 ranges indicating potential for sudden expansion. While RSI 42.2 shows oversold conditions developing and price has stabilized near session low $1,539.57, counter-trend longs in this regime violate core risk protocols. Short setups lack conviction due to oversold conditions and proximity to support. RECOMMENDATION: Stand aside until (A) regime shift to RISK_ON + ETH_LEADING, (B) Monday session with normal volume, or (C) clear technical reversal pattern with VWAP reclaim and EMA crossovers.",
   "eth_regime": "BTC_DOMINANCE",
   "eth_btc": "BTC_LEADING",
   "risk_on_off": "RISK_OFF",
-  "timestamp": "2026-06-05T09:23:06.026738",
+  "timestamp": "2026-06-06T15:21:38.386079",
   "symbol": "ETHUSD",
-  "price": 1659.05
+  "price": 1552.68
 }

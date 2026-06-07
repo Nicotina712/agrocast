@@ -7,10 +7,10 @@
   "confidence": "LOW",
   "rr": null,
   "risk_usd": null,
-  "reasoning": "EXTREME_OVERSOLD + SESSION_CLOSED: RSI 27.5 after touching 7.6-9.5 extreme oversold levels creates high reversal risk. Price at 24,959.90 with 'mins_to_close: 0' indicates session ended - cannot execute. Setup requires pullback to 24,990-25,020 entry zone but current price 24,959.90 is below entry. Dead-cat bounce risk too high near session lows (24,914.9). Recommendation: Wait for next HK session open, monitor for bounce to EMA9 (25,009) or VWAP resistance (25,037) for high-probability short entry. If price gaps down through 24,900 on open, avoid - capitulation may have occurred. If gaps up above 25,000, wait for rejection confirmation before entering short.",
+  "reasoning": "MARKET CLOSED - Session ended at 16:30 HKT (0 mins to close). No intraday trades permitted outside trading hours. Additionally: (1) Extreme oversold RSI 15.6 signals capitulation but unpredictable bounce timing, (2) Strong downtrend with price -1.23% below VWAP and breakdown below all EMAs creates directional uncertainty at these levels, (3) Unknown fundamental catalysts (China macro/PBOC/property sector) pose overnight gap risk, (4) 481pt session range indicates HIGH volatility regime requiring wider stops that would exceed optimal risk parameters for end-of-session entry, (5) Trend agent identifies NO actionable setup. Await next session opening range (09:30 HKT) to assess: gap continuation toward 24500 support, potential mean-reversion bounce to 24683-24802 resistance zone for SHORT re-entry, or stabilization signals. Current extreme conditions require fresh price discovery at open.",
   "sp500_regime": "BEAR_TREND",
   "risk_on_off": "RISK_OFF",
-  "timestamp": "2026-06-05T04:22:22.998286",
+  "timestamp": "2026-06-06T00:33:23.997646",
   "symbol": "HK50",
-  "price": 24959.9
+  "price": 24596.9
 }

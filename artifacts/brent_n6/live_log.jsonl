@@ -1411,3 +1411,63 @@
 {"timestamp": "2026-06-05T12:32:22.275642", "ct_time": "10:32", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 328, "bars_count": 80}
 {"timestamp": "2026-06-05T12:47:22.513530", "ct_time": "10:47", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 313, "bars_count": 80}
 {"timestamp": "2026-06-05T13:02:22.664007", "ct_time": "11:02", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 298, "bars_count": 80}
+{"timestamp": "2026-06-05T13:17:22.823092", "ct_time": "11:17", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 283, "bars_count": 80}
+{"timestamp": "2026-06-05T13:32:23.098634", "ct_time": "11:32", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 268, "bars_count": 80}
+{"timestamp": "2026-06-05T13:47:23.191613", "ct_time": "11:47", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 253, "bars_count": 80}
+{"timestamp": "2026-06-05T14:02:23.420323", "ct_time": "12:02", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 238, "bars_count": 80}
+{"timestamp": "2026-06-05T14:17:23.650167", "ct_time": "12:17", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 223, "bars_count": 80}
+{"timestamp": "2026-06-05T14:32:23.727775", "ct_time": "12:32", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 208, "bars_count": 80}
+{"timestamp": "2026-06-05T14:47:23.827329", "ct_time": "12:47", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 193, "bars_count": 80}
+{"timestamp": "2026-06-05T15:02:23.917417", "ct_time": "13:02", "type": "cycle", "price": 95.15, "is_prime": true, "is_weekend": false, "mins_left": 178, "bars_count": 80}
+{"timestamp": "2026-06-05T19:43:40.258707", "ct_time": "17:43", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T19:43:40.274910", "ct_time": "17:43", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T19:58:40.394063", "ct_time": "17:58", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T19:58:40.420976", "ct_time": "17:58", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T20:17:25.454746", "ct_time": "18:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T20:17:25.580619", "ct_time": "18:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T20:32:25.967983", "ct_time": "18:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T20:32:26.086065", "ct_time": "18:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T20:40:43.501098", "ct_time": "18:40", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T20:40:43.520421", "ct_time": "18:40", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T20:55:43.670730", "ct_time": "18:55", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T20:55:43.687272", "ct_time": "18:55", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:02:20.459094", "ct_time": "19:02", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T21:02:20.539173", "ct_time": "19:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:17:20.742279", "ct_time": "19:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T21:17:20.760752", "ct_time": "19:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:32:20.906316", "ct_time": "19:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T21:32:20.921940", "ct_time": "19:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T21:47:21.004315", "ct_time": "19:47", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T21:47:21.004315", "ct_time": "19:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:02:21.102211", "ct_time": "20:02", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T22:02:21.102211", "ct_time": "20:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:17:21.231678", "ct_time": "20:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T22:17:21.240654", "ct_time": "20:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:32:21.303238", "ct_time": "20:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T22:32:21.318854", "ct_time": "20:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T22:47:21.408323", "ct_time": "20:47", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T22:47:21.423944", "ct_time": "20:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:02:21.507201", "ct_time": "21:02", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T23:02:21.522820", "ct_time": "21:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:17:21.957297", "ct_time": "21:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T23:17:21.989958", "ct_time": "21:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:32:22.096891", "ct_time": "21:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T23:32:22.096891", "ct_time": "21:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-05T23:47:22.205740", "ct_time": "21:47", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-05T23:47:22.221360", "ct_time": "21:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T00:02:22.305174", "ct_time": "22:02", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T00:02:22.320789", "ct_time": "22:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T00:17:22.389545", "ct_time": "22:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T00:17:22.405161", "ct_time": "22:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T00:32:22.690362", "ct_time": "22:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T00:32:22.706410", "ct_time": "22:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T00:47:22.830594", "ct_time": "22:47", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T00:47:22.847638", "ct_time": "22:47", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T01:02:22.960225", "ct_time": "23:02", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T01:02:22.960225", "ct_time": "23:02", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T01:17:23.069653", "ct_time": "23:17", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T01:17:23.085273", "ct_time": "23:17", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T01:32:23.196891", "ct_time": "23:32", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T01:32:23.212512", "ct_time": "23:32", "type": "outside_prime", "mins_left": 0}
+{"timestamp": "2026-06-06T01:47:23.287710", "ct_time": "23:47", "type": "cycle", "price": 95.15, "is_prime": false, "is_weekend": false, "mins_left": 0, "bars_count": 80}
+{"timestamp": "2026-06-06T01:47:23.303331", "ct_time": "23:47", "type": "outside_prime", "mins_left": 0}

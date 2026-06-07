@@ -844,6 +844,51 @@
   <!-- ════════════════════════════════════════════════════════════ -->
   <div id="pb-container">
 
+    <!-- SECCIÓN 0 — MI CAMPO (perfil del productor) -->
+    <!-- Configuración (visible si NO hay perfil) -->
+    <div id="pb-campo-setup" class="card" style="display:none;margin-bottom:16px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border:2px dashed #2e7d32;">
+      <div style="font-size:1rem;font-weight:800;color:#1b4332;margin-bottom:4px;">🌱 Configurá "Mi Campo" para ver tu margen</div>
+      <div style="font-size:.84rem;color:#33691e;margin-bottom:14px;">
+        Con 3 datos te mostramos cuánto ganás por hectárea a cada precio. Toma 30 segundos.
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;align-items:end;">
+        <div>
+          <label style="font-size:.74rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Hectáreas</label>
+          <input id="campo-ha" type="number" min="1" step="1" placeholder="300"
+            style="width:100%;padding:8px;border:1px solid #a5d6a7;border-radius:6px;font-size:.9rem;">
+        </div>
+        <div>
+          <label style="font-size:.74rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Rinde (ton/ha)</label>
+          <input id="campo-rinde" type="number" min="0.1" step="0.1" placeholder="2.8"
+            style="width:100%;padding:8px;border:1px solid #a5d6a7;border-radius:6px;font-size:.9rem;">
+        </div>
+        <div>
+          <label style="font-size:.74rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Costo de producción</label>
+          <input id="campo-costo" type="number" min="1" step="1" placeholder="330"
+            style="width:100%;padding:8px;border:1px solid #a5d6a7;border-radius:6px;font-size:.9rem;">
+        </div>
+        <div>
+          <label style="font-size:.74rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Unidad del costo</label>
+          <select id="campo-modo" style="width:100%;padding:8px;border:1px solid #a5d6a7;border-radius:6px;font-size:.9rem;">
+            <option value="ton">USD por tonelada</option>
+            <option value="ha">USD por hectárea</option>
+          </select>
+        </div>
+        <button onclick="saveCampo()" style="padding:9px 18px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-size:.86rem;font-weight:700;cursor:pointer;height:fit-content;">Calcular mi margen</button>
+      </div>
+      <div id="campo-error" style="display:none;margin-top:8px;font-size:.78rem;color:#c62828;"></div>
+    </div>
+
+    <!-- Resumen (visible si HAY perfil) -->
+    <div id="pb-campo-summary" class="card" style="display:none;margin-bottom:16px;padding:12px 18px;background:#f1f8e9;border-left:4px solid #2e7d32;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div style="font-size:.86rem;color:#33691e;">
+          🌱 <b>Mi Campo:</b> <span id="campo-resumen">—</span>
+        </div>
+        <button onclick="editCampo()" style="padding:5px 12px;background:none;border:1px solid #2e7d32;color:#2e7d32;border-radius:6px;font-size:.76rem;font-weight:600;cursor:pointer;">Editar</button>
+      </div>
+    </div>
+
     <!-- SECCIÓN 1 — SITUACIÓN HOY (hero) -->
     <div id="pb-hero" class="card" style="margin-bottom:16px;padding:0;overflow:hidden;border:none;box-shadow:0 4px 20px rgba(0,0,0,.08);">
       <div id="pb-hero-top" style="padding:22px 24px;background:linear-gradient(135deg,#1b4332,#2e7d32);color:#fff;">
@@ -861,12 +906,42 @@
           <div>📊 Chicago <span id="pb-price-usc">—</span> USc/bu</div>
         </div>
       </div>
+
+      <!-- Banda de MARGEN (visible solo con perfil "Mi Campo") -->
+      <div id="pb-margen-band" style="display:none;padding:16px 24px;color:#fff;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
+          <div>
+            <div style="font-size:.74rem;opacity:.85;text-transform:uppercase;letter-spacing:.08em;">Tu margen a precio de hoy</div>
+            <div style="display:flex;align-items:baseline;gap:10px;margin-top:3px;">
+              <div id="pb-margen-pct" style="font-size:2rem;font-weight:800;line-height:1;">—</div>
+              <div id="pb-margen-ton" style="font-size:.95rem;opacity:.92;">—</div>
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <div id="pb-margen-total" style="font-size:1.35rem;font-weight:800;">—</div>
+            <div style="font-size:.72rem;opacity:.85;">sobre tu cosecha (<span id="pb-margen-prod">—</span> ton)</div>
+          </div>
+        </div>
+        <div id="pb-margen-msg" style="margin-top:10px;font-size:.85rem;opacity:.95;line-height:1.5;"></div>
+        <!-- mini barra precio vs break-even -->
+        <div style="margin-top:12px;">
+          <div style="display:flex;justify-content:space-between;font-size:.7rem;opacity:.8;margin-bottom:3px;">
+            <span>Tu costo: <span id="pb-be-val">—</span> USD/ton</span>
+            <span>Precio neto: <span id="pb-neto-val">—</span> USD/ton</span>
+          </div>
+          <div style="height:8px;background:rgba(255,255,255,.25);border-radius:6px;overflow:hidden;position:relative;">
+            <div id="pb-margen-bar" style="height:100%;width:0%;background:#fff;border-radius:6px;transition:width .5s;"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Banda de momento -->
       <div id="pb-momento" style="padding:18px 24px;display:flex;align-items:center;gap:16px;">
         <div id="pb-momento-icon" style="font-size:2.2rem;">⏳</div>
         <div style="flex:1;">
           <div id="pb-momento-title" style="font-size:1.15rem;font-weight:800;">—</div>
           <div id="pb-momento-text" style="font-size:.9rem;color:#444;margin-top:3px;line-height:1.5;">—</div>
+          <div id="pb-momento-margen" style="display:none;font-size:.85rem;color:#1b5e20;font-weight:600;margin-top:6px;padding:6px 10px;background:#e8f5e9;border-radius:6px;line-height:1.4;"></div>
           <div id="pb-momento-src" style="font-size:.72rem;color:#999;margin-top:5px;"></div>
         </div>
       </div>
@@ -3065,14 +3140,120 @@ async function loadDataEngine() {
     } catch(e) { console.error("data_engine fetch error:", e); }
 }
 
+// ── Mi Campo (perfil del productor) ──────────────────────────────
+let _campoProfile = null;
+
+async function loadCampo() {
+    try {
+        const r = await fetch("/api/producer_profile");
+        const d = await r.json();
+        _campoProfile = d.profile || null;
+        renderCampoState();
+    } catch(e) { console.error("campo fetch error:", e); }
+}
+
+function renderCampoState() {
+    const setup = document.getElementById("pb-campo-setup");
+    const summary = document.getElementById("pb-campo-summary");
+    if (_campoProfile) {
+        setup.style.display = "none";
+        summary.style.display = "block";
+        const p = _campoProfile;
+        const costoTxt = p.costo_mode === "ha"
+            ? `$${p.costo_input}/ha`
+            : `$${p.costo_input}/ton`;
+        document.getElementById("campo-resumen").textContent =
+            `${p.hectareas} ha · ${p.rinde_ton_ha} ton/ha · costo ${costoTxt} · break-even $${p.break_even_usd_ton}/ton · ${p.produccion_total_ton} ton totales`;
+    } else {
+        setup.style.display = "block";
+        summary.style.display = "none";
+    }
+}
+
+function editCampo() {
+    // Pre-cargar valores y mostrar el setup
+    if (_campoProfile) {
+        document.getElementById("campo-ha").value = _campoProfile.hectareas;
+        document.getElementById("campo-rinde").value = _campoProfile.rinde_ton_ha;
+        document.getElementById("campo-costo").value = _campoProfile.costo_input;
+        document.getElementById("campo-modo").value = _campoProfile.costo_mode;
+    }
+    document.getElementById("pb-campo-setup").style.display = "block";
+    document.getElementById("pb-campo-summary").style.display = "none";
+}
+
+async function saveCampo() {
+    const err = document.getElementById("campo-error");
+    err.style.display = "none";
+    const ha    = parseFloat(document.getElementById("campo-ha").value);
+    const rinde = parseFloat(document.getElementById("campo-rinde").value);
+    const costo = parseFloat(document.getElementById("campo-costo").value);
+    const modo  = document.getElementById("campo-modo").value;
+    if (!(ha > 0) || !(rinde > 0) || !(costo > 0)) {
+        err.textContent = "Completá hectáreas, rinde y costo con valores mayores a 0.";
+        err.style.display = "block";
+        return;
+    }
+    try {
+        const r = await fetch("/api/producer_profile", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({hectareas: ha, rinde_ton_ha: rinde, costo: costo, costo_mode: modo}),
+        });
+        const d = await r.json();
+        if (!d.ok) { err.textContent = d.error || "Error al guardar."; err.style.display = "block"; return; }
+        _campoProfile = d.profile;
+        renderCampoState();
+        loadProducerBrief();  // recalcular con margen
+    } catch(e) {
+        err.textContent = "Error de conexión al guardar.";
+        err.style.display = "block";
+    }
+}
+
 // ── Panel limpio del productor (lenguaje simple) ─────────────────
 async function loadProducerBrief() {
+    if (!_campoProfile) loadCampo();
     try {
         const r = await fetch("/api/producer_brief");
         const d = await r.json();
         if (!d.ok) { console.warn("producer_brief:", d.error); return; }
         renderProducerBrief(d);
     } catch(e) { console.error("producer_brief fetch error:", e); }
+}
+
+function renderMargen(mg) {
+    const band = document.getElementById("pb-margen-band");
+    if (!mg || mg.margen_pct === null || mg.margen_pct === undefined) {
+        band.style.display = "none";
+        return;
+    }
+    const fmt = (n, dec=0) => (n===null||n===undefined) ? "—" :
+        Number(n).toLocaleString("es-UY", {minimumFractionDigits:dec, maximumFractionDigits:dec});
+    band.style.display = "block";
+    // Color de la banda según semáforo
+    const colors = {
+        green:  "rgba(46,125,50,.35)",
+        yellow: "rgba(245,180,0,.30)",
+        red:    "rgba(198,40,40,.40)",
+        gray:   "rgba(255,255,255,.12)",
+    };
+    band.style.background = colors[mg.semaforo] || colors.gray;
+
+    const signo = mg.margen_pct >= 0 ? "+" : "";
+    document.getElementById("pb-margen-pct").textContent = `${signo}${mg.margen_pct}%`;
+    document.getElementById("pb-margen-ton").textContent =
+        `(${signo}${fmt(mg.margen_usd_ton,0)} USD/ton · ${signo}${fmt(mg.margen_usd_ha,0)} USD/ha)`;
+    const totalEl = document.getElementById("pb-margen-total");
+    totalEl.textContent = `${mg.margen_total_usd >= 0 ? "+" : ""}${fmt(mg.margen_total_usd,0)} USD`;
+    document.getElementById("pb-margen-prod").textContent = fmt(mg.produccion_total_ton,0);
+    document.getElementById("pb-margen-msg").textContent = mg.mensaje || "";
+    document.getElementById("pb-be-val").textContent = fmt(mg.break_even_usd_ton,0);
+    document.getElementById("pb-neto-val").textContent = fmt(mg.precio_neto_usd_ton,0);
+    // Barra: proporción precio neto vs break-even (clamp 0-100, centrado en break-even)
+    const ratio = mg.break_even_usd_ton > 0 ? (mg.precio_neto_usd_ton / mg.break_even_usd_ton) : 1;
+    const pct = Math.max(0, Math.min(100, ratio * 100 - 50)); // 0% si neto=0.5×be, 50% si neto=be, 100% si neto=1.5×be
+    document.getElementById("pb-margen-bar").style.width = pct + "%";
 }
 
 function renderProducerBrief(d) {
@@ -3108,6 +3289,16 @@ function renderProducerBrief(d) {
     if (m.fuente) {
         srcEl.textContent = `Según: ${m.fuente}` + (m.confianza ? ` · confianza ${m.confianza}%` : "");
     } else { srcEl.textContent = ""; }
+
+    // Nota de margen en el momento
+    const notaMargenEl = document.getElementById("pb-momento-margen");
+    if (m.nota_margen) {
+        notaMargenEl.textContent = "💰 " + m.nota_margen;
+        notaMargenEl.style.display = "block";
+    } else { notaMargenEl.style.display = "none"; }
+
+    // Banda de MARGEN (solo con perfil "Mi Campo")
+    renderMargen(d.margen);
 
     // SECCIÓN 2 — accionable
     const accEl = document.getElementById("pb-accionable");

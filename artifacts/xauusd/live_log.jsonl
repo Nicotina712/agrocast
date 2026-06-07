@@ -1360,3 +1360,57 @@
 {"timestamp": "2026-06-05T12:48:26.920514", "ct_time": "10:48", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": 0.0, "confidence": "LOW", "rr": null, "risk_usd": null}
 {"timestamp": "2026-06-05T13:03:27.017286", "ct_time": "11:03", "type": "cycle", "price": 4338.62, "is_rth": true, "mins_to_close": 237, "bars_count": 72}
 {"timestamp": "2026-06-05T13:04:01.764247", "ct_time": "11:04", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": 0.0, "confidence": "LOW", "rr": null, "risk_usd": null}
+{"timestamp": "2026-06-05T13:19:01.857166", "ct_time": "11:19", "type": "cycle", "price": 4327.38, "is_rth": true, "mins_to_close": 221, "bars_count": 72}
+{"timestamp": "2026-06-05T13:34:36.640980", "ct_time": "11:34", "type": "cycle", "price": 4326.5, "is_rth": true, "mins_to_close": 206, "bars_count": 72}
+{"timestamp": "2026-06-05T13:35:04.316338", "ct_time": "11:35", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": 0.0, "confidence": "LOW", "rr": null, "risk_usd": null}
+{"timestamp": "2026-06-05T13:50:04.368637", "ct_time": "11:50", "type": "cycle", "price": 4335.07, "is_rth": true, "mins_to_close": 190, "bars_count": 72}
+{"timestamp": "2026-06-05T13:50:34.886911", "ct_time": "11:50", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": 0.0, "confidence": "LOW", "rr": null, "risk_usd": null}
+{"timestamp": "2026-06-05T14:05:34.976666", "ct_time": "12:05", "type": "cycle", "price": 4341.83, "is_rth": true, "mins_to_close": 175, "bars_count": 72}
+{"timestamp": "2026-06-05T14:05:59.947819", "ct_time": "12:05", "type": "signal", "signal": "FLAT", "entry": null, "sl": null, "tp": null, "lots": 0.0, "confidence": "LOW", "rr": null, "risk_usd": null}
+{"timestamp": "2026-06-05T14:21:00.000711", "ct_time": "12:21", "type": "cycle", "price": 4337.31, "is_rth": true, "mins_to_close": 160, "bars_count": 72}
+{"timestamp": "2026-06-05T14:36:00.096597", "ct_time": "12:36", "type": "cycle", "price": 4341.59, "is_rth": true, "mins_to_close": 144, "bars_count": 72}
+{"timestamp": "2026-06-05T14:51:00.178964", "ct_time": "12:51", "type": "cycle", "price": 4339.83, "is_rth": true, "mins_to_close": 129, "bars_count": 72}
+{"timestamp": "2026-06-05T15:06:00.258744", "ct_time": "13:06", "type": "cycle", "price": 4332.44, "is_rth": true, "mins_to_close": 114, "bars_count": 72}
+{"timestamp": "2026-06-05T15:21:00.360231", "ct_time": "13:21", "type": "cycle", "price": 4328.34, "is_rth": true, "mins_to_close": 99, "bars_count": 72}
+{"timestamp": "2026-06-05T15:36:00.489602", "ct_time": "13:36", "type": "cycle", "price": 4323.57, "is_rth": true, "mins_to_close": 84, "bars_count": 72}
+{"timestamp": "2026-06-05T15:51:00.573953", "ct_time": "13:51", "type": "cycle", "price": 4318.68, "is_rth": true, "mins_to_close": 69, "bars_count": 72}
+{"timestamp": "2026-06-05T16:06:00.632045", "ct_time": "14:06", "type": "cycle", "price": 4319.71, "is_rth": true, "mins_to_close": 54, "bars_count": 72}
+{"timestamp": "2026-06-05T16:21:00.713081", "ct_time": "14:21", "type": "cycle", "price": 4320.85, "is_rth": true, "mins_to_close": 39, "bars_count": 72}
+{"timestamp": "2026-06-05T16:36:00.785856", "ct_time": "14:36", "type": "cycle", "price": 4323.26, "is_rth": true, "mins_to_close": 24, "bars_count": 72}
+{"timestamp": "2026-06-05T16:51:00.836691", "ct_time": "14:51", "type": "cycle", "price": 4322.27, "is_rth": true, "mins_to_close": 9, "bars_count": 72}
+{"timestamp": "2026-06-05T17:06:00.965082", "ct_time": "15:06", "type": "cycle", "price": 4312.91, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T17:21:01.065038", "ct_time": "15:21", "type": "cycle", "price": 4315.32, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T17:36:01.109760", "ct_time": "15:36", "type": "cycle", "price": 4323.17, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T17:51:01.245442", "ct_time": "15:51", "type": "cycle", "price": 4327.74, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:06:01.397873", "ct_time": "16:06", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:21:01.455840", "ct_time": "16:21", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:36:01.511405", "ct_time": "16:36", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T18:51:01.614960", "ct_time": "16:51", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:06:01.688539", "ct_time": "17:06", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:21:01.938395", "ct_time": "17:21", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:43:35.277295", "ct_time": "17:43", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T19:58:35.478305", "ct_time": "17:58", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T20:13:35.680184", "ct_time": "18:13", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T20:28:35.948108", "ct_time": "18:28", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T20:40:43.112525", "ct_time": "18:40", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T20:55:43.203818", "ct_time": "18:55", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:02:22.996978", "ct_time": "19:02", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:17:23.127434", "ct_time": "19:17", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:32:23.239717", "ct_time": "19:32", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T21:47:23.308610", "ct_time": "19:47", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:02:23.380156", "ct_time": "20:02", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:17:23.426421", "ct_time": "20:17", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:32:23.476349", "ct_time": "20:32", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T22:47:23.561266", "ct_time": "20:47", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:02:23.636786", "ct_time": "21:02", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:17:23.686713", "ct_time": "21:17", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:32:23.777627", "ct_time": "21:32", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-05T23:47:23.868795", "ct_time": "21:47", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T00:02:23.982952", "ct_time": "22:02", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T00:17:24.088957", "ct_time": "22:17", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T00:32:24.131585", "ct_time": "22:32", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T00:47:24.210560", "ct_time": "22:47", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T01:02:24.260696", "ct_time": "23:02", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T01:17:24.334365", "ct_time": "23:17", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T01:32:24.397003", "ct_time": "23:32", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}
+{"timestamp": "2026-06-06T01:47:24.451748", "ct_time": "23:47", "type": "cycle", "price": 4328.02, "is_rth": false, "mins_to_close": 0, "bars_count": 72}

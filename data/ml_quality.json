@@ -1,27 +1,70 @@
-{
-  "ok": true,
-  "as_of": "2026-05-11T13:51:54.657017",
-  "full": {
-    "n_signals": 1446,
-    "n_signals_high_conf": 0,
-    "hit_rate": 77.5,
-    "hit_rate_high_conf": null,
-    "roc_auc": 0.745,
-    "avg_abs_return_7d_pct": 2.71,
-    "quality_label": "robusto",
-    "period_start": "2016-05-10",
-    "period_end": "2026-04-29"
-  },
-  "recent_12m": {
-    "n_signals": 15,
-    "n_signals_high_conf": 0,
-    "hit_rate": 60.0,
-    "hit_rate_high_conf": null,
-    "roc_auc": 0.098,
-    "avg_abs_return_7d_pct": 1.5,
-    "quality_label": "datos insuficientes",
-    "period_start": "2025-04-29",
-    "period_end": "2026-04-29"
-  },
-  "note": "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample)."
+{
+  "ok": true,
+  "as_of": "2026-06-06T19:38:48.893475",
+  "full": {
+    "n_signals": 2494,
+    "n_signals_high_conf": 1699,
+    "hit_rate": 57.1,
+    "hit_rate_high_conf": 61.5,
+    "roc_auc": 0.653,
+    "avg_abs_return_7d_pct": 2.46,
+    "quality_label": "aceptable",
+    "period_start": "2016-06-06",
+    "period_end": "2026-05-27"
+  },
+  "recent_12m": {
+    "n_signals": 252,
+    "n_signals_high_conf": 128,
+    "hit_rate": 63.9,
+    "hit_rate_high_conf": 72.7,
+    "roc_auc": 0.54,
+    "avg_abs_return_7d_pct": 2.09,
+    "quality_label": "aceptable",
+    "period_start": "2025-05-27",
+    "period_end": "2026-05-27"
+  },
+  "horizons": {
+    "trained_at": "2026-06-05T12:41:03",
+    "horizons": {
+      "7d": {
+        "alpha": 0.9,
+        "delta_usd": 5.4,
+        "n_train": 1133,
+        "n_val": 124,
+        "val_lift_pct": 4.598183106402246,
+        "val_coverage": 79.83870967741935,
+        "val_mae_ens": 21.32770484076464,
+        "val_mae_rw": 22.355658975081745
+      },
+      "30d": {
+        "alpha": 0.0,
+        "delta_usd": 48.77,
+        "n_train": 1133,
+        "n_val": 124,
+        "val_lift_pct": 0.0,
+        "val_coverage": 79.83870967741935,
+        "val_mae_ens": 45.440204468508,
+        "val_mae_rw": 45.440204468508
+      }
+    }
+  },
+  "calibration": {
+    "brier_score": 0.3313,
+    "ece_10bins": 0.2715,
+    "n": 2507,
+    "pit_hist": [
+      1322,
+      0,
+      0,
+      781,
+      18,
+      2,
+      5,
+      2,
+      377,
+      0
+    ],
+    "interpretation": "Brier ≤ 0.20 = bien calibrado | 0.20-0.23 = aceptable | >0.25 = peor que tirar moneda"
+  },
+  "note": "full = histórico completo (probable in-sample, inflado). recent_12m = últimos 12 meses (más cercano a out-of-sample). horizons = modelo A/B (retornos+ensemble+conformal). calibration = Brier+ECE del clasificador."
 }

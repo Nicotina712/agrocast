@@ -522,6 +522,43 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     if ie and ie.get("producers_action") and not ie.get("stale"):
         accionable = ie["producers_action"]
 
+    # Margen sobre la cosecha del productor (si configuró "Mi Campo")
+    margen = None
+    try:
+        from src.producer.producer_profile import load_profile, compute_margin
+        profile = load_profile()
+        if profile:
+            margen = compute_margin(
+                profile,
+                precio_neto_usd_ton=neto["neto_usd_ton"],
+                precio_local_usd_ton=prices["usd_ton"],
+                uyu_rate=uyu_rate,
+            )
+    except Exception:
+        margen = None
+
+    # Capa de margen sobre el momento: la gestión de margen pesa más que
+    # especular por el techo. Enriquecemos la recomendación con el margen.
+    if margen and margen.get("margen_pct") is not None:
+        mp = margen["margen_pct"]
+        sig = momento.get("senal_mercado")
+        if mp >= 15:
+            momento["nota_margen"] = (
+                f"Tu margen es muy bueno ({mp:+.0f}% sobre el costo). "
+                f"Fijar al menos una parte asegura un año rentable.")
+        elif sig == "SELL" and mp >= 3:
+            momento["nota_margen"] = (
+                f"Ya estás {mp:+.0f}% sobre tu costo. Con el mercado a la baja, "
+                f"asegurar este margen vale más que esperar un rebote incierto.")
+        elif sig == "BUY" and mp < 3:
+            momento["nota_margen"] = (
+                f"Estás casi en tu costo ({mp:+.0f}%). El mercado proyecta suba: "
+                f"si podés financiar el almacenamiento, esperar mejora tu margen.")
+        elif mp < -3:
+            momento["nota_margen"] = (
+                f"Atención: a precio de hoy estás {mp:+.0f}% bajo tu costo. "
+                f"Vender realiza una pérdida — evaluá esperar o coberturas.")
+
     return {
         "ok": True,
         "as_of": date.today().isoformat(),
@@ -529,6 +566,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "precio_hoy": prices,
         "tendencia": trend,
         "momento": momento,
+        "margen": margen,
         "ventana_optima": best_win,
         "accionable_detallado": accionable,
         "drivers_simple": drivers,

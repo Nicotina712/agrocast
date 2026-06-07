@@ -1,0 +1,32 @@
+{
+  "symbol": "USTEC",
+  "timestamp": "2026-06-05T20:25:36.592170",
+  "n_bars": 2000,
+  "cv_results": [
+    {
+      "fold": 1,
+      "train_n": 333,
+      "test_n": 333,
+      "accuracy": 0.2883
+    },
+    {
+      "fold": 2,
+      "train_n": 666,
+      "test_n": 333,
+      "accuracy": 0.3604
+    },
+    {
+      "fold": 3,
+      "train_n": 999,
+      "test_n": 333,
+      "accuracy": 0.3303
+    },
+    {
+      "fold": 4,
+      "train_n": 1332,
+      "test_n": 333,
+      "accuracy": 0.4054
+    }
+  ],
+  "mean_acc": 0.3461
+}
