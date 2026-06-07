@@ -990,6 +990,55 @@
       </table>
     </div>
 
+    <!-- SECCIÓN 5b — INTELIGENCIA DE BASIS (físico local caro/barato) -->
+    <div id="pb-basis-card" class="card" style="display:none;margin-bottom:16px;border-left:4px solid #888;">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div id="pb-basis-icon" style="font-size:1.8rem;">📊</div>
+        <div style="flex:1;">
+          <div style="font-size:.78rem;color:#555;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:3px;">El precio local vs Chicago</div>
+          <div id="pb-basis-title" style="font-size:1rem;font-weight:700;color:#333;">—</div>
+          <div id="pb-basis-detail" style="font-size:.86rem;color:#555;margin-top:4px;line-height:1.5;">—</div>
+          <div id="pb-basis-meta" style="font-size:.74rem;color:#999;margin-top:6px;">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 5c — PLAN DE COSECHA (protagonista) -->
+    <div id="pb-plan-card" class="card" style="margin-bottom:16px;border:2px solid #2e7d32;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        <div style="font-size:.95rem;font-weight:800;color:#2e7d32;">📋 Tu Plan de Cosecha</div>
+        <div id="pb-plan-badge" style="font-size:.72rem;"></div>
+      </div>
+      <div style="font-size:.82rem;color:#666;margin-bottom:12px;">
+        Vendé por tramos, con disciplina y sin emoción. Te avisamos cuando se cumple cada objetivo.
+      </div>
+
+      <!-- Sin plan: CTA -->
+      <div id="pb-plan-empty" style="display:none;">
+        <div id="pb-plan-cta-text" style="font-size:.86rem;color:#444;line-height:1.6;margin-bottom:12px;">
+          Creá un plan de venta escalonada en 5 tramos basado en tu cosecha y tu costo.
+        </div>
+        <button id="pb-plan-create-btn" onclick="createPlanFromCampo()"
+          style="padding:9px 18px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-size:.86rem;font-weight:700;cursor:pointer;">
+          Crear mi plan de cosecha
+        </button>
+        <div id="pb-plan-cta-note" style="font-size:.74rem;color:#999;margin-top:8px;"></div>
+      </div>
+
+      <!-- Con plan: progreso -->
+      <div id="pb-plan-active" style="display:none;">
+        <div style="display:flex;justify-content:space-between;font-size:.8rem;color:#555;margin-bottom:4px;">
+          <span>Fijado: <b id="pb-plan-pct">0%</b></span>
+          <span>Precio promedio: <b id="pb-plan-avg">—</b></span>
+        </div>
+        <div style="height:14px;background:#e8f5e9;border-radius:8px;overflow:hidden;margin-bottom:12px;">
+          <div id="pb-plan-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#2e7d32,#66bb6a);border-radius:8px;transition:width .5s;"></div>
+        </div>
+        <div id="pb-plan-next" style="font-size:.86rem;color:#33691e;background:#f1f8e9;padding:10px 12px;border-radius:8px;line-height:1.5;"></div>
+        <div id="pb-plan-tranches" style="margin-top:12px;"></div>
+      </div>
+    </div>
+
     <!-- SECCIÓN 6 — Informe semanal (WhatsApp/Telegram) -->
     <div class="card" style="margin-bottom:16px;background:#f1f8e9;border-left:4px solid #7cb342;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
@@ -3211,9 +3260,89 @@ async function saveCampo() {
     }
 }
 
+// ── Plan de Cosecha (protagonista) ───────────────────────────────
+async function loadPlanProtagonista() {
+    try {
+        const r = await fetch("/api/harvest_plan");
+        const d = await r.json();
+        const empty  = document.getElementById("pb-plan-empty");
+        const active = document.getElementById("pb-plan-active");
+        const badge  = document.getElementById("pb-plan-badge");
+        if (!d.ok || !d.active) {
+            empty.style.display = "block";
+            active.style.display = "none";
+            badge.innerHTML = `<span style="color:#999;">Sin plan activo</span>`;
+            // CTA contextual según Mi Campo
+            const note = document.getElementById("pb-plan-cta-note");
+            const btn  = document.getElementById("pb-plan-create-btn");
+            if (_campoProfile) {
+                note.textContent = `Se creará con tus ${_campoProfile.produccion_total_ton} ton y un piso en tu break-even ($${_campoProfile.break_even_usd_ton}/ton).`;
+                btn.disabled = false; btn.style.opacity = "1";
+            } else {
+                note.textContent = "Configurá primero \"Mi Campo\" para crear tu plan con tu cosecha y costo.";
+                btn.disabled = true; btn.style.opacity = ".5";
+            }
+            return;
+        }
+        // Plan activo
+        empty.style.display = "none";
+        active.style.display = "block";
+        const tranches = d.tranches || [];
+        const executed = tranches.filter(t => t.status === "executed");
+        const pctDone = executed.reduce((s,t) => s + (t.pct||0), 0);
+        const avg = (d.progress && d.progress.weighted_avg_price) || 0;
+        badge.innerHTML = `<span style="color:#2e7d32;font-weight:700;">● Activo · ${d.campaign||""}</span>`;
+        document.getElementById("pb-plan-pct").textContent = pctDone + "%";
+        document.getElementById("pb-plan-avg").textContent = avg ? "$"+avg.toFixed(0)+"/ton" : "—";
+        document.getElementById("pb-plan-bar").style.width = pctDone + "%";
+        // Próximo tramo pendiente
+        const pending = tranches.filter(t => t.status !== "executed");
+        const nextEl = document.getElementById("pb-plan-next");
+        if (pending.length) {
+            const t = pending[0];
+            const trigLabel = {price_target:"el precio toca su objetivo",seasonal_window:"la ventana estacional favorable",model_signal:"AgroCast marca VENDER",time_deadline:"el cierre de campaña",manual:"lo decidas vos"}[t.trigger]||t.trigger;
+            const tgt = t.price_target ? ` ($${t.price_target.toFixed(0)}/ton)` : "";
+            nextEl.innerHTML = `🔔 <b>Próximo tramo:</b> ${t.tons||"—"} ton (${t.pct}%) cuando ${trigLabel}${tgt}. Te avisamos por WhatsApp/Telegram.`;
+        } else {
+            nextEl.innerHTML = `✅ Plan completo: fijaste el 100% de tu cosecha.`;
+        }
+        // Mini tabla de tramos
+        const tEl = document.getElementById("pb-plan-tranches");
+        tEl.innerHTML = tranches.map(t => {
+            const ic = t.status === "executed" ? "✅" : t.status === "triggered" ? "🔔" : "⏳";
+            const px = t.status === "executed" && t.execution_price ? ` @ $${t.execution_price.toFixed(0)}` : "";
+            return `<div style="display:flex;justify-content:space-between;font-size:.78rem;padding:4px 0;border-bottom:1px solid #f0f0f0;">
+                <span>${ic} ${t.label} (${t.pct}%)</span><span style="color:#888;">${t.tons||"—"} ton${px}</span></div>`;
+        }).join("");
+    } catch(e) { console.error("plan protagonista error:", e); }
+}
+
+async function createPlanFromCampo() {
+    if (!_campoProfile) { alert("Configurá \"Mi Campo\" primero."); return; }
+    const btn = document.getElementById("pb-plan-create-btn");
+    btn.disabled = true; btn.textContent = "Creando…";
+    try {
+        const r = await fetch("/api/harvest_plan", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                crop_tons: _campoProfile.produccion_total_ton,
+                cost_of_production: _campoProfile.break_even_usd_ton,
+            }),
+        });
+        const d = await r.json();
+        if (d.ok) { loadPlanProtagonista(); }
+        else { alert("Error: " + (d.error||"no se pudo crear")); btn.disabled=false; btn.textContent="Crear mi plan de cosecha"; }
+    } catch(e) {
+        alert("Error de conexión.");
+        btn.disabled=false; btn.textContent="Crear mi plan de cosecha";
+    }
+}
+
 // ── Panel limpio del productor (lenguaje simple) ─────────────────
 async function loadProducerBrief() {
     if (!_campoProfile) loadCampo();
+    loadPlanProtagonista();
     try {
         const r = await fetch("/api/producer_brief");
         const d = await r.json();
@@ -3254,6 +3383,24 @@ function renderMargen(mg) {
     const ratio = mg.break_even_usd_ton > 0 ? (mg.precio_neto_usd_ton / mg.break_even_usd_ton) : 1;
     const pct = Math.max(0, Math.min(100, ratio * 100 - 50)); // 0% si neto=0.5×be, 50% si neto=be, 100% si neto=1.5×be
     document.getElementById("pb-margen-bar").style.width = pct + "%";
+}
+
+function renderBasis(bi) {
+    const card = document.getElementById("pb-basis-card");
+    if (!bi) { card.style.display = "none"; return; }
+    card.style.display = "block";
+    const cfg = {
+        green:  {icon:"🟢", border:"#2e7d32"},
+        yellow: {icon:"🟡", border:"#f0a500"},
+        red:    {icon:"🔴", border:"#c62828"},
+    }[bi.semaforo] || {icon:"📊", border:"#888"};
+    card.style.borderLeftColor = cfg.border;
+    document.getElementById("pb-basis-icon").textContent = cfg.icon;
+    document.getElementById("pb-basis-title").textContent = bi.titulo || "—";
+    document.getElementById("pb-basis-detail").textContent = bi.detalle || "";
+    let meta = `Descuento local: ${bi.basis_usd_ton} USD/ton`;
+    if (bi.promedio_5y != null) meta += ` · promedio 5 años: ${bi.promedio_5y} USD/ton`;
+    document.getElementById("pb-basis-meta").textContent = meta;
 }
 
 function renderProducerBrief(d) {
@@ -3299,6 +3446,9 @@ function renderProducerBrief(d) {
 
     // Banda de MARGEN (solo con perfil "Mi Campo")
     renderMargen(d.margen);
+
+    // Inteligencia de basis
+    renderBasis(d.basis);
 
     // SECCIÓN 2 — accionable
     const accEl = document.getElementById("pb-accionable");

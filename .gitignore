@@ -45,3 +45,5 @@ _archivo/
 
 # Perfil del productor (dato de usuario, no versionar)
 data/producer_profile.json
+data/harvest_plans.json
+data/harvest_plan_history.json

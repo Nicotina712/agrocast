@@ -218,6 +218,23 @@ def build_producer_message(html: bool = True) -> str | None:
             lines.append(f"   {d.get('icono','')} {d.get('etiqueta','')}: {d.get('efecto','')}")
         lines.append("")
 
+    # Inteligencia de basis (físico local caro/barato)
+    basis = b.get("basis")
+    if basis and basis.get("titulo"):
+        bi_icon = {"green": "🟢", "yellow": "🟡", "red": "🔴"}.get(basis.get("semaforo"), "📊")
+        lines.append(f"{bi_icon} {B('Precio local vs Chicago')}: {basis['titulo']}")
+        lines.append(f"   {basis.get('detalle','')}")
+        lines.append("")
+
+    # Margen sobre la cosecha (si configuró Mi Campo)
+    mg = b.get("margen")
+    if mg and mg.get("margen_pct") is not None:
+        signo = "+" if mg["margen_pct"] >= 0 else ""
+        lines.append(f"💰 {B('Tu margen a precio de hoy')}")
+        lines.append(f"   {signo}{mg['margen_pct']}% sobre tu costo · "
+                     f"{signo}{_fmt_num(mg.get('margen_total_usd'),0)} USD sobre tu cosecha")
+        lines.append("")
+
     # Próximo evento
     if ev:
         urg = "⚠️" if ev.get("inminente") else "🗓️"

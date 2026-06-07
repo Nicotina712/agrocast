@@ -293,6 +293,59 @@ def _next_wasde() -> dict | None:
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# Inteligencia de basis — traduce el descuento local a decisión simple
+# El productor tiene DOS palancas: el precio de Chicago y el basis local.
+# Saber si el basis está caro o barato vs su historia separa al productor
+# amateur del profesional. El dato (zscore, pct_rank) ya está calculado.
+# ─────────────────────────────────────────────────────────────────────────
+def _basis_intelligence() -> dict | None:
+    try:
+        with open(os.path.join(_DATA, "basis_uruguay.json")) as f:
+            b = json.load(f)
+    except Exception:
+        return None
+
+    basis = b.get("basis_usd_ton")
+    pct_rank = b.get("basis_pct_rank")   # 0 = más amplio (peor), 1 = más angosto (mejor)
+    avg5 = b.get("basis_5yr_avg")
+    if basis is None or pct_rank is None:
+        return None
+
+    # Diferencia vs promedio histórico (positivo = mejor que lo normal)
+    delta_vs_avg = round(basis - avg5, 1) if avg5 is not None else None
+
+    # pct_rank alto = basis angosto = físico local caro = bueno para vender físico
+    if pct_rank >= 0.7:
+        semaforo = "green"
+        titulo = "El físico uruguayo está caro"
+        detalle = ("El descuento local está más angosto que el "
+                   f"{round(pct_rank*100)}% de los últimos 5 años. "
+                   "Aunque Chicago no esté alto, conviene fijar el grano físico ahora.")
+    elif pct_rank <= 0.3:
+        semaforo = "red"
+        titulo = "El físico uruguayo está barato"
+        detalle = ("El descuento local está más amplio que el "
+                   f"{round((1-pct_rank)*100)}% de los últimos 5 años"
+                   + (f" (recibís ~${abs(delta_vs_avg):.0f}/ton menos que lo normal vs Chicago)" if delta_vs_avg and delta_vs_avg < 0 else "")
+                   + ". Si podés esperar, el descuento podría normalizarse.")
+    else:
+        semaforo = "yellow"
+        titulo = "El descuento local está en rango normal"
+        detalle = ("El basis está cerca de su promedio histórico. "
+                   "La decisión depende más del precio de Chicago que del basis.")
+
+    return {
+        "basis_usd_ton":   round(basis, 1),
+        "promedio_5y":     round(avg5, 1) if avg5 is not None else None,
+        "delta_vs_avg":    delta_vs_avg,
+        "percentil":       round(pct_rank * 100),
+        "semaforo":        semaforo,
+        "titulo":          titulo,
+        "detalle":         detalle,
+    }
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Drivers de mercado traducidos (desde news_intel + IE bull/bear)
 # ─────────────────────────────────────────────────────────────────────────
 def _driver_row(icono: str, etiqueta: str, detalle: str, efecto: str, peso: int) -> dict:
@@ -516,6 +569,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     drivers = _simple_drivers()
     wasde = _next_wasde()
     neto = _precio_neto(prices["usd_ton"], uyu_rate, flete, otros)
+    basis_intel = _basis_intelligence()
 
     # Accionable narrativo: priorizar el texto del IE (ya está en lenguaje productor)
     accionable = None
@@ -567,6 +621,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "tendencia": trend,
         "momento": momento,
         "margen": margen,
+        "basis": basis_intel,
         "ventana_optima": best_win,
         "accionable_detallado": accionable,
         "drivers_simple": drivers,
