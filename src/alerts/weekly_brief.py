@@ -226,6 +226,14 @@ def build_producer_message(html: bool = True) -> str | None:
         lines.append(f"   {basis.get('detalle','')}")
         lines.append("")
 
+    # Clima / riesgo de rinde
+    cl = b.get("clima")
+    if cl and cl.get("titulo"):
+        cl_icon = {"green": "🟢", "yellow": "🟡", "red": "🔴"}.get(cl.get("semaforo"), "🌦️")
+        lines.append(f"{cl_icon} {B('Clima y tu rinde')} ({cl.get('fase')}): {cl['titulo']}")
+        lines.append(f"   {cl.get('detalle','')}")
+        lines.append("")
+
     # Margen sobre la cosecha (si configuró Mi Campo)
     mg = b.get("margen")
     if mg and mg.get("margen_pct") is not None:
@@ -246,6 +254,12 @@ def build_producer_message(html: bool = True) -> str | None:
     lines.append(f"🧮 {B('Precio neto estimado')} (descontando flete y gastos)")
     lines.append(f"   {B(_fmt_num(neto.get('neto_usd_ton'), 0) + ' USD/ton')} · {_fmt_num(neto.get('neto_uyu_ton'), 0)} UYU/ton")
     lines.append("")
+
+    # Track record (confianza)
+    tr = b.get("track_record")
+    if tr and tr.get("n_evaluadas"):
+        lines.append(f"✓ {B('Nuestro historial')}: {tr.get('mensaje','')}")
+        lines.append("")
     lines.append("— AgroCast · inteligencia de mercado de soja")
 
     return "\n".join(lines)

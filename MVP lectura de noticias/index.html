@@ -953,6 +953,21 @@
       <div id="pb-accionable" style="font-size:.95rem;color:#333;line-height:1.65;">—</div>
     </div>
 
+    <!-- SECCIÓN 2b — TRACK RECORD (confianza) -->
+    <div id="pb-track-card" class="card" style="display:none;margin-bottom:16px;border-left:4px solid #1565c0;">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div style="text-align:center;min-width:88px;">
+          <div id="pb-track-pct" style="font-size:2rem;font-weight:800;color:#1565c0;line-height:1;">—</div>
+          <div style="font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.05em;">de aciertos</div>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <div style="font-size:.82rem;color:#1565c0;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:3px;">✓ Nuestro historial</div>
+          <div id="pb-track-msg" style="font-size:.86rem;color:#444;line-height:1.5;">—</div>
+        </div>
+      </div>
+      <div id="pb-track-recent" style="margin-top:12px;border-top:1px solid #f0f0f0;padding-top:10px;"></div>
+    </div>
+
     <!-- SECCIÓN 3 — VENTANA ÓPTIMA -->
     <div id="pb-window-card" class="card" style="margin-bottom:16px;background:linear-gradient(135deg,#fff8e1,#ffecb3);border-left:4px solid #f0a500;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;">
@@ -999,6 +1014,18 @@
           <div id="pb-basis-title" style="font-size:1rem;font-weight:700;color:#333;">—</div>
           <div id="pb-basis-detail" style="font-size:.86rem;color:#555;margin-top:4px;line-height:1.5;">—</div>
           <div id="pb-basis-meta" style="font-size:.74rem;color:#999;margin-top:6px;">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 5b2 — CLIMA / RIESGO DE RINDE -->
+    <div id="pb-clima-card" class="card" style="display:none;margin-bottom:16px;border-left:4px solid #888;">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div id="pb-clima-icon" style="font-size:1.8rem;">🌦️</div>
+        <div style="flex:1;">
+          <div style="font-size:.78rem;color:#555;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:3px;">Clima y tu rinde · <span id="pb-clima-fase" style="font-weight:800;"></span></div>
+          <div id="pb-clima-title" style="font-size:1rem;font-weight:700;color:#333;">—</div>
+          <div id="pb-clima-detail" style="font-size:.86rem;color:#555;margin-top:4px;line-height:1.5;">—</div>
         </div>
       </div>
     </div>
@@ -3385,6 +3412,39 @@ function renderMargen(mg) {
     document.getElementById("pb-margen-bar").style.width = pct + "%";
 }
 
+function renderClima(c) {
+    const card = document.getElementById("pb-clima-card");
+    if (!c) { card.style.display = "none"; return; }
+    card.style.display = "block";
+    const cfg = {
+        green:  {icon:"🟢", border:"#2e7d32"},
+        yellow: {icon:"🟡", border:"#f0a500"},
+        red:    {icon:"🔴", border:"#c62828"},
+    }[c.semaforo] || {icon:"🌦️", border:"#888"};
+    card.style.borderLeftColor = cfg.border;
+    document.getElementById("pb-clima-icon").textContent = cfg.icon;
+    document.getElementById("pb-clima-fase").textContent = c.fase || "";
+    document.getElementById("pb-clima-title").textContent = c.titulo || "—";
+    document.getElementById("pb-clima-detail").textContent = c.detalle || "";
+}
+
+function renderTrackRecord(tr) {
+    const card = document.getElementById("pb-track-card");
+    if (!tr || !tr.n_evaluadas) { card.style.display = "none"; return; }
+    card.style.display = "block";
+    document.getElementById("pb-track-pct").textContent =
+        tr.precision_pct != null ? Math.round(tr.precision_pct) + "%" : "—";
+    document.getElementById("pb-track-msg").textContent = tr.mensaje || "";
+    const rec = document.getElementById("pb-track-recent");
+    rec.innerHTML = (tr.recientes || []).map(r => {
+        const ic = r.acierto ? "✅" : "❌";
+        return `<div style="display:flex;align-items:baseline;gap:8px;font-size:.8rem;padding:3px 0;color:#555;">
+            <span>${ic}</span>
+            <span style="color:#999;min-width:74px;">${r.fecha}</span>
+            <span><b>${r.senal}</b> → ${r.resultado}</span></div>`;
+    }).join("");
+}
+
 function renderBasis(bi) {
     const card = document.getElementById("pb-basis-card");
     if (!bi) { card.style.display = "none"; return; }
@@ -3449,6 +3509,12 @@ function renderProducerBrief(d) {
 
     // Inteligencia de basis
     renderBasis(d.basis);
+
+    // Track record (confianza)
+    renderTrackRecord(d.track_record);
+
+    // Clima / riesgo de rinde
+    renderClima(d.clima);
 
     // SECCIÓN 2 — accionable
     const accEl = document.getElementById("pb-accionable");

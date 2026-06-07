@@ -293,6 +293,83 @@ def _next_wasde() -> dict | None:
 
 
 # ─────────────────────────────────────────────────────────────────────────
+# Track record — el historial honesto que construye confianza.
+# "Cuando AgroCast dio una señal, ¿acertó?" Es lo único que rompe la
+# desconfianza del productor. El dato ya está computado por ie_accountability.
+# ─────────────────────────────────────────────────────────────────────────
+def _track_record() -> dict | None:
+    try:
+        from src.intel.ie_accountability import get_verdict_history
+        h = get_verdict_history()
+    except Exception:
+        return None
+    if not h or not h.get("ok"):
+        return None
+
+    n_eval = h.get("verified_7d") or 0
+    prec   = h.get("direction_accuracy_7d")
+    if n_eval == 0:
+        # Todavía sin señales maduras para evaluar
+        return {
+            "n_evaluadas": 0,
+            "mensaje": "Todavía estamos acumulando historial verificable. "
+                       "Cada señal se evalúa a 7 días para medir si acertó.",
+            "recientes": [],
+            "muestra_chica": True,
+        }
+
+    aciertos = round((prec or 0) / 100 * n_eval)
+    label_sig = {"SELL": "Anticipamos baja", "BUY": "Anticipamos suba",
+                 "HOLD": "Anticipamos estabilidad"}
+
+    recientes = []
+    for r in (h.get("recent") or []):
+        if not r.get("verified_7d"):
+            continue
+        ret = r.get("return_7d_pct")
+        ok = r.get("direction_correct_7d")
+        sig = r.get("verdict")
+        # Fecha humana
+        try:
+            d = date.fromisoformat(r.get("date"))
+            fecha = _fmt_fecha(d)
+        except Exception:
+            fecha = r.get("date", "")
+        if ret is not None:
+            mov = "bajó" if ret < 0 else ("subió" if ret > 0 else "quedó igual")
+            resultado = f"el precio {mov} {abs(ret):.1f}% en 7 días"
+        else:
+            resultado = "—"
+        recientes.append({
+            "fecha":    fecha,
+            "senal":    label_sig.get(sig, sig),
+            "resultado": resultado,
+            "acierto":  bool(ok),
+        })
+        if len(recientes) >= 5:
+            break
+
+    muestra_chica = n_eval < 8
+    if prec is not None and prec >= 60:
+        mensaje = (f"En las últimas {n_eval} señales evaluadas, acertamos la dirección "
+                   f"del precio en {aciertos} de {n_eval} ({prec:.0f}%).")
+    else:
+        mensaje = (f"Llevamos {n_eval} señales evaluadas, con {aciertos} aciertos de "
+                   f"dirección ({prec:.0f}%). Seguimos midiéndonos con transparencia.")
+    if muestra_chica:
+        mensaje += " (Historial todavía corto — lo mostramos con total transparencia.)"
+
+    return {
+        "n_evaluadas":   n_eval,
+        "aciertos":      aciertos,
+        "precision_pct": prec,
+        "mensaje":       mensaje,
+        "recientes":     recientes,
+        "muestra_chica": muestra_chica,
+    }
+
+
+# ─────────────────────────────────────────────────────────────────────────
 # Inteligencia de basis — traduce el descuento local a decisión simple
 # El productor tiene DOS palancas: el precio de Chicago y el basis local.
 # Saber si el basis está caro o barato vs su historia separa al productor
@@ -342,6 +419,62 @@ def _basis_intelligence() -> dict | None:
         "semaforo":        semaforo,
         "titulo":          titulo,
         "detalle":         detalle,
+    }
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# Inteligencia climática — riesgo sobre el RINDE del productor.
+# Previene el error más caro: vender a futuro una cosecha que el clima no
+# entrega. En el Río de la Plata, El Niño = más lluvia = favorable para soja;
+# La Niña = sequía = riesgo. (Opuesto al Midwest de EE.UU.)
+# ─────────────────────────────────────────────────────────────────────────
+def _climate_intelligence() -> dict | None:
+    try:
+        df = pd.read_csv(os.path.join(_DATA, "climate_forecast.csv"))
+        if df.empty:
+            return None
+        last = df.iloc[-1]
+    except Exception:
+        return None
+
+    phase = str(last.get("enso_phase_3m") or last.get("enso_phase_now") or "").lower()
+    val = last.get("enso_value_3m")
+    try:
+        val = float(val) if val is not None else None
+    except Exception:
+        val = None
+
+    if "nino" in phase or "niño" in phase:
+        semaforo = "green"
+        fase_es = "El Niño"
+        titulo = "Clima favorable para tu rinde"
+        detalle = ("El pronóstico climático (El Niño) suele traer buenas lluvias a la "
+                   "región — favorable para el rinde de soja. Tu cosecha tiene sesgo al alza, "
+                   "así que podés fijar precio a futuro con más confianza.")
+        forward_max = 80
+    elif "nina" in phase or "niña" in phase:
+        semaforo = "red"
+        fase_es = "La Niña"
+        titulo = "Riesgo de sequía sobre tu rinde"
+        detalle = ("Atención: el pronóstico (La Niña) trae riesgo de sequía en la región. "
+                   "Si el rinde cae, podrías quedar corto. No vendas a futuro más del 60% "
+                   "de la cosecha que todavía no levantaste.")
+        forward_max = 60
+    else:
+        semaforo = "yellow"
+        fase_es = "Neutral"
+        titulo = "Clima sin sesgo claro"
+        detalle = ("El pronóstico climático es neutral, sin sesgo marcado sobre el rinde. "
+                   "Podés fijar a futuro con prudencia (hasta ~70% de lo no cosechado).")
+        forward_max = 70
+
+    return {
+        "fase":        fase_es,
+        "enso_valor":  round(val, 2) if val is not None else None,
+        "semaforo":    semaforo,
+        "titulo":      titulo,
+        "detalle":     detalle,
+        "forward_max_pct": forward_max,
     }
 
 
@@ -570,6 +703,8 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     wasde = _next_wasde()
     neto = _precio_neto(prices["usd_ton"], uyu_rate, flete, otros)
     basis_intel = _basis_intelligence()
+    track = _track_record()
+    clima = _climate_intelligence()
 
     # Accionable narrativo: priorizar el texto del IE (ya está en lenguaje productor)
     accionable = None
@@ -622,6 +757,8 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "momento": momento,
         "margen": margen,
         "basis": basis_intel,
+        "track_record": track,
+        "clima": clima,
         "ventana_optima": best_win,
         "accionable_detallado": accionable,
         "drivers_simple": drivers,
