@@ -148,5 +148,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-08",
+    "timestamp": "2026-06-08T14:22:43.665672",
+    "price_at_verdict": 1115.5,
+    "verdict": "SELL",
+    "confidence": 0.62,
+    "reasoning": "La convergencia de señales bajistas fundamentales (crush margin chino -140 USD/ton, basis Uruguay z-score -2.64, evento especulativo bajista activo con fuerza 0.841) y el análisis técnico que confirma tendencia bajista primaria justifican una posición vendedora. Sin embargo, el RSI en 9.5 —estadísti",
+    "price_range_7d": {
+      "low": 1065,
+      "central": 1100,
+      "high": 1132
+    },
+    "price_range_30d": {
+      "low": 1050,
+      "central": 1085,
+      "high": 1148
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
