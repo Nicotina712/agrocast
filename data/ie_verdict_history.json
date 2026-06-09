@@ -178,5 +178,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-09",
+    "timestamp": "2026-06-09T13:29:45.778520",
+    "price_at_verdict": 1113.25,
+    "verdict": "SELL",
+    "confidence": 0.62,
+    "reasoning": "Los fundamentales permanecen claramente bajistas (crush margin China -140 USD/ton, demanda score 30/100, señal compuesta -0.573, evento especulativo activo con fuerza 0.841), con el técnico confirmando la tendencia primaria DOWN. Sin embargo, la sobreextensión extrema (RSI 9.5, %B -4.5%, precio a $9",
+    "price_range_7d": {
+      "low": 1062,
+      "central": 1098,
+      "high": 1135
+    },
+    "price_range_30d": {
+      "low": 1060,
+      "central": 1087,
+      "high": 1152
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
