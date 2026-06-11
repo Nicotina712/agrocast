@@ -1,18 +1,18 @@
 {
-  "p_model": 0.0588,
+  "p_model": 0.24,
   "p_llm": 0.5,
-  "p_ie": 0.19,
-  "p_ensemble": 0.19,
+  "p_ie": 0.14,
+  "p_ensemble": 0.14,
   "w_model": 0.0,
   "w_llm": 0.0,
   "w_ie": 0.35,
   "ie_verdict": "SELL",
-  "ie_confidence": 0.62,
+  "ie_confidence": 0.72,
   "model_hit_rate": null,
   "llm_hit_rate": 0.3333,
-  "disagreement": 0.1312,
+  "disagreement": 0.1,
   "abstain": false,
   "signal_ensemble": "SELL",
   "signal_source": "intelligence_engine",
-  "agreement_score": 0.8688
+  "agreement_score": 0.9
 }

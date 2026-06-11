@@ -238,5 +238,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-11",
+    "timestamp": "2026-06-11T14:36:39.475310",
+    "price_at_verdict": 1110.25,
+    "verdict": "SELL",
+    "confidence": 0.62,
+    "reasoning": "La confluencia bajista es clara: evento narrativo activo de momentum especulativo bajista con solo 15% de probabilidad de suba a 7d, demanda china estructuralmente débil (crush margin -140 USD/ton, demand score 30/100), oferta brasileña récord inundando el mercado, y señal compuesta SELL (-0.573). E",
+    "price_range_7d": {
+      "low": 1046,
+      "central": 1091,
+      "high": 1118
+    },
+    "price_range_30d": {
+      "low": 1021,
+      "central": 1065,
+      "high": 1110
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
