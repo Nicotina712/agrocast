@@ -109,15 +109,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "ALTA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1116.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": -6.8,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": true,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   },
   {
     "date": "2026-06-06",
@@ -259,6 +259,36 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-12",
+    "timestamp": "2026-06-12T13:44:37.665598",
+    "price_at_verdict": 1116.75,
+    "verdict": "SELL",
+    "confidence": 0.72,
+    "reasoning": "La confluencia de crush margins chinos profundamente negativos (-140 USD/ton), basis uruguayo en mínimo histórico (z-score -2.64), exportaciones brasileñas récord (+5.1% YoY) y un narrative forecast con P(suba) a 7d del 15% y 0% a 30d crea un sesgo bajista fundamental sólido. El analista bajista tie",
+    "price_range_7d": {
+      "low": 1055,
+      "central": 1091,
+      "high": 1136
+    },
+    "price_range_30d": {
+      "low": 1020,
+      "central": 1055,
+      "high": 1095
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "ALTA",
+    "position_sizing": "50%",
     "verified_7d": false,
     "verified_14d": false,
     "price_at_7d": null,
