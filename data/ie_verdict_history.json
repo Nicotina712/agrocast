@@ -139,15 +139,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "ALTA",
     "position_sizing": "50%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1133.5,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 1.07,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   },
   {
     "date": "2026-06-08",
@@ -169,15 +169,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1133.5,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 1.61,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-06-09",
@@ -289,6 +289,36 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "ALTA",
     "position_sizing": "50%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-15",
+    "timestamp": "2026-06-15T15:25:31.072154",
+    "price_at_verdict": 1117.75,
+    "verdict": "SELL",
+    "confidence": 0.58,
+    "reasoning": "La convergencia de señales bajistas fundamentales (crush margin chino de -140 USD/ton, basis Uruguay en z-score -2.64, exportaciones brasileñas récord) con el modelo compuesto SELL (score 21/100) y el narrative forecast con P(suba)=10% a 7d justifican una posición vendedora de tamaño reducido. Sin e",
+    "price_range_7d": {
+      "low": 1083,
+      "central": 1085,
+      "high": 1151
+    },
+    "price_range_30d": {
+      "low": 1052,
+      "central": 1055,
+      "high": 1113
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
     "verified_7d": false,
     "verified_14d": false,
     "price_at_7d": null,
