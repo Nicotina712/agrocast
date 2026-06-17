@@ -199,15 +199,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1130.0,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 1.5,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   },
   {
     "date": "2026-06-10",
@@ -229,15 +229,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "ALTA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1153.0,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 2.42,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-06-11",
@@ -315,6 +315,36 @@
       "low": 1052,
       "central": 1055,
       "high": 1113
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-17",
+    "timestamp": "2026-06-17T13:55:32.174064",
+    "price_at_verdict": 1135.75,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "La convergencia de señales bajistas fundamentales (crush margins chinos en -140 USD/ton, basis Uruguay en z-score -2.64, event activo oil_energy bajista con P(suba)=15% a 7d) y el análisis técnico que confirma tendencia bajista moderada (precio < MA20 y MA50, momentum 20d -4.67%, setup bear flag) in",
+    "price_range_7d": {
+      "low": 1086,
+      "central": 1120,
+      "high": 1155
+    },
+    "price_range_30d": {
+      "low": 1075,
+      "central": 1100,
+      "high": 1135
     },
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
