@@ -1,18 +1,18 @@
 {
-  "p_model": 0.0,
+  "p_model": 0.1731,
   "p_llm": 0.5,
-  "p_ie": 0.24,
-  "p_ensemble": 0.24,
+  "p_ie": 0.5,
+  "p_ensemble": 0.5,
   "w_model": 0.0,
   "w_llm": 0.0,
   "w_ie": 0.35,
-  "ie_verdict": "SELL",
-  "ie_confidence": 0.52,
+  "ie_verdict": "HOLD",
+  "ie_confidence": 0.5,
   "model_hit_rate": null,
   "llm_hit_rate": 0.3333,
-  "disagreement": 0.24,
+  "disagreement": 0.3269,
   "abstain": false,
-  "signal_ensemble": "SELL",
+  "signal_ensemble": "HOLD",
   "signal_source": "intelligence_engine",
-  "agreement_score": 0.76
+  "agreement_score": 0.6731
 }
