@@ -388,5 +388,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-25",
+    "timestamp": "2026-06-25T13:19:08.691764",
+    "price_at_verdict": 1132.0,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "Ambos analistas fundamentales reportan convicción BAJA, el técnico muestra compresión sin setup claro, y el track record empírico del sistema (5 SELL consecutivos incorrectos, accuracy 33%) invalida actuar sobre señales bajistas en este rango de precios. Los fundamentales bajistas (crush margin -140",
+    "price_range_7d": {
+      "low": 1097,
+      "central": 1125,
+      "high": 1150
+    },
+    "price_range_30d": {
+      "low": 1074,
+      "central": 1110,
+      "high": 1155
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "BAJA",
+    "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
