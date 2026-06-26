@@ -1,21 +1,50 @@
 {
-  "as_of": "2026-06-25T13:15:45",
+  "as_of": "2026-06-26T13:07:46",
   "current": {
     "ok": true,
-    "is_shock": false,
-    "is_near_shock": false,
-    "ret_5d_pct": 0.84,
-    "ret_10d_pct": 2.31,
-    "thr_spike_5d_pct": 4.57,
+    "is_shock": true,
+    "is_strong_shock": false,
+    "is_near_shock": true,
+    "shock_type": "speculative_up",
+    "shock_direction": "up",
+    "window_active": "10d",
+    "ret_5d_pct": 3.05,
+    "ret_10d_pct": 3.77,
+    "oil_5d_pct": -9.67,
+    "oil_10d_pct": -21.12,
+    "soyoil_5d_pct": -4.18,
+    "soyoil_10d_pct": -10.3,
+    "thr_spike_5d_pct": 4.52,
     "thr_spike_10d_pct": 6.62,
-    "thr_drop_5d_pct": -4.2,
+    "thr_drop_5d_pct": -4.19,
     "thr_drop_10d_pct": -6.25,
     "thr_near_spike_5d_pct": 2.7,
-    "thr_near_spike_10d_pct": 3.76
+    "thr_near_spike_10d_pct": 3.77,
+    "shock_date": "2026-06-26",
+    "shock_price": 1157.0,
+    "ret_active_pct": 3.77,
+    "oil_active_pct": -21.12
   },
-  "analogs_found": 0,
+  "analogs_found": 101,
+  "analog_stats": {
+    "n": 101,
+    "ret_30d_q25_pct": -1.18,
+    "ret_30d_med_pct": 2.32,
+    "ret_30d_q75_pct": 7.42,
+    "peak_day_med": 14,
+    "peak_day_q25": 3,
+    "peak_day_q75": 25,
+    "peak_gain_med_pct": 6.1,
+    "half_fade_med": 10,
+    "survived_30d_pct": 71.28712871287128,
+    "confidence": "high"
+  },
   "recommendation": {
-    "action": "NO_SHOCK",
-    "message": "Sin shock activo. Use el modelo regular."
+    "action": "INFO_AMBIGUOUS",
+    "advisory": "info_only",
+    "message": "Shock alcista detectado con 101 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 14 post-shock (rango Q25-Q75: d\u00eda 3-25, ganancia mediana +6.1%). Retorno mediano a 30d: +2.3% (banda Q25-Q75: -1.2% a +7.4%). Sobrevive 30d: 71% de los casos.",
+    "tactical": "An\u00e1logos con outcomes mixtos. La se\u00f1al no es lo suficientemente clara para ning\u00fan tipo de acci\u00f3n direccional.",
+    "confidence": "high",
+    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
   }
 }
