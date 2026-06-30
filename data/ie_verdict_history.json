@@ -478,5 +478,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-06-30",
+    "timestamp": "2026-06-30T13:19:54.538466",
+    "price_at_verdict": 1131.5,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "Ambos analistas fundamentales expresan convicción BAJA, el sistema arrastra 5 señales SELL consecutivas fallidas con accuracy direccional del 33%, y el análisis técnico contradice el sesgo bajista fundamental mostrando precio sobre MA20 con RSI 61.4. La regla de decisión es clara: cuando ambos funda",
+    "price_range_7d": {
+      "low": 1087,
+      "central": 1114,
+      "high": 1145
+    },
+    "price_range_30d": {
+      "low": 1047,
+      "central": 1047,
+      "high": 1120
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "BAJA",
+    "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]

@@ -3,90 +3,90 @@
     "2023-12-31": {
       "n_train": 1887,
       "n_test": 613,
-      "auc": 0.5352,
-      "accuracy": 0.5204,
-      "p_mean": 0.5611,
+      "auc": 0.5614,
+      "accuracy": 0.5188,
+      "p_mean": 0.5618,
       "p_std": 0.2686,
-      "top1_share": 0.0227,
+      "top1_share": 0.0385,
       "top5_features": {
-        "insp_soy_bu": 0.022700000554323196,
-        "basis_seasonal_expected": 0.022099999710917473,
-        "soy_corn_ratio": 0.021900000050663948,
-        "cot_noncomm_net": 0.01979999989271164,
-        "SoybeanMeal": 0.019200000911951065
+        "enso_phase": 0.03849999979138374,
+        "ms_short_trend": 0.02669999934732914,
+        "ms_long_trend": 0.02250000089406967,
+        "enso_oni": 0.019899999722838402,
+        "is_drop_5d": 0.019500000402331352
       },
       "signal_dist": {
-        "BUY": 0.537,
-        "SELL": 0.313,
-        "HOLD": 0.15
+        "BUY": 0.522,
+        "SELL": 0.312,
+        "HOLD": 0.166
       }
     },
     "2024-12-31": {
       "n_train": 2139,
       "n_test": 361,
-      "auc": 0.5071,
-      "accuracy": 0.5263,
-      "p_mean": 0.4458,
-      "p_std": 0.2382,
-      "top1_share": 0.027,
+      "auc": 0.5238,
+      "accuracy": 0.5208,
+      "p_mean": 0.3722,
+      "p_std": 0.2472,
+      "top1_share": 0.0722,
       "top5_features": {
-        "SoybeanMeal": 0.027000000700354576,
-        "insp_soy_4wk_avg": 0.023900000378489494,
-        "wasde_bull_bias": 0.021299999207258224,
-        "trends_interest": 0.02070000022649765,
-        "soy_corn_ratio": 0.01899999938905239
+        "decomp_above_trend": 0.0722000002861023,
+        "enso_phase": 0.030300000682473183,
+        "ms_long_trend": 0.025499999523162842,
+        "enso_oni": 0.023499999195337296,
+        "ms_medium_trend": 0.0210999995470047
       },
       "signal_dist": {
-        "BUY": 0.327,
-        "SELL": 0.532,
-        "HOLD": 0.141
+        "BUY": 0.224,
+        "SELL": 0.607,
+        "HOLD": 0.169
       }
     },
     "2025-06-30": {
       "n_train": 2262,
       "n_test": 237,
-      "auc": 0.5374,
-      "accuracy": 0.5485,
-      "p_mean": 0.5253,
-      "p_std": 0.2465,
-      "top1_share": 0.0268,
+      "auc": 0.5314,
+      "accuracy": 0.519,
+      "p_mean": 0.4805,
+      "p_std": 0.2925,
+      "top1_share": 0.0262,
       "top5_features": {
-        "insp_soy_4wk_avg": 0.026799999177455902,
-        "SoybeanMeal": 0.021900000050663948,
-        "month_sin": 0.021400000900030136,
-        "soy_corn_ratio": 0.02019999921321869,
-        "Wheat": 0.019999999552965164
+        "cot_contrarian_score": 0.026200000196695328,
+        "SoybeanMeal": 0.02329999953508377,
+        "enso_oni": 0.02319999970495701,
+        "ms_short_trend": 0.02280000038444996,
+        "Soybeans_lag1": 0.021700000390410423
       },
       "signal_dist": {
-        "BUY": 0.418,
-        "SELL": 0.439,
-        "HOLD": 0.143
+        "BUY": 0.435,
+        "SELL": 0.451,
+        "HOLD": 0.114
       }
     }
   },
   "global": {
     "n_train": 2009,
     "n_test": 492,
-    "auc": 0.5738,
-    "accuracy": 0.5671,
-    "p_mean": 0.5467,
-    "p_std": 0.2561,
-    "top1_share": 0.023,
+    "auc": 0.5836,
+    "accuracy": 0.5711,
+    "p_mean": 0.528,
+    "p_std": 0.2756,
+    "top1_share": 0.0476,
     "top5_features": {
-      "SoybeanMeal": 0.023000000044703484,
-      "ms_short_trend": 0.021199999377131462,
-      "insp_soy_4wk_avg": 0.019700000062584877,
-      "cot_regime_long": 0.019099999219179153,
-      "ms_long_trend": 0.018799999728798866
+      "enso_phase": 0.047600001096725464,
+      "ms_short_trend": 0.029600000008940697,
+      "enso_oni": 0.025200000032782555,
+      "cot_regime_long": 0.02319999970495701,
+      "ms_long_trend": 0.02290000021457672
     },
     "signal_dist": {
-      "BUY": 0.465,
-      "SELL": 0.337,
-      "HOLD": 0.197
+      "BUY": 0.476,
+      "SELL": 0.378,
+      "HOLD": 0.146
     }
   },
   "embargo_days": 18,
   "flags": [
-    "AUC m\u00ednimo 0.507 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
+    "Sin alertas evidentes"
   ]
 }
