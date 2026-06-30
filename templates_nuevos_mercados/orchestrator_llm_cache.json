@@ -1,0 +1,2794 @@
+{
+"98792a6eeb8049f990b041cc1fd8652d6546ee5f": {
+"action": "VETO",
+"reason": "USTEC SHORT duplicates US500 SHORT\u2014both correlated US equity indices. In BULL regime, shorting risk-on is already contrarian; doubling down adds concentrated directional risk without diversification benefit."
+},
+"44e1d043e1cb92eb74921c420522f7a71e2275ee": {
+"action": "VETO",
+"reason": "BULL regime + SHORT risk-on equity = counter-trend fade with only $1,013 account in -$40 drawdown. First trade of day should align with regime or be diversifier (gold). Risk/reward unfavorable in current context."
+},
+"a26dd362e97f1c21ba09a5aeba3464e538b956fc": {
+"action": "APPROVE",
+"reason": "No open positions, moderate drawdown, good R:R. SHORT in BULL adds contrarian diversification rather than concentration."
+},
+"a4a9a21548b0c6e86de77e4b46dd8ff4293beb8a": {
+"action": "REDUCE_50",
+"reason": "US500 and USTEC are highly correlated US equity indices. Both LONG creates concentrated risk-on exposure. REDUCE_50 allows diversified participation in BULL regime without over-concentrating in same directional bet."
+},
+"1a0c805e640086ad64130b4694f84c4a9399dc66": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, small drawdown (-$40), USTEC long aligns with regime, no concentration risk."
+},
+"d8f14a57512fecd0d12e340039a7702f5b583409": {
+"action": "APPROVE",
+"reason": "No open positions, minimal drawdown ($-60), decent R:R 2.0. Short in BULL regime carries contrarian risk but acceptable as first position with no correlation conflict."
+},
+"d367e7350936a626eecc5115f90b1df36fc79e08": {
+"action": "VETO",
+"reason": "Already SHORT US500 in BULL regime. Adding correlated USTEC SHORT doubles down on risk-on bear bet against trend. Book already -$60 DD. Reject duplicate exposure."
+},
+"e116f196c27a0704815cc3af6bd6f009bf91cda4": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown, 2.0 RR on single risk-on instrument - clean setup"
+},
+"d1fdc85e0d7fa34f46a0bb23ff2375c0aeb5a876": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, healthy day P&L (+$40), minimal drawdown (-$40). Clean book allows full US500 long exposure."
+},
+"4c2eedce7be083e36247d489c0ef8c77da7eb1db": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown (-$60), USTEC is first risk-on entry with decent 2.0 RR\u2014no concentration or correlation conflict yet."
+},
+"82734086585592b813672afd907a729ffe154ada": {
+"action": "REDUCE_50",
+"reason": "US500 and USTEC are highly correlated US equity indices\u2014both LONG is concentrated risk-on exposure. REDUCE to avoid doubling same bet while still participating in BULL regime."
+},
+"fc152952943e9e3ad82a868c8700d11f2a36172a": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on equity. No open positions = zero concentration risk. Book DD minimal at -$80. Good regime alignment."
+},
+"c37491e7c0643d1e44d8d23e8e68ec59d5ffb063": {
+"action": "VETO",
+"reason": "CRISIS regime + already holding US500:SHORT. USTEC is 0.95+ correlated to US500 (both Nasdaq/US equities). This would be a duplicated SHORT bet, not diversification. Book already -$80 DD. Veto to avoid concentration."
+},
+"092f2c5733fe0f7bc3f48bf64ec20ea0b345a868": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on assets. No open positions = zero correlation risk. Fresh capital deployment with defensive directional bias is prudent."
+},
+"4b1c496a52d8435116f229314191f0bb3d476da1": {
+"action": "VETO",
+"reason": "CRISIS regime + book in drawdown (-$60). LONG risk-on US500 is contra-indicated in crisis conditions. Protect capital."
+},
+"a145823e4e84adb4d99080ca82557597c36b8bbc": {
+"action": "VETO",
+"reason": "CRISIS regime + book in drawdown ($-60). LONG risk-on equity (USTEC) contradicts defensive posture required. No open positions to diversify against. Preserve capital."
+},
+"d87e4a01bf595a47d2a313c937b68d542c0c0437": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in $-60 drawdown. Risk-on LONG US500 contradicts defensive posture required in crisis conditions."
+},
+"ce3e578c559c5a33b48556eec5220f2c272af314": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in drawdown (-$60). LONG risk-on USTEC contradicts defensive posture required now."
+},
+"62f76d82bdcaa77e2943ff619b69019c32fc419b": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown, US500 provides clean directional exposure with decent 2.0 RR"
+},
+"0e823520a6ccd2bcbabb828bb4c6b881bd25bb92": {
+"action": "REDUCE_50",
+"reason": "USTEC+US500 both LONG = concentrated US equity risk-on exposure. BULL regime supports equity longs, but 2 correlated positions warrant size reduction to manage concentration."
+},
+"83008efbd5e02f7ae7c492617b024c1a9e504df4": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown, good RR. Clean slate allows risk-on entry."
+},
+"25c9936a6f4dc894e5f7185e37902181b97c5660": {
+"action": "APPROVE",
+"reason": "No open positions, book DD minimal (-$80), USTEC SHORT provides counter-trend diversification in BULL regime, acceptable 2.0 RR, no correlation conflict"
+},
+"6601653853e43bc1c118f2d61e52a0470240bc03": {
+"action": "APPROVE",
+"reason": "SHORT US500 in BEAR regime aligns with macro. No open positions = zero concentration risk. Drawdown modest (~10%). Good RR=2.0. Clean setup."
+},
+"1c4ffc9eb6e1a75ce0064c5c895b52e29d1abd73": {
+"action": "APPROVE",
+"reason": "SHORT USTEC aligns with BEAR regime, no open positions to conflict, drawdown minimal, defensively positioned"
+},
+"e4fae8d66dffd753ec0f36387e797016111d5724": {
+"action": "VETO",
+"reason": "USTEC SHORT already open; US500 and USTEC are ~0.95 correlated US indices. Adding US500 SHORT is duplicate exposure, not diversification. BEAR regime already captured via existing position."
+},
+"6b7c9d20c8c98eccf6e3fefb567315089c5b81f3": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on. No open positions, no concentration risk. Clean directional play aligned with regime."
+},
+"edde5bcaab6aef56f90c8f7aedba6cd4506bc70b": {
+"action": "APPROVE",
+"reason": "No open positions, single exposure, SHORT in BULL regime provides diversification against risk-on bias, drawdown manageable at -$40"
+},
+"ee4a9277f076b8d096c26c3731c67ff69e9d963f": {
+"action": "VETO",
+"reason": "USTEC SHORT already open; US500 SHORT is 0.98 correlated duplicate. In BULL regime with book already -$40 today, adding concentrated short risk-on exposure amplifies drawdown risk. No diversification benefit."
+},
+"7fe746aa871751482d78109a7fc8e690af3193eb": {
+"action": "VETO",
+"reason": "BEAR regime + book already down $80 + USTEC is risk-on equity. No open positions to diversify against. Protect capital in adverse conditions."
+},
+"55d8dafab25ee7414f805f4b39889e9b1813c3d1": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT; no open positions = zero concentration risk; book DD minimal; crypto short aligns with regime"
+},
+"d87940dc6ed9fac5052c63274f9d47a882fa9c66": {
+"action": "VETO",
+"reason": "BEAR regime + book already in drawdown ($-100). BTCUSD is high-beta risk-on; no open positions to diversify against. Wait for better setup or regime shift."
+},
+"31e74e25ed1836861cb11bd006c6c8b0c0a4b642": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on assets. No open positions = zero concentration risk. Small drawdown (-$100) acceptable. Clean directional bet."
+},
+"3ba73ea7d6179d4311cfffc85105742b4ee32735": {
+"action": "REDUCE_50",
+"reason": "BEAR regime supports SHORT bias, but USTEC+BTC both risk-on SHORT = concentrated directional bet. Already -$100 DD. Reduce to manage joint exposure while keeping diversified short thesis."
+},
+"fae3786ea60abe15965d755129244305d21b1044": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on asset; no open positions means zero correlation conflict; book DD manageable at -$60 with +$40 today; RR 2.5 acceptable"
+},
+"df140c5fee8294344055eb4b9c0cc4f4677c0902": {
+"action": "APPROVE",
+"reason": "SHORT BTCUSD aligns with BEAR regime, no open positions, acceptable RR 2.5, drawdown minimal at -$20"
+},
+"cb7b530196ea109959e16f2e0f4d2b31e98b5b79": {
+"action": "APPROVE",
+"reason": "BEAR regime supports risk-off. USTEC SHORT aligns with existing BTCUSD SHORT (both risk-on assets). Modest -$20 DD allows prudent addition. Two correlated shorts = coherent directional bet, not excessive concentration."
+},
+"1e10adeac4697d5cee194f1d47ed520de4734f4f": {
+"action": "VETO",
+"reason": "BEAR regime + already in drawdown (-$40). BTCUSD LONG directly opposes open USTEC SHORT (both risk-on, opposite directions = hedged but confusing). In bearish conditions, avoid adding long crypto exposure."
+},
+"aca3cc947ddf8e810f94eebe1b39c1c9dd36321f": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports LONG BTC, but book is in -$60 drawdown with -$40 today. Reduce size for prudent risk management while still participating in regime-aligned opportunity."
+},
+"be88707b8be1d52a07fa168b84a9f721a5c2f126": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but USTEC+BTC is correlated duplicate exposure. Book already down $60 (-6%) with -$40 today. Approve half to limit concentration while capturing upside."
+},
+"fa19b55ae470b0d7cc174227fb336711aef977b5": {
+"action": "VETO",
+"reason": "BTCUSD LONG + USTEC LONG = duplicate risk-on exposure in same direction. Both are high-beta tech/growth correlated. Already have USTEC coverage; adding BTC creates concentration not diversification."
+},
+"9760721fb9b5e5f4ff42947e1cb7375af559f1de": {
+"action": "VETO",
+"reason": "BTCUSD SHORT conflicts with existing USTEC LONG\u2014both are correlated risk-on assets. Taking opposite directions on correlated instruments creates unnecessary whipsaw risk rather than diversification. In BULL regime, maintain directional consistency or stay flat."
+},
+"e3a4a691f2c4735b847a548f884ba2d12aeb685a": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, clean slate for diversification, moderate drawdown acceptable, solid 2.0 RR on US500"
+},
+"56d11d73f0397a0e5a3d98b0e3476174604e96f2": {
+"action": "REDUCE_50",
+"reason": "USTEC and US500 are highly correlated US equity indices. Already holding US500 LONG; adding full USTEC LONG doubles concentrated risk-on exposure. REDUCE_50 maintains directional exposure while managing correlation risk."
+},
+"55866ccb77c4b15cbc3f449461fe71592fdea2be": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT bias; BTC short aligns with macro; no open positions = zero correlation risk; modest drawdown manageable; decent RR 2.5"
+},
+"0811548d2e06811584b2c86153be14676be61745": {
+"action": "APPROVE",
+"reason": "BEAR regime favours SHORT risk-on exposure. No open positions = zero correlation risk. Clean directional bet with solid 2.5 RR. No drawdown concerns."
+},
+"9b230a6e23f27357b4c811adf165aa4dc1d795de": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on. No open positions = zero correlation conflict. Book is GREEN today (+$40). Clean directional bet with 2.0 RR."
+},
+"8478a6a62b529c7b4bc0443ecc0c527a3b6708d0": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal DD, decent RR 2.5, BTC diversifies empty book"
+},
+"8a73a78a18e76e3e22069cf62463a570e6ce5ec6": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime contradicts market direction; book already -$40 today, avoid counter-trend risk-on exposure that conflicts with regime"
+},
+"92435391e8fd6701773983a897da2dfd74080252": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT risk-on equity; no open positions = zero correlation conflict; minimal book drawdown; solid 2.0 RR"
+},
+"2228aaaad89e7540051c6d8bf8678b0a7ecdf053": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT bias. BTCUSD+USTEC shorts are correlated but diversify crypto/index exposure. Book DD -$40 manageable. RR 2.5 acceptable."
+},
+"a2b1a04a13442fd5555c119e9bbce7e70969d53d": {
+"action": "VETO",
+"reason": "BTCUSD SHORT duplicates existing USTEC SHORT\u2014both risk-on assets in BEAR regime. Concentration without diversification benefit. Keep single tech short exposure."
+},
+"d1f76a5f0e00af126e8ab581e3fea3bec2c44615": {
+"action": "VETO",
+"reason": "BEAR regime + opposing direction to open USTEC SHORT creates hedged but conflicting risk-on exposure. BTC LONG contradicts defensive posture needed in bear market with existing tech short."
+},
+"0212fd0509f172eaf203579fd2da426a63382120": {
+"action": "VETO",
+"reason": "BTCUSD SHORT + USTEC SHORT = concentrated short risk-on bet. Both highly correlated in BEAR regime. One tech short position already sufficient for this directional exposure."
+},
+"3b48fac047f922f8e841be11486d75c40fece8e8": {
+"action": "APPROVE",
+"reason": "SHORT BTCUSD in CRISIS regime aligns with risk-off environment; no open positions = zero concentration risk; book is green today (+$40); solid RR 2.5"
+},
+"92fc434bddd9626ef4c1ee26ad5fa7d09930c2b3": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours SHORT risk-on asset (BTC). No open positions = zero concentration risk. Drawdown modest (-$40). Clean directional bet."
+},
+"770d236fc3b20a9c70924bfea4c957e7f58ba2df": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on exposure. USTEC SHORT aligns with existing BTCUSD SHORT (both risk-off plays). Diversifies across crypto/equity. Book DD manageable at -$40. RR 2.0 acceptable."
+},
+"f697a035e62c49c008c45c684692c64c46f151bf": {
+"action": "APPROVE",
+"reason": "SHORT crypto in CRISIS regime is counter-cyclical, no open positions, minimal drawdown, diversifies from typical risk-on longs"
+},
+"00ce09808dc90a67567f4a4a9aec8442dfdbc32b": {
+"action": "VETO",
+"reason": "CRISIS regime + book already -$120 DD + BTC is pure risk-on. Preserve capital."
+},
+"b9ff662c09e5e7324c3f245f276e99c04d190be9": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in $-120 drawdown. LONG risk-on USTEC contradicts defensive posture required in crisis conditions."
+},
+"11771001bf0242ebab879d48bb4ab0967feb7b04": {
+"action": "APPROVE",
+"reason": "Clean book, BULL regime, no open correlated positions, decent R:R 2.5, drawdown minor (-120). First position of the day."
+},
+"050cc71e18633277ddd3cf5bcde9f18331eda3ba": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, decent R:R 2.5, drawdown modest, crypto diversifies empty book"
+},
+"402a97146b615075d5005056b9b9f53b46e02806": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US500 LONG stacks correlation with existing BTCUSD LONG (both risk-on). Book already -$140 DD. Reduce to avoid over-concentration while maintaining exposure."
+},
+"16c22114a2d62ea62cc51ad2cfead9c460d82638": {
+"action": "VETO",
+"reason": "Triple-stacking correlated risk-on longs (BTC+US500+USTEC) in BULL but already -$140 DD. Concentration too high; existing US500 already captures US equity beta."
+},
+"52b8f8a49d0ea996852c122b5ef414e4fd1aba62": {
+"action": "APPROVE",
+"reason": "BEAR regime favours SHORT risk-on assets like BTC. No open positions = zero concentration risk. Decent RR=2.5. Book DD manageable at -$160."
+},
+"f3e89cda2edadfb7daf21759c93dcfa0f5aebf6c": {
+"action": "APPROVE",
+"reason": "SHORT USTEC aligns with BEAR regime, no open positions to conflict, decent RR=2.0, drawdown moderate at -$120"
+},
+"dd20206a3c34d21e55b99e9af3509d900349df6b": {
+"action": "VETO",
+"reason": "Already SHORT USTEC (correlated risk-on). Adding SHORT BTC creates concentrated directional bet in same regime. Book at -$120 DD in BEAR\u2014preserve capital, avoid duplication."
+},
+"dca7d381c8480335a5505dd867db1be8fa09ea0f": {
+"action": "VETO",
+"reason": "CRISIS regime + book in drawdown ($-80). LONG BTC is risk-on exposure exactly when defensive posture required. Preserve capital."
+},
+"0d8a3c45fb0d42fd086188ffece5f304ef961e2a": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in $-80 drawdown. BTCUSD is high-beta risk-on; adding long exposure now violates defensive posture required in crisis conditions."
+},
+"e5aa62efd932cd2ca01980902865b2d9fbb09175": {
+"action": "VETO",
+"reason": "CRISIS regime + book already at -$80 drawdown. LONG risk-on USTEC conflicts with defensive posture required. No open positions means no diversification benefit to offset this concentrated risk-on bet."
+},
+"90cde9bb60d86330a785a254ebabba4969e6e427": {
+"action": "VETO",
+"reason": "CRISIS regime + book already down $80 + LONG risk-on equity = compounding drawdown risk. Defensive posture required."
+},
+"1f5a56cbb0960db7e88489b5e9f98be695100539": {
+"action": "VETO",
+"reason": "BEAR regime + book in drawdown (-$100, -$40 today). LONG risk-on equity (USTEC) conflicts with defensive posture required in current conditions."
+},
+"a5fffcdf42ee87dd880ea6648da695df6d6895b5": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$100, -$40 today). Energy is commodity risk; BRENT alone (no WTI conflict) and decent RR=3.0, but prudent to halve size given regime/drawdown caution."
+},
+"3796f05caf9737bb06a100e00d1c391851509fc9": {
+"action": "VETO",
+"reason": "BEAR regime + already in daily drawdown (-$40) + adding risk-on crypto LONG would concentrate directional exposure alongside existing BRENT LONG. Defensive posture warranted."
+},
+"05468776588b4f63ecdc75f9d6986ff59f3b493e": {
+"action": "APPROVE",
+"reason": "SHORT crypto aligns with BEAR regime, no open positions to correlate against, modest drawdown allows single directional bet"
+},
+"31a2116c846b7d91ae06113cd588f715f2fde046": {
+"action": "VETO",
+"reason": "BEAR regime + book already down $120 + crypto LONG is risk-on exposure. Defensive posture required."
+},
+"7d170aff642bdd321fbcb42feaa4e43bdbf2fda8": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$120). Energy LONG acceptable as non-risk-on diversifier, but reduce size defensively given adverse conditions and no offsetting positions."
+},
+"561d18eea45f550df406b542f19ce16b440631cf": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown ($-140). Energy is commodity/inflation hedge but not pure safe-haven. No open positions = no correlation conflict, but regime + drawdown warrant defensive sizing. 50% keeps exposure alive with 3.0 RR while limiting risk."
+},
+"4786b126c44fa67a13c20859d451f72c6fab78f0": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$140, -$40 today). Energy LONG is not risk-on but regime warrants caution. No open positions = no correlation conflict. RR 3.0 is attractive. Reduce size to manage defensively while allowing participation."
+},
+"9a31340418ee663b896f7d333e4888c6f554a387": {
+"action": "VETO",
+"reason": "BEAR regime + book already -$140 DD + adding risk-on LONG (BTC) while energy LONG open would concentrate directional exposure in unfavorable conditions. Preserve capital."
+},
+"ffb0d398b5bd8610c896af0de4ad0265cc7262c9": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT on risk-on asset. BTCUSD SHORT diversifies against existing BRENT LONG (energy vs crypto, opposite correlation). Drawdown -140 is manageable (~14% of account). Good R:R 2.5, non-concentrated exposure."
+},
+"12dc5b6b1a9cf79083580331b61c0cc14f9fcdca": {
+"action": "VETO",
+"reason": "BEAR regime + already in -$140 drawdown. Adding LONG BTCUSD (high-beta risk-on) in bear market risks deepening losses. BRENT position already provides long exposure; stacking correlated risk-on crypto is imprudent now."
+},
+"b36d4c1b97f4dc53e898a6175b2880767adeaa4b": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$100). Energy can be countercyclical but risk warrants caution. Reduce size to preserve capital while maintaining diversification."
+},
+"fd51e4670b99b1da44beae1172a6821cc2c3a649": {
+"action": "VETO",
+"reason": "BEAR regime + book already in drawdown (-$100). Adding LONG BTC (risk-on) creates concentrated directional bet with existing BRENT long. Preserve capital in defensive regime."
+},
+"5044466d6f7a7d03bfec2b57c34c202a191398d2": {
+"action": "APPROVE",
+"reason": "XAUUSD short in BEAR regime reasonable. No open positions = zero concentration. Book DD modest at -$120. Gold diversifies typical risk-on; taking directional view acceptable when book is clean."
+},
+"04369c77793916883f42c8cb1b04e50f3b346152": {
+"action": "VETO",
+"reason": "BEAR regime + meaningful drawdown ($-140) + risk-on LONG equity = poor risk/reward timing. Wait for regime improvement or drawdown recovery."
+},
+"1c6e009ec88ff4a90d684ac44922e7a047ca8a57": {
+"action": "VETO",
+"reason": "BEAR regime + book already down $140 + risk-on LONG equity contradicts defensive posture required"
+},
+"6f9722601f37cb8bfb13f53a6b04ff5e260c9a5a": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + $140 drawdown warrants caution. Energy offers diversification vs risk-on, and RR=3.0 is solid, but half-size manages risk prudently given regime and existing DD."
+},
+"075139fc414ac3a88b630ed5ccbc889d6612f80f": {
+"action": "VETO",
+"reason": "WTI+BRENT are 0.95 correlated\u2014both LONG energy is doubled concentration. BEAR regime + $140 drawdown demands defensiveness, not amplifying existing energy bet."
+},
+"e72cae4dc8c6dc518399e519899e4f9244491387": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT risk-on asset. No open positions = zero correlation conflict. Drawdown moderate, not critical. Strong RR=2.5."
+},
+"d89f8f7b899b1ce5810b1af2fa7a1128dfe73875": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT aligns with BEAR regime; diversifies from BTC (safe-haven inverse correlation); modest drawdown allows selective risk; RR 2.5 acceptable"
+},
+"c269782906cb154c520c325b89fc38f245869828": {
+"action": "APPROVE",
+"reason": "No open positions, XAUUSD is uncorrelated diversifier, single position carries no concentration risk despite drawdown"
+},
+"30900d68bd3dd95e4f457b8cd4353770af9ed2b3": {
+"action": "VETO",
+"reason": "BEAR regime + book in drawdown ($-180) + adding risk-on LONG conflicts with existing XAUUSD SHORT (safe-haven); creates directional incoherence in defensive environment"
+},
+"b228decd3ce8bb60f79f44cf5e4a3d2cd6b37605": {
+"action": "APPROVE",
+"reason": "No open positions, modest drawdown, decent RR=2.5. SHORT in BULL adds contrarian diversification rather than concentrating directional risk."
+},
+"0ea79be1d67978fcc5d87615c7f4e0c99b3d3ad9": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies away from existing BTCUSD SHORT. Gold is non-correlated safe haven, different directional driver than crypto. Book drawdown minimal at -$160. BULL regime tolerates modest exposure expansion with good RR=2.5."
+},
+"42521dc42d164358357ba8e8c0ac626dc9b8f550": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT crypto; no open positions = zero concentration risk; book drawdown minimal (-$60); RR 2.5 is solid"
+},
+"fd19ddc1d5c848283b418dabf7ab20357628eddb": {
+"action": "APPROVE",
+"reason": "BEAR regime favors defensives. BRENT LONG diversifies away from crypto SHORT; energy uncorrelated to BTC. Drawdown modest, no concentration risk."
+},
+"433e12d5e1b77da94ef416934699f6019809fc5c": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT USTEC. Already SHORT BTC (risk-off aligned). LONG BRENT diversifies. No dangerous correlation cluster. Book DD modest at -60."
+},
+"603dbda2892da469e468f84731a16e96c5a8dae8": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT risk-on equity. No open positions = zero correlation conflict. Book is green today (+$60). Clean directional bet."
+},
+"5c6864b5f100ca125355f2c08312f5ac23c6bdcd": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on assets. No open positions, manageable drawdown, strong RR=2.5, directionally aligned with regime."
+},
+"8f0619ffb6e997c8469c379ac16ba22e74395c78": {
+"action": "APPROVE",
+"reason": "XAUUSD is a safe-haven diversifier ideal for BEAR regime; no open positions means zero concentration risk; book can absorb this uncorrelated trade despite drawdown"
+},
+"6c6bb491ca637846592ee3247ffb6c6fe50b8a5e": {
+"action": "VETO",
+"reason": "BEAR regime + book already down $80 (8% of capital) + crypto LONG is pure risk-on exposure. Defensive posture required."
+},
+"20f307d60b00571e5f341a4d91b7b678a748b005": {
+"action": "VETO",
+"reason": "BEAR regime + existing drawdown (-$80 book, -$60 day). XAUUSD typically rallies in risk-off environments; shorting our only safe-haven diversifier removes defensive protection when we need it most."
+},
+"1d83d05326d5231b449e9525c17f9350250034a9": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$80, -$60 today). WTI is non-risk-on with solid RR=3.0, but reducing size is prudent given regime and losses. No open positions, so concentration not an issue, but caution warranted."
+},
+"5f047b6ce4ac3ccaf00f820fb16b990ec2fb03c6": {
+"action": "APPROVE",
+"reason": "BEAR regime favours SHORT on risk-on US500. WTI_N6 LONG is energy/commodity (low correlation to equity short), provides diversification. Drawdown moderate, not critical. Good directional hedge."
+},
+"bc037ad2dcaf7c0fe43cd78fc88905560db44c2a": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT risk-on. US500+USTEC shorts are correlated but directionally aligned with regime. WTI LONG adds diversification. Drawdown moderate, not critical."
+},
+"f82e5288051a4a194e30a658afc3641e3d37fb2e": {
+"action": "APPROVE",
+"reason": "SHORT BTC in BEAR regime is regime-aligned. WTI:LONG is uncorrelated energy play. No concentration, zero drawdown, diversified book. Approve."
+},
+"709a9f90002d41ffba022788f67cd996c65e232e": {
+"action": "VETO",
+"reason": "BEAR regime + already -$40 daily drawdown. BTCUSD is risk-on; avoid adding crypto long exposure in unfavorable conditions."
+},
+"8a38e65ff9a3742995497d695f133e8b9ab764ba": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on asset; no open positions means zero concentration risk; drawdown manageable at -$40; good RR at 2.5x"
+},
+"f699c19f86a5e64930ad291b41140abf32781a66": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on. No open positions, zero drawdown, book +$40 today. Clean setup with 2.5 RR."
+},
+"285ded6765afcc3ea29209457569d6c2820cd076": {
+"action": "REDUCE_50",
+"reason": "BEAR regime warrants caution. Energy can be volatile; no open positions allows entry but at reduced size to limit initial exposure in risk-off environment."
+},
+"7c5573fd559997700e00ca137ace76f25881b03f": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on. BTC SHORT diversifies away from existing BRENT LONG (uncorrelated). No drawdown stress. Clean setup."
+},
+"6a4d16a45937e057bbe79ed564aeb721d08194dc": {
+"action": "VETO",
+"reason": "WTI highly correlated (~0.95) with already-open BRENT_N6 LONG. Adding WTI would double energy exposure without diversification. In BEAR regime with book in drawdown (-$40), avoid concentration in correlated positions."
+},
+"4be0df0bdb2abf68f8d620d4ea17c9ddbd33897a": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT in BEAR regime is contrarian but acceptable. Single BRENT position (risk-on commodity) provides diversification. Drawdown modest at -$40. Gold short adds uncorrelated exposure vs energy long. RR 2.5 is solid. No concentration risk."
+},
+"828e1bcae75fe3ca3fe8389d101e782f921246ac": {
+"action": "VETO",
+"reason": "CRISIS regime + book already down $60 + today -$20. BTCUSD is pure risk-on; unwise to add long crypto exposure in crisis drawdown."
+},
+"09eee51f4e120cf39a10c08e41992104d58370b9": {
+"action": "VETO",
+"reason": "CRISIS regime + book already -$60 DD + risk-on LONG US500. Defensive posture required; no new risk-on exposure in bear conditions with existing drawdown."
+},
+"fe1ee8f6d59fa4f61873bfc352c8b83ae738c94d": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in drawdown ($-60, -20 today). LONG risk-on equity (USTEC) adds concentrated directional exposure exactly when defensiveness is required. No open positions to diversify against."
+},
+"9e6a00e46f7e277a53cdc0e6f7696493800be490": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours defensive trades. BRENT SHORT is counter-cyclical (risk-off). No open positions = zero concentration risk. Small drawdown manageable. Energy diversifies empty book."
+},
+"848cee6ba3c55648d0a353776899bdbe16b5cf5e": {
+"action": "APPROVE",
+"reason": "XAUUSD is a safe-haven diversifier, ideal for CRISIS regime. No open positions means no concentration risk. Gold long aligns with defensive posture needed given drawdown and crisis conditions."
+},
+"dcd1b189683ad94a90e369d2ba989f7072e5ae56": {
+"action": "APPROVE",
+"reason": "BRENT SHORT is non-correlated to existing XAUUSD LONG (safe haven). Energy short in CRISIS regime is sensible. Diversifies the book. RR 3.0 acceptable. Drawdown -80 is material but not catastrophic; one diversifying position won't worsen concentration."
+},
+"30d6a1c00a9573567bbbf91d3fe965e6be4b4b7d": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours SHORT risk-on (BTC) + LONG safe-haven (XAU) = diversified hedge portfolio; drawdown minimal; low correlation between positions"
+},
+"0a6a0fd005bcba679b00b1b0cc5709bd6bce8cde": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is ideal in CRISIS regime as safe-haven diversifier; no open positions means zero correlation risk; book DD minimal at -$80"
+},
+"4bdc7b70f039c304811c845a809b6eba518ab8f6": {
+"action": "VETO",
+"reason": "CRISIS regime + risk-on LONG equity; no positions open so no diversification benefit, preserve capital in hostile conditions"
+},
+"e76b07c73ea4302b8377ac4dbbd7ab819ad5090e": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is ideal for CRISIS regime - safe haven diversifier, no open positions, book only -$100 DD, no correlation risk"
+},
+"075c1c4c63c18b76b8896f0243aceaf2e529fd5d": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in -$120 drawdown. Risk-on LONG US500 contradicts defensive posture required in crisis conditions."
+},
+"41b4c96a139b05e9b2e72393cf4758af4e0293f6": {
+"action": "APPROVE",
+"reason": "WTI SHORT aligns with BEAR regime, no open positions to correlate with, energy is defensive, decent RR=3.0, drawdown manageable"
+},
+"2a5d11ab124aef7219b9c96f3dd198ca524c10df": {
+"action": "VETO",
+"reason": "WTI_N6 SHORT already open. BRENT ~0.95 correlated to WTI\u2014this is a duplicate energy short, not diversification. Book already in drawdown (-$120). No added edge, only concentrated risk."
+},
+"ca1c29343f01298e3f8996675c5a89d5893e7d99": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is safe-haven diversifier in BEAR regime, uncorrelated to existing WTI SHORT; drawdown modest, gold adds defensive balance"
+},
+"89c248da31e6757490003917e169be5b85c079d7": {
+"action": "VETO",
+"reason": "BEAR regime + book in drawdown (-$160, -$60 today). BTCUSD is high-beta risk-on; inappropriate to add crypto long exposure in current conditions."
+},
+"34b5e378eb5389ca5de6c9ac21cfad8449fce12b": {
+"action": "VETO",
+"reason": "BEAR regime + book already in $-160 drawdown. LONG BTC is risk-on exposure inappropriate in current conditions."
+},
+"385a582adcada238d442b54c48ecc112f3dc5ace": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT in BEAR regime is contrarian but valid; no open positions, moderate drawdown, diversifier asset, acceptable RR 2.5, no correlation risk"
+},
+"2822392049a96df503db927e05faa677a9fd1879": {
+"action": "VETO",
+"reason": "BEAR regime + US500 SHORT conflicts with XAUUSD SHORT (safe haven should rally in bear market). Contradictory positioning creates unhedged exposure; book already -$160 DD. Wait for coherent setup."
+},
+"5fa0d7363b3fb41e35662067886e8db815ac94bf": {
+"action": "APPROVE",
+"reason": "BEAR regime supports shorting risk-on USTEC. XAUUSD short is uncorrelated (different asset class). Book DD minimal at -$160. No concentration risk."
+},
+"5e287f1361fbd4fbb563a1c3bec75f00d459a9d7": {
+"action": "VETO",
+"reason": "BEAR regime + book already -$160 DD. BRENT LONG is risk-on energy exposure conflicting with defensive SHORT USTEC. Gold SHORT already questionable in BEAR. Adding long energy here concentrates risk inappropriately. Stay defensive."
+},
+"daa58bf5e04fcc70a91e0ced1b56ea7463f2e72b": {
+"action": "APPROVE",
+"reason": "WTI LONG diversifies portfolio (energy vs tech-short), BEAR regime suits defensive posture, limited correlation with existing USTEC SHORT, acceptable drawdown levels"
+},
+"6a9a6813fcde41a26802cc34b88239557f0f72c2": {
+"action": "APPROVE",
+"reason": "BEAR regime favours SHORT risk-on asset; no open positions means zero concentration risk; modest DD allows fresh position; BTC SHORT aligns with regime"
+},
+"01a994c8563f987f0f1b0c6bc9a608c83d949deb": {
+"action": "APPROVE",
+"reason": "BEAR regime favors defensive posture. BRENT LONG diversifies from existing BTCUSD SHORT (non-correlated). Energy can hedge risk-off scenario. Book drawdown manageable at -$160. Good RR=3.0."
+},
+"5e03139923a3daf9c4c0a67152d355c08e3dcaf0": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier perfectly aligned with BEAR regime. Complements existing BTCUSD SHORT (risk-off positioning). No correlation conflict. Good R:R 2.5. Book DD modest at -$100."
+},
+"b0193594edb46c770d3d6d701b748fba8bdb5447": {
+"action": "REDUCE_50",
+"reason": "BEAR regime warrants caution; energy can be volatile. Book recovering from -$60 DD but still fragile. BRENT is not risk-on, so partial approval preserves upside while limiting exposure in defensive environment."
+},
+"c93f7ab20ad6f7b389a7ab0fa965f9942b5f0c11": {
+"action": "VETO",
+"reason": "WTI+BRENT are 0.95 correlated\u2014already long BRENT. Adding WTI doubles energy concentration in BEAR regime with book at -$60 drawdown. Veto duplicate."
+},
+"4b9bc057c2707519a820de7773622c89f51467c7": {
+"action": "VETO",
+"reason": "BEAR regime + book already down $60 (6% of capital) + crypto LONG is pure risk-on exposure. Defensive posture required."
+},
+"b5921be09270f43705f831fa0a5385c27da6bc2c": {
+"action": "VETO",
+"reason": "BEAR regime + book already in $-60 drawdown. LONG BTC is directional risk-on exposure inappropriate in current conditions. Preserve capital."
+},
+"e0da065fecc5a946292cf1ad12a3f4454268a8c7": {
+"action": "VETO",
+"reason": "BEAR regime + adding LONG BTCUSD (risk-on) would concentrate directional exposure alongside existing BRENT_N6 LONG. Bitcoin is highly vulnerable in bear markets. Preserve capital."
+},
+"b05e34d0a083cb586497cfcc31201e0d289ba159": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is ideal: safe-haven in BEAR regime, no open positions, no correlation risk, diversifier asset"
+},
+"ac34378ad39f447d4b3aa85b51bef2669b03290a": {
+"action": "APPROVE",
+"reason": "WTI_N6 LONG adds genuine diversification to sole XAUUSD LONG position. Energy is non-risk-on, 3.0 RR attractive, modest drawdown (-$20) allows measured addition in BEAR regime. No correlation overlap."
+},
+"5e238c7bd7d06b9cd20af84bd75b7fdf5b2f1dc5": {
+"action": "APPROVE",
+"reason": "BEAR regime supports SHORT USTEC. Gold hedge active. WTI uncorrelated. Diversified exposure, acceptable drawdown."
+},
+"7b04340efdb2ed27ee5ab731567e62ae13173067": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT crypto (risk-off). WTI_N6:LONG is energy, uncorrelated to BTC direction. No concentration, zero drawdown. Clean diversification."
+},
+"4c54f345a00ee5b5554c8b843fb6af5b1766d91f": {
+"action": "VETO",
+"reason": "BEAR regime + book in $-40 drawdown. BTCUSD is risk-on crypto; inappropriate to add long exposure in current conditions despite no open positions."
+},
+"9c908a5eabe87a568b5a8c0a5ab5e0b338c7a95b": {
+"action": "APPROVE",
+"reason": "BRENT SHORT aligns with BEAR regime, no open positions to correlate with, energy is defensive in risk-off, modest book DD allows prudent exposure"
+},
+"f9c5f4754de73e65356eb94a1fe9d2847f3e1bf4": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier in BEAR regime with no conflicting positions open. Favorable RR=2.5, drawdown manageable at -$60."
+},
+"7d0e09f0d386d71c413d8002f64b8f5262b01777": {
+"action": "REDUCE_50",
+"reason": "BEAR regime + book in drawdown (-$80, -$20 today). Energy is not pure safe-haven. First position: take half exposure to rebuild cautiously."
+},
+"b014008f9b1c316cd155c97affbd9c3aec7efeb2": {
+"action": "APPROVE",
+"reason": "BEAR regime favors SHORT risk-on. BTCUSD SHORT is counter to typical risk-on longs, diversifies from BRENT_N6 LONG (oil/crypto uncorrelated). Drawdown modest, signal RR=2.5 acceptable."
+},
+"2784d974feee366bc6dd7187eb50532249f4178e": {
+"action": "VETO",
+"reason": "BEAR regime + daily drawdown + adding LONG risk-on equity against existing SHORT BTC creates conflicting directional exposure. Defensive posture warranted."
+},
+"cb73e14ce67ccecee79f16442debfc6b42bffd5d": {
+"action": "VETO",
+"reason": "WTI+BRENT are 0.95 correlated\u2014doubling energy exposure in BEAR regime with -$80 drawdown adds concentrated risk without diversification benefit"
+},
+"fb1a4b6b4e861838e26acd8c69863edc3dece2d4": {
+"action": "VETO",
+"reason": "WTI+BRENT are 0.95 correlated (same direction = doubled energy exposure). BEAR regime + existing drawdown ($-100) + today's loss ($-40) demand caution. Energy pair is concentrated risk, not diversification."
+},
+"ba4cde244ed9eb891ca29c87de1af409cb0ef897": {
+"action": "VETO",
+"reason": "BEAR regime + book in drawdown ($-100) + today already -$40. BTCUSD is risk-on crypto; avoid adding long exposure in current conditions."
+},
+"72c582a3459399e0320702befa651dc0ad0e6510": {
+"action": "APPROVE",
+"reason": "Clean book, no correlation conflicts, energy SHORT offers diversification in BULL regime, acceptable drawdown."
+},
+"88aae72ea4044678c5079e3bef132d4f423812fb": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is uncorrelated diversifier vs existing WTI SHORT. No concentration risk, minimal drawdown, decent RR 2.5. Gold adds balance to energy-only book."
+},
+"33fb4b71987c24ebba71065c393a0fe2bf99b0c7": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG diversifies vs WTI SHORT + XAUUSD LONG. Minimal DD. No concentration."
+},
+"53d6bb31b3f69a91107f65e925c3273600568191": {
+"action": "VETO",
+"reason": "WTI_N6:SHORT already open; BRENT ~0.95 correlated to WTI = duplicate energy short. No added diversification, just concentration."
+},
+"ef9d026de147ea74d775bc6e055cfb7686805803": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT in BEAR regime is valid. No open positions, no drawdown, book +$80 today. Gold diversifier with acceptable 2.5 RR. No concentration risk."
+},
+"488c44f571e602d4ce93d8172f2b439b642c9dce": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, positive daily P&L, energy diversifies empty book, manageable drawdown, solid 3.0 RR"
+},
+"4741029629d84cd06adeeb3f04141d66050e24e0": {
+"action": "VETO",
+"reason": "SHORT risk-on crypto in BULL regime contradicts market direction; book already -$60 DD, unfavorable setup"
+},
+"f327479e464aaa6dcdae9121ced08e2ead3dceb4": {
+"action": "APPROVE",
+"reason": "No open positions, energy diversifier in BULL regime, account healthy (+$40 today, -$60 manageable DD), clean exposure, 3.0 RR attractive"
+},
+"b96e1dd49e4802750aecd425b15cfeb9b73d520a": {
+"action": "VETO",
+"reason": "WTI already LONG; BRENT ~0.95 correlated = duplicate energy exposure. One energy position sufficient."
+},
+"4d2fa659d1dc0004d3319f919161e0b76a795d51": {
+"action": "APPROVE",
+"reason": "BULL regime, modest drawdown ($-60), BTC LONG adds diversification to existing WTI LONG (crypto vs energy), no concentration risk, RR 2.5 acceptable"
+},
+"8d210cf018eeae2643f807c14a1dfcf9ede6222c": {
+"action": "APPROVE",
+"reason": "BTCUSD SHORT is counter-trend in BULL regime but provides diversification vs existing WTI LONG (energy/risk-on). Different asset classes, opposite to typical risk-on correlation. Book drawdown minimal at -$20. RR 2.5 acceptable. No concentration risk."
+},
+"ebb9df209adcc9b8959776c1a7787ed214492a9e": {
+"action": "APPROVE",
+"reason": "BTCUSD SHORT provides directional diversification vs existing WTI LONG (risk-on commodity). No correlation conflict, zero drawdown, regime is BULL but short crypto isn't concentrated risk. Clean 2.5 RR setup. Portfolio remains balanced."
+},
+"dc9ce587c46c14d5384beb1715a39419a77046b2": {
+"action": "APPROVE",
+"reason": "BULL regime, zero drawdown, profitable day. USTEC LONG is risk-on but diversifies away from existing WTI SHORT (energy). No correlated cluster yet. Good R:R 2.0."
+},
+"8462f7b9f6268d7b3285970df2502268a35ad6d0": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG adds diversification to tech risk-on (USTEC). Zero drawdown, profitable day, and gold provides hedge. No concentration risk."
+},
+"fc1e107d63accc896bc864566fd5dcd251b20770": {
+"action": "REDUCE_50",
+"reason": "Already holding USTEC:LONG (highly correlated US index). US500 adds concentrated risk-on exposure. BULL regime allows participation but at reduced size to manage correlation risk."
+},
+"76ff67e20324a09fa849f9d2c97826d1692bbf13": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on but already holding 2 correlated US equity longs (US500+USTEC). Adding BTC creates 3-way concentrated risk-on exposure. Reduce to limit correlation risk while maintaining diversified opportunity."
+},
+"b6c8f89d85e5d0962181be123012b5030f292a89": {
+"action": "VETO",
+"reason": "BULL regime + SHORT crypto is counter-trend; book already -$60 DD, -$20 today; avoid adding contrarian risk-on exposure in drawdown"
+},
+"4f4b28fa42af517622b4de305912b1bd21361020": {
+"action": "APPROVE",
+"reason": "First position, BULL regime, energy is uncorrelated to risk-on assets, manageable drawdown, good R:R 3.0"
+},
+"5f5f157604965362b7ce9141d50fd06fbf8db51b": {
+"action": "APPROVE",
+"reason": "WTI LONG in BULL regime, no open positions, energy is non-correlated diversifier, drawdown manageable at -8%, solid 3.0 RR"
+},
+"9274a2beda4666ff37f58f87060ef1ddcddad500": {
+"action": "VETO",
+"reason": "WTI already LONG; BRENT ~0.95 correlated = pure duplicate energy exposure. Book in drawdown -$80. No diversification benefit."
+},
+"8e1fc20c93bb88c01401e18876316f81cf74eeff": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier, uncorrelated to WTI. In BULL regime with manageable drawdown (-8% book, -4% day), adding gold provides portfolio balance against the energy position. RR 2.5 is acceptable."
+},
+"04f59189a577390a656dacc2d9401645a331da91": {
+"action": "APPROVE",
+"reason": "SHORT BTC provides diversification vs existing LONG positions (WTI, XAU). Despite BULL regime, drawdown is modest and this adds uncorrelated exposure rather than concentration."
+},
+"29d8be56be728bd5cc3f44f80770cf2f4fa66c5f": {
+"action": "REDUCE_50",
+"reason": "Already short BTCUSD (risk-on). Adding full US500 SHORT doubles anti-BULL exposure while book is -8% down and day is red. Regime is BULL so fighting it warrants caution. Half size limits concentration while allowing diversification from pure crypto."
+},
+"ef3ec80d6c6e769ea9849713eb5afb0071f03fd3": {
+"action": "VETO",
+"reason": "Already SHORT 2 correlated risk-on assets (BTC, US500) in BULL regime with -$100 DD and -$60 today. Adding SHORT USTEC = 3x concentrated bear bet against regime. Overexposed."
+},
+"1b5a28b177ae328ce755575271405b9190e18d4f": {
+"action": "VETO",
+"reason": "CRISIS regime + book already -$160 DD. LONG BTCUSD is pure risk-on; contradicts safe-haven positioning required in crisis. No open positions to diversify against."
+},
+"919d0fdbbb7eba783cd6fc54c527b9cc5ec87c2b": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours defensive trades. WTI SHORT is counter-cyclical, no open positions, book drawdown moderate, good RR=3.0. Clean entry."
+},
+"9e3e7f42d955aed542309aadfc64f7a95b9db243": {
+"action": "VETO",
+"reason": "CRISIS regime + book at -180 DD + US500 is risk-on equity. Defensive stance required; no new risk-on longs in crisis."
+},
+"56c62059de0756d972f694ceeea6c733d71ffe1f": {
+"action": "VETO",
+"reason": "CRISIS regime + book in $-180 drawdown. BTCUSD is risk-on; avoid adding long crypto exposure in crisis conditions with existing losses."
+},
+"858ab3f3fb3befd867fadde35364361ba7e88adf": {
+"action": "VETO",
+"reason": "CRISIS regime + book in drawdown (-$180) + risk-on equity LONG = high probability of further loss. Preserve capital until regime stabilizes."
+},
+"e9884be287360366922baec55e5b52f307b5c772": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours defensive trades; BRENT SHORT aligns with risk-off environment; no open positions = zero concentration risk; drawdown is modest; 3.0 RR is attractive"
+},
+"aff08c78f70541e1ffc6a54519931d0fb3c6b80e": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. Already holding BRENT SHORT (counter-trend energy). Adding BTC SHORT doubles down on contrarian positioning with correlated risk-on assets. Book in drawdown (-$180). Preserve capital."
+},
+"c196d61139cbaf7280479607e6efb6bec4cb94fa": {
+"action": "APPROVE",
+"reason": "No open positions, BRENT is non-correlated diversifier in energy, BULL regime supports directional plays, drawdown manageable at -$200 on $1013 account (~20%), good R:R 3.0"
+},
+"9eee735080aa3295ab24ae5a2e7d66321600e2ab": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. BTCUSD and BRENT_N6 have low correlation (~0.3-0.4), providing genuine diversification. Drawdown -$200 (~20% of account) is moderate but manageable. Good RR of 2.5. No concentrated duplicate exposure."
+},
+"406f7f25935b7250487ead5e05fc14dc9479c9cc": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but USTEC+BTC are highly correlated tech/risk-on exposure. Already in $-200 drawdown with $-40 today. Reducing size manages concentration while maintaining diversification across crypto+energy+equity."
+},
+"8e0da8b0d9deb35084e2b9e748e3ab6b7231f015": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, BTC long aligns with regime, drawdown manageable, good RR 2.5, no concentration risk"
+},
+"af60f3be0c0b301631983beaa44e3ea15a62f6d6": {
+"action": "APPROVE",
+"reason": "Energy SHORT diversifies existing BTCUSD LONG (risk-on). Different asset classes, no concentration risk. Drawdown modest, regime BULL allows selective exposure."
+},
+"1e50f4cfdbe790daf8af04d25975612b8b338d79": {
+"action": "APPROVE",
+"reason": "No open positions, single SHORT in BULL regime offers contrarian diversification, manageable drawdown, solid R:R 2.5"
+},
+"45f5f8f1b92f17ae8a8953ed5e0509cd636dfd8f": {
+"action": "APPROVE",
+"reason": "XAUUSD uncorrelated to risk-on, no open positions, modest drawdown, acceptable RR=2.5, diversifies empty book"
+},
+"6d8541ca19119e0bdeacdb640dad69a346ef8116": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG diversifies from existing XAUUSD SHORT (safe-haven vs equity). Drawdown -300 (~30%) warrants caution but not full veto. RR 2.0 acceptable. No correlation conflict."
+},
+"6abcb919abf75a2e3dba0f8749167bb24ea280a8": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+USTEC are highly correlated tech/risk-on longs creating concentration. Book already -300 DD. Reduce BTC to 50% to maintain diversification while staying active."
+},
+"ff760d10ca89c6471b9aca21bcf59ebc350cef8d": {
+"action": "APPROVE",
+"reason": "WTI SHORT diversifies risk-on longs (BTC/USTEC); energy uncorrelated to crypto/tech; drawdown moderate; adds hedge in BULL regime"
+},
+"30f40c64cea3cd21750dd0c512c4d7416e8898bc": {
+"action": "VETO",
+"reason": "BRENT SHORT duplicates existing WTI SHORT (0.95 correlation). Already have energy short exposure; adding second energy short in same direction creates concentration without diversification benefit."
+},
+"669b638e667d99ee567c8852ca40a7c2217fe675": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, acceptable R:R 2.5, drawdown moderate, no concentration risk"
+},
+"f2323c377115f6344b826dc9ff2d803d1deefeae": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+ETHUSD are highly correlated crypto longs creating concentrated exposure. Book already -$280 DD. Reduce to manage correlation risk while maintaining BULL participation."
+},
+"edf578b74dafccc6d6ebe15ea3ac17848f5461ec": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG already open. ETHUSD LONG adds correlated crypto risk-on exposure. BULL regime supports risk-on, but two correlated crypto longs = concentration. Reduce to 50% for diversification while capturing upside."
+},
+"16346ed2a61201c9d138bdf5a5235b5e52cfaada": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, no concentration risk, drawdown manageable, decent RR 2.5"
+},
+"47d028b4120c454153647e89961c3c506400893e": {
+"action": "REDUCE_50",
+"reason": "BULL regime favours risk-on, but BTCUSD+ETHUSD LONG is concentrated correlated crypto exposure. Already holding ETHUSD LONG; adding full BTC position doubles down on same bet. Reduce to 50% to capture opportunity while limiting concentration risk."
+},
+"2f56c4bebc3f5a477519f9508778a81ef9602717": {
+"action": "APPROVE",
+"reason": "No open positions, modest DD, decent RR 2.5, contrarian SHORT in BULL adds diversification value"
+},
+"e8fe4a8a76829ed8794a15dc510548707eb5e829": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime contradicts market direction; book already -$160 DD; no diversification benefit with zero open positions to warrant counter-trend risk"
+},
+"c3a69675f13424245a12ed4e11fddcbc7890af46": {
+"action": "APPROVE",
+"reason": "No open positions, SHORT in BULL regime provides counter-trend diversification, drawdown manageable, RR 2.5:1 acceptable"
+},
+"672d7d598550c028322cc4d0c2ab3997ffdc67cf": {
+"action": "APPROVE",
+"reason": "No open positions, clean book, SHORT provides diversification in BULL regime, acceptable RR=2.5, drawdown minimal"
+},
+"261fbd510ba2822d45651ac728b0f9948a7a27f7": {
+"action": "VETO",
+"reason": "BULL regime with 2 correlated crypto shorts = concentrated directional bet against trend. ETHUSD SHORT already open; adding BTCUSD SHORT doubles down on same risk-off play in risk-on environment. Book already -$180 DD."
+},
+"a8b3502a67027041b952bdd1936a6b7fa0017d3a": {
+"action": "APPROVE",
+"reason": "First position of the day, no correlation conflict, acceptable drawdown, BULL regime supports energy long, good RR=3.0"
+},
+"2eaf52fbf9dcccae2a46d2d46b190637ed4bbcef": {
+"action": "APPROVE",
+"reason": "No open positions, single crypto exposure, reasonable RR 2.5, drawdown moderate (-2% of capital). SHORT in BULL adds counter-trend diversification rather than concentration."
+},
+"5129f16adce7c7c8b094d232b2f32141ae7f918b": {
+"action": "APPROVE",
+"reason": "XAUUSD uncorrelated to risk-on, no open positions = zero concentration risk, acceptable RR 2.5, drawdown manageable"
+},
+"d1e9446b7507c609df69cf985099ab98d7d5b261": {
+"action": "APPROVE",
+"reason": "Energy diversifies existing XAUUSD short. Low correlation, decent RR=3.0, BULL regime supports risk, drawdown moderate, no concentration risk."
+},
+"b749b1a992542024d6c34600079edd82dd229693": {
+"action": "VETO",
+"reason": "WTI+BRENT are 0.95 correlated\u2014both LONG energy is duplicate exposure. Book already -220 DD. Diversification better served keeping existing BRENT+XAU hedge."
+},
+"edbc460ce8f0ba9ac646004c70e139df14922ef3": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. ETHUSD adds crypto exposure alongside energy (BRENT), good diversification. Drawdown -220 (~22%) manageable, no correlation conflict with current positions."
+},
+"0a878df91ba5462ed5044dd22b767d3d6bbb70fa": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, moderate DD, good RR 2.5, diversification start acceptable"
+},
+"497ff905724bb1f35cf71a3f8e41ce9aad5b53e0": {
+"action": "APPROVE",
+"reason": "No open positions, modest drawdown, energy short provides diversification vs risk-on BULL regime, solid RR=3.0"
+},
+"f20465769a291ba041cb61c9cea919da4b9e34ad": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier with strong 2.5 RR, no open positions to correlate with, minimal drawdown (-180), and positive daily P&L. Clean approval."
+},
+"32f5a3806905130634c770661a6c6129947679ae": {
+"action": "APPROVE",
+"reason": "BULL regime, minimal drawdown, only 1 diversifier open (XAUUSD). ETHUSD adds uncorrelated risk-on exposure with healthy 2.5 R:R. No concentration risk."
+},
+"780ec81cf73934887243325fd934045e43e76220": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTC+ETH are highly correlated crypto longs creating concentrated exposure. XAUUSD provides diversification. Reduce BTC to 50% to limit correlation risk while maintaining upside participation."
+},
+"9c941c2e64a30680163a9ae4acaf184f41e68757": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, solid RR 2.5, portfolio fresh with +$140 daily P&L, crypto diversification absent\u2014clean entry."
+},
+"0dfa0c714f26b21743f3f2dea95d3df274891644": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown, strong RR=2.5, portfolio has zero exposure\u2014clean entry"
+},
+"c0462d8025cb3b708d0b95865738b7c397ca3c59": {
+"action": "VETO",
+"reason": "ETHUSD SHORT directly contradicts BTCUSD LONG already open. Both are highly correlated risk-on crypto assets (~0.85+ correlation). Taking opposite directions creates unnecessary whipsaw risk rather than diversification. In BULL regime, favor coherent directional exposure."
+},
+"c80bb7671698cc43322af5c678c3dd168570bcd0": {
+"action": "VETO",
+"reason": "BULL regime contradicts SHORT crypto; already -$80 drawdown warrants defensive posture; no diversification benefit with empty book to justify counter-trend risk"
+},
+"05f78f3a817ca23492c91c208d5aaf56b1847381": {
+"action": "APPROVE",
+"reason": "XAUUSD diversifier, no open positions, small drawdown, good RR 2.5, no concentration risk"
+},
+"b327d22a0aeeaf8bbf90f6cce3b724e1afd4da41": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG diversifies from existing XAUUSD SHORT (safe-haven vs tech). Drawdown -$80 manageable on $1,013 account (~8%). No correlation conflict. Good RR=2.0."
+},
+"483c0afad4876d8483cecaed318434ae71f4c8ab": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+USTEC are correlated tech exposure (concentrated bet). Book at -$80 DD warrants caution. Reduce to limit concentration while maintaining diversification."
+},
+"2b686f39695975755d93b23f0350999c3f5fc7a6": {
+"action": "APPROVE",
+"reason": "No open positions, BTCUSD SHORT provides counter-trend diversification in BULL regime, drawdown modest, 2.5 RR acceptable"
+},
+"bc47a8e64c7bc9fbe7ece44f14efec09c8623283": {
+"action": "VETO",
+"reason": "Direct conflict: ETHUSD LONG vs existing BTCUSD SHORT cancels out crypto exposure. BTC/ETH ~0.85 correlated\u2014this creates a hedge that negates both positions rather than adding diversified alpha. Clean directional book preferred."
+},
+"c1f42a37a2f4889524546c248e5b1a4adbeebcd7": {
+"action": "APPROVE",
+"reason": "First position of the day, no concentration risk, energy diversifies empty book, 3.0 RR acceptable despite bull regime"
+},
+"34ae7e1c944d74b7dfa116e5e66b97f9151f5839": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. BTC LONG diversifies from BRENT SHORT (inverse correlation). Drawdown minimal at -$100. Good RR at 2.5x. No concentration risk."
+},
+"bbd5d19c71738f1a684e6addfaeca31da65fb972": {
+"action": "APPROVE",
+"reason": "Gold is uncorrelated diversifier; no open positions to conflict; RR 2.5 acceptable; drawdown modest (-14% of account); single position risk manageable in BULL regime"
+},
+"16d4a2e884e6b064166c13f0ac54a196acc79e35": {
+"action": "APPROVE",
+"reason": "WTI long adds uncorrelated energy exposure alongside existing XAUUSD short. Energy commodities diversify the book. Regime is BULL, drawdown modest (-14%), no concentration risk."
+},
+"4d143da204dd0fe1a3429324350123d07dee468b": {
+"action": "VETO",
+"reason": "WTI_N6 LONG already open; BRENT ~0.95 correlated to WTI = duplicate energy exposure. No diversification benefit."
+},
+"0a2bd258877340805e6a89e11cf69fe710c7d0b4": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT diversifies the book: opposes risk-on WTI LONG, aligns with safe-haven XAUUSD SHORT. Drawdown modest, regime BULL but short adds hedge. No concentration risk."
+},
+"77a13155d2802c0aff6df9daf105a3feb99fdf15": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. BTC LONG offsets existing ETH SHORT (crypto pair hedge). Portfolio has energy LONG and gold SHORT (diversified). Drawdown moderate. No dangerous concentration."
+},
+"a0318f6886a8d5645521a42b4e1bc684997a14e9": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but already holding BTCUSD LONG (correlated). Daily drawdown -$60 and book -$140 warrant caution. Reduce size to limit concentrated tech exposure while capturing upside."
+},
+"c7f40b3acf5f32772a92f6b7f4b3edc5fbd74ce9": {
+"action": "APPROVE",
+"reason": "ETH SHORT provides directional hedge against open US500 LONG (both risk-on), creating balanced exposure in BULL regime with no drawdown pressure"
+},
+"395413fa78b9d54638f6941123da7443bd817865": {
+"action": "VETO",
+"reason": "BTC SHORT conflicts with existing US500 LONG in BULL regime - creates hedged/confused portfolio with negatively correlated risk-on positions. Book already +$60 today; preserve gains rather than add conflicting directional bet."
+},
+"774d1587963b71af70ce50a3158ba3799172ee09": {
+"action": "REDUCE_50",
+"reason": "ETHUSD SHORT conflicts with US500 LONG (both risk-on); in BULL regime partial hedge acceptable but full size creates directional confusion. Book profitable today (+$60) but has -$40 DD; reduce to limit cross-asset conflict."
+},
+"3e35ffff25268b909c5cee32f67dc8201b4e37b8": {
+"action": "VETO",
+"reason": "Already LONG US500 (risk-on equity). USTEC LONG adds concentrated correlated exposure to same regime. Two US equity longs is redundant in a $1k book. Preserve capital for diversified opportunities."
+},
+"6bc334fc93cb35fd3ae3e1420fb24bc7d79b74ac": {
+"action": "REDUCE_50",
+"reason": "ETHUSD LONG adds correlated risk-on exposure to existing US500 LONG. BULL regime supports risk-on but concentration warrants prudent sizing. Book at -$40 DD; reducing to 50% maintains diversification while limiting joint downside."
+},
+"9df27b047375b9581404a53141c9528deb84939f": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+ETHUSD+US500 all LONG is triple-stacked correlated exposure. Already have 2 risk-on longs open. Reduce to avoid over-concentration while still participating."
+},
+"539eec3dd88bc86f97526808c09bf1be2c02bebb": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on but book already holds 2 correlated LONG positions (BTC+US500). Adding full BRENT creates 3-way directional concentration. Daily drawdown -$60 warrants caution. REDUCE_50 captures diversification benefit while limiting exposure."
+},
+"291bbdcd9261ee566f6f2ca69993de634360a2e0": {
+"action": "APPROVE",
+"reason": "ETH SHORT hedges existing LONG risk-on concentration (BTC, US500); provides directional diversification despite bull regime; drawdown moderate"
+},
+"f8d304fb82251128cef17cd38cf4b6075f18aac7": {
+"action": "VETO",
+"reason": "XAUUSD SHORT conflicts with existing risk-on longs (BTC, US500) in BULL regime\u2014gold typically inverse to risk assets. Book already -$80 DD. Avoid adding negatively correlated position that contradicts current directional bias."
+},
+"dabbe3188176a5d18026696c41ef7cd8327a6c9d": {
+"action": "VETO",
+"reason": "Already holding 2 correlated risk-on longs (BTC+US500). Adding ETH creates 3x same-direction crypto/equity exposure. Book in drawdown (-$80, -$60 today). Concentration risk too high despite BULL regime."
+},
+"36505e8483a5ca0137a6dda6bc7f6e3e9c7d3fe0": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+ETHUSD are highly correlated crypto longs creating concentrated exposure. Already holding ETHUSD:LONG. Approve partial position to capture opportunity while managing correlation risk."
+},
+"0b5ced81f410cda5730dbc6051d99f37bb4f2307": {
+"action": "APPROVE",
+"reason": "No open positions, diversified crypto short in BULL regime, acceptable drawdown, decent RR 2.5"
+},
+"7dbab839dd4af88ddcbd5d3c897423ca5ec3e75a": {
+"action": "APPROVE",
+"reason": "No open positions, modest drawdown, decent R:R. SHORT crypto in BULL adds diversification to portfolio positioning."
+},
+"ee2760c9430bd5e8a2ac70cef5d20c8d2c4ddb34": {
+"action": "VETO",
+"reason": "BULL regime + already SHORT ETHUSD. Adding SHORT BTCUSD doubles correlated crypto short exposure against trend. Book in drawdown (-$40). Concentrated contrarian bet - too risky."
+},
+"5c6c59d9f0a4f4ba618b761070640083732fcfa4": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, single crypto long with good RR (2.5), drawdown minimal ($-40 = ~4% account), no correlation conflicts."
+},
+"4b64f6d3f88ca262f41339998b2b7a0f9bc6f8ac": {
+"action": "VETO",
+"reason": "BTC+ETH LONG = doubled crypto concentration in same direction while book already -$40 daily drawdown. Despite BULL regime, correlated risk-on pair adds no diversification\u2014only amplifies existing exposure. Preserve capital."
+},
+"1a45e601e5d1b40e7dfdcd7acddbf30302d3c8d0": {
+"action": "REDUCE_50",
+"reason": "US500 and BTCUSD are both risk-on LONG in same direction = concentrated bet. Book already -$40 drawdown today. BULL regime supports exposure but prudent to halve position size given correlation and existing daily loss."
+},
+"5285b1a6b150b7b099dd3ceb20428bc9966713c0": {
+"action": "VETO",
+"reason": "Already long BTC+US500 (risk-on), adding USTEC = 3x correlated exposure. Book in -$40 DD warns against concentration despite BULL regime."
+},
+"9a4440a5b50089d748735f10c9ee73c1b58a834b": {
+"action": "APPROVE",
+"reason": "Energy SHORT diversifies current BTCUSD LONG (risk-on); no correlation conflict, zero drawdown, BULL regime allows moderate exposure, good RR=3.0"
+},
+"bae98af94d0792a35039c0522a82031b9a0fa99b": {
+"action": "APPROVE",
+"reason": "WTI SHORT diversifies the single BTCUSD LONG position (uncorrelated asset classes), regime is BULL so moderate risk acceptable, drawdown at -$40 (~4%) is not severe, RR=3.0 is favorable"
+},
+"2fc6fd083766fffae31fb60194295af41ed0a471": {
+"action": "REDUCE_50",
+"reason": "ETHUSD LONG adds to existing BTCUSD LONG = doubled crypto exposure in same direction. BULL regime supports risk-on but -$40 drawdown warrants caution. Reduce to half size to limit correlation concentration while still participating."
+},
+"df88b8998c5e379e3be6bd6e32d808506d4df7d0": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on but book already holds 2 correlated LONG crypto positions (BTC+ETH). Adding full US500 LONG creates triple concentrated risk-on exposure. Daily drawdown -$40 warrants caution. REDUCE_50 allows participation while managing correlation risk."
+},
+"bdcdf2c544f9c04dc170521160ea4145729dff24": {
+"action": "VETO",
+"reason": "Already holding 3 correlated LONG risk-on positions (BTC, ETH, US500). Adding USTEC creates 4x same-direction exposure = excessive concentration. Book at -$40 DD warrants prudence despite BULL regime."
+},
+"0b4b3f5f6458a8abced545e36157ca11a3c116b1": {
+"action": "APPROVE",
+"reason": "BRENT adds diversification to existing US500 LONG; energy not risk-on, regime BULL supports, drawdown minimal, no concentration risk"
+},
+"585816385292532f42f7cd4947f80a014083a9de": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG + US500 LONG = concentrated risk-on exposure. Already in $-40 drawdown. BULL regime allows participation but reduce size to limit correlation risk."
+},
+"ad174c98a01b7642cb8df8c1b05245f9b2b62d5d": {
+"action": "VETO",
+"reason": "3 correlated risk-on longs (BTC+US500+ETH) = concentrated bet. Book already -$40 DD, -$20 today. Trim duplication."
+},
+"b252a18bf780043a759238a2c4d3bcdad0241721": {
+"action": "APPROVE",
+"reason": "Energy SHORT diversifies existing LONG risk-on exposure (BTC+US500). Different asset class, negative correlation to equities in BULL regime. Book drawdown moderate, not critical."
+},
+"52913aa6724c0cb6e8aedaa85e4a905276044ab3": {
+"action": "APPROVE",
+"reason": "BRENT SHORT adds diversification vs existing US500 LONG (risk-on equity). Energy/equity correlation ~0.6-0.7, not perfect overlap. Drawdown (-$20) is modest. BULL regime supports position-taking. Good RR=3.0."
+},
+"2fc577b2e74790808bf5ba8054b7b4fd6a674765": {
+"action": "VETO",
+"reason": "WTI and BRENT are 0.95 correlated. Already SHORT BRENT_N6; adding SHORT WTI_N6 doubles concentrated energy short exposure with no diversification benefit."
+},
+"58d2f35faa6b8ddf5c944ef23b880253595dd592": {
+"action": "VETO",
+"reason": "Shorting safe-haven XAUUSD in BULL regime with book already at -$40 DD adds wrong-way risk; gold typically sells off in strong risk-on but provides portfolio diversification we need during drawdown. No other positions open to justify counter-hedge."
+},
+"4e22e8c8d96fe7ed8c978230f8c12848c02c27e6": {
+"action": "APPROVE",
+"reason": "First position, energy diversifier, BULL regime supports risk, modest intraday drawdown manageable, good RR=3.0"
+},
+"c347be51086a01461e934b7d119b7b305db49fc3": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. WTI (energy) and BTC (crypto) are uncorrelated diversifiers. Drawdown -$40 is manageable at ~4% of capital. No concentration risk."
+},
+"b8b11e0d201a78277e4df3298362208f23790861": {
+"action": "VETO",
+"reason": "ETHUSD SHORT conflicts with BTCUSD LONG (correlated crypto pair, opposing directions = internal hedge negating edge). Already in daily drawdown (-$20). Avoid contradictory risk-on exposure."
+},
+"5604042ec11878351f52045e737ec5ee475c1d5c": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but USTEC+BTC are correlated tech longs creating concentration. Book already -$40 DD, -$20 today warrants caution. WTI adds diversity. Reduce USTEC to limit overlapping exposure while staying active."
+},
+"607150c3da8c193ca315d966ed3c6047a4570447": {
+"action": "VETO",
+"reason": "BTCUSD SHORT duplicates existing ETHUSD SHORT - both risk-on crypto shorts in BULL regime creates concentrated contrarian bet with limited edge"
+},
+"a86b455a11ec5ef42324f951c79663665091c0ef": {
+"action": "APPROVE",
+"reason": "First position of the day, energy diversifier, BULL regime supports risk, modest drawdown, good RR=3.0"
+},
+"2651933518b50be8beca69ccddf618cfaa46b945": {
+"action": "APPROVE",
+"reason": "No open positions, BRENT diversifies (energy/defensive), BULL regime supports risk, small DD manageable, 3.0 RR attractive"
+},
+"e605a9a380f82f3feeb64d5cb511b0ede17c747e": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, single crypto exposure, acceptable drawdown, solid RR 2.5"
+},
+"3e52ea338fcf53b72556398bb755308477b0cade": {
+"action": "APPROVE",
+"reason": "BRENT adds energy diversification to existing ETHUSD (risk-on crypto). Low correlation, BULL regime supports moderate risk, RR=3.0 is solid, drawdown manageable at -4%."
+},
+"c30c78ea5920413e20a5d09fa90fe75cd55406df": {
+"action": "APPROVE",
+"reason": "XAUUSD is safe-haven diversifier, uncorrelated to existing BRENT+ETH risk-on longs. Adds balance to portfolio despite modest drawdown."
+},
+"72ad6071d84a5771d09d8dbdb58ed64ef896f726": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US500 LONG adds third correlated position (ETHUSD + BRENT both risk-on). Book already -$60 DD, today -$40. Reducing size manages concentration while staying active."
+},
+"448729346c2b4f56f461c668d539163737c781e0": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but USTEC+ETHUSD+US500 = 3 correlated tech/equity longs already. Daily drawdown -$40 warrants caution. Reduce to limit concentration while maintaining exposure."
+},
+"8d1dfba296932dcf26d876d31b5fcc238e592245": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, solid RR 2.5, modest drawdown, positive day P&L, crypto diversifier acceptable"
+},
+"a117fd9bfea5cb127afcd96b5afdba775a8ff7dd": {
+"action": "VETO",
+"reason": "BTCUSD LONG duplicates existing ETHUSD LONG\u2014both crypto risk-on moving same direction. Book already -$40 DD. One crypto position sufficient in current regime."
+},
+"7f3773ed0d6cd35858641934c02bbd9303216978": {
+"action": "VETO",
+"reason": "BULL regime + already -$60 DD + SHORT crypto is counter-trend risk-on fade. No open positions to diversify with; taking naked contrarian crypto short in bull market with book already down is poor risk/reward at portfolio level."
+},
+"d32b4b0155f32124187e975bfee2f7596dbdf66a": {
+"action": "APPROVE",
+"reason": "First position of day, energy diversifies portfolio, BULL regime supports risk, no concentration concerns"
+},
+"51709e4b57df487b38e50dcc82102d58c8dbf004": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT provides uncorrelated diversification against existing BRENT_N6 LONG. Energy and crypto have low correlation; drawdown is modest. Not adding to risk-on concentration."
+},
+"20c289b990e64ddf26328481ea84cbcfbbbd0ce2": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on; USTEC+BRENT uncorrelated diversification; drawdown minimal at -$20; no concentrated exposure"
+},
+"80738a700f5acfdb6a0cd3b63eac9003e22b49ae": {
+"action": "VETO",
+"reason": "WTI+BRENT both LONG creates 0.95 correlated energy concentration. Already have BRENT exposure; adding WTI is redundant duplicate risk, not diversification."
+},
+"620ccbac6902a3ebede646a82c1243678e1c398f": {
+"action": "VETO",
+"reason": "US500 SHORT conflicts with USTEC LONG in BULL regime\u2014both are correlated US equity indices. This creates opposing risk-on exposure that increases variance without clear edge. Book already -$20 DD; avoid noisy countertrend plays."
+},
+"d66b02d5a9cf97f1c631175b3d15474057bd732f": {
+"action": "VETO",
+"reason": "SHORT ETH conflicts with LONG USTEC (both risk-on, correlated). Creates hedged/contradictory exposure in BULL regime with existing drawdown. No clear directional edge."
+},
+"f319449f60bd4dd73c470c5c1d0bde69016bda13": {
+"action": "APPROVE",
+"reason": "Energy diversifies tech exposure; BULL regime supports risk; drawdown moderate; WTI not open so no energy duplication"
+},
+"6c676f66920766ebff4dbc9c331e427ee91dd229": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG diversifies book (safe haven vs risk-on BRENT+USTEC). Good RR 2.5. Drawdown modest. Gold uncorrelated to existing positions."
+},
+"2bed28afd16ae530afc227061c51ad22fbc6b902": {
+"action": "REDUCE_50",
+"reason": "WTI and BRENT are 0.95 correlated - already long BRENT. Reducing WTI avoids concentrated energy exposure while keeping diversification benefit."
+},
+"48e6e31b5fe51087209ba2205f9fbeeee7034aee": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT adds diversification vs existing LONG-only book (energy+gold). No correlated crypto/equity longs open. BULL regime supports active trading. Zero drawdown, small profit today. Good risk/reward at 2.5."
+},
+"8fa1603a76102a2867406249dbb1ae830a04bc41": {
+"action": "VETO",
+"reason": "Already SHORT BTCUSD in BULL regime. Adding SHORT ETHUSD doubles concentrated counter-trend crypto exposure with ~0.85 correlation\u2014unsafe bet against regime."
+},
+"8209fc4a6ecf95d7f7a1fdd1b95ba7987ce33c88": {
+"action": "VETO",
+"reason": "ETHUSD SHORT duplicates existing BTCUSD SHORT in BULL regime\u2014concentrated correlated risk-on bet against trend. BTC/ETH ~0.85 correlated. One crypto short sufficient."
+},
+"294a6514952497d6b1115dd5fc25023cd49ac1b4": {
+"action": "VETO",
+"reason": "XAUUSD SHORT conflicts with defensive posture needed after -$40 drawdown; gold is our diversifier and shorting it in existing loss state removes safe-haven optionality without compelling edge in BULL regime"
+},
+"a3ab9ea7c085289e2aaeb81bd20527985757d1a4": {
+"action": "APPROVE",
+"reason": "Clean book (no open positions), BULL regime favours risk-on, drawdown minimal at -$40, US500 is standalone equity exposure with solid 2.0 RR\u2014no correlation conflict to manage"
+},
+"68f39dbb31a0ed8f6d20a3ebcda2a24d3da24707": {
+"action": "VETO",
+"reason": "USTEC LONG vs existing ETHUSD SHORT creates offsetting risk-on exposure in BULL regime\u2014net book delta near zero, no edge. Avoid canceling out positions."
+},
+"d0e4219b06faab59b49ee38a8c408da95a46b077": {
+"action": "VETO",
+"reason": "BTCUSD LONG directly opposes existing ETHUSD SHORT. Both crypto, highly correlated (~0.85+). Creates hedged/conflicting exposure rather than directional conviction. Net crypto exposure becomes unclear."
+},
+"d6103a452a3c2da000c60bd4ca540afaa563db3e": {
+"action": "APPROVE",
+"reason": "Energy LONG diversifies existing ETHUSD SHORT. No correlation risk, minimal drawdown, positive day P&L, BULL regime supports diversified exposure."
+},
+"23165ac079e1bb09393183ecb984e4d1b4b78095": {
+"action": "APPROVE",
+"reason": "No open positions, counter-trend SHORT in BULL adds diversification, RR=2.5 is acceptable, drawdown modest"
+},
+"a30c76a15c1acc80a37519e25be1f6b511b864b7": {
+"action": "VETO",
+"reason": "Already SHORT ETHUSD in BULL regime. Adding SHORT BTCUSD = doubled concentrated crypto short bet against trend. High correlation (~0.85) means overlapping risk, not diversification. Book already -$60 DD. Preserve capital."
+},
+"ff8068d2303804f6310e602aaf97344519661fef": {
+"action": "APPROVE",
+"reason": "No open positions, single crypto short, decent RR 2.5, modest drawdown allows fresh risk"
+},
+"262ae2eb0cc376cbd1c47d5b992058556a0ff260": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, small drawdown (-$40), ETHUSD 2.5 RR is acceptable standalone risk"
+},
+"fe59de7866812bb5a8c8e4516b2bec79e109fec6": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, -60 drawdown manageable, BTC as standalone risk-on diversifier acceptable, RR 2.5 favourable"
+},
+"4f934769b67361b642aa0f01e194834eb0024bae": {
+"action": "REDUCE_50",
+"reason": "ETHUSD LONG duplicates existing BTCUSD LONG exposure (both risk-on crypto, highly correlated). Book already -$60 today. Reduce to avoid concentration while maintaining diversified crypto beta in BULL regime."
+},
+"3507a3de3275bff1f792e8160c360fd618a6a6e8": {
+"action": "VETO",
+"reason": "USTEC LONG vs BTCUSD SHORT = opposing risk-on bets in BULL regime. Creates hedged exposure with no directional edge. Either both or neither should be long."
+},
+"07b37157d1ae1f6660aa8c41a603bb20481f2d29": {
+"action": "APPROVE",
+"reason": "WTI_N6 LONG adds genuine diversification to existing BTCUSD SHORT. Energy uncorrelated to crypto, no concentration risk, book healthy (+$40), BULL regime supports selective risk."
+},
+"1fc28edb3b3a9cf16cf070fbecc987dbff65d68c": {
+"action": "VETO",
+"reason": "Energy pair conflict: WTI_N6 LONG vs BRENT_N6 SHORT creates hedged/contradictory exposure given 0.95 correlation. In BULL regime, this opposing energy bet adds complexity without clear directional conviction."
+},
+"b75fc25ead8cb98a698f0734057a846b32cee5c9": {
+"action": "APPROVE",
+"reason": "BULL regime, mild drawdown, US500 LONG adds equity exposure alongside energy WTI\u2014different asset classes, low correlation, positive day P&L, good RR 2.0"
+},
+"f796b82ad62cdd430efd7c69c2a1127a0d40927e": {
+"action": "VETO",
+"reason": "SHORT ETHUSD conflicts with existing LONG US500 in BULL regime\u2014both are risk-on assets moving together. This creates opposing directional bets on correlated instruments during favorable conditions, degrading edge. Book already -$40 drawdown; avoid conflicting exposure."
+},
+"f2f0bbbd8e6831531a08f162e376f18324421596": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT offsets WTI_N6 LONG (risk-on vs energy); minimal correlation, diversifying exposure in BULL regime with manageable -$60 drawdown"
+},
+"d0ca353e88902bff4ec479fb7a9edbbecbcfdd3f": {
+"action": "VETO",
+"reason": "BTCUSD SHORT + ETHUSD SHORT = concentrated crypto short in BULL regime. Already exposed via ETH; adding BTC doubles down on same directional bet against risk-on assets when regime favors longs. WTI LONG provides some offset but insufficient to justify stacking correlated crypto shorts."
+},
+"5a949b0044d54b62e5af4f585139ee6ff8dc803f": {
+"action": "APPROVE",
+"reason": "No open positions, manageable drawdown (-$40), decent RR 2.5. Short crypto in BULL regime is contrarian but diversifies if trend reverses. No correlation conflict."
+},
+"8a6667628ab232fcc3a3d04a8f7cebc4b91e0536": {
+"action": "VETO",
+"reason": "BULL regime + already SHORT BTCUSD = concentrated SHORT crypto exposure. Two correlated risk-on shorts in a bull market is directionally misaligned and doubles concentration risk. Preserve capital."
+},
+"2d926d4c40f8f62df37a3177652c272a9a7956e9": {
+"action": "APPROVE",
+"reason": "WTI_N6 LONG is uncorrelated to existing BTCUSD SHORT (crypto vs energy). Adds diversification in BULL regime. Book drawdown minimal at -$40. No concentration risk."
+},
+"35f249822d58a156116ab8eae9b4a2e4997e7b29": {
+"action": "VETO",
+"reason": "WTI already LONG; BRENT ~0.95 correlated = duplicate energy exposure. One energy position sufficient."
+},
+"b452361a0d70e773c417e56be1e9354eca1e4da1": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT diversifies away from WTI LONG (energy vs crypto, uncorrelated). No concentration risk, Bull regime with positive P&L allows tactical counter-trend trade, RR 2.5 acceptable."
+},
+"767cb0e974abc5d34f6d37f6cad76da04efe4c44": {
+"action": "APPROVE",
+"reason": "SHORT BTC diversifies the single LONG WTI position. Different asset classes, opposite direction to risk-on sentiment, minimal correlation. Drawdown manageable, regime bullish but this adds hedge."
+},
+"b536d3d25feccc0a72a3902d4ce91e4a0485de54": {
+"action": "APPROVE",
+"reason": "ETHUSD LONG diversifies crypto exposure (opposes existing BTCUSD SHORT), minimal drawdown, BULL regime supports risk-on, no concentration risk"
+},
+"a03fed57483829e02cab3ea492354ca0eadd4a17": {
+"action": "APPROVE",
+"reason": "No open positions, energy diversifies empty book, BULL regime supports risk, moderate drawdown manageable with single position"
+},
+"1d5bf0491e50c672624d83336577e4384cc030c0": {
+"action": "VETO",
+"reason": "SHORT US500 directly conflicts with LONG ETHUSD in BULL regime\u2014both are risk-on assets moving together. This creates opposing bets on same macro factor, canceling edge and increasing churn."
+},
+"81e161635110c79997c9f2b629efb9fd966cce57": {
+"action": "VETO",
+"reason": "USTEC SHORT directly contradicts open ETHUSD LONG\u2014both are correlated risk-on assets. Taking opposite directions creates unnecessary whipsaw risk rather than diversification. In BULL regime, favor the existing LONG position."
+},
+"20389fffbb7704dc9183b3a897e06745ffe31cab": {
+"action": "REDUCE_50",
+"reason": "BULL regime favours risk-on longs, not shorts. Book already -$40 DD, today -$20. Shorting ETH counter-trend carries elevated risk. Half size limits exposure while respecting 2.5 RR signal quality."
+},
+"768289ec1672e50ca4c4bdc0ba97242dd03391bd": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime while already in daily drawdown (-$20) and book drawdown (-$40). Counter-trend risk-on bet compounds existing losses. Wait for better setup."
+},
+"743aac15059c808e1f606bb4b68300e1e278dd67": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, decent RR 2.5, drawdown modest, BTC diversifies empty book"
+},
+"75cf4692ae68341cdc58f78be9896656ed8de230": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier against existing BTCUSD (risk-on) in CRISIS regime. Reduces concentration, acceptable drawdown."
+},
+"d53fc199f9ffe503787d486400034d7b9f00579a": {
+"action": "VETO",
+"reason": "CRISIS regime + already holding correlated BTCUSD LONG + meaningful drawdown (-$80 book, -$60 today). USTEC adds concentrated risk-on exposure when regime demands defense."
+},
+"13acf7d2dc30142ca0e1d6177dfbe0765a64831b": {
+"action": "APPROVE",
+"reason": "BRENT SHORT diversifies vs BTCUSD LONG (uncorrelated), adds defensive exposure in CRISIS regime, XAUUSD LONG already provides safe-haven balance. Energy short aligns with risk-off environment."
+},
+"677105d5192ba9f6bdf37ba498fad80b0f59a1ad": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT offsets BTCUSD LONG correlation risk in CRISIS regime; adds diversification despite drawdown; XAUUSD LONG provides safe-haven balance"
+},
+"b68ca63838c843b5209727d842309122f5b1fa0f": {
+"action": "VETO",
+"reason": "CRISIS regime + already holding correlated BTCUSD LONG + book in drawdown (-$120). Adding ETHUSD LONG doubles concentrated crypto risk-on exposure exactly when defensiveness is required."
+},
+"4b86675499b33af27e930f3a3bfc6bff56036b47": {
+"action": "REDUCE_50",
+"reason": "CRISIS regime + book in drawdown (-$120) warrants caution. BRENT diversifies from BTC (different asset class), good RR 3.0, but halve size given regime/drawdown risk. Preserves exposure without overcommitting."
+},
+"f896abc94aee2d27613021ed19fee91bf856e796": {
+"action": "VETO",
+"reason": "WTI SHORT vs existing BRENT LONG = offsetting energy positions (0.95 corr). In CRISIS with -$60 DD, avoid conflicting hedges that bleed on spreads while adding no directional edge."
+},
+"accaf93e7cc201f2e736e19691f92a9be26de0ff": {
+"action": "VETO",
+"reason": "CRISIS regime + gold is safe haven. Shorting XAUUSD contradicts defensive posture needed in crisis conditions with existing drawdown."
+},
+"3abb0e114d066f3d65cdce1528030bf223eea427": {
+"action": "VETO",
+"reason": "CRISIS regime + book in drawdown ($-80). ETHUSD is risk-on crypto; preserve capital in adverse conditions."
+},
+"acff96d039962b7ee92c5e73dc181c3504483370": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in -$80 drawdown. LONG ETHUSD is risk-on exposure inappropriate for defensive posture required now."
+},
+"d01545cd4780d9cdd95de411418d5488873d9161": {
+"action": "APPROVE",
+"reason": "SHORT risk-on crypto in CRISIS regime is contrarian-correct; no open positions; small drawdown; good RR 2.5; allows diversification"
+},
+"7f2f32bc06ab1cea0b4b1dc3313c78930c617619": {
+"action": "APPROVE",
+"reason": "SHORT crypto in CRISIS regime aligns with safe positioning; no open positions means zero concentration risk; modest drawdown allows cautious re-entry"
+},
+"415ba3228505fab7486741823c4773de7aa7516c": {
+"action": "VETO",
+"reason": "CRISIS regime + book already down $120 (12% of account) + risk-on crypto LONG = unacceptable concentration of drawdown risk. Preserve capital."
+},
+"8bbb0de000b4cfdcf5dd999c04e53affabab4275": {
+"action": "REDUCE_50",
+"reason": "ETHUSD LONG duplicates existing BTCUSD LONG exposure\u2014both crypto risk-on moving same direction. BULL regime supports crypto but concentration warrants 50% size to limit correlated downside."
+},
+"ae51dd8fa94f1af22466b56cfa0dd95a91537e2b": {
+"action": "APPROVE",
+"reason": "XAUUSD uncorrelated to risk-on, no open positions, acceptable RR 2.5, drawdown manageable at -$140"
+},
+"34dc59d68abe723687af86a4d411282f76a8d676": {
+"action": "APPROVE",
+"reason": "BRENT adds uncorrelated energy exposure to existing XAUUSD short. No risk-on duplication, solid 3.0 RR, BULL regime supports diversification. Drawdown moderate."
+},
+"296bf824264f5f997ccf04ca40de9317fd8220d8": {
+"action": "APPROVE",
+"reason": "BTCUSD SHORT diversifies portfolio: opposes risk-on oil long, adds uncorrelated crypto exposure. Drawdown modest, good RR, no concentration risk."
+},
+"06fe9e046fbe246683fac0920a8f6aba0d10a01d": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG diversifies current SHORT exposure in BTC/XAU. BRENT correlation manageable. Drawdown moderate, not crisis-level."
+},
+"f0cf1c5c47be2f17a99c6ad445faefdf93a2014f": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+USTEC creates correlated crypto/tech exposure. Book already -$160 DD and -$60 today. Reduce to limit concentration while maintaining directional bias."
+},
+"1e28b23d928bb04454f009819dd7a5dba9592111": {
+"action": "VETO",
+"reason": "BRENT_N6 LONG already open\u2014WTI/BRENT are 0.95 correlated. Adding WTI LONG is a duplicate energy bet, not diversification. Book already -160 DD; avoid concentration."
+},
+"7e052be8c5259d391432abafc400b618e1c8d912": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown, solid RR 2.5, diversifier entry acceptable"
+},
+"d584efabc8c6a900d4adfe9f1732ac0f3f2e1f7f": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+ETHUSD are highly correlated crypto longs creating concentrated exposure. Already holding ETHUSD:LONG. Reduce to manage correlation risk while maintaining participation."
+},
+"ca39cf1e3697e9576a3e6c5f89dd2610dadc0ad7": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies from existing BTCUSD LONG (uncorrelated). Both positions hedge each other in BULL regime. Drawdown modest, book benefits from diversification."
+},
+"fe25fde1acefd28d5d9f02cc9c8e7a4de550aaed": {
+"action": "APPROVE",
+"reason": "Energy diversifies crypto risk; BULL regime supports moderate exposure; drawdown manageable; good RR=3.0"
+},
+"4d20f6592ed4db0e6865f9a9ffa1faec96f6ed1b": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification: uncorrelated to existing LONG energy/crypto, good RR 2.5, drawdown manageable, not concentrated risk"
+},
+"a328738ee746ecdae44245d2ae565b9c436aecc1": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies against existing LONG risk-on exposure (BTC+BRENT). Non-correlated hedge in BULL regime. Drawdown moderate, not crisis-level."
+},
+"cdee850734051456f407d1dd528be0abfaf46e04": {
+"action": "REDUCE_50",
+"reason": "Already holding BTCUSD LONG (correlated crypto). Day P&L -$80 on $1013 account (-7.9%) warrants caution. REDUCE avoids full concentration while participating in BULL regime."
+},
+"37f99c029a7354beceb769005191a337cdc229be": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies against 3 LONG risk-on positions (BRENT, BTC, ETH). Provides hedge in BULL regime with acceptable RR=2.5. No duplicate correlation risk."
+},
+"5aa449ad2416908cecfa693cba494c308e47aa61": {
+"action": "APPROVE",
+"reason": "UK100 SHORT provides diversification from existing LONG crypto risk-on exposure. Safe-haven directional hedge in BULL regime with acceptable RR=2.5. Drawdown manageable at -$200."
+},
+"237705b86f4dc4c544968a429178a826488627dc": {
+"action": "APPROVE",
+"reason": "WTI SHORT diversifies book: offsets 2 correlated risk-on longs (BTC+ETH), good RR=3.0, energy uncorrelated to crypto, drawdown manageable at -2% account"
+},
+"81ec40e7b151e7ca09e918e7f08ac2660d719443": {
+"action": "APPROVE",
+"reason": "UK100 SHORT provides geographical & directional diversification vs existing crypto LONG exposure; not risk-on correlated; solid 2.5 RR; drawdown manageable in BULL regime"
+},
+"a063e887293a1dcfc97f9c27b130d22ad7cbb42e": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, good R:R 2.5, drawdown modest, first position provides diversification"
+},
+"114af3c69b5fbc569439e77d6119b4463d5a3a97": {
+"action": "APPROVE",
+"reason": "BULL regime, UK100 uncorrelated to existing book (none open), manageable DD, good RR 2.5, not risk-on - diversifier position warranted"
+},
+"2f16c44d7f026ab0d47117d4d579f76764ce9de1": {
+"action": "APPROVE",
+"reason": "No open positions, crypto SHORT diversifies from BULL regime risk-on longs, drawdown manageable, good RR"
+},
+"138e7c4dd3edd23c0117fcc466584dbeb13e2a47": {
+"action": "VETO",
+"reason": "BTCUSD LONG directly opposes existing ETHUSD SHORT\u2014both crypto, highly correlated (~0.85+). Creates hedged/conflicting exposure with no directional edge. Clean conflict."
+},
+"3e170dac669e14288afad88d2a3d099bf6829e06": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies away from existing ETHUSD SHORT. Different asset class, no correlation concentration. Regime is BULL, drawdown manageable at -$160. RR 2.5 is acceptable."
+},
+"e01e33171223acc58fa8691447cbcdbffdb47ecc": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies book away from existing ETHUSD SHORT; no correlation clash, acceptable regime, minimal drawdown"
+},
+"56e7a2249d0890c6ebd28de9e7956ed9298487c9": {
+"action": "APPROVE",
+"reason": "BRENT SHORT diversifies away from crypto risk; energy not correlated to ETH; drawdown modest; RR 3.0 acceptable"
+},
+"8accbc6677ae0009fa6ee65c4951f6ef7a800590": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing BRENT SHORT, low correlation, reasonable RR 2.5, BULL regime supports risk-on, drawdown moderate"
+},
+"8fba3c37d20f85cfe67f06fb394d3a485fb78c11": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG as diversifier with no open positions, positive day P&L, manageable DD, decent RR in BULL regime"
+},
+"2a27778fa6ab070d21a45edc8b4ffe4ba506f973": {
+"action": "APPROVE",
+"reason": "BRENT SHORT is non-correlated to existing XAUUSD LONG (safe haven). Energy short in BULL regime adds diversification. Drawdown minimal (-$40), daily P&L positive (+$100). No concentration risk."
+},
+"d38ae62ed7bd129545dc687debb7068a2481962d": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversified risk-on exposure in BULL regime. No correlation with existing SHORT energy or LONG gold. Book in profit today (+$100), small drawdown (-$40). Good RR at 2.5."
+},
+"a40a746adb644e266b19f30533e89b2886639b7e": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds to existing UK100 LONG (both equity indices, correlated). XAUUSD LONG hedge is good. Book at -$40 DD warrants prudent sizing. Reduce to avoid over-concentration in correlated equity longs."
+},
+"09f87a4f7a77bb62e0c85d338e5cd67f43821db8": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but USTEC LONG adds to existing UK100 LONG creating concentrated equity exposure. Book already +$100 today\u2014lock partial profit while maintaining upside. XAUUSD hedge and BRENT SHORT provide diversification. Reduce to manage concentration."
+},
+"080473db07e3a0cdfccb48a155db95db4593ef90": {
+"action": "VETO",
+"reason": "WTI SHORT duplicates existing BRENT SHORT (0.95 corr). Two energy shorts in BULL regime = concentrated directional bet. Book already has diversification via longs."
+},
+"25e28b390acfea87a5ca906c6a5abd2494100059": {
+"action": "REDUCE_50",
+"reason": "Already long UK100 + USTEC (both risk-on equity indices). Adding US30 creates triple equity concentration. BULL regime supports risk-on but diversification warrants half size."
+},
+"38a561f3855788786a5f30ccc92263ba512aa9bf": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTC LONG adds 3rd correlated risk-on position (US30, USTEC already long). Gold provides diversification. Reduce to limit concentration while capturing opportunity."
+},
+"8e8e81202cc61383ef7fdd6d5b4cc63e3356635a": {
+"action": "APPROVE",
+"reason": "ETH SHORT offsets BTC LONG (both crypto, opposite directions). Energy SHORT + gold LONG already provide diversification. Minimal correlation risk, regime is BULL but signal is contrarian, book in profit today."
+},
+"88af67034135300de96d276ee6ab69cc02013bb7": {
+"action": "APPROVE",
+"reason": "BRENT SHORT diversifies UK100 LONG; energy defensively hedges equity risk; no correlation conflict; book is green +$60; regime BULL but not overexposed"
+},
+"674e5fb64fd25fd2e12642f3be26a6c67eba3ce5": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing BRENT SHORT. Low correlation, BULL regime supports risk-on, drawdown minimal, today profitable. No concentration risk."
+},
+"dfaba9cd0e2d4139f87834987a77d3646515e1e0": {
+"action": "VETO",
+"reason": "BULL regime favours risk-on longs, not shorts. BTCUSD SHORT conflicts with regime. Already in drawdown (-$60). Adding counter-regime crypto short increases risk without diversification benefit."
+},
+"ed4a3622575f3d73b342183dc15b72ac2c922294": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. ETHUSD SHORT contradicts regime. Already in drawdown (-$60). Avoid counter-trend crypto short in bull market."
+},
+"44da89f8489ea81b2c953da8b93781af583b4e49": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification to existing BRENT SHORT. Low correlation, mild drawdown, BULL regime supports risk-on. RR 2.5 favorable."
+},
+"943ca64e6f3612c84d21a22ca29155cd7526b67d": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies from BRENT SHORT; both uncorrelated, light drawdown, BULL regime supports equity exposure"
+},
+"058b190521dc2ba2378bcd6855a54f9f824b3720": {
+"action": "VETO",
+"reason": "BULL regime favours risk-on longs, not shorts. Already short UK100 (risk-on equity); adding ETHUSD SHORT doubles down on counter-trend risk-on shorts with no diversification benefit. Low conviction in bear bets during bullish conditions."
+},
+"8bbff2a76dfa9401e58893bbaf477696c0ecb1df": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies from existing BTCUSD SHORT. Different asset class, non-correlated. Book in profit (+$160), BULL regime tolerable for selective shorts. Not concentrated."
+},
+"c274a4c367f6fc6530e19c0bb5812f953f0c6fa9": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG offsets existing BTCUSD SHORT (both risk-on, opposite directions = diversified). UK100 SHORT is uncorrelated. No concentration risk, zero drawdown, positive day P&L. Clean entry."
+},
+"0c05a73316e9599a6e81af88bd1ace2e4a4e59be": {
+"action": "VETO",
+"reason": "US30 SHORT adds to already concentrated short-risk-on exposure (BTC SHORT, UK100 SHORT) against a LONG USTEC in BULL regime. This creates conflicting directional bets within correlated equity indices while net portfolio remains short risk-on assets during bullish conditions\u2014poor risk/reward setup."
+},
+"a62117d14d9337848423f04bd0307f03c7cd0976": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier against the risk-on USTEC LONG, offsetting correlation risk. Book in profit (+$140 daily), minimal drawdown (-$40). Gold adds uncorrelated exposure in BULL regime."
+},
+"2a555c7e84fe20f7cc3157732387fcbe53379de7": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification to mixed book (BTC SHORT, USTEC LONG, XAU LONG). No concentration risk; regime is BULL but portfolio has offsetting exposures. Daily P&L positive at +$140 allows room for new position."
+},
+"886bd0e20da3537b137b6bd67a8e56ad813f6f61": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG conflicts with BTCUSD SHORT and duplicates USTEC LONG exposure. Already holding 1 US index long; adding full US30 over-concentrates correlated equity longs. REDUCE to manage concentration while capturing upside."
+},
+"3137d7418a076f494bbbcc8e608447e6d06cbf1a": {
+"action": "REDUCE_50",
+"reason": "US30 LONG adds to existing USTEC LONG = double exposure to correlated US indices risk-on. BULL regime permits risk-on but concentration warrants size reduction. BTCUSD SHORT provides offset but insufficient to justify full size. XAUUSD diversifies. Reduce to manage correlation."
+},
+"9ea10e74a35b433a8b92465e6ef308f0c649fd3a": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US500 LONG offsets existing BTCUSD SHORT correlation conflict. XAUUSD diversifies. Book in profit (+$260), zero drawdown. Clean entry."
+},
+"bca4569453ad1b064eb9bc999640c825d5e543d4": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with existing US500 LONG\u2014both are highly correlated US equity indices moving opposite directions, creating a hedged/contradictory position that wastes capital and increases whipsaw risk in BULL regime. Book already has balanced exposure with BTC SHORT (risk-off), US500 LONG (risk-on), and XAUUSD LONG (diversifier). Adding opposing US equity trade muddies the portfolio."
+},
+"4662f406eac7c8b7366336d40a08f411324f32f0": {
+"action": "APPROVE",
+"reason": "WTI SHORT adds diversification: energy inversely positioned vs risk-on US500 LONG, gold provides safe-haven balance, no drawdown, good RR=3.0, modest correlation hedge in BULL regime"
+},
+"5ebded63f3d92cf3391d254dbd22e4bf45491ab3": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with existing US500 LONG\u2014both are highly correlated US equity indices. In BULL regime, opposing directions on correlated risk-on assets creates messy hedging rather than diversification. Veto to avoid counterproductive exposure."
+},
+"bf0c9d9acf2152d2c69244db6f76af4699991c7e": {
+"action": "APPROVE",
+"reason": "No open positions, single SHORT in BULL regime adds uncorrelated exposure, book healthy with +$260 realized today despite -$80 open DD, 2.5 RR acceptable"
+},
+"7129148a5fbec2246f2add74c1ba8fafb140088f": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to existing ETHUSD SHORT; not correlated risk-on duplication; book drawdown manageable at -$20; today profitable +$40"
+},
+"169576de29d586b5dd9d5d2c2f69a40b8994276d": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies away from crypto (ETHUSD SHORT). Different asset class, uncorrelated, and drawdown is manageable at -$40. Not concentration risk."
+},
+"3f54d607a5be9817e575dae4fd6bab49b19b1115": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic/sector diversification to existing ETHUSD SHORT. Not correlated risk-on duplication. Drawdown minimal, RR solid at 2.5. Two shorts in BULL regime acceptable with good diversification."
+},
+"046b6613182e5f3d49694a58778ae09389341495": {
+"action": "APPROVE",
+"reason": "BRENT SHORT adds uncorrelated energy exposure to existing ETHUSD/UK100 shorts. Energy \u2260 crypto/equity. Drawdown minimal (-$60). Good diversification despite BULL regime."
+},
+"98360eb7ddb61c7b05d32c519dc5208fc49a06b7": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification to existing BRENT SHORT and ETH SHORT. FTSE is European equity with lower correlation to US tech (ETH). Portfolio has 2 shorts in different asset classes; adding a third European equity short in BULL regime is acceptable given modest drawdown and good RR=2.5. Not concentrated."
+},
+"16c99bf0bd7cb8519f5332ebb4be118b8ecfd9b4": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG diversifies from BRENT SHORT; gold as safe-haven offsets energy risk; acceptable RR 2.5; BULL regime permits exposure; drawdown manageable"
+},
+"eb89bccf5574939944643ea4ffe344e70192cc14": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversified equity exposure in BULL regime. XAUUSD hedge remains, BRENT SHORT is energy sector. No correlated clustering. Drawdown manageable at -12% account."
+},
+"1138fbefaedf9d38aa240e753e777057da999bed": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds to existing UK100 LONG (correlated equity indices). Book in -$120 DD with -$60 today. Reduce size to limit concentration while participating in directional view."
+},
+"bcccf57fd421f1c16c22571fb4b0f862b2d813f2": {
+"action": "VETO",
+"reason": "Already SHORT BRENT_N6 (0.95 correlated to WTI). Adding WTI SHORT is duplicate energy exposure. Book in drawdown (-140, -80 today) warrants avoiding concentration."
+},
+"ce750eb29b34ee420076903bc99414cd9977d9ec": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but UK100:LONG already gives equity exposure. US30 adds correlated index position. Day -$80 warrants caution on concentration. XAUUSD diversifies. Reduce to limit duplicate equity risk."
+},
+"051a956c4cfe3f1492cb610b4e45daa2322f41dd": {
+"action": "VETO",
+"reason": "BULL regime: shorting risk-on BTC contradicts favorable conditions. Already in drawdown (-$80). BRENT SHORT also counter-trend. Avoid compounding directional mistakes."
+},
+"c711731c21be98d056eeae29f891d9b33204b62f": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies from existing BRENT SHORT (energy vs equity, opposite directions). Drawdown moderate at -8%. No concentration risk."
+},
+"9d7d34c30a539c23d53b6b1fd6d34a937da26973": {
+"action": "VETO",
+"reason": "BULL regime + already in drawdown (-$40). US30 SHORT is counter-trend risk-on fade. BRENT SHORT already open adds to bearish tilt. Avoid compounding directional risk against regime."
+},
+"ee8a118469889f6531446b0cf20c6f510d838159": {
+"action": "VETO",
+"reason": "BULL regime + already in drawdown (-$40). ETHUSD SHORT is counter-trend risk-on fade. Only open position is BRENT SHORT (unrelated energy). But adding a SHORT crypto position in a BULL regime while book is negative increases concentration risk in wrong direction. Preserve capital."
+},
+"c77201f85a29cfbf5007fb3cee3336ba3773f620": {
+"action": "APPROVE",
+"reason": "Safe-haven diversifier, no open positions, acceptable DD, good RR in BULL regime"
+},
+"59d4d16fd9c2bff1ba054bef47b6da1e99931b3f": {
+"action": "APPROVE",
+"reason": "SHORT US30 diversifies well against existing LONG XAUUSD. Opposing risk-on/safe-haven dynamics. Moderate drawdown, 2:1 RR acceptable in BULL regime."
+},
+"d8d69fffb59f67532e4d1571b8bab7321e8a04c4": {
+"action": "APPROVE",
+"reason": "US30 SHORT diversifies XAUUSD LONG (safe-haven vs risk-on hedge). BULL regime allows risk. Drawdown manageable at -$80. No correlation conflict."
+},
+"c582bf57a556a09206a9908ad01aae9b7df832bb": {
+"action": "APPROVE",
+"reason": "BULL regime, only 1 open position (XAUUSD safe-haven), BTCUSD adds uncorrelated risk-on exposure, drawdown modest, good RR 2.5"
+},
+"bb61f1d72c9888b394fb8be0c41eb5f4d14758e8": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD:LONG already open creates concentrated crypto exposure. XAUUSD provides diversification. Reduce ETH to 50% to limit correlated crypto concentration while maintaining upside participation."
+},
+"ebba4f7dcf1566dd4f95ceaddb6035c2d0ebdbb6": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD:LONG already provides crypto exposure. Adding full ETHUSD creates concentrated correlated bet. Book in drawdown (-$120). Reduce to limit duplication while allowing diversified crypto exposure."
+},
+"d0698d768c8194be12ed0da8ca59d410921d19a1": {
+"action": "APPROVE",
+"reason": "BULL regime, minimal drawdown, diversified with existing XAUUSD safe haven, no correlated positions open"
+},
+"1c9b6f22c3c8558b851aa8ee17b19feb1c985803": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD:LONG already open creates concentrated crypto exposure. XAUUSD provides diversification. Reduce ETHUSD to 50% to limit correlated crypto risk while maintaining multi-asset balance."
+},
+"f8f6c7c298a23b186918ec0b1ebd2708f1b9f3e5": {
+"action": "APPROVE",
+"reason": "BULL regime, no drawdown, XAUUSD diversifier already held, BTC adds uncorrelated risk-on exposure, solid RR=2.5"
+},
+"1069caaed899a271bdaca46d00131911a938d5f3": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification (non-US equity), no open positions to concentrate, decent RR 2.5, daily DD minimal at -$40"
+},
+"1dfb31088d996aca82414d9ad3d2469a5ca8fb69": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies from existing ETHUSD SHORT; not correlated, reduces concentration, acceptable drawdown, decent RR in BULL regime"
+},
+"1cbf1b4dda86d659d1bc3c6a6a115420b562f31c": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies away from existing ETHUSD SHORT; not correlated, zero drawdown, positive day P&L, decent RR=2.5, BULL regime allows selective risk"
+},
+"01732a06b615a3a6bea1c0a8b137f77e29f1e15c": {
+"action": "APPROVE",
+"reason": "BULL regime, zero drawdown, profitable day. US30 LONG offsets ETHUSD SHORT (opposing risk-on directions). UK100 LONG is correlated but only 2 positions total. Diversified exposure, no concentration risk."
+},
+"1ee10470ec52fce8e5b0b1c8ad5ffd55e46109e8": {
+"action": "VETO",
+"reason": "US30 LONG conflicts with open ETHUSD SHORT\u2014both are correlated risk-on assets moving opposite directions, creating hedge that dilutes edge in BULL regime. Veto to maintain directional consistency."
+},
+"40992daa9daf3b7cf8f48e7697dda4353795bbdf": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to existing ETHUSD SHORT. Different markets, manageable drawdown, decent RR=2.5. Not correlated risk duplication."
+},
+"b3468f1fc550bbd160cecc2448b352f9f94bca48": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT adds diversification to existing crypto+index shorts. Gold uncorrelated to risk-on positions, modest -$40 DD not alarming, RR 2.5 acceptable. Three shorts manageable in BULL regime."
+},
+"a1a233fa1a6cd68dd3561a043aefe58da39bbce2": {
+"action": "VETO",
+"reason": "US30 LONG directly opposes open ETHUSD SHORT. Both are correlated risk-on assets\u2014taking opposite sides creates hedged/conflicting exposure with no clear directional conviction. Book already down $80 (-7.9%). Avoid contradictory positioning."
+},
+"106eae8564949af2c0e76b7bf88a04537145c73b": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, BTC is first trade of day with acceptable RR 2.5, drawdown minimal at -$40"
+},
+"8e8c434f21a2c564c43c3856eb1d950ae7d029fc": {
+"action": "VETO",
+"reason": "ETHUSD SHORT directly conflicts with open BTCUSD LONG. BTC/ETH are highly correlated crypto risk-on assets (~0.85+). Taking opposite directions creates unnecessary whipsaw risk rather than diversification. In BULL regime, favor the existing LONG exposure over adding conflicting SHORT."
+},
+"af6430d12513a5bf53643f608044729d052d08ad": {
+"action": "APPROVE",
+"reason": "UK100 SHORT is uncorrelated to empty book, regime BULL not crisis, drawdown manageable, good RR 2.5, diversifies portfolio"
+},
+"55029d31c4301384100621c3e4c156fe9379ac74": {
+"action": "APPROVE",
+"reason": "UK100 SHORT provides diversification from existing BRENT LONG (different asset class, opposite sentiment). BULL regime permits selective shorts. Drawdown manageable at -$80. Not risk-on correlation conflict."
+},
+"7bce67621924a729c26b6730df9b460e760e11d6": {
+"action": "APPROVE",
+"reason": "BTC SHORT adds diversification: offsetting risk-on exposure (vs BRENT LONG), non-correlated to UK100 SHORT. Drawdown moderate, RR solid at 2.5. Not concentrated."
+},
+"ca002283baf25b2e1036370e964cc1c0586d6629": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT diversifies existing BTCUSD SHORT; UK100 SHORT provides non-crypto correlation; BRENT LONG is defensive hedge. No concentrated directional risk despite BULL regime."
+},
+"4b0b0fd566b26dd27e9bd6719a95a05f6d4692eb": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies away from existing BTCUSD SHORT; no concentration risk, regime is BULL, book in profit today, good RR 2.5"
+},
+"706d3226754b21a979d5dbae5391821b292aa8a9": {
+"action": "VETO",
+"reason": "Already SHORT BTCUSD (correlated crypto). Adding SHORT ETHUSD doubles down on same directional bet against risk-on in BULL regime\u2014concentrated exposure, low diversification benefit."
+},
+"336a2d71830bd3e9330cc7949182b0f29f300bc4": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies from existing BTCUSD SHORT; not correlated, different asset class, solid RR=2.5, book drawdown manageable at -$40"
+},
+"4f450833b5ebc13b13a34ab263ac5ef5d9ee4204": {
+"action": "VETO",
+"reason": "BULL regime + already SHORT BTCUSD (risk-on) + new SHORT US30 (risk-on) = concentrated anti-BULL bet. Two correlated risk-on shorts in a bull market is excessive directional risk."
+},
+"372c4d394b4e5bbd5c32ab89bd66fb679b2e6b3d": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG offsets existing BTCUSD SHORT (opposite directions = natural hedge). UK100 LONG is correlated but only 2 risk-on longs total is acceptable. Daily P&L positive (+$100), drawdown manageable (-$40). No concentration concern."
+},
+"9521943fe5cbffb31e93a050d3352d19068c703b": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT adds diversification vs existing risk-on longs (UK100/US30). Gold inverse to equities in BULL regime. BTC SHORT also defensive. Low correlation reduces concentration risk despite -$40 DD."
+},
+"464fd53d2e19ae221f7ff6080a4d3a04ffbe8ade": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG adds equity exposure but offsets existing BTCUSD SHORT. UK100 LONG is regional diversifier. Book in profit today (+$80, -$60 DD manageable). No dangerous concentration."
+},
+"89c3c9c7f6a41b42d69a030d748e99be5534a989": {
+"action": "VETO",
+"reason": "US500 SHORT conflicts with existing US30 LONG (both US equity indices, ~0.95 corr). In BULL regime, shorting risk-on while holding correlated long creates offsetting exposure with double spread cost. Already have BTCUSD SHORT (risk-on short) + UK100 LONG (equity long). Book is mixed directionally on equities\u2014adding contradictory US500 SHORT muddies structure without clear edge."
+},
+"9f0c43582bbaf61c66f454d315c2e0e9643646b7": {
+"action": "VETO",
+"reason": "BULL regime with BTCUSD already SHORT and US30 LONG creates contradictory risk-on exposure. Adding USTEC SHORT increases concentration in opposing equity positions during bullish conditions. Book is green today (+$80) but mixed directional bets reduce edge. Preserve capital for clearer opportunities."
+},
+"ce0b35ad1548d535dfa668ff23c93b3375e0811a": {
+"action": "APPROVE",
+"reason": "No open positions, manageable drawdown, decent R:R. SHORT US30 in BULL regime carries contrarian risk but diversifies empty book."
+},
+"700765a15f70124e2606cfec3595699946330337": {
+"action": "APPROVE",
+"reason": "No open positions, healthy daily P&L (+140), minimal drawdown (-60), decent R:R 2.5. SHORT in BULL regime adds counter-trend diversification. No concentration risk."
+},
+"ff63ec3bfb46ddbe24078e626585e183d17a5c3b": {
+"action": "VETO",
+"reason": "BULL regime: shorting correlated crypto pair (BTC+ETH SHORT) = concentrated directional bet against trend. Already have ETHUSD SHORT; adding BTCUSD SHORT doubles down on same thesis with no diversification benefit."
+},
+"c55258d4607aa304f18567b2f967f23ecb5bddfd": {
+"action": "APPROVE",
+"reason": "No open positions, small daily loss, decent R:R 2.5, ETH short adds uncorrelated directional exposure in BULL regime\u2014acceptable contrarian trade"
+},
+"9bb480e54fccc0a481d35d660b53265897cb8a83": {
+"action": "APPROVE",
+"reason": "UK100 LONG in BULL regime, no open positions, minimal drawdown, non-correlated to crypto/US indices, diversifies empty book"
+},
+"5e4154756a609da9c7c7d53bd82f438bd601daae": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+UK100 are correlated risk-on longs creating concentration. Book already -$100 DD, -$60 today. Reduce size to limit joint exposure while maintaining participation."
+},
+"1e9f22081d0bfa3bdf6065cae559c2a52110176e": {
+"action": "REDUCE_50",
+"reason": "Already holding ETHUSD LONG (correlated crypto risk-on). Both BTC+ETH same direction = concentrated bet. Bull regime allows exposure but reduce size to limit correlation risk given existing drawdown."
+},
+"49ef66c7232756a2c8c21f1934f9ece64ffc7bfa": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports long exposure, but already holding 2 correlated risk-on longs (BTC+ETH). UK100 adds third equity-like long while book is -12% down and day is red. Reduce to manage concentration and respect current drawdown."
+},
+"5f7a3fdcd5b8673f0baed1c84abf3c7c1d48f370": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but book is in drawdown (-$80, -$40 today). UK100 LONG adds to existing crypto LONG exposure (correlated risk-on). Reduce size for prudent correlation management given current losses."
+},
+"7324fe68a86afee71b9daa73f1e9aec6e307dde3": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing BTCUSD risk-on exposure. Modest drawdown (-80), BULL regime supports risk-taking, solid RR 2.5. Not overly concentrated."
+},
+"cebc9d41d17eeb46a304eb5588114844663f7f96": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies existing BTCUSD LONG (uncorrelated); regime BULL but moderate daily DD warrants caution, yet RR 2.5 acceptable and UK100 not risk-on correlated"
+},
+"e6062f35de7887bff38f59f93f7db110590e390e": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies against BTCUSD LONG (uncorrelated/negative correlation). Gold safe-haven short in BULL regime is contrarian but acceptable given modest drawdown and different risk profile from crypto risk-on exposure."
+},
+"fb7e172a2884257d237e9a2ee016e580d1d3e08f": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. ETHUSD uncorrelated to existing XAUUSD SHORT (actually complementary: short safe-haven, long risk-on). Drawdown moderate. Good RR=2.5. No concentration risk."
+},
+"0e17ebcea561f57f7a04552aca6eb23203eb4508": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic/sector diversification vs existing ETHUSD LONG. XAUUSD SHORT is small hedge. Not correlated to risk-on crypto. Drawdown moderate, regime BULL supports selective risk. RR 2.5 acceptable."
+},
+"5fa193d46dd2caa89cc00d391c8a8a6e4189d242": {
+"action": "APPROVE",
+"reason": "US30 SHORT offsets ETHUSD LONG risk-on exposure; diversifies correlation; drawdown moderate in BULL regime"
+},
+"48be68081f694b2016cde08d96f1e5362f81c990": {
+"action": "APPROVE",
+"reason": "WTI SHORT adds uncorrelated diversification to existing SHORT book (UK100, US30, XAUUSD). Energy is distinct from indices/gold. Drawdown moderate, not crisis level. Good RR=3.0."
+},
+"d04a3b8e31fe78050b5e06771705a946ffa9b822": {
+"action": "VETO",
+"reason": "BULL regime + already in $-160 drawdown. Adding SHORT US30 (risk-on equity) conflicts with regime and adds correlated short exposure to existing UK100 SHORT. Three shorts including gold already defensive enough; no need to pile on anti-BULL bets while in drawdown."
+},
+"6e00a50874266ed902f86e02adfd74a7d868546d": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. USTEC LONG diversifies existing SHORT positions (WTI, XAUUSD). No correlation overlap. Drawdown moderate, acceptable for 2.0 RR trade."
+},
+"08c32abcddbbb50524ac3b62beeba5a434375d98": {
+"action": "VETO",
+"reason": "BRENT LONG directly opposes existing WTI SHORT (0.95 corr). Creates hedged energy position with no edge, just cost. Book already -$120 DD, -$80 today."
+},
+"1d2a86cfe3fb190abce965fbf5db75bd594ff7b6": {
+"action": "VETO",
+"reason": "US30 SHORT directly conflicts with existing USTEC LONG (both correlated US equity indices). In BULL regime with -$120 drawdown, adding offsetting risk-on exposure creates whipsaw risk rather than directional conviction. Veto to avoid neutralizing existing position."
+},
+"86914345451f3fb8b38980324b410eddb4d73a42": {
+"action": "VETO",
+"reason": "BULL regime favours risk-on longs not shorts. US30 SHORT adds concentrated directional bet against bullish environment. Already in drawdown (-$80 book, -$40 today). WTI SHORT is energy/commodity\u2014less correlated than stacking another equity index short. Preserve capital in unfavourable regime."
+},
+"30f02701c25cc8ed30709fab3065157b0c712355": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US500 LONG diversifies from existing WTI SHORT (negative correlation). Drawdown -$80 manageable. Good diversification play."
+},
+"e95c79035b6fddffb2e3120cdadfffee7eb6ab03": {
+"action": "VETO",
+"reason": "US30 SHORT directly opposes existing US500 LONG (highly correlated US indices). Creates internal hedge that negates both signals. Book already -$80 DD. BULL regime favours risk-on longs, not contradictory equity shorts."
+},
+"f193a915562f50c844bea10f25122f0741e1001a": {
+"action": "VETO",
+"reason": "BULL regime + already SHORT BTCUSD = concentrated SHORT crypto risk-on exposure. Two correlated crypto shorts in a bull market is redundant and regime-misaligned."
+},
+"fd8228422d57911c0f16445a799c6b09d969d8bd": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification to existing BTCUSD SHORT. Different asset class (UK equity vs crypto), low correlation, decent R:R 2.5. No drawdown pressure, no concentration risk."
+},
+"161086c7038595c790bd9a6367886db825b821c0": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to existing BTCUSD SHORT. Different asset class (UK equity vs crypto), modest drawdown, acceptable RR=2.5. Not correlated risk-on duplication."
+},
+"15ba20f1b79e7fb8c1bfdd0aa1bcfb3682910c87": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic/sector diversification to existing BTCUSD SHORT. Both are counter-trend in BULL regime but uncorrelated assets. Drawdown modest at -$60. RR 2.5 acceptable."
+},
+"86622279dae8621e7b3fc84ce5e553a6dae98239": {
+"action": "APPROVE",
+"reason": "UK100 LONG is uncorrelated to existing BTCUSD SHORT, diversifies the book, and drawdown is minimal at -$80"
+},
+"c3063d8de75dde4aa17cfe0685083697d0a5955d": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier, uncorrelated to existing SHORT BTCUSD and LONG UK100. Adds balance to portfolio in manageable drawdown. Good RR=2.5."
+},
+"d347a6d44b0ebb64e339e685432f39d021d232f4": {
+"action": "VETO",
+"reason": "Already SHORT BTCUSD (correlated crypto); BULL regime unfavourable for dual risk-on shorts; book in drawdown -$80"
+},
+"71cab5ed1bc4d36054d0067aa4fcdd074c82f299": {
+"action": "APPROVE",
+"reason": "Energy SHORT adds diversification to existing book (BTC SHORT + UK100 LONG + XAU LONG). No correlation overlap, drawdown modest, RR=3.0 favorable."
+},
+"6efec2327e7e46896c976a3644da872f94cd0323": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds to existing UK100 LONG (correlated indices). Book in drawdown (-$80). Reduce to limit equity concentration while allowing participation."
+},
+"705226927f16add8433f791ede60dedc105cdacd": {
+"action": "VETO",
+"reason": "Already SHORT BRENT_N6 (0.95 correlated with WTI). Adding WTI SHORT doubles energy exposure with no diversification benefit. Book also in $-80 drawdown\u2014avoid concentration."
+},
+"06155d2dbb278b12528fd5d48621f1eb825429b2": {
+"action": "REDUCE_50",
+"reason": "ETHUSD SHORT adds to existing BTCUSD SHORT = double crypto short exposure in BULL regime. XAUUSD LONG provides diversification but 2 correlated crypto shorts is concentrated. Reduce to manage correlation risk while allowing position."
+},
+"4654bc7c9705ba1b8c39efacb4837e5becf68a99": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies current SHORT risk-on book (BTC/ETH/BRENT all SHORT). XAUUSD LONG hedge remains. No drawdown concern. Balanced exposure."
+},
+"ef76aea51e2b5ad226e9e4cd98d6f713ab004fdb": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies book: already short crypto/energy, long US30/gold. UK adds geographic diversification without concentrating risk-on exposure. BULL regime supports equities, zero drawdown allows position."
+},
+"735c03f77fbbdf81d16803ed4b54cb81b20b2264": {
+"action": "REDUCE_50",
+"reason": "UK100 LONG adds to existing US30 LONG in BULL regime\u2014both equity indices, correlated risk-on exposure. BTC/ETH shorts provide some offset but UK100+US30 creates concentration in long equity beta. Reduce to half size for balanced diversification while capturing opportunity."
+},
+"e73fa5cfddbb8ba361adf49408f3c7fb6362c081": {
+"action": "APPROVE",
+"reason": "US30 LONG diversifies existing SHORT crypto exposure; BULL regime supports risk-on; drawdown minimal; day P&L positive; no concentrated directional overlap"
+},
+"0cfab213f8b8112f39bacc07602f1af789692c56": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US500 LONG offsets BTCUSD SHORT correlation exposure. UK100 LONG is uncorrelated equity. Drawdown minimal, daily P&L positive. Diversified book."
+},
+"5ca41323a60ee0a195176ae43c742caa8944be4b": {
+"action": "VETO",
+"reason": "US500 LONG already open; USTEC is 0.95+ correlated to US500. This doubles concentrated equity-index exposure without diversification. One tech-heavy index position is sufficient in current regime."
+},
+"5a3d8726c3005db960f68ba62911cb604d9010f0": {
+"action": "APPROVE",
+"reason": "Clean book, small dd, XAUUSD uncorrelated to risk-on, acceptable RR 2.5, no concentration risk"
+},
+"1c10c09efc7185909eedb03271746d0024861597": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with BULL regime (risk-on should be long). Already holding XAUUSD SHORT (safe-haven short = risk-on bet). Adding another risk-on short creates confused directional exposure in wrong regime."
+},
+"1c526f02d016ae43f0229326c1bdf3286a895fa1": {
+"action": "APPROVE",
+"reason": "BRENT_N6 SHORT adds diversification to existing XAUUSD SHORT. Energy uncorrelated to gold, no concentration risk. Book drawdown minor (-$60), today green (+$40). BULL regime but both are non-risk-on assets, acceptable joint exposure."
+},
+"341c82d449d47e6e85343504870a2b86dfc80e53": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies away from existing SHORT-only book (energy/gold). No correlation conflict. Drawdown manageable at -$60. Day positive +$40."
+},
+"c56b2483dd909ebd149e905b8d138881ba7c5486": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. ETHUSD long diversifies from existing XAUUSD short (inverse correlation). Minimal drawdown, good RR 2.5, no concentration risk."
+},
+"5e1692402e9d80425c75b603d25d41c51b14bfd1": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. BTCUSD LONG diversifies against existing XAUUSD SHORT (inverse correlation). Drawdown -120 is manageable (~12% of account). RR 2.5 is favorable."
+},
+"cd2529de4af8aa6589b249fd9b0f45395c8dba80": {
+"action": "APPROVE",
+"reason": "UK100 SHORT provides diversification; no open positions; drawdown minimal; not correlated with risk-on cluster; regime allows selective exposure"
+},
+"c112904d8379bc4857c0deb95aaaadd306f64791": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies empty book; modest drawdown; not correlated to risk-on; acceptable R:R 2.5"
+},
+"00f5c5ef108d147c3e0b02e8b925a4cd15a2f713": {
+"action": "APPROVE",
+"reason": "No open positions, portfolio has room. SHORT crypto in BULL regime adds contrarian diversification. Daily P&L positive, drawdown manageable."
+},
+"ef98b9cd7d4e476881997ae6d0d8c17edb953b10": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to ETHUSD SHORT; not correlated risk-on duplication; modest drawdown allows selective adds; RR 2.5 acceptable"
+},
+"f61b3ebded00f0530fdac97639671303b9e6e62d": {
+"action": "VETO",
+"reason": "CRISIS regime + already holding correlated ETHUSD SHORT. Adding BTCUSD SHORT creates concentrated crypto short exposure (BTC/ETH ~0.85 corr). Book in -$60 DD demands defensive posture. UK100 SHORT provides sufficient risk-off diversification."
+},
+"e83764f8512195fb1939e6a487bb20c4d15652f0": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours shorts + safe-haven. UK100 SHORT adds geographic diversification to existing ETHUSD SHORT. No concentration risk, book in profit today, drawdown zero. Good RR=2.5."
+},
+"1a1735ad63d17899a5181bdc66b010ebfb24f6b9": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours SHORT risk-on exposure. US30 adds geographic diversification to existing ETHUSD short. UK100 is different index. No drawdown, day profitable. Correlation works in our favour during crisis."
+},
+"b22dad83f79453f50ffa7103ab211671d0282587": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors shorts on risk-on assets. ETHUSD+USTEC both SHORT aligns with regime, diversifies across crypto/equity, no longs to conflict. Book DD moderate, today green."
+},
+"aaee41a2595c1577992f7e62ba59b0cb9143094a": {
+"action": "APPROVE",
+"reason": "WTI_N6 LONG is uncorrelated to existing SHORT risk-on positions (ETHUSD, USTEC). Energy diversifies the book. CRISIS regime favors defensive positioning\u2014current shorts + commodity long = balanced. Day PnL positive offsets DD."
+},
+"aebf513ccb72853a77a14c0e17c7756e65c9f89f": {
+"action": "VETO",
+"reason": "Already long WTI_N6 (0.95 corr with BRENT); doubling energy exposure in CRISIS regime with -$60 drawdown is concentrated. Two shorts hedge adequately."
+},
+"21daadb15b269789b82cdc6c1c4f06740547f473": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversified short exposure in CRISIS regime. Already short ETHUSD+USTEC (risk-on), long WTI (energy). UK100 is geographically distinct, complements existing shorts without excessive correlation. Day P&L positive, drawdown manageable."
+},
+"a61183aaf13769b23316aaf4b1a3ca3a85e05861": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT risk-on. Already short ETHUSD+USTEC; US30 adds diversified equity short (Dow vs Tech). WTI_LONG hedges. Portfolio coherent, not over-concentrated."
+},
+"161d0a31b461b9173910740dc72989f711620a59": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours shorts on risk-on assets. Already short ETHUSD+USTEC; adding US30 SHORT creates correlated directional cluster BUT all three align with defensive crisis positioning. WTI LONG diversifies. Day +$140, no drawdown. Concentration acceptable given regime tailwind."
+},
+"da0f79393fbd30188d90d2c7328514df8807a169": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT risk-on exposure. US30 SHORT aligns with existing USTEC SHORT (both bearish US indices), but diversifies beyond pure tech. Book in profit (+$160), no drawdown. WTI LONG provides counter-balance. Approved."
+},
+"bd95abb42d9c12bfb55a1c17b6095f2e7c72463f": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors shorts on risk-on assets. US30 SHORT adds to existing USTEC SHORT but doubles down on defensive positioning appropriate for conditions. Book is in profit today (+$140) despite -$40 overall DD. Energy long (WTI) provides offset. Concentration acceptable given regime."
+},
+"a9a03fd58e9db3e8167840593473683bdcbfac69": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies existing SHORT positions in correlated US indices (US30/USTEC). Gold as safe-haven typically rises in CRISIS, so shorting it is contrarian but adds uncorrelated exposure. Book is in profit today (+$140) despite -$40 DD. Not adding to concentration."
+},
+"287a36157336846e9b0bf0bec020040a5b15c010": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT aligns with existing US30/USTEC SHORT positions in CRISIS regime; adds crypto diversification to indices shorts; XAUUSD SHORT is contrarian but overall book maintains defensive short bias appropriate for crisis conditions"
+},
+"02aeae7cc8ebdb549c4e02473d2ea48cbac7ac97": {
+"action": "REDUCE_50",
+"reason": "CRISIS regime with 4 correlated risk-on shorts already open (ETH, US30, USTEC). US500 adds to same directional bet. Drawdown modest but concentration warrants caution. Reduce to participate without over-concentrating."
+},
+"2baf2ab936058e3dc5f9281c462a4ec4d400a5cf": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT aligns with existing US500 SHORT in CRISIS regime; adds diversified short exposure to risk-on assets; not duplicative since different asset class; day DD manageable"
+},
+"98606d19963fea83b562a6f708931b40e0025b36": {
+"action": "APPROVE",
+"reason": "BTCUSD SHORT aligns with existing crisis-mode SHORT risk-on cluster (ETH, US500). Book already positioned defensively. Adding third SHORT in correlated risk-on space is acceptable given CRISIS regime and strong 2.5 RR."
+},
+"d8ce8470971a30ed759d262ad13a077a471178aa": {
+"action": "VETO",
+"reason": "CRISIS regime demands defensive posture. ETHUSD LONG is risk-on conflicting with existing US500 SHORT hedge. Book already -$60 DD, -$20 today. No room for counter-trend crypto longs in crisis."
+},
+"13c2f9a3c7c8b656afae9f036c52951175ea5740": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT on risk-on asset. Already SHORT US500 (correlated), adding BTC SHORT reinforces defensiveness. Gold SHORT is contrarian but small book. WTI LONG is diversifier. No concentrated long risk-on exposure. Drawdown moderate, not extreme."
+},
+"d2d25b8ff4e9da685cfc49415e2bb78fc60ceebd": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT risk-on. ETHUSD SHORT aligns with existing BTCUSD/US500 SHORT correlation but adds diversified crypto exposure. Book drawdown -$60 manageable on $1,013 account (~6%). Regime-appropriate directional consistency."
+},
+"9b5dde75512eef7788834c705dec97d005a3e660": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT risk-on. ETHUSD SHORT aligns with existing US500 SHORT (both risk-off positioning). WTI LONG and XAUUSD SHORT provide diversification. No dangerous concentration\u2014approving adds complementary crypto SHORT exposure."
+},
+"5de89baa31838aa06b4a6f4d377e7282702a9532": {
+"action": "APPROVE",
+"reason": "CRISIS regime + already short ETHUSD & US500 = portfolio already positioned for risk-off. Adding BTC SHORT adds correlated short exposure but aligns with defensive stance. Gold short is contrarian but small book. RR 2.5 acceptable. APPROVE."
+},
+"54f4f2f126589c7a1bacbddbc4f683e82916ba99": {
+"action": "APPROVE",
+"reason": "UK100 SHORT is risk-off aligned with CRISIS regime; diversifies from WTI_N6 LONG (energy); no correlation conflict; book healthy with +$160 today; RR 2.5 attractive"
+},
+"0a035c03640e2f87afb8ecd6611e0956cad6ddb3": {
+"action": "APPROVE",
+"reason": "UK100 SHORT is counter-cyclical to WTI LONG in CRISIS regime, providing diversification. Drawdown is manageable, day P&L is positive, and SHORT equities in crisis aligns with regime. No concentration risk."
+},
+"7f349ef1314cbd32636aec96cf35fc86f946ddc9": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on assets. ETHUSD SHORT adds bearish crypto exposure distinct from existing UK100 SHORT (equity) and WTI LONG (energy). No correlation conflict, enhances diversification in defensive positioning."
+},
+"b29699bf3baaebe402c499a44f9ac82576abeaf5": {
+"action": "APPROVE",
+"reason": "UK100 SHORT is risk-off aligned with CRISIS regime. Diversifies from existing ETHUSD SHORT (crypto) and WTI LONG (energy). No correlation overlap. Book is profitable today (+$120) despite -$60 drawdown. Good risk/reward at 2.5."
+},
+"f20c652db5dd10ce17257227111ae0a8b7280e17": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification vs existing SHORT equity (ETHUSD) and energy (WTI). Despite CRISIS regime, portfolio is +$180 today with 0% drawdown. UK100 is not correlated to current positions. Good RR at 2.5."
+},
+"ae076308d6f8ee7b57e98626e0aefa9782d06e0a": {
+"action": "VETO",
+"reason": "Already SHORT ETHUSD (correlated crypto). Adding SHORT BTCUSD creates concentrated directional bet on same asset class in CRISIS regime. Two crypto shorts = redundant exposure, not diversification."
+},
+"12fdbd6dbdbb44d6dec4c74c40c0535104c1e3e2": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is safe-haven diversifier in CRISIS regime, uncorrelated to existing positions (ETHUSD SHORT, UK100 LONG, WTI LONG). No concentration risk, strengthens defensive posture."
+},
+"dcc6ed10bed829c2da5715f8bddb1ee63a32373d": {
+"action": "VETO",
+"reason": "CRISIS regime demands defensive posture. LONG US30 (risk-on equity) contradicts existing SHORT ETHUSD hedge and conflicts with safe-haven XAUUSD position. Already have UK100 LONG equity exposure. Avoid adding concentrated risk-on in crisis conditions."
+},
+"4f1c35f1e2c219c42b9933a3376482d2a43d8fd9": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on. ETHUSD SHORT already on; USTEC SHORT adds complementary US tech exposure without excessive duplication. Gold+UK100 long provide diversification. No drawdown pressure. Clean directional alignment."
+},
+"7ea72dbdbbd37cb5e52aad9d5c3de21c4e450869": {
+"action": "VETO",
+"reason": "CRISIS regime demands defensive posture. Already holding UK100 LONG (correlated equity index). Adding US30 LONG concentrates risk-on exposure when regime warrants risk-off. Book in drawdown. Preserve capital."
+},
+"85cbf2b3c18c5577314c57002fc690f78a9bebd4": {
+"action": "VETO",
+"reason": "CRISIS regime demands defensive posture. UK100 is risk-on equity despite flag=false. Already hold 2 longs (WTI+XAU). Adding third long creates unidirectional concentration. XAU is proper safe-haven, WTI ambiguous in crisis. Preserve capital."
+},
+"48c2ce6bc6d3df4e3ca6c5ad51ad93bb7d7a22c2": {
+"action": "VETO",
+"reason": "CRISIS regime flagged; US30 is risk-on equity exposure inappropriate in crisis conditions. Already hold WTI (risk-on energy) + XAUUSD (safe haven). Adding long US30 concentrates risk-on bet in wrong regime. Preserve capital."
+},
+"9f12a0e61b93b6ee1c804cca44226a2d60fe4296": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on exposure. ETH SHORT diversifies away from WTI LONG (energy vs crypto, opposite sentiment). No correlation conflict, no drawdown stress, good RR=2.5."
+},
+"f809e6ff169ecb7b410cb1df032278b53fdc4914": {
+"action": "VETO",
+"reason": "CRISIS regime + risk-on LONG US30 conflicts with defensive posture. Already have risk-on SHORT (ETH) which is correct for crisis. Adding long equity exposure contradicts regime-appropriate positioning."
+},
+"78861be32ee1f7fd899a50cadcce1ae61de9bb98": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours SHORT risk-on exposure. USTEC SHORT aligns with existing ETHUSD SHORT (both risk-off plays). WTI LONG is uncorrelated. No concentration risk, portfolio +$240 today. Approve."
+},
+"52dd4c97c2d64a061156de0964debd3b0e8a1556": {
+"action": "VETO",
+"reason": "CRISIS regime demands defensive posture. Already SHORT two risk-on assets (ETH, USTEC). Adding LONG US30 (also risk-on) creates conflicting directional exposure and concentrates portfolio risk during market stress. Maintain coherent SHORT risk-on bias."
+},
+"0a6a5b34fc3b2040b1a7878a20e3a8ffdcdd0495": {
+"action": "VETO",
+"reason": "Already SHORT ETHUSD + USTEC (2 risk-on shorts). Adding BTCUSD SHORT creates 3x correlated risk-on exposure in CRISIS regime\u2014overly concentrated bet on same directional move. Respect existing short correlation cluster."
+},
+"228d09ec9ae179a39c34eba58ab121b5af96a65a": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on. ETHUSD SHORT + USTEC SHORT = aligned bear positioning on correlated assets (good). WTI LONG diversifies. No drawdown concern. Clean setup."
+},
+"2ff49cbc1d59cd0fbbf1ebe7db9e5496fcf9b4cc": {
+"action": "VETO",
+"reason": "CRISIS regime + already -$40 drawdown + USTEC SHORT open = concentrated risk-on short exposure. BTC/USTEC ~0.8 correlated; adding BTC SHORT doubles down on same directional bet in fragile conditions. Protect capital."
+},
+"d9c8f90c18a9a633fd0f6d1a2f4deaad454e2703": {
+"action": "VETO",
+"reason": "CRISIS regime + already -$40 DD + ETHUSD/USTEC highly correlated risk-on shorts = concentrated bet. Book already has tech SHORT exposure via USTEC. Preserve capital."
+},
+"b45dfeb3882401c30e6416db7f18eeaa64258154": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours shorts. UK100 SHORT adds geographic diversification to existing USTEC SHORT without dangerous correlation overlap. Book +$40 today offsets -$40 drawdown. RR 2.5 acceptable."
+},
+"ba2225d40411fb1bc0a72311fb18677117ebc86d": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies geographically from USTEC SHORT in CRISIS regime; both defensive positions align with crisis playbook; drawdown manageable at -$60; diversifier not duplicative risk"
+},
+"bd6af8d2fc204c7c8ec6e2dae6af618fee94a2ac": {
+"action": "VETO",
+"reason": "CRISIS regime + existing drawdown (-$80) + ETHUSD LONG directly contradicts open USTEC SHORT (both are risk-on assets moving inversely). This creates conflicting exposure and violates concentration discipline in adverse conditions."
+},
+"d685d2d951df6b23a6d4df34eababf63a9aa7bd9": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies from USTEC SHORT (different geography), aligns with CRISIS regime, and modest drawdown still allows defensive positioning"
+},
+"c5492f36b005ed710cf5191cef76f5406522c350": {
+"action": "VETO",
+"reason": "CRISIS regime + book at -$100 DD + UK100 LONG contradicts existing USTEC SHORT (both equity indices, opposing directions). Risk-on long in crisis adds conflicting exposure while already down."
+},
+"c6340ee0451643899ed4f56b0bffbedd68b258af": {
+"action": "APPROVE",
+"reason": "CRISIS regime favours defensive diversification. BRENT LONG complements existing USTEC SHORT (both anti-risk-on). Energy uncorrelated to tech shorts. Modest drawdown allows prudent addition."
+},
+"6cbe243b5b36deed29d61e777f904ba557c3b293": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies from USTEC SHORT in CRISIS regime; gold typically rallies in crisis but signal suggests technical reversal; solid 2.5 RR; limited correlation risk"
+},
+"b3e03f84abca8be718f3e75bc75bc6c569406529": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports SHORT US30. Already SHORT USTEC (correlated), but both are risk-off directionally aligned with regime. XAUUSD SHORT is questionable but separate decision. Not over-concentrated given context."
+},
+"ec2f2502a4ca056204b3fc7d940a312b4d841fc2": {
+"action": "VETO",
+"reason": "CRISIS regime with -12% drawdown. Already short 2 US indices (correct positioning); adding LONG UK100 creates conflicting exposure to correlated equity indices. Maintain coherent defensive posture."
+},
+"9b7eeb52f0d63c3f395f6a4976ab40e98a4364da": {
+"action": "VETO",
+"reason": "CRISIS regime + meaningful drawdown (-$120 book, -$60 today). Already short 2 correlated risk-on indices (US30, USTEC) providing defensiveness. Adding LONG energy in crisis introduces new directional risk when book needs protection. XAUUSD short is concerning but adding uncorrelated oil long doesn't hedge it\u2014better to preserve capital and wait for regime stabilization."
+},
+"6af591024aac2bd7b137be2c8a0ded09357713a0": {
+"action": "VETO",
+"reason": "CRISIS regime + meaningful drawdown (-$120 book, -$60 today). Already short 2 correlated US indices (defensively positioned). Adding LONG energy creates conflicting exposure (energy often correlates with risk-on in recovery). XAUUSD SHORT is concerning in crisis but adding uncorrelated energy long doesn't fix that\u2014creates confusion. Preserve capital, stay defensive."
+},
+"8fa7a9b8af29416d54e1fe759856014a761849b6": {
+"action": "VETO",
+"reason": "CRISIS regime + already holding 2 correlated risk-on shorts (US30, USTEC). Adding ETHUSD SHORT creates triple concentration in same directional bet. Book at -12% DD, today -6%. XAUUSD SHORT is contrarian (safe haven should rally in crisis). Preserve capital, avoid over-concentration."
+},
+"9f5d370e1968386013a13382da489318c14f5d11": {
+"action": "APPROVE",
+"reason": "SHORT US30 in CRISIS regime is counter-cyclical (defensive). No open positions, no concentration risk, book in profit today. Clean risk allocation."
+},
+"74789c3514974e58afab96e5b8e4e353ab0c8087": {
+"action": "APPROVE",
+"reason": "CRISIS regime: WTI LONG diversifies existing US30 SHORT (both defensively positioned). Energy not correlated to equity short. No drawdown. Book +$80 today. Clean risk."
+},
+"c0ebfd0929f68b53c9796b8edf2417d0f22b8958": {
+"action": "APPROVE",
+"reason": "CRISIS regime favors SHORT risk-on exposure. ETHUSD SHORT aligns with existing US30 SHORT (both betting against risk assets). WTI LONG is non-correlated diversifier. No concentration risk, book is profitable today (+$80). Good diversified defensive positioning."
+},
+"3536c14b6c0fce88a7d33b1cf082a7b60d218107": {
+"action": "VETO",
+"reason": "BRENT/WTI are 0.95 correlated\u2014already LONG WTI_N6, adding BRENT doubles energy exposure in CRISIS regime with no diversification benefit"
+},
+"d23510a792050dd8192e24e9bf310e2d9e34c6e4": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT is counter-trend to risk-on in CRISIS regime; diversifies WTI_N6 LONG (energy vs crypto); solid 2.5 RR; book DD manageable at -$40"
+},
+"834b73328cac0a23df70da6ccec2138654670a74": {
+"action": "APPROVE",
+"reason": "CRISIS regime supports defensive shorts. UK100 SHORT diversifies from existing ETHUSD SHORT (different asset class). Moderate drawdown. Good RR=2.5. No concentration risk."
+},
+"0e5c161a5757e7df77f7fad0643f0e2eeecc68f9": {
+"action": "APPROVE",
+"reason": "UK100 SHORT aligns with CRISIS regime; no open positions means zero concentration risk; signal offers 2.5 RR; drawdown modest at -$80; defensively positioned trade"
+},
+"a9b36e40637ca950f3a1daa57a3452c88235730e": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in drawdown (-$100, -$60 today). UK100 LONG is risk-on equity exposure despite flag=false. Preserve capital in crisis conditions."
+},
+"f983397615c58e34a4571758acc19e61b179925b": {
+"action": "VETO",
+"reason": "CRISIS regime + book already down $100 + shorting safe-haven gold (XAUUSD) in crisis is contrarian and adds directional risk when capital preservation is priority. No open positions to diversify against."
+},
+"cd0740692b3457cc2740488e799c1a2fb56cb3bb": {
+"action": "VETO",
+"reason": "CRISIS regime + book already in drawdown (-$100, -$60 today). ETHUSD is risk-on crypto; defensive posture required."
+},
+"2cabde56b2422f5d708216977715c2accb4cb9d4": {
+"action": "APPROVE",
+"reason": "First position of the day, BULL regime, clean book, acceptable daily drawdown, no correlation conflicts"
+},
+"4ee68f2485c81fcc6440c4431b56d9795717bb7e": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies empty book, BULL regime supports risk, -$80 drawdown manageable, 2.5 RR acceptable"
+},
+"027f5a17b6c3407e340ad3e1beedf3a25f6b2729": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions to correlate with, clean slate opportunity, moderate drawdown acceptable in bull market, 2.0 RR favourable"
+},
+"fa7d17350961eb6b080867e1faf417c87c3601e5": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to US30 LONG; both indices but different markets. BULL regime supports risk-on. Drawdown moderate (-$80/-$40). RR 2.5 acceptable."
+},
+"0541e4eed6c81558e8908e3d18b41f76c9dcaead": {
+"action": "REDUCE_50",
+"reason": "UK100 already LONG (correlated equity index). US30 adds directional overlap. BULL regime supports risk-on but modest drawdown (-$40) warrants prudent sizing. Reduce to avoid concentration while still capturing upside."
+},
+"30bd19ebcdc47525fa9ce71e9661fa77fb64c5a6": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG diversifies existing UK100 LONG (safe haven vs equity). BULL regime supports both. Minimal drawdown (-$40). Strong RR=2.5. No correlation risk."
+},
+"f658c014e92c477e2fa0d167696f8d3f2be86e9f": {
+"action": "APPROVE",
+"reason": "BULL regime, modest drawdown, UK100+US500 correlation exists but XAUUSD provides diversification; not overconcentrated with only 2 equity longs"
+},
+"d7d98a7c0632e0c797aedc2b82659cf39dabe832": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but already holding 2 correlated equity longs (UK100, US500). Adding USTEC creates 3-way concentrated equity exposure. REDUCE to participate while managing correlation risk."
+},
+"d9003ea452c17b86073b95acbbfd47b0050c4320": {
+"action": "APPROVE",
+"reason": "WTI SHORT diversifies against 3 correlated risk-on LONG indices. Gold LONG already provides hedge. Energy short adds uncorrelated exposure in BULL regime. Drawdown modest at -$40."
+},
+"a99c2baa8857898a90fc77c576b42fd2e3852f5c": {
+"action": "VETO",
+"reason": "WTI_N6 SHORT already open; BRENT ~0.95 correlated\u2014duplicate energy short. Three risk-on longs (UK100/US500/USTEC) provide diversification. No need to double energy exposure."
+},
+"7f2d41f2167f7c59c9f3db291f36cb110236cb5e": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG adds to existing USTEC LONG = doubled risk-on exposure in same direction. BULL regime supports participation but concentration warrants size reduction. WTI SHORT provides some diversification."
+},
+"39a5bc0fc7a4ecb39fd2c57db8ad10e28691729c": {
+"action": "REDUCE_50",
+"reason": "Already holding 2 correlated risk-on longs (BTC+USTEC). Adding full ETHUSD creates triple crypto+tech concentration. Bull regime supports exposure but prudent to take 50% to manage correlation risk."
+},
+"ceac8ba9753d442b38073c6f2af3369c780210c4": {
+"action": "REDUCE_50",
+"reason": "Already holding 3 correlated LONG risk-on positions (BTC, ETH, USTEC). US30 adds 4th correlated equity index exposure. BULL regime supports risk-on but concentration is high. Reduce to limit overexposure while still participating."
+},
+"ca22dffcbb005ab72fee0981fd28a6da8ab9fd68": {
+"action": "APPROVE",
+"reason": "UK100 SHORT provides diversification against existing BTCUSD LONG in BULL regime; minimal drawdown, small profit today, no concentration risk"
+},
+"5adb668d157b1037632325a1094d12c1660674bc": {
+"action": "APPROVE",
+"reason": "Energy SHORT diversifies existing BTCUSD LONG (risk-on). Different asset classes, low correlation. Drawdown minimal at -$40. BULL regime supports selective exposure. RR 3.0 attractive."
+},
+"86006dfb24fdf4bf57c467304c69981483968ef3": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies the book: offsets BTCUSD LONG (risk-on), uncorrelated to BRENT SHORT. Drawdown modest, RR solid at 2.5. No concentration risk."
+},
+"f6c55f39b355a7fa09500141cc1b313ff5a73299": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG already open. ETHUSD highly correlated (~0.85+) to BTC. Both risk-on crypto = concentrated directional bet. BULL regime supports exposure but full size doubles crypto concentration. Reduce to 50% for diversification."
+},
+"63c4ab947eec4a9551db5a55298cdd24416f8b9e": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification to existing crypto risk-on positions. BULL regime supports risk-on exposure. Drawdown minimal at -$40. RR 2.5 acceptable. Geographic/asset class diversification vs BTC/ETH."
+},
+"afce4a7b40fba63caae10874cd51417bc9e36f92": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies vs 2 LONG risk-on positions (BTC, UK100). Gold typically inverse to risk appetite in BULL regime. Modest drawdown (-$40) allows room. Good RR 2.5."
+},
+"089ac3be6cac9e3bcc62bfee533a89d9291c5bcb": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification: negatively correlated to existing BTCUSD LONG (risk-on), offsets concentration. Gold SHORT already hedges risk-on exposure. Drawdown modest, regime BULL allows selective contrarian plays. RR 2.5:1 acceptable."
+},
+"a34ccb2abda9b852018ac94e343ec619434340f8": {
+"action": "VETO",
+"reason": "US30 SHORT directly conflicts with existing BTCUSD LONG (both risk-on assets). In BULL regime with book already -$60 DD, adding opposing risk-on exposure creates whipsaw risk rather than true diversification. UK100 SHORT already provides equity short exposure."
+},
+"e33f62a6bb423c3684c82728965da7bb16af82be": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, minimal drawdown (-$40), US500 LONG 2.0 RR offers clean directional exposure with no correlation conflict"
+},
+"460ba3db8ce7106dd13bb211857161c07010a519": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime directly conflicts with existing LONG US500 (both risk-on). Creates opposing exposure that cancels edge rather than diversifying. Book already -$40 DD."
+},
+"f1dab04c7389b3fc89c63a2476dae217f912abff": {
+"action": "VETO",
+"reason": "US30 LONG duplicates existing US500 LONG \u2014 both risk-on US indices, highly correlated. One US equity index exposure is sufficient in current position."
+},
+"c01fb01c3a2a81b989ea8d0154dfb4920698ea2b": {
+"action": "APPROVE",
+"reason": "BRENT diversifies US500 LONG; energy uncorrelated to equity; BULL regime supports; drawdown minimal at -$40; good RR=3.0"
+},
+"df73de32606d6d878c078517cc5674839e95b94c": {
+"action": "APPROVE",
+"reason": "US30 SHORT diversifies away from BRENT_N6 LONG (energy vs equity); drawdown modest; regime BULL but SHORT adds hedge; no concentrated directional risk"
+},
+"cb8b65d1fcf0693e4b4d598f9b792afd7309d401": {
+"action": "APPROVE",
+"reason": "US30 SHORT diversifies against BRENT LONG (energy/equity negative correlation). BULL regime supports selective shorts. Drawdown moderate, not crisis-level."
+},
+"289249568d96dd55d9b8361b6065de86f6cd1943": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime with book already -$120 DD and -$80 today. Contrarian fade in wrong regime risks deepening drawdown. No open positions to diversify against."
+},
+"069cca3ed791f73b32436e3af5af9e7d407ef9fa": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, single crypto exposure, acceptable drawdown, solid RR 2.5"
+},
+"4f9bf68dfa35d949cfa10736ba92fa7f32f3832e": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing ETHUSD. Not risk-on correlated, drawdown minimal, BULL regime supports multiple positions, RR attractive at 2.5"
+},
+"c8c720d78a3710a4457a92fb3b1026f4cf9e02e8": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing ETHUSD. Not correlated risk-on duplication. BULL regime supports risk. Drawdown manageable. RR 2.5 favorable."
+},
+"ed9605a12c1bd1394caa4775a3198291a3a49994": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds geographic diversification to existing ETHUSD LONG. Not correlated risk-on cluster. Drawdown moderate, regime BULL, good RR 2.5."
+},
+"abeaa28972ca8d1da0394705699aeb5bf49b608a": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies from ETHUSD (different asset class, not risk-on correlated). BULL regime supports equity exposure. Drawdown modest, not critical."
+},
+"4d553940c19e7f0497a37165117989cd0c53eeed": {
+"action": "APPROVE",
+"reason": "UK100 SHORT is uncorrelated to empty book, provides diversification. Moderate drawdown (-2.2%) acceptable in BULL regime. Single position, no concentration risk."
+},
+"b982c6c059516d2460913ddbd82bdd371d0b34b5": {
+"action": "VETO",
+"reason": "BULL regime favours risk-on longs, not shorts. Already holding UK100 SHORT (equity index short). Adding ETHUSD SHORT doubles down on anti-risk-on exposure in wrong regime. Book already -220 DD, -100 today. Misaligned with regime."
+},
+"0149c0c02384f614294459a7ed40afc6a7ab88ab": {
+"action": "APPROVE",
+"reason": "Energy SHORT adds diversification to existing UK100 SHORT; oil uncorrelated to FTSE, moderate drawdown allows selective adds, RR 3.0 attractive"
+},
+"0cd49e1032cb1f5a10bf09dd0d7f137c945a9e07": {
+"action": "VETO",
+"reason": "Already SHORT WTI_N6 (0.95 corr to BRENT). Adding BRENT SHORT doubles energy exposure with no diversification. Book in drawdown (-220) demands selectivity, not duplication."
+},
+"e863a5e166ad703ba9abb26a697f13ad7c2984b9": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT adds diversification to existing UK100/WTI shorts. Gold is non-correlated safe haven, distinct from equity/energy. Drawdown -220 (~22%) warrants caution but not paralysis. BULL regime supports tactical short if setup strong. RR 2.5 acceptable. No concentrated duplication."
+},
+"6f82d933d38e9ae98eeee1bd61d71453c9e0f34d": {
+"action": "VETO",
+"reason": "BULL regime: shorting 4th risk-on/equity name (US30+UK100) adds concentrated directional exposure against trend. Already -$220 DD, -$100 today. Preserve capital."
+},
+"6af0ef9042a2e7a963a64bec4fec3b7a85fcb256": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG adds equity exposure but diversifies away from existing SHORT-only book (UK100/WTI/XAU). No correlated longs open. Drawdown moderate, not crisis-level."
+},
+"1f3f292d9c9a44ca8a1be713c1847ec96723cae3": {
+"action": "REDUCE_50",
+"reason": "Already holding correlated US30 LONG (risk-on equity). Adding full USTEC LONG creates concentrated US index exposure. Book in drawdown (-$200, -$100 today). REDUCE to limit correlation risk while allowing partial participation in BULL regime."
+},
+"83d6c46f3046c16ebab49f4fcd8e51b87a781a9d": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification: offsets USTEC LONG (risk-on), uncorrelated to WTI/XAU. BULL regime tolerates mix. DD moderate. Good RR 2.5."
+},
+"c8af994586dce4b43e6b19815506e6fe5b11e85b": {
+"action": "VETO",
+"reason": "ETHUSD SHORT conflicts with existing USTEC LONG in BULL regime\u2014creates offsetting risk-on exposure. UK100 SHORT already provides equity short exposure. Redundant and non-directional bet."
+},
+"107a69e30e64c6dc43f8900aa6b90e51a5a7b1b0": {
+"action": "REDUCE_50",
+"reason": "Already long USTEC (risk-on US equity). US30+USTEC = concentrated correlated exposure. BULL regime allows some risk-on but trim duplication. XAUUSD short adds risk-on tilt. Reduce US30 to 50% for diversification."
+},
+"0bc2881098a3fe920a491c729d20cb89d803465f": {
+"action": "APPROVE",
+"reason": "WTI SHORT is uncorrelated to existing US index longs, adds diversification in BULL regime, book in profit today despite small DD"
+},
+"ff8984c22bd0351c86bf0ce9c826e487e6bf553f": {
+"action": "VETO",
+"reason": "WTI_N6 SHORT already open; BRENT ~0.95 correlated = duplicate energy short exposure. No diversification benefit."
+},
+"77548b926a1dc2e367155cae66cf2629197464c8": {
+"action": "APPROVE",
+"reason": "ETH SHORT adds diversification vs WTI SHORT (crypto\u2260energy), regime is BULL but no concentration risk, zero drawdown, acceptable RR 2.5"
+},
+"ef4d2356b2d16fed3baf15b8d85a430a6acacf23": {
+"action": "APPROVE",
+"reason": "ETHUSD SHORT diversifies from WTI SHORT (energy vs crypto); no correlation, no concentration, zero drawdown, regime is BULL but short exposure is balanced, book is profitable today"
+},
+"8fc5b3fe148269c97a51e1ae9ee032c7b9565334": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. ETHUSD LONG diversifies against existing WTI SHORT (uncorrelated). Drawdown minimal at -$40. RR 2.5 acceptable. No concentration risk."
+},
+"4895aa4739b5ef4c9a5d41706af22f9a7340b573": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but BTCUSD+ETHUSD LONG = concentrated crypto correlation. Book already -$40 DD. Approve half exposure for diversification while managing concentration risk."
+},
+"2d3f7a6997089f98e9fa1a66104a9c7c62a68011": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. ETHUSD SHORT contradicts regime. Already in drawdown (-$40). Avoid adding counter-trend crypto short."
+},
+"b42308af8edf95a588e3104b002dd8965ae9265c": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. BTCUSD LONG uncorrelated with existing WTI SHORT (diversifying). Drawdown minimal at -$40. RR 2.5:1 acceptable."
+},
+"c25c0e0c4c6989685d226e1a8044ca0a4730878a": {
+"action": "REDUCE_50",
+"reason": "BTCUSD:LONG already open\u2014adding ETHUSD:LONG creates concentrated crypto risk-on exposure. BULL regime supports directional trade but half-size maintains diversification given correlation ~0.85+ between BTC/ETH."
+},
+"3990f83379c5c2283582e247625e2e80afd8fe5b": {
+"action": "VETO",
+"reason": "BRENT and WTI are ~0.95 correlated. Already SHORT WTI_N6; adding SHORT BRENT creates duplicate energy exposure with no diversification benefit."
+},
+"c4a7c56a3809c44e9d083d697fe4ad522d056ab1": {
+"action": "REDUCE_50",
+"reason": "Already long BTC+ETH (correlated risk-on). Adding US30 LONG creates 3x same-direction exposure in BULL regime. Book at -$40 DD warrants caution on concentration despite favorable regime."
+},
+"7965e8234ca48a3a826629dfdd04b7ad98020fdc": {
+"action": "REDUCE_50",
+"reason": "Already holding 2 correlated risk-on longs (BTC+ETH). US30 adds 3rd leg same direction in BULL regime, but book is -$40 DD and -$20 today. Approve half size to avoid overconcentration while regime supportive."
+},
+"7f3b28e49194a485923b37975394527d5732d00c": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG diversifies risk-on crypto exposure; safe-haven in minor drawdown; good RR=2.5"
+},
+"19160914f1ff606c2e4add89a9a7a1c53dfd272c": {
+"action": "REDUCE_50",
+"reason": "Already holding 2 correlated risk-on longs (BTC+ETH). US30 adds third directional bet in same cluster. BULL regime permits exposure but concentration warrants half-size to manage correlation risk."
+},
+"514b1194a14518b2fad4055d99db9ebbb5c835d6": {
+"action": "REDUCE_50",
+"reason": "WTI_N6 SHORT already open; BRENT highly correlated (~0.95). Doubling energy short in BULL regime concentrates bearish energy bet. Reduce to half size for diversification."
+},
+"ce2c16443038b52d81a05bddb066ba7dc9e2b696": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds 4th correlated risk-on position (BTC/ETH/US30). Energy shorts provide some hedge. Reduce US30 to avoid over-concentration while maintaining diversified exposure."
+},
+"92b46e34ddc0bcabd51ede885462a65b37c09a24": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but already hold BTCUSD:LONG (correlated). Adding full USTEC would concentrate tech exposure. Gold hedge in place. Reduce to avoid duplication while capturing opportunity."
+},
+"bd32e391fdc8e5bc0356bf2dff8732581d3fb88e": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds third correlated equity index position (alongside BTCUSD, USTEC). Book already -$20 DD. Reduce to limit concentration while capturing directional alignment."
+},
+"5ac9c2c262f3854bd0360edaff167614a6c00f23": {
+"action": "REDUCE_50",
+"reason": "Already long 2 correlated risk-on assets (BTCUSD+USTEC). Adding full ETHUSD creates 3-way concentrated crypto/tech exposure. BULL regime supports risk-on but trim duplication. XAUUSD diversifies, WTI uncorrelated. Reduce to manage concentration."
+},
+"0cdc94b8f1589b6a3b0e195999b06e63c51a762c": {
+"action": "VETO",
+"reason": "SHORT risk-on asset in BULL regime contradicts regime direction; book already recovering from -$40 drawdown; safer to avoid counter-trend crypto short"
+},
+"ede49deb3767ce28a8c60a297d9d8a74a8aa948d": {
+"action": "APPROVE",
+"reason": "No open positions, modest drawdown offset by today's profit, SHORT crypto adds contrarian diversification in BULL regime, RR 2.5 acceptable"
+},
+"77a4536efcb40b9beb11c75acc6d9d581b05db86": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies away from single ETHUSD SHORT; not correlated, manageable drawdown, decent RR in BULL regime"
+},
+"1100e201e2aabfe32a977017f1f125dbe128a88b": {
+"action": "APPROVE",
+"reason": "UK100 LONG uncorrelated to empty book, BULL regime supports risk, modest DD offset by positive daily P&L, diversifier welcome"
+},
+"715d16bd923518eb25a766ab7c4d5f8274c55806": {
+"action": "APPROVE",
+"reason": "ETH SHORT diversifies UK100 LONG (different asset class), book in profit +$40 offsets -$40 DD, RR 2.5 acceptable, single crypto position not concentrated"
+},
+"d144d4412268171d345b2165d62bbe288f8b8ad9": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies existing UK100 LONG (risk-on). Gold is uncorrelated safe-haven asset. Modest drawdown (-$60), positive daily P&L (+$20), and 2.5 RR justifies position."
+},
+"d44c70dfe36c279609752e8f7c1821f173a6211d": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with UK100 LONG (both equity indices, opposing directions). In BULL regime, shorting risk-on asset against existing long equity creates whipsaw risk. Portfolio coherence trumps individual signal."
+},
+"4e4c633926a629f903163bf3f404816d6b96f550": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but UK100:LONG already provides equity exposure. USTEC adds correlated risk-on concentration. REDUCE_50 allows participation while managing joint equity exposure."
+},
+"e7ae2a02884ccf9c045820623b2aab489f3377bd": {
+"action": "VETO",
+"reason": "US500 SHORT directly opposes existing USTEC LONG (both US equity indices, highly correlated). This creates hedged/conflicting exposure in a BULL regime where both risk-on signals should align. Net position would be unclear and fee-inefficient."
+},
+"d24c476e111caa9512212f020afe15da505df525": {
+"action": "REDUCE_50",
+"reason": "UK100 LONG adds correlated risk-on exposure alongside existing USTEC LONG in BULL regime. Book at -$80 drawdown warrants modest caution. XAUUSD SHORT is counter-hedging (selling safe-haven). Approve directional thesis but reduce size to limit concentration in equity indices."
+},
+"cbdbce2f287a716cc0a535e0f8df96c5268eb697": {
+"action": "REDUCE_50",
+"reason": "Already holding 2 correlated risk-on longs (UK100, USTEC). Adding full ETHUSD creates 3-way concentrated tech/risk-on exposure. BULL regime supports participation but at reduced size to manage correlation risk."
+},
+"167f4d44e75dbeb01d3ea910b0a2418d1f773fc7": {
+"action": "VETO",
+"reason": "US30 SHORT contradicts existing LONG exposure in correlated risk-on assets (ETHUSD, USTEC, UK100) during BULL regime. This creates hedged conflict rather than diversification\u2014reduces net directional edge while maintaining correlation risk."
+},
+"9e9505dfea4e14b74f8c1fe81e4ac96a9951b3c5": {
+"action": "VETO",
+"reason": "BULL regime with 3 LONG risk-on positions (ETHUSD, UK100, USTEC). Adding SHORT BTCUSD creates internal conflict and whipsaw risk\u2014opposing a correlated asset (ETHUSD LONG vs BTCUSD SHORT). Book already -$80 DD. Preserve capital; avoid hedging our own winners."
+},
+"62763eb88e974c74f2cf9b8c1fe406ba15d6af9d": {
+"action": "VETO",
+"reason": "SHORT US30 directly opposes LONG ETHUSD (both risk-on). In BULL regime, contradictory directional bets on correlated assets create whipsaw risk without genuine diversification. Keep the existing ETH long aligned with regime."
+},
+"4999f5763156c3ffe5d6166c03af118fb0d6f218": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with BULL regime (risk-on short in rising market). Already holding XAUUSD SHORT (safe-haven short = bullish bet). US30 SHORT adds bearish exposure against regime consensus. Conflicting directional bets create whipsaw risk rather than diversification."
+},
+"c318a6be82546c81766b718109d7392fa429268e": {
+"action": "VETO",
+"reason": "BULL regime: shorting correlated crypto pair (BTC+ETH SHORT) = concentrated directional bet against trend. Already have ETHUSD SHORT; adding BTCUSD SHORT doubles anti-regime exposure without diversification benefit."
+},
+"d4b5945d164dfa3661965a7e45e8faccbbd9e1f6": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to existing ETHUSD SHORT; not correlated risk-on duplication, zero drawdown, acceptable in BULL regime"
+},
+"6912e8568d67fac1879c2423a62c83379192b30b": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic/sector diversification to existing ETHUSD SHORT. Different asset classes, not concentrated. Drawdown moderate, regime bull but both shorts hedge risk-on longs elsewhere. RR 2.5 acceptable."
+},
+"0113027e50cc275fe4fea19202cbc95bf6e62a04": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic diversification to ETHUSD SHORT; no correlated risk-on concentration, small profit cushion, acceptable RR 2.5"
+},
+"5d70fdd539e53d8bc9f8b9205d812b322a0de70a": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT adds diversification to UK100 SHORT. Gold is safe-haven (non-correlated to FTSE), regime is BULL (favors risk-on, pressures gold), drawdown minimal at -$20, good RR 2.5. No concentration risk."
+},
+"409e6ddcc16c9e17dd6b627c4552a9836f97e6c8": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies away from existing XAUUSD SHORT (safe-haven short is contrarian to risk-on). Drawdown -$40 is modest (~4%). No correlated duplicates open. RR 2.0 acceptable."
+},
+"3dc708e7f53ede945f55f94ee51cdd5993dbf740": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversified equity exposure outside US indices. Only 1 US equity (US30) open. XAUUSD SHORT is contra-safe-haven. Drawdown modest, regime BULL, RR solid at 2.5. Not concentrated."
+},
+"06240649706c914fb8ffe2698e014c48abafbaf6": {
+"action": "APPROVE",
+"reason": "Clean book, no concentration risk, energy short in bull regime provides diversification, manageable drawdown"
+},
+"74d54ac5a362b3a6361928487e055e7f26012a88": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification to existing BRENT SHORT; low correlation, BULL regime supports risk-on, minimal drawdown, good RR=2.5"
+},
+"6da24ca0f407a6fb7f7e7f87d6e212d6393f9bc5": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. ETHUSD SHORT conflicts with regime. Already in drawdown (-$80 book, -$20 today). Preserve capital."
+},
+"5b873e9e865d5361c7eecc89a98f48b6254c89fd": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification to existing BRENT SHORT; non-correlated pair, BULL regime supports risk-on, drawdown modest, good RR=2.5"
+},
+"d65677bf386a6a2ef462ff1326b017ba4f0615c2": {
+"action": "VETO",
+"reason": "US30 SHORT conflicts with UK100 LONG in BULL regime\u2014both equity indices, opposing directions creates hedged exposure with minimal edge. Book already profitable today (+$40), preserve gains rather than add conflicting risk-on position."
+},
+"9d13e8bf718e3cdc493f0e975e88678c618ab688": {
+"action": "APPROVE",
+"reason": "No open positions, diversifier asset, manageable drawdown, acceptable RR despite counter-regime direction"
+},
+"136113304f8da0274ae6325d5d3e425a7eafe681": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies from existing XAUUSD SHORT (safe-haven short aligns with risk-on). Book DD minimal at -$40. No correlated duplication."
+},
+"516d8a5220289d7367213d28c87ba659e2370bc0": {
+"action": "APPROVE",
+"reason": "WTI SHORT adds diversification to existing XAUUSD SHORT; energy uncorrelated to gold, no concentration risk, drawdown minimal at -$60, BULL regime supports selective shorts with 3.0 RR"
+},
+"614b36d16a844bc787fde03f9b9f58063265a0a5": {
+"action": "VETO",
+"reason": "WTI_N6:SHORT already open\u2014BRENT is 0.95 correlated. This is a duplicate energy short, not diversification. XAUUSD:SHORT also shows defensiveness; adding another correlated short concentrates the anti-BULL bet excessively."
+},
+"b54a63f36c5bd3c6773d440820b3a53fd4393e12": {
+"action": "VETO",
+"reason": "BULL regime favours risk-on longs, not shorts. ETHUSD SHORT conflicts with regime. Already holding XAUUSD SHORT (safe-haven short in bull = contrarian risk). Adding crypto short increases wrong-way exposure."
+},
+"4da3aa01ebadd4ec39fc97065b95f56d0e5ad17e": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies from existing SHORT positions (WTI energy, XAU safe-haven). No correlation conflict. Drawdown -$60 is minimal. Good RR=2.0."
+},
+"053931ea816fc2e029b366722c340eb75ee79198": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies existing SHORT positions (WTI, XAUUSD). No correlation conflict. Drawdown moderate, manageable risk."
+},
+"120a75f57d5f5b1b3fa2a103cef9a93dcd6372cd": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. BTCUSD SHORT adds concentrated directional bet against market trend. Already holding 2 shorts (WTI, XAUUSD); adding third SHORT in risk-on asset during BULL creates excessive bearish concentration misaligned with regime."
+},
+"cf211b1cf8036cddfc3e331d5f79a8dc85b17a86": {
+"action": "APPROVE",
+"reason": "UK100 SHORT uncorrelated to risk-on, no open positions, modest drawdown, acceptable RR 2.5"
+},
+"c69a728e71d924487bfb6c21a8180aa00249e7a6": {
+"action": "APPROVE",
+"reason": "First position of the day, no existing exposure, energy diversifies portfolio, BULL regime supports risk, minimal drawdown, strong RR 3.0"
+},
+"8c09bff9af18714dbe814eb0ed2b5f82937d6b7e": {
+"action": "APPROVE",
+"reason": "UK100 SHORT diversifies from BRENT_N6 LONG (different asset class), minimal drawdown, good RR=2.5, acceptable exposure in BULL regime"
+},
+"fa21efad9a95e0ed9ac11cad0cd5d39ab3c99a59": {
+"action": "APPROVE",
+"reason": "No open positions, single crypto short in bull regime offers diversification; drawdown manageable at -12% of account; decent 2.5 RR justifies the contrarian trade"
+},
+"15857e46dee4c7e14ea90547b61ce8c3b3cb9c92": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds geographic/sector diversification to existing ETHUSD SHORT. Different markets, modest drawdown, acceptable in BULL regime with RR=2.5."
+},
+"de13853ccb3788cebb7f2173e333796cdc4a3610": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT diversifies from ETHUSD SHORT (gold safe-haven vs risk-on crypto). Book drawdown -140 manageable, not crisis level. Good RR 2.5, non-correlated pair reduces concentration risk."
+},
+"925496a9f914148819cb9090a34390b915d36093": {
+"action": "APPROVE",
+"reason": "UK100 SHORT adds diversification: uncorrelated to existing ETHUSD SHORT, offsets risk-on XAUUSD SHORT position. Drawdown moderate, RR favorable at 2.5, total exposure remains manageable."
+},
+"ab7401ad017a0b1034205e06f6b130da909bcc1a": {
+"action": "VETO",
+"reason": "BULL regime + already SHORT 2 risk-on assets (ETHUSD, UK100). Adding BTCUSD SHORT creates triple correlated SHORT exposure against the trend. Book is -$180 DD, -$80 today. Avoid compounding directional risk."
+},
+"b7c818dcf996454a512c4fe9661432a9272b36e9": {
+"action": "VETO",
+"reason": "Already SHORT ETHUSD (correlated risk-on). BULL regime + existing drawdown (-180) + adding 3rd SHORT on risk-on assets = over-concentrated contrarian bet. Veto duplicate exposure."
+},
+"40962a2c4392fbdc7eef4444b75903510ed794d3": {
+"action": "VETO",
+"reason": "Already short ETHUSD (risk-on). Adding US30 SHORT creates concentrated anti-BULL bet with 3 correlated shorts in BULL regime while book is -180 DD. Regime mismatch + concentration risk."
+},
+"c9d2da6788f6eb4b442fcc4eb6f64aa32ff8c49b": {
+"action": "VETO",
+"reason": "Already SHORT ETHUSD (risk-on). Adding SHORT US30 = 2 correlated risk-on shorts in BULL regime with book at -12% drawdown. Concentrated wrong-way bet."
+},
+"14c30c177e118f09e423859530fdd0f25aeb6415": {
+"action": "APPROVE",
+"reason": "XAUUSD SHORT adds uncorrelated diversification to existing SHORT positions in risk-on assets (ETH, UK100). Gold is safe-haven; shorting it aligns with BULL regime. No concentration risk, drawdown manageable, good RR=2.5."
+},
+"241d70592b9438ac5bbf05b587ab7b092c9339d3": {
+"action": "REDUCE_50",
+"reason": "US30 SHORT adds to existing ETHUSD SHORT (both risk-on). Book already -$160 DD in BULL regime. Reduce concentration but allow diversification across crypto/equity."
+},
+"0a09dadf75bc2c3605980c9991521f97aceaca81": {
+"action": "APPROVE",
+"reason": "WTI_N6 LONG diversifies existing SHORT exposure in risk-on names (ETHUSD, US30). Energy is non-correlated to crypto/indices. RR=3.0 acceptable. Drawdown moderate, not crisis level. BULL regime supports modest risk."
+},
+"dd2d73358f1c6ed11e820db14197bcd38f4e0045": {
+"action": "VETO",
+"reason": "WTI_N6:LONG already open; BRENT SHORT creates hedged/conflicting energy exposure (0.95 correlation). Adds complexity without clear directional conviction in energy sector."
+},
+"e788d9aa886f16ea8b097a211a4df6475b5aa9de": {
+"action": "APPROVE",
+"reason": "No open positions, minimal drawdown (-$100), SHORT in BULL regime provides counter-trend diversification, decent 2.0 RR, no concentration risk"
+},
+"f4dd63b85b35bdd889a2d276b3d26bdc83a1e0fb": {
+"action": "APPROVE",
+"reason": "Clean book, BULL regime, US30 alone not concentrated, acceptable drawdown levels"
+},
+"bb1fb688a12ce42ced8d54c98ff5f298cbf211cd": {
+"action": "VETO",
+"reason": "ETHUSD SHORT conflicts with US30 LONG (both risk-on assets). In BULL regime with existing drawdown, adding opposing directional exposure creates whipsaw risk rather than diversification. Wait for clearer directional alignment."
+},
+"7ec6185fc493823601733e784a0750e268d31fb1": {
+"action": "APPROVE",
+"reason": "No open positions, BULL regime, good RR 2.5, acceptable drawdown -$140. Clean slate allows full risk-on exposure."
+},
+"57194bfa7cec181c8fe78a31eaa7a84ce7c6c287": {
+"action": "APPROVE",
+"reason": "No open positions, ETHUSD SHORT provides diversification in BULL regime, drawdown manageable, 2.5 RR favorable"
+},
+"73cd8ff64e6601646d63d67448ba29601d0e4bb4": {
+"action": "APPROVE",
+"reason": "UK100 LONG diversifies away from existing ETHUSD SHORT. Different asset class, uncorrelated. Book drawdown moderate (-160), regime BULL supports cautious expansion. Good RR 2.5."
+},
+"2dc2798afd46b639d93be03747fe6c31ff76e0a3": {
+"action": "APPROVE",
+"reason": "UK100 LONG uncorrelated to other risk-on; no open positions; BULL regime supports directional exposure; drawdown modest"
+},
+"6be7eb8800c6845595197e77fb2410bc423effaa": {
+"action": "VETO",
+"reason": "SHORT crypto in BULL regime contradicts market direction; book already -$140 DD, risk asymmetry unfavorable"
+},
+"6c66954f963d5d0e26a473e84e2687986163efcf": {
+"action": "APPROVE",
+"reason": "UK100 LONG uncorrelated to existing exposure (none open), BULL regime supportive, drawdown manageable at -1.4%, good R:R 2.5, provides geographic diversification"
+},
+"ee8869cc22457740042f3337849ea1bd89c96c77": {
+"action": "VETO",
+"reason": "ETHUSD SHORT conflicts with existing UK100 LONG in BULL regime\u2014both are risk-on assets moving opposite directions, creating portfolio whipsaw risk. Book already -$140 DD. Avoid contradictory bets."
+},
+"8391874565d20ffeca7f00c4161c6b6155ef6593": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but US30 LONG adds to existing UK100 LONG (both equity indices, correlated). Book already -$140 DD. Reduce size to limit concentration while maintaining exposure."
+},
+"e624e21487554e641124511c04e8f415627a48ff": {
+"action": "APPROVE",
+"reason": "No open positions, modest drawdown, energy diversifier in BULL regime, good RR=3.0"
+},
+"c2f7a4e8c0c006e496c616f8c81631d9622ec48f": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. BTC SHORT conflicts with regime. Already in drawdown (-$100). Avoid counter-trend SHORT in risk-on asset during bullish conditions."
+},
+"beb4d7e826c405fe422cf80853490e5ac0b010ff": {
+"action": "APPROVE",
+"reason": "UK100 LONG adds diversification to existing WTI SHORT. Different asset classes, no correlation conflict, BULL regime supports risk-on, minimal drawdown, positive daily P&L."
+},
+"22816cb70db1f33d8db1c212c18218e8995d90e2": {
+"action": "REDUCE_50",
+"reason": "US30 LONG adds to existing UK100 LONG (both equity indices, correlated risk-on). BULL regime supports equities but concentration warrants size trim. WTI SHORT provides some offset."
+},
+"b6a0cb2b4af97c56da67d517199cba11a1170a29": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG is a safe-haven diversifier against the existing UK100 LONG (risk-on). WTI SHORT is uncorrelated. No concentration risk, moderate drawdown, good RR in BULL regime."
+},
+"3f68ff24b653edd94ca905c87afb3b1463ab6dc0": {
+"action": "REDUCE_50",
+"reason": "Already long UK100 (correlated equity index). US30 adds concentrated risk-on exposure. BULL regime + moderate drawdown allow partial position, but full size would over-concentrate equity beta."
+},
+"499b66b5c0a73df5c912d55aa0771088ee22cbcd": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on. US30 LONG diversifies away from energy SHORT + gold LONG hedge. Drawdown modest, no concentration risk."
+},
+"a5c4b881fbb1e53080e6b09487943c1544d5a618": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, healthy daily P&L (+$60), modest drawdown (-$60). US30 long aligns with regime. No correlation conflict. Green light."
+},
+"258765f6bcbdb66f4db5743c53f97ed1ea968806": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, clean portfolio, decent R:R 2.5, manageable drawdown -$80, positive daily P&L +$40. ETHUSD risk-on is appropriate here."
+},
+"14f133c5eb1263c70f0a5f5aad1f942c560c9ab4": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, healthy RR 2.5, drawdown minimal, crypto diversifier absent\u2014clear green light"
+},
+"b5d4a554b0ab86a78723ca20d6dee71bca10634b": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG already open. ETHUSD highly correlated\u2014same risk-on crypto bet. BULL regime allows exposure but full size = concentrated duplication. Reduce to 50% for diversification."
+},
+"2f1b7024e80325cce024c82c897c008922c947eb": {
+"action": "REDUCE_50",
+"reason": "BTCUSD LONG already open. ETH+BTC are highly correlated risk-on crypto. BULL regime allows exposure but reducing size avoids concentration in same directional crypto bet."
+},
+"14ca0aa601fc9302e273a68c09957fc24b4f1840": {
+"action": "APPROVE",
+"reason": "BULL regime, no open positions, single crypto long provides clean directional exposure with acceptable 2.5 RR. Book drawdown -120 is manageable on ~$1k account. No correlation conflict."
+},
+"610833333584b5e2baf927355864c58beedd757a": {
+"action": "VETO",
+"reason": "US30 LONG contradicts existing BTCUSD SHORT in BULL regime\u2014both are risk-on assets moving opposite directions, creating hedged exposure that negates edge. Pick one thesis, not both."
+},
+"8c7d44b7474087641c6821e3956928060091029d": {
+"action": "APPROVE",
+"reason": "No open positions, minimal drawdown (-$40), counter-trend SHORT in BULL adds diversification, decent 2.0 RR"
+},
+"a894dbdaad6b3640948be022aaba0287b4261424": {
+"action": "VETO",
+"reason": "Already SHORT US30 (risk-on). Adding SHORT ETHUSD doubles down on same directional bet against risk-on assets in BULL regime. Book already -$40 today. Concentrated anti-trend exposure."
+},
+"15c71e502a93aa55efd516fe583f9eb0d44a490c": {
+"action": "APPROVE",
+"reason": "XAUUSD LONG diversifies existing US30 SHORT; safe-haven adds uncorrelated exposure in moderate drawdown; good RR at 2.5"
+},
+"be00907e91c5eaf24f7eadeabe132dd81cce2737": {
+"action": "VETO",
+"reason": "BULL regime favors risk-on longs, not shorts. US30 SHORT conflicts with regime. Already in -$60 drawdown; avoid counter-trend risk-on shorts. XAUUSD:LONG provides safe-haven hedge\u2014sufficient exposure."
+},
+"e89734ffff33fd7b506b15effcb92e612f73b240": {
+"action": "APPROVE",
+"reason": "BULL regime supports risk-on; XAUUSD diversifies; -$60 dd is minor (<6% account); no correlated duplication"
+},
+"67626890d2f32f3b0da690a59eb14fcd5b8da8c6": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+BTCUSD are highly correlated crypto longs creating concentrated exposure. XAUUSD provides diversification. Reduce ETHUSD to 50% to participate while limiting correlation risk."
+},
+"a19924218112f5df573d322c251702f847e767a4": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+BTCUSD are highly correlated crypto longs creating concentrated exposure. Book already -$60 DD, -$20 today. XAUUSD provides diversification. Reduce ETHUSD to manage correlation risk while maintaining upside participation."
+},
+"91d53861279193c79feb22db55c5b374d5d3cad6": {
+"action": "APPROVE",
+"reason": "BULL regime, only 1 safe-haven position open (XAUUSD), minimal drawdown (-$20), no correlation conflict. BTC adds uncorrelated risk-on exposure with solid 2.5 RR."
+},
+"c6fabba1e6d6430802ae25648fd6e9b9b9654347": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+BTCUSD = concentrated crypto long exposure. XAUUSD provides diversification. Reduce ETH to 50% to limit correlation risk while maintaining directional exposure."
+},
+"4792a83e3d9f377d6b849420fb62349478f2f202": {
+"action": "REDUCE_50",
+"reason": "BULL regime supports risk-on, but ETHUSD+BTCUSD are highly correlated crypto longs creating concentrated exposure. XAUUSD diversifies. Reduce ETH to manage correlation while staying invested."
+},
+"2105395dd2df278345f207b2aff1a33b9bb66898": {
+"action": "VETO",
+"reason": "SHORT US30 contradicts LONG UK100 in BULL regime\u2014both equity indices, opposing directions creates hedged drag. Book already +$40 today, preserve gains."
+}
+}

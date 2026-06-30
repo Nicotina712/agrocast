@@ -1,0 +1,73 @@
+﻿@echo off
+REM ETHUSD Ethereum Robot â€” Launcher
+REM Puerto dashboard: 8082 (Gold=8080, BTC=8081)
+REM NOTA: EXECUTE_TRADES=False en config.py â€” activar manualmente despues de paper trading
+
+set py -3=C:\Users\Lenovo\AppData\Local\Programs\py -3\Python312\py -3.exe
+set RUNNER=%~dp0live_runner.py
+set PID_FILE=%~dp0..\..\artifacts\ethusd\robot.pid
+
+echo ============================================
+echo  ETHUSD Ethereum Robot
+echo  Prime session: 07:00-22:00 CT (24/7)
+echo  Dashboard: http://localhost:8082
+echo ============================================
+echo.
+
+if "%1"=="--loop" (
+    echo Iniciando loop paper trading ETH...
+    "%py -3%" "%RUNNER%" --loop
+) else if "%1"=="--execute" (
+    echo ATENCION: Ejecucion en vivo en cuenta DEMO activada
+    start /min "" "%py -3%" "%RUNNER%" --loop --execute
+    echo Robot ETH iniciado en background
+    echo PID guardado en: %PID_FILE%
+) else if "%1"=="--diagnose" (
+    "%py -3%" "%RUNNER%" --diagnose
+) else if "%1"=="--report" (
+    "%py -3%" "%~dp0execution_tracker.py" --report
+) else if "%1"=="--retrain" (
+    "%py -3%" "%~dp0retrainer.py"
+) else if "%1"=="--dashboard" (
+    start "" "http://localhost:8082"
+    "%py -3%" "%~dp0dashboard.py"
+) else if "%1"=="--status" (
+    if exist "%PID_FILE%" (
+        set /p PID=<"%PID_FILE%"
+        echo PID del robot ETH: %PID%
+        tasklist /FI "PID eq %PID%" 2>NUL | find "%PID%" >NUL
+        if errorlevel 1 (echo Estado: DETENIDO) else (echo Estado: CORRIENDO)
+    ) else (
+        echo No hay robot.pid guardado para ETH
+    )
+    echo.
+    echo Ultimas 5 entradas del log:
+    "%py -3%" -c "import json; lines=open(r'%~dp0..\..\artifacts\ethusd\live_log.jsonl').readlines()[-5:]; [print(json.loads(l)['ct_time'], json.loads(l)['type'], json.loads(l).get('price','')) for l in lines]" 2>NUL
+) else if "%1"=="--stop" (
+    if exist "%PID_FILE%" (
+        set /p PID=<"%PID_FILE%"
+        echo Deteniendo robot ETH PID %PID%...
+        taskkill /PID %PID% /F
+        del "%PID_FILE%"
+        echo Robot ETH detenido.
+    ) else (
+        echo No hay PID guardado para ETH.
+    )
+) else (
+    echo Uso:
+    echo   run_eth.bat --diagnose    Verificar conexion MT5 + simbolo ETHUSD
+    echo   run_eth.bat --loop        Solo paper trading (EXECUTE_TRADES=False)
+    echo   run_eth.bat --execute     Iniciar robot con ejecucion real (demo)
+    echo   run_eth.bat --status      Ver si el robot esta corriendo
+    echo   run_eth.bat --stop        Detener el robot
+    echo   run_eth.bat --report      Ver metricas de paper trades
+    echo   run_eth.bat --retrain     Reentrenar modelo (domingos)
+    echo   run_eth.bat --dashboard   Abrir dashboard en puerto 8082
+    echo.
+    echo NOTA: Config activa = paper trading (EXECUTE_TRADES=False)
+    echo Activar --execute solo despues de 2 semanas de paper trading positivo.
+    echo.
+    echo Corriendo un ciclo de prueba...
+    "%py -3%" "%RUNNER%"
+)
+

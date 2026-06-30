@@ -111,7 +111,13 @@ def is_connected() -> bool:
 
 
 def _resolve_symbol(symbol: Optional[str] = None) -> Optional[str]:
-    """Find a valid soybean symbol in MT5."""
+    """Resolve a tradeable MT5 symbol from candidates.
+
+    2026-06-16: el ultimo recurso buscaba CIEGAMENTE 'soy'/'sbean' ante CUALQUIER
+    simbolo no resuelto -> WTI_N6 (inexistente) resolvia a Sbean_N6 y los robots de
+    petroleo operaban SOJA en silencio. Ahora ese fallback a soja SOLO aplica si el
+    pedido es explicitamente de soja; si no, devuelve None (falla fuerte, no opera otro activo).
+    """
     candidates = [symbol] if symbol else []
     candidates.extend([DEFAULT_SYMBOL] + FALLBACK_SYMBOLS)
 
@@ -123,14 +129,16 @@ def _resolve_symbol(symbol: Optional[str] = None) -> Optional[str]:
             mt5.symbol_select(sym, True)
             return sym
 
-    # Last resort: search all symbols
-    all_syms = mt5.symbols_get()
-    if all_syms:
-        for s in all_syms:
+    # Last resort: SOLO si el pedido es de soja (evita sustituir oil/idx por soja).
+    wanted = " ".join(str(c).lower() for c in candidates if c)
+    if "soy" in wanted or "sbean" in wanted:
+        for s in (mt5.symbols_get() or []):
             name_lower = s.name.lower()
             if "soy" in name_lower or "sbean" in name_lower:
                 mt5.symbol_select(s.name, True)
                 return s.name
+
+    print(f"[MT5] _resolve_symbol: no se pudo resolver {candidates!r} -> None (NO se sustituye por otro activo)")
     return None
 
 
