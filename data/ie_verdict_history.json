@@ -538,5 +538,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-02",
+    "timestamp": "2026-07-02T13:03:16.633419",
+    "price_at_verdict": 1135.25,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "El analista alcista no está disponible (error de API), lo que impide un debate genuino de alta calidad. El analista bajista tiene convicción MEDIA apoyada por múltiples señales (crush margins negativos, basis desfavorable, análogos narrativos con P(suba)=10% a 7d), pero el track record del sistema m",
+    "price_range_7d": {
+      "low": 1085,
+      "central": 1130,
+      "high": 1161
+    },
+    "price_range_30d": {
+      "low": 1055,
+      "central": 1080,
+      "high": 1140
+    },
+    "bull_conviction": "?",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
