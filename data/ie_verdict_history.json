@@ -409,15 +409,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "BAJA",
     "position_sizing": "flat",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1131.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": -0.02,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": true,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": true
   },
   {
     "date": "2026-06-26",
@@ -559,6 +559,36 @@
     "bull_conviction": "?",
     "bear_conviction": "MEDIA",
     "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-03",
+    "timestamp": "2026-07-03T12:52:16.457481",
+    "price_at_verdict": 1136.25,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "El alineamiento multifactorial bajista es claro: crush margins chinos en -140 USD/ton, basis Uruguay en z-score extremo de -2.64, narrative forecast con P(suba)=0% a 30 días y mediana -6.4%, señal compuesta 21/100 con 4 de 5 componentes decisionales en negativo. Sin embargo, el track record del sist",
+    "price_range_7d": {
+      "low": 1075,
+      "central": 1113,
+      "high": 1140
+    },
+    "price_range_30d": {
+      "low": 1050,
+      "central": 1070,
+      "high": 1095
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
     "verified_7d": false,
     "verified_14d": false,
     "price_at_7d": null,
