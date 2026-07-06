@@ -439,15 +439,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1189.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 4.8,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-06-29",
@@ -469,15 +469,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "flat",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1189.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 6.35,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-06-30",
@@ -585,6 +585,36 @@
       "low": 1050,
       "central": 1070,
       "high": 1095
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-06",
+    "timestamp": "2026-07-06T13:52:27.754127",
+    "price_at_verdict": 1178.75,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "La convergencia bajista es inusualmente amplia: narrative forecast a 30d muestra P(suba)=0% en 20 análogos, mediana -6.4%, y el composite signal SELL (-0.573) está respaldado por demanda china estructuralmente débil (crush margin -140 USD/ton), basis Uruguay en z-score=-2.64, y el Decision Classifie",
+    "price_range_7d": {
+      "low": 1130,
+      "central": 1162,
+      "high": 1194
+    },
+    "price_range_30d": {
+      "low": 1095,
+      "central": 1104,
+      "high": 1125
     },
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",

@@ -1,93 +1,92 @@
 {
   "cutoffs": {
     "2023-12-31": {
-      "n_train": 1884,
-      "n_test": 616,
-      "auc": 0.5532,
-      "accuracy": 0.5211,
-      "p_mean": 0.615,
-      "p_std": 0.2547,
-      "top1_share": 0.0436,
+      "n_train": 1883,
+      "n_test": 617,
+      "auc": 0.5368,
+      "accuracy": 0.4943,
+      "p_mean": 0.5992,
+      "p_std": 0.254,
+      "top1_share": 0.0251,
       "top5_features": {
-        "cot_regime_extreme_long": 0.04360000044107437,
-        "ms_short_trend": 0.02370000071823597,
-        "basis_seasonal_expected": 0.023499999195337296,
-        "insp_soy_bu": 0.02280000038444996,
-        "decomp_trend_dist_pct": 0.018400000408291817
+        "cot_regime_long": 0.025100000202655792,
+        "wasde_bull_bias": 0.023900000378489494,
+        "insp_soy_bu": 0.022600000724196434,
+        "basis_seasonal_expected": 0.021299999207258224,
+        "ms_short_trend": 0.01940000057220459
       },
       "signal_dist": {
-        "BUY": 0.583,
-        "SELL": 0.237,
-        "HOLD": 0.18
+        "BUY": 0.601,
+        "SELL": 0.279,
+        "HOLD": 0.12
       }
     },
     "2024-12-31": {
-      "n_train": 2136,
-      "n_test": 364,
-      "auc": 0.5053,
-      "accuracy": 0.5055,
-      "p_mean": 0.4093,
-      "p_std": 0.232,
-      "top1_share": 0.0387,
+      "n_train": 2135,
+      "n_test": 365,
+      "auc": 0.5456,
+      "accuracy": 0.5507,
+      "p_mean": 0.4413,
+      "p_std": 0.2364,
+      "top1_share": 0.0359,
       "top5_features": {
-        "cot_regime_extreme_long": 0.03869999945163727,
-        "SoybeanMeal": 0.025299999862909317,
-        "basis_seasonal_expected": 0.02160000056028366,
-        "basis_zscore": 0.020899999886751175,
-        "insp_soy_4wk_avg": 0.0203000009059906
+        "cot_regime_extreme_long": 0.03590000048279762,
+        "insp_soy_4wk_avg": 0.02370000071823597,
+        "trends_interest": 0.019500000402331352,
+        "wasde_bull_bias": 0.01940000057220459,
+        "SoybeanMeal": 0.01850000023841858
       },
       "signal_dist": {
-        "BUY": 0.264,
-        "SELL": 0.533,
-        "HOLD": 0.203
+        "BUY": 0.312,
+        "SELL": 0.518,
+        "HOLD": 0.17
       }
     },
     "2025-06-30": {
-      "n_train": 2259,
-      "n_test": 240,
-      "auc": 0.4833,
-      "accuracy": 0.4875,
-      "p_mean": 0.4878,
-      "p_std": 0.2667,
-      "top1_share": 0.0386,
+      "n_train": 2258,
+      "n_test": 241,
+      "auc": 0.512,
+      "accuracy": 0.5187,
+      "p_mean": 0.5412,
+      "p_std": 0.2619,
+      "top1_share": 0.0229,
       "top5_features": {
-        "cot_regime_extreme_long": 0.038600001484155655,
-        "insp_soy_4wk_avg": 0.022700000554323196,
-        "SoybeanMeal": 0.019700000062584877,
-        "ms_short_trend": 0.019200000911951065,
-        "trends_interest": 0.01899999938905239
+        "insp_soy_4wk_avg": 0.02290000021457672,
+        "soy_corn_ratio": 0.022600000724196434,
+        "SoybeanMeal": 0.019899999722838402,
+        "basis_zscore": 0.019600000232458115,
+        "trends_interest": 0.018400000408291817
       },
       "signal_dist": {
-        "BUY": 0.362,
-        "SELL": 0.471,
-        "HOLD": 0.167
+        "BUY": 0.423,
+        "SELL": 0.411,
+        "HOLD": 0.166
       }
     }
   },
   "global": {
     "n_train": 2009,
-    "n_test": 490,
-    "auc": 0.5645,
-    "accuracy": 0.5714,
-    "p_mean": 0.5798,
-    "p_std": 0.276,
-    "top1_share": 0.0403,
+    "n_test": 491,
+    "auc": 0.5475,
+    "accuracy": 0.5438,
+    "p_mean": 0.5395,
+    "p_std": 0.2606,
+    "top1_share": 0.0379,
     "top5_features": {
-      "cot_regime_extreme_long": 0.040300000458955765,
-      "insp_soy_4wk_avg": 0.020800000056624413,
-      "Maize_lag7": 0.02070000022649765,
-      "ms_short_trend": 0.02070000022649765,
-      "cot_regime_long": 0.01979999989271164
+      "cot_regime_extreme_long": 0.03790000081062317,
+      "ms_short_trend": 0.02199999988079071,
+      "cot_regime_long": 0.021199999377131462,
+      "SoybeanMeal": 0.020999999716877937,
+      "insp_soy_4wk_avg": 0.020800000056624413
     },
     "signal_dist": {
-      "BUY": 0.524,
-      "SELL": 0.31,
-      "HOLD": 0.165
+      "BUY": 0.448,
+      "SELL": 0.365,
+      "HOLD": 0.187
     }
   },
   "embargo_days": 18,
   "flags": [
-    "AUC m\u00ednimo 0.483 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico",
-    "Gap global vs early-cutoff > 0.08 \u2192 se\u00f1al solo reciente"
+    "AUC m\u00ednimo 0.512 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
   ]
 }
