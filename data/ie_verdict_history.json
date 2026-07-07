@@ -628,5 +628,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-07",
+    "timestamp": "2026-07-07T13:22:02.949673",
+    "price_at_verdict": 1188.0,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "La convergencia de señales bajistas es significativa: narrativa análoga a 30d con P(suba)=0% en n=20 casos, crush margin chino en -140 USD/ton, basis Uruguay en z-score -2.64, señal compuesta SELL (21/100) y el decision classifier muestra que la estrategia 'always-wait' supera ampliamente a la narra",
+    "price_range_7d": {
+      "low": 1120,
+      "central": 1170,
+      "high": 1207
+    },
+    "price_range_30d": {
+      "low": 1085,
+      "central": 1113,
+      "high": 1155
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
