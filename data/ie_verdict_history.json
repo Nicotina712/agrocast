@@ -380,11 +380,11 @@
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
     "verified_7d": true,
-    "verified_14d": false,
+    "verified_14d": true,
     "price_at_7d": 1149.5,
-    "price_at_14d": null,
+    "price_at_14d": 1196.75,
     "return_7d_pct": 2.47,
-    "return_14d_pct": null,
+    "return_14d_pct": 6.69,
     "direction_correct_7d": false,
     "direction_correct_14d": null,
     "range_hit_7d": false
@@ -499,15 +499,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "BAJA",
     "position_sizing": "flat",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1196.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 5.77,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-07-01",
@@ -529,15 +529,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1196.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 5.77,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-07-02",
@@ -645,6 +645,36 @@
       "low": 1085,
       "central": 1113,
       "high": 1155
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-08",
+    "timestamp": "2026-07-08T13:00:53.451309",
+    "price_at_verdict": 1196.0,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "El análisis converge hacia un sesgo bajista moderado: la señal compuesta SELL (-0.573) está respaldada por crush margin chino catastrófico (-$140/ton), basis Uruguay en zscore extremo (-2.64), narrative forecast con mediana -1.54% a 7d y solo 30% de probabilidad de suba, y un modelo ML en nivel máxi",
+    "price_range_7d": {
+      "low": 1136,
+      "central": 1178,
+      "high": 1213
+    },
+    "price_range_30d": {
+      "low": 1108,
+      "central": 1140,
+      "high": 1197
     },
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
