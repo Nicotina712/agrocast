@@ -263,9 +263,9 @@ def run_cycle(execute=False):
         from portfolio_guard import storm_breaker_check as _sbc
         _sb = _sbc(window_hours=12.0)
         if _sb:
-            print(f"[STORM BREAKER] {{_sb['reason']}}")
+            print(f"[STORM BREAKER] {_sb['reason']}")
             _log("storm_breaker", _sb)
-            return {{"status": "storm_breaker", **_sb}}
+            return {"status": "storm_breaker", **_sb}
     except Exception:
         pass
 
