@@ -688,5 +688,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-09",
+    "timestamp": "2026-07-09T13:26:04.630002",
+    "price_at_verdict": 1185.25,
+    "verdict": "SELL",
+    "confidence": 0.52,
+    "reasoning": "El rally de +7% en 20 días tiene base puramente especulativa/técnica sin soporte fundamental: crush margins chinos en -140 USD/ton, demanda score 30/100, basis Uruguay en z-score -2.64, y señal compuesta SELL en 21/100 con ML MUY BAJISTA. Los análogos históricos de eventos speculative_mom muestran m",
+    "price_range_7d": {
+      "low": 1126,
+      "central": 1167,
+      "high": 1201
+    },
+    "price_range_30d": {
+      "low": 1097,
+      "central": 1124,
+      "high": 1185
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
