@@ -1,0 +1,34 @@
+---
+🌱 **AgroCast PRO — Brief Semanal 29/06/2026**
+
+📊 **Señal actual:** HOLD con 55% de confianza
+💲 **Precio Chicago:** 414,46 USc/bu
+
+**¿Qué pasó la semana pasada?**
+El mercado de soja se mantiene en equilibrio precario. Brasil sigue con exportaciones en línea con lo estacional (+5.1% YoY), mientras que China muestra señales débiles de demanda — márgenes de crush negativos (-140 USD/ton) están presionando las compras. En Argentina, la brecha cambiaria se mantiene contenida (1%) sin cepo relevante, pero las retenciones en 33% siguen limitando incentivos para liquidar.
+
+**Top 3 drivers esta semana:**
+
+1. **Demanda china debilitada:** Importaciones en 114 MMT (+1.8% YoY) pero márgenes de crush negativos desalientan la molienda. Este es el factor más recesivo del mercado ahora.
+
+2. **Basis amplio en Uruguay (-33.5 USD/ton):** Descuento histórico vs. Chicago (percentil 0). Esperá antes de vender — hay margen para que mejore hacia los promedios de 5 años.
+
+3. **Liquidaciones argentinas normales (1500 MM USD/sem):** Sin presión de oferta emergente. El mercado no ve urgencia en Argentina para aumentar ventas.
+
+**Señales clave del modelo:**
+
+• **COT:** No disponible en dataset; seguí los próximos reportes CFTC
+• **Argentina:** Cepo inactivo, spread 0.9%, retenciones 33% — ambiente estable sin sorpresas
+• **Brasil:** Pace de 1.95 MMT/sem en línea con proyección USDA 103 MMT (43.5% completado)
+• **Basis Uruguay:** -33.46 USD/ton (z-score -2.64) — amplio comparado a promedio histórico de -22.64
+
+**📅 Calendario de la semana:**
+
+• WASDE próximo: 13 enero 2015 (dato histórico; verificá fechas reales del USDA)
+• Sin vencimientos relevantes de futuros esta semana
+
+**💡 Recomendación para el productor:**
+
+**Esperá.** El basis está muy amplio (-33.5 USD/ton en percentil 0), señal de que hay sobreventa local. Aunque China flojea, el mercado global no está en pánico — Brasil avanza normal y Argentina no presiona. Vendé solo si necesitás liquidez urgente; si podés esperar 2-3 semanas, hay probabilidad de que el basis mejore hacia -25 USD/ton, ganando ~450-600 USD/ha en el spread.
+
+---

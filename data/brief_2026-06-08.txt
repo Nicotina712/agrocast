@@ -1,0 +1,34 @@
+---
+🌱 **AgroCast PRO — Brief Semanal 08/06/2026**
+
+📊 **Señal actual:** HOLD con 55% de confianza
+💲 **Precio Chicago:** 414.46 USc/bu
+
+**¿Qué pasó la semana pasada?**
+El mercado se mantuvo estable con presiones encontradas. Brasil mantiene su pace de exportaciones en línea con lo esperado (+5.1% YoY), pero China pinta débil con márgenes de crush negativos (-140 USD/ton) que desalientan la demanda de soja. El basis en Uruguay se amplió a -33.5 USD/ton, el peor nivel en 5 años.
+
+**Top 3 drivers esta semana:**
+
+1. **Debilidad de demanda china** — Importaciones en 114 MMT (score: 30/100), márgenes de crush negativos presionan contra nuevas compras. Esperamos volatilidad si China no reacciona.
+
+2. **Basis ampliado a -33.5 USD/ton** — Estás 11 USD/ton peor que el promedio histórico. Es señal de que el mercado local te castiga respecto a Chicago; conviene monitorear mejora antes de vender.
+
+3. **Exportaciones Brasil normales (43.5% completado)** — Pace de 1.95 MMT/semana es estacional. Sin surpresas de oferta por ahora, pero quedan 30 semanas para completar proyección USDA de 103 MMT.
+
+**Señales clave del modelo:**
+
+• **COT:** No disponible en datos; requiere seguimiento aparte.
+• **Argentina:** Sin cepo activo, spread -2%, retenciones 33%, liquidaciones CIARA normales (~1500 MM USD/sem). **Impacto NEUTRAL** — sin turbulencias cambiarias.
+• **Brasil:** Exportaciones en ritmo esperado, sin estrés de oferta global.
+• **Basis Uruguay:** -33.5 USD/ton (Z-score -2.64). Significativamente amplio; esperá antes de vender.
+
+**📅 Calendario de la semana:**
+
+• **WASDE próximos:** 13 de enero y 10 de febrero 2015 (datos históricos en sistema; verificá fechas 2026 reales).
+• Monitoreo diario de posición China y márgenes de crush.
+
+**💡 Recomendación para el productor:**
+
+**ESPERA antes de vender en volumen.** El basis está castigado (-33.5 USD/ton, peor del último lustro), lo que te deja dinero sobre la mesa si mejora. China está débil pero no en colapso; si los márgenes de crush se recuperan en 2-3 semanas, verás rebound en precio Chicago que beneficia tu posición. Vende lo imprescindible esta semana; guarda el grueso para cuando basis contraiga o China muestre señales de recuperación.
+
+---
