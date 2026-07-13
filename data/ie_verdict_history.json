@@ -470,11 +470,11 @@
     "bear_conviction": "MEDIA",
     "position_sizing": "flat",
     "verified_7d": true,
-    "verified_14d": false,
+    "verified_14d": true,
     "price_at_7d": 1189.75,
-    "price_at_14d": null,
+    "price_at_14d": 1200.75,
     "return_7d_pct": 6.35,
-    "return_14d_pct": null,
+    "return_14d_pct": 7.33,
     "direction_correct_7d": false,
     "direction_correct_14d": null,
     "range_hit_7d": false
@@ -619,15 +619,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1200.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 1.87,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-07-07",
@@ -705,6 +705,36 @@
       "low": 1097,
       "central": 1124,
       "high": 1185
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-13",
+    "timestamp": "2026-07-13T13:25:44.467486",
+    "price_at_verdict": 1202.25,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "El análisis presenta un conflicto fundamental claro: momentum técnico alcista fuerte (precio +7.69% en 20d, sobre todas las MAs) contra fundamentales deteriorados (crush margin chino -140 USD/ton, basis z-score -2.64, narrative forecast bajista en 7d/30d con P(suba)=25%/35%). El track record del sis",
+    "price_range_7d": {
+      "low": 1155,
+      "central": 1185,
+      "high": 1220
+    },
+    "price_range_30d": {
+      "low": 1110,
+      "central": 1155,
+      "high": 1215
     },
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",

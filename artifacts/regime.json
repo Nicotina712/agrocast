@@ -10,31 +10,31 @@
     "vol_p66": 0.0106,
     "news_velocity_7d": 1.0,
     "iv_atm": 0.0,
-    "ma90_slope": 0.00192,
-    "price_vs_ma90": 0.0216
+    "ma90_slope": 0.002,
+    "price_vs_ma90": 0.0299
   },
-  "as_of": "2026-07-10T13:14:34",
+  "as_of": "2026-07-13T13:21:44",
   "hmm": {
     "ok": true,
     "n_states": 3,
     "lookback_days": 1440,
     "current_state": "low_vol",
-    "current_proba": 0.843,
+    "current_proba": 0.853,
     "state_probs": {
-      "low_vol": 0.843,
+      "low_vol": 0.853,
       "high_vol": 0.0,
-      "medium_vol": 0.157
+      "medium_vol": 0.147
     },
     "state_freq": {
-      "low_vol": 1088,
+      "low_vol": 1089,
       "high_vol": 68,
-      "medium_vol": 284
+      "medium_vol": 283
     },
     "transition_matrix": [
       [
-        0.983,
+        0.982,
         0.0,
-        0.017
+        0.018
       ],
       [
         0.0,
@@ -42,9 +42,9 @@
         0.044
       ],
       [
-        0.067,
+        0.071,
         0.011,
-        0.923
+        0.919
       ]
     ],
     "transition_labels": [
@@ -52,6 +52,6 @@
       "high_vol",
       "medium_vol"
     ],
-    "explanation": "Mercado en estado 'low_vol' con probabilidad 84%. En la \u00faltima ventana (1440d), 1088 d\u00edas estuvieron en este r\u00e9gimen."
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 85%. En la \u00faltima ventana (1440d), 1089 d\u00edas estuvieron en este r\u00e9gimen."
   }
 }
