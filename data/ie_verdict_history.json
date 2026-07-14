@@ -748,5 +748,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-07-14",
+    "timestamp": "2026-07-14T12:20:26.591325",
+    "price_at_verdict": 1190.5,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "El mercado presenta una tensión irreconciliable entre un momentum técnico alcista fuerte (precio +7.69% en 20d, sobre todas las MAs) y fundamentales estructuralmente bajistas (crush margin China -140 USD/ton, demand score 30/100, basis Uruguay z-score -2.64). Crucialmente, el track record del sistem",
+    "price_range_7d": {
+      "low": 1156,
+      "central": 1172,
+      "high": 1202
+    },
+    "price_range_30d": {
+      "low": 1135,
+      "central": 1162,
+      "high": 1197
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
