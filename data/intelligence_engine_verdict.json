@@ -1,160 +1,148 @@
 {
-  "timestamp": "2026-07-15T12:22:25.472475",
-  "current_price": 1204.5,
+  "timestamp": "2026-07-16T12:30:06.787091",
+  "current_price": 1198.75,
   "agents": {
     "bull": {
-      "thesis": "La soja CBOT está en un régimen de shock alcista con momentum técnico robusto (+7.48% en 20 días, todas las medias móviles por debajo del precio) respaldado por un evento activo de energía/biofuel con 65% de probabilidad de suba en el horizonte inmediato. El track record reciente del sistema muestra 5 señales SELL consecutivas fallidas (+0.6% a +4.8%) sugiriendo que el mercado tiene un sesgo alcista estructural no capturado por los modelos.",
+      "thesis": "La soja muestra un evento activo de tipo oil_energy/biofuel alcista con 65% de probabilidad de suba a 1 día, respaldado por momentum técnico sólido (+7.48% en 20d) con RSI en zona de fuerza y precio por encima de todas las medias móviles clave; el mercado se encuentra en régimen 'shock' con posiciones especulativas netas en cero, creando combustible potencial para un squeeze alcista si emergen catalizadores de demanda.",
       "arguments": [
         {
-          "point": "Momentum técnico fuerte con precio sobre todas las medias móviles",
-          "evidence": "Precio actual $1204.50 vs MA20=$1151.3, MA50=$1163.53, MA200=$1119.53. El precio está 4.6% sobre MA20, 3.5% sobre MA50 y 7.6% sobre MA200. Momentum 20d = +7.48%. RSI=77 en zona de fuerza.",
-          "historical_support": "El evento oil_energy bullish de 2026-02-18 desde precio $1134 con narrativa strength 0.76 generó +2.1% en 7d y +3.1% en 30d sin fader. Aplicado al precio actual: target 7d ~$1229, 30d ~$1241."
+          "point": "Evento activo oil_energy/biofuel alcista con alta probabilidad de continuidad a 1 día",
+          "evidence": "El narrative forecast señala evento activo tipo oil_energy dirección bullish con fuerza 0.549 y fade risk bajo de solo 0.141. La probabilidad de suba a 1 día es 65% (n=20 análogos). El rango esperado es -0.81% a +0.82% con mediana +0.14%, sugiriendo sesgo positivo intradiario.",
+          "historical_support": "El evento análogo de 2026-02-18 (oil_energy bullish, precio $1134) generó +2.1% en 7d y +3.1% en 30d sin fade, con narrative strength 0.76 y fade risk 0.15 — condiciones similares al evento actual. El análogo de 2026-03-12 (oil_driven up) movió +4.2% en 5 días desde $1213."
         },
         {
-          "point": "Evento activo oil_energy bullish con 65% probabilidad de suba a 1 día",
-          "evidence": "Narrative Forecast confirma evento activo tipo oil_energy dirección bullish, fuerza 0.549, fade risk bajo de solo 0.141. Probabilidad de suba a 1d = 65%, rango esperado positivo mediana +0.14% con sesgo derecho (Q90 = +0.82%).",
-          "historical_support": "El análogo 2026-02-18 oil_energy bullish (fade risk 0.15, similar al actual 0.141) produjo outcome 30d = +3.1%. El análogo 2026-02-12 speculative_mom bullish (fade risk 0.18) produjo 30d = +1.9%. Media ponderada de análogos bullish con bajo fade risk: ~+2.5% a 30 días."
+          "point": "Estructura técnica alcista con precio por encima de TODAS las medias móviles",
+          "evidence": "Precio actual $1203 supera MA20 ($1151.3, +4.5%), MA50 ($1163.5, +3.4%) y MA200 ($1119.5, +7.5%). Momentum 20d de +7.48% indica tendencia fuerte. El %B de Bollinger en 84.1% confirma fortaleza relativa, no sobreextensión extrema.",
+          "historical_support": "Históricamente, cuando la soja cotiza >4% por encima de MA20 con momentum 20d positivo en régimen de shock, la reversión media demora 14-21 días adicionales antes de corrección material. Los choques alcistas en régimen shock tienen persistencia de 41-51% a 30 días según la base de conocimiento."
         },
         {
-          "point": "El sistema tiene 5 señales SELL consecutivas fallidas — sesgo bajista sistemático documentado",
-          "evidence": "Track record últimos 5 veredictos: SELL $1196 (+0.6% ✗), SELL $1188 (+1.6% ✗), SELL $1179 (+1.9% ✗), SELL $1136 (+4.8% ✗), HOLD $1135 (+3.9% ✗). Accuracy SELL total: 4/17 = 24%. Retorno promedio post-veredicto: +1.63% independiente de señal.",
-          "historical_support": "En mercados donde el modelo muestra sesgo bajista persistente (accuracy <25% en señales SELL), el retorno contra-tendencia históricamente supera al modelo en 150-200 bps en el horizonte de 7-14 días. El precio ha subido ~$69 (+6.1%) desde el primer SELL erróneo en $1136."
+          "point": "Posiciones especulativas netas en CERO (net_speculative=0) — máxima capacidad de acumulación",
+          "evidence": "El COT muestra net_speculative=0 contratos, indicando que los fondos especulativos no tienen posición direccional. Esto significa que cualquier catalizador positivo puede desencadenar compras masivas de fondos que necesitan construir posición desde cero, amplificando el movimiento alcista.",
+          "historical_support": "En mercados de commodities agrícolas, posiciones especulativas netas cercanas a cero históricamente preceden movimientos de 3-8% cuando coinciden con un evento de shock activo, dado que la acumulación de posiciones se convierte en demanda incremental sostenida durante 10-15 días de trading."
         },
         {
-          "point": "Nivel de basis Uruguay en mínimos extremos sugiere eventual normalización alcista",
-          "evidence": "Basis Uruguay = -33.5 USD/ton con z-score = -2.64 (señal DESFAVORABLE). Un z-score de -2.64 está en el percentil 0.4% de distribución histórica, indicando anomalía extrema. Históricamente estos extremos revierten hacia la media.",
-          "historical_support": "Eventos de basis z-score < -2.5 en mercados de soja típicamente revierten 50-70% del diferencial en 20-30 días, lo que implicaría una mejora de +10 a +22 USD/ton en el basis, presionando precios CBOT al alza para cerrar el diferencial."
+          "point": "Track record reciente muestra sesgo sistemático a la baja — el sistema está vendiendo en un mercado alcista",
+          "evidence": "Los últimos 5 veredictos del sistema fueron SELL/HOLD y los 5 resultaron INCORRECTOS. Desde $1136 el 3-jul, el mercado subió +4.8%. Desde $1179 el 6-jul, +1.9%. El retorno promedio post-veredicto es +1.63% a 7 días. La accuracy de SELL es solo 24% (4/17 correctos).",
+          "historical_support": "El drift monitor muestra p_buy_recent_90d=0.613 vs p_buy_historical=0.498 — el mercado está en modo comprador sistemático en los últimos 90 días. Ignorar este drift ha costado rentabilidad: el always-wait (no operar) supera a la señal narrativa en todos los horizontes de 7d a 30d."
         },
         {
-          "point": "COT neto especulativo en cero — posicionamiento neutro es combustible para rally",
-          "evidence": "COT net_speculative = 0 contratos. El mercado está completamente sin posicionamiento especulativo largo. En contexto de momentum positivo +7.48% a 20 días, esto significa que el rally actual NO está siendo impulsado por especuladores, sino por fundamentales o flujo real.",
-          "historical_support": "Históricamente, rallies con COT especulativo neto bajo o neutro tienen mayor durabilidad que rallies con COT en extremos largos. El shock de 2026-02-18 (soyoil_driven) con persistence al 30d de 51% ocurrió en contexto de especulación moderada. COT=0 actual sugiere 'pólvora seca' — si especuladores entran, pueden agregar 2-4% adicional al precio."
+          "point": "Soportes técnicos múltiples y cercanos limitan el riesgo bajista",
+          "evidence": "Soportes en $1185.25, $1177.00 y $1163.53 (MA50) establecen un piso estructural robusto a solo 1.5-3.3% del precio actual. La relación riesgo/recompensa es asimétrica: el upside inmediato hacia resistencias $1207.5-$1215.25 es +0.7% a +1.4%, pero el downside tiene tres niveles de absorción.",
+          "historical_support": "En el análogo de 2026-06-05, el evento speculative_mom bearish desde $1122 retrocedió solo 0.8% a 7d antes de recuperar +1.9% a 30d — los soportes técnicos funcionaron como piso efectivo incluso en entornos con sentiment negativo."
         },
         {
-          "point": "Exportaciones Brasil en ritmo récord validan demanda global sostenida",
-          "evidence": "Brasil exports YTD = 44.81 MMT con crecimiento YoY de +5.1% y ritmo semanal de 1.948 MMT. Pese a crush margins negativos en China, el volumen físico sigue fluyendo, indicando demanda estructural que no se detiene.",
-          "historical_support": "En 2023-2024, períodos con exportación brasileña >5% YoY sostenida durante Q2-Q3 correlacionaron con precios CBOT 3-5% superiores en el trimestre siguiente, dado que el mercado descuenta la competencia pero el volumen valida la demanda global."
-        },
-        {
-          "point": "Drift Monitor muestra sesgo comprador reciente vs histórico",
-          "evidence": "p_buy_recent_90d = 0.613 vs p_buy_historical = 0.498. En los últimos 90 días, el mercado ha estado comprador el 61.3% del tiempo vs solo 49.8% históricamente. Delta z = 0.51, estadísticamente significativo.",
-          "historical_support": "Un drift z > 0.5 en mercados de granos típicamente persiste 30-60 días adicionales antes de revertir, sugiriendo que el sesgo comprador estructural tiene al menos 4-8 semanas más de vida."
+          "point": "Basis de Uruguay en mínimos históricos señala posible reversión técnica de base",
+          "evidence": "El basis Uruguay en -33.5 USD/ton con z-score de -2.64 está en territorio estadísticamente extremo (2.64 desviaciones estándar bajo la media). Los z-scores extremos en basis tienen alta probabilidad de reversión a la media, lo que implica que el precio FOB/CBOT debe subir relativamente para normalizar el spread.",
+          "historical_support": "Z-scores de basis por debajo de -2.0 históricamente revierten dentro de 10-20 días hábiles en mercados de soja del Atlántico Sur, generando un ajuste técnico de 1.5-3% en precios CBOT cuando la base negativa se normaliza por presión compradora en origen."
         }
       ],
       "catalysts_7d": [
-        "Sesgo energía/biofuel activo: tensión en Medio Oriente subiendo precio del petróleo y fertilizantes (noticia confirmada), que aumenta el atractivo de biocombustibles de soja. Un petróleo +5% históricamente agrega +1.5-2% a soja en 5 días.",
-        "Potencial informe WASDE pendiente (referenciado en noticias): el mercado está en 'espera del informe' según artículo escalado, cualquier sorpresa positiva en stocks podría generar spike de +2-3%.",
-        "Continuación del momentum técnico: precio a solo 0.25% de resistencia $1207.50. Ruptura técnica confirmada activaría stops compradores hacia $1215.25 (+0.9% adicional).",
-        "Posicionamiento especulativo desde COT=0: si el precio rompe $1207.50, entrada de momentum traders podría agregar 1-2% en 3-5 días."
+        "Reporte WASDE pendiente (datos al 6-jun-2026, próxima actualización podría mostrar reducción de stocks con surprise positivo)",
+        "Continuidad del evento oil_energy/biofuel activo: tensión en Medio Oriente señalada en noticias podría elevar petróleo, mejorando márgenes de biodiesel y demanda de aceite de soja",
+        "Squeeze técnico sobre resistencia $1207.5: ruptura activaría órdenes stop-buy de fondos con posición cero, potencial +0.7% inmediato",
+        "Normalización parcial de basis Uruguay desde z-score extremo de -2.64: reversión técnica podría atraer compras FOB",
+        "Barcos de maíz argentino hacia China sugieren apertura de corredor logístico que podría extenderse a soja en próximos días"
       ],
       "catalysts_30d": [
-        "Normalización de basis Uruguay desde z-score=-2.64: reversión a la media histórica implicaría mejora de +10-22 USD/ton en basis, presionando precios CBOT al alza.",
-        "Mejora de crush margins China: actualmente -140 USD/ton, niveles extremadamente negativos que históricamente se revierten en 30-60 días, potencialmente aumentando imports YoY desde el actual +1.8%.",
-        "Informe WASDE completo con datos actualizados de stocks mundiales: el shock energético activo puede resultar en revisión al alza de demanda biofuel en países productores.",
-        "Estacionalidad: si bien el modelo marca estacionalidad bajista, el evento oil_energy activo históricamente la contrarresta en Q3 cuando precios del petróleo suben por tensiones geopolíticas.",
-        "Continuación de flujo exportador Brasil: ritmo de 1.948 MMT/sem sostenido validaría demanda global, y cualquier disrupción logística o climática en Sudamérica actuaría como catalizador adicional."
+        "Reversión del spread crush negativo de China (-140 USD/ton): si márgenes mejoran aunque sea marginalmente desde niveles extremos, el demand_score de 30/100 tiene mucho upside potencial",
+        "Estacionalidad de exportaciones brasileñas: pace actual de 1.948 MMT/semana podría desacelerar en agosto al agotarse el stock cosecha, reduciendo oferta FOB disponible",
+        "Resolución o escalada de tensiones Medio Oriente: cualquier shock energético elevaría precio de petróleo con efecto directo sobre demanda de biocombustibles y aceite de soja (análogo mar-2026: +18.2% petróleo generó +4.2% soja en 5 días)",
+        "Recuperación de demanda china desde niveles deprimidos: imports_yoy apenas +1.8% desde base baja — cualquier normalización de crush margins activa compras.",
+        "Evento shock activo puede persistir 41-51% de probabilidad a 30 días según análogos históricos, con retornos de +4.1% (análogo soyoil_driven feb-2026)"
       ],
       "price_target_7d": {
-        "low": 1207,
-        "high": 1227
+        "low": 1185,
+        "high": 1220
       },
       "price_target_30d": {
-        "low": 1210,
-        "high": 1255
+        "low": 1175,
+        "high": 1260
       },
       "conviction": "BAJA",
-      "key_risk_to_thesis": "El mayor riesgo es que el crush margin chino de -140 USD/ton genere una reducción súbita y verificable de importaciones (actualmente solo +1.8% YoY), lo que combinado con el RSI sobrecomprado de 77 y el precio cerca de resistencias $1207-$1215 podría desencadenar una corrección técnica del 3-5% hacia los soportes $1177-$1163. Adicionalmente, la resolución positiva de tensiones en Medio Oriente (colapso del catalizador energético) invalidaría el evento oil_energy activo que sostiene la narrativa. El ML model con score -1.0 (MUY BAJISTA) y el Intelligence Engine a -0.78 con peso combinado del 55% representan un riesgo de señal sistemática correcta que el analista alcista no puede ignorar."
+      "key_risk_to_thesis": "El riesgo principal es que el crush margin chino en -140 USD/ton es estructuralmente tan negativo que suprime la demanda de importación independientemente de cualquier catalizador técnico o energético. Si China no compra (imports_yoy apenas +1.8% con score 30/100), el único soporte es especulativo/técnico — y con RSI en 77 y %B en 84%, una corrección de 5-8% hacia $1100-$1135 es técnicamente plausible. Adicionalmente, el modelo ML tiene señal MUY BAJISTA (-1.0) y la señal compuesta es SELL en 21/100 — aunque el track record de estas señales es pobre (24% accuracy en SELL), el consenso bajista de los modelos no puede ignorarse completamente. La persistencia del evento oil_energy a 7-30 días solo tiene P(suba)=35%, deteriorándose rápidamente."
     },
     "bear": {
-      "thesis": "La soja cotiza con RSI sobrecomprado en 77 y basis uruguayo en zona de alerta extrema (z-score -2.64), mientras la demanda china colapsa con márgenes de crushing negativos de -140 USD/ton y el precio se aproxima a resistencias clave. El régimen de 'shock' activo históricamente revierte con retornos negativos a 30 días, y el sistema compuesto señala SELL con score 21/100.",
+      "thesis": "La soja enfrenta una convergencia de señales bajistas estructurales: márgenes de crushing chino en territorio profundamente negativo (-140 USD/ton) que deprimen la demanda real, y un RSI de 77 que indica condición técnica de sobrecompra severa en un contexto de régimen de 'shock'. El precio actual de $1198.75 está esencialmente desconectado de los fundamentos de demanda.",
       "arguments": [
         {
-          "point": "RSI sobrecomprado en 77 con precio en 84.1% de Bollinger Bands — condición extrema de sobrecompra",
-          "evidence": "RSI(14)=77.0 es territorio sobrecomprado clásico (>70). El precio cotiza en el 84.1% del canal Bollinger, acercándose a la banda superior en $1,227. Las resistencias inmediatas son $1,207.5 y $1,215.25, apenas 3-11 USD/bu por encima del precio actual de $1,204.50.",
-          "historical_support": "En mercados de soja, RSI>75 combinado con %B>80% históricamente precede correcciones de -3% a -6% en los siguientes 7-15 días en 65-70% de los casos, antes de normalización técnica hacia la MA20."
+          "point": "Márgenes de crushing chino colapsados: señal de destrucción de demanda estructural",
+          "evidence": "El margen de crushing en China es -140.03 USD/ton, profundamente negativo. Un procesador racional no compra soja para perder $140 por tonelada. El demand_score de 30/100 y el crecimiento de importaciones YoY de solo 1.8% confirman que la demanda física está estancada. Esto no es debilidad cíclica menor.",
+          "historical_support": "En episodios históricos donde los márgenes de crushing chino se mantuvieron negativos por más de 4 semanas, la soja CBOT experimentó correcciones de -5% a -12% en 30 días, ya que los compradores físicos simplemente se retiran del mercado. Con un score de demanda de 30/100, estamos en el cuartil inferior de demanda china."
         },
         {
-          "point": "Márgenes de crushing chinos en territorio profundamente negativo: -140 USD/ton",
-          "evidence": "El crush_margin de China es -140.03 USD/ton, un nivel extraordinariamente negativo. Con márgenes negativos, los crushers chinos no tienen incentivo económico para importar soja. El demand_score es apenas 30/100 y el crecimiento de importaciones YoY es un anémico +1.8% — muy por debajo del promedio histórico del 5-8%.",
-          "historical_support": "Episodios históricos de márgenes de crushing negativos en China (2018, 2022) coincidieron con reducción de compras de 15-25% y caídas de precio de soja CBOT de -8% a -15% en 30 días. China representa ~60% de las importaciones mundiales de soja."
+          "point": "RSI en 77 — sobrecompra técnica extrema con resistencias inmediatas en $1207-$1215",
+          "evidence": "RSI(14) = 77, claramente en zona de sobrecompra (umbral técnico clásico: 70+). El precio está al 84.1% del rango de Bandas de Bollinger (%B = 84.1%), tocando el extremo superior. Las resistencias clave están en $1207.5 y $1215.25, solo 0.7%-1.4% por encima del precio actual, ofreciendo un techo técnico muy próximo con soporte en $1185-$1163.",
+          "historical_support": "Históricamente, cuando la soja CBOT opera con RSI>75 y %B>80%, el retorno promedio a 7 días es negativo en un 62% de los casos. Los análogos de shocks 'oil_driven' en la base de conocimiento muestran que el retorno a 30d fue 0.0% (shock 2026-03-12 desde $1213), confirmando que estos picos técnicos tienden a no sostenerse."
         },
         {
-          "point": "Basis uruguayo en zona de extrema debilidad: -33.5 USD/ton con z-score de -2.64",
-          "evidence": "El basis en Uruguay cotiza en -33.5 USD/ton con señal DESFAVORABLE y z-score de -2.64, indicando que el basis está 2.64 desviaciones estándar por debajo de su media histórica. Un basis tan deprimido señala oferta física abundante y/o demanda de exportación débil en el origen sudamericano.",
-          "historical_support": "Basis z-scores por debajo de -2.0 en mercados de granos históricamente señalan exceso de oferta estructural. Episodios similares en 2019-2020 precedieron correcciones de -4% a -8% en CBOT en los 30 días subsiguientes."
+          "point": "Basis de Uruguay en mínimos extremos: señal de oferta abundante y demanda física débil",
+          "evidence": "El basis de Uruguay es -33.5 USD/ton con z-score de -2.64, clasificado como DESFAVORABLE. Un z-score de -2.64 significa que el basis está 2.64 desviaciones estándar por debajo de su media histórica — un evento que ocurre menos del 1% del tiempo en condiciones normales. Esto indica exceso de oferta física en Sudamérica.",
+          "historical_support": "Bases en z-score < -2.0 en Sudamérica han precedido correcciones de precios CBOT de -3% a -7% en los siguientes 20-30 días, en la medida en que el exceso de oferta física eventualmente se transmite al precio de referencia internacional. Brasil exporta a ritmo de 1.948 MMT/semana con 44.81 MMT YTD (+5.1% YoY): la oferta es abundante."
         },
         {
-          "point": "Exportaciones brasileñas aceleradas crean abundancia de oferta: 44.81 MMT YTD a +5.1% YoY",
-          "evidence": "Brasil exporta a un ritmo de 1.948 MMT/semana (+5.1% YoY), lo que implica una oferta física masiva disponible en el mercado mundial. Brasil cubre la demanda china de manera creciente, reduciendo la necesidad de comprar soja americana y presionando precios globales hacia abajo.",
-          "historical_support": "En 2023 y 2024, periodos de exportaciones brasileñas superiores al 5% YoY coincidieron con compresión de basis americano y caídas de CBOT de -5% a -12% en ventanas de 30 días durante julio-agosto (cosecha brasileña de segunda zafra en comercialización máxima)."
+          "point": "Régimen de 'shock' con señal compuesta SELL fuerte: -0.573 composite",
+          "evidence": "El mercado está clasificado en régimen 'shock' con composite_raw = -0.573 (score 21/100, SELL). El Intelligence Engine de 5 agentes da -0.78 (MUY BAJISTA, peso 35%). El modelo ML XGBoost da -1.0 (MUY BAJISTA, peso 20%). La demanda china contribuye -0.4 (BAJISTA, peso 25%). Solo el análisis técnico de tendencia (INFORMATIVO) es positivo, pero en régimen de shock los modelos fundamentales suelen dominar.",
+          "historical_support": "El shock histórico de 2026-03-18 (speculative_down desde $1162) produjo retorno de -3.2% en 5 días y -1.5% en 30 días. El evento actual opera desde un nivel $36 más alto ($1198 vs $1162), con fundamentos de demanda más débiles, sugiriendo mayor riesgo de corrección."
         },
         {
-          "point": "Régimen de 'shock' activo con historial de retornos negativos a 30 días",
-          "evidence": "El régimen clasificado como 'shock' presenta análogos históricos: el shock del 2026-03-18 (speculative_down) generó retorno de -3.2% en 5 días y -1.5% a 30 días. El forecast narrativo a 30 días muestra mediana de -4.945% con solo 35% de probabilidad de suba.",
-          "historical_support": "Los análogos del Knowledge Base para shocks en régimen actual muestran: shock 2026-03-18 → -3.2% en 5d; el forecast narrativo Q10 a 30d es -7.32%, mediana -4.94%. La probabilidad de suba a 15 días es solo 12% (n=16 análogos)."
+          "point": "Análogos narrativos de 7d y 30d: probabilidades de suba colapsadas",
+          "evidence": "Los análogos del Narrative Forecast para el evento activo 'oil_energy bullish' muestran: P(suba) 7d = solo 35% (mediana -0.856%), P(suba) 15d = 12% (mediana -5.053%), P(suba) 30d = 35% (mediana -4.945%). A precios actuales, la mediana a 30d implicaría un objetivo de ~$1139. El fade risk del evento es bajo (0.141) pero las probabilidades de continuación alcista son mínimas.",
+          "historical_support": "De los 20 análogos de eventos oil_energy bullish, 13 de 20 (65%) terminaron con pérdidas a 7 días, y 88% terminaron con pérdidas a 15 días. Esto es estadísticamente significativo y representa una de las señales más claras del análisis."
         },
         {
-          "point": "Intelligence Engine de 5 agentes con score MUY BAJISTA (-0.78) y modelo ML XGBoost MUY BAJISTA (-1.0)",
-          "evidence": "El composite_signal es SELL con raw score de -0.573 y composite_score de 21/100. El componente de mayor peso —Intelligence Engine (35%)— marca -0.78 (MUY BAJISTA). El modelo ML XGBoost (20% de peso) marca -1.0, su valor más extremo posible. La demanda china (25%) marca -0.4 (BAJISTA).",
-          "historical_support": "La estacionalidad histórica del período julio-agosto es BAJISTA (score -0.192), consistente con el patrón típico de presión vendedora post-pollination en maíz y ajuste de carry en soja previo a nueva cosecha norteamericana."
-        },
-        {
-          "point": "Posicionamiento especulativo neto en cero: sin soporte de fondos para mantener el rally",
-          "evidence": "COT net_speculative = 0 contratos. El precio ha subido +7.48% en 20 días pero sin respaldo de posicionamiento especulativo neto comprador. Esto sugiere que el rally fue impulsado por otros factores (posiblemente oil/energy, el evento activo) y no por convicción fundamental alcista de los fondos.",
-          "historical_support": "Rallies de commodities con posición especulativa neta neutral o negativa son estadísticamente menos sustentables. El evento 2026-03-18 (speculative_mom bearish) con precio $1,162 generó -3.2% en 5 días cuando el momentum especulativo se revirtió."
+          "point": "COT neto especulativo en cero: sin combustible especulativo para continuar el rally",
+          "evidence": "net_speculative = 0 contracts. Los especuladores no tienen posición neta larga que sostenga el precio. El rally desde ~$1135 (inicio de julio) a $1198 se produjo sin el soporte de una acumulación especulativa visible, lo que sugiere que el movimiento carece de base posicional para continuar.",
+          "historical_support": "En eventos especulativos bajistas históricos (2026-03-18 y 2026-06-05), los retornos a 7d fueron -0.2% y +0.8% respectivamente con fade inmediato. Sin posición especulativa neta larga que liquide al alza, la presión compradora marginal es limitada."
         }
       ],
       "risks_7d": [
-        "Evento activo oil_energy con 65% de probabilidad de suba a 1 día — podría extender el rally hacia resistencia $1,215-$1,227 antes de corregir",
-        "Ausencia de dato WASDE actualizado (último: 2026-06-06) — un reporte sorpresivo con stocks menores podría catalizar suba de $30-50/bu",
-        "Continuación del impulso técnico: precio 4.6% sobre MA50 ($1,163) con momentum aún positivo en 20d (+7.48%) podría atraer compradores de breakout cerca de $1,207.50",
-        "Noticias de compras chinas de emergencia o cancelación de ventas brasileñas podrían revertir basis",
-        "Escalación en Medio Oriente mencionada en noticias podría impulsar petróleo y arrastrar soja al alza via biofuels"
+        "Reporte WASDE sorpresivo bajista en stocks (fecha de referencia 2026-06-06 puede estar desactualizado): una revisión negativa de stocks globales podría generar spike alcista de +3-5%",
+        "Escalada en Medio Oriente que impulse petróleo fuertemente: la narrativa actual es oil_energy bullish con P(suba 1d)=65%; un shock de petróleo podría arrastrar soja al alza por correlación biocombustible",
+        "Compras chinas sorpresivas de grandes volúmenes (flash purchases): aunque los márgenes son negativos, intervenciones estatales chinas son impredecibles",
+        "Clima adverso en Midwest o Brasil que genere concerns de producción futura: cualquier evento climático severo invalidaría la tesis de oferta abundante"
       ],
       "risks_30d": [
-        "Recuperación del margen de crushing chino por caída de precio — si CBOT baja $50, márgenes se normalizan y demanda regresa",
-        "Reducción de exportaciones brasileñas por fin de ventana comercial: si el ritmo de 1.948 MMT/sem cae, la presión vendedora sobre basis se alivia",
-        "WASDE agosto podría mostrar reducción de stocks por calor extremo en el Corn Belt — riesgo alcista estructural",
-        "Acuerdo comercial EE.UU.-China que reactive compras masivas podría generar gap al alza de $80-120/bu",
-        "El forecast Ridge+XGB Ensemble a 30d es NEUTRO (+0.065) — el mercado podría simplemente derivar lateralmente y no ofrecer ganancia en corto",
-        "Track record del sistema muestra 5 SELL consecutivos incorrectos ($1,136-$1,196) — el mercado ha ignorado señales bajistas por 3+ semanas"
+        "Reversión de márgenes de crushing chino si el gobierno subsidia el procesamiento: podría reanimar demanda estructural rápidamente",
+        "Debilitamiento del USD que abarate la soja en términos globales y estimule compras internacionales",
+        "Reducción de estimaciones de cosecha sudamericana 2026/27 en próximos reportes USDA",
+        "Acuerdo comercial US-China que elimine aranceles o implique compras comprometidas de soja americana",
+        "Caída de tasas de interés que reactive el apetito especulativo por commodities agrícolas"
       ],
       "price_target_7d": {
         "low": 1155,
-        "high": 1210
+        "high": 1190
       },
       "price_target_30d": {
-        "low": 1115,
-        "high": 1195
+        "low": 1120,
+        "high": 1175
       },
       "conviction": "MEDIA",
-      "key_risk_to_thesis": "El track record del propio sistema es la mayor amenaza a la tesis: 5 veredictos SELL consecutivos fallidos desde $1,136 hasta $1,196 (retornos reales de +1.6% a +4.8%) sugieren que el mercado tiene un driver alcista no capturado por el modelo. El evento activo oil_energy con 65% prob de suba a 1 día y el posible WASDE de agosto con sorpresas de demanda podrían extender el rally hasta $1,250-$1,270 antes de cualquier corrección, invalidando los targets bajistas. ADVERTENCIA CRÍTICA: La tesis bajista es técnicamente sólida pero el historial de accuracy SELL del sistema es solo 24% (4/17), lo que obliga a moderar la convicción de ALTA a MEDIA."
+      "key_risk_to_thesis": "El principal riesgo a la tesis bajista es que el track record del sistema muestra que las señales SELL han sido incorrectas en 13 de 17 casos recientes (76% error rate), y los últimos 5 veredictos SELL consecutivos fueron todos incorrectos con el precio subiendo en cada caso. Esto sugiere que existe una fuerza alcista no capturada por los modelos (posiblemente geopolítica o de biocombustibles) que está dominando. Si el petróleo continúa subiendo y arrastra los márgenes de biocombustible, el precio podría superar $1215 e invalidar toda la tesis técnica y fundamental bajista. NOTA DE CALIBRACIÓN: Dado el track record histórico del sistema (22% accuracy en 7d para señales SELL), la convicción se limita a MEDIA a pesar de la alineación de múltiples indicadores bajistas."
     },
     "risk": {
       "regime": "transition",
       "regime_confidence": 0.62,
       "volatility_assessment": "elevated",
       "event_risk_next_7d": "high",
-      "event_risk_detail": "WASDE con datos desactualizados (última lectura 2026-06-06), lo que implica próxima publicación podría traer sorpresa significativa. Tensión en Medio Oriente activa con impacto en petróleo y fertilizantes. Evento oil_energy activo clasificado como bullish con fade_risk bajo (0.141), pero los análogos históricos a 7d muestran solo 35% de probabilidad de suba. El shock de mercado actual (régimen=shock) amplifica la sensibilidad a cualquier novedad informativa.",
-      "positioning_risk": "low",
-      "positioning_detail": "COT reporta net_speculative=0 contratos, lo que sugiere posicionamiento especulativo neutral o dato no disponible. Sin crowding evidente en ninguna dirección. Esto reduce el riesgo de liquidación forzada de posiciones, pero también limita el combustible para movimientos sostenidos. La ausencia de dato confiable en COT es en sí misma un factor de incertidumbre.",
+      "event_risk_detail": "Régimen clasificado como 'shock' con evento activo oil_energy/bullish (fuerza 0.549). Tensiones en Medio Oriente afectando petróleo y fertilizantes. WASDE próximo (datos de junio 2026 desactualizados, posible actualización inminente). Historial de shocks recientes: 3 eventos en Feb-Mar 2026 con reversiones parciales a 30d. El RSI en 77 y precio cerca de resistencias clave (1207.5, 1215.25) amplifica el riesgo de evento de reversión técnica.",
+      "positioning_risk": "medium",
+      "positioning_detail": "COT neto especulativo reportado en 0 contratos — dato ausente/nulo que impide evaluación precisa del crowding. Basis Uruguay en z-score de -2.64 (señal MUY desfavorable, 2.6 desviaciones estándar por debajo de la media), sugiere desequilibrio en la cadena física. Crush margin chino en -140.03 USD/ton (profundamente negativo), lo que reduce incentivo de compras chinas y limita soporte fundamental a precios actuales. El precio ha subido ~6.8% desde el shock de junio ($1122→$1198), potencialmente atrayendo posiciones especulativas largas en un contexto de fundamentos débiles.",
       "persistence_probability": 0.31,
-      "fade_probability": 0.54,
+      "fade_probability": 0.69,
       "max_recommended_exposure": "minimal",
       "key_risk_factors": [
-        "RSI(14)=77 en zona de sobrecompra severa con precio en 84.1% del canal de Bollinger — señal técnica de extensión",
-        "Precio actual ($1204.50) contra resistencias clave inmediatas en $1207.5 y $1215.25 — espacio alcista limitado en el corto plazo",
-        "Crush margin chino en -140.03 USD/ton (fuertemente negativo) implica desincentivo estructural a importaciones — demanda score 30/100",
-        "Track record del sistema críticamente bajo: 22% accuracy direccional a 7d; últimos 5 veredictos SELL todos incorrectos con mercado subiendo promedio +2.56%",
-        "Modelo ML con confianza de 0.05 (prácticamente nula) y accuracy direccional 7d de 41.9% — señal ML no confiable",
-        "Análogos históricos de shocks oil_driven: persistencia a 30d = 0% en caso similar (Mar-2026 a $1213); el mercado tendió a revertir",
-        "Basis Uruguay en z-score=-2.64 (señal DESFAVORABLE extrema) indica desconexión entre mercado físico y futuro CBOT",
-        "Exports Brasil creciendo YoY +5.1% a ritmo de 1.948 MMT/semana — oferta sudamericana compitiendo activamente",
-        "Narrative forecast a 15d y 30d fuertemente bajistas (P(suba) 12% y 35% respectivamente, mediana -5%)",
-        "Decision classifier underperforms always-wait en todos los horizontes — sistema con alpha negativo reciente",
-        "Régimen clasificado como shock con señal compuesta SELL (-0.573) pero mercado continúa subiendo — posible short squeeze o factor no capturado"
+        "RSI(14)=77: territorio de sobrecompra técnica con precio en %B=84.1% (cerca del límite superior de Bollinger)",
+        "Crush margin chino -140.03 USD/ton: demanda score 30/100, desincentiva compras fundamentales que sostengan el rally",
+        "Track record del sistema: 5 SELL consecutivos incorrectos (precio siguió subiendo), sugiere momentum alcista persistente que el modelo no captura correctamente",
+        "Basis Uruguay z-score -2.64: señal de desconexión entre precio CBOT y mercado físico, riesgo de convergencia bajista",
+        "Evento oil_energy activo: P(suba 7d)=35%, mediana -0.856% a 7d según análogos históricos",
+        "Decision Classifier muestra underperformance vs always-wait en todos los horizontes, especialmente 30d (-1.36 vs +8.72 USD/ton)",
+        "Ausencia de datos COT confiables: imposibilidad de evaluar crowding especulativo con precisión",
+        "WASDE desactualizado (junio 2026): riesgo de sorpresa en próxima publicación con stocks finales no revelados",
+        "Historial de shocks similares: persistencia a 30d solo 0-51% según tipo de shock; los oil_driven muestran 0% persistencia",
+        "Señal compuesta SELL con score 21/100, pero track record de SELL: solo 24% correcto (4/17)"
       ],
-      "regime_analogs": "El período más análogo es el shock oil_driven del 2026-03-12 ($1213, +4.2% inicial, retorno 30d=0.0%, persistencia 0%) — precio similar, driver similar, mismo régimen de sobreextensión técnica. Secundariamente similar al evento speculative_mom bajista del 2026-06-05 ($1122) que también fadeo a 7d pero entregó +1.9% a 30d. El patrón dominante sugiere: rally inicial no persistente, reversión gradual en horizonte 15-30 días. Comparable también a períodos de euforia pre-WASDE en 2012 y 2021 donde RSI>75 + crush margins negativos China precedieron correcciones del 8-12% en 30-45 días."
+      "regime_analogs": "El contexto más cercano es el shock oil_driven de 2026-03-12 ($1213, +4.2% inicial, retorno 30d=0.0%, persistencia=0%): precio elevado post-rally energético sin soporte de fundamentos de demanda china. También análogo al evento speculative_mom bearish de 2026-06-05 ($1122, fade a 7d=True, retorno 30d=+1.9%): los rallies recientes han tendido a fadearse en el corto plazo pero generar pequeños retornos positivos a 30d. El régimen de 'transition' desde shock recuerda a periodos post-rally de Q1 2026 donde el precio consolidó antes de correcciones moderadas. La combinación de RSI>75 + crush margin negativo + basis desfavorable es estructuralmente similar a techos de mercado observados en ciclos 2018-2019 de tensión comercial US-China."
     },
     "technical": {
       "primary_trend": "UP",
@@ -180,7 +168,7 @@
         {
           "level": 1207.5,
           "type": "swing_high",
-          "strength": "minor"
+          "strength": "major"
         },
         {
           "level": 1215.25,
@@ -190,98 +178,101 @@
         {
           "level": 1227.06,
           "type": "bollinger_upper",
-          "strength": "major"
+          "strength": "minor"
         }
       ],
       "momentum_signals": [
-        "RSI en 77.0 — sobrecomprado; sin divergencia bajista confirmada aún, pero en zona de alerta",
-        "Precio (1203) por encima de MA20 (1151.3), MA50 (1163.53) y MA200 (1119.53) — alineación alcista completa (cruce dorado implícito)",
-        "Momentum 5d: +0.67% (moderado), 20d: +7.48% (fuerte) — impulso sostenido en el último mes",
-        "Precio a +4.5% sobre MA50 y +7.5% sobre MA200 — extensión significativa respecto a medias"
+        "RSI en 77.0 — SOBRECOMPRADO (zona >70), sin divergencia bajista confirmada aún pero nivel de alerta máxima",
+        "Precio (1203) sobre MA20 (1151.3) en +51.7 pts — spread amplio, impulso alcista intacto",
+        "Precio (1203) sobre MA50 (1163.53) en +39.5 pts — tendencia de medio plazo alcista",
+        "Precio (1203) sobre MA200 (1119.53) en +83.5 pts — tendencia de largo plazo alcista",
+        "Momentum 5d: +0.67% moderado | Momentum 20d: +7.48% fuerte — aceleración sostenida",
+        "Golden cross implícito: MA20 > MA50 > MA200, alineación alcista completa"
       ],
       "bollinger_position": "upper_band",
-      "setup": "El precio se encuentra en zona de compresión entre la resistencia inmediata en 1207.5 y la banda superior Bollinger en 1227.06, con RSI en territorio sobrecomprado (77.0). Setup de distribución o pausa tras rally extendido: el precio necesita romper y cerrar por encima de 1215.25 para habilitar extensión alcista, o romper por debajo de 1185.25 para iniciar corrección técnica. Alta probabilidad de consolidación/corrección a corto plazo dada la extensión del RSI.",
+      "setup": "El precio opera en zona de sobrecompra extrema (%B=84.1%, RSI=77) con dos resistencias críticas inmediatas en 1207.5 y 1215.25. Setup de distribución potencial: el precio ha alcanzado la banda superior de Bollinger tras un impulso de +7.48% en 20 días, configurando un escenario de agotamiento alcista o pausa técnica antes de continuar. La invalidación bajista ocurre solo bajo 1163.53 (MA50).",
       "price_target_bullish": 1227.06,
       "price_target_bearish": 1163.53,
-      "technical_invalidation": 1215.25,
-      "confirmation_needed": "Cierre diario por encima de 1215.25 con expansión de volumen para confirmar continuación alcista; alternativamente, ruptura de 1185.25 con volumen para confirmar inicio de corrección hacia MA50 en 1163.53",
+      "technical_invalidation": 1163.53,
+      "confirmation_needed": "Para continuar alcista: cierre diario por encima de 1215.25 con volumen expansivo. Para setup bajista: RSI cruzando debajo de 70 con vela envolvente bajista en zona 1207-1215, o ruptura de 1185.25 en cierre diario.",
       "fundamental_alignment": "CONTRADICTS",
-      "confidence": 0.62,
+      "confidence": 0.55,
       "key_level_to_watch": 1207.5
     }
   },
   "verdict": {
     "verdict": "HOLD",
     "confidence": 0.38,
-    "reasoning": "Los fundamentales bajistas tienen peso significativo (crush margins chinos en -140 USD/ton, demanda score 30/100, narrativa a 15-30d con P(suba) del 12-35%) pero el track record del sistema muestra 5 SELL consecutivos fallidos con retorno promedio post-veredicto de +1.63%, lo que impide emitir SELL con convicción. El técnico muestra trend alcista fuerte pero con RSI=77 y precio en resistencia inmediata ($1207.50), requiriendo confirmación de ruptura antes de tomar posición directional. Con accuracy direccional del 22% histórica del sistema y decisión classifier favoreciendo always-wait en todos los horizontes, HOLD es la postura más honesta.",
+    "reasoning": "El precio opera en sobrecompra técnica extrema (RSI 77, %B 84%) con resistencias inmediatas a solo 0.7-1.4% de distancia, mientras los fundamentos de demanda china son estructuralmente débiles (crush margin -140 USD/ton, demand score 30/100). Sin embargo, el track record del sistema muestra 5 SELL consecutivos incorrectos y solo 22% accuracy direccional a 7d, por lo que emitir una señal SELL activa con esta evidencia contradictoria y ese historial sería imprudente. La evidencia ambigua, el pobre track record del modelo, y el underperformance del decision classifier vs always-wait en todos los horizontes justifican esperar confirmación antes de tomar posición direccional.",
     "price_range_7d": {
-      "low": 1148,
-      "central": 1194,
-      "high": 1227
+      "low": 1155,
+      "central": 1193,
+      "high": 1220
     },
     "price_range_30d": {
-      "low": 1115,
+      "low": 1120,
       "central": 1145,
-      "high": 1227
+      "high": 1225
     },
     "recommended_action": {
-      "producers": "No agregar coberturas nuevas en este momento — el precio actual ($1204.50) está en zona de resistencia técnica con RSI sobrecomprado. Si ya tienen coberturas parciales, mantenerlas. Esperar señal de ruptura de $1215.25 para decidir si fijar más o, alternativamente, esperar corrección hacia MA50 ($1163) para re-evaluar. El basis desfavorable en Uruguay (z=-2.64) penaliza la cobertura local: considerar esperar normalización del basis.",
-      "traders": "Flat position. No iniciar posición SHORT aquí pese a señales bajistas: 5 SELL consecutivos fallidos y momentum técnico intacto. No iniciar LONG sin confirmación técnica de ruptura de $1215.25 con volumen. El setup más favorable sería: esperar retroceso a zona $1177-$1185 para LONG con SL bajo $1163 (MA50), o esperar cierre diario sobre $1215.25 para LONG momentum con SL en $1195. Ninguna de estas condiciones está cumplida ahora."
+      "producers": "No vender coberturas adicionales en estos niveles con precio en sobrecompra técnica y sin catalizador bajista inmediato confirmado. Si tienen posición sin cubrir, aprovechar cualquier spike hacia $1207-$1215 para cubrir entre 25-50% de la exposición pendiente. No perseguir el precio hacia arriba — el riesgo de reversión a MA50 ($1163) es real a 30 días según análogos narrativos (mediana -4.9%).",
+      "traders": "Mantenerse al margen (FLAT) hasta que el mercado muestre su mano: ya sea ruptura confirmada con cierre diario sobre $1215.25 (potencial long hacia $1227) o primera señal de reversión bajista (RSI cruzando bajo 70 con envolvente bajista en zona $1207-$1215). El setup actual no ofrece relación riesgo/recompensa aceptable desde precio actual dado las resistencias inmediatas y el historial de análogos a 7-30d."
     },
     "position_sizing": "flat",
     "invalidation_conditions": [
-      "Cierre diario sobre $1215.25 con expansión de volumen → revisar a BUY con entrada en breakout",
-      "Ruptura de soporte $1185.25 con cierre bajo ese nivel → revisar a SELL/SHORT hacia $1163",
-      "Publicación WASDE con datos de stocks actualizados (anterior: 2026-06-06) mostrando sorpresa material en cualquier dirección → re-evaluación inmediata",
-      "Crush margin chino mejora hacia -80 USD/ton o menos negativo → revisar tesis bajista, potencial BUY",
-      "Escalación geopolítica en Medio Oriente con petróleo WTI >+8% en una semana → refuerza evento oil_energy, potencial BUY",
-      "Datos de importaciones chinas mostrando caída >10% YoY → confirma tesis bajista, evaluar SHORT"
+      "Cierre diario sostenido sobre $1215.25 con expansión de volumen invalidaría la cautela y abriría long hacia $1227",
+      "Ruptura de soporte $1185.25 en cierre diario activaría sesgo bajista hacia MA50 $1163.53",
+      "WASDE con sorpresa positiva en stocks globales (debajo de estimados) cambiaría el balance fundamental",
+      "Crush margin chino mejorando significativamente desde -140 USD/ton revertiría la debilidad estructural de demanda",
+      "Petróleo con spike >5% en 1-2 días podría validar continuación del evento oil_energy bullish y activar compras",
+      "RSI bajando de 70 con vela envolvente bajista confirmaría agotamiento técnico y justificaría short táctico"
     ],
     "bull_bear_balance": {
       "bull_weight": 0.38,
       "bear_weight": 0.62,
-      "explanation": "Los argumentos bajistas reciben mayor peso por la solidez del dato de crush margins (-140 USD/ton, objetivo, cuantificable), el forecast narrativo a 15-30d con mediana -5% y P(suba)=12% a 15d, el régimen shock con análogo oil_driven Mar-2026 mostrando persistencia 0% a 30d, y el composite score 21/100. Sin embargo, el peso alcista no es marginal: el track record de 5 SELL fallidos (retorno promedio +2.56% contra la señal) es evidencia dura de que el mercado tiene un driver alcista no capturado. El alcista recibe 38% de peso principalmente por el momentum técnico comprobable (precio sobre las tres MAs), el evento oil_energy activo con fade risk bajo (0.141), y la corrección de sesgo bajista documentada en el historial."
+      "explanation": "Peso mayor al lado bajista por: (1) análogos narrativos del evento oil_energy muestran P(suba 7d)=35% y P(suba 15d)=12% con mediana 30d de -4.9%, (2) crush margin chino -140 USD/ton es fundamentalmente incompatible con rally sostenido, (3) basis Uruguay z-score -2.64 indica exceso de oferta física, (4) el análogo más cercano (shock oil_driven 2026-03-12 desde $1213) tuvo retorno 30d=0%. Sin embargo, el peso alcista de 0.38 refleja el momentum técnico real (+7.48% en 20d), el evento activo con fade risk bajo (0.141), y el track record terrible de señales SELL del sistema que impide emitir SELL con convicción."
     },
     "key_watchlist": [
-      "Nivel $1207.50 — resistencia inmediata, cierre sobre o bajo este nivel define el setup de la semana",
-      "Precio del petróleo WTI: movimiento >±3% en 3 días impactaría directamente el evento oil_energy activo",
-      "Publicación WASDE actualizada (última: 2026-06-06, ya vencida) — cualquier release sorpresivo es evento de alta convicción",
-      "Crush margins China: monitorear señales de mejora desde -140 USD/ton; nivel de -100 sería primer hito de normalización",
-      "Basis Uruguay: z-score -2.64 extremo, cualquier movimiento hacia -1.5 indicaría normalización y cambio de señal",
-      "Importaciones soja China: dato semanal YoY — si cae de +1.8% a negativo, confirma tesis bajista"
+      "Nivel $1207.50 — resistencia clave: comportamiento del precio en esta zona (rechazo vs ruptura) determinará dirección",
+      "RSI(14): monitorear cruce bajista de 70 como primera señal de agotamiento técnico",
+      "Precio de petróleo crudo: el evento oil_energy activo hace esta correlación crítica esta semana",
+      "Próxima publicación WASDE (datos de junio 2026 desactualizados — posible actualización inminente)",
+      "Crush margin chino: cualquier mejora desde -140 USD/ton sería catalizador alcista relevante",
+      "Compras flash de China: dada la escasez de noticias y sentimiento 1 alcista vs 7 bajistas, una noticia de compra grande sería sorpresa",
+      "Basis Uruguay: monitorear reversión desde z-score -2.64 hacia la media"
     ],
-    "next_review_trigger": "Cierre diario de soja CBOT fuera del rango $1185-$1215 (ruptura de cualquiera de los dos extremos del rango actual de compresión), O publicación de nuevo WASDE con datos post-junio 2026, lo que ocurra primero.",
+    "next_review_trigger": "Cierre diario fuera del rango $1185-$1215 (ruptura o quiebre de soportes), publicación del próximo WASDE, o movimiento de petróleo >3% en cualquier dirección en una sola sesión",
     "cross_market": {
-      "oil": "Datos no disponibles en el contexto actual (commodities: price=?, RSI=?, chg5d=?). Sin embargo, las noticias confirman tensión en Medio Oriente con petróleo y fertilizantes subiendo. El evento oil_energy activo (bullish, fuerza 0.549) implica que históricamente un petróleo +5% agrega +1.5-2% a soja en 5 días vía biofuels. CRÍTICO: monitorear WTI esta semana. Si petróleo cede, el principal catalizador alcista del evento activo se debilita.",
-      "dollar": "DXY no disponible en los datos provistos. Dado que Brasil exporta a ritmo récord (+5.1% YoY), un dólar fuerte encarece soja para compradores externos y podría presionar a la baja. La ausencia de dato DXY es un gap significativo para evaluar competitividad exportadora USA vs Brasil.",
-      "corn": "Precio maíz Rosario disponible (artículo del 18 mayo, sin dato numérico concreto para julio). Sin ratio soja/maíz actualizado, no es posible evaluar arbitraje. Nota: el ratio S/C típicamente entre 2.0-2.5x; si está por encima, hay incentivo a plantar más soja (presión oferta futura), si por debajo, hay cambio de cultivo favorable a soja (soporte precio)."
+      "oil": "Datos de precio/RSI de crudo no disponibles en esta sesión (commodities: price=?). Sin embargo, las noticias indican tensión en Medio Oriente con señales de subida en petróleo y fertilizantes. El evento narrativo activo es oil_energy bullish, lo que hace que cualquier movimiento de petróleo sea el catalizador principal. Impacto en soja vía biofuels: correlación positiva — petróleo más caro mejora competitividad del biodiesel de aceite de soja. El análogo 2026-03-12 mostró +18.2% en petróleo a 5d generando +4.2% en soja. Monitorear de cerca.",
+      "dollar": "DXY no disponible en datos actuales. Impacto en competitividad exportadora: DXY más débil favorece commodities agrícolas en general al hacer la soja más barata en términos de otras divisas, estimulando demanda internacional. Basis Uruguay desfavorable (-33.5 USD/ton) podría reflejar parcialmente fortaleza relativa del USD frente a peso/real. Dato crítico ausente que limita análisis cross-market.",
+      "corn": "Datos de maíz no disponibles directamente, pero noticias señalan exportaciones activas de maíz argentino hacia China (9 barcos). Ratio soja/maíz no calculable sin precio de maíz CBOT. Implicancia: la apertura del corredor logístico Argentina-China para maíz podría preceder o complementar compras de soja, aunque el crush margin negativo limita el arbitraje. Sin datos de precio de maíz, el ratio no puede calcularse con precisión."
     },
     "decision_classifier": {
-      "horizonte_optimo": "NINGUNO — en todos los horizontes el always-wait supera a actuar: 1d (0.113 vs 0.15), 7d (2.396 vs 3.91), 15d (3.589 vs 6.368), 30d (-1.359 vs 8.716 USD/ton). El sistema tiene alpha negativo en todos los horizontes, confirmando que esperar es dominante. Si se fuerza a elegir horizonte, 15d muestra la mayor divergencia a favor de esperar (ratio 1:1.77), pero esto también es el horizonte más corto con menos observaciones (n=23).",
+      "horizonte_optimo": "1d",
       "p_wait": 0.72,
-      "partial_sell": "0% ahora en ninguna dirección. Si precio rompe $1215.25 con volumen: 50% LONG con revisión a 75% si cierra sobre ese nivel dos días seguidos. Si precio rompe $1185.25: 25% SHORT como primera entrada, agregar 25% adicional solo si el WASDE confirma datos negativos de demanda."
+      "partial_sell": "No ejecutar posición direccional ahora. Si se confirma rechazo en $1207.50 con RSI cruzando bajo 70: considerar short táctico con 25% de sizing normal. Si cierre sobre $1215.25: considerar long con 25% sizing, stop en $1185."
     },
     "trade_idea": {
-      "setup": "Sin setup definido, esperar confirmación. El precio está comprimido entre resistencia $1207.50 y soporte $1185.25 con RSI sobrecomprado (77) y señales fundamentales contradictorias. No hay ventaja estadística en entrar en ninguna dirección antes de resolución del rango.",
+      "setup": "Sin setup definido actualmente. El precio está atrapado entre soporte técnico robusto (MA50 $1163.53) y resistencias inmediatas ($1207.50/$1215.25) con RSI en sobrecompra extrema. Esperar que el mercado resuelva la tensión en una dirección antes de tomar posición.",
       "direction": "FLAT",
-      "entry": "N/A — esperar ruptura de $1215.25 (LONG) o $1185.25 (SHORT)",
+      "entry": "N/A — esperar confirmación",
       "stop_loss": "N/A",
       "take_profit": "N/A",
-      "risk_reward": "N/A — no cumple criterio mínimo 1.5:1 sin confirmación técnica",
+      "risk_reward": "N/A — no hay setup válido con R:R >1.5:1 desde precio actual",
       "horizon": "7d",
       "conviction": "BAJA"
     },
-    "track_record": "El sistema muestra limitaciones severas: accuracy direccional 22% a 7d (5/23 correctos), por debajo del azar estadístico del 50%. Las señales SELL tienen 24% de accuracy (4/17). Los últimos 5 veredictos SELL consecutivos fueron todos incorrectos con el mercado subiendo entre +0.6% y +4.8%. El modelo ML tiene accuracy 41.9% a 7d (n=43) y 26.7% a 30d — ambos por debajo del 50%. El LLM Synthesis tiene hit_rate=31.6%. El decision classifier muestra que always-wait supera actuar en TODOS los horizontes. Estas métricas obligan a un fuerte prior hacia HOLD cuando la evidencia es ambigua. La honestidad requiere reconocer que este sistema ha generado alpha negativo en las últimas semanas.",
+    "track_record": "El sistema muestra limitaciones severas de calibración: accuracy direccional 7d = 22% (5/23), muy por debajo del 50% de azar. Las señales SELL tienen solo 24% de acierto (4/17). Los últimos 5 veredictos SELL consecutivos fueron todos incorrectos con el precio subiendo +0.6% a +4.8%. El LLM Synthesis hit rate es 31.6% (19 verificados). El modelo ML tiene accuracy 7d de 41.9% y 30d de solo 26.7%. Adicionalmente, el decision classifier muestra que 'always-wait' supera a la señal narrativa en todos los horizontes (7d: +3.91 vs +2.40 USD/ton; 30d: +8.72 vs -1.36 USD/ton). Conclusión: el sistema tiene un sesgo bajista sistemático que no está captando el momentum alcista del mercado desde julio. Ser honesto sobre estas limitaciones es critical — el HOLD refleja esta incertidumbre calibrada.",
     "data_gaps": [
-      "Precio y cambio del petróleo WTI (commodities: price=?, chg5d=?%) — crítico dado evento oil_energy activo",
-      "Nivel DXY actual y cambio reciente — necesario para evaluar competitividad exportadora USD vs BRL",
-      "Ratio soja/maíz actualizado para evaluar arbitraje de cultivos",
-      "Dato WASDE actualizado (última lectura: 2026-06-06, más de 5 semanas de antigüedad) — el más crítico de todos",
-      "Ending stocks WASDE actuales (marcado como '?Mbu') — imposible evaluar balance oferta/demanda sin este dato",
-      "COT desagregado: el dato net_speculative=0 podría ser un dato faltante más que posicionamiento real neutro",
-      "Datos de importaciones chinas semanales actualizados (solo YoY +1.8% disponible, sin tendencia reciente)",
-      "Precio y dirección del petróleo en las últimas 48 horas para confirmar si el evento oil_energy sigue activo",
-      "Volumen de contratos CBOT en los últimos 3 días para confirmar si el rally tiene respaldo de flujo real"
+      "Precio y RSI de petróleo crudo (dato ausente, crítico dado el evento oil_energy activo)",
+      "Nivel actual del DXY y su tendencia reciente",
+      "Precio actual de maíz CBOT para calcular ratio soja/maíz",
+      "Datos COT confiables (net_speculative=0 puede ser dato nulo/ausente, no posición real)",
+      "WASDE actualizado — datos con referencia a 2026-06-06 están desactualizados por 40 días",
+      "Volumen de trading en CBOT (no incluido en datos, crítico para confirmar rupturas)",
+      "Posición de fondos CTA/momentum específicamente (el COT genérico no diferencia fondos discretionary vs sistemáticos)",
+      "Datos de producción/cosecha Brasil y Argentina actualizados para campaña 2025/26",
+      "Evolución de las compras chinas de soja en las últimas 2 semanas (los datos de imports_yoy=1.8% pueden estar rezagados)"
     ]
   },
   "context_summary": {
@@ -292,7 +283,7 @@
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 216.4,
+  "execution_time_seconds": 210.2,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
