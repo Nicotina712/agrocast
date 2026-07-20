@@ -1258,5 +1258,25 @@
         "forecast_price": 1177.72
       }
     }
+  },
+  {
+    "snapshot_date": "2026-07-20",
+    "price_at_snapshot": 1228.0,
+    "signal": "SELL",
+    "score": 21,
+    "horizons": {
+      "7": {
+        "target_date": "2026-07-27",
+        "forecast_price": 1204.68
+      },
+      "14": {
+        "target_date": "2026-08-03",
+        "forecast_price": 1204.68
+      },
+      "30": {
+        "target_date": "2026-08-19",
+        "forecast_price": 1204.68
+      }
+    }
   }
 ]
