@@ -710,11 +710,11 @@
     "bear_conviction": "MEDIA",
     "position_sizing": "25%",
     "verified_7d": true,
-    "verified_14d": false,
+    "verified_14d": true,
     "price_at_7d": 1195.0,
-    "price_at_14d": null,
+    "price_at_14d": 1237.5,
     "return_7d_pct": 0.82,
-    "return_14d_pct": null,
+    "return_14d_pct": 4.41,
     "direction_correct_7d": false,
     "direction_correct_14d": null,
     "range_hit_7d": true
@@ -829,15 +829,15 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "flat",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1237.5,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 3.23,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   },
   {
     "date": "2026-07-17",
@@ -859,14 +859,14 @@
     "bull_conviction": "BAJA",
     "bear_conviction": "MEDIA",
     "position_sizing": "flat",
-    "verified_7d": false,
+    "verified_7d": true,
     "verified_14d": false,
-    "price_at_7d": null,
+    "price_at_7d": 1246.75,
     "price_at_14d": null,
-    "return_7d_pct": null,
+    "return_7d_pct": 3.77,
     "return_14d_pct": null,
-    "direction_correct_7d": null,
+    "direction_correct_7d": false,
     "direction_correct_14d": null,
-    "range_hit_7d": null
+    "range_hit_7d": false
   }
 ]

@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-07-23T12:48:05.907734",
-  "current_price": 1234.25,
+  "timestamp": "2026-07-24T12:21:13.443293",
+  "current_price": 1241.0,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdKFZGLWD6kLme314XDte'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdM7KLxFrdW14WQN7X3Hs'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdKFZHcu5pgXTW3YG3RWb'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdM7KMVFjnUzhFnC2xiUD'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdKFZJsJzzp3yRdPVEW4u'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdM7KMwYM7BGoTu5N8Wr3'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdKFZKZyagxHgyWwzJpyb'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdM7KNQ4wVvmUh6pUZJiT'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdKFZL1mM3QZCr8WHG1jF'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdM7KP8UPu2UBxHGTfFd6'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
@@ -26,7 +26,7 @@
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.5,
+  "execution_time_seconds": 1.1,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
@@ -35,10 +35,10 @@
     "rag_documents": 8,
     "rag_query": "Precio del maíz en Rosario hoy 18 mayo 2026 Precio de la Soja en Rosario hoy 18 mayo 2026 china Ya partieron 9 barcos: el maíz argentino se abre paso firme en el camino exporta regime shock",
     "kb_stats": {
-      "total_documents": 2554,
+      "total_documents": 2558,
       "categories": {
-        "shock_history": 1073,
-        "event_history": 1471,
+        "shock_history": 1075,
+        "event_history": 1473,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
