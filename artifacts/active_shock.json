@@ -1,50 +1,21 @@
 {
-  "as_of": "2026-07-24T12:21:06",
+  "as_of": "2026-07-27T13:08:24",
   "current": {
     "ok": true,
-    "is_shock": true,
-    "is_strong_shock": false,
-    "is_near_shock": true,
-    "shock_type": "oil_driven",
-    "shock_direction": "up",
-    "window_active": "10d",
-    "ret_5d_pct": 3.51,
-    "ret_10d_pct": 4.2,
-    "oil_5d_pct": 8.83,
-    "oil_10d_pct": 25.71,
-    "soyoil_5d_pct": -3.64,
-    "soyoil_10d_pct": 1.74,
+    "is_shock": false,
+    "is_near_shock": false,
+    "ret_5d_pct": -0.86,
+    "ret_10d_pct": 1.12,
     "thr_spike_5d_pct": 4.61,
     "thr_spike_10d_pct": 6.72,
     "thr_drop_5d_pct": -4.1,
-    "thr_drop_10d_pct": -6.06,
+    "thr_drop_10d_pct": -6.07,
     "thr_near_spike_5d_pct": 2.72,
-    "thr_near_spike_10d_pct": 3.82,
-    "shock_date": "2026-07-24",
-    "shock_price": 1246.75,
-    "ret_active_pct": 4.2,
-    "oil_active_pct": 25.71
+    "thr_near_spike_10d_pct": 3.82
   },
-  "analogs_found": 5,
-  "analog_stats": {
-    "n": 5,
-    "ret_30d_q25_pct": 0.76,
-    "ret_30d_med_pct": 1.77,
-    "ret_30d_q75_pct": 4.39,
-    "peak_day_med": 12,
-    "peak_day_q25": 2,
-    "peak_day_q75": 13,
-    "peak_gain_med_pct": 5.07,
-    "half_fade_med": 15,
-    "survived_30d_pct": 100.0,
-    "confidence": "medium"
-  },
+  "analogs_found": 0,
   "recommendation": {
-    "action": "INFO_AMBIGUOUS",
-    "advisory": "info_only",
-    "message": "Shock alcista detectado con 5 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 12 post-shock (rango Q25-Q75: d\u00eda 2-13, ganancia mediana +5.1%). Retorno mediano a 30d: +1.8% (banda Q25-Q75: +0.8% a +4.4%). Sobrevive 30d: 100% de los casos.",
-    "tactical": "An\u00e1logos con outcomes mixtos. La se\u00f1al no es lo suficientemente clara para ning\u00fan tipo de acci\u00f3n direccional.",
-    "confidence": "medium",
-    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
+    "action": "NO_SHOCK",
+    "message": "Sin shock activo. Use el modelo regular."
   }
 }
