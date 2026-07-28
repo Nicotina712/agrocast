@@ -1,18 +1,18 @@
 {
-  "p_model": 0.5729,
+  "p_model": 0.5941,
   "p_llm": 0.5,
-  "p_ie": null,
-  "p_ensemble": 0.5729,
+  "p_ie": 0.5,
+  "p_ensemble": 0.5,
   "w_model": 0.0,
   "w_llm": 0.0,
-  "w_ie": 0.0,
-  "ie_verdict": null,
-  "ie_confidence": null,
+  "w_ie": 0.35,
+  "ie_verdict": "HOLD",
+  "ie_confidence": 0.5,
   "model_hit_rate": null,
   "llm_hit_rate": 0.3158,
-  "disagreement": 0.0729,
+  "disagreement": 0.0941,
   "abstain": false,
   "signal_ensemble": "HOLD",
-  "signal_source": "ml_model",
-  "agreement_score": 0.9271
+  "signal_source": "intelligence_engine",
+  "agreement_score": 0.9059
 }
