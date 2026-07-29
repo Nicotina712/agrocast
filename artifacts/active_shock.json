@@ -1,21 +1,50 @@
 {
-  "as_of": "2026-07-28T12:58:45",
+  "as_of": "2026-07-29T12:44:48",
   "current": {
     "ok": true,
-    "is_shock": false,
-    "is_near_shock": false,
-    "ret_5d_pct": -0.86,
-    "ret_10d_pct": 1.12,
+    "is_shock": true,
+    "is_strong_shock": false,
+    "is_near_shock": true,
+    "shock_type": "speculative_down",
+    "shock_direction": "down",
+    "window_active": "5d",
+    "ret_5d_pct": -3.12,
+    "ret_10d_pct": -0.64,
+    "oil_5d_pct": -2.64,
+    "oil_10d_pct": 6.21,
+    "soyoil_5d_pct": -10.36,
+    "soyoil_10d_pct": -7.21,
     "thr_spike_5d_pct": 4.61,
     "thr_spike_10d_pct": 6.72,
     "thr_drop_5d_pct": -4.1,
     "thr_drop_10d_pct": -6.07,
     "thr_near_spike_5d_pct": 2.72,
-    "thr_near_spike_10d_pct": 3.82
+    "thr_near_spike_10d_pct": 3.82,
+    "shock_date": "2026-07-29",
+    "shock_price": 1194.5,
+    "ret_active_pct": -3.12,
+    "oil_active_pct": -2.64
   },
-  "analogs_found": 0,
+  "analogs_found": 142,
+  "analog_stats": {
+    "n": 142,
+    "ret_30d_q25_pct": -6.3925,
+    "ret_30d_med_pct": -2.1799999999999997,
+    "ret_30d_q75_pct": 1.315,
+    "peak_day_med": 15,
+    "peak_day_q25": 4,
+    "peak_day_q75": 24,
+    "peak_gain_med_pct": -6.335,
+    "half_fade_med": 14,
+    "survived_30d_pct": 69.01408450704226,
+    "confidence": "high"
+  },
   "recommendation": {
-    "action": "NO_SHOCK",
-    "message": "Sin shock activo. Use el modelo regular."
+    "action": "INFO_AMBIGUOUS",
+    "advisory": "info_only",
+    "message": "Shock bajista detectado con 142 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 15 post-shock (rango Q25-Q75: d\u00eda 4-24, ganancia mediana -6.3%). Retorno mediano a 30d: -2.2% (banda Q25-Q75: -6.4% a +1.3%). Sobrevive 30d: 69% de los casos.",
+    "tactical": "An\u00e1logos con outcomes mixtos. La se\u00f1al no es lo suficientemente clara para ning\u00fan tipo de acci\u00f3n direccional.",
+    "confidence": "high",
+    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
   }
 }
