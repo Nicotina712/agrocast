@@ -1,50 +1,21 @@
 {
-  "as_of": "2026-07-31T12:54:46",
+  "as_of": "2026-08-03T13:14:44",
   "current": {
     "ok": true,
-    "is_shock": true,
-    "is_strong_shock": true,
+    "is_shock": false,
     "is_near_shock": false,
-    "shock_type": "oil_collapse",
-    "shock_direction": "down",
-    "window_active": "5d",
-    "ret_5d_pct": -4.77,
-    "ret_10d_pct": -1.33,
-    "oil_5d_pct": -4.83,
-    "oil_10d_pct": 3.04,
-    "soyoil_5d_pct": -10.43,
-    "soyoil_10d_pct": -11.0,
+    "ret_5d_pct": -1.49,
+    "ret_10d_pct": -2.9,
     "thr_spike_5d_pct": 4.61,
     "thr_spike_10d_pct": 6.72,
     "thr_drop_5d_pct": -4.13,
-    "thr_drop_10d_pct": -6.06,
-    "thr_near_spike_5d_pct": 2.72,
-    "thr_near_spike_10d_pct": 3.82,
-    "shock_date": "2026-07-31",
-    "shock_price": 1188.5,
-    "ret_active_pct": -4.77,
-    "oil_active_pct": -4.83
+    "thr_drop_10d_pct": -6.07,
+    "thr_near_spike_5d_pct": 2.71,
+    "thr_near_spike_10d_pct": 3.82
   },
-  "analogs_found": 30,
-  "analog_stats": {
-    "n": 30,
-    "ret_30d_q25_pct": -8.5825,
-    "ret_30d_med_pct": -1.24,
-    "ret_30d_q75_pct": 2.195,
-    "peak_day_med": 14,
-    "peak_day_q25": 4,
-    "peak_day_q75": 21,
-    "peak_gain_med_pct": -6.325,
-    "half_fade_med": 17,
-    "survived_30d_pct": 50.0,
-    "confidence": "high"
-  },
+  "analogs_found": 0,
   "recommendation": {
-    "action": "INFO_AMBIGUOUS",
-    "advisory": "info_only",
-    "message": "Shock bajista detectado con 30 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 14 post-shock (rango Q25-Q75: d\u00eda 4-21, ganancia mediana -6.3%). Retorno mediano a 30d: -1.2% (banda Q25-Q75: -8.6% a +2.2%). Sobrevive 30d: 50% de los casos.",
-    "tactical": "An\u00e1logos con outcomes mixtos. La se\u00f1al no es lo suficientemente clara para ning\u00fan tipo de acci\u00f3n direccional.",
-    "confidence": "high",
-    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
+    "action": "NO_SHOCK",
+    "message": "Sin shock activo. Use el modelo regular."
   }
 }
