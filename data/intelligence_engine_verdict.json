@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-08-03T13:14:49.638312",
-  "current_price": 1172.75,
+  "timestamp": "2026-08-04T13:07:38.184649",
+  "current_price": 1153.25,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdg7VYthVkEHbfLV9S7HC'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdhzkgFLAvov7GWyYpdZF'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdg7VZPxyVmFtweUHXT82'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdhzkhHLo7cpByocaXBCG'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdg7VZzgB8GxyCb16rhvy'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdhzkhyWjpGpEtZcuv9qL'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdg7VbxFRxrFvJhFeodfx'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdhzkiYjtcZMGVTwzYz3S'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdg7VckctqAT4Zy3ZAhNi'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cdhzkj8i1xXqu7FfNxikL'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
@@ -26,7 +26,7 @@
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.4,
+  "execution_time_seconds": 1.2,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
