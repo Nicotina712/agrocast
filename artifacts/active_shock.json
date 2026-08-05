@@ -1,21 +1,50 @@
 {
-  "as_of": "2026-08-04T13:07:31",
+  "as_of": "2026-08-05T12:54:58",
   "current": {
     "ok": true,
-    "is_shock": false,
-    "is_near_shock": false,
-    "ret_5d_pct": -1.49,
-    "ret_10d_pct": -2.9,
+    "is_shock": true,
+    "is_strong_shock": false,
+    "is_near_shock": true,
+    "shock_type": "oil_collapse",
+    "shock_direction": "down",
+    "window_active": "10d",
+    "ret_5d_pct": -0.59,
+    "ret_10d_pct": -5.03,
+    "oil_5d_pct": -10.88,
+    "oil_10d_pct": -13.31,
+    "soyoil_5d_pct": -2.93,
+    "soyoil_10d_pct": -11.05,
     "thr_spike_5d_pct": 4.61,
     "thr_spike_10d_pct": 6.72,
-    "thr_drop_5d_pct": -4.13,
+    "thr_drop_5d_pct": -4.15,
     "thr_drop_10d_pct": -6.07,
-    "thr_near_spike_5d_pct": 2.71,
-    "thr_near_spike_10d_pct": 3.82
+    "thr_near_spike_5d_pct": 2.7,
+    "thr_near_spike_10d_pct": 3.82,
+    "shock_date": "2026-08-05",
+    "shock_price": 1171.0,
+    "ret_active_pct": -5.03,
+    "oil_active_pct": -13.31
   },
-  "analogs_found": 0,
+  "analogs_found": 34,
+  "analog_stats": {
+    "n": 34,
+    "ret_30d_q25_pct": -7.605,
+    "ret_30d_med_pct": -3.9850000000000003,
+    "ret_30d_q75_pct": 0.755,
+    "peak_day_med": 20,
+    "peak_day_q25": 2,
+    "peak_day_q75": 27,
+    "peak_gain_med_pct": -6.92,
+    "half_fade_med": 6,
+    "survived_30d_pct": 61.76470588235294,
+    "confidence": "high"
+  },
   "recommendation": {
-    "action": "NO_SHOCK",
-    "message": "Sin shock activo. Use el modelo regular."
+    "action": "INFO_BEARISH_DEEPENS",
+    "advisory": "info_only",
+    "message": "Shock bajista detectado con 34 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 20 post-shock (rango Q25-Q75: d\u00eda 2-27, ganancia mediana -6.9%). Retorno mediano a 30d: -4.0% (banda Q25-Q75: -7.6% a +0.8%). Sobrevive 30d: 62% de los casos.",
+    "tactical": "Hist\u00f3ricamente la ca\u00edda suele profundizarse antes de recuperar. Informaci\u00f3n de contexto \u2014 no act\u00fae s\u00f3lo en base a esto.",
+    "confidence": "high",
+    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
   }
 }
