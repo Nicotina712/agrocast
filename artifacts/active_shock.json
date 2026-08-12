@@ -1,11 +1,11 @@
 {
-  "as_of": "2026-08-11T11:50:34",
+  "as_of": "2026-08-12T11:50:25",
   "current": {
     "ok": true,
     "is_shock": false,
     "is_near_shock": false,
-    "ret_5d_pct": 0.83,
-    "ret_10d_pct": -2.48,
+    "ret_5d_pct": 1.98,
+    "ret_10d_pct": -0.32,
     "thr_spike_5d_pct": 4.61,
     "thr_spike_10d_pct": 6.72,
     "thr_drop_5d_pct": -4.15,

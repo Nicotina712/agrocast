@@ -1,87 +1,87 @@
 {
   "cutoffs": {
     "2023-12-31": {
-      "n_train": 1858,
-      "n_test": 642,
-      "auc": 0.5634,
-      "accuracy": 0.5031,
-      "p_mean": 0.5824,
-      "p_std": 0.2909,
-      "top1_share": 0.0241,
+      "n_train": 1856,
+      "n_test": 644,
+      "auc": 0.5722,
+      "accuracy": 0.5109,
+      "p_mean": 0.6074,
+      "p_std": 0.2638,
+      "top1_share": 0.0224,
       "top5_features": {
-        "cot_regime_long": 0.02410000003874302,
-        "wasde_bull_bias": 0.023800000548362732,
-        "enso_oni": 0.023000000044703484,
-        "ms_long_trend": 0.019500000402331352,
-        "cot_noncomm_net": 0.019500000402331352
+        "cot_regime_long": 0.02239999920129776,
+        "soy_corn_ratio": 0.020099999383091927,
+        "SoybeanMeal": 0.01899999938905239,
+        "insp_soy_bu": 0.018699999898672104,
+        "brl_usd": 0.01860000006854534
       },
       "signal_dist": {
-        "BUY": 0.558,
-        "SELL": 0.273,
-        "HOLD": 0.17
+        "BUY": 0.609,
+        "SELL": 0.244,
+        "HOLD": 0.148
       }
     },
     "2024-12-31": {
-      "n_train": 2110,
-      "n_test": 390,
-      "auc": 0.5421,
-      "accuracy": 0.5359,
-      "p_mean": 0.4316,
-      "p_std": 0.254,
-      "top1_share": 0.0491,
+      "n_train": 2108,
+      "n_test": 392,
+      "auc": 0.5234,
+      "accuracy": 0.5383,
+      "p_mean": 0.3897,
+      "p_std": 0.2436,
+      "top1_share": 0.026,
       "top5_features": {
-        "enso_phase": 0.04910000041127205,
-        "enso_oni": 0.029100000858306885,
-        "SoybeanMeal": 0.02239999920129776,
-        "cot_regime_long": 0.02160000056028366,
-        "month_sin": 0.020500000566244125
+        "wasde_bull_bias": 0.026000000536441803,
+        "insp_soy_4wk_avg": 0.02459999918937683,
+        "SoybeanMeal": 0.023000000044703484,
+        "Maize_lag7": 0.0215000007301569,
+        "basis_zscore": 0.019700000062584877
       },
       "signal_dist": {
-        "BUY": 0.315,
-        "SELL": 0.51,
-        "HOLD": 0.174
+        "BUY": 0.278,
+        "SELL": 0.571,
+        "HOLD": 0.151
       }
     },
     "2025-06-30": {
-      "n_train": 2233,
-      "n_test": 266,
-      "auc": 0.5816,
-      "accuracy": 0.515,
-      "p_mean": 0.4385,
-      "p_std": 0.2893,
-      "top1_share": 0.0481,
+      "n_train": 2231,
+      "n_test": 268,
+      "auc": 0.5684,
+      "accuracy": 0.5522,
+      "p_mean": 0.4902,
+      "p_std": 0.2773,
+      "top1_share": 0.0256,
       "top5_features": {
-        "enso_phase": 0.04809999838471413,
-        "ms_short_trend": 0.024700000882148743,
-        "cot_regime_long": 0.02319999970495701,
-        "enso_oni": 0.022299999371170998,
-        "SoybeanMeal": 0.0215000007301569
+        "Maize_lag7": 0.025599999353289604,
+        "insp_soy_4wk_avg": 0.025100000202655792,
+        "SoybeanMeal": 0.022600000724196434,
+        "ms_short_trend": 0.020899999886751175,
+        "soy_corn_ratio": 0.020600000396370888
       },
       "signal_dist": {
-        "BUY": 0.357,
-        "SELL": 0.534,
-        "HOLD": 0.109
+        "BUY": 0.403,
+        "SELL": 0.444,
+        "HOLD": 0.153
       }
     }
   },
   "global": {
     "n_train": 2009,
     "n_test": 491,
-    "auc": 0.5601,
-    "accuracy": 0.5214,
-    "p_mean": 0.5311,
-    "p_std": 0.2666,
-    "top1_share": 0.035,
+    "auc": 0.5519,
+    "accuracy": 0.5418,
+    "p_mean": 0.5385,
+    "p_std": 0.2783,
+    "top1_share": 0.0266,
     "top5_features": {
-      "enso_phase": 0.03500000014901161,
-      "enso_oni": 0.030899999663233757,
-      "wasde_bull_bias": 0.022600000724196434,
-      "ms_long_trend": 0.021299999207258224,
-      "spike_magnitude": 0.0203000009059906
+      "wasde_bull_bias": 0.026599999517202377,
+      "insp_soy_4wk_avg": 0.022700000554323196,
+      "cot_regime_long": 0.021700000390410423,
+      "basis_zscore": 0.020800000056624413,
+      "Maize_lag7": 0.020500000566244125
     },
     "signal_dist": {
-      "BUY": 0.438,
-      "SELL": 0.401,
+      "BUY": 0.456,
+      "SELL": 0.383,
       "HOLD": 0.161
     }
   },
