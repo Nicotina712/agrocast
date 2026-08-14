@@ -3,7 +3,7 @@
   "spread_pct": 1.5,
   "usd_oficial": 1516.0,
   "usd_blue": 1538.0,
-  "usd_mep": 1504.0,
+  "usd_mep": 1507.0,
   "retenciones_soja": 33.0,
   "retenciones_source": "reference_table",
   "ciara_liquidaciones_usd_mm": 800,
@@ -20,7 +20,7 @@
     "CIARA 800MM/sem: pace normal"
   ],
   "fuente": "Bluelytics + AFIP + CIARA",
-  "ultima_actualizacion": "2026-08-13",
+  "ultima_actualizacion": "2026-08-14",
   "nota": "Argentina + Brasil = ~80% exportaciones mundiales de soja",
-  "_ts": 1786632673.1388445
+  "_ts": 1786718692.7538865
 }
