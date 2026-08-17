@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-08-14T11:44:54.751026",
-  "current_price": 1172.5,
+  "timestamp": "2026-08-17T11:18:13.925060",
+  "current_price": 1189.0,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce2pXxzCEtcbbVLxipm9w'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce8Tvi9wSJqNoGpsWHmjE'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce2pXynZjG4Z1tU8X6W3w'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce8TviifiJjMpkMqmLGCQ'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce2pXzP35fJozemDANnzd'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce8TvjJ9LGbsgqYiNTZbD'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce2pXzwmTborPNC7wWFNv'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce8Tvjts9kEPc4ynmoZpm'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce2pY1YjdkQeaN4iL8yxA'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ce8TvkV61XfNp4LbVsyUW'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
@@ -26,7 +26,7 @@
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.3,
+  "execution_time_seconds": 1.1,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
@@ -35,9 +35,9 @@
     "rag_documents": 8,
     "rag_query": "Precio del maíz en Rosario hoy 18 mayo 2026 Precio de la Soja en Rosario hoy 18 mayo 2026 china Ya partieron 9 barcos: el maíz argentino se abre paso firme en el camino exporta regime shock",
     "kb_stats": {
-      "total_documents": 2548,
+      "total_documents": 2546,
       "categories": {
-        "shock_history": 1070,
+        "shock_history": 1068,
         "event_history": 1468,
         "cross_commodity": 1,
         "fundamentals": 2,
