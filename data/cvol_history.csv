@@ -78,3 +78,4 @@ Date,front_symbol,front_settle,atm_strike,iv_atm,iv_call,iv_put,source
 2026-08-13,SOYB (proxy ZS=F),1182.75,25.0,0.1968,0.1983,0.1953,yahoo_options:SOYB
 2026-08-14,SOYB (proxy ZS=F),1187.0,25.0,0.1895,0.2051,0.1738,yahoo_options:SOYB
 2026-08-17,SOYB (proxy ZS=F),1204.25,26.0,0.5127,0.2129,0.8125,yahoo_options:SOYB
+2026-08-18,SOYB (proxy ZS=F),1227.25,26.0,0.4834,0.2266,0.7402,yahoo_options:SOYB
