@@ -1,9 +1,9 @@
 {
   "cepo_activo": false,
-  "spread_pct": 2.8,
+  "spread_pct": 2.1,
   "usd_oficial": 1518.0,
-  "usd_blue": 1560.0,
-  "usd_mep": 1527.0,
+  "usd_blue": 1550.0,
+  "usd_mep": 1517.0,
   "retenciones_soja": 33.0,
   "retenciones_source": "reference_table",
   "ciara_liquidaciones_usd_mm": 800,
@@ -12,15 +12,15 @@
   "impacto_precio": "NEUTRAL",
   "razonamiento": "Oferta argentina dentro de parámetros normales.",
   "factores": [
-    "Brecha cambiaria 3% (oficial $1518.0 / blue $1560.0)",
+    "Brecha cambiaria 2% (oficial $1518.0 / blue $1550.0)",
     "Retenciones soja 33%",
     "Liquidaciones CIARA ~800 MM USD/sem",
-    "Brecha 3%: sin cepo relevante",
+    "Brecha 2%: sin cepo relevante",
     "Retenciones 33%: nivel normal",
     "CIARA 800MM/sem: pace normal"
   ],
   "fuente": "Bluelytics + AFIP + CIARA",
-  "ultima_actualizacion": "2026-08-20",
+  "ultima_actualizacion": "2026-08-21",
   "nota": "Argentina + Brasil = ~80% exportaciones mundiales de soja",
-  "_ts": 1787235960.8722355
+  "_ts": 1787322289.592829
 }
