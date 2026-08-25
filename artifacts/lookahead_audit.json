@@ -3,90 +3,90 @@
     "2023-12-31": {
       "n_train": 1848,
       "n_test": 652,
-      "auc": 0.5264,
-      "accuracy": 0.4954,
-      "p_mean": 0.5814,
-      "p_std": 0.2743,
-      "top1_share": 0.02,
+      "auc": 0.539,
+      "accuracy": 0.5,
+      "p_mean": 0.5864,
+      "p_std": 0.2808,
+      "top1_share": 0.0298,
       "top5_features": {
-        "insp_soy_bu": 0.019999999552965164,
-        "brl_usd": 0.019899999722838402,
-        "soy_corn_ratio": 0.019700000062584877,
-        "trends_interest": 0.01850000023841858,
-        "Maize_lag7": 0.01810000091791153
+        "cot_regime_extreme_long": 0.02979999966919422,
+        "enso_phase": 0.025100000202655792,
+        "cot_regime_long": 0.021199999377131462,
+        "ms_short_trend": 0.01860000006854534,
+        "ms_long_trend": 0.018300000578165054
       },
       "signal_dist": {
-        "BUY": 0.558,
-        "SELL": 0.278,
-        "HOLD": 0.164
+        "BUY": 0.586,
+        "SELL": 0.262,
+        "HOLD": 0.152
       }
     },
     "2024-12-31": {
       "n_train": 2100,
       "n_test": 400,
-      "auc": 0.5203,
-      "accuracy": 0.505,
-      "p_mean": 0.346,
-      "p_std": 0.2128,
-      "top1_share": 0.0215,
+      "auc": 0.5196,
+      "accuracy": 0.485,
+      "p_mean": 0.4151,
+      "p_std": 0.2648,
+      "top1_share": 0.0376,
       "top5_features": {
-        "basis_zscore": 0.0215000007301569,
-        "soy_corn_ratio": 0.020800000056624413,
-        "insp_soy_4wk_avg": 0.019999999552965164,
-        "wasde_bull_bias": 0.01899999938905239,
-        "Maize_lag7": 0.01860000006854534
+        "enso_phase": 0.03759999945759773,
+        "basis_seasonal_expected": 0.03660000115633011,
+        "enso_oni": 0.0203000009059906,
+        "SoybeanMeal": 0.01810000091791153,
+        "trends_interest": 0.017899999395012856
       },
       "signal_dist": {
-        "BUY": 0.193,
-        "SELL": 0.627,
-        "HOLD": 0.18
+        "BUY": 0.32,
+        "SELL": 0.555,
+        "HOLD": 0.125
       }
     },
     "2025-06-30": {
       "n_train": 2223,
       "n_test": 276,
-      "auc": 0.555,
-      "accuracy": 0.5254,
-      "p_mean": 0.4733,
-      "p_std": 0.2633,
-      "top1_share": 0.0291,
+      "auc": 0.5551,
+      "accuracy": 0.4674,
+      "p_mean": 0.4642,
+      "p_std": 0.2944,
+      "top1_share": 0.0437,
       "top5_features": {
-        "cot_regime_long": 0.029100000858306885,
-        "insp_soy_4wk_avg": 0.023399999365210533,
-        "Maize_lag7": 0.022099999710917473,
-        "basis_zscore": 0.02019999921321869,
-        "SoybeanMeal": 0.019099999219179153
+        "enso_phase": 0.043699998408555984,
+        "cot_regime_long": 0.02239999920129776,
+        "enso_oni": 0.020999999716877937,
+        "insp_soy_4wk_avg": 0.020600000396370888,
+        "Maize_lag7": 0.020500000566244125
       },
       "signal_dist": {
-        "BUY": 0.362,
+        "BUY": 0.406,
         "SELL": 0.486,
-        "HOLD": 0.152
+        "HOLD": 0.109
       }
     }
   },
   "global": {
     "n_train": 2009,
     "n_test": 492,
-    "auc": 0.5426,
-    "accuracy": 0.5264,
-    "p_mean": 0.5136,
-    "p_std": 0.2491,
-    "top1_share": 0.0302,
+    "auc": 0.5736,
+    "accuracy": 0.5325,
+    "p_mean": 0.5631,
+    "p_std": 0.2641,
+    "top1_share": 0.0342,
     "top5_features": {
-      "spike_without_oil": 0.03020000085234642,
-      "cot_regime_long": 0.028200000524520874,
-      "insp_soy_4wk_avg": 0.023499999195337296,
-      "basis_zscore": 0.021299999207258224,
-      "Maize_lag7": 0.019500000402331352
+      "enso_phase": 0.03420000150799751,
+      "enso_oni": 0.022299999371170998,
+      "Soybeans_Open": 0.0203000009059906,
+      "cot_regime_long": 0.019700000062584877,
+      "trends_norm": 0.018799999728798866
     },
     "signal_dist": {
-      "BUY": 0.435,
-      "SELL": 0.425,
-      "HOLD": 0.14
+      "BUY": 0.508,
+      "SELL": 0.333,
+      "HOLD": 0.159
     }
   },
   "embargo_days": 18,
   "flags": [
-    "Sin alertas evidentes"
+    "AUC m\u00ednimo 0.520 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
   ]
 }
