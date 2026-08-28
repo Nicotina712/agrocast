@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-08-27T20:22:04.272439",
-  "current_price": 1252.5,
+  "timestamp": "2026-08-28T20:17:47.667870",
+  "current_price": 1277.75,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeU7VCACB3g7xxnXeeCWy'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeVzyBh8thJSxyLZJJ4oa'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeU7VCrccD1XMCBURBEYo'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeVzyCPohjrqzWkX74rSC'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeU7VDR6rv6QeTmXuwfE8'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeVzyDM72zxr348SSiQVH'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeU7VDxbRTPcG83CL6Cmq'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeVzyDuqSoFDLSgX77QjD'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeU7VEX5VkZsj8jpVsY9P'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CeVzyEUKcB1uczUgo6dfE'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
@@ -35,10 +35,10 @@
     "rag_documents": 8,
     "rag_query": "Precio del maíz en Rosario hoy 18 mayo 2026 Precio de la Soja en Rosario hoy 18 mayo 2026 china Ya partieron 9 barcos: el maíz argentino se abre paso firme en el camino exporta regime shock",
     "kb_stats": {
-      "total_documents": 2550,
+      "total_documents": 2553,
       "categories": {
-        "shock_history": 1068,
-        "event_history": 1472,
+        "shock_history": 1069,
+        "event_history": 1474,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,

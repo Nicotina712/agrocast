@@ -1,5 +1,5 @@
 {
-  "p_model": 0.6338,
+  "p_model": 0.7727,
   "p_llm": 0.5,
   "p_ie": 0.5,
   "p_ensemble": 0.5,
@@ -10,9 +10,9 @@
   "ie_confidence": 0.5,
   "model_hit_rate": null,
   "llm_hit_rate": 0.3158,
-  "disagreement": 0.1338,
+  "disagreement": 0.2727,
   "abstain": false,
   "signal_ensemble": "HOLD",
   "signal_source": "intelligence_engine",
-  "agreement_score": 0.8662
+  "agreement_score": 0.7273
 }
