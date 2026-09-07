@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "as_of": "2026-09-04T14:17:44",
+  "as_of": "2026-09-07T15:29:09",
   "profile_name": "high_cost",
   "test_months": 12,
   "cutoff_date": "2025-09-04",
-  "price_per_ton_used": 481.34,
+  "price_per_ton_used": 475.37,
   "horizons": {
     "7d": {
       "ok": true,
       "n_decisions": 52,
-      "cost_pct": 0.797,
+      "cost_pct": 0.803,
       "horizon_days": 7,
       "strategies": {
         "always_sell": {
@@ -23,92 +23,92 @@
         },
         "always_wait": {
           "n_decisions": 52,
-          "mean_pnl_usd_ton": -1.01,
-          "total_pnl_usd_ton": -52.31,
+          "mean_pnl_usd_ton": -1.14,
+          "total_pnl_usd_ton": -59.4,
           "win_rate_pct": 44.2,
-          "annualized_excess_usd_ton": -52.77,
-          "pnl_q10_usd_ton": -22.16,
-          "pnl_q90_usd_ton": 22.11
+          "annualized_excess_usd_ton": -59.93,
+          "pnl_q10_usd_ton": -21.92,
+          "pnl_q90_usd_ton": 21.81
         },
         "split_50": {
           "n_decisions": 52,
-          "mean_pnl_usd_ton": -0.5,
-          "total_pnl_usd_ton": -26.15,
+          "mean_pnl_usd_ton": -0.57,
+          "total_pnl_usd_ton": -29.7,
           "win_rate_pct": 44.2,
-          "annualized_excess_usd_ton": -26.39,
-          "pnl_q10_usd_ton": -11.08,
-          "pnl_q90_usd_ton": 11.06
+          "annualized_excess_usd_ton": -29.97,
+          "pnl_q10_usd_ton": -10.96,
+          "pnl_q90_usd_ton": 10.9
         },
         "oracle": {
           "n_decisions": 52,
-          "mean_pnl_usd_ton": 4.87,
-          "total_pnl_usd_ton": 253.26,
+          "mean_pnl_usd_ton": 4.68,
+          "total_pnl_usd_ton": 243.26,
           "win_rate_pct": 44.2,
-          "annualized_excess_usd_ton": 255.53,
+          "annualized_excess_usd_ton": 245.44,
           "pnl_q10_usd_ton": 0.0,
-          "pnl_q90_usd_ton": 22.11
+          "pnl_q90_usd_ton": 21.81
         },
         "model_binary": {
           "n_decisions": 52,
-          "mean_pnl_usd_ton": 0.24,
-          "total_pnl_usd_ton": 12.48,
-          "win_rate_pct": 3.8,
-          "annualized_excess_usd_ton": 12.59,
+          "mean_pnl_usd_ton": 0.0,
+          "total_pnl_usd_ton": 0.0,
+          "win_rate_pct": 0.0,
+          "annualized_excess_usd_ton": 0.0,
           "pnl_q10_usd_ton": 0.0,
           "pnl_q90_usd_ton": 0.0
         },
         "model_partial": {
           "n_decisions": 52,
-          "mean_pnl_usd_ton": -0.31,
-          "total_pnl_usd_ton": -15.98,
-          "win_rate_pct": 1.9,
-          "annualized_excess_usd_ton": -16.12,
-          "pnl_q10_usd_ton": -1.91,
-          "pnl_q90_usd_ton": 0.0
+          "mean_pnl_usd_ton": -0.1,
+          "total_pnl_usd_ton": -5.35,
+          "win_rate_pct": 11.5,
+          "annualized_excess_usd_ton": -5.4,
+          "pnl_q10_usd_ton": -1.93,
+          "pnl_q90_usd_ton": 0.16
         }
       },
       "sample_records": [
         {
           "date": "2025-09-04",
           "ret_actual": 3.039,
-          "delta_actual": 2.242,
-          "p_cal": 0.509,
-          "partial_label": "SELL_100",
-          "sell_pct": 100,
-          "hold_pct": 0,
+          "delta_actual": 2.235,
+          "p_cal": 0.436,
+          "partial_label": "SELL_70",
+          "sell_pct": 70,
+          "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": 10.791,
-          "pnl_split_50": 5.396,
-          "pnl_oracle": 10.791,
-          "pnl_model_binary": 10.791,
-          "pnl_model_partial": 0.0
+          "pnl_always_wait": 10.627,
+          "pnl_split_50": 5.313,
+          "pnl_oracle": 10.627,
+          "pnl_model_binary": 0.0,
+          "pnl_model_partial": 3.188
         },
         {
           "date": "2025-09-11",
           "ret_actual": -0.419,
-          "delta_actual": -1.215,
-          "p_cal": 0.462,
-          "partial_label": "SELL_100",
-          "sell_pct": 100,
-          "hold_pct": 0,
+          "delta_actual": -1.222,
+          "p_cal": 0.436,
+          "partial_label": "SELL_70",
+          "sell_pct": 70,
+          "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -5.85,
-          "pnl_split_50": -2.925,
+          "pnl_always_wait": -5.807,
+          "pnl_split_50": -2.904,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": -0.0
+          "pnl_model_partial": -1.742
         },
         {
           "date": "2025-09-18",
           "ret_actual": -2.602,
-          "delta_actual": -3.399,
-          "p_cal": 0.333,
+          "delta_actual": -3.405,
+          "p_cal": 0.298,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -16.361,
-          "pnl_split_50": -8.181,
+          "pnl_always_wait": -16.189,
+          "pnl_split_50": -8.094,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -116,14 +116,14 @@
         {
           "date": "2025-09-25",
           "ret_actual": 0.543,
-          "delta_actual": -0.253,
-          "p_cal": 0.289,
+          "delta_actual": -0.26,
+          "p_cal": 0.298,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -1.219,
-          "pnl_split_50": -0.61,
+          "pnl_always_wait": -1.235,
+          "pnl_split_50": -0.617,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -131,24 +131,24 @@
         {
           "date": "2025-10-02",
           "ret_actual": -1.563,
-          "delta_actual": -2.36,
-          "p_cal": 0.295,
+          "delta_actual": -2.366,
+          "p_cal": 0.333,
           "partial_label": "SELL_70",
           "sell_pct": 70,
           "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -11.357,
-          "pnl_split_50": -5.679,
+          "pnl_always_wait": -11.247,
+          "pnl_split_50": -5.624,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": -3.407
+          "pnl_model_partial": -3.374
         }
       ]
     },
     "15d": {
       "ok": true,
       "n_decisions": 23,
-      "cost_pct": 1.707,
+      "cost_pct": 1.721,
       "horizon_days": 15,
       "strategies": {
         "always_sell": {
@@ -162,30 +162,30 @@
         },
         "always_wait": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": -0.82,
-          "total_pnl_usd_ton": -18.79,
+          "mean_pnl_usd_ton": -0.87,
+          "total_pnl_usd_ton": -20.06,
           "win_rate_pct": 39.1,
-          "annualized_excess_usd_ton": -20.13,
-          "pnl_q10_usd_ton": -25.99,
-          "pnl_q90_usd_ton": 24.3
+          "annualized_excess_usd_ton": -21.49,
+          "pnl_q10_usd_ton": -25.73,
+          "pnl_q90_usd_ton": 23.93
         },
         "split_50": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": -0.41,
-          "total_pnl_usd_ton": -9.4,
+          "mean_pnl_usd_ton": -0.44,
+          "total_pnl_usd_ton": -10.03,
           "win_rate_pct": 39.1,
-          "annualized_excess_usd_ton": -10.07,
-          "pnl_q10_usd_ton": -13.0,
-          "pnl_q90_usd_ton": 12.15
+          "annualized_excess_usd_ton": -10.74,
+          "pnl_q10_usd_ton": -12.87,
+          "pnl_q90_usd_ton": 11.97
         },
         "oracle": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": 8.21,
-          "total_pnl_usd_ton": 188.77,
+          "mean_pnl_usd_ton": 8.08,
+          "total_pnl_usd_ton": 185.84,
           "win_rate_pct": 39.1,
-          "annualized_excess_usd_ton": 202.19,
+          "annualized_excess_usd_ton": 199.06,
           "pnl_q10_usd_ton": 0.0,
-          "pnl_q90_usd_ton": 24.3
+          "pnl_q90_usd_ton": 23.93
         },
         "model_binary": {
           "n_decisions": 23,
@@ -199,9 +199,9 @@
         "model_partial": {
           "n_decisions": 23,
           "mean_pnl_usd_ton": 0.23,
-          "total_pnl_usd_ton": 5.3,
+          "total_pnl_usd_ton": 5.18,
           "win_rate_pct": 8.7,
-          "annualized_excess_usd_ton": 5.68,
+          "annualized_excess_usd_ton": 5.54,
           "pnl_q10_usd_ton": 0.0,
           "pnl_q90_usd_ton": 0.0
         }
@@ -210,14 +210,14 @@
         {
           "date": "2025-09-04",
           "ret_actual": 0.025,
-          "delta_actual": -1.682,
-          "p_cal": 0.302,
+          "delta_actual": -1.696,
+          "p_cal": 0.336,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -8.098,
-          "pnl_split_50": -4.049,
+          "pnl_always_wait": -8.063,
+          "pnl_split_50": -4.031,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -225,14 +225,14 @@
         {
           "date": "2025-09-19",
           "ret_actual": -1.828,
-          "delta_actual": -3.536,
-          "p_cal": 0.302,
+          "delta_actual": -3.549,
+          "p_cal": 0.336,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -17.018,
-          "pnl_split_50": -8.509,
+          "pnl_always_wait": -16.872,
+          "pnl_split_50": -8.436,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -240,44 +240,44 @@
         {
           "date": "2025-10-06",
           "ret_actual": 4.864,
-          "delta_actual": 3.157,
-          "p_cal": 0.263,
+          "delta_actual": 3.143,
+          "p_cal": 0.213,
           "partial_label": "SELL_70",
           "sell_pct": 70,
           "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": 15.194,
-          "pnl_split_50": 7.597,
-          "pnl_oracle": 15.194,
+          "pnl_always_wait": 14.94,
+          "pnl_split_50": 7.47,
+          "pnl_oracle": 14.94,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": 4.558
+          "pnl_model_partial": 4.482
         },
         {
           "date": "2025-10-21",
           "ret_actual": 8.004,
-          "delta_actual": 6.297,
-          "p_cal": 0.302,
+          "delta_actual": 6.283,
+          "p_cal": 0.336,
           "partial_label": "SELL_70",
           "sell_pct": 70,
           "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": 30.309,
-          "pnl_split_50": 15.154,
-          "pnl_oracle": 30.309,
+          "pnl_always_wait": 29.868,
+          "pnl_split_50": 14.934,
+          "pnl_oracle": 29.868,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": 9.093
+          "pnl_model_partial": 8.96
         },
         {
           "date": "2025-11-05",
           "ret_actual": 1.049,
-          "delta_actual": -0.658,
-          "p_cal": 0.1,
+          "delta_actual": -0.671,
+          "p_cal": 0.111,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -3.166,
-          "pnl_split_50": -1.583,
+          "pnl_always_wait": -3.192,
+          "pnl_split_50": -1.596,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -287,7 +287,7 @@
     "30d": {
       "ok": true,
       "n_decisions": 13,
-      "cost_pct": 3.414,
+      "cost_pct": 3.442,
       "horizon_days": 30,
       "strategies": {
         "always_sell": {
@@ -301,30 +301,30 @@
         },
         "always_wait": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": -3.9,
-          "total_pnl_usd_ton": -50.65,
+          "mean_pnl_usd_ton": -4.93,
+          "total_pnl_usd_ton": -64.1,
           "win_rate_pct": 53.8,
-          "annualized_excess_usd_ton": -50.69,
-          "pnl_q10_usd_ton": -38.36,
-          "pnl_q90_usd_ton": 26.66
+          "annualized_excess_usd_ton": -64.14,
+          "pnl_q10_usd_ton": -38.01,
+          "pnl_q90_usd_ton": 26.2
         },
         "split_50": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": -1.95,
-          "total_pnl_usd_ton": -25.33,
+          "mean_pnl_usd_ton": -2.47,
+          "total_pnl_usd_ton": -32.05,
           "win_rate_pct": 53.8,
-          "annualized_excess_usd_ton": -25.35,
-          "pnl_q10_usd_ton": -19.18,
-          "pnl_q90_usd_ton": 13.33
+          "annualized_excess_usd_ton": -32.07,
+          "pnl_q10_usd_ton": -19.0,
+          "pnl_q90_usd_ton": 13.1
         },
         "oracle": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": 9.27,
-          "total_pnl_usd_ton": 120.51,
+          "mean_pnl_usd_ton": 8.13,
+          "total_pnl_usd_ton": 105.73,
           "win_rate_pct": 53.8,
-          "annualized_excess_usd_ton": 120.59,
+          "annualized_excess_usd_ton": 105.8,
           "pnl_q10_usd_ton": 0.0,
-          "pnl_q90_usd_ton": 26.66
+          "pnl_q90_usd_ton": 26.2
         },
         "model_binary": {
           "n_decisions": 13,
@@ -337,10 +337,10 @@
         },
         "model_partial": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": 0.65,
-          "total_pnl_usd_ton": 8.51,
+          "mean_pnl_usd_ton": -0.4,
+          "total_pnl_usd_ton": -5.14,
           "win_rate_pct": 7.7,
-          "annualized_excess_usd_ton": 8.52,
+          "annualized_excess_usd_ton": -5.14,
           "pnl_q10_usd_ton": 0.0,
           "pnl_q90_usd_ton": 0.0
         }
@@ -349,14 +349,14 @@
         {
           "date": "2025-09-04",
           "ret_actual": -0.124,
-          "delta_actual": -3.538,
-          "p_cal": 0.263,
+          "delta_actual": -3.565,
+          "p_cal": 0.292,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -17.029,
-          "pnl_split_50": -8.514,
+          "pnl_always_wait": -16.948,
+          "pnl_split_50": -8.474,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -364,44 +364,44 @@
         {
           "date": "2025-10-06",
           "ret_actual": 9.307,
-          "delta_actual": 5.893,
-          "p_cal": 0.263,
+          "delta_actual": 5.866,
+          "p_cal": 0.292,
           "partial_label": "SELL_70",
           "sell_pct": 70,
           "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": 28.366,
-          "pnl_split_50": 14.183,
-          "pnl_oracle": 28.366,
+          "pnl_always_wait": 27.884,
+          "pnl_split_50": 13.942,
+          "pnl_oracle": 27.884,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": 8.51
+          "pnl_model_partial": 8.365
         },
         {
           "date": "2025-11-05",
           "ret_actual": -6.028,
-          "delta_actual": -9.442,
-          "p_cal": 0.263,
-          "partial_label": "SELL_100",
-          "sell_pct": 100,
-          "hold_pct": 0,
+          "delta_actual": -9.47,
+          "p_cal": 0.292,
+          "partial_label": "SELL_70",
+          "sell_pct": 70,
+          "hold_pct": 30,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -45.45,
-          "pnl_split_50": -22.725,
+          "pnl_always_wait": -45.017,
+          "pnl_split_50": -22.508,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
-          "pnl_model_partial": -0.0
+          "pnl_model_partial": -13.505
         },
         {
           "date": "2025-12-05",
           "ret_actual": -3.687,
-          "delta_actual": -7.101,
-          "p_cal": 0.207,
+          "delta_actual": -7.129,
+          "p_cal": 0.195,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": -34.181,
-          "pnl_split_50": -17.091,
+          "pnl_always_wait": -33.887,
+          "pnl_split_50": -16.944,
           "pnl_oracle": 0.0,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": -0.0
@@ -409,15 +409,15 @@
         {
           "date": "2026-01-05",
           "ret_actual": 8.236,
-          "delta_actual": 4.822,
-          "p_cal": 0.263,
+          "delta_actual": 4.794,
+          "p_cal": 0.292,
           "partial_label": "SELL_100",
           "sell_pct": 100,
           "hold_pct": 0,
           "pnl_always_sell": 0.0,
-          "pnl_always_wait": 23.208,
-          "pnl_split_50": 11.604,
-          "pnl_oracle": 23.208,
+          "pnl_always_wait": 22.79,
+          "pnl_split_50": 11.395,
+          "pnl_oracle": 22.79,
           "pnl_model_binary": 0.0,
           "pnl_model_partial": 0.0
         }
