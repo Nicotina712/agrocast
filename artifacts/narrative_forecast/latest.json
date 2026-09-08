@@ -1,245 +1,245 @@
 {
   "ok": true,
-  "as_of": "2026-09-07T15:29:12",
+  "as_of": "2026-09-08T14:40:20",
   "forecast": {
     "ok": true,
-    "as_of": "2026-09-04",
-    "price_usd_ton": 475.37,
+    "as_of": "2026-09-08",
+    "price_usd_ton": 481.43,
     "event_active": true,
     "event_type": "speculative_mom",
     "event_direction": "bullish",
-    "narrative_strength": 0.656,
-    "fade_risk": 0.213,
+    "narrative_strength": 0.733,
+    "fade_risk": 0.254,
     "forecasts": {
       "1d": {
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -0.623,
-          "q25": -0.213,
+          "q10": -0.537,
+          "q25": 0.071,
           "median": 0.272,
           "q75": 0.848,
-          "q90": 0.874
+          "q90": 1.138
         },
-        "mean_pct": 0.225,
-        "std_pct": 0.674,
-        "p_up": 0.7,
-        "p_down": 0.3,
+        "mean_pct": 0.356,
+        "std_pct": 0.785,
+        "p_up": 0.75,
+        "p_down": 0.25,
         "direction": "bullish",
-        "confidence": "medium",
+        "confidence": "high",
         "usd_ton": {
-          "q10": -2.96,
-          "q25": -1.01,
-          "median": 1.29,
-          "q75": 4.03,
-          "q90": 4.15,
-          "mean": 1.07
+          "q10": -2.59,
+          "q25": 0.34,
+          "median": 1.31,
+          "q75": 4.08,
+          "q90": 5.48,
+          "mean": 1.71
         },
         "type_filtered": {
-          "n_samples": 574,
-          "mean_pct": -0.021,
-          "std_pct": 0.987,
+          "n_samples": 575,
+          "mean_pct": -0.015,
+          "std_pct": 0.994,
           "p_up": 0.49,
-          "q10": -1.241,
-          "q90": 1.288
+          "q10": -1.239,
+          "q90": 1.318
         }
       },
       "7d": {
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -5.746,
-          "q25": -3.728,
-          "median": 0.238,
-          "q75": 2.524,
-          "q90": 3.817
+          "q10": -5.008,
+          "q25": -2.056,
+          "median": 0.748,
+          "q75": 3.313,
+          "q90": 4.278
         },
-        "mean_pct": -0.594,
-        "std_pct": 3.89,
-        "p_up": 0.5,
-        "p_down": 0.5,
+        "mean_pct": 0.301,
+        "std_pct": 3.778,
+        "p_up": 0.6,
+        "p_down": 0.4,
         "direction": "neutral",
         "confidence": "low",
         "usd_ton": {
-          "q10": -27.31,
-          "q25": -17.72,
-          "median": 1.13,
-          "q75": 12.0,
-          "q90": 18.14,
-          "mean": -2.82
+          "q10": -24.11,
+          "q25": -9.9,
+          "median": 3.6,
+          "q75": 15.95,
+          "q90": 20.6,
+          "mean": 1.45
         },
         "type_filtered": {
-          "n_samples": 574,
-          "mean_pct": 0.182,
+          "n_samples": 575,
+          "mean_pct": 0.193,
           "std_pct": 3.842,
           "p_up": 0.53,
           "q10": -4.513,
-          "q90": 4.899
+          "q90": 4.893
         }
       },
       "15d": {
         "available": true,
-        "n_samples": 19,
+        "n_samples": 17,
         "range_pct": {
-          "q10": -7.075,
-          "q25": -5.75,
+          "q10": -6.392,
+          "q25": -5.596,
           "median": -4.328,
-          "q75": -1.175,
-          "q90": 0.085
+          "q75": -1.423,
+          "q90": 0.382
         },
-        "mean_pct": -3.626,
-        "std_pct": 2.934,
-        "p_up": 0.105,
-        "p_down": 0.895,
+        "mean_pct": -3.596,
+        "std_pct": 2.891,
+        "p_up": 0.118,
+        "p_down": 0.882,
         "direction": "bearish",
         "confidence": "high",
         "usd_ton": {
-          "q10": -33.63,
-          "q25": -27.33,
-          "median": -20.57,
-          "q75": -5.59,
-          "q90": 0.41,
-          "mean": -17.24
+          "q10": -30.78,
+          "q25": -26.94,
+          "median": -20.84,
+          "q75": -6.85,
+          "q90": 1.84,
+          "mean": -17.31
         },
         "type_filtered": {
-          "n_samples": 569,
-          "mean_pct": 0.377,
-          "std_pct": 5.264,
-          "p_up": 0.515,
-          "q10": -6.109,
-          "q90": 6.651
+          "n_samples": 570,
+          "mean_pct": 0.396,
+          "std_pct": 5.271,
+          "p_up": 0.516,
+          "q10": -6.098,
+          "q90": 6.719
         }
       },
       "30d": {
         "available": true,
         "n_samples": 20,
         "range_pct": {
-          "q10": -6.494,
-          "q25": 0.957,
-          "median": 3.571,
+          "q10": -5.316,
+          "q25": 1.581,
+          "median": 3.666,
           "q75": 3.788,
           "q90": 5.558
         },
-        "mean_pct": 1.52,
-        "std_pct": 4.29,
-        "p_up": 0.8,
-        "p_down": 0.2,
+        "mean_pct": 2.025,
+        "std_pct": 3.901,
+        "p_up": 0.85,
+        "p_down": 0.15,
         "direction": "bullish",
         "confidence": "high",
         "usd_ton": {
-          "q10": -30.87,
-          "q25": 4.55,
-          "median": 16.97,
-          "q75": 18.0,
-          "q90": 26.42,
-          "mean": 7.23
+          "q10": -25.59,
+          "q25": 7.61,
+          "median": 17.65,
+          "q75": 18.23,
+          "q90": 26.76,
+          "mean": 9.75
         },
         "type_filtered": {
-          "n_samples": 574,
-          "mean_pct": 0.782,
-          "std_pct": 7.343,
-          "p_up": 0.554,
-          "q10": -7.564,
-          "q90": 10.59
+          "n_samples": 575,
+          "mean_pct": 0.77,
+          "std_pct": 7.344,
+          "p_up": 0.553,
+          "q10": -7.553,
+          "q90": 10.586
         }
       }
     },
-    "daily_narrative": "Evento activo: momentum especulativo (alcista). En situaciones similares, el rango diario esperado es -0.62% a +0.87% (mediana +0.27%). En USD/ton: -3.0 a +4.2 USD/ton. Probabilidad de suba: 70%. Los eventos tienden a estrechar el rango (menor volatilidad que dias sin evento).",
+    "daily_narrative": "Evento activo: momentum especulativo (alcista). En situaciones similares, el rango diario esperado es -0.54% a +1.14% (mediana +0.27%). En USD/ton: -2.6 a +5.5 USD/ton. Probabilidad de suba: 75%. Los eventos tienden a estrechar el rango (menor volatilidad que dias sin evento).",
     "n_analogs_used": 20,
-    "dist_median": 1.811
+    "dist_median": 1.659
   },
   "backtests": {
     "1d": {
       "ok": true,
       "horizon_days": 1,
-      "n_decisions": 253,
+      "n_decisions": 252,
       "test_months": 12,
-      "cutoff_date": "2025-09-04",
-      "price_per_ton": 475.37,
+      "cutoff_date": "2025-09-08",
+      "price_per_ton": 481.43,
       "strategies": {
         "always_sell": {
-          "n_decisions": 253,
+          "n_decisions": 252,
           "mean_pnl_usd_ton": 0.0,
           "total_pnl_usd_ton": 0.0,
           "win_rate_pct": 0.0
         },
         "always_wait": {
-          "n_decisions": 253,
-          "mean_pnl_usd_ton": 0.512,
-          "total_pnl_usd_ton": 129.51,
-          "win_rate_pct": 53.4
+          "n_decisions": 252,
+          "mean_pnl_usd_ton": 0.585,
+          "total_pnl_usd_ton": 147.3,
+          "win_rate_pct": 54.0
         },
         "narrative": {
-          "n_decisions": 253,
-          "mean_pnl_usd_ton": 0.263,
-          "total_pnl_usd_ton": 66.57,
-          "win_rate_pct": 20.6
+          "n_decisions": 252,
+          "mean_pnl_usd_ton": 0.335,
+          "total_pnl_usd_ton": 84.3,
+          "win_rate_pct": 21.4
         },
         "oracle": {
-          "n_decisions": 253,
-          "mean_pnl_usd_ton": 1.858,
-          "total_pnl_usd_ton": 469.97,
-          "win_rate_pct": 53.4
+          "n_decisions": 252,
+          "mean_pnl_usd_ton": 1.924,
+          "total_pnl_usd_ton": 484.89,
+          "win_rate_pct": 54.0
         }
       },
       "range_stats": {
-        "all_days_std_pct": 0.827,
-        "event_days_std_pct": 0.81,
-        "no_event_days_std_pct": 0.851,
-        "n_event_days": 171,
-        "n_no_event_days": 82
+        "all_days_std_pct": 0.83,
+        "event_days_std_pct": 0.814,
+        "no_event_days_std_pct": 0.856,
+        "n_event_days": 172,
+        "n_no_event_days": 80
       },
-      "narrative_active_pct": 67.6
+      "narrative_active_pct": 68.3
     },
     "7d": {
       "ok": true,
       "horizon_days": 7,
-      "n_decisions": 52,
+      "n_decisions": 53,
       "test_months": 12,
-      "cutoff_date": "2025-09-04",
-      "price_per_ton": 475.37,
+      "cutoff_date": "2025-09-08",
+      "price_per_ton": 481.43,
       "strategies": {
         "always_sell": {
-          "n_decisions": 52,
+          "n_decisions": 53,
           "mean_pnl_usd_ton": 0.0,
           "total_pnl_usd_ton": 0.0,
           "win_rate_pct": 0.0
         },
         "always_wait": {
-          "n_decisions": 52,
-          "mean_pnl_usd_ton": 2.675,
-          "total_pnl_usd_ton": 139.11,
-          "win_rate_pct": 59.6
+          "n_decisions": 53,
+          "mean_pnl_usd_ton": 4.717,
+          "total_pnl_usd_ton": 250.02,
+          "win_rate_pct": 66.0
         },
         "narrative": {
-          "n_decisions": 52,
-          "mean_pnl_usd_ton": 1.655,
-          "total_pnl_usd_ton": 86.07,
-          "win_rate_pct": 23.1
+          "n_decisions": 53,
+          "mean_pnl_usd_ton": 2.75,
+          "total_pnl_usd_ton": 145.77,
+          "win_rate_pct": 26.4
         },
         "oracle": {
-          "n_decisions": 52,
-          "mean_pnl_usd_ton": 6.612,
-          "total_pnl_usd_ton": 343.83,
-          "win_rate_pct": 59.6
+          "n_decisions": 53,
+          "mean_pnl_usd_ton": 8.228,
+          "total_pnl_usd_ton": 436.09,
+          "win_rate_pct": 66.0
         }
       },
       "range_stats": {
-        "all_days_std_pct": 2.936,
-        "event_days_std_pct": 2.502,
-        "no_event_days_std_pct": 3.72,
-        "n_event_days": 37,
-        "n_no_event_days": 15
+        "all_days_std_pct": 2.935,
+        "event_days_std_pct": 2.571,
+        "no_event_days_std_pct": 3.395,
+        "n_event_days": 35,
+        "n_no_event_days": 18
       },
-      "narrative_active_pct": 71.2
+      "narrative_active_pct": 66.0
     },
     "15d": {
       "ok": true,
       "horizon_days": 15,
       "n_decisions": 23,
       "test_months": 12,
-      "cutoff_date": "2025-09-04",
-      "price_per_ton": 475.37,
+      "cutoff_date": "2025-09-08",
+      "price_per_ton": 481.43,
       "strategies": {
         "always_sell": {
           "n_decisions": 23,
@@ -249,39 +249,39 @@
         },
         "always_wait": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": 7.308,
-          "total_pnl_usd_ton": 168.09,
-          "win_rate_pct": 60.9
+          "mean_pnl_usd_ton": 6.582,
+          "total_pnl_usd_ton": 151.38,
+          "win_rate_pct": 52.2
         },
         "narrative": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": 0.72,
-          "total_pnl_usd_ton": 16.57,
-          "win_rate_pct": 13.0
+          "mean_pnl_usd_ton": 2.211,
+          "total_pnl_usd_ton": 50.84,
+          "win_rate_pct": 17.4
         },
         "oracle": {
           "n_decisions": 23,
-          "mean_pnl_usd_ton": 12.142,
-          "total_pnl_usd_ton": 279.26,
-          "win_rate_pct": 60.9
+          "mean_pnl_usd_ton": 12.5,
+          "total_pnl_usd_ton": 287.5,
+          "win_rate_pct": 52.2
         }
       },
       "range_stats": {
-        "all_days_std_pct": 4.476,
-        "event_days_std_pct": 3.183,
-        "no_event_days_std_pct": 5.611,
-        "n_event_days": 15,
-        "n_no_event_days": 8
+        "all_days_std_pct": 4.644,
+        "event_days_std_pct": 4.489,
+        "no_event_days_std_pct": 4.944,
+        "n_event_days": 16,
+        "n_no_event_days": 7
       },
-      "narrative_active_pct": 65.2
+      "narrative_active_pct": 69.6
     },
     "30d": {
       "ok": true,
       "horizon_days": 30,
       "n_decisions": 13,
       "test_months": 12,
-      "cutoff_date": "2025-09-04",
-      "price_per_ton": 475.37,
+      "cutoff_date": "2025-09-08",
+      "price_per_ton": 481.43,
       "strategies": {
         "always_sell": {
           "n_decisions": 13,
@@ -291,31 +291,31 @@
         },
         "always_wait": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": 11.43,
-          "total_pnl_usd_ton": 148.59,
-          "win_rate_pct": 61.5
+          "mean_pnl_usd_ton": 12.524,
+          "total_pnl_usd_ton": 162.81,
+          "win_rate_pct": 69.2
         },
         "narrative": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": 4.958,
-          "total_pnl_usd_ton": 64.45,
-          "win_rate_pct": 38.5
+          "mean_pnl_usd_ton": 1.986,
+          "total_pnl_usd_ton": 25.82,
+          "win_rate_pct": 23.1
         },
         "oracle": {
           "n_decisions": 13,
-          "mean_pnl_usd_ton": 17.366,
-          "total_pnl_usd_ton": 225.76,
-          "win_rate_pct": 61.5
+          "mean_pnl_usd_ton": 17.745,
+          "total_pnl_usd_ton": 230.68,
+          "win_rate_pct": 69.2
         }
       },
       "range_stats": {
-        "all_days_std_pct": 5.219,
-        "event_days_std_pct": 5.125,
-        "no_event_days_std_pct": 5.482,
-        "n_event_days": 10,
-        "n_no_event_days": 3
+        "all_days_std_pct": 5.025,
+        "event_days_std_pct": 4.998,
+        "no_event_days_std_pct": 4.622,
+        "n_event_days": 8,
+        "n_no_event_days": 5
       },
-      "narrative_active_pct": 76.9
+      "narrative_active_pct": 61.5
     }
   }
 }
