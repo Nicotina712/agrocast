@@ -1,25 +1,25 @@
 {
   "ok": true,
-  "n_events": 1476,
+  "n_events": 1480,
   "date_range": [
-    "2016-12-06",
-    "2026-09-08"
+    "2016-12-08",
+    "2026-09-10"
   ],
   "event_types": {
-    "speculative_mom": 580,
-    "oil_energy": 447,
-    "macro_fx": 439,
+    "speculative_mom": 583,
+    "oil_energy": 449,
+    "macro_fx": 438,
     "mixed": 6,
     "weather": 3,
     "geopolitical": 1
   },
   "direction_dist": {
-    "bullish": 757,
-    "bearish": 713,
+    "bullish": 755,
+    "bearish": 719,
     "neutral": 6
   },
   "mean_narrative_strength": 0.664,
   "mean_fade_risk": 0.16,
-  "fade_rate_7d_pct": 38.3,
-  "as_of": "2026-09-09T14:25:33"
+  "fade_rate_7d_pct": 38.6,
+  "as_of": "2026-09-10T14:24:18"
 }
