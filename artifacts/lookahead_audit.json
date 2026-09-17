@@ -3,86 +3,86 @@
     "2023-12-31": {
       "n_train": 1832,
       "n_test": 668,
-      "auc": 0.4999,
-      "accuracy": 0.479,
-      "p_mean": 0.5716,
-      "p_std": 0.267,
-      "top1_share": 0.0253,
+      "auc": 0.5183,
+      "accuracy": 0.4476,
+      "p_mean": 0.541,
+      "p_std": 0.2855,
+      "top1_share": 0.0404,
       "top5_features": {
-        "Maize_lag7": 0.025299999862909317,
-        "decomp_trend": 0.020899999886751175,
-        "soy_corn_ratio": 0.020400000736117363,
-        "ms_short_trend": 0.0203000009059906,
-        "SoybeanMeal": 0.019600000232458115
+        "enso_phase": 0.04039999842643738,
+        "quarter": 0.026900000870227814,
+        "Maize_lag7": 0.021299999207258224,
+        "Soybeans_lag1": 0.020899999886751175,
+        "enso_oni": 0.020800000056624413
       },
       "signal_dist": {
-        "BUY": 0.567,
-        "SELL": 0.281,
+        "BUY": 0.515,
+        "SELL": 0.334,
         "HOLD": 0.151
       }
     },
     "2024-12-31": {
       "n_train": 2084,
       "n_test": 416,
-      "auc": 0.5307,
-      "accuracy": 0.4928,
-      "p_mean": 0.4058,
-      "p_std": 0.219,
-      "top1_share": 0.0252,
+      "auc": 0.5194,
+      "accuracy": 0.4856,
+      "p_mean": 0.4402,
+      "p_std": 0.2624,
+      "top1_share": 0.0571,
       "top5_features": {
-        "basis_zscore": 0.025200000032782555,
-        "insp_soy_4wk_avg": 0.02459999918937683,
-        "Maize_lag7": 0.022299999371170998,
-        "trends_norm": 0.020999999716877937,
-        "cot_regime_long": 0.020500000566244125
+        "enso_phase": 0.057100001722574234,
+        "enso_oni": 0.024399999529123306,
+        "Soybeans_Open": 0.019999999552965164,
+        "insp_soy_4wk_avg": 0.01940000057220459,
+        "SoybeanMeal": 0.019300000742077827
       },
       "signal_dist": {
-        "BUY": 0.248,
-        "SELL": 0.548,
-        "HOLD": 0.204
+        "BUY": 0.327,
+        "SELL": 0.505,
+        "HOLD": 0.168
       }
     },
     "2025-06-30": {
       "n_train": 2207,
       "n_test": 292,
-      "auc": 0.5214,
-      "accuracy": 0.5,
-      "p_mean": 0.4394,
-      "p_std": 0.2644,
-      "top1_share": 0.0234,
+      "auc": 0.5001,
+      "accuracy": 0.4589,
+      "p_mean": 0.4933,
+      "p_std": 0.2891,
+      "top1_share": 0.0311,
       "top5_features": {
-        "Maize_lag7": 0.023399999365210533,
-        "insp_soy_4wk_avg": 0.023099999874830246,
-        "extreme_move_5d": 0.017999999225139618,
-        "soy_corn_ratio": 0.01759999990463257,
-        "trends_interest": 0.017500000074505806
+        "enso_phase": 0.031099999323487282,
+        "insp_soy_4wk_avg": 0.02410000003874302,
+        "enso_oni": 0.023499999195337296,
+        "Maize_lag7": 0.020899999886751175,
+        "SoybeanMeal": 0.01979999989271164
       },
       "signal_dist": {
-        "BUY": 0.346,
-        "SELL": 0.545,
-        "HOLD": 0.11
+        "BUY": 0.404,
+        "SELL": 0.476,
+        "HOLD": 0.12
       }
     }
   },
   "global": {
     "n_train": 2009,
     "n_test": 491,
-    "auc": 0.4776,
-    "accuracy": 0.4847,
-    "p_mean": 0.5505,
-    "p_std": 0.2901,
-    "top1_share": 0.0258,
+    "auc": 0.5167,
+    "accuracy": 0.4969,
+    "p_mean": 0.5818,
+    "p_std": 0.2856,
+    "top1_share": 0.0422,
     "top5_features": {
-      "Maize_lag7": 0.025800000876188278,
-      "insp_soy_4wk_avg": 0.022099999710917473,
-      "Soybeans_lag7": 0.02070000022649765,
-      "basis_zscore": 0.018799999728798866,
-      "SoybeanMeal": 0.018699999898672104
+      "enso_phase": 0.0421999990940094,
+      "insp_soy_4wk_avg": 0.021700000390410423,
+      "enso_oni": 0.020800000056624413,
+      "SoybeanMeal": 0.02019999921321869,
+      "ms_long_trend": 0.018400000408291817
     },
     "signal_dist": {
-      "BUY": 0.491,
-      "SELL": 0.389,
-      "HOLD": 0.12
+      "BUY": 0.532,
+      "SELL": 0.356,
+      "HOLD": 0.112
     }
   },
   "embargo_days": 18,
