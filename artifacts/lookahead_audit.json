@@ -3,90 +3,90 @@
     "2023-12-31": {
       "n_train": 1829,
       "n_test": 671,
-      "auc": 0.495,
-      "accuracy": 0.4888,
-      "p_mean": 0.5746,
-      "p_std": 0.2711,
-      "top1_share": 0.0235,
+      "auc": 0.4815,
+      "accuracy": 0.4516,
+      "p_mean": 0.5557,
+      "p_std": 0.2761,
+      "top1_share": 0.0365,
       "top5_features": {
-        "cot_regime_long": 0.023499999195337296,
-        "Maize_lag7": 0.020999999716877937,
-        "brl_usd": 0.01899999938905239,
-        "insp_soy_zscore": 0.01810000091791153,
-        "soy_corn_ratio": 0.017899999395012856
+        "enso_phase": 0.0364999994635582,
+        "insp_soy_zscore": 0.02459999918937683,
+        "cot_regime_long": 0.02290000021457672,
+        "ms_short_trend": 0.020999999716877937,
+        "Maize_lag7": 0.020899999886751175
       },
       "signal_dist": {
-        "BUY": 0.562,
-        "SELL": 0.283,
-        "HOLD": 0.155
+        "BUY": 0.539,
+        "SELL": 0.322,
+        "HOLD": 0.139
       }
     },
     "2024-12-31": {
       "n_train": 2081,
       "n_test": 419,
-      "auc": 0.4984,
-      "accuracy": 0.4893,
-      "p_mean": 0.3627,
-      "p_std": 0.2306,
-      "top1_share": 0.0245,
+      "auc": 0.5109,
+      "accuracy": 0.4869,
+      "p_mean": 0.3754,
+      "p_std": 0.2462,
+      "top1_share": 0.0668,
       "top5_features": {
-        "Maize_lag7": 0.02449999935925007,
-        "insp_soy_4wk_avg": 0.02370000071823597,
-        "trends_norm": 0.02070000022649765,
-        "soy_corn_ratio": 0.02070000022649765,
-        "basis_zscore": 0.020500000566244125
+        "enso_phase": 0.06679999828338623,
+        "enso_oni": 0.02239999920129776,
+        "ms_short_trend": 0.02070000022649765,
+        "ms_medium_trend": 0.020500000566244125,
+        "month_sin": 0.018200000748038292
       },
       "signal_dist": {
-        "BUY": 0.203,
-        "SELL": 0.613,
-        "HOLD": 0.184
+        "BUY": 0.253,
+        "SELL": 0.599,
+        "HOLD": 0.148
       }
     },
     "2025-06-30": {
       "n_train": 2204,
       "n_test": 295,
-      "auc": 0.502,
-      "accuracy": 0.4441,
-      "p_mean": 0.4804,
-      "p_std": 0.2863,
-      "top1_share": 0.0254,
+      "auc": 0.4891,
+      "accuracy": 0.4542,
+      "p_mean": 0.4726,
+      "p_std": 0.3289,
+      "top1_share": 0.0504,
       "top5_features": {
-        "insp_soy_4wk_avg": 0.02539999969303608,
-        "Maize_lag7": 0.025200000032782555,
-        "basis_zscore": 0.02070000022649765,
-        "soy_corn_ratio": 0.020600000396370888,
-        "trends_interest": 0.018400000408291817
+        "enso_phase": 0.05040000006556511,
+        "cot_regime_neutral": 0.026000000536441803,
+        "Soybeans_lag1": 0.024700000882148743,
+        "enso_oni": 0.020500000566244125,
+        "Maize_lag7": 0.01899999938905239
       },
       "signal_dist": {
-        "BUY": 0.414,
-        "SELL": 0.488,
-        "HOLD": 0.098
+        "BUY": 0.437,
+        "SELL": 0.505,
+        "HOLD": 0.058
       }
     }
   },
   "global": {
     "n_train": 2009,
     "n_test": 491,
-    "auc": 0.4944,
-    "accuracy": 0.4807,
-    "p_mean": 0.5428,
-    "p_std": 0.2677,
-    "top1_share": 0.0258,
+    "auc": 0.4959,
+    "accuracy": 0.5214,
+    "p_mean": 0.5726,
+    "p_std": 0.2719,
+    "top1_share": 0.0644,
     "top5_features": {
-      "Maize_lag7": 0.025800000876188278,
-      "insp_soy_4wk_avg": 0.023099999874830246,
-      "decomp_trend": 0.021900000050663948,
-      "basis_zscore": 0.021199999377131462,
-      "soy_corn_ratio": 0.02070000022649765
+      "enso_phase": 0.06440000236034393,
+      "ms_short_trend": 0.02500000037252903,
+      "enso_oni": 0.020899999886751175,
+      "month_sin": 0.019899999722838402,
+      "Maize_lag7": 0.01860000006854534
     },
     "signal_dist": {
-      "BUY": 0.46,
-      "SELL": 0.407,
-      "HOLD": 0.132
+      "BUY": 0.509,
+      "SELL": 0.354,
+      "HOLD": 0.136
     }
   },
   "embargo_days": 18,
   "flags": [
-    "AUC m\u00ednimo 0.495 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
+    "AUC m\u00ednimo 0.481 < 0.52 \u2192 posible overfit a cola del hist\u00f3rico"
   ]
 }
