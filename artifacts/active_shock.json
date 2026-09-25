@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-09-24T15:03:53",
+  "as_of": "2026-09-25T15:09:02",
   "current": {
     "ok": true,
     "is_shock": false,
     "is_near_shock": false,
-    "ret_5d_pct": -0.25,
-    "ret_10d_pct": 1.7,
+    "ret_5d_pct": 1.17,
+    "ret_10d_pct": 3.01,
     "thr_spike_5d_pct": 4.65,
-    "thr_spike_10d_pct": 6.86,
+    "thr_spike_10d_pct": 6.85,
     "thr_drop_5d_pct": -4.1,
     "thr_drop_10d_pct": -6.09,
     "thr_near_spike_5d_pct": 2.76,
