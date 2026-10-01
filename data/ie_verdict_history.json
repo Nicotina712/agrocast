@@ -868,5 +868,35 @@
     "direction_correct_7d": false,
     "direction_correct_14d": null,
     "range_hit_7d": false
+  },
+  {
+    "date": "2026-10-01",
+    "timestamp": "2026-10-01T16:12:40.591314",
+    "price_at_verdict": 1283.25,
+    "verdict": "SELL",
+    "confidence": 0.48,
+    "reasoning": "El peso de la evidencia apunta bajista a corto plazo: señal compuesta SELL (-0.573), precio bajo MA20, crush margin chino en -140 USD/ton y basis Uruguay en z-score -2.64 son fundamentales concretos negativos. El analista bajista tiene convicción MEDIA vs alcista BAJA, el técnico CONFIRMA la tesis b",
+    "price_range_7d": {
+      "low": 1218,
+      "central": 1267,
+      "high": 1303
+    },
+    "price_range_30d": {
+      "low": 1215,
+      "central": 1311,
+      "high": 1345
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "25%",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
