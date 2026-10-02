@@ -898,5 +898,35 @@
     "direction_correct_7d": null,
     "direction_correct_14d": null,
     "range_hit_7d": null
+  },
+  {
+    "date": "2026-10-02",
+    "timestamp": "2026-10-02T15:52:05.232728",
+    "price_at_verdict": 1277.25,
+    "verdict": "HOLD",
+    "confidence": 0.38,
+    "reasoning": "La confluencia de señales bajistas fundamentales (crush margin chino en -$140/ton, basis Uruguay en z-score -2.64, señal compuesta SELL 21/100) se ve contrarrestada por un técnico ambiguo que muestra precio en banda inferior de Bollinger (%B=9.1%) con estructura de largo plazo alcista intacta (Golde",
+    "price_range_7d": {
+      "low": 1225,
+      "central": 1265,
+      "high": 1296
+    },
+    "price_range_30d": {
+      "low": 1195,
+      "central": 1310,
+      "high": 1387
+    },
+    "bull_conviction": "BAJA",
+    "bear_conviction": "MEDIA",
+    "position_sizing": "flat",
+    "verified_7d": false,
+    "verified_14d": false,
+    "price_at_7d": null,
+    "price_at_14d": null,
+    "return_7d_pct": null,
+    "return_14d_pct": null,
+    "direction_correct_7d": null,
+    "direction_correct_14d": null,
+    "range_hit_7d": null
   }
 ]
