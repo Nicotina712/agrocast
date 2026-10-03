@@ -36,9 +36,23 @@ def load_profile() -> dict | None:
         return None
 
 
+# Datos opcionales de comercialización (Fase 3). Si no se mandan al guardar,
+# se conservan los que ya había. None = usar el supuesto por defecto.
+EXTRA_FIELDS = {
+    "flete_usd_ton":          "Flete a puerto (USD/ton)",
+    "otros_usd_ton":          "Otros gastos de venta (USD/ton)",
+    "silo_usd_ton_mes":       "Costo de guardar (USD/ton por mes)",
+    "tasa_anual_pct":         "Tasa de financiamiento / costo de oportunidad (% anual)",
+    "vendido_ton":            "Toneladas ya vendidas o fijadas (fuera del plan)",
+    "vendido_precio_usd_ton": "Precio promedio de lo ya vendido (USD/ton)",
+    "caja_usd":               "Plata que necesitás (USD)",
+    "caja_fecha":             "Para cuándo la necesitás (AAAA-MM-DD)",
+}
+
+
 def save_profile(hectareas: float, rinde_ton_ha: float,
                  costo: float, costo_mode: str = "ton",
-                 campania: str | None = None) -> dict:
+                 campania: str | None = None, extras: dict | None = None) -> dict:
     """
     Guarda/actualiza el perfil. Valida y deriva campos.
 
@@ -71,6 +85,16 @@ def save_profile(hectareas: float, rinde_ton_ha: float,
         "campania":             campania,
         "updated_at":           datetime.now().isoformat(timespec="seconds"),
     }
+    prev = load_profile() or {}
+    for k in EXTRA_FIELDS:
+        v = (extras or {}).get(k, prev.get(k))
+        if k == "caja_fecha":
+            profile[k] = str(v)[:10] if v else None
+        else:
+            try:
+                profile[k] = round(float(v), 2) if v not in (None, "") else None
+            except (TypeError, ValueError):
+                profile[k] = None
     os.makedirs(os.path.dirname(_PROFILE_PATH), exist_ok=True)
     with open(_PROFILE_PATH, "w", encoding="utf-8") as f:
         json.dump(profile, f, ensure_ascii=False, indent=2)

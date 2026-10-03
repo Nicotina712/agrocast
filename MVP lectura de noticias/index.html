@@ -876,6 +876,67 @@
         </div>
         <button onclick="saveCampo()" style="padding:9px 18px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-size:.86rem;font-weight:700;cursor:pointer;height:fit-content;">Calcular mi margen</button>
       </div>
+      <details id="campo-extra" style="margin-top:14px;">
+        <summary style="cursor:pointer;font-size:.84rem;font-weight:700;color:#1b4332;">➕ Más datos (opcional) — afinan cuánto fijar y si guardar paga</summary>
+        <div style="font-size:.76rem;color:#33691e;margin:8px 0 10px;">Si los dejás vacíos usamos supuestos típicos y te lo indicamos.</div>
+        <div style="font-size:.74rem;font-weight:700;color:#1b4332;margin-bottom:4px;">Costos de vender y guardar</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px;">
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Flete a puerto (USD/ton)</label>
+            <input id="campo-flete" type="number" step="0.5" min="0" placeholder="26"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Otros gastos de venta (USD/ton)</label>
+            <input id="campo-otros" type="number" step="0.5" min="0" placeholder="8"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Guardar (USD/ton por mes)</label>
+            <input id="campo-silo" type="number" step="0.1" min="0" placeholder="3"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Tasa de financiamiento (% anual)</label>
+            <input id="campo-tasa" type="number" step="0.5" min="0" placeholder="8"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+        </div>
+        <div style="font-size:.74rem;font-weight:700;color:#1b4332;margin-bottom:4px;">Lo que ya vendiste o fijaste (fuera del plan de cosecha)</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px;">
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Toneladas</label>
+            <input id="campo-vendido" type="number" step="1" min="0" placeholder="0"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Precio promedio (USD/ton)</label>
+            <input id="campo-vendido-precio" type="number" step="1" min="0" placeholder="420"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+        </div>
+        <div style="font-size:.74rem;font-weight:700;color:#1b4332;margin-bottom:4px;">¿Necesitás plata en alguna fecha?</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;">
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Monto (USD)</label>
+            <input id="campo-caja" type="number" step="100" min="0" placeholder="40000"
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+          
+          <div>
+            <label style="font-size:.72rem;color:#33691e;font-weight:600;display:block;margin-bottom:3px;">Fecha</label>
+            <input id="campo-caja-fecha" type="date"  placeholder=""
+              style="width:100%;padding:7px;border:1px solid #a5d6a7;border-radius:6px;font-size:.86rem;">
+          </div>
+        </div>
+      </details>
       <div id="campo-error" style="display:none;margin-top:8px;font-size:.78rem;color:#c62828;"></div>
     </div>
 
@@ -3339,13 +3400,26 @@ function renderCampoState() {
         const costoTxt = p.costo_mode === "ha"
             ? `$${p.costo_input}/ha`
             : `$${p.costo_input}/ton`;
+        const extra = [];
+        if (p.vendido_ton) extra.push(`ya vendido ${p.vendido_ton} ton`);
+        if (p.silo_usd_ton_mes != null || p.tasa_anual_pct != null)
+            extra.push(`guardar ${p.silo_usd_ton_mes ?? 3} USD/ton/mes · tasa ${p.tasa_anual_pct ?? 8}%`);
+        if (p.caja_usd) extra.push(`necesitás USD ${Number(p.caja_usd).toLocaleString("es-UY")} al ${p.caja_fecha}`);
         document.getElementById("campo-resumen").textContent =
-            `${p.hectareas} ha · ${p.rinde_ton_ha} ton/ha · costo ${costoTxt} · break-even $${p.break_even_usd_ton}/ton · ${p.produccion_total_ton} ton totales`;
+            `${p.hectareas} ha · ${p.rinde_ton_ha} ton/ha · costo ${costoTxt} · break-even $${p.break_even_usd_ton}/ton · ${p.produccion_total_ton} ton totales`
+            + (extra.length ? " · " + extra.join(" · ") : " · (sin datos de venta: usamos supuestos)");
     } else {
         setup.style.display = "block";
         summary.style.display = "none";
     }
 }
+
+const _CAMPO_EXTRA = {
+    "campo-flete": "flete_usd_ton", "campo-otros": "otros_usd_ton",
+    "campo-silo": "silo_usd_ton_mes", "campo-tasa": "tasa_anual_pct",
+    "campo-vendido": "vendido_ton", "campo-vendido-precio": "vendido_precio_usd_ton",
+    "campo-caja": "caja_usd", "campo-caja-fecha": "caja_fecha",
+};
 
 function editCampo() {
     // Pre-cargar valores y mostrar el setup
@@ -3354,6 +3428,13 @@ function editCampo() {
         document.getElementById("campo-rinde").value = _campoProfile.rinde_ton_ha;
         document.getElementById("campo-costo").value = _campoProfile.costo_input;
         document.getElementById("campo-modo").value = _campoProfile.costo_mode;
+        let anyExtra = false;
+        for (const [id, k] of Object.entries(_CAMPO_EXTRA)) {
+            const v = _campoProfile[k];
+            document.getElementById(id).value = (v === null || v === undefined) ? "" : v;
+            if (v !== null && v !== undefined && v !== "") anyExtra = true;
+        }
+        document.getElementById("campo-extra").open = anyExtra;
     }
     document.getElementById("pb-campo-setup").style.display = "block";
     document.getElementById("pb-campo-summary").style.display = "none";
@@ -3375,13 +3456,20 @@ async function saveCampo() {
         const r = await fetch("/api/producer_profile", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({hectareas: ha, rinde_ton_ha: rinde, costo: costo, costo_mode: modo}),
+            body: JSON.stringify(Object.assign(
+                {hectareas: ha, rinde_ton_ha: rinde, costo: costo, costo_mode: modo},
+                // Opcionales: vacío = null (vuelve al supuesto por defecto)
+                Object.fromEntries(Object.entries(_CAMPO_EXTRA).map(([id, k]) => {
+                    const raw = document.getElementById(id).value;
+                    return [k, raw === "" ? null : (k === "caja_fecha" ? raw : parseFloat(raw))];
+                })))),
         });
         const d = await r.json();
         if (!d.ok) { err.textContent = d.error || "Error al guardar."; err.style.display = "block"; return; }
         _campoProfile = d.profile;
         renderCampoState();
         loadProducerBrief();  // recalcular con margen
+        loadPlanProtagonista();
     } catch(e) {
         err.textContent = "Error de conexión al guardar.";
         err.style.display = "block";
@@ -3420,6 +3508,14 @@ async function loadPlanProtagonista() {
         const pctDone = executed.reduce((s,t) => s + (t.pct||0), 0);
         const avg = (d.progress && d.progress.weighted_avg_price) || 0;
         badge.innerHTML = `<span style="color:#2e7d32;font-weight:700;">● Activo · ${d.campaign||""}</span>`;
+        // Plan armado con otros números que Mi Campo (ej. plan de prueba)
+        const p = _campoProfile;
+        const planTons = d.crop_tons ?? (d.plan && d.plan.crop_tons);
+        const planCost = d.cost_of_production ?? d.cost_of_production_usd_ton;
+        if (p && planTons && (Math.abs(planTons - p.produccion_total_ton) > 1 || Math.abs((planCost||0) - p.break_even_usd_ton) > 1)) {
+            badge.innerHTML += ` <span style="color:#e65100;font-weight:700;margin-left:6px;">⚠ No coincide con Mi Campo (${planTons} ton, costo ${planCost})</span>
+              <button onclick="createPlanFromCampo(true)" style="margin-left:6px;padding:3px 9px;border:1px solid #e65100;background:#fff;color:#e65100;border-radius:5px;font-size:.72rem;font-weight:700;cursor:pointer;">Rehacer desde Mi Campo</button>`;
+        }
         document.getElementById("pb-plan-pct").textContent = pctDone + "%";
         document.getElementById("pb-plan-avg").textContent = avg ? "$"+avg.toFixed(0)+"/ton" : "—";
         document.getElementById("pb-plan-bar").style.width = pctDone + "%";
@@ -3428,7 +3524,7 @@ async function loadPlanProtagonista() {
         const nextEl = document.getElementById("pb-plan-next");
         if (pending.length) {
             const t = pending[0];
-            const trigLabel = {price_target:"el precio toca su objetivo",seasonal_window:"la ventana estacional favorable",model_signal:"AgroCast marca VENDER",time_deadline:"el cierre de campaña",manual:"lo decidas vos"}[t.trigger]||t.trigger;
+            const trigLabel = {price_target:"el precio toca su objetivo",seasonal_window:"llegue la cosecha (abr-may)",model_signal:"el motor de AgroCast sugiera fijar o vender",time_deadline:"el cierre de campaña",manual:"lo decidas vos"}[t.trigger]||t.trigger;
             const tgt = t.price_target ? ` ($${t.price_target.toFixed(0)}/ton)` : "";
             nextEl.innerHTML = `🔔 <b>Próximo tramo:</b> ${t.tons||"—"} ton (${t.pct}%) cuando ${trigLabel}${tgt}. Te avisamos por WhatsApp/Telegram.`;
         } else {
@@ -3445,17 +3541,23 @@ async function loadPlanProtagonista() {
     } catch(e) { console.error("plan protagonista error:", e); }
 }
 
-async function createPlanFromCampo() {
+async function createPlanFromCampo(rehacer = false) {
     if (!_campoProfile) { alert("Configurá \"Mi Campo\" primero."); return; }
+    if (rehacer && !confirm("Se reemplaza el plan activo por uno nuevo con los datos de Mi Campo. Los tramos ya ejecutados del plan anterior no se pasan. ¿Seguir?")) return;
     const btn = document.getElementById("pb-plan-create-btn");
     btn.disabled = true; btn.textContent = "Creando…";
+    const p = _campoProfile;
+    // Costos de guardar de Mi Campo → formato del plan (% anual del valor)
+    const precioRef = (p.break_even_usd_ton || 300) * 1.3;
     try {
         const r = await fetch("/api/harvest_plan", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                crop_tons: _campoProfile.produccion_total_ton,
-                cost_of_production: _campoProfile.break_even_usd_ton,
+                crop_tons: p.produccion_total_ton,
+                cost_of_production: p.break_even_usd_ton,
+                storage_cost_pct: ((p.silo_usd_ton_mes ?? 3) * 12 / precioRef * 100),
+                financing_rate_pct: (p.tasa_anual_pct ?? 8),
             }),
         });
         const d = await r.json();
@@ -3607,9 +3709,12 @@ function renderDecisiones(dec, etapa) {
                   <td style="padding:6px 8px;">${o.prob_peor_que_vender_hoy}%</td>
                 </tr>`).join("")}
               </tbody></table></div>
-            <div style="font-size:.75rem;color:#777;margin-top:6px;">USD/ton. "El mercado paga" sale de la curva de futuros de Chicago. Costos supuestos:
-              silo ${dec.supuestos_costos.silo_usd_ton_mes} USD/ton/mes, financiamiento ${Math.round(dec.supuestos_costos.tasa_anual * 100)}% anual,
-              merma ${(dec.supuestos_costos.merma_pct_mes * 100).toFixed(1)}%/mes.${g.nota ? " " + g.nota : ""}</div>`;
+            <div style="font-size:.75rem;color:#777;margin-top:6px;">USD/ton. "El mercado paga" sale de la curva de futuros de Chicago. Costos:
+              guardar ${dec.supuestos_costos.silo_usd_ton_mes} USD/ton/mes (${(dec.costos_fuente || {}).silo || "supuesto"}),
+              financiamiento ${Math.round(dec.supuestos_costos.tasa_anual * 100)}% anual (${(dec.costos_fuente || {}).tasa || "supuesto"}),
+              merma ${(dec.supuestos_costos.merma_pct_mes * 100).toFixed(1)}%/mes (supuesto).
+              ${g.ton_disponibles_para_guardar != null ? `Te quedarían <b>${n0(g.ton_disponibles_para_guardar)} ton</b> para decidir si guardar (cosecha − ya vendido − caja).` : ""}
+              ${(dec.costos_fuente || {}).silo !== "Mi Campo" ? "Cargá tus costos en Mi Campo → Más datos." : ""}${g.nota ? " " + g.nota : ""}</div>`;
     }
     el.innerHTML = html || "Sin datos suficientes para calcular tus decisiones.";
     // La tarjeta suelta de almacenamiento queda cubierta por la tabla de arriba

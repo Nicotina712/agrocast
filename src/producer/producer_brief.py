@@ -740,8 +740,16 @@ def _resolve_momento(ie: dict | None, ml: dict | None, trend: dict, best_win: di
 # ─────────────────────────────────────────────────────────────────────────
 def _precio_neto(local_usd_ton: float, uyu_rate: float,
                  flete: float = None, otros: float = None) -> dict:
-    flete = float(os.getenv("FLETE_PUERTO_USD_TON", "26")) if flete is None else flete
-    otros = float(os.getenv("OTROS_GASTOS_USD_TON", "8")) if otros is None else otros
+    # Prioridad: parámetro > Mi Campo > supuesto por defecto
+    try:
+        from src.producer.producer_profile import load_profile
+        _pf = load_profile() or {}
+    except Exception:
+        _pf = {}
+    if flete is None:
+        flete = _pf.get("flete_usd_ton") if _pf.get("flete_usd_ton") is not None             else float(os.getenv("FLETE_PUERTO_USD_TON", "26"))
+    if otros is None:
+        otros = _pf.get("otros_usd_ton") if _pf.get("otros_usd_ton") is not None             else float(os.getenv("OTROS_GASTOS_USD_TON", "8"))
     neto = local_usd_ton - flete - otros
     return {
         "precio_local_usd": round(local_usd_ton, 1),
@@ -896,11 +904,16 @@ def _momento_from_decision(dec: dict) -> tuple[dict, dict | None]:
             m = {"momento": "ESPERAR", "titulo": "CARGÁ TU COSTO PARA SABER CUÁNTO FIJAR"}
         elif sug == 0:
             m = {"momento": "NO_VENDER", "titulo": "TODAVÍA NO CONVIENE FIJAR PRECIO"}
+        elif (f.get("vendido") or {}).get("ton") and not f.get("falta_pct"):
+            m = {"momento": "ESPERAR", "titulo": f"YA FIJASTE LO SUGERIDO ({f['vendido']['pct']:.0f}% DE TU COSECHA)"}
+        elif (f.get("vendido") or {}).get("ton"):
+            ton = f" (~{f['falta_ton']:,} ton)" if f.get("falta_ton") else ""
+            m = {"momento": "FIJAR", "titulo": f"TE FALTA FIJAR {f['falta_pct']}% DE TU COSECHA{ton}"}
         else:
             ton = f" (~{f['sugerido_ton']} ton)" if f.get("sugerido_ton") else ""
             m = {"momento": "FIJAR", "titulo": f"PODÉS FIJAR HASTA {sug}% DE TU COSECHA{ton}"}
         rq = f.get("rango_a_cosecha") or {}
-        m["explicacion"] = f.get("mensaje", "")
+        m["explicacion"] = f.get("mensaje", "") + (f" 💵 {f['caja']['mensaje']}" if f.get("caja") else "")
         if rq:
             m["nota_margen"] = (f"Rango probable del precio a la cosecha (8 de cada 10 veces, aproximado): "
                                 f"{rq.get('q10', 0):.0f} – {rq.get('q90', 0):.0f} USD/ton. "

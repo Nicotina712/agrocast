@@ -165,6 +165,64 @@ def _enso_outlook() -> dict:
         return {"fase": "desconocida", "valor_3m": None}
 
 
+def _costs_from_profile(profile: dict | None) -> tuple[dict, dict]:
+    """Costos de guardar: Mi Campo si los cargó, si no los supuestos por defecto."""
+    p = profile or {}
+    costs, fuente = dict(DEFAULT_COSTS), {}
+    if p.get("silo_usd_ton_mes") is not None:
+        costs["silo_usd_ton_mes"] = float(p["silo_usd_ton_mes"])
+    if p.get("tasa_anual_pct") is not None:
+        costs["tasa_anual"] = float(p["tasa_anual_pct"]) / 100
+    fuente = {"silo": "Mi Campo" if p.get("silo_usd_ton_mes") is not None else "supuesto",
+              "tasa": "Mi Campo" if p.get("tasa_anual_pct") is not None else "supuesto"}
+    return costs, fuente
+
+
+def _vendido(profile: dict | None) -> dict:
+    """Lo ya vendido/fijado: carga manual en Mi Campo + tramos ejecutados del plan."""
+    p = profile or {}
+    ton = float(p.get("vendido_ton") or 0)
+    monto = ton * float(p.get("vendido_precio_usd_ton") or 0)
+    con_precio = ton if p.get("vendido_precio_usd_ton") else 0.0
+    try:
+        from src.producer.harvest_plan import _load_plans
+        plan = next((x for x in _load_plans() if x.get("active")), None)
+        for t in (plan or {}).get("tranches", []):
+            if t.get("status") == "executed" and t.get("tons"):
+                ton += float(t["tons"])
+                if t.get("execution_price"):
+                    monto += float(t["tons"]) * float(t["execution_price"])
+                    con_precio += float(t["tons"])
+    except Exception:
+        pass
+    prod = float(p.get("produccion_total_ton") or 0)
+    return {"ton": round(ton, 1), "pct": round(ton / prod * 100, 1) if prod else 0.0,
+            "precio_promedio": round(monto / con_precio, 1) if con_precio else None}
+
+
+def _caja(profile: dict | None, precio_neto: float, harvest_date: date) -> dict | None:
+    """Necesidad de plata en una fecha → toneladas a reservar o aviso si es pre-cosecha."""
+    p = profile or {}
+    if not p.get("caja_usd") or not p.get("caja_fecha") or not precio_neto:
+        return None
+    try:
+        f = date.fromisoformat(str(p["caja_fecha"])[:10])
+    except ValueError:
+        return None
+    ton = float(p["caja_usd"]) / precio_neto
+    out = {"usd": float(p["caja_usd"]), "fecha": f.isoformat(), "ton_equivalentes": round(ton),
+           "antes_de_cosecha": f < harvest_date}
+    fecha_txt = f"{f.day} de {MESES[f.month]} de {f.year}"
+    if out["antes_de_cosecha"]:
+        out["mensaje"] = (f"Necesitás USD {p['caja_usd']:,.0f} para el {fecha_txt}, antes de la cosecha: "
+                          f"no se cubre vendiendo grano de esta campaña. Opciones a evaluar: una venta con "
+                          f"pago anticipado o financiamiento, que después cancelás con ~{ton:,.0f} ton de la cosecha.")
+    else:
+        out["mensaje"] = (f"Para cubrir USD {p['caja_usd']:,.0f} al {fecha_txt} reservá ~{ton:,.0f} ton para "
+                          f"vender en cosecha: esas no conviene guardarlas.")
+    return out
+
+
 # ── 3. ¿Guardar o vender? ───────────────────────────────────────────────────
 def storage_analysis(local_now: float, curve: list[dict], risk: RiskModel,
                      costs: dict, start_idx: int = 0, start_days: int = 0) -> dict:
@@ -227,6 +285,8 @@ def _storage_text(s: dict, prefijo: str) -> str:
 # ── 4. ¿Cuánto fijar ya? (pre-venta de la nueva cosecha) ────────────────────
 def pricing_analysis(profile: dict | None, local: dict, curve: list[dict], risk: RiskModel,
                      gastos_usd_ton: float = 0.0) -> dict:
+    """`sugerido_pct` es el objetivo TOTAL de pre-venta; `falta_pct` descuenta
+    lo ya vendido/fijado (Mi Campo + plan)."""
     today = date.today()
     hy = today.year + (1 if today.month > HARVEST_MONTH_UY else 0)
     h_days = _days_until(hy, HARVEST_MONTH_UY)
@@ -288,7 +348,22 @@ def pricing_analysis(profile: dict | None, local: dict, curve: list[dict], risk:
                f"Sugerido: fijar hasta {sug}% de tu producción esperada ahora "
                f"(tope {int(tope*100)}% por riesgo de producción{' — La Niña' if tope < 0.5 else ''}).")
     prod = (profile or {}).get("produccion_total_ton")
-    out.update({"sugerido_pct": sug, "sugerido_ton": round(prod * sug / 100) if prod else None, "mensaje": msg})
+    vend = _vendido(profile)
+    falta = max(0.0, sug - vend["pct"])
+    out.update({"sugerido_pct": sug, "sugerido_ton": round(prod * sug / 100) if prod else None,
+                "vendido": vend, "falta_pct": round(falta), "falta_ton": round(prod * falta / 100) if prod else None})
+    if vend["ton"] > 0:
+        pv = f" a {vend['precio_promedio']:.0f} USD/ton promedio" if vend.get("precio_promedio") else ""
+        if falta > 0:
+            msg += (f" Ya fijaste {vend['pct']:.0f}% ({vend['ton']:,.0f} ton{pv}): "
+                    f"te falta fijar {falta:.0f}% (~{prod * falta / 100:,.0f} ton).")
+        else:
+            msg += (f" Ya fijaste {vend['pct']:.0f}% ({vend['ton']:,.0f} ton{pv}): cubriste lo sugerido, "
+                    f"no hace falta fijar más por ahora.")
+    out["mensaje"] = msg
+    caja = _caja(profile, fwd, date(hy, HARVEST_MONTH_UY, 15))
+    if caja:
+        out["caja"] = caja
     return out
 
 
@@ -328,12 +403,13 @@ def build_decision(profile: dict | None = None, costs: dict | None = None,
             profile = load_profile()
         except Exception:
             profile = None
-    costs = {**DEFAULT_COSTS, **(costs or {})}
+    base_costs, costos_fuente = _costs_from_profile(profile)
+    costs = {**base_costs, **(costs or {})}
     curve = get_futures_curve()
     risk = RiskModel()
     local = _local_reference()
     out = {"ok": True, "generado": datetime.now().isoformat(timespec="seconds"),
-           "supuestos_costos": costs, "precio_local": local, "curva": curve,
+           "supuestos_costos": costs, "costos_fuente": costos_fuente, "precio_local": local, "curva": curve,
            "vol_anual_pct": round(risk.sigma_now * np.sqrt(252) * 100, 1)}
 
     # Guardar o vender. Revista Verde cotiza por campaña: si cotiza la NUEVA
@@ -369,6 +445,14 @@ def build_decision(profile: dict | None = None, costs: dict | None = None,
             out["guardar_en_cosecha"] = sc
 
     out["fijar_precio"] = pricing_analysis(profile, local, curve, risk, gastos_usd_ton)
+    # Toneladas que quedan para guardar a cosecha: producción − vendido − caja
+    fp, sc = out["fijar_precio"], out.get("guardar_en_cosecha")
+    prod = (profile or {}).get("produccion_total_ton")
+    if prod and sc and sc.get("ok"):
+        vend_ton = (fp.get("vendido") or {}).get("ton", 0)
+        caja = fp.get("caja") or {}
+        caja_ton = caja.get("ton_equivalentes", 0) if caja and not caja.get("antes_de_cosecha") else 0
+        sc["ton_disponibles_para_guardar"] = max(0, round(prod - vend_ton - caja_ton))
     out["eventos"] = upcoming_events()
     return out
 

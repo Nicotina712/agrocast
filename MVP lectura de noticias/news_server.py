@@ -1402,7 +1402,9 @@ def api_producer_profile():
                 return jsonify({"ok": False, "error": "Los valores deben ser mayores a 0"}), 400
             mode = body.get("costo_mode", "ton")
             campania = body.get("campania")
-            p = save_profile(hectareas, rinde, costo, mode, campania)
+            from src.producer.producer_profile import EXTRA_FIELDS
+            extras = {k: body[k] for k in EXTRA_FIELDS if k in body}
+            p = save_profile(hectareas, rinde, costo, mode, campania, extras)
             return jsonify({"ok": True, "profile": p})
         # GET
         return jsonify({"ok": True, "profile": load_profile()})
