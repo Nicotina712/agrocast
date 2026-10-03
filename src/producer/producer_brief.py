@@ -755,6 +755,54 @@ def _precio_neto(local_usd_ton: float, uyu_rate: float,
 # ─────────────────────────────────────────────────────────────────────────
 # API principal
 # ─────────────────────────────────────────────────────────────────────────
+def _momento_from_decision(dec: dict) -> tuple[dict, dict | None]:
+    """
+    Recomendación principal desde el motor de decisión (sin dirección de precio).
+    Oct–Mar (pre-cosecha UY): ¿cuánto fijar de la nueva cosecha?
+    Abr–Sep (cosecha/post):   ¿guardar o vender?
+    Devuelve (momento, almacenamiento) con el contrato que espera la web.
+    """
+    fuente = "Precio fijable + riesgo calibrado + curva de futuros (sin pronóstico de dirección)"
+    pre_cosecha = date.today().month >= 10 or date.today().month <= 3
+    g = dec.get("guardar_en_cosecha") if pre_cosecha else dec.get("guardar_hoy")
+    alm = None
+    if g and g.get("ok"):
+        b = g["mejor"]
+        alm = {"semaforo": "green" if g["guardar_paga"] else "yellow",
+               "titulo": (f"Guardar hasta {b['hasta']} paga +{b['ganancia_esperada_usd_ton']:.0f} USD/ton"
+                          if g["guardar_paga"] else "Guardar no paga con la curva de hoy"),
+               "mensaje": g.get("texto", "") + (f" {g['nota']}" if g.get("nota") else "")}
+
+    f = dec.get("fijar_precio") or {}
+    if pre_cosecha and f.get("ok"):
+        sug = f.get("sugerido_pct")
+        if sug is None:
+            m = {"momento": "ESPERAR", "titulo": "CARGÁ TU COSTO PARA SABER CUÁNTO FIJAR"}
+        elif sug == 0:
+            m = {"momento": "NO_VENDER", "titulo": "TODAVÍA NO CONVIENE FIJAR PRECIO"}
+        else:
+            ton = f" (~{f['sugerido_ton']} ton)" if f.get("sugerido_ton") else ""
+            m = {"momento": "FIJAR", "titulo": f"PODÉS FIJAR HASTA {sug}% DE TU COSECHA{ton}"}
+        rq = f.get("rango_a_cosecha") or {}
+        m["explicacion"] = f.get("mensaje", "")
+        if rq:
+            m["nota_margen"] = (f"Rango probable del precio a la cosecha (8 de cada 10 veces, aproximado): "
+                                f"{rq.get('q10', 0):.0f} – {rq.get('q90', 0):.0f} USD/ton. "
+                                f"Precio que podés fijar hoy: {f['precio_fijable_usd_ton']:.0f} neto "
+                                f"({f.get('precio_fijable_bruto_usd_ton', 0):.0f} menos flete y gastos).")
+    elif g and g.get("ok"):
+        if g["guardar_paga"]:
+            m = {"momento": "GUARDAR", "titulo": f"GUARDAR HASTA {g['mejor']['hasta'].upper()} PAGA"}
+        else:
+            m = {"momento": "VENDER", "titulo": "VENDER: GUARDAR NO PAGA CON LA CURVA DE HOY"}
+        m["explicacion"] = g.get("texto", "")
+    else:
+        m = {"momento": "ESPERAR", "titulo": "SIN DATOS SUFICIENTES",
+             "explicacion": "No pudimos calcular la recomendación (falta precio local o curva)."}
+    m.update({"color": None, "fuente": fuente, "confianza": None, "senal_mercado": None})
+    return m, alm
+
+
 def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     """
     Construye el brief completo del productor en lenguaje simple.
@@ -768,22 +816,33 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     uyu_rate = _get_uyu_rate()
     prices = _build_prices(price_usc, basis, uyu_rate)
     trend = _price_trend()
-    best_win = _best_window(price_usc)
+    # Pivot 2026-10: la recomendación ya NO sale de señales direccionales
+    # (IE / ML / pico del forecast: sin edge fuera de muestra). Sale del motor
+    # de decisión del productor (riesgo calibrado + curva + costos).
     ie = _load_ie_verdict()
     ml = _load_ml_signal()
-    momento = _resolve_momento(ie, ml, trend, best_win)
+    best_win = None
+    try:
+        from src.producer.decision_engine import build_decision
+        _n = _precio_neto(prices["usd_ton"], uyu_rate, flete, otros)
+        decision = build_decision(gastos_usd_ton=prices["usd_ton"] - _n["neto_usd_ton"])
+    except Exception as e:
+        print(f"[producer_brief] decision_engine falló: {e}")
+        decision = {}
+    momento, storage = _momento_from_decision(decision)
     drivers = _simple_drivers()
     wasde = _next_wasde()
     neto = _precio_neto(prices["usd_ton"], uyu_rate, flete, otros)
     basis_intel = _basis_intelligence()
-    track = _track_record()
+    # El historial medía los veredictos direccionales del IE, que ya no manejan
+    # la recomendación → se oculta hasta tener historial de la lógica nueva.
+    track = None
     clima = _climate_intelligence()
-    storage = _storage_decision(prices["usd_ton"], price_usc)
-
-    # Accionable narrativo: priorizar el texto del IE (ya está en lenguaje productor)
-    accionable = None
-    if ie and ie.get("producers_action") and not ie.get("stale"):
-        accionable = ie["producers_action"]
+    # Accionable: resumen de las dos decisiones (el texto del IE hablaba en
+    # lenguaje de trading — Bollinger, coberturas — y no va al productor).
+    _parts = [(decision.get("fijar_precio") or {}).get("mensaje"),
+              (decision.get("guardar_en_cosecha") or {}).get("texto")]
+    accionable = " ".join(p for p in _parts if p) or None
 
     # Margen sobre la cosecha del productor (si configuró "Mi Campo")
     margen = None
@@ -800,27 +859,10 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
     except Exception:
         margen = None
 
-    # Capa de margen sobre el momento: la gestión de margen pesa más que
-    # especular por el techo. Enriquecemos la recomendación con el margen.
-    if margen and margen.get("margen_pct") is not None:
-        mp = margen["margen_pct"]
-        sig = momento.get("senal_mercado")
-        if mp >= 15:
-            momento["nota_margen"] = (
-                f"Tu margen es muy bueno ({mp:+.0f}% sobre el costo). "
-                f"Fijar al menos una parte asegura un año rentable.")
-        elif sig == "SELL" and mp >= 3:
-            momento["nota_margen"] = (
-                f"Ya estás {mp:+.0f}% sobre tu costo. Con el mercado a la baja, "
-                f"asegurar este margen vale más que esperar un rebote incierto.")
-        elif sig == "BUY" and mp < 3:
-            momento["nota_margen"] = (
-                f"Estás casi en tu costo ({mp:+.0f}%). El mercado proyecta suba: "
-                f"si podés financiar el almacenamiento, esperar mejora tu margen.")
-        elif mp < -3:
-            momento["nota_margen"] = (
-                f"Atención: a precio de hoy estás {mp:+.0f}% bajo tu costo. "
-                f"Vender realiza una pérdida — evaluá esperar o coberturas.")
+    # Alerta de margen negativo (independiente de la dirección del mercado)
+    if margen and margen.get("margen_pct") is not None and margen["margen_pct"] < -3             and not momento.get("nota_margen"):
+        momento["nota_margen"] = (f"Atención: a precio de hoy estás {margen['margen_pct']:+.0f}% bajo tu costo. "
+                                  f"Vender ahora realiza una pérdida.")
 
     return {
         "ok": True,
@@ -834,7 +876,8 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "track_record": track,
         "clima": clima,
         "almacenamiento": storage,
-        "ventana_optima": best_win,
+        "ventana_optima": best_win,     # retirado (pico del forecast = direccional)
+        "decision": decision,
         "accionable_detallado": accionable,
         "drivers_simple": drivers,
         "proximo_evento": wasde,

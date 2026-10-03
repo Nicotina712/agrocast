@@ -1359,6 +1359,26 @@ def get_data_engine():
     return jsonify(out)
 
 
+@app.route("/api/producer_decision")
+def api_producer_decision():
+    """
+    GET /api/producer_decision — Motor de decisión del productor (sin dirección):
+    ¿cuánto fijar de la nueva cosecha?, ¿guardar o vender? (curva de futuros vs
+    costos), riesgo calibrado y eventos que mueven el precio.
+    Query opcional: silo (USD/ton/mes), tasa (anual, 0.08), merma (por mes, 0.002), gastos (USD/ton).
+    """
+    try:
+        sys.path.insert(0, PROJECT_ROOT)
+        from src.producer.decision_engine import build_decision
+        costs = {}
+        for q, k in (("silo", "silo_usd_ton_mes"), ("tasa", "tasa_anual"), ("merma", "merma_pct_mes")):
+            if request.args.get(q) is not None:
+                costs[k] = float(request.args.get(q))
+        return jsonify(build_decision(costs=costs, gastos_usd_ton=float(request.args.get("gastos", 0))))
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
 @app.route("/api/producer_profile", methods=["GET", "POST"])
 def api_producer_profile():
     """
