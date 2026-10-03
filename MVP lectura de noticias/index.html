@@ -3104,9 +3104,10 @@ setForecastVariant(_abVariant);
 loadData();
 setInterval(loadData, 5 * 60 * 1000);
 
-// Productor es el tab por defecto (capa producto) — cargar al arrancar
-loadProducerBrief();
-loadProducer();
+// Productor es el tab por defecto (capa producto) — cargar al arrancar.
+// Diferido: _producerLoaded/_campoProfile se declaran con `let` más abajo
+// (llamarlos acá sincrónico tira ReferenceError por TDZ y el panel queda vacío).
+setTimeout(() => { loadProducerBrief(); loadProducer(); }, 0);
 
 // Fetch backtest silenciosamente al cargar para poblar contexto del panel de precisión
 (async () => {
