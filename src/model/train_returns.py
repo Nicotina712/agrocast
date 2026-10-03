@@ -33,6 +33,35 @@ TARGET_REG = "ret_14d_fwd"  # horizonte 14d (más señal, menos ruido que 7d)
 VOL_TARGET = "realized_vol_14d"  # head adicional: vol esperada (sizing/conviction)
 EMBARGO_DAYS = 18                # = horizonte (14) + buffer evento (4)
 MAX_RETURN_FEATURES = 40         # Tope de features tras selección por consistencia
+MIN_REAL_SHARE = 0.5             # % mínimo de filas con dato real (≠0, ≠NaN) en el train
+
+# ── Auditoría 2026-10-03 (scripts/research_model_audit.py / _variants.py) ──
+# Walk-forward trimestral 2019-2026, rolling 5y, embargo 18d, AUC por período
+# (19-20 / 21-22 / 23-24H1 / 24H2-25 / 25Q4-26):
+#   199 variables → top-40 (anterior) : .45 .53 .48 .59 .61  (media .53)
+#   cobertura ≥50% → top-40 (ACTUAL)  : .41-.44 .56-.58 .44-.46 .57-.60 .62 (media .52-.53)
+#   solo cross-asset+insp+wasde (34)  : .54 .56 .59 .53 .43  (media .53) → NO adoptado:
+#       gana 3 de 5 períodos pero colapsa en el último año; mismo promedio = ruido.
+# Conclusiones robustas: ningún set tiene edge estable; las 79 variables sin
+# historia (satélite, CME, opciones, curva, noticias, crop progress) no aportan
+# (Δ AUC ≈ 0 en ablation) y se filtran por cobertura; el SELL pierde en todas
+# las variantes.
+#
+# El SELL no tuvo edge en NINGUNA variante fuera de muestra (−0.25% a −0.79%
+# por señal a 14d; vende contra la tendencia). Se reporta como HOLD.
+ALLOW_SELL = False
+
+
+def production_feature_cols(columns) -> list[str]:
+    """Variables candidatas del clasificador (compartido con audit_lookahead).
+    El filtro de cobertura (MIN_REAL_SHARE) se aplica después, sobre el train."""
+    return [c for c in columns if c not in NON_FEATURE_COLS | {"direction"}]
+
+
+def coverage_filter(X: pd.DataFrame, min_share: float = MIN_REAL_SHARE) -> list[str]:
+    """Columnas con al menos `min_share` de filas con dato real (≠0, ≠NaN)."""
+    real_share = (X.notna() & (X != 0)).mean()
+    return real_share[real_share >= min_share].index.tolist()
 
 
 def _select_return_features(
@@ -55,6 +84,13 @@ def _select_return_features(
 
     Sin data leakage: usa solo X_train / y_train, nunca val.
     """
+    # Cobertura mínima: variables con <50% de datos reales en el train se
+    # rellenaban con 0 y el árbol aprendía "0 = sin dato" (satélite, CME OI,
+    # IV de opciones, noticias, curva: existen recién desde 2026).
+    # Walk-forward 2019-2026: sacarlas no cambia el AUC (0.505 → 0.508).
+    # Entran solas cuando acumulen historia.
+    X_train = X_train[coverage_filter(X_train)]
+
     y_float = y_train.astype(float)
     full_corr = X_train.corrwith(y_float)
 
@@ -161,8 +197,8 @@ def train_returns_model(
     print(f"📊 Target: {target_dist[1]} subidas ({target_dist[1]/len(df)*100:.1f}%) "
           f"| {target_dist[0]} bajadas ({target_dist[0]/len(df)*100:.1f}%)")
 
-    feature_cols = [c for c in df.columns if c not in NON_FEATURE_COLS | {"direction"}]
-    print(f"📊 Features para clasificador: {len(feature_cols)}")
+    feature_cols = production_feature_cols(df.columns)
+    print(f"📊 Features candidatas: {len(feature_cols)} (filtro de cobertura + top-{MAX_RETURN_FEATURES} en el train)")
 
     X     = df[feature_cols].fillna(0)
     y     = df["direction"]
@@ -196,8 +232,11 @@ def train_returns_model(
     # Reduce de ~195 a top-40 features con señal consistente entre la
     # ventana completa de training y la mitad más reciente.
     # Descarta features cuyo signo de correlación se invirtió (régimen flip).
-    dates_train_ser = df_dates[train_mask].reset_index(drop=True) if "Date" in df.columns else None
-    selected_feats  = _select_return_features(X_train, y_train, dates_train_ser)
+    if len(feature_cols) > MAX_RETURN_FEATURES:
+        dates_train_ser = df_dates[train_mask].reset_index(drop=True) if "Date" in df.columns else None
+        selected_feats  = _select_return_features(X_train, y_train, dates_train_ser)
+    else:
+        selected_feats  = feature_cols
     n_before        = len(feature_cols)
     feature_cols    = selected_feats
     X_train         = X_train[selected_feats]
@@ -213,28 +252,21 @@ def train_returns_model(
     spw   = float(n_neg / n_pos) if n_pos > 0 else 1.0
 
     # ── Clasificador ──────────────────────────────────────────────
-    model = XGBClassifier(
-        n_estimators=300,
-        max_depth=4,
-        learning_rate=0.05,
-        subsample=0.8,
-        colsample_bytree=0.8,
-        gamma=0.05,
-        scale_pos_weight=spw,
-        eval_metric="logloss",
-        early_stopping_rounds=20,
-        random_state=42,
+    # Parámetros = los validados en walk-forward (scripts/research_model_*.py).
+    # Sin early stopping ni calibración isotónica: ambos se ajustaban sobre el
+    # mismo tramo que después se reportaba (accuracy 72.5% inflado) y, medida
+    # honestamente, la isotónica con ~250 filas EMPEORABA el Brier (0.253→0.315)
+    # y producía saltos de P(suba) de 51%→97% entre días. Val queda como
+    # holdout limpio, solo para reportar.
+    xgb_params = dict(
+        n_estimators=200, max_depth=3, learning_rate=0.05,
+        subsample=0.8, colsample_bytree=0.8, gamma=0.05,
+        eval_metric="logloss", random_state=42,
     )
+    model = XGBClassifier(scale_pos_weight=spw, **xgb_params)
+    model.fit(X_train, y_train, verbose=False)
 
-    model.fit(
-        X_train, y_train,
-        eval_set=[(X_val, y_val)],
-        verbose=False,
-    )
-    _best_iter = getattr(model, "best_iteration", 300)
-    print(f"   [XGB] Early stopping: best_iteration={_best_iter}/300")
-
-    # ── Métricas ──────────────────────────────────────────────────
+    # ── Métricas (holdout limpio) ─────────────────────────────────
     probs  = model.predict_proba(X_val)[:, 1]
     preds  = (probs > 0.5).astype(int)
     acc    = accuracy_score(y_val, preds)
@@ -243,42 +275,12 @@ def train_returns_model(
     except Exception:
         auc = float("nan")
 
-    print(f"📊 Clasificador — Accuracy: {acc*100:.1f}% | ROC-AUC: {auc:.3f}")
+    print(f"📊 Clasificador (holdout) — Accuracy: {acc*100:.1f}% | ROC-AUC: {auc:.3f}")
     print(f"   P(sube) — mean: {probs.mean():.3f} | std: {probs.std():.3f} "
           f"| min: {probs.min():.3f} | max: {probs.max():.3f}")
-
-    # ── Calibración isotonic (Brier+ECE) ──────────────────────────
-    # XGBoost classifier es overconfident → probs en bins extremos no se
-    # corresponden con la frecuencia real. Isotonic regression aprende la
-    # función monotónica raw_proba → calibrated_proba sobre val,
-    # bajando ~10-15% el Brier sin tocar el modelo base.
     calibrator = None
     brier_raw  = float(np.mean((probs - y_val.values) ** 2))
     brier_cal  = brier_raw
-    try:
-        from sklearn.isotonic import IsotonicRegression
-        calibrator = IsotonicRegression(out_of_bounds="clip", y_min=0.0, y_max=1.0)
-        calibrator.fit(probs, y_val.values.astype(float))
-        probs_cal = calibrator.transform(probs)
-        brier_cal = float(np.mean((probs_cal - y_val.values) ** 2))
-        # ECE 10-bin antes/después
-        def _ece(p, y, bins=10):
-            edges = np.linspace(0, 1, bins + 1)
-            idx   = np.clip(np.digitize(p, edges) - 1, 0, bins - 1)
-            ece = 0.0
-            for b in range(bins):
-                m = idx == b
-                if m.any():
-                    ece += abs(p[m].mean() - y[m].mean()) * m.sum() / len(p)
-            return ece
-        ece_raw = _ece(probs,     y_val.values)
-        ece_cal = _ece(probs_cal, y_val.values)
-        print(f"   📐 Calibración isotonic — Brier {brier_raw:.4f} → {brier_cal:.4f} "
-              f"({(brier_raw-brier_cal)/brier_raw*100:+.1f}%) | "
-              f"ECE {ece_raw:.4f} → {ece_cal:.4f}")
-    except Exception as _ce:
-        print(f"   [WARN] calibración isotonic falló: {_ce}")
-        calibrator = None
 
     # BUY/SELL/HOLD distribution con thresholds por defecto
     buy_pct  = (probs > 0.58).mean() * 100
@@ -329,6 +331,14 @@ def train_returns_model(
     except Exception as _se:
         print(f"   [WARN] SHAP falló: {_se}")
 
+    # ── Modelo final: re-fit sobre train+val (toda la ventana) ─────
+    # Igual que en el walk-forward: el modelo que predice hoy se entrena con
+    # todo lo disponible hasta el último target conocido.
+    _X_all = pd.concat([X_train, X_val]); _y_all = pd.concat([y_train, y_val])
+    _spw_all = float((_y_all == 0).sum() / max((_y_all == 1).sum(), 1))
+    model = XGBClassifier(scale_pos_weight=_spw_all, **xgb_params)
+    model.fit(_X_all, _y_all, verbose=False)
+
     # ── Guardar ───────────────────────────────────────────────────
     os.makedirs(artifacts_dir, exist_ok=True)
     out_path = os.path.join(artifacts_dir, "returns_model.joblib")
@@ -341,6 +351,7 @@ def train_returns_model(
         "model_type":   "classifier",
         "buy_thresh":   0.58,
         "sell_thresh":  0.42,
+        "allow_sell":   ALLOW_SELL,
         "val_acc":      round(acc, 4),
         "val_auc":      round(auc, 4) if not np.isnan(auc) else None,
         "val_brier_raw": round(brier_raw, 4),

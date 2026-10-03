@@ -452,8 +452,8 @@ def _get_ie_signal() -> dict | None:
         # Normalize STRONG_ variants
         if verdict in ("STRONG_BUY", "BUY"):
             return {"signal": "BUY", "confidence": confidence}
-        elif verdict in ("STRONG_SELL", "SELL"):
-            return {"signal": "SELL", "confidence": confidence}
+        # SELL del IE ignorado (long-only): 22% de acierto de dirección en vivo
+        # y ningún modelo mostró edge vendedor fuera de muestra (auditoría 2026-10).
         return None
     except Exception as e:
         print(f"[PaperTrading] Error reading IE verdict: {e}")

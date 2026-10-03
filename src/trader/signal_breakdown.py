@@ -124,7 +124,7 @@ def _ml_factor() -> dict:
             "name":        "Modelo ML (XGBoost 14d)",
             "score":       round(score, 3),
             "direction":   _factor_bar(score),
-            "detail":      f"Retorno esperado: {exp_ret*100:+.2f}% · Señal: {signal} · Confianza: {conf:.1%}",
+            "detail":      f"P(suba 14d): {(exp_ret + 0.5)*100:.0f}% · Señal: {signal} · Confianza: {conf:.1%}",  # expected_return = P(suba) − 0.5, no es un retorno
             "weight":      0.20,
             "raw":         {"expected_return": round(exp_ret, 4), "confidence": round(conf, 4), "signal": signal},
         }

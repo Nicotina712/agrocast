@@ -34,6 +34,7 @@ _PSD_TTL_DAYS  = 7
 _PSD_ZIP_URL   = "https://apps.fas.usda.gov/psdonline/downloads/psd_oilseeds_csv.zip"
 _MEAL_TICKER   = "ZM=F"
 _SOY_TICKER    = "ZS=F"
+_OIL_TICKER    = "ZL=F"
 SOYBEAN_MEAL_YIELD = 0.80
 
 
@@ -119,44 +120,47 @@ def _fetch_china_imports_psd(year: int) -> dict:
 
 def _compute_crush_margin() -> dict:
     """
-    Calcula el crush margin implícito usando futuros CBOT como proxy.
-    Crush margin = (Soybean Meal precio × rendimiento) - Soybean precio
-    En USD/ton.
+    Board crush CBOT (margen bruto de procesar 1 bu de soja), USD/bu:
+        harina (USD/short ton) × 0.022 + aceite (¢/lb) × 0.11 − soja (USD/bu)
+    Fix 2026-10: la versión anterior omitía el ACEITE (~1/3 del valor) y daba
+    "NEGATIVO" el 100% de los días → sesgo bajista permanente en el score China,
+    la señal compuesta y el Intel Engine.
+    La señal se juzga contra la historia propia (percentil 2 años), no contra
+    un umbral fijo: el nivel "normal" del crush cambia con el ciclo.
     """
     try:
         import yfinance as yf
 
-        soy  = yf.Ticker(_SOY_TICKER).history(period="5d")
-        meal = yf.Ticker(_MEAL_TICKER).history(period="5d")
+        closes = {}
+        for t in (_SOY_TICKER, _MEAL_TICKER, _OIL_TICKER):
+            h = yf.Ticker(t).history(period="2y")["Close"]
+            if h.empty:
+                return {"margin_usd_ton": None, "signal": None}
+            closes[t] = h
+        df = pd.DataFrame(closes).dropna()
+        crush_bu = (df[_MEAL_TICKER] * 0.022 + df[_OIL_TICKER] / 100 * 11
+                    - df[_SOY_TICKER] / 100)
+        now = float(crush_bu.iloc[-1])
+        pct = float((crush_bu < now).mean() * 100)
+        now_ton = now * 36.744
 
-        if soy.empty or meal.empty:
-            return {"margin_usd_ton": None, "signal": None}
-
-        soy_price_usc_bu  = float(soy["Close"].iloc[-1])
-        meal_price_usd_ton = float(meal["Close"].iloc[-1])  # USD/short ton
-
-        # Convertir soja a USD/ton
-        soy_usd_ton = (soy_price_usc_bu / 100) * 36.744
-
-        # Gross Processing Margin (GPM)
-        # 1 ton soja → 0.80 ton harina + 0.185 ton aceite (descartamos aceite aquí)
-        meal_revenue = meal_price_usd_ton * SOYBEAN_MEAL_YIELD * (1000 / 907.185)  # short ton → metric ton
-        gpm = meal_revenue - soy_usd_ton
-
-        if gpm > 20:
+        if pct >= 66:
             signal = "POSITIVO"   # crushers incentivados → demanda soja alta
-            note   = f"Margen positivo ({gpm:+.1f} USD/ton) — crushers chinos incentivados a importar soja."
-        elif gpm > -10:
+            note   = f"Crush sólido ({now:.2f} USD/bu, percentil {pct:.0f} de 2 años) — procesar soja es rentable."
+        elif pct > 33:
             signal = "NEUTRAL"
-            note   = f"Margen moderado ({gpm:+.1f} USD/ton) — demanda dentro de parámetros normales."
+            note   = f"Crush en rango normal ({now:.2f} USD/bu, percentil {pct:.0f} de 2 años)."
         else:
-            signal = "NEGATIVO"   # márgenes negativos → demanda reducida
-            note   = f"Margen negativo ({gpm:+.1f} USD/ton) — presión sobre demanda de soja para crush."
+            signal = "NEGATIVO"   # márgenes bajos → demanda reducida
+            note   = f"Crush débil ({now:.2f} USD/bu, percentil {pct:.0f} de 2 años) — menos incentivo a importar soja."
 
         return {
-            "margin_usd_ton":      round(gpm, 2),
-            "soy_price_usd_ton":   round(soy_usd_ton, 2),
-            "meal_price_usd_ton":  round(meal_price_usd_ton, 2),
+            "margin_usd_bu":       round(now, 3),
+            "margin_usd_ton":      round(now_ton, 2),
+            "margin_pct_rank_2y":  round(pct, 1),
+            "soy_price_usd_ton":   round(float(df[_SOY_TICKER].iloc[-1]) / 100 * 36.744, 2),
+            "meal_price_usd_ton":  round(float(df[_MEAL_TICKER].iloc[-1]), 2),
+            "oil_price_usc_lb":    round(float(df[_OIL_TICKER].iloc[-1]), 2),
             "signal":              signal,
             "note":                note,
         }

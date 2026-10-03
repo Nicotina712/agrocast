@@ -55,6 +55,7 @@ def predict_returns(features: pd.DataFrame, artifacts_dir: str | None = None) ->
     model_type   = saved.get("model_type", "regressor")
     buy_thresh   = saved.get("buy_thresh",  0.58)
     sell_thresh  = saved.get("sell_thresh", 0.42)
+    allow_sell   = saved.get("allow_sell", True)
 
     df = features.copy()
 
@@ -86,7 +87,9 @@ def predict_returns(features: pd.DataFrame, artifacts_dir: str | None = None) ->
 
         df["signal"] = "HOLD"
         df.loc[probs > buy_thresh,  "signal"] = "BUY"
-        df.loc[probs < sell_thresh, "signal"] = "SELL"
+        if allow_sell:
+            df.loc[probs < sell_thresh, "signal"] = "SELL"
+        # Si no, P(suba) baja queda en HOLD: el SELL no mostró edge fuera de muestra.
 
         # Confianza: qué tan lejos está P de 0.5 (zona de indecisión)
         # 0.5 → conf=0, 1.0 → conf=1.0, 0.0 → conf=1.0

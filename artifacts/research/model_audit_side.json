@@ -1,0 +1,144 @@
+{
+ "total": {
+  "n_dias": 1950,
+  "auc": 0.5054,
+  "ret_medio_todos_pct": 0.354,
+  "BUY": {
+   "pct_dias": 40.5,
+   "hit_rate": 50.2,
+   "ret_medio_pct": 0.047,
+   "trades": 61,
+   "trades_pnl_pct": -1.78,
+   "trades_t_stat": -0.06
+  },
+  "SELL": {
+   "pct_dias": 38.1,
+   "hit_rate": 47.5,
+   "ret_medio_pct": -0.782,
+   "trades": 53,
+   "trades_pnl_pct": -46.87,
+   "trades_t_stat": -1.27
+  }
+ },
+ "mitad_1": {
+  "n_dias": 975,
+  "auc": 0.4798,
+  "ret_medio_todos_pct": 0.77,
+  "BUY": {
+   "pct_dias": 37.5,
+   "hit_rate": 50.5,
+   "ret_medio_pct": -0.075,
+   "trades": 29,
+   "trades_pnl_pct": 5.91,
+   "trades_t_stat": 0.29
+  },
+  "SELL": {
+   "pct_dias": 39.4,
+   "hit_rate": 42.7,
+   "ret_medio_pct": -1.508,
+   "trades": 28,
+   "trades_pnl_pct": -39.37,
+   "trades_t_stat": -1.38
+  }
+ },
+ "mitad_2": {
+  "n_dias": 975,
+  "auc": 0.541,
+  "ret_medio_todos_pct": -0.062,
+  "BUY": {
+   "pct_dias": 43.4,
+   "hit_rate": 49.9,
+   "ret_medio_pct": 0.153,
+   "trades": 26,
+   "trades_pnl_pct": 9.87,
+   "trades_t_stat": 0.46
+  },
+  "SELL": {
+   "pct_dias": 36.8,
+   "hit_rate": 52.6,
+   "ret_medio_pct": -0.005,
+   "trades": 28,
+   "trades_pnl_pct": 2.83,
+   "trades_t_stat": 0.11
+  }
+ },
+ "corte_mitad": "2022-11-12",
+ "sell_umbral": {
+  "0.42": {
+   "pct_dias": 38.1,
+   "hit_rate": 47.5,
+   "ret_medio_pct": -0.782,
+   "trades": 53,
+   "trades_pnl_pct": -46.87,
+   "trades_t_stat": -1.27
+  },
+  "0.38": {
+   "pct_dias": 33.7,
+   "hit_rate": 47.0,
+   "ret_medio_pct": -0.89,
+   "trades": 46,
+   "trades_pnl_pct": -43.45,
+   "trades_t_stat": -1.26
+  },
+  "0.35": {
+   "pct_dias": 31.1,
+   "hit_rate": 48.0,
+   "ret_medio_pct": -0.859,
+   "trades": 44,
+   "trades_pnl_pct": -35.86,
+   "trades_t_stat": -1.04
+  },
+  "0.3": {
+   "pct_dias": 26.2,
+   "hit_rate": 47.6,
+   "ret_medio_pct": -0.881,
+   "trades": 39,
+   "trades_pnl_pct": -40.91,
+   "trades_t_stat": -1.25
+  }
+ },
+ "por_regimen": {
+  "precio_bajo_ma90": {
+   "n_dias": 954,
+   "auc": 0.5115,
+   "ret_medio_todos_pct": 0.011,
+   "BUY": {
+    "pct_dias": 55.3,
+    "hit_rate": 48.3,
+    "ret_medio_pct": -0.089,
+    "trades": 34,
+    "trades_pnl_pct": 3.72,
+    "trades_t_stat": 0.18
+   },
+   "SELL": {
+    "pct_dias": 22.1,
+    "hit_rate": 50.2,
+    "ret_medio_pct": -0.114,
+    "trades": 20,
+    "trades_pnl_pct": -11.63,
+    "trades_t_stat": -0.46
+   }
+  },
+  "precio_sobre_ma90": {
+   "n_dias": 996,
+   "auc": 0.5161,
+   "ret_medio_todos_pct": 0.683,
+   "BUY": {
+    "pct_dias": 26.2,
+    "hit_rate": 54.0,
+    "ret_medio_pct": 0.322,
+    "trades": 15,
+    "trades_pnl_pct": 18.78,
+    "trades_t_stat": 1.37
+   },
+   "SELL": {
+    "pct_dias": 53.4,
+    "hit_rate": 46.4,
+    "ret_medio_pct": -1.046,
+    "trades": 35,
+    "trades_pnl_pct": -19.2,
+    "trades_t_stat": -0.68
+   }
+  }
+ }
+}

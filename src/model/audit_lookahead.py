@@ -73,7 +73,10 @@ def _build_target(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _train_eval(df_train: pd.DataFrame, df_test: pd.DataFrame) -> dict:
-    feat_cols = [c for c in df_train.columns if c not in NON_FEATURE_COLS]
+    # Mismo set que producción (antes usaba TODAS las columnas, incluido el
+    # OHLC del mismo día → look-ahead, y no auditaba el modelo real).
+    from src.model.train_returns import production_feature_cols, coverage_filter
+    feat_cols = coverage_filter(df_train[production_feature_cols(df_train.columns)])
     X_tr, y_tr = df_train[feat_cols].fillna(0), df_train["direction"]
     X_te, y_te = df_test[feat_cols].fillna(0),  df_test["direction"]
 

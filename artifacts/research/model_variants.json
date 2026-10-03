@@ -1,0 +1,62 @@
+[
+ {
+  "variante": "actual (199 \u2192 top40, XGB)",
+  "auc": 0.5054,
+  "auc_h1": 0.4798,
+  "auc_h2": 0.541,
+  "buy_ret_pct": 0.047,
+  "buy_t": -0.06,
+  "sell_ret_pct": -0.782,
+  "sell_t": -1.27
+ },
+ {
+  "variante": "densas (120 \u2192 top40, XGB)",
+  "auc": 0.5078,
+  "auc_h1": 0.4798,
+  "auc_h2": 0.5502,
+  "buy_ret_pct": 0.048,
+  "buy_t": -0.06,
+  "sell_ret_pct": -0.636,
+  "sell_t": -1.27
+ },
+ {
+  "variante": "densas (120 \u2192 top15, XGB)",
+  "auc": 0.5,
+  "auc_h1": 0.4629,
+  "auc_h2": 0.523,
+  "buy_ret_pct": 0.181,
+  "buy_t": 1.26,
+  "sell_ret_pct": -0.733,
+  "sell_t": -1.13
+ },
+ {
+  "variante": "core 16 (XGB)",
+  "auc": 0.4998,
+  "auc_h1": 0.4621,
+  "auc_h2": 0.5223,
+  "buy_ret_pct": 0.171,
+  "buy_t": 0.4,
+  "sell_ret_pct": -0.69,
+  "sell_t": -0.61
+ },
+ {
+  "variante": "core 16 (log\u00edstica C=0.1)",
+  "auc": 0.5481,
+  "auc_h1": 0.4643,
+  "auc_h2": 0.616,
+  "buy_ret_pct": 0.672,
+  "buy_t": 0.45,
+  "sell_ret_pct": -0.393,
+  "sell_t": -0.69
+ },
+ {
+  "variante": "core 16 (log\u00edstica C=0.01)",
+  "auc": 0.5547,
+  "auc_h1": 0.4794,
+  "auc_h2": 0.6116,
+  "buy_ret_pct": 0.92,
+  "buy_t": 1.28,
+  "sell_ret_pct": -0.367,
+  "sell_t": -0.93
+ }
+]
