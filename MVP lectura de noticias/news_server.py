@@ -1152,12 +1152,19 @@ def api_producer_weekly():
 def get_data_engine():
     """
     GET /api/data_engine — Estado de los MOTORES DE DATOS y APRENDIZAJE (uso interno).
-    Consolida la frescura de datasets (ETL), la recolección de noticias que
-    alimenta el reaprendizaje, y el estado de entrenamiento/salud del modelo.
+
+    Métricas HONESTAS (rediseño 2026-10-03):
+      - Frescura por CONTENIDO (última fecha dentro del dataset), no por mtime:
+        en GitHub Actions el checkout resetea el mtime y todo parecía "fresco".
+      - Poder predictivo separado en: validación interna (optimista),
+        fuera de muestra (auditoría por cortes) y EN VIVO (track records reales).
+      - Se retiró "Accuracy reciente" (7 señales recalculadas con el modelo
+        actual sobre fechas que usó para entrenar = in-sample).
     """
     import glob
-    from datetime import datetime as _dt
+    from datetime import datetime as _dt, date as _date
     out = {"ok": True, "generated_at": _dt.now().isoformat(timespec="seconds")}
+    today = pd.Timestamp(_date.today())
 
     def _age_hours(iso):
         try:
@@ -1165,85 +1172,186 @@ def get_data_engine():
         except Exception:
             return None
 
-    # ── 1. Datasets (ETL manifest) ──────────────────────────────
+    def _load_json(*parts):
+        p = os.path.join(PROJECT_ROOT, *parts)
+        if not os.path.exists(p):
+            return None
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+
+    # Antigüedad máxima tolerada (días calendario) según cadencia de publicación.
+    def _max_age_days(freq: str) -> int:
+        f = (freq or "").lower()
+        if "month" in f:
+            return 45
+        if "week" in f or "5-7" in f:
+            return 10
+        return 4   # daily / intraday / on pipeline run (cubre fin de semana)
+
+    def _content_last_date(path: str):
+        full = os.path.join(PROJECT_ROOT, path)
+        if not os.path.exists(full):
+            return None
+        try:
+            if path.endswith(".csv"):
+                df = pd.read_csv(full, usecols=lambda c: str(c).lower() in ("date", "fecha"))
+                if df.empty:
+                    return None
+                s = pd.to_datetime(df.iloc[:, 0], errors="coerce", format="mixed").dropna()
+                return s.max().normalize() if len(s) else None
+            if path.endswith(".json"):
+                d = _load_json(path)
+                for k in ("report_date", "as_of", "generated_at", "_cached_at", "timestamp"):
+                    if isinstance(d, dict) and d.get(k):
+                        t = pd.to_datetime(d[k], errors="coerce", utc=True)
+                        if not pd.isna(t):
+                            return t.tz_localize(None).normalize()
+        except Exception:
+            return None
+        return None
+
+    # ── 1. Datasets: frescura por contenido ─────────────────────
     try:
-        with open(os.path.join(PROJECT_ROOT, "data", "etl_manifest.json"), encoding="utf-8") as f:
-            man = json.load(f)
-        datasets = []
+        man = _load_json("data", "etl_manifest.json") or {}
+        specs = []
         for layer, items in (man.get("by_layer") or {}).items():
             for it in items:
-                age = _age_hours(it.get("last_updated"))
-                datasets.append({
-                    "name":     it.get("name"),
-                    "layer":    layer,
-                    "source":   it.get("source"),
-                    "frequency": it.get("frequency"),
-                    "rows":     it.get("row_count"),
-                    "exists":   it.get("exists"),
-                    "age_hours": age,
-                    "fresh":    (age is not None and age < 30) if it.get("frequency") == "daily" else (age is not None and age < 24 * 14),
-                })
-        out["datasets"] = {
-            "total":   man.get("n_datasets"),
-            "missing": man.get("n_missing"),
-            "updated_at": man.get("generated_at"),
-            "items":   datasets,
-        }
+                specs.append({"name": it.get("name"), "layer": layer, "path": it.get("path"),
+                              "source": it.get("source"), "frequency": it.get("frequency"),
+                              "rows": it.get("row_count")})
+        # Fuera del manifest pero críticos para el producto
+        specs += [
+            {"name": "news_intel_history", "layer": "silver", "path": "data/news_intel_history.csv",
+             "source": "RSS + Claude Haiku (sentimiento soja)", "frequency": "daily (días hábiles)", "rows": None},
+            {"name": "basis_history", "layer": "silver", "path": "data/basis_history.csv",
+             "source": "Revista Verde (precio local UY)", "frequency": "daily", "rows": None},
+        ]
+        datasets = []
+        for sp in specs:
+            last = _content_last_date(sp["path"])
+            age_d = int((today - last).days) if last is not None else None
+            max_d = _max_age_days(sp["frequency"])
+            datasets.append({**sp,
+                             "last_date": last.date().isoformat() if last is not None else None,
+                             "age_days": age_d,
+                             "max_age_days": max_d,
+                             "fresh": age_d is not None and age_d <= max_d})
+        out["datasets"] = {"total": len(datasets),
+                           "fresh": sum(1 for d in datasets if d["fresh"]),
+                           "items": datasets}
     except Exception as e:
         out["datasets"] = {"error": str(e)}
 
-    # ── 2. Motor de noticias (memoria de reaprendizaje) ─────────
+    # ── 2. Motor de noticias ────────────────────────────────────
     try:
-        cache_files = glob.glob(os.path.join(PROJECT_ROOT, "data", "intel_cache", "*.json"))
-        news = {"articulos_analizados_acumulados": len(cache_files)}
-        ni_path = os.path.join(PROJECT_ROOT, "data", "news_intel.json")
-        if os.path.exists(ni_path):
-            with open(ni_path, encoding="utf-8") as f:
-                ni = json.load(f)
+        news = {"cache_total": len(glob.glob(os.path.join(PROJECT_ROOT, "data", "intel_cache", "*.json")))}
+        ni = _load_json("data", "news_intel.json")
+        if ni:
             news["ultimo_snapshot"] = {
-                "n_articles":     ni.get("n_articles"),
-                "n_high_impact":  ni.get("n_high_impact"),
-                "composite":      ni.get("composite"),
-                "generated_at":   ni.get("generated_at"),
-                "age_hours":      _age_hours(ni.get("generated_at")),
+                "n_articles":    ni.get("n_articles"),
+                "n_high_impact": ni.get("n_high_impact"),
+                "composite":     ni.get("composite"),
+                "generated_at":  ni.get("generated_at"),
+                "age_hours":     _age_hours(ni.get("generated_at")),
             }
         hist_path = os.path.join(PROJECT_ROOT, "data", "news_intel_history.csv")
         if os.path.exists(hist_path):
             hdf = pd.read_csv(hist_path)
-            news["dias_de_historia"] = len(hdf)
-            news["rango_historia"] = [str(hdf["Date"].iloc[0]), str(hdf["Date"].iloc[-1])] if len(hdf) else None
+            if len(hdf):
+                last = pd.to_datetime(hdf["Date"]).max()
+                news["dias_de_historia"] = len(hdf)
+                news["rango_historia"] = [str(hdf["Date"].iloc[0]), str(hdf["Date"].iloc[-1])]
+                news["dias_sin_actualizar"] = int((today - last.normalize()).days)
         out["motor_noticias"] = news
     except Exception as e:
         out["motor_noticias"] = {"error": str(e)}
 
-    # ── 3. Aprendizaje (entrenamiento + salud del modelo) ───────
+    # ── 3. Honestidad del modelo ────────────────────────────────
     learn = {}
+    # 3a. Clasificador de la señal (BUY/SELL/HOLD, 14d)
     try:
-        meta_path = os.path.join(ARTIFACTS_DIR, "horizons", "horizons_meta.json")
-        if os.path.exists(meta_path):
-            learn["modelo_entrenado_hace_h"] = _age_hours(
-                _dt.fromtimestamp(os.path.getmtime(meta_path)).isoformat())
-    except Exception:
-        pass
-    try:
-        mlq = compute_signal_accuracy()
-        if mlq:
-            learn["accuracy_reciente"] = mlq.get("accuracy")
-            learn["n_signals"] = mlq.get("n_signals")
-    except Exception:
-        pass
-    try:
-        drift_path = os.path.join(ARTIFACTS_DIR, "drift_monitor.json")
-        if os.path.exists(drift_path):
-            with open(drift_path, encoding="utf-8") as f:
-                dr = json.load(f)
-            b30 = (dr.get("buckets") or {}).get("30d") or {}
-            learn["drift_30d"] = {
-                "accuracy": b30.get("accuracy"),
-                "auc":      b30.get("auc"),
-                "status":   dr.get("status") or dr.get("health"),
-                "age_hours": _age_hours(_dt.fromtimestamp(os.path.getmtime(drift_path)).isoformat()),
+        import joblib
+        rm = joblib.load(os.path.join(PROJECT_ROOT, "src", "model", "artifacts", "returns_model.joblib"))
+        if isinstance(rm, dict):
+            fc = rm.get("feature_cols", [])
+            learn["senal_validacion_interna"] = {
+                "accuracy": round(rm["val_acc"] * 100, 1) if rm.get("val_acc") is not None else None,
+                "auc": rm.get("val_auc"),
+                "buy_thresh": rm.get("buy_thresh"), "sell_thresh": rm.get("sell_thresh"),
+                "n_features": len(fc),
             }
+            # ¿La señal usa noticias? Si no, el sentimiento congelado no la afecta.
+            out["motor_noticias"]["features_noticias_en_senal"] = [
+                c for c in fc if "news" in c or "sentiment" in c]
+    except Exception:
+        pass
+    try:
+        au = _load_json("artifacts", "lookahead_audit.json") or {}
+        learn["senal_fuera_de_muestra"] = [
+            {"corte": k, "auc": v.get("auc"),
+             "accuracy": round(v["accuracy"] * 100, 1) if v.get("accuracy") is not None else None,
+             "n_test": v.get("n_test")}
+            for k, v in (au.get("cutoffs") or {}).items()]
+    except Exception:
+        pass
+    try:
+        r12 = (_load_json("data", "ml_quality.json") or {}).get("recent_12m") or {}
+        learn["senal_ultimos_12m"] = {"auc": r12.get("roc_auc"), "hit_rate": r12.get("hit_rate"),
+                                      "n": r12.get("n_signals")}
+    except Exception:
+        pass
+    # 3b. En vivo (lo único que no puede tener sesgo de entrenamiento)
+    try:
+        from src.intel.ie_accountability import get_verdict_history
+        h = get_verdict_history() or {}
+        learn["vivo_intel_engine"] = {"direction_accuracy_7d": h.get("direction_accuracy_7d"),
+                                      "n": h.get("verified_7d"), "pending": h.get("pending")}
+    except Exception:
+        pass
+    try:
+        from src.trader.accountability import get_accountability_records
+        s = (get_accountability_records() or {}).get("summary") or {}
+        learn["vivo_forecast"] = {k: s.get(k) for k in (
+            "dir_accuracy_7d", "n_evaluated_7d", "dir_accuracy_14d", "n_evaluated_14d",
+            "dir_accuracy_30d", "n_evaluated_30d", "mae_pct_7d", "mae_pct_30d")}
+    except Exception:
+        pass
+    try:
+        pt_path = os.path.join(PROJECT_ROOT, "data", "paper_trades.csv")
+        if os.path.exists(pt_path):
+            pt = pd.read_csv(pt_path)
+            c = pt[pt["status"].astype(str).str.startswith("closed")]
+            learn["vivo_paper"] = {
+                "inception": str(pt["entry_date"].iloc[0])[:10] if len(pt) else None,
+                "n_cerrados": int(len(c)),
+                "win_rate": round(float((c["pnl_usd"] > 0).mean()) * 100, 1) if len(c) else None,
+                "pnl_usd": round(float(c["pnl_usd"].sum()), 0) if len(c) else 0,
+                "por_lado": {sig: {"n": int(len(g)), "pnl_usd": round(float(g["pnl_usd"].sum()), 0)}
+                             for sig, g in c.groupby("signal")},
+            }
+    except Exception:
+        pass
+    # 3c. Forecast de precio por horizonte: ¿cuánto aporta el ML vs random walk?
+    try:
+        hm = _load_json("artifacts", "horizons", "horizons_meta.json") or {}
+        learn["forecast_horizontes"] = {
+            h: {"peso_ml": v.get("alpha"), "lift_pct": (v.get("val_metrics") or {}).get("lift_pct"),
+                "banda_usc": round(v.get("delta"), 1) if v.get("delta") is not None else None,
+                "cobertura_pct": round((v.get("val_metrics") or {}).get("coverage_pct") or 0, 1)}
+            for h, v in (hm.get("horizons") or {}).items()}
+        learn["modelo_entrenado_at"] = hm.get("trained_at")
+        learn["modelo_entrenado_hace_h"] = _age_hours(hm.get("trained_at"))
+    except Exception:
+        pass
+    # 3d. Drift monitor (buckets es una LISTA; antes se leía como dict y nunca aparecía)
+    try:
+        dr = _load_json("artifacts", "drift_monitor.json") or {}
+        b30 = next((b for b in (dr.get("buckets") or []) if b.get("window_days") == 30), {})
+        learn["drift_30d"] = {"accuracy": b30.get("accuracy"), "auc": b30.get("auc"), "n": b30.get("n"),
+                              "health": dr.get("health"),
+                              # drift_monitor escribe generated_at con utcnow()
+                              "age_hours": round((_dt.utcnow() - _dt.fromisoformat(str(dr["generated_at"])[:19]))
+                                                 .total_seconds() / 3600, 1) if dr.get("generated_at") else None}
     except Exception:
         pass
     out["aprendizaje"] = learn

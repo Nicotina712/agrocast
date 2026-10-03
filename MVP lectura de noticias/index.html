@@ -2095,40 +2095,49 @@
 
   <div style="background:#2d2520;border-left:4px solid #ff9800;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:.87rem;color:#ffe0b2;line-height:1.7;">
     <b>🗄️ Motores de Datos & Aprendizaje</b> — Uso interno.<br>
-    Registro de las fuentes que alimentan los modelos y su reaprendizaje:
-    frescura de datasets, memoria de noticias analizadas y salud del entrenamiento.
+    Qué tan frescos están los datos y qué tan bien predice realmente el modelo,
+    de la métrica más optimista (validación interna) a la más real (en vivo).
   </div>
 
-  <!-- Resumen de aprendizaje -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px;">
+  <!-- Resumen honesto -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px;">
     <div class="card" style="text-align:center;">
-      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Datasets OK</div>
-      <div id="de-ds-ok" style="font-size:1.6rem;font-weight:700;color:#2e7d32;">—</div>
-      <div style="font-size:.7rem;color:#aaa;">de <span id="de-ds-total">—</span> totales</div>
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Datasets al día</div>
+      <div id="de-ds-ok" style="font-size:1.6rem;font-weight:700;">—</div>
+      <div style="font-size:.7rem;color:#aaa;">de <span id="de-ds-total">—</span> · por fecha del dato</div>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Noticias analizadas</div>
-      <div id="de-news-total" style="font-size:1.6rem;font-weight:700;color:#1565c0;">—</div>
-      <div style="font-size:.7rem;color:#aaa;">acumuladas (memoria)</div>
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Sentimiento soja (LLM)</div>
+      <div id="de-news-age" style="font-size:1.6rem;font-weight:700;">—</div>
+      <div id="de-news-age-sub" style="font-size:.7rem;color:#aaa;">sin actualizar</div>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Modelo entrenado</div>
-      <div id="de-model-age" style="font-size:1.6rem;font-weight:700;color:#7b1fa2;">—</div>
-      <div style="font-size:.7rem;color:#aaa;">hace</div>
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Señal · fuera de muestra</div>
+      <div id="de-oos-auc" style="font-size:1.6rem;font-weight:700;">—</div>
+      <div style="font-size:.7rem;color:#aaa;">AUC último corte · 0.50 = azar</div>
     </div>
     <div class="card" style="text-align:center;">
-      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Accuracy reciente</div>
-      <div id="de-accuracy" style="font-size:1.6rem;font-weight:700;color:#e65100;">—</div>
-      <div style="font-size:.7rem;color:#aaa;"><span id="de-nsignals">—</span> señales</div>
+      <div style="font-size:.72rem;color:#888;text-transform:uppercase;">Señal · en vivo</div>
+      <div id="de-live-wr" style="font-size:1.6rem;font-weight:700;">—</div>
+      <div id="de-live-sub" style="font-size:.7rem;color:#aaa;">paper trading</div>
     </div>
+  </div>
+
+  <!-- Honestidad del modelo -->
+  <div class="card" style="margin-bottom:20px;">
+    <h2 style="margin-top:0;">🎯 Honestidad del modelo</h2>
+    <div style="font-size:.8rem;color:#888;margin-bottom:12px;">
+      De más optimista a más real. Solo las filas <b>en vivo</b> están libres de sesgo de entrenamiento:
+      la validación interna usa el mismo histórico con el que se ajustó el modelo.
+    </div>
+    <div id="de-honesty" style="font-size:.85rem;color:#333;">—</div>
   </div>
 
   <!-- Motor de noticias -->
   <div class="card" style="margin-bottom:20px;">
-    <h2 style="margin-top:0;">🗞️ Motor de Noticias (reaprendizaje)</h2>
+    <h2 style="margin-top:0;">🗞️ Motor de Noticias</h2>
     <div style="font-size:.8rem;color:#888;margin-bottom:12px;">
-      Cada noticia se analiza con LLM y se cachea permanentemente. Esta memoria
-      alimenta las features de sentimiento que reentrenan los modelos.
+      Las noticias se analizan con LLM (Claude Haiku) una vez por día hábil y se agregan en una serie diaria de sentimiento por driver.
     </div>
     <div id="de-news-detail" style="font-size:.88rem;color:#444;line-height:1.8;">—</div>
   </div>
@@ -2142,7 +2151,7 @@
           <th style="padding:7px 10px;">Dataset</th>
           <th style="padding:7px 10px;">Capa</th>
           <th style="padding:7px 10px;">Fuente</th>
-          <th style="padding:7px 10px;text-align:center;">Filas</th>
+          <th style="padding:7px 10px;text-align:center;">Último dato</th>
           <th style="padding:7px 10px;text-align:center;">Antigüedad</th>
           <th style="padding:7px 10px;text-align:center;">Estado</th>
         </tr></thead>
@@ -3174,54 +3183,132 @@ async function previewProducerWeekly() {
 }
 
 // ── Motor de Datos & Aprendizaje (uso interno) ───────────────────
+// Métricas honestas: frescura por fecha del dato + poder predictivo
+// separado en validación interna / fuera de muestra / en vivo.
 let _dataEngineLoaded = false;
 async function loadDataEngine() {
     try {
         const r = await fetch("/api/data_engine");
         const d = await r.json();
         if (!d.ok) { console.warn("data_engine:", d.error); return; }
+        const GREEN = "#2e7d32", AMBER = "#ef6c00", RED = "#c62828", GREY = "#888";
         const fmtAge = (h) => h === null || h === undefined ? "—"
             : h < 48 ? `${Math.round(h)} h` : `${Math.round(h/24)} d`;
+        const pct = (v) => v == null ? "—" : `${(+v).toFixed(1)}%`;
+        const usd = (v) => `${v >= 0 ? "+" : "−"}$${Math.abs(v).toLocaleString("es-UY")}`;
+        const aucColor = (a) => a == null ? GREY : a >= 0.58 ? GREEN : a >= 0.53 ? AMBER : RED;
+        const accColor = (a) => a == null ? GREY : a >= 55 ? GREEN : a >= 50 ? AMBER : RED;
+        const setKpi = (id, txt, color) => {
+            const el = document.getElementById(id); el.textContent = txt; el.style.color = color;
+        };
 
-        // KPIs
-        const ds = d.datasets || {};
+        const ds = d.datasets || {}, news = d.motor_noticias || {}, L = d.aprendizaje || {};
+
+        // ── KPIs
         document.getElementById("de-ds-total").textContent = ds.total ?? "—";
-        const okCount = (ds.items || []).filter(i => i.fresh).length;
-        document.getElementById("de-ds-ok").textContent = okCount;
-        const news = d.motor_noticias || {};
-        document.getElementById("de-news-total").textContent =
-            news.articulos_analizados_acumulados ?? "—";
-        const learn = d.aprendizaje || {};
-        document.getElementById("de-model-age").textContent = fmtAge(learn.modelo_entrenado_hace_h);
-        document.getElementById("de-accuracy").textContent =
-            learn.accuracy_reciente != null ? learn.accuracy_reciente + "%" : "—";
-        document.getElementById("de-nsignals").textContent = learn.n_signals ?? "—";
+        setKpi("de-ds-ok", ds.fresh ?? "—",
+            ds.fresh === ds.total ? GREEN : ds.fresh >= ds.total - 2 ? AMBER : RED);
 
-        // Detalle de noticias
+        const nd = news.dias_sin_actualizar;
+        setKpi("de-news-age", nd == null ? "—" : `${nd} d`,
+            nd == null ? GREY : nd <= 4 ? GREEN : nd <= 10 ? AMBER : RED);
+        document.getElementById("de-news-age-sub").textContent =
+            news.rango_historia ? `sin actualizar · último día ${news.rango_historia[1]}` : "sin historia";
+
+        const oos = L.senal_fuera_de_muestra || [];
+        const lastCut = oos.length ? oos[oos.length - 1] : null;
+        setKpi("de-oos-auc", lastCut ? lastCut.auc.toFixed(2) : "—", aucColor(lastCut && lastCut.auc));
+
+        const pp = L.vivo_paper || {};
+        setKpi("de-live-wr", pp.win_rate != null ? `${pp.win_rate}%` : "—", accColor(pp.win_rate));
+        document.getElementById("de-live-sub").textContent = pp.n_cerrados != null
+            ? `aciertos · ${pp.n_cerrados} trades · ${usd(pp.pnl_usd)}` : "paper trading";
+
+        // ── Honestidad del modelo
+        const row = (tag, tagColor, label, value, valueColor, note) => `
+            <tr style="border-bottom:1px solid #eee;">
+              <td style="padding:7px 8px;white-space:nowrap;"><span style="background:${tagColor};color:#fff;border-radius:4px;padding:1px 7px;font-size:.7rem;font-weight:700;">${tag}</span></td>
+              <td style="padding:7px 8px;">${label}</td>
+              <td style="padding:7px 8px;text-align:right;font-weight:700;color:${valueColor};white-space:nowrap;">${value}</td>
+              <td style="padding:7px 8px;color:#777;font-size:.78rem;">${note}</td>
+            </tr>`;
+        const vi = L.senal_validacion_interna || {}, u12 = L.senal_ultimos_12m || {};
+        const ie = L.vivo_intel_engine || {}, vf = L.vivo_forecast || {};
+        let rows = "";
+        rows += row("INTERNA", "#9e9e9e", "Validación al entrenar",
+            `${pct(vi.accuracy)} · AUC ${vi.auc != null ? vi.auc.toFixed(2) : "—"}`, GREY,
+            "Optimista: mismo período que el ajuste. No usar para decidir.");
+        oos.forEach(c => {
+            rows += row("FUERA DE MUESTRA", "#5c6bc0", `Entrenado hasta ${c.corte} → test de ${c.n_test} días`,
+                `${pct(c.accuracy)} · AUC ${c.auc.toFixed(2)}`, aucColor(c.auc),
+                "Auditoría lookahead: el modelo no vio esas fechas.");
+        });
+        if (u12.auc != null) rows += row("FUERA DE MUESTRA", "#5c6bc0", "Últimos 12 meses",
+            `AUC ${u12.auc.toFixed(2)}`, aucColor(u12.auc),
+            `Hit-rate ${pct(u12.hit_rate)}, inflado por la tendencia del mercado; el AUC mide si ordena bien.`);
+        if (ie.n != null) rows += row("EN VIVO", "#00897b", "Veredicto Intel Engine · dirección 7d",
+            pct(ie.direction_accuracy_7d), accColor(ie.direction_accuracy_7d), `${ie.n} veredictos verificados.`);
+        [["7d", "dir_accuracy_7d", "n_evaluated_7d"],
+         ["14d", "dir_accuracy_14d", "n_evaluated_14d"],
+         ["30d", "dir_accuracy_30d", "n_evaluated_30d"]].forEach(([h, a, n]) => {
+            if (vf[n]) rows += row("EN VIVO", "#00897b", `Forecast de precio · dirección ${h}`,
+                pct(vf[a]), accColor(vf[a]), `${vf[n]} pronósticos verificados.`);
+        });
+        if (pp.n_cerrados != null) {
+            const lados = Object.entries(pp.por_lado || {})
+                .map(([k, v]) => `${k}: ${v.n} trades, ${usd(v.pnl_usd)}`).join(" · ");
+            rows += row("EN VIVO", "#00897b", `Paper trading desde ${pp.inception}`,
+                `${pct(pp.win_rate)} · ${usd(pp.pnl_usd)}`, accColor(pp.win_rate), lados);
+        }
+        const fh = L.forecast_horizontes || {};
+        const fhTxt = Object.entries(fh).map(([h, v]) =>
+            `<b>${h}</b>: peso del ML ${v.peso_ml != null ? Math.round(v.peso_ml * 100) + "%" : "—"}
+             (mejora vs random walk ${v.lift_pct ?? "—"}%) · banda ±${v.banda_usc ?? "—"} USc/bu, cobertura ${v.cobertura_pct ?? "—"}%`
+        ).join("<br>");
+        const dr = L.drift_30d || {};
+        document.getElementById("de-honesty").innerHTML = `
+            <div style="font-weight:700;margin-bottom:4px;">Señal BUY / SELL / HOLD
+              <span style="font-weight:400;color:#888;">· clasificador XGBoost a 14 días, ${vi.n_features ?? "—"} variables</span></div>
+            <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.82rem;">${rows}</table></div>
+            <div style="font-weight:700;margin:16px 0 4px;">Forecast de precio por horizonte</div>
+            <div style="line-height:1.7;">${fhTxt || "—"}</div>
+            <div style="font-size:.78rem;color:#777;margin-top:4px;">Con peso 0% el forecast es el precio actual más bandas de incertidumbre:
+              las bandas sirven, la dirección no. Reentrenado hace ${fmtAge(L.modelo_entrenado_hace_h)}.</div>
+            <div style="font-weight:700;margin:16px 0 4px;">Drift monitor (30 días)</div>
+            <div style="color:${GREY};">AUC ${dr.auc != null ? (dr.auc / 100).toFixed(2) : "—"} · accuracy ${pct(dr.accuracy)} · n=${dr.n ?? "—"}
+              <span style="font-size:.78rem;">· calculado hace ${fmtAge(dr.age_hours)}</span></div>
+            <div style="font-size:.78rem;color:#777;">⚠️ Dentro de la muestra: evalúa señales recalculadas con el modelo actual sobre fechas
+              que usó para entrenar. Sirve para detectar cambios de régimen, <b>no</b> mide poder predictivo.</div>`;
+
+        // ── Motor de noticias
         const snap = news.ultimo_snapshot || {};
+        const nf = news.features_noticias_en_senal;
         document.getElementById("de-news-detail").innerHTML = `
-            📚 <b>${news.articulos_analizados_acumulados ?? "—"}</b> noticias analizadas y cacheadas (memoria permanente).<br>
             🗓️ Historia de sentimiento: <b>${news.dias_de_historia ?? "—"}</b> días
-            ${news.rango_historia ? `(${news.rango_historia[0]} → ${news.rango_historia[1]})` : ""}.<br>
-            📰 Último snapshot: <b>${snap.n_articles ?? "—"}</b> artículos
-            (${snap.n_high_impact ?? 0} de alto impacto), hace ${fmtAge(snap.age_hours)}.`;
+            ${news.rango_historia ? `(${news.rango_historia[0]} → ${news.rango_historia[1]})` : ""}${nd != null && nd > 4
+                ? ` <span style="color:${RED};font-weight:600;">· congelada hace ${nd} días</span>` : ""}.<br>
+            📰 Último snapshot: <b>${snap.n_articles ?? "—"}</b> artículos (${snap.n_high_impact ?? 0} de alto impacto), hace ${fmtAge(snap.age_hours)}.<br>
+            🧩 Uso en la señal: ${nf == null ? "—" : nf.length ? `<b>${nf.length}</b> variables de noticias`
+                : "<b>ninguna</b>: la señal BUY/SELL no usa noticias; el sentimiento alimenta Intel LLM, alertas e Intel Engine"}.<br>
+            🗄️ Caché de análisis LLM: ${news.cache_total ?? "—"} artículos <span style="color:#888;">(incluye noticias de los robots, no solo soja)</span>.`;
 
-        // Tabla de datasets
+        // ── Tabla de datasets
         const tb = document.getElementById("de-datasets-tbody");
         tb.innerHTML = "";
         (ds.items || []).forEach(it => {
             const badge = it.fresh
-                ? `<span style="color:#2e7d32;font-weight:600;">🟢 Fresco</span>`
-                : `<span style="color:#c62828;font-weight:600;">🔴 Stale</span>`;
+                ? `<span style="color:${GREEN};font-weight:600;">🟢 Al día</span>`
+                : `<span style="color:${RED};font-weight:600;">🔴 Atrasado</span>`;
             const layerColor = {bronze:"#a1887f", silver:"#90a4ae", gold:"#ffb300"}[it.layer] || "#888";
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid #eee";
             tr.innerHTML = `
                 <td style="padding:6px 10px;font-weight:600;">${it.name}</td>
                 <td style="padding:6px 10px;"><span style="color:${layerColor};font-weight:600;">${it.layer}</span></td>
-                <td style="padding:6px 10px;color:#777;font-size:.78rem;">${it.source || "—"}</td>
-                <td style="padding:6px 10px;text-align:center;">${it.rows != null ? it.rows.toLocaleString("es-UY") : "—"}</td>
-                <td style="padding:6px 10px;text-align:center;">${fmtAge(it.age_hours)}</td>
+                <td style="padding:6px 10px;color:#777;font-size:.78rem;">${it.source || "—"} · ${it.frequency || ""}</td>
+                <td style="padding:6px 10px;text-align:center;">${it.last_date ?? "—"}</td>
+                <td style="padding:6px 10px;text-align:center;">${it.age_days != null ? it.age_days + " d" : "—"}
+                  <span style="color:#aaa;font-size:.72rem;">(máx ${it.max_age_days})</span></td>
                 <td style="padding:6px 10px;text-align:center;">${badge}</td>`;
             tb.appendChild(tr);
         });
