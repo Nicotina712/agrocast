@@ -43,13 +43,15 @@ BUSHELS_PER_TON = 36.744
 DEFAULT_TRANCHES = [
     {"pct": 20, "trigger": "price_target", "label": "Primer objetivo", "description": "Primer tramo: asegurar piso de rentabilidad"},
     {"pct": 20, "trigger": "price_target", "label": "Segundo objetivo", "description": "Segundo tramo: capturar rally intermedio"},
-    {"pct": 20, "trigger": "seasonal_window", "label": "Ventana estacional", "description": "Venta en ventana históricamente favorable (Mar-May)"},
-    {"pct": 20, "trigger": "model_signal", "label": "Señal AgroCast", "description": "Venta cuando el semáforo marca VENDER"},
+    {"pct": 20, "trigger": "seasonal_window", "label": "Venta a cosecha", "description": "Tramo que se vende al cosechar (abr-may), cuando ya tenés el grano"},
+    {"pct": 20, "trigger": "model_signal", "label": "Riesgo AgroCast", "description": "Se activa cuando el motor de decisión sugiere fijar (margen en riesgo) o vender (guardar no paga)"},
     {"pct": 20, "trigger": "time_deadline", "label": "Cierre de campaña", "description": "Último tramo antes de fin de campaña (evita deterioro)"},
 ]
 
-# Historically favorable months for selling soybeans (Southern Hemisphere harvest: Mar-Jun)
-FAVORABLE_MONTHS = {3, 4, 5}  # Mar, Apr, May — peak harvest + demand
+# Meses de cosecha de soja en Uruguay. NO son "meses favorables" para el
+# precio (la estacionalidad medida es débil; ver research_producer_engines):
+# es cuando el productor tiene el grano disponible para vender.
+FAVORABLE_MONTHS = {4, 5}  # nombre legado; = meses de cosecha
 
 
 def _load_plans() -> list:
@@ -201,6 +203,22 @@ def _auto_set_price_targets(tranches: list, cost: float, target: float):
             t["deadline_date"] = f"{year}-06-30"
 
 
+def _decision_context() -> dict:
+    """Precio local real + recomendación del motor de decisión (sin dirección)."""
+    try:
+        from src.producer.decision_engine import build_decision
+        from src.producer.producer_brief import _momento_from_decision
+        dec = build_decision()
+        m, _ = _momento_from_decision(dec)
+        f = dec.get("fijar_precio") or {}
+        return {"local": (dec.get("precio_local") or {}).get("local_usd_ton"),
+                "momento": m.get("momento"), "titulo": m.get("titulo"),
+                "sugerido_pct": f.get("sugerido_pct")}
+    except Exception as e:
+        print(f"   [HarvestPlan] motor de decisión no disponible: {e}")
+        return {}
+
+
 def check_triggers(current_price_usd_ton: float, sell_signal: str = "ESPERAR") -> dict:
     """
     Check all tranches of the active plan against current conditions.
@@ -223,6 +241,15 @@ def check_triggers(current_price_usd_ton: float, sell_signal: str = "ESPERAR") -
     alerts = []
     modified = False
 
+    # `sell_signal` queda por compatibilidad pero se ignora (era direccional).
+    # Precio: el local REAL (Revista Verde) si está; el que pasan los callers
+    # usaba una base estacional estimada.
+    ctx = _decision_context()
+    if ctx.get("local"):
+        current_price_usd_ton = float(ctx["local"])
+    sold_pct = sum(t.get("pct", 0) for t in active["tranches"]
+                   if t.get("status") in ("executed", "triggered"))
+
     for tranche in active["tranches"]:
         if tranche["status"] != "pending":
             continue
@@ -241,15 +268,22 @@ def check_triggers(current_price_usd_ton: float, sell_signal: str = "ESPERAR") -
             if target_month:
                 if today_month == target_month:
                     triggered = True
-                    reason = f"Ventana estacional activa (mes {today_month})"
+                    reason = f"Mes programado para este tramo ({today_month})"
             elif today_month in FAVORABLE_MONTHS:
                 triggered = True
-                reason = f"Ventana estacional favorable (Mar-May)"
+                reason = "Cosecha: tramo a vender con el grano disponible"
 
         elif tranche["trigger"] == "model_signal":
-            if sell_signal == "VENDER":
+            # Pivot 2026-10: ya no es una señal direccional (sin edge fuera de
+            # muestra). Se activa con el motor de decisión: FIJAR cuando el
+            # sugerido supera lo ya vendido, o VENDER porque guardar no paga.
+            mom = ctx.get("momento")
+            if mom == "FIJAR" and (ctx.get("sugerido_pct") or 0) > sold_pct:
                 triggered = True
-                reason = f"Semáforo AgroCast: VENDER"
+                reason = f"Motor AgroCast: {ctx.get('titulo', 'fijar precio').capitalize()}"
+            elif mom == "VENDER":
+                triggered = True
+                reason = "Motor AgroCast: guardar no paga con la curva de hoy"
 
         elif tranche["trigger"] == "time_deadline":
             deadline = tranche.get("deadline_date")

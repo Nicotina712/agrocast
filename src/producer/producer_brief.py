@@ -755,6 +755,122 @@ def _precio_neto(local_usd_ton: float, uyu_rate: float,
 # ─────────────────────────────────────────────────────────────────────────
 # API principal
 # ─────────────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────
+# Fase 2 (pivot productor): contexto SIN dirección de precio
+# ─────────────────────────────────────────────────────────────────────────
+def _etapa_campania() -> dict:
+    """Etapa del calendario de soja en Uruguay y la decisión que corresponde."""
+    m = date.today().month
+    y = date.today().year
+    camp = f"{y}/{str(y+1)[-2:]}" if m >= 7 else f"{y-1}/{str(y)[-2:]}"
+    if m in (10, 11, 12):
+        return {"nombre": "Siembra", "campania": camp, "icono": "🌱",
+                "foco": "Decidir cuánto de la próxima cosecha fijar a precio de hoy."}
+    if m in (1, 2, 3):
+        return {"nombre": "Cultivo en desarrollo", "campania": camp, "icono": "🌿",
+                "foco": "Seguir fijando por tramos y vigilar el clima (llenado de grano)."}
+    if m in (4, 5):
+        return {"nombre": "Cosecha", "campania": camp, "icono": "🚜",
+                "foco": "Vender en cosecha o guardar: lo decide la curva contra tus costos."}
+    return {"nombre": "Post-cosecha", "campania": camp, "icono": "📦",
+            "foco": "Decidir cuándo vender lo que tenés guardado."}
+
+
+def _context_rows(decision: dict) -> list:
+    """
+    "Qué está pasando": hechos con número + por qué le importa al productor.
+    Reemplaza a _simple_drivers, que asignaba dirección (🟢 empuja arriba /
+    🔴 presiona abajo) sin evidencia de que esos factores predigan el precio.
+    """
+    def _read(fn):
+        try:
+            with open(os.path.join(_DATA, fn), encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            return None
+
+    rows = []
+    china = _read("china_demand.json") or {}
+    cm = china.get("crush_margin") or {}
+    if cm.get("margin_usd_bu") is not None:
+        rows.append({"icono": "🇨🇳", "etiqueta": "Industria de soja en China",
+                     "detalle": (f"Margen de molienda {cm['margin_usd_bu']:.2f} USD/bu, "
+                                 f"percentil {cm.get('margin_pct_rank_2y', 0):.0f} de los últimos 2 años"),
+                     "efecto": "si la industria gana bien, tu comprador final sigue activo"})
+    br = _read("brazil_exports.json") or {}
+    if br.get("data_source") == "comexstat" and br.get("exported_ytd_mmt"):
+        yoy = br.get("yoy_pct")
+        rows.append({"icono": "🇧🇷", "etiqueta": "Exportaciones de Brasil",
+                     "detalle": (f"{br['exported_ytd_mmt']:.1f} millones de ton en el año"
+                                 + (f" ({yoy:+.1f}% vs año pasado)" if yoy is not None else "")
+                                 + f", USDA proyecta {br.get('usda_projection_mmt', 0):.0f}"),
+                     "efecto": "Brasil es tu principal competidor por los compradores chinos"})
+    w = _read("wasde_official.json") or {}
+    wd = w.get("world") or {}
+    if wd.get("ending_stocks_mmt") and wd.get("consumption_mmt"):
+        ratio = wd["ending_stocks_mmt"] / wd["consumption_mmt"] * 100
+        rows.append({"icono": "🌍", "etiqueta": f"Balance mundial USDA ({w.get('marketing_year', '')})",
+                     "detalle": (f"Stocks finales {wd['ending_stocks_mmt']:.0f} millones de ton "
+                                 f"= {ratio:.0f}% del consumo anual"),
+                     "efecto": "cuánto colchón tiene el mundo ante un problema de cosecha"})
+    clima = (decision.get("fijar_precio") or {}).get("clima") or {}
+    fase = clima.get("fase", "")
+    if fase and fase != "desconocida":
+        txt = {"el_nino": ("Se pronostica El Niño para el verano",
+                           "suele traer buenas lluvias a Uruguay: mejor rinde esperado, y más oferta regional en cosecha"),
+               "la_nina": ("Se pronostica La Niña para el verano",
+                           "riesgo de seca en Uruguay y Argentina: cuidá cuánto comprometés antes de cosechar"),
+               }.get(fase, ("Clima neutral para el verano", "sin sesgo climático marcado para tu rinde"))
+        rows.append({"icono": "🌦️", "etiqueta": "Clima de la campaña",
+                     "detalle": txt[0] + (f" (índice {clima['valor_3m']:+.1f})" if clima.get("valor_3m") is not None else ""),
+                     "efecto": txt[1]})
+    g = decision.get("guardar_hoy") or {}
+    if g.get("ok"):
+        b = max(g["opciones"], key=lambda o: o["paga_mercado_usd_ton"])
+        rows.append({"icono": "📈", "etiqueta": "Lo que paga el mercado por esperar",
+                     "detalle": f"Hasta +{b['paga_mercado_usd_ton']:.0f} USD/ton por entregar en {b['hasta']}",
+                     "efecto": "es la referencia para decidir si guardar paga tus costos"})
+    vol = decision.get("vol_anual_pct")
+    if vol:
+        nivel = "más que lo habitual" if vol > 20 else "menos que lo habitual" if vol < 14 else "dentro de lo habitual"
+        rows.append({"icono": "📊", "etiqueta": "Cuánto se mueve el precio",
+                     "detalle": f"Volatilidad {vol:.0f}% anual ({nivel}; lo típico es ~17%)",
+                     "efecto": "más movimiento = más riesgo de esperar sin precio fijado"})
+    return rows
+
+
+def _proximo_evento_real(decision: dict) -> dict | None:
+    """Próxima fecha que mueve el precio, con el impacto MEDIDO (no supuesto)."""
+    evs = decision.get("eventos") or []
+    ev = next((e for e in evs if e.get("relevante")), None) or (evs[0] if evs else None)
+    if not ev:
+        return None
+    d = date.fromisoformat(ev["fecha"])
+    dias = (d - date.today()).days
+    mult = ev["movimiento_vs_dia_normal"]
+    impacto = (f"Históricamente mueve el precio ~{mult:.1f} veces más que un día normal"
+               if mult >= 1.2 else "En promedio no mueve el precio más que un día normal")
+    return {"nombre": ev["evento"], "fecha": ev["fecha"], "fecha_es": _fmt_fecha(d),
+            "dias_para": dias, "inminente": dias <= 3 and mult >= 1.2, "impacto": impacto}
+
+
+def _basis_real(decision: dict) -> dict | None:
+    """Base local REAL (Revista Verde vs futuro del mismo mes de entrega).
+    Sin percentiles: la historia de base UY hasta oct-2026 es sintética."""
+    base = decision.get("base_usada_usd_ton")
+    loc = decision.get("precio_local") or {}
+    if base is None or not loc.get("local_usd_ton"):
+        return None
+    camp = loc.get("campania") or ""
+    ref = "futuro de mayo" if camp and camp.split("/")[-1] != str(date.today().year) else "contrato más cercano"
+    return {"basis_usd_ton": base, "semaforo": "gray",
+            "titulo": f"Descuento local: {base:+.0f} USD/ton contra Chicago",
+            "detalle": (f"Precio local {camp} {loc['local_usd_ton']:.0f} USD/ton vs {ref} en Chicago. "
+                        f"Registramos la base real desde octubre 2026: con unos meses de datos podremos "
+                        f"decir si está cara o barata para tu zona."),
+            "meta": f"Fuente: Revista Verde (precio local) y CBOT · {loc.get('fecha') or ''}"}
+
+
 def _momento_from_decision(dec: dict) -> tuple[dict, dict | None]:
     """
     Recomendación principal desde el motor de decisión (sin dirección de precio).
@@ -830,10 +946,11 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         print(f"[producer_brief] decision_engine falló: {e}")
         decision = {}
     momento, storage = _momento_from_decision(decision)
-    drivers = _simple_drivers()
-    wasde = _next_wasde()
+    drivers = _context_rows(decision)
+    wasde = _proximo_evento_real(decision)
+    # (drivers y evento se arman después del motor de decisión)
     neto = _precio_neto(prices["usd_ton"], uyu_rate, flete, otros)
-    basis_intel = _basis_intelligence()
+    basis_intel = _basis_real(decision)
     # El historial medía los veredictos direccionales del IE, que ya no manejan
     # la recomendación → se oculta hasta tener historial de la lógica nueva.
     track = None
@@ -878,6 +995,7 @@ def build_producer_brief(flete: float = None, otros: float = None) -> dict:
         "almacenamiento": storage,
         "ventana_optima": best_win,     # retirado (pico del forecast = direccional)
         "decision": decision,
+        "etapa": _etapa_campania(),
         "accionable_detallado": accionable,
         "drivers_simple": drivers,
         "proximo_evento": wasde,

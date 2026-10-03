@@ -947,10 +947,13 @@
       </div>
     </div>
 
-    <!-- SECCIÓN 2 — ¿QUÉ HAGO CON MI COSECHA? -->
+    <!-- SECCIÓN 2 — TUS DECISIONES DE LA CAMPAÑA (motor de decisión, sin dirección) -->
     <div class="card" style="margin-bottom:16px;border-left:4px solid #2e7d32;">
-      <div style="font-size:.78rem;color:#2e7d32;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:8px;">📋 Recomendación para vos</div>
-      <div id="pb-accionable" style="font-size:.95rem;color:#333;line-height:1.65;">—</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:10px;">
+        <div style="font-size:.78rem;color:#2e7d32;text-transform:uppercase;letter-spacing:.06em;font-weight:700;">📋 Tus decisiones de la campaña</div>
+        <div id="pb-etapa" style="font-size:.8rem;color:#555;"></div>
+      </div>
+      <div id="pb-accionable" style="font-size:.92rem;color:#333;line-height:1.6;">—</div>
     </div>
 
     <!-- SECCIÓN 2b — TRACK RECORD (confianza) -->
@@ -3531,6 +3534,88 @@ function renderMargen(mg) {
     document.getElementById("pb-margen-bar").style.width = pct + "%";
 }
 
+// ── Tus decisiones de la campaña (Fase 2, pivot productor) ────────────
+// Dibuja las salidas del motor de decisión: cuánto fijar (vs tope por riesgo
+// de producción), rango probable del precio a cosecha con tu costo y el precio
+// fijable, y guardar vs vender mes por mes. Nada acá es pronóstico de dirección.
+function renderDecisiones(dec, etapa) {
+    const el = document.getElementById("pb-accionable");
+    const n0 = (v) => v == null ? "—" : Math.round(v).toLocaleString("es-UY");
+    const sg = (v) => v == null ? "—" : `${v >= 0 ? "+" : "−"}${Math.abs(Math.round(v))}`;
+    const etEl = document.getElementById("pb-etapa");
+    if (etapa) etEl.innerHTML = `${etapa.icono} <b>Campaña ${etapa.campania}</b> · ${etapa.nombre}: ${etapa.foco}`;
+
+    let html = "";
+    const f = dec.fijar_precio || {};
+    if (f.ok) {
+        const sug = f.sugerido_pct, tope = f.tope_preventa_pct || 50;
+        html += `<div style="font-weight:700;color:#1b4332;margin-bottom:6px;">1 · ¿Cuánto fijar de la cosecha ${f.campania}?</div>`;
+        if (sug != null) {
+            html += `
+            <div style="display:flex;align-items:center;gap:10px;margin:6px 0 4px;">
+              <div style="flex:1;height:14px;background:#eceff1;border-radius:7px;position:relative;overflow:hidden;">
+                <div style="position:absolute;left:0;top:0;bottom:0;width:${tope}%;background:#c8e6c9;"></div>
+                <div style="position:absolute;left:0;top:0;bottom:0;width:${sug}%;background:#2e7d32;"></div>
+              </div>
+              <div style="font-weight:800;color:#1b4332;white-space:nowrap;">${sug}%${f.sugerido_ton ? ` · ${n0(f.sugerido_ton)} ton` : ""}</div>
+            </div>
+            <div style="font-size:.75rem;color:#777;margin-bottom:6px;">Verde oscuro: sugerido ahora · verde claro: tope ${tope}% por riesgo de producción</div>`;
+        }
+        html += `<div style="font-size:.86rem;color:#444;">${f.mensaje || ""}</div>`;
+
+        // Rango probable a cosecha
+        const rq = f.rango_a_cosecha || {};
+        if (rq.q10 != null) {
+            const be = f.break_even_usd_ton, fx = f.precio_fijable_usd_ton;
+            const lo = Math.min(rq.q10, be || rq.q10) * 0.93, hi = rq.q90 * 1.04;
+            const pos = (v) => `${Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100))}%`;
+            html += `
+            <div style="margin:14px 0 4px;font-size:.8rem;font-weight:700;color:#555;">Precio probable a la cosecha (${f.dias_a_cosecha} días) · 8 de cada 10 veces, aproximado</div>
+            <div style="position:relative;height:46px;margin:0 6px;">
+              <div style="position:absolute;top:18px;left:0;right:0;height:10px;background:#eceff1;border-radius:5px;"></div>
+              <div style="position:absolute;top:18px;height:10px;left:${pos(rq.q10)};width:calc(${pos(rq.q90)} - ${pos(rq.q10)});background:#90caf9;border-radius:5px;"></div>
+              ${be ? `<div title="Tu costo" style="position:absolute;top:10px;height:26px;left:${pos(be)};border-left:3px solid #c62828;"></div>
+                      <div style="position:absolute;top:-2px;left:${pos(be)};transform:translateX(-50%);font-size:.7rem;color:#c62828;font-weight:700;white-space:nowrap;">costo ${n0(be)}</div>` : ""}
+              <div title="Precio que podés fijar hoy" style="position:absolute;top:14px;left:${pos(fx)};transform:translateX(-50%);width:18px;height:18px;border-radius:50%;background:#1565c0;border:3px solid #fff;box-shadow:0 0 0 1px #1565c0;"></div>
+              <div style="position:absolute;top:-2px;left:${pos(fx)};transform:translateX(-50%);font-size:.7rem;color:#1565c0;font-weight:700;white-space:nowrap;">hoy ${n0(fx)}</div>
+              <div style="position:absolute;top:36px;left:${pos(rq.q10)};transform:translateX(-50%);font-size:.7rem;color:#555;">${n0(rq.q10)}</div>
+              <div style="position:absolute;top:36px;left:${pos(rq.q90)};transform:translateX(-50%);font-size:.7rem;color:#555;">${n0(rq.q90)}</div>
+            </div>
+            <div style="font-size:.75rem;color:#777;margin-top:8px;">USD/ton neto. El rango no dice si el precio va a subir o bajar: muestra cuánto se puede mover hasta la cosecha.</div>`;
+        }
+    }
+
+    // Guardar o vender, mes por mes
+    const pre = etapa && ["Siembra", "Cultivo en desarrollo"].includes(etapa.nombre);
+    const g = pre ? dec.guardar_en_cosecha : dec.guardar_hoy;
+    if (g && g.ok) {
+        html += `<div style="font-weight:700;color:#1b4332;margin:18px 0 6px;">2 · ${pre ? `Cuando coseches: ¿vender o guardar? (desde ${g.desde})` : "¿Guardar o vender?"}</div>
+            <div style="font-size:.86rem;color:#444;margin-bottom:8px;">${g.texto || ""}</div>
+            <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.8rem;">
+              <thead><tr style="background:#f5f5f5;text-align:right;">
+                <th style="padding:6px 8px;text-align:left;">Guardar hasta</th><th style="padding:6px 8px;">El mercado paga</th>
+                <th style="padding:6px 8px;">Te cuesta</th><th style="padding:6px 8px;">Resultado</th>
+                <th style="padding:6px 8px;">Base debería mejorar</th><th style="padding:6px 8px;">Sale peor que vender</th>
+              </tr></thead><tbody>
+              ${g.opciones.slice(0, 5).map(o => `
+                <tr style="border-bottom:1px solid #eee;text-align:right;">
+                  <td style="padding:6px 8px;text-align:left;">${o.hasta}</td>
+                  <td style="padding:6px 8px;">${sg(o.paga_mercado_usd_ton)}</td>
+                  <td style="padding:6px 8px;color:#c62828;">−${n0(o.costo_guardar_usd_ton)}</td>
+                  <td style="padding:6px 8px;font-weight:700;color:${o.ganancia_esperada_usd_ton >= 0 ? "#2e7d32" : "#c62828"};">${sg(o.ganancia_esperada_usd_ton)}</td>
+                  <td style="padding:6px 8px;">${o.mejora_base_necesaria_usd_ton > 0 ? "+" + n0(o.mejora_base_necesaria_usd_ton) : "—"}</td>
+                  <td style="padding:6px 8px;">${o.prob_peor_que_vender_hoy}%</td>
+                </tr>`).join("")}
+              </tbody></table></div>
+            <div style="font-size:.75rem;color:#777;margin-top:6px;">USD/ton. "El mercado paga" sale de la curva de futuros de Chicago. Costos supuestos:
+              silo ${dec.supuestos_costos.silo_usd_ton_mes} USD/ton/mes, financiamiento ${Math.round(dec.supuestos_costos.tasa_anual * 100)}% anual,
+              merma ${(dec.supuestos_costos.merma_pct_mes * 100).toFixed(1)}%/mes.${g.nota ? " " + g.nota : ""}</div>`;
+    }
+    el.innerHTML = html || "Sin datos suficientes para calcular tus decisiones.";
+    // La tarjeta suelta de almacenamiento queda cubierta por la tabla de arriba
+    if (g && g.ok) document.getElementById("pb-storage-card").style.display = "none";
+}
+
 function renderStorage(s) {
     const card = document.getElementById("pb-storage-card");
     if (!s) { card.style.display = "none"; return; }
@@ -3592,9 +3677,7 @@ function renderBasis(bi) {
     document.getElementById("pb-basis-icon").textContent = cfg.icon;
     document.getElementById("pb-basis-title").textContent = bi.titulo || "—";
     document.getElementById("pb-basis-detail").textContent = bi.detalle || "";
-    let meta = `Descuento local: ${bi.basis_usd_ton} USD/ton`;
-    if (bi.promedio_5y != null) meta += ` · promedio 5 años: ${bi.promedio_5y} USD/ton`;
-    document.getElementById("pb-basis-meta").textContent = meta;
+    document.getElementById("pb-basis-meta").textContent = bi.meta || `Descuento local: ${bi.basis_usd_ton} USD/ton`;
 }
 
 function renderProducerBrief(d) {
@@ -3655,8 +3738,12 @@ function renderProducerBrief(d) {
 
     // SECCIÓN 2 — accionable
     const accEl = document.getElementById("pb-accionable");
-    accEl.textContent = d.accionable_detallado ||
-        (m.explicacion || "Sin recomendación detallada disponible en este momento.");
+    if (d.decision && d.decision.ok) {
+        renderDecisiones(d.decision, d.etapa);
+    } else {
+        accEl.textContent = d.accionable_detallado ||
+            (m.explicacion || "Sin recomendación detallada disponible en este momento.");
+    }
 
     // SECCIÓN 3 — ventana óptima
     const w = d.ventana_optima;
