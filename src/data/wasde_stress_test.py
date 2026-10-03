@@ -18,6 +18,7 @@ from datetime import date, datetime, timedelta
 
 import numpy as np
 import pandas as pd
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH   = os.path.join(_PROJECT_ROOT, "data", "wasde_stress.json")
@@ -25,10 +26,8 @@ _TTL_HOURS    = 24
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _get_wasde_dates(start_year: int = 2016, end_year: int | None = None) -> list[date]:
@@ -193,7 +192,7 @@ def get_wasde_stress_test(n_top: int = 5) -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(result, f, indent=2, default=str)
+        json.dump(stamp(result), f, indent=2, default=str)
 
     print(f"   [WASDE Stress] {n_events} events analizados. Top move: {top_events[0]['move_usc']:+.1f} USc/bu")
     return result

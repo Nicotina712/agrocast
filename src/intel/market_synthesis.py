@@ -23,6 +23,7 @@ Ambos consumen TODA la inteligencia disponible:
 import json
 import os
 from datetime import datetime, timedelta
+from src.infra.cache_meta import is_fresh
 
 # Ensure .env is loaded so ANTHROPIC_API_KEY is available
 try:
@@ -48,10 +49,8 @@ def _output_path(brief_type: str) -> str:
 
 
 def _is_fresh(path: str) -> bool:
-    if not os.path.exists(path):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(path))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_generated_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(path, _TTL_HOURS)
 
 
 def _load_context() -> dict:

@@ -17,6 +17,7 @@ Cache: data/brazil_exports.json (TTL 24h)
 import json
 import os
 from datetime import datetime, timedelta, date
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH   = os.path.join(_PROJECT_ROOT, "data", "brazil_exports.json")
@@ -27,41 +28,64 @@ _USDA_BRAZIL_PROJECTION_MMT = 103.0
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _fetch_comexstat_monthly(year: int) -> list:
     """
-    Exportaciones mensuales de soja de Brasil vía ComexStat/MDIC.
-    Intenta con la URL pública (no el subdominio API).
+    Exportaciones mensuales de soja en grano (NCM 1201.90.00) vía ComexStat/MDIC.
+    Host correcto: api-comexstat (con guion; "api.comexstat" no resuelve).
+    Ojo: el endpoint de datos tiene rate-limit agresivo + Cloudflare (429/403);
+    si falla, devolvemos [] y el caller cae a la estimación estacional.
     """
     try:
         import requests
-        # El subdominio api.comexstat.mdic.gov.br no resuelve en algunas redes
-        # Intentamos el endpoint REST alternativo
-        url = "https://api.comexstat.mdic.gov.br/general"
         body = {
-            "flow":   "export",
-            "year":   year,
-            "months": list(range(1, 13)),
-            "hs":     ["12010090", "12019000"],
+            "flow":        "export",
+            "monthDetail": True,
+            "period":      {"from": f"{year}-01", "to": f"{year}-12"},
+            "filters":     [{"filter": "ncm", "values": ["12019000", "12010090"]}],
+            "details":     ["ncm"],
+            "metrics":     ["metricKG"],
         }
-        r = requests.post(url, json=body, timeout=15)
+        import time
+        for attempt in range(3):   # 429 = "reintente en 10 segundos"
+            r = requests.post("https://api-comexstat.mdic.gov.br/general", json=body,
+                              headers={"User-Agent": "AgroCast/1.0"}, timeout=20)
+            if r.status_code != 429:
+                break
+            time.sleep(11)
         if r.status_code != 200:
+            print(f"   [BrazilExp] ComexStat HTTP {r.status_code}")
             return []
-        rows = r.json().get("data", {}).get("list", [])
+        rows = (r.json().get("data") or {}).get("list", [])
         monthly = {}
         for row in rows:
-            m  = row.get("month")
-            kg = row.get("metricTon") or (row.get("netKg", 0) / 1000)
+            m = int(row.get("monthNumber") or row.get("month") or 0)
             if m:
-                monthly[m] = monthly.get(m, 0) + (kg or 0)
+                monthly[m] = monthly.get(m, 0) + float(row.get("metricKG") or 0) / 1000
         return [{"month": m, "exported_tons": round(t, 0)} for m, t in sorted(monthly.items())]
     except Exception:
         return []
+
+
+def _usda_brazil_projection() -> float:
+    """Proyección USDA de exportaciones de Brasil para el año calendario en curso
+    (= MY local Feb-Ene que arrancó este año → PSD Market_Year = año-1).
+    Fallback a la constante si la PSD no está."""
+    try:
+        from src.data.fetch_china_demand import _load_psd_csv
+        df = _load_psd_csv()
+        s = df[(df["Commodity_Description"].str.strip() == "Oilseed, Soybean")
+               & (df["Country_Name"].str.strip() == "Brazil")
+               & (df["Attribute_Description"].str.strip() == "Exports")
+               & (df["Market_Year"] == date.today().year - 1)]
+        if len(s):
+            return round(float(s["Value"].iloc[0]) / 1000, 1)
+    except Exception:
+        pass
+    return _USDA_BRAZIL_PROJECTION_MMT
 
 
 def _fetch_worldbank_brazil(year: int) -> float | None:
@@ -163,7 +187,7 @@ def get_brazil_export_pace() -> dict:
     year  = today.year
     week  = today.isocalendar()[1]
 
-    usda_proj   = _USDA_BRAZIL_PROJECTION_MMT
+    usda_proj   = _usda_brazil_projection()
     data_source = "seasonal_estimate"
 
     # ── Intento 1: ComexStat ─────────────────────────────────────────────
@@ -182,8 +206,9 @@ def get_brazil_export_pace() -> dict:
         monthly = []
         print(f"   [BrazilExp] ComexStat no disponible — estimacion estacional: {total_mmt_ytd} MMT")
 
-        # Año anterior: misma estimación con proyección histórica (~98 MMT en 2024)
-        total_mmt_prev = _seasonal_ytd_estimate(week, 98.0)
+        # Sin datos reales no hay YoY ni pace medibles: la curva estacional
+        # da siempre "NORMAL" por construcción → no inventar una comparación.
+        total_mmt_prev = 0
 
     pct_done  = round((total_mmt_ytd / usda_proj) * 100, 1) if usda_proj else None
     yoy_pct   = (round((total_mmt_ytd - total_mmt_prev) / total_mmt_prev * 100, 1)
@@ -200,8 +225,12 @@ def get_brazil_export_pace() -> dict:
     signal_text = {"RAPIDO": "adelantado — presión bajista sobre precios",
                    "LENTO":  "retrasado — oferta menos disponible, potencialmente alcista",
                    "NORMAL": "en línea con expectativas estacionales"}
-    interp = (f"Brasil exportó {total_mmt_ytd:.1f} MMT ({pct_done}% de proyección USDA {usda_proj} MMT). "
-              f"Pace {signal_text[signal]}.")
+    if data_source == "comexstat":
+        interp = (f"Brasil exportó {total_mmt_ytd:.1f} MMT ({pct_done}% de proyección USDA {usda_proj} MMT). "
+                  f"Pace {signal_text[signal]}.")
+    else:
+        interp = (f"Sin dato oficial (ComexStat no disponible). Estimación estacional: "
+                  f"~{total_mmt_ytd:.1f} MMT de {usda_proj} MMT proyectados por USDA.")
     if yoy_pct is not None:
         direction = "+" if yoy_pct >= 0 else ""
         interp += f" YoY: {direction}{yoy_pct:.1f}%."
@@ -223,7 +252,7 @@ def get_brazil_export_pace() -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(result, f, indent=2, default=str)
+        json.dump(stamp(result), f, indent=2, default=str)
 
     print(f"   [BrazilExp] {total_mmt_ytd} MMT ({pct_done}%) | Signal: {signal} | Fuente: {data_source}")
     return result

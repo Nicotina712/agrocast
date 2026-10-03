@@ -24,6 +24,7 @@ import time
 from datetime import datetime, timedelta, date
 
 import pandas as pd
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH   = os.path.join(_PROJECT_ROOT, "data", "basis_uruguay.json")
@@ -37,7 +38,7 @@ _BRA_CODE = "2024"             # Brazil
 _URY_CODE = "2840"             # Uruguay (código USDA)
 
 # Revista Verde — precios locales Uruguay (diarios)
-_REVISTA_VERDE_URL = "https://revistaverde.com.uy/precio-mercado-nacional/"
+_REVISTA_VERDE_URL = "https://revistaverde.com.uy/mercado-de-granos"  # la vieja /precio-mercado-nacional/ da 404 desde ~jun-2026
 
 # Bolsa de Cereales BA — pizarra diaria
 _BCBA_URL = "https://www.bolsadecereales.com/precio-pizarra"
@@ -46,19 +47,21 @@ BUSHELS_PER_TON = 36.744
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _scrape_revista_verde() -> dict | None:
     """
-    Scrape revistaverde.com.uy/precio-mercado-nacional/
-    Returns dict with local_usd_ton, cbot_usd_ton (front month), date string.
-    Page structure:
-      - "Referencias Internacionales": tables with Soja Mayo/Julio prices
-      - "Referencias Locales": table with Soja 2024-25 / 2025-26 prices
+    Scrape revistaverde.com.uy/mercado-de-granos (rediseño 2026).
+    El texto de la página trae dos bloques relevantes:
+      "Mercado Internacional (US$/TON) | Actualizado el DD/MM/YYYY ... | SOJA |
+       Posición | NOVIEMBRE 2026 | JULIO 2027 | Último | 469,31 | 484,56"
+      "Mercado Nacional (US$/TON) | Actualizado el DD/MM/YYYY HH:MM hs | SOJA |
+       Referencia | 2025/2026 | 2026/2027 | Último | 00000 | 438,00"
+    "00000" = sin cotización para esa campaña. Tomamos la primera campaña cotizada
+    (zafra vieja si existe, si no la nueva) y la posición CBOT más cercana.
+    Returns dict with local_usd_ton, cbot_usd_ton, date_str, campaign.
     """
     try:
         import re
@@ -74,67 +77,41 @@ def _scrape_revista_verde() -> dict | None:
             print(f"   [Basis] Revista Verde HTTP {r.status_code}")
             return None
 
-        soup = BeautifulSoup(r.text, "html.parser")
+        txt = " | ".join(BeautifulSoup(r.text, "html.parser").stripped_strings)
 
-        date_str = None
-        cbot_front = None
-        local_price = None
-
-        headings = soup.find_all(["h2", "h3", "h4", "h5"])
-        soja_sections = []
-        for h in headings:
-            if h.get_text(strip=True).lower() == "soja":
-                soja_sections.append(h)
-
-        def _parse_number(text: str) -> float | None:
-            text = text.strip().replace(".", "").replace(",", ".")
+        def _num(t: str) -> float | None:
             try:
-                v = float(text)
+                v = float(t.strip().replace(".", "").replace(",", "."))
                 return v if 50 < v < 1500 else None
             except ValueError:
                 return None
 
-        # Extract date from "Fecha: DD mes YYYY" pattern
-        page_text = soup.get_text()
-        m = re.search(r"Fecha:\s*(\d{1,2}\s+\w+\s+\d{4})", page_text)
-        if m:
-            date_str = m.group(1)
+        # Bloques de un solo producto (la página repite: primero tabla combinada,
+        # después una por producto) → usar el patrón "SOJA | Referencia/Posición".
+        nat = re.search(r"Mercado Nacional \(US\$/TON\) \| Actualizado el ([\d/]+)[^|]*"
+                        r"(?:\|[^|]*){0,40}?\| SOJA \| Referencia \| ([^|]+) \| ([^|]+) \| "
+                        r"Último \| ([^|]+) \| ([^|]+)", txt)
+        intl = re.search(r"SOJA \| Posición \| ([^|]+) \| ([^|]+) \| Último \| ([^|]+) \| ([^|]+)", txt)
+        if not nat:
+            print("   [Basis] Revista Verde: no se encontró el bloque Mercado Nacional / SOJA")
+            return None
 
-        # Parse tables following each Soja heading
-        for i, soja_h in enumerate(soja_sections):
-            table = soja_h.find_next("table")
-            if not table:
-                continue
-            cells = [td.get_text(strip=True) for td in table.find_all(["td", "th", "div", "span"])
-                     if td.get_text(strip=True)]
+        date_str = nat.group(1)
+        local_price, campaign = None, None
+        for camp, val in ((nat.group(2), nat.group(4)), (nat.group(3), nat.group(5))):
+            v = _num(val)
+            if v:
+                local_price, campaign = v, camp.strip()
+                break
+        cbot_front = _num(intl.group(3)) if intl else None
 
-            if i == 0:
-                # First Soja = Internacional (CBOT references)
-                # Cells like: "Mayo", "382,42", "Julio", "387,11"
-                for j, c in enumerate(cells):
-                    v = _parse_number(c)
-                    if v and 200 < v < 800:
-                        cbot_front = v
-                        break
-            else:
-                # Second Soja = Local
-                # Cells like: "2024-25", "0", "2025-26", "404"
-                for j in range(len(cells) - 1, -1, -1):
-                    v = _parse_number(cells[j])
-                    if v and v > 100:
-                        local_price = v
-                        break
+        if local_price:
+            print(f"   [Basis] Revista Verde OK: local={local_price} ({campaign}) "
+                  f"cbot_ref={cbot_front} ({date_str})")
+            return {"local_usd_ton": local_price, "cbot_usd_ton": cbot_front,
+                    "date_str": date_str, "campaign": campaign}
 
-        if local_price and local_price > 100:
-            result = {
-                "local_usd_ton": local_price,
-                "cbot_usd_ton": cbot_front,
-                "date_str": date_str,
-            }
-            print(f"   [Basis] Revista Verde OK: local={local_price} cbot_ref={cbot_front} ({date_str})")
-            return result
-
-        print("   [Basis] Revista Verde: no se encontró precio local de soja")
+        print("   [Basis] Revista Verde: soja sin cotización local")
         return None
     except Exception as e:
         print(f"   [Basis] Revista Verde falló: {e}")
@@ -318,21 +295,27 @@ def _seed_basis_history():
         print(f"   [Basis] Error sembrando histórico: {e}")
 
 
-def _append_basis_history(basis_usd_ton: float):
-    """Acumula histórico de basis para calcular estadísticas futuras."""
+def _append_basis_history(basis_usd_ton: float, cbot_usd_ton: float | None = None,
+                          local_usd_ton: float | None = None):
+    """Acumula histórico de basis para calcular estadísticas futuras.
+    Fila completa (cbot/local/month): basis_forecast hace int(month) y una
+    fila con NaN lo rompía."""
     try:
         hist_path = os.path.join(_PROJECT_ROOT, "data", "basis_history.csv")
         today_str = date.today().isoformat()
-        row = pd.DataFrame([{"date": today_str, "basis_usd_ton": basis_usd_ton}])
+        row = pd.DataFrame([{"date": today_str, "cbot_usd_ton": cbot_usd_ton,
+                             "local_usd_ton": local_usd_ton, "basis_usd_ton": basis_usd_ton,
+                             "month": float(date.today().month)}])
         if os.path.exists(hist_path):
-            existing = pd.read_csv(hist_path, parse_dates=["date"])
+            existing = pd.read_csv(hist_path)
+            existing["date"] = pd.to_datetime(existing["date"], format="mixed")
             existing = existing[existing["date"].dt.date != date.today()]
             row = pd.concat([existing, row], ignore_index=True)
             row = row.tail(365 * 3)   # máximo 3 años
         os.makedirs(os.path.dirname(hist_path), exist_ok=True)
         row.to_csv(hist_path, index=False)
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"   [Basis] No se pudo guardar basis_history: {e}")
 
 
 def get_basis_uruguay(cbot_usd_ton: float | None = None) -> dict:
@@ -402,6 +385,7 @@ def get_basis_uruguay(cbot_usd_ton: float | None = None) -> dict:
             result["cbot_usd_ton"] = cbot_usd_ton
             result["cbot_note"] = "CBOT ref from Revista Verde (front month USD/ton)"
         result["rv_date"] = rv.get("date_str")
+        result["rv_campaign"] = rv.get("campaign")
 
     # ── 2. USDA FAS PSD (fuente oficial mensual) ────────────────────────────
     if fob_price is None and cbot_usd_ton:
@@ -425,7 +409,9 @@ def get_basis_uruguay(cbot_usd_ton: float | None = None) -> dict:
     if fob_price and cbot_usd_ton:
         basis = round(fob_price - cbot_usd_ton, 2)
         stats = _compute_basis_stats(basis, _CACHE_PATH)
-        _append_basis_history(basis)
+        # Solo observaciones reales: el fallback (CBOT − 25 fijo) contaminaba la serie.
+        if source != "estimated_historical":
+            _append_basis_history(basis, cbot_usd_ton, fob_price)
 
         # Interpretación del basis
         if basis > -10:
@@ -454,7 +440,7 @@ def get_basis_uruguay(cbot_usd_ton: float | None = None) -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(result, f, indent=2, default=str)
+        json.dump(stamp(result), f, indent=2, default=str)
 
     print(f"   [Basis] {result.get('basis_usd_ton', 'N/A')} USD/ton ({source})")
     return result

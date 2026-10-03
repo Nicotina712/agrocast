@@ -13,6 +13,7 @@ Cache: data/wasde_official.json (TTL 6h)
 import json
 import os
 from datetime import datetime, timedelta, date
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH   = os.path.join(_PROJECT_ROOT, "data", "wasde_official.json")
@@ -69,10 +70,8 @@ _STATIC_ESTIMATES = {
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _fetch_fas_psd(country_code: str, year: int) -> dict:
@@ -95,6 +94,55 @@ def _fetch_fas_psd(country_code: str, year: int) -> dict:
                         pass
         return result
     except Exception:
+        return {}
+
+
+def _fetch_psd_csv() -> dict:
+    """
+    USDA FAS PSD bulk CSV (psd_oilseeds_csv.zip) — misma base que el WASDE,
+    se actualiza con cada reporte mensual. A diferencia de la API JSON (404),
+    la descarga bulk funciona; la reutilizamos del módulo China (caché 7d).
+    Toma el marketing year más nuevo publicado (new-crop desde ~mayo).
+    World = suma de países (la PSD no trae fila "World").
+    """
+    try:
+        from src.data.fetch_china_demand import _load_psd_csv
+        from src.data.event_calendar import _second_tuesday
+        df = _load_psd_csv()
+        if df is None or df.empty:
+            return {}
+        s = df[df["Commodity_Description"].str.strip() == "Oilseed, Soybean"]
+        s = s[s["Unit_Description"].str.strip() == "(1000 MT)"]
+        my = int(s["Market_Year"].max())
+        s = s[s["Market_Year"] == my]
+        rel = s[["Calendar_Year", "Month"]].drop_duplicates().sort_values(["Calendar_Year", "Month"]).iloc[-1]
+        report_date = _second_tuesday(int(rel["Calendar_Year"]), int(rel["Month"])).isoformat()
+
+        def _country(name: str) -> dict:
+            c = s[s["Country_Name"].str.strip() == name]
+            out = {}
+            for key, col in _KEY_ATTRS.items():
+                v = c.loc[c["Attribute_Description"].str.strip() == key, "Value"]
+                if len(v):
+                    out[col] = round(float(v.iloc[0]) / 1000, 2)   # 1000 MT → MMT
+            return out
+
+        world = {}
+        for key, col in _KEY_ATTRS.items():
+            v = s.loc[s["Attribute_Description"].str.strip() == key, "Value"]
+            if len(v):
+                world[col] = round(float(v.sum()) / 1000, 2)
+        return {
+            "marketing_year": f"{my}/{str(my + 1)[-2:]}",
+            "report_date":    report_date,
+            "world":          world,
+            "argentina":      _country("Argentina"),
+            "brazil":         _country("Brazil"),
+            "usa":            _country("United States"),
+            "china":          _country("China"),
+        }
+    except Exception as e:
+        print(f"   [WASDE] PSD CSV no disponible: {e}")
         return {}
 
 
@@ -223,10 +271,26 @@ def get_wasde_official() -> dict:
     print("   [WASDE] Obteniendo datos de oferta/demanda global...")
     year = date.today().year
     data_source = "static_estimates"
+    marketing_year = _STATIC_ESTIMATES["marketing_year"]
+    psd_report_date = None
 
-    # ── Intento 1: USDA FAS PSD API ──────────────────────────────────────
-    world = _fetch_fas_psd(_COUNTRIES["world"], year)
-    if world.get("ending_stocks_mmt"):
+    # ── Intento 0: USDA PSD bulk CSV (la fuente que sí responde) ─────────
+    psd = _fetch_psd_csv()
+    world = {}
+    if psd.get("world", {}).get("ending_stocks_mmt"):
+        data_source = "usda_psd_csv"
+        world, arg, bra, usa, china = (psd["world"], psd["argentina"], psd["brazil"],
+                                       psd["usa"], psd["china"])
+        marketing_year  = psd["marketing_year"]
+        psd_report_date = psd["report_date"]
+        print(f"   [WASDE] PSD CSV OK — MY {marketing_year}, reporte {psd_report_date}, "
+              f"stocks mundiales {world['ending_stocks_mmt']} MMT")
+    else:
+        # ── Intento 1: USDA FAS PSD API (JSON, suele dar 404) ───────────
+        world = _fetch_fas_psd(_COUNTRIES["world"], year)
+    if data_source == "usda_psd_csv":
+        pass
+    elif world.get("ending_stocks_mmt"):
         data_source = "usda_fas_psd"
         arg   = _fetch_fas_psd(_COUNTRIES["argentina"], year)
         bra   = _fetch_fas_psd(_COUNTRIES["brazil"],    year)
@@ -252,11 +316,12 @@ def get_wasde_official() -> dict:
         china = _STATIC_ESTIMATES["china"].copy()
 
     # report_date del WASDE actual (estático o de la API)
-    static_report_date = (
-        _STATIC_ESTIMATES.get("report_date")
-        if data_source in ("static_estimates", "usda_nass")
-        else datetime.now().strftime("%Y-%m-%d")
-    )
+    if psd_report_date:
+        static_report_date = psd_report_date
+    elif data_source in ("static_estimates", "usda_nass"):
+        static_report_date = _STATIC_ESTIMATES.get("report_date")
+    else:
+        static_report_date = datetime.now().strftime("%Y-%m-%d")
     released_at_iso = None
     if static_report_date:
         released_at_iso = f"{static_report_date}T17:00:00+00:00"
@@ -267,11 +332,16 @@ def get_wasde_official() -> dict:
     # El historial se deduplicó por report_date → cada entrada es un WASDE único.
     history = _load_history()
     world_stocks = world.get("ending_stocks_mmt")
-    surprise = _compute_surprise(world_stocks, static_report_date, history)
+    # Solo comparar contra reportes de la MISMA campaña (el salto old→new crop
+    # no es "sorpresa"); entradas legacy sin marketing_year quedan afuera.
+    same_my = [h for h in history if h.get("marketing_year") == marketing_year]
+    surprise = _compute_surprise(world_stocks, static_report_date, same_my)
 
     snapshot = {
         "timestamp":           datetime.now().isoformat(),
         "report_date":         static_report_date,
+        "marketing_year":      marketing_year,
+        "data_source":         data_source,
         "world_ending_stocks": world_stocks,
         "world_production":    world.get("production_mmt"),
         "world_exports":       world.get("exports_mmt"),
@@ -290,7 +360,7 @@ def get_wasde_official() -> dict:
         else:
             note = f"Stocks globales en línea con expectativas (sorpresa: {score:+.1f}%) → NEUTRAL."
     else:
-        my = _STATIC_ESTIMATES["marketing_year"]
+        my = marketing_year
         ws = world_stocks
         n_needed = max(0, 2 - n_hist)
         note = (f"Estimación MY {my}: {ws} MMT ending stocks mundiales. "
@@ -298,7 +368,7 @@ def get_wasde_official() -> dict:
 
     result = {
         "report_year":        year,
-        "marketing_year":     _STATIC_ESTIMATES["marketing_year"],
+        "marketing_year":     marketing_year,
         "report_date":        static_report_date,
         "released_at":        released_at_iso,
         "world":              world,
@@ -318,7 +388,7 @@ def get_wasde_official() -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(result, f, indent=2, default=str)
+        json.dump(stamp(result), f, indent=2, default=str)
 
     print(f"   [WASDE] Stocks mundiales: {world_stocks} MMT | "
           f"Signal: {result['signal']} | Fuente: {data_source}")

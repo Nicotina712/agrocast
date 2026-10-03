@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, date
 
 import numpy as np
 import pandas as pd
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH   = os.path.join(_PROJECT_ROOT, "data", "multi_commodity.json")
@@ -31,10 +32,8 @@ COMMODITIES = {
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _rsi(series: pd.Series, period: int = 14) -> float:
@@ -199,7 +198,7 @@ def get_multi_commodity_signals() -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(output, f, indent=2, default=str)
+        json.dump(stamp(output), f, indent=2, default=str)
 
     for col, v in result.items():
         print(f"   [MultiComm] {v['label']}: {v.get('price','?')} {v.get('unit','')} -> {v.get('signal','?')}")

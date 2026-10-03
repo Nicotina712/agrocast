@@ -50,10 +50,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Noticias + capa Intel LLM (Haiku). Antes solo corría dentro del server
+      # local → news_intel_history.csv quedó congelado desde 2026-05-18 y las
+      # features news_<driver>_signal del modelo iban forward-filled.
+      # Va ANTES del pipeline para que el paso 4b mergee la intel del día.
+      - name: Fetch news + Intel LLM (best-effort)
+        working-directory: "MVP lectura de noticias"
+        run: |
+          python -c "from multi_news_fetcher import MultiNewsFetcher; r = MultiNewsFetcher().update_news(); print('news fresh:', r.get('fresh_count'))"
+        continue-on-error: true
+
       - name: Run pipeline
         run: |
           python -m src.pipeline
         continue-on-error: false
+
+      - name: Drift monitor (best-effort)
+        run: |
+          python -m src.model.drift_monitor
+        continue-on-error: true
 
       - name: Run lookahead audit (best-effort)
         run: |

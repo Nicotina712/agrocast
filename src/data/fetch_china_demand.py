@@ -23,6 +23,7 @@ from datetime import datetime, timedelta, date
 
 import numpy as np
 import pandas as pd
+from src.infra.cache_meta import is_fresh, stamp
 
 _PROJECT_ROOT  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _CACHE_PATH    = os.path.join(_PROJECT_ROOT, "data", "china_demand.json")
@@ -37,10 +38,8 @@ SOYBEAN_MEAL_YIELD = 0.80
 
 
 def _cache_valid() -> bool:
-    if not os.path.exists(_CACHE_PATH):
-        return False
-    age = datetime.now() - datetime.fromtimestamp(os.path.getmtime(_CACHE_PATH))
-    return age < timedelta(hours=_TTL_HOURS)
+    # Por contenido (_cached_at), no mtime: en CI el checkout resetea el mtime.
+    return is_fresh(_CACHE_PATH, _TTL_HOURS)
 
 
 def _psd_csv_fresh() -> bool:
@@ -297,7 +296,7 @@ def get_china_demand() -> dict:
 
     os.makedirs(os.path.dirname(_CACHE_PATH), exist_ok=True)
     with open(_CACHE_PATH, "w") as f:
-        json.dump(result, f, indent=2, default=str)
+        json.dump(stamp(result), f, indent=2, default=str)
 
     print(f"   [China] Score: {score} | Crush: {crush_signal} | YoY: {yoy_pct}% | CNY: {cny_signal}")
     return result

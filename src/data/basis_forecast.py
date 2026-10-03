@@ -45,8 +45,15 @@ def _load_basis_history() -> pd.DataFrame:
     """Load historical basis observations."""
     if os.path.exists(_HISTORY_PATH):
         try:
-            df = pd.read_csv(_HISTORY_PATH, parse_dates=["date"])
-            return df.sort_values("date").reset_index(drop=True)
+            df = pd.read_csv(_HISTORY_PATH)
+            df["date"] = pd.to_datetime(df["date"], format="mixed")
+            df = df.dropna(subset=["basis_usd_ton"]).sort_values("date").reset_index(drop=True)
+            # Filas append-only viejas traen month/cbot/local en NaN → completar.
+            df["month"] = df["date"].dt.month
+            for c in ("cbot_usd_ton", "local_usd_ton", "usd_strength_5d"):
+                if c in df.columns:
+                    df[c] = df[c].ffill()
+            return df
         except Exception:
             pass
 
