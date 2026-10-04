@@ -771,8 +771,10 @@ def run_pipeline() -> None:
 
     # ── 19. Brief semanal (solo lunes) ────────────────────────────
     try:
-        from src.alerts.weekly_brief import generate_weekly_brief
-        generate_weekly_brief()
+        # Pivot 2026-10: informe del PRODUCTOR (decisiones, sin pronóstico de
+        # dirección). El brief técnico (generate_weekly_brief) queda sin uso.
+        from src.alerts.weekly_brief import generate_producer_weekly
+        generate_producer_weekly()
     except Exception as _e:
         print(f"   [INFO] Weekly brief: {_e}")
 

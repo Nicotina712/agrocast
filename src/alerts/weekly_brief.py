@@ -14,6 +14,7 @@ Requiere: ANTHROPIC_API_KEY en .env
 
 import json
 import os
+import re
 from datetime import date, datetime, timedelta
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -153,116 +154,224 @@ def _fmt_num(n, dec=0):
         return str(n)
 
 
-def build_producer_message(html: bool = True) -> str | None:
+# ─────────────────────────────────────────────────────────────────────────
+# Informe semanal del PRODUCTOR (Fase 4 del pivot, 2026-10)
+# Esqueleto determinístico con los números del motor de decisión + resumen
+# redactado por IA SOLO con esos números (validado; si falla, se omite).
+# ─────────────────────────────────────────────────────────────────────────
+_WEEKLY_STATE_PATH = os.path.join(_PROJECT_ROOT, "data", "producer_weekly_state.json")
+
+# Frases de pronóstico de dirección que el redactor no puede usar.
+_FORBIDDEN = re.compile(
+    r"(va(n)? a (subir|bajar|caer|repuntar)|subir[áa]n?\b|bajar[áa]n?\b|caer[áa]n?\b|"
+    r"esperamos que (el precio|suba|baje)|el precio (seguir[áa]|tender[áa])|"
+    r"tendencia (alcista|bajista)|presi[oó]n (alcista|bajista)|rally|rebote)",
+    re.IGNORECASE)
+
+
+def _weekly_snapshot(b: dict) -> dict:
+    dec = b.get("decision") or {}
+    f = dec.get("fijar_precio") or {}
+    g = dec.get("guardar_en_cosecha") or dec.get("guardar_hoy") or {}
+    best = g.get("mejor") or {}
+    return {
+        "fecha": date.today().isoformat(),
+        "precio_usd_ton": (b.get("precio_hoy") or {}).get("usd_ton"),
+        "precio_fijable_neto": f.get("precio_fijable_usd_ton"),
+        "margen_pct": f.get("margen_asegurable_pct"),
+        "sugerido_pct": f.get("sugerido_pct"),
+        "falta_pct": f.get("falta_pct"),
+        "guardar_resultado": best.get("ganancia_esperada_usd_ton"),
+        "guardar_hasta": best.get("hasta"),
+        "vol_pct": dec.get("vol_anual_pct"),
+    }
+
+
+def _load_prev_snapshot() -> dict | None:
+    try:
+        with open(_WEEKLY_STATE_PATH, encoding="utf-8") as fh:
+            return json.load(fh)
+    except Exception:
+        return None
+
+
+def _save_snapshot(snap: dict) -> None:
+    os.makedirs(os.path.dirname(_WEEKLY_STATE_PATH), exist_ok=True)
+    with open(_WEEKLY_STATE_PATH, "w", encoding="utf-8") as fh:
+        json.dump(snap, fh, indent=1)
+
+
+def _cambios(prev: dict | None, now: dict) -> list[str]:
+    """Qué cambió vs el último informe enviado (en hechos, no pronósticos)."""
+    if not prev:
+        return []
+    out = []
+    p0, p1 = prev.get("precio_fijable_neto"), now.get("precio_fijable_neto")
+    if p0 and p1 and abs(p1 - p0) >= 1:
+        out.append(f"El precio que podés fijar pasó de {p0:.0f} a {p1:.0f} USD/ton neto ({p1 - p0:+.0f}).")
+    s0, s1 = prev.get("sugerido_pct"), now.get("sugerido_pct")
+    if s0 is not None and s1 is not None and s0 != s1:
+        out.append(f"Lo sugerido para fijar cambió de {s0}% a {s1}% "
+                   f"({'más riesgo de resignar margen' if s1 > s0 else 'menos riesgo de resignar margen'}).")
+    g0, g1 = prev.get("guardar_resultado"), now.get("guardar_resultado")
+    if g0 is not None and g1 is not None and abs(g1 - g0) >= 2:
+        out.append(f"Guardar a cosecha pasó de {g0:+.0f} a {g1:+.0f} USD/ton según la curva.")
+    if not out:
+        out.append("Sin cambios relevantes en tus números respecto al informe anterior.")
+    return out
+
+
+def _numbers_in(text: str) -> set[str]:
+    return {n.replace(".", "").replace(",", "") for n in re.findall(r"\d[\d.,]*", text)}
+
+
+def _redactar_resumen(facts_text: str) -> str | None:
     """
-    Construye el informe del productor en lenguaje simple a partir del
-    producer_brief. `html=True` para Telegram (negritas <b>), False para
-    WhatsApp (negritas *texto*).
+    El LLM redacta 2-3 frases para el productor usando SOLO los hechos dados.
+    Validación: sin frases de pronóstico de dirección y sin números que no
+    estén en los hechos. Si no pasa (o no hay API key), devuelve None y el
+    informe sale igual con su esqueleto determinístico.
+    """
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        return None
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+        msg = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=300,
+            temperature=0,
+            system=(
+                "Sos el redactor de AgroCast para productores de soja de Uruguay. Escribís en español "
+                "rioplatense, simple y directo, como un asesor de confianza. Reglas estrictas: "
+                "1) Usá SOLO los hechos y números que te paso; no agregues datos ni números nuevos. "
+                "2) Nunca digas si el precio va a subir o bajar: AgroCast no pronostica la dirección del precio; "
+                "habla de margen, riesgo y costos. 3) Máximo 3 frases y 420 caracteres. "
+                "4) Sin saludos, sin firmas, sin emojis."),
+            messages=[{"role": "user", "content":
+                       "Hechos de esta semana:\n" + facts_text +
+                       "\n\nEscribí el resumen de 2-3 frases: qué decisión le toca al productor y por qué."}],
+        )
+        text = "".join(blk.text for blk in msg.content if getattr(blk, "type", "") == "text").strip()
+    except Exception as e:
+        print(f"[Brief productor] redactor IA no disponible: {e}")
+        return None
+    if not text or len(text) > 480:
+        return None
+    if _FORBIDDEN.search(text):
+        print(f"[Brief productor] resumen IA descartado (pronóstico de dirección): {text[:120]}")
+        return None
+    extra = _numbers_in(text) - _numbers_in(facts_text)
+    if extra:
+        print(f"[Brief productor] resumen IA descartado (números no provistos {extra}): {text[:120]}")
+        return None
+    return text
+
+
+def build_producer_message(html: bool = True, use_llm: bool = True, _brief: dict | None = None) -> str | None:
+    """
+    Informe semanal del productor. `html=True` para Telegram (<b>),
+    False para WhatsApp (*texto*). Sin pronósticos de dirección.
     """
     try:
-        from src.producer.producer_brief import build_producer_brief
-        b = build_producer_brief()
+        if _brief is None:
+            from src.producer.producer_brief import build_producer_brief
+            _brief = build_producer_brief()
     except Exception as e:
         print(f"[Brief productor] error build_producer_brief: {e}")
         return None
-    if not b or not b.get("ok"):
+    bf = _brief
+    if not bf or not bf.get("ok"):
         return None
 
     def B(t):  # negrita según canal
         return f"<b>{t}</b>" if html else f"*{t}*"
 
-    today = date.today()
-    p = b.get("precio_hoy", {})
-    m = b.get("momento", {})
-    w = b.get("ventana_optima")
-    ev = b.get("proximo_evento")
-    neto = b.get("precio_neto", {})
-    t = b.get("tendencia", {})
+    dec = bf.get("decision") or {}
+    f = dec.get("fijar_precio") or {}
+    etapa = bf.get("etapa") or {}
+    m = bf.get("momento") or {}
+    p = bf.get("precio_hoy") or {}
+    neto = bf.get("precio_neto") or {}
+    mg = bf.get("margen") or {}
+    ev = bf.get("proximo_evento")
+    pre = etapa.get("nombre") in ("Siembra", "Cultivo en desarrollo")
+    g = (dec.get("guardar_en_cosecha") if pre else dec.get("guardar_hoy")) or {}
+    snap = _weekly_snapshot(bf)
+    cambios = _cambios(_load_prev_snapshot(), snap)
 
-    mom_icon = {"VENDER": "🔴", "ESPERAR": "🟡", "NO_VENDER": "🟢"}.get(m.get("momento"), "📊")
+    # Hechos para el redactor (los mismos números que van en el informe)
+    facts = [f"Etapa: {etapa.get('nombre')} de la campaña {etapa.get('campania')}. {etapa.get('foco', '')}",
+             f"Recomendación: {m.get('titulo', '')}. {m.get('explicacion', '')}"]
+    if g.get("texto"):
+        facts.append(g["texto"])
+    facts += cambios
+    resumen = _redactar_resumen("\n".join(facts)) if use_llm else None
 
-    lines = []
-    lines.append(f"🌾 {B('AgroCast — Informe del Productor')}")
-    lines.append(f"📅 {today.strftime('%d/%m/%Y')}")
-    lines.append("")
+    L = []
+    L.append(f"🌾 {B('AgroCast — Tu semana')}")
+    L.append(f"{etapa.get('icono', '📅')} Campaña {etapa.get('campania', '')} · {etapa.get('nombre', '')} · "
+             f"{date.today().strftime('%d/%m/%Y')}")
+    L.append("")
+    if resumen:
+        L.append(resumen)
+        L.append("")
 
-    # Precio
-    trend_txt = ""
-    if t.get("pct_30d") is not None:
-        trend_txt = f" ({t.get('arrow','')} {'+' if t.get('pct_30d',0) > 0 else ''}{t.get('pct_30d')}% en 30 días)"
-    lines.append(f"💲 {B('Precio de la soja hoy')}")
-    lines.append(f"   {B(_fmt_num(p.get('usd_ton'), 0) + ' USD/ton')}{trend_txt}")
-    lines.append(f"   {_fmt_num(p.get('uyu_ton'), 0)} UYU/ton · Chicago {_fmt_num(p.get('usc_bu'), 0)} USc/bu")
-    lines.append("")
+    L.append(f"💲 {B('Precio hoy')}: {_fmt_num(p.get('usd_ton'), 0)} USD/ton · neto {_fmt_num(neto.get('neto_usd_ton'), 0)} "
+             f"(descontando flete y gastos)")
+    if mg.get("margen_pct") is not None:
+        L.append(f"💰 Tu margen: {'+' if mg['margen_pct'] >= 0 else ''}{mg['margen_pct']}% sobre tu costo "
+                 f"({'+' if (mg.get('margen_total_usd') or 0) >= 0 else ''}{_fmt_num(mg.get('margen_total_usd'), 0)} USD sobre tu cosecha)")
+    L.append("")
 
-    # Momento
-    lines.append(f"{mom_icon} {B(m.get('titulo', '—'))}")
-    if m.get("explicacion"):
-        lines.append(f"   {m['explicacion']}")
-    lines.append("")
+    icon = {"FIJAR": "✅", "GUARDAR": "📦", "VENDER": "💵", "NO_VENDER": "✋"}.get(m.get("momento"), "🟡")
+    L.append(f"{icon} {B(m.get('titulo', '—'))}")
+    if f.get("ok") and f.get("prob_perder_mitad_margen") is not None:
+        L.append(f"   Si esperás a cosechar sin fijar: {f['prob_perder_mitad_margen']}% de chance de perder más de la mitad "
+                 f"del margen, {f.get('prob_debajo_costo_a_cosecha')}% de quedar debajo de tu costo.")
+    rq = f.get("rango_a_cosecha") or {}
+    if rq.get("q10") is not None:
+        L.append(f"   📏 Rango probable a cosecha (8 de cada 10 veces): {_fmt_num(rq['q10'], 0)}–{_fmt_num(rq['q90'], 0)} USD/ton. "
+                 f"Hoy podés fijar {_fmt_num(f.get('precio_fijable_usd_ton'), 0)}.")
+    if f.get("caja"):
+        L.append(f"   💵 {f['caja']['mensaje']}")
+    L.append("")
 
-    # Ventana óptima — solo si proyecta mejora real (coherente con el momento)
-    if w and w.get("ventana_es") and w.get("mejora"):
-        delta = w.get("delta_pct")
-        delta_txt = f" (+{delta}% sobre hoy)" if delta else ""
-        lines.append(f"📅 {B('Mejor ventana para vender')}")
-        lines.append(f"   {w['ventana_es']}: precio estimado "
-                     f"{_fmt_num(w.get('precio_estimado_usc'), 0)} USc/bu{delta_txt}")
-        lines.append("")
+    if g.get("ok"):
+        best = g["mejor"]
+        L.append(f"📦 {B('Cuando coseches: ¿guardar?' if pre else '¿Guardar o vender?')}")
+        if g.get("guardar_paga"):
+            L.append(f"   Guardar hasta {best['hasta']} paga {best['ganancia_esperada_usd_ton']:+.0f} USD/ton "
+                     f"(el mercado paga {best['paga_mercado_usd_ton']:+.0f}, te cuesta {best['costo_guardar_usd_ton']:.0f}).")
+        else:
+            L.append(f"   No paga con la curva de hoy: el mercado paga {best['paga_mercado_usd_ton']:+.0f} USD/ton hasta "
+                     f"{best['hasta']} y guardar cuesta {best['costo_guardar_usd_ton']:.0f}. Solo pagaría si la base "
+                     f"local mejora más de {best['mejora_base_necesaria_usd_ton']:.0f}.")
+        L.append("")
 
-    # Qué está pasando
-    drivers = b.get("drivers_simple", [])
+    if cambios:
+        L.append(f"🔄 {B('Qué cambió desde la semana pasada')}")
+        for c in cambios:
+            L.append(f"   • {c}")
+        L.append("")
+
+    drivers = bf.get("drivers_simple") or []
     if drivers:
-        lines.append(f"🌍 {B('Qué está pasando en el mercado')}")
+        L.append(f"🌍 {B('Qué está pasando')}")
         for d in drivers[:4]:
-            lines.append(f"   {d.get('icono','')} {d.get('etiqueta','')}: {d.get('efecto','')}")
-        lines.append("")
+            L.append(f"   {d.get('icono', '')} {d.get('etiqueta', '')}: {d.get('detalle', '')}")
+        L.append("")
 
-    # Inteligencia de basis (físico local caro/barato)
-    basis = b.get("basis")
-    if basis and basis.get("titulo"):
-        bi_icon = {"green": "🟢", "yellow": "🟡", "red": "🔴"}.get(basis.get("semaforo"), "📊")
-        lines.append(f"{bi_icon} {B('Precio local vs Chicago')}: {basis['titulo']}")
-        lines.append(f"   {basis.get('detalle','')}")
-        lines.append("")
-
-    # Clima / riesgo de rinde
-    cl = b.get("clima")
-    if cl and cl.get("titulo"):
-        cl_icon = {"green": "🟢", "yellow": "🟡", "red": "🔴"}.get(cl.get("semaforo"), "🌦️")
-        lines.append(f"{cl_icon} {B('Clima y tu rinde')} ({cl.get('fase')}): {cl['titulo']}")
-        lines.append(f"   {cl.get('detalle','')}")
-        lines.append("")
-
-    # Margen sobre la cosecha (si configuró Mi Campo)
-    mg = b.get("margen")
-    if mg and mg.get("margen_pct") is not None:
-        signo = "+" if mg["margen_pct"] >= 0 else ""
-        lines.append(f"💰 {B('Tu margen a precio de hoy')}")
-        lines.append(f"   {signo}{mg['margen_pct']}% sobre tu costo · "
-                     f"{signo}{_fmt_num(mg.get('margen_total_usd'),0)} USD sobre tu cosecha")
-        lines.append("")
-
-    # Próximo evento
     if ev:
         urg = "⚠️" if ev.get("inminente") else "🗓️"
-        lines.append(f"{urg} {B('Atención')}: {ev.get('nombre')} el {ev.get('fecha_es')} "
-                     f"(en {ev.get('dias_para')} días). {ev.get('impacto')}.")
-        lines.append("")
+        L.append(f"{urg} {B('Fecha a tener en cuenta')}: {ev.get('nombre')} el {ev.get('fecha_es')} "
+                 f"(en {ev.get('dias_para')} días). {ev.get('impacto')}.")
+        L.append("")
 
-    # Precio neto
-    lines.append(f"🧮 {B('Precio neto estimado')} (descontando flete y gastos)")
-    lines.append(f"   {B(_fmt_num(neto.get('neto_usd_ton'), 0) + ' USD/ton')} · {_fmt_num(neto.get('neto_uyu_ton'), 0)} UYU/ton")
-    lines.append("")
-
-    # Track record (confianza)
-    tr = b.get("track_record")
-    if tr and tr.get("n_evaluadas"):
-        lines.append(f"✓ {B('Nuestro historial')}: {tr.get('mensaje','')}")
-        lines.append("")
-    lines.append("— AgroCast · inteligencia de mercado de soja")
-
-    return "\n".join(lines)
+    L.append("ℹ️ AgroCast no adivina si el precio sube o baja: te muestra tu margen, el riesgo de esperar y si guardar paga.")
+    L.append("— AgroCast · decisiones para tu cosecha")
+    return "\n".join(L)
 
 
 def generate_producer_weekly(force: bool = False) -> str | None:
@@ -277,8 +386,15 @@ def generate_producer_weekly(force: bool = False) -> str | None:
         print("[Brief productor] Ya enviado esta semana — omitiendo.")
         return None
 
-    msg_tg = build_producer_message(html=True)
-    msg_wa = build_producer_message(html=False)
+    from src.producer.producer_brief import build_producer_brief
+    _b = build_producer_brief()
+    msg_tg = build_producer_message(html=True, _brief=_b)
+    # WhatsApp reusa el mismo resumen IA (evita 2 llamadas y textos distintos)
+    msg_wa = None
+    if msg_tg:
+        msg_wa = re.sub(r"</?b>", "", msg_tg)
+        for line in re.findall(r"<b>(.*?)</b>", msg_tg):
+            msg_wa = msg_wa.replace(line, f"*{line}*", 1)
     if not msg_tg:
         print("[Brief productor] Sin datos para construir el informe.")
         return None
@@ -308,6 +424,10 @@ def generate_producer_weekly(force: bool = False) -> str | None:
         pass
 
     _mark_sent()
+    try:
+        _save_snapshot(_weekly_snapshot(_b))   # base del "qué cambió" de la próxima semana
+    except Exception as e:
+        print(f"[Brief productor] no se pudo guardar snapshot: {e}")
     return msg_tg
 
 
