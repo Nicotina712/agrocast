@@ -1,21 +1,24 @@
 {
-  "imports_mmt_current": 114.0,
-  "imports_mmt_prev": 112.0,
+  "imports_mmt_current": 115.0,
+  "imports_mmt_prev": 113.0,
   "imports_yoy_pct": 1.8,
-  "imports_zscore": 1.26,
+  "imports_zscore": 1.31,
   "crush_margin": {
-    "margin_usd_ton": -140.03,
-    "soy_price_usd_ton": 412.08,
-    "meal_price_usd_ton": 308.5,
-    "signal": "NEGATIVO",
-    "note": "Margen negativo (-140.0 USD/ton) \u2014 presi\u00f3n sobre demanda de soja para crush."
+    "margin_usd_bu": 2.463,
+    "margin_usd_ton": 90.52,
+    "margin_pct_rank_2y": 77.6,
+    "soy_price_usd_ton": 470.69,
+    "meal_price_usd_ton": 347.5,
+    "oil_price_usc_lb": 69.35,
+    "signal": "POSITIVO",
+    "note": "Crush s\u00f3lido (2.46 USD/bu, percentil 78 de 2 a\u00f1os) \u2014 procesar soja es rentable."
   },
   "cny_usd": null,
   "cny_signal": null,
   "cny_note": null,
-  "demand_score": 30,
-  "demand_signal": "DEBIL",
-  "interpretation": "Se\u00f1ales de demanda china d\u00e9bil \u2014 m\u00e1rgenes de crush negativos o ca\u00edda de importaciones.",
+  "demand_score": 70,
+  "demand_signal": "FUERTE",
+  "interpretation": "Demanda china fuerte \u2014 importaciones en alza y m\u00e1rgenes de crush positivos.",
   "data_source": "usda_fas_psd_csv",
   "history": [
     {
@@ -52,12 +55,13 @@
     },
     {
       "Market_Year": 2025,
-      "imports_mmt": 112.0
+      "imports_mmt": 113.0
     },
     {
       "Market_Year": 2026,
-      "imports_mmt": 114.0
+      "imports_mmt": 115.0
     }
   ],
-  "as_of": "2026-06-06"
+  "as_of": "2026-10-05",
+  "_cached_at": "2026-10-05T21:19:23.116346+00:00"
 }

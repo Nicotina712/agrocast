@@ -3,19 +3,19 @@
   "factors": [
     {
       "name": "Intelligence Engine (5-Agent Debate)",
-      "score": -0.78,
-      "direction": "MUY BAJISTA",
-      "detail": "Veredicto: SELL \u00b7 Confianza: 78% \u00b7 Sizing: 25%% \u00b7 Rango 7d: 1080-1140 (hace 30h)",
+      "score": 0.0,
+      "direction": "NEUTRO",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 38% \u00b7 Sizing: flat% \u00b7 Rango 7d: 1225-1296 (hace 74h)",
       "weight": 0.35,
       "raw": {
-        "verdict": "SELL",
-        "confidence": 0.78,
+        "verdict": "HOLD",
+        "confidence": 0.38,
         "price_range_7d": {
-          "low": 1080,
-          "central": 1111,
-          "high": 1140
+          "low": 1225,
+          "central": 1265,
+          "high": 1296
         },
-        "reasoning": "La convergencia de se\u00f1ales bajistas es amplia y consistente: crush margin chino en -140 USD/ton, exportaciones brasile\u00f1as r\u00e9cord (+5.1% YoY), r\u00e9gimen de shock especulativo bajista con P(suba 30d)=5%, "
+        "reasoning": "La confluencia de se\u00f1ales bajistas fundamentales (crush margin chino en -$140/ton, basis Uruguay en z-score -2.64, se\u00f1al compuesta SELL 21/100) se ve contrarrestada por un t\u00e9cnico ambiguo que muestra "
       }
     },
     {
@@ -44,51 +44,52 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "Retorno esperado: -45.45% \u00b7 Se\u00f1al: SELL \u00b7 Confianza: 90.9%",
+      "detail": "P(suba 14d): 14% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 71.8%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.4545,
-        "confidence": 0.9091,
-        "signal": "SELL"
+        "expected_return": -0.3589,
+        "confidence": 0.7178,
+        "signal": "HOLD"
       }
     },
     {
       "name": "An\u00e1lisis T\u00e9cnico (Soja)",
-      "score": 0.2,
+      "score": 0.4,
       "direction": "ALCISTA",
-      "detail": "Score t\u00e9cnico: +1 \u00b7 RSI: 61 \u00b7 Bollinger%: 89% \u00b7 precio > MA50; MA50 > MA200 (golden cross) (informativo, no pondera)",
+      "detail": "Score t\u00e9cnico: +2 \u00b7 RSI: 33 \u00b7 Bollinger%: -7% \u00b7 precio < MA50; MA50 > MA200 (golden cross) (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "tech_score": 1,
-        "rsi": 60.7,
-        "bb_pct": 88.9
+        "tech_score": 2,
+        "rsi": 33.0,
+        "bb_pct": -7.0
       }
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.065,
+      "score": -0.027,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1135.3 USc/bu \u00b7 Retorno: +0.7% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1277.5 USc/bu \u00b7 Retorno: -0.3% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1135.2857932477564,
-        "return_pct": 0.65
+        "forecast": 1277.49,
+        "return_pct": -0.27
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": -0.192,
-      "direction": "BAJISTA",
-      "detail": "Jun: retorno hist\u00f3rico promedio -1.0% \u00b7 \u00b11\u03c3: [-7.6%, +5.7%]",
+      "score": 0.086,
+      "direction": "NEUTRO",
+      "detail": "Oct: retorno hist\u00f3rico promedio +0.4% \u00b7 \u00b11\u03c3: [-4.2%, +5.1%]",
       "weight": 0.0,
       "raw": {
-        "month": 6,
-        "avg_pct": -0.96
+        "month": 10,
+        "avg_pct": 0.43
       }
     }
   ],
-  "composite_score": 21,
-  "composite_raw": -0.573,
+  "composite_score": 35,
+  "composite_raw": -0.3,
   "composite_signal": "SELL",
-  "as_of": "2026-06-06"
+  "as_of": "2026-10-05",
+  "_cached_at": "2026-10-05T21:18:55.919190+00:00"
 }

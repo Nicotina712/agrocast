@@ -1,42 +1,60 @@
 {
   "report_year": 2026,
-  "marketing_year": "2025/26",
-  "report_date": "2026-04-10",
-  "released_at": "2026-04-10T17:00:00+00:00",
+  "marketing_year": "2026/27",
+  "report_date": "2026-09-08",
+  "released_at": "2026-09-08T17:00:00+00:00",
   "world": {
-    "production_mmt": 422.0,
-    "exports_mmt": 175.0,
-    "consumption_mmt": 328.0,
-    "ending_stocks_mmt": 122.4
+    "production_mmt": 442.35,
+    "exports_mmt": 191.58,
+    "imports_mmt": 190.42,
+    "consumption_mmt": 442.44,
+    "ending_stocks_mmt": 124.02,
+    "beginning_stocks_mmt": 125.27
   },
   "argentina": {
-    "production_mmt": 49.0,
-    "exports_mmt": 5.0
+    "production_mmt": 50.0,
+    "exports_mmt": 6.45,
+    "imports_mmt": 6.5,
+    "consumption_mmt": 49.65,
+    "ending_stocks_mmt": 24.47,
+    "beginning_stocks_mmt": 24.07
   },
   "brazil": {
-    "production_mmt": 169.0,
-    "exports_mmt": 103.0
+    "production_mmt": 186.0,
+    "exports_mmt": 118.0,
+    "imports_mmt": 0.8,
+    "consumption_mmt": 69.6,
+    "ending_stocks_mmt": 36.89,
+    "beginning_stocks_mmt": 37.69
   },
   "usa": {
-    "production_mmt": 115988.6,
-    "exports_mmt": 54.4
+    "production_mmt": 123.42,
+    "exports_mmt": 45.86,
+    "imports_mmt": 0.68,
+    "consumption_mmt": 78.66,
+    "ending_stocks_mmt": 8.43,
+    "beginning_stocks_mmt": 8.85
   },
   "china": {
-    "imports_mmt": 109.0
+    "production_mmt": 21.0,
+    "exports_mmt": 0.1,
+    "imports_mmt": 115.0,
+    "consumption_mmt": 136.0,
+    "ending_stocks_mmt": 44.26,
+    "beginning_stocks_mmt": 44.36
   },
   "surprise": {
-    "score": 0.0,
-    "surprise_z": 0.0,
-    "expected": 122.4,
-    "actual": 122.4,
+    "score": null,
+    "expected": null,
     "direction": "NEUTRAL",
-    "n_history": 24
+    "n_history": 0
   },
-  "surprise_z": 0.0,
+  "surprise_z": null,
   "signal": "NEUTRAL",
-  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.0%) \u2192 NEUTRAL.",
-  "data_source": "usda_nass",
-  "history_n": 25,
-  "history_n_unique": 24,
-  "as_of": "2026-06-06T19:38:04.313840"
+  "note": "Estimaci\u00f3n MY 2026/27: 124.02 MMT ending stocks mundiales. Acumulando historial (0 reportes \u00fanicos, necesita 2 m\u00e1s).",
+  "data_source": "usda_psd_csv",
+  "history_n": 26,
+  "history_n_unique": 0,
+  "as_of": "2026-10-05T18:19:07.494119",
+  "_cached_at": "2026-10-05T21:19:07.494268+00:00"
 }

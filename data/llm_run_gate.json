@@ -8,7 +8,11 @@
     "last_time": "16:22:25"
   },
   "intelligence_engine": {
-    "last_date": "2026-10-02",
-    "last_time": "13:52:05"
+    "last_date": "2026-10-05",
+    "last_time": "16:19:26"
+  },
+  "news_analyst": {
+    "last_date": "2026-10-05",
+    "last_time": "16:18:25"
   }
 }
