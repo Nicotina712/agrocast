@@ -5,35 +5,31 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 38% \u00b7 Sizing: flat% \u00b7 Rango 7d: 1225-1296 (hace 74h)",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
-        "confidence": 0.38,
-        "price_range_7d": {
-          "low": 1225,
-          "central": 1265,
-          "high": 1296
-        },
-        "reasoning": "La confluencia de se\u00f1ales bajistas fundamentales (crush margin chino en -$140/ton, basis Uruguay en z-score -2.64, se\u00f1al compuesta SELL 21/100) se ve contrarrestada por un t\u00e9cnico ambiguo que muestra "
+        "confidence": 0.5,
+        "price_range_7d": {},
+        "reasoning": ""
       }
     },
     {
       "name": "Demanda China",
-      "score": -0.4,
-      "direction": "BAJISTA",
-      "detail": "Score demanda: 30/100 \u00b7 Crush: NEGATIVO \u00b7 Importaciones YoY: +1.8%",
+      "score": 0.4,
+      "direction": "ALCISTA",
+      "detail": "Score demanda: 70/100 \u00b7 Crush: POSITIVO \u00b7 Importaciones YoY: +1.8%",
       "weight": 0.25,
       "raw": {
-        "demand_score": 30,
-        "crush_signal": "NEGATIVO"
+        "demand_score": 70,
+        "crush_signal": "POSITIVO"
       }
     },
     {
       "name": "WASDE / Stocks Mundiales",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 122.4 MMT",
+      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 124.0 MMT",
       "weight": 0.2,
       "raw": {
         "signal": "NEUTRAL",
@@ -44,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 14% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 71.8%",
+      "detail": "P(suba 14d): 18% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 63.5%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.3589,
-        "confidence": 0.7178,
+        "expected_return": -0.3176,
+        "confidence": 0.6352,
         "signal": "HOLD"
       }
     },
@@ -66,13 +62,13 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.027,
+      "score": -0.015,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1277.5 USc/bu \u00b7 Retorno: -0.3% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1279.0 USc/bu \u00b7 Retorno: -0.1% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1277.49,
-        "return_pct": -0.27
+        "forecast": 1279.03,
+        "return_pct": -0.15
       }
     },
     {
@@ -87,9 +83,9 @@
       }
     }
   ],
-  "composite_score": 35,
-  "composite_raw": -0.3,
-  "composite_signal": "SELL",
-  "as_of": "2026-10-05",
-  "_cached_at": "2026-10-05T21:18:55.919190+00:00"
+  "composite_score": 45,
+  "composite_raw": -0.1,
+  "composite_signal": "HOLD",
+  "as_of": "2026-10-06",
+  "_cached_at": "2026-10-06T19:14:15.312429+00:00"
 }
