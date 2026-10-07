@@ -4,14 +4,14 @@
   "imports_yoy_pct": 1.8,
   "imports_zscore": 1.31,
   "crush_margin": {
-    "margin_usd_bu": 2.463,
-    "margin_usd_ton": 90.52,
-    "margin_pct_rank_2y": 77.6,
-    "soy_price_usd_ton": 470.69,
-    "meal_price_usd_ton": 347.5,
-    "oil_price_usc_lb": 69.35,
+    "margin_usd_bu": 2.532,
+    "margin_usd_ton": 93.02,
+    "margin_pct_rank_2y": 78.3,
+    "soy_price_usd_ton": 476.11,
+    "meal_price_usd_ton": 365.5,
+    "oil_price_usc_lb": 67.71,
     "signal": "POSITIVO",
-    "note": "Crush s\u00f3lido (2.46 USD/bu, percentil 78 de 2 a\u00f1os) \u2014 procesar soja es rentable."
+    "note": "Crush s\u00f3lido (2.53 USD/bu, percentil 78 de 2 a\u00f1os) \u2014 procesar soja es rentable."
   },
   "cny_usd": null,
   "cny_signal": null,
@@ -62,6 +62,6 @@
       "imports_mmt": 115.0
     }
   ],
-  "as_of": "2026-10-05",
-  "_cached_at": "2026-10-05T21:19:23.116346+00:00"
+  "as_of": "2026-10-07",
+  "_cached_at": "2026-10-07T19:40:03.946924+00:00"
 }
