@@ -1,15 +1,15 @@
 {
   "ok": true,
-  "timestamp": "2026-10-08T16:35:20.754628",
+  "timestamp": "2026-10-09T16:09:52.369982",
   "from_cache": false,
   "current_state": {
-    "basis_usd_ton": -29.19,
-    "cbot_usd_ton": 475.19,
-    "local_est_usd_ton": 446.0,
-    "zscore_5y": -1.59,
+    "basis_usd_ton": -28.8,
+    "cbot_usd_ton": 472.8,
+    "local_est_usd_ton": 444.0,
+    "zscore_5y": -1.49,
     "regime": "very_wide",
     "regime_label": "Muy amplio (descuento excesivo — esperar)",
-    "garch_vol": 0.944,
+    "garch_vol": 0.996,
     "mean_5y": -22.66,
     "std_5y": 4.11
   },
@@ -30,51 +30,51 @@
   "forecasts": {
     "7d": {
       "horizon_days": 7,
-      "current_basis": -29.19,
-      "expected_basis": -28.0,
+      "current_basis": -28.8,
+      "expected_basis": -27.61,
       "change_expected": 1.19,
       "quantiles": {
-        "q10": -30.99,
-        "q25": -29.53,
-        "q50": -27.97,
-        "q75": -26.43,
-        "q90": -25.04
+        "q10": -30.71,
+        "q25": -29.28,
+        "q50": -27.61,
+        "q75": -26.0,
+        "q90": -24.44
       },
-      "prob_tighter_pct": 69.8,
+      "prob_tighter_pct": 68.2,
       "hedge_recommendation": "NEUTRAL — basis estable",
-      "garch_daily_vol": 0.944
+      "garch_daily_vol": 0.996
     },
     "15d": {
       "horizon_days": 15,
-      "current_basis": -29.19,
-      "expected_basis": -26.72,
-      "change_expected": 2.47,
+      "current_basis": -28.8,
+      "expected_basis": -26.48,
+      "change_expected": 2.32,
       "quantiles": {
-        "q10": -31.38,
-        "q25": -29.21,
-        "q50": -26.75,
-        "q75": -24.28,
-        "q90": -22.12
+        "q10": -31.15,
+        "q25": -28.93,
+        "q50": -26.5,
+        "q75": -24.04,
+        "q90": -21.75
       },
-      "prob_tighter_pct": 74.8,
+      "prob_tighter_pct": 73.9,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
-      "garch_daily_vol": 0.944
+      "garch_daily_vol": 0.996
     },
     "30d": {
       "horizon_days": 30,
-      "current_basis": -29.19,
-      "expected_basis": -23.98,
-      "change_expected": 5.21,
+      "current_basis": -28.8,
+      "expected_basis": -23.62,
+      "change_expected": 5.18,
       "quantiles": {
-        "q10": -30.31,
+        "q10": -30.5,
         "q25": -27.28,
-        "q50": -24.01,
-        "q75": -20.57,
-        "q90": -17.51
+        "q50": -23.74,
+        "q75": -19.93,
+        "q90": -16.75
       },
-      "prob_tighter_pct": 85.1,
+      "prob_tighter_pct": 83.4,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
-      "garch_daily_vol": 0.944
+      "garch_daily_vol": 0.996
     }
   }
 }

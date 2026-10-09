@@ -1,13 +1,13 @@
 {
-  "usda_projection_mmt": 115.0,
+  "usda_projection_mmt": 114.5,
   "exported_ytd_mmt": 100.15,
-  "pct_completed": 87.1,
+  "pct_completed": 87.5,
   "yoy_pct": 6.7,
   "weekly_pace_mmt": 2.443,
   "weeks_to_complete": 6.0,
   "week_of_year": 41,
   "signal": "RAPIDO",
-  "interpretation": "Brasil export\u00f3 100.2 MMT (87.1% de proyecci\u00f3n USDA 115.0 MMT). Pace adelantado \u2014 presi\u00f3n bajista sobre precios. YoY: +6.7%.",
+  "interpretation": "Brasil export\u00f3 100.2 MMT (87.5% de proyecci\u00f3n USDA 114.5 MMT). Pace adelantado \u2014 presi\u00f3n bajista sobre precios. YoY: +6.7%.",
   "data_source": "comexstat",
   "monthly_breakdown": [
     {
@@ -47,6 +47,6 @@
       "exported_tons": 7358384.0
     }
   ],
-  "as_of": "2026-10-07",
-  "_cached_at": "2026-10-07T19:40:02.095450+00:00"
+  "as_of": "2026-10-09",
+  "_cached_at": "2026-10-09T19:10:21.301535+00:00"
 }

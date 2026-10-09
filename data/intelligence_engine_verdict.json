@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-10-08T16:35:26.801415",
-  "current_price": 1286.5,
+  "timestamp": "2026-10-09T16:10:24.286274",
+  "current_price": 1292.25,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfqLBK3Vux2QH1iXD9TLZ'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfsC5Uj5CVNWX1vFWyRaB'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfqLBL13byT1mJRXdb5a4'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfsC5VMHVLRxfAVuPSSiz'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfqLBLbmgARWc9CPVmTny'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfsC5VtmGKTLDuCvLMgvt'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfqLBMHC8QypW12e42ufT'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfsC5WQH7LtHeMPrwQZJm'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfqLBMysEA7fwto5RHSiK'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CfsC5WzzNKcueiA7uwc8h'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 26,
+    "articles_escalated": 28,
     "kb_documents_retrieved": 8,
-    "bull_news": 3,
+    "bull_news": 1,
     "bear_news": 8,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.3,
+  "execution_time_seconds": 1.0,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 26,
+    "tier1_escalated": 28,
     "rag_documents": 8,
-    "rag_query": "Precio del maíz en Rosario hoy 6 junio 2026 Precio de la Soja en Rosario hoy 6 junio 2026 Estudo analisa seguro rural em 7 países e traz dicas de modelos ao Brasil regime shock",
+    "rag_query": "La “oportunidad excepcional” de la carne: frigoríficos exportadores se reunieron El desafío de la cercanía en la maquinaria agrícola: “Cada productor tiene neces Precio del maíz en Rosario hoy 6 junio",
     "kb_stats": {
-      "total_documents": 2548,
+      "total_documents": 2547,
       "categories": {
         "shock_history": 1069,
-        "event_history": 1469,
+        "event_history": 1468,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,

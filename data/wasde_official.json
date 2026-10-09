@@ -1,39 +1,39 @@
 {
   "report_year": 2026,
   "marketing_year": "2026/27",
-  "report_date": "2026-09-08",
-  "released_at": "2026-09-08T17:00:00+00:00",
+  "report_date": "2026-10-13",
+  "released_at": "2026-10-13T17:00:00+00:00",
   "world": {
-    "production_mmt": 442.35,
-    "exports_mmt": 191.58,
-    "imports_mmt": 190.42,
-    "consumption_mmt": 442.44,
-    "ending_stocks_mmt": 124.02,
-    "beginning_stocks_mmt": 125.27
+    "production_mmt": 442.7,
+    "exports_mmt": 192.0,
+    "imports_mmt": 190.82,
+    "consumption_mmt": 442.18,
+    "ending_stocks_mmt": 124.28,
+    "beginning_stocks_mmt": 124.93
   },
   "argentina": {
     "production_mmt": 50.0,
     "exports_mmt": 6.45,
     "imports_mmt": 6.5,
     "consumption_mmt": 49.65,
-    "ending_stocks_mmt": 24.47,
-    "beginning_stocks_mmt": 24.07
+    "ending_stocks_mmt": 24.07,
+    "beginning_stocks_mmt": 23.67
   },
   "brazil": {
     "production_mmt": 186.0,
     "exports_mmt": 118.0,
-    "imports_mmt": 0.8,
+    "imports_mmt": 1.0,
     "consumption_mmt": 69.6,
-    "ending_stocks_mmt": 36.89,
-    "beginning_stocks_mmt": 37.69
+    "ending_stocks_mmt": 37.28,
+    "beginning_stocks_mmt": 37.88
   },
   "usa": {
-    "production_mmt": 123.42,
-    "exports_mmt": 45.86,
+    "production_mmt": 124.15,
+    "exports_mmt": 46.13,
     "imports_mmt": 0.68,
-    "consumption_mmt": 78.66,
-    "ending_stocks_mmt": 8.43,
-    "beginning_stocks_mmt": 8.85
+    "consumption_mmt": 78.7,
+    "ending_stocks_mmt": 8.57,
+    "beginning_stocks_mmt": 8.58
   },
   "china": {
     "production_mmt": 21.0,
@@ -44,17 +44,19 @@
     "beginning_stocks_mmt": 44.36
   },
   "surprise": {
-    "score": null,
-    "expected": null,
+    "score": -0.21,
+    "surprise_z": null,
+    "expected": 124.02,
+    "actual": 124.28,
     "direction": "NEUTRAL",
-    "n_history": 0
+    "n_history": 1
   },
   "surprise_z": null,
   "signal": "NEUTRAL",
-  "note": "Estimaci\u00f3n MY 2026/27: 124.02 MMT ending stocks mundiales. Acumulando historial (0 reportes \u00fanicos, necesita 2 m\u00e1s).",
+  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: -0.2%) \u2192 NEUTRAL.",
   "data_source": "usda_psd_csv",
-  "history_n": 26,
-  "history_n_unique": 0,
-  "as_of": "2026-10-08T16:35:24.709335",
-  "_cached_at": "2026-10-08T19:35:24.709538+00:00"
+  "history_n": 27,
+  "history_n_unique": 1,
+  "as_of": "2026-10-09T16:09:54.925795",
+  "_cached_at": "2026-10-09T19:09:54.925997+00:00"
 }
