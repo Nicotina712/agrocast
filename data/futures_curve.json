@@ -5,73 +5,73 @@
    "ticker": "ZSX26.CBT",
    "anio": 2026,
    "mes": 11,
-   "usc_bu": 1281.0,
-   "usd_ton": 470.69
+   "usc_bu": 1288.25,
+   "usd_ton": 473.35
   },
   {
    "contrato": "ENE27",
    "ticker": "ZSF27.CBT",
    "anio": 2027,
    "mes": 1,
-   "usc_bu": 1298.0,
-   "usd_ton": 476.94
+   "usc_bu": 1305.0,
+   "usd_ton": 479.51
   },
   {
    "contrato": "MAR27",
    "ticker": "ZSH27.CBT",
    "anio": 2027,
    "mes": 3,
-   "usc_bu": 1308.5,
-   "usd_ton": 480.8
+   "usc_bu": 1315.5,
+   "usd_ton": 483.37
   },
   {
    "contrato": "MAY27",
    "ticker": "ZSK27.CBT",
    "anio": 2027,
    "mes": 5,
-   "usc_bu": 1317.75,
-   "usd_ton": 484.19
+   "usc_bu": 1324.5,
+   "usd_ton": 486.67
   },
   {
    "contrato": "JUL27",
    "ticker": "ZSN27.CBT",
    "anio": 2027,
    "mes": 7,
-   "usc_bu": 1324.25,
-   "usd_ton": 486.58
+   "usc_bu": 1330.0,
+   "usd_ton": 488.7
   },
   {
    "contrato": "AGO27",
    "ticker": "ZSQ27.CBT",
    "anio": 2027,
    "mes": 8,
-   "usc_bu": 1306.25,
-   "usd_ton": 479.97
+   "usc_bu": 1311.75,
+   "usd_ton": 481.99
   },
   {
    "contrato": "SET27",
    "ticker": "ZSU27.CBT",
    "anio": 2027,
    "mes": 9,
-   "usc_bu": 1266.25,
-   "usd_ton": 465.27
+   "usc_bu": 1272.0,
+   "usd_ton": 467.38
   },
   {
    "contrato": "NOV27",
    "ticker": "ZSX27.CBT",
    "anio": 2027,
    "mes": 11,
-   "usc_bu": 1253.5,
-   "usd_ton": 460.59
+   "usc_bu": 1262.25,
+   "usd_ton": 463.8
   },
   {
    "contrato": "ENE28",
    "ticker": "ZSF28.CBT",
    "anio": 2028,
    "mes": 1,
-   "usc_bu": 1267.5,
-   "usd_ton": 465.73
+   "usc_bu": 1273.0,
+   "usd_ton": 467.75
   }
  ],
- "_cached_at": "2026-10-05T21:19:23.790086+00:00"
+ "_cached_at": "2026-10-12T21:56:50.080362+00:00"
 }

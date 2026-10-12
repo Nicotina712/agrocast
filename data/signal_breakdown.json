@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?% (hace 74h)",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
@@ -27,24 +27,24 @@
     },
     {
       "name": "WASDE / Stocks Mundiales",
-      "score": 0.0,
+      "score": -0.021,
       "direction": "NEUTRO",
-      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 124.0 MMT",
+      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 124.3 MMT",
       "weight": 0.2,
       "raw": {
         "signal": "NEUTRAL",
-        "surprise_score": 0
+        "surprise_score": -0.21
       }
     },
     {
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 7% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 85.5%",
+      "detail": "P(suba 14d): 7% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 85.6%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.4273,
-        "confidence": 0.8546,
+        "expected_return": -0.4279,
+        "confidence": 0.8558,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.013,
+      "score": 0.004,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1290.5 USc/bu \u00b7 Retorno: -0.1% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1288.8 USc/bu \u00b7 Retorno: +0.0% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1290.52,
-        "return_pct": -0.13
+        "forecast": 1288.78,
+        "return_pct": 0.04
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.082,
+      "score": 0.084,
       "direction": "NEUTRO",
       "detail": "Oct: retorno hist\u00f3rico promedio +0.4% \u00b7 \u00b11\u03c3: [-4.2%, +5.0%]",
       "weight": 0.0,
       "raw": {
         "month": 10,
-        "avg_pct": 0.41
+        "avg_pct": 0.42
       }
     }
   ],
   "composite_score": 45,
-  "composite_raw": -0.1,
+  "composite_raw": -0.104,
   "composite_signal": "HOLD",
-  "as_of": "2026-10-09",
-  "_cached_at": "2026-10-09T19:09:43.093412+00:00"
+  "as_of": "2026-10-12",
+  "_cached_at": "2026-10-12T21:56:32.159378+00:00"
 }
