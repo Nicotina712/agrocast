@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 11% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 77.3%",
+      "detail": "P(suba 14d): 20% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 60.3%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.3863,
-        "confidence": 0.7725,
+        "expected_return": -0.3015,
+        "confidence": 0.603,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": 0.01,
+      "score": -0.039,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1289.5 USc/bu \u00b7 Retorno: +0.1% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1271.2 USc/bu \u00b7 Retorno: -0.4% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1289.52,
-        "return_pct": 0.1
+        "forecast": 1271.24,
+        "return_pct": -0.39
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.084,
+      "score": 0.08,
       "direction": "NEUTRO",
       "detail": "Oct: retorno hist\u00f3rico promedio +0.4% \u00b7 \u00b11\u03c3: [-4.2%, +5.0%]",
       "weight": 0.0,
       "raw": {
         "month": 10,
-        "avg_pct": 0.42
+        "avg_pct": 0.4
       }
     }
   ],
   "composite_score": 45,
   "composite_raw": -0.104,
   "composite_signal": "HOLD",
-  "as_of": "2026-10-13",
-  "_cached_at": "2026-10-13T20:01:02.658583+00:00"
+  "as_of": "2026-10-14",
+  "_cached_at": "2026-10-14T18:14:32.449770+00:00"
 }

@@ -1,17 +1,17 @@
 {
-  "as_of": "2026-10-13T17:01:02",
+  "as_of": "2026-10-14T15:14:32",
   "current": {
     "ok": true,
     "is_shock": false,
     "is_near_shock": false,
-    "ret_5d_pct": 0.59,
-    "ret_10d_pct": 0.0,
+    "ret_5d_pct": -1.64,
+    "ret_10d_pct": -1.3,
     "thr_spike_5d_pct": 4.65,
     "thr_spike_10d_pct": 6.85,
     "thr_drop_5d_pct": -4.1,
     "thr_drop_10d_pct": -6.09,
-    "thr_near_spike_5d_pct": 2.76,
-    "thr_near_spike_10d_pct": 3.91
+    "thr_near_spike_5d_pct": 2.75,
+    "thr_near_spike_10d_pct": 3.9
   },
   "analogs_found": 0,
   "recommendation": {
