@@ -1,37 +1,37 @@
 {
-  "timestamp": "2026-10-14T15:15:25.975320",
-  "current_price": 1276.5,
+  "timestamp": "2026-10-15T14:57:33.270857",
+  "current_price": 1265.5,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg2avwLw5wUgoy7YNSpMb'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg4TNmfpJpDPY8tticqUc'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg2avwpCjLJ2bq1ti8qtm'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg4TNnDJVbrEYANDffN4Y'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg2avxEG1LKDjtJbZU8wX'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg4TNnmYFFPkr7LmQWUZh'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg2avxhHKkFrFYdf4LUuy'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg4TNoJnkbLPob8HU9Mxu'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg2avy85g3YWewCn5mbko'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cg4TNoqHXxi3kQtemDbvA'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 28,
+    "articles_escalated": 29,
     "kb_documents_retrieved": 8,
-    "bull_news": 2,
+    "bull_news": 1,
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.0,
+  "execution_time_seconds": 1.3,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 28,
+    "tier1_escalated": 29,
     "rag_documents": 8,
     "rag_query": "usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? usda argentina USDA begins trade mission to Argentina and Ecuador regim",
     "kb_stats": {
