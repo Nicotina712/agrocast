@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T14:57:23",
+  "generated_at": "2026-10-16T14:46:13",
   "n_datasets": 12,
   "n_missing": 0,
   "by_layer": {
@@ -18,9 +18,9 @@
           "Oil"
         ],
         "exists": true,
-        "row_count": 2513,
-        "last_updated": "2026-10-15T14:55:46",
-        "size_kb": 298.4
+        "row_count": 2514,
+        "last_updated": "2026-10-16T14:45:34",
+        "size_kb": 298.6
       },
       {
         "layer": "bronze",
@@ -36,7 +36,7 @@
         ],
         "exists": true,
         "row_count": 1975,
-        "last_updated": "2026-10-15T14:55:46",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 151.1
       },
       {
@@ -53,7 +53,7 @@
         ],
         "exists": true,
         "row_count": 562,
-        "last_updated": "2026-10-15T14:56:59",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 50.9
       },
       {
@@ -69,7 +69,7 @@
         ],
         "exists": true,
         "row_count": 26,
-        "last_updated": "2026-10-15T14:55:46",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 1.8
       },
       {
@@ -87,7 +87,7 @@
         ],
         "exists": true,
         "row_count": 1,
-        "last_updated": "2026-10-15T14:55:46",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 1.5
       },
       {
@@ -104,8 +104,8 @@
           "front_volume"
         ],
         "exists": true,
-        "row_count": 122,
-        "last_updated": "2026-10-15T14:57:03",
+        "row_count": 123,
+        "last_updated": "2026-10-16T14:46:03",
         "size_kb": 11.0
       },
       {
@@ -122,9 +122,9 @@
           "iv_put"
         ],
         "exists": true,
-        "row_count": 122,
-        "last_updated": "2026-10-15T14:57:04",
-        "size_kb": 9.7
+        "row_count": 123,
+        "last_updated": "2026-10-16T14:46:04",
+        "size_kb": 9.8
       },
       {
         "layer": "bronze",
@@ -140,7 +140,7 @@
         ],
         "exists": true,
         "row_count": 484,
-        "last_updated": "2026-10-15T14:57:06",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 29.8
       },
       {
@@ -157,7 +157,7 @@
         ],
         "exists": true,
         "row_count": 27915,
-        "last_updated": "2026-10-15T14:55:46",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 673.3
       },
       {
@@ -174,7 +174,7 @@
         ],
         "exists": true,
         "row_count": 24,
-        "last_updated": "2026-10-15T14:55:46",
+        "last_updated": "2026-10-16T14:44:10",
         "size_kb": 1.1
       }
     ],
@@ -199,9 +199,9 @@
           "enso_oni"
         ],
         "exists": true,
-        "row_count": 2513,
-        "last_updated": "2026-10-15T14:57:07",
-        "size_kb": 4667.0
+        "row_count": 2514,
+        "last_updated": "2026-10-16T14:46:04",
+        "size_kb": 4334.4
       },
       {
         "layer": "gold",
@@ -218,9 +218,9 @@
           "expected_vol"
         ],
         "exists": true,
-        "row_count": 2513,
-        "last_updated": "2026-10-15T14:57:23",
-        "size_kb": 182.2
+        "row_count": 2514,
+        "last_updated": "2026-10-16T14:46:13",
+        "size_kb": 182.5
       }
     ]
   }
