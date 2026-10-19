@@ -1,11 +1,11 @@
 {
- "fecha": "2026-10-12",
- "precio_usd_ton": 444.0,
- "precio_fijable_neto": 410.0,
+ "fecha": "2026-10-19",
+ "precio_usd_ton": 430.4,
+ "precio_fijable_neto": 396.0,
  "margen_pct": null,
  "sugerido_pct": null,
  "falta_pct": null,
- "guardar_resultado": -11.7,
+ "guardar_resultado": -11.2,
  "guardar_hasta": "julio 2027",
- "vol_pct": 18.2
+ "vol_pct": 17.3
 }

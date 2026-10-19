@@ -3,9 +3,9 @@
   "exported_ytd_mmt": 100.15,
   "pct_completed": 87.5,
   "yoy_pct": 6.7,
-  "weekly_pace_mmt": 2.385,
+  "weekly_pace_mmt": 2.329,
   "weeks_to_complete": 6.0,
-  "week_of_year": 42,
+  "week_of_year": 43,
   "signal": "NORMAL",
   "interpretation": "Brasil export\u00f3 100.2 MMT (87.5% de proyecci\u00f3n USDA 114.5 MMT). Pace en l\u00ednea con expectativas estacionales. YoY: +6.7%.",
   "data_source": "comexstat",
@@ -47,6 +47,6 @@
       "exported_tons": 7358384.0
     }
   ],
-  "as_of": "2026-10-16",
-  "_cached_at": "2026-10-16T17:46:41.490344+00:00"
+  "as_of": "2026-10-19",
+  "_cached_at": "2026-10-19T19:35:06.509000+00:00"
 }
