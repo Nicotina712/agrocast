@@ -1,19 +1,19 @@
 {
   "ok": true,
-  "regime": "shock",
-  "explanation": "Volatilidad alta + cobertura de noticias acelerada \u2192 cambio estructural probable.",
-  "confidence_hint": "low",
+  "regime": "calm",
+  "explanation": "R\u00e9gimen normal sin extremos.",
+  "confidence_hint": "medium",
   "signals": {
     "vol_window": "vol_60d",
-    "vol_now": 0.0119,
-    "vol_p33": 0.0101,
+    "vol_now": 0.0112,
+    "vol_p33": 0.0102,
     "vol_p66": 0.0112,
     "news_velocity_7d": 1.0,
-    "iv_atm": 0.1921,
-    "ma90_slope": 0.00667,
-    "price_vs_ma90": 0.0238
+    "iv_atm": 0.0,
+    "ma90_slope": 0.00626,
+    "price_vs_ma90": 0.0158
   },
-  "as_of": "2026-10-20T15:12:03",
+  "as_of": "2026-10-21T15:20:12",
   "hmm": {
     "ok": true,
     "n_states": 3,
@@ -21,37 +21,37 @@
     "current_state": "low_vol",
     "current_proba": 0.966,
     "state_probs": {
-      "low_vol": 0.966,
+      "medium_vol": 0.034,
       "high_vol": 0.0,
-      "medium_vol": 0.034
+      "low_vol": 0.966
     },
     "state_freq": {
-      "low_vol": 1044,
+      "medium_vol": 327,
       "high_vol": 70,
-      "medium_vol": 326
+      "low_vol": 1043
     },
     "transition_matrix": [
       [
-        0.983,
-        0.0,
-        0.017
-      ],
-      [
-        0.0,
-        0.957,
-        0.043
-      ],
-      [
-        0.058,
+        0.933,
         0.009,
-        0.933
+        0.058
+      ],
+      [
+        0.043,
+        0.957,
+        0.0
+      ],
+      [
+        0.017,
+        0.0,
+        0.983
       ]
     ],
     "transition_labels": [
-      "low_vol",
+      "medium_vol",
       "high_vol",
-      "medium_vol"
+      "low_vol"
     ],
-    "explanation": "Mercado en estado 'low_vol' con probabilidad 97%. En la \u00faltima ventana (1440d), 1044 d\u00edas estuvieron en este r\u00e9gimen."
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 97%. En la \u00faltima ventana (1440d), 1043 d\u00edas estuvieron en este r\u00e9gimen."
   }
 }
