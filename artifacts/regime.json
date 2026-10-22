@@ -9,11 +9,11 @@
     "vol_p33": 0.0102,
     "vol_p66": 0.0112,
     "news_velocity_7d": 1.0,
-    "iv_atm": 0.0,
+    "iv_atm": 0.1524,
     "ma90_slope": 0.00626,
     "price_vs_ma90": 0.0158
   },
-  "as_of": "2026-10-21T15:20:12",
+  "as_of": "2026-10-22T15:13:54",
   "hmm": {
     "ok": true,
     "n_states": 3,
