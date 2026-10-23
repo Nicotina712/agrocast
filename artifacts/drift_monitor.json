@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "generated_at": "2026-10-22T18:14:17.241045",
-  "today": "2026-10-21",
+  "generated_at": "2026-10-23T18:03:16.435791",
+  "today": "2026-10-23",
   "buckets": [
     {
       "window_days": 30,
@@ -17,11 +17,11 @@
     },
     {
       "window_days": 60,
-      "n": 42,
-      "accuracy": 95.2,
+      "n": 44,
+      "accuracy": 95.5,
       "auc": 99.7,
       "signal_dist": {
-        "SELL": 30,
+        "SELL": 32,
         "BUY": 11,
         "HOLD": 1
       },
@@ -31,20 +31,20 @@
       "window_days": 90,
       "n": 64,
       "accuracy": 96.9,
-      "auc": 99.9,
+      "auc": 99.8,
       "signal_dist": {
         "SELL": 35,
-        "BUY": 28,
-        "HOLD": 1
+        "BUY": 27,
+        "HOLD": 2
       },
       "status": "ok"
     }
   ],
   "regime_shift": {
-    "p_buy_recent_90d": 0.457,
-    "p_buy_historical": 0.532,
-    "delta": -0.075,
-    "z_delta": -0.24
+    "p_buy_recent_90d": 0.458,
+    "p_buy_historical": 0.524,
+    "delta": -0.066,
+    "z_delta": -0.21
   },
   "health": "green"
 }

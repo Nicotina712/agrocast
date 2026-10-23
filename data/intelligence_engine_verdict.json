@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-10-22T15:14:15.633364",
-  "current_price": 1254.25,
+  "timestamp": "2026-10-23T15:03:14.733702",
+  "current_price": 1268.0,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgHjK4z9vyEBPPUpM4F2G'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKcHG72aakGPW8tM6HU5'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgHjK5WArYZaFJCvwrSmZ'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKcHGhWBWPmgZNZn4M7m'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgHjK66P63P1HmbH9hAiZ'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKcHHJD2pfNxmXNihiVG'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgHjK6dP5iH97YB8Q6huk'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKcHHvudm5P6PebbRa84'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgHjK7ANy1KnvtXkcHV3x'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgKcHJfZzq9c8vGoqQiCc'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 27,
+    "articles_escalated": 28,
     "kb_documents_retrieved": 8,
-    "bull_news": 3,
+    "bull_news": 2,
     "bear_news": 8,
     "technical_data_loaded": true
   },
@@ -31,14 +31,14 @@
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 27,
+    "tier1_escalated": 28,
     "rag_documents": 8,
-    "rag_query": "El desafío de la cercanía en la maquinaria agrícola: “Cada productor tiene neces Precio del maíz en Rosario hoy 6 junio 2026 Precio de la Soja en Rosario hoy 6 junio 2026 regime calm",
+    "rag_query": "Soybeans Fading Lower on Monday Selloff continues in end-of-week trading usda USDA exports – Philippines buy soymeal, June 5, 2026 regime calm",
     "kb_stats": {
-      "total_documents": 2555,
+      "total_documents": 2552,
       "categories": {
         "shock_history": 1081,
-        "event_history": 1464,
+        "event_history": 1461,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
