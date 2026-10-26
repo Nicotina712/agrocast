@@ -1,15 +1,15 @@
 {
   "usda_projection_mmt": 114.5,
-  "exported_ytd_mmt": 96.87,
-  "pct_completed": 84.6,
+  "exported_ytd_mmt": 98.47,
+  "pct_completed": 86.0,
   "yoy_pct": null,
-  "weekly_pace_mmt": 2.253,
-  "weeks_to_complete": 8.0,
-  "week_of_year": 43,
+  "weekly_pace_mmt": 2.238,
+  "weeks_to_complete": 7.0,
+  "week_of_year": 44,
   "signal": "NORMAL",
-  "interpretation": "Sin dato oficial (ComexStat no disponible). Estimaci\u00f3n estacional: ~96.9 MMT de 114.5 MMT proyectados por USDA.",
+  "interpretation": "Sin dato oficial (ComexStat no disponible). Estimaci\u00f3n estacional: ~98.5 MMT de 114.5 MMT proyectados por USDA.",
   "data_source": "seasonal_estimate",
   "monthly_breakdown": [],
-  "as_of": "2026-10-23",
-  "_cached_at": "2026-10-23T18:03:12.424449+00:00"
+  "as_of": "2026-10-26",
+  "_cached_at": "2026-10-26T19:40:36.013179+00:00"
 }

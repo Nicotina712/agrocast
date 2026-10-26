@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?% (hace 73h)",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 8% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 84.0%",
+      "detail": "P(suba 14d): 7% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 85.3%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.42,
-        "confidence": 0.84,
+        "expected_return": -0.4266,
+        "confidence": 0.8532,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.139,
+      "score": -0.113,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1250.4 USc/bu \u00b7 Retorno: -1.4% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1239.3 USc/bu \u00b7 Retorno: -1.1% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1250.43,
-        "return_pct": -1.39
+        "forecast": 1239.28,
+        "return_pct": -1.13
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.046,
+      "score": 0.04,
       "direction": "NEUTRO",
-      "detail": "Oct: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-4.4%, +4.9%]",
+      "detail": "Oct: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-4.4%, +4.8%]",
       "weight": 0.0,
       "raw": {
         "month": 10,
-        "avg_pct": 0.23
+        "avg_pct": 0.2
       }
     }
   ],
   "composite_score": 45,
   "composite_raw": -0.104,
   "composite_signal": "HOLD",
-  "as_of": "2026-10-23",
-  "_cached_at": "2026-10-23T18:02:59.791372+00:00"
+  "as_of": "2026-10-26",
+  "_cached_at": "2026-10-26T19:40:20.523488+00:00"
 }
