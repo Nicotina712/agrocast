@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?% (hace 24h)",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 6% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 87.6%",
+      "detail": "P(suba 14d): 9% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 82.9%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.4381,
-        "confidence": 0.8762,
+        "expected_return": -0.4145,
+        "confidence": 0.829,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.112,
+      "score": -0.114,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1239.5 USc/bu \u00b7 Retorno: -1.1% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1222.9 USc/bu \u00b7 Retorno: -1.1% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1239.52,
-        "return_pct": -1.12
+        "forecast": 1222.91,
+        "return_pct": -1.14
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.04,
+      "score": 0.03,
       "direction": "NEUTRO",
-      "detail": "Oct: retorno hist\u00f3rico promedio +0.2% \u00b7 \u00b11\u03c3: [-4.4%, +4.8%]",
+      "detail": "Oct: retorno hist\u00f3rico promedio +0.1% \u00b7 \u00b11\u03c3: [-4.5%, +4.8%]",
       "weight": 0.0,
       "raw": {
         "month": 10,
-        "avg_pct": 0.2
+        "avg_pct": 0.15
       }
     }
   ],
   "composite_score": 45,
   "composite_raw": -0.104,
   "composite_signal": "HOLD",
-  "as_of": "2026-10-27",
-  "_cached_at": "2026-10-27T19:05:03.750090+00:00"
+  "as_of": "2026-10-28",
+  "_cached_at": "2026-10-28T19:12:40.467818+00:00"
 }
