@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 9% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 82.9%",
+      "detail": "P(suba 14d): 11% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 78.6%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.4145,
-        "confidence": 0.829,
+        "expected_return": -0.3931,
+        "confidence": 0.7862,
         "signal": "HOLD"
       }
     },
@@ -62,13 +62,13 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.114,
-      "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1222.9 USc/bu \u00b7 Retorno: -1.1% (informativo, no pondera)",
+      "score": -0.172,
+      "direction": "BAJISTA",
+      "detail": "Precio objetivo: 1215.7 USc/bu \u00b7 Retorno: -1.7% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1222.91,
-        "return_pct": -1.14
+        "forecast": 1215.7,
+        "return_pct": -1.72
       }
     },
     {
@@ -86,6 +86,6 @@
   "composite_score": 45,
   "composite_raw": -0.104,
   "composite_signal": "HOLD",
-  "as_of": "2026-10-28",
-  "_cached_at": "2026-10-28T19:12:40.467818+00:00"
+  "as_of": "2026-10-29",
+  "_cached_at": "2026-10-29T19:21:57.132161+00:00"
 }
