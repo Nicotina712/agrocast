@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-10-29T16:23:23.130880",
-  "current_price": 1234.5,
+  "timestamp": "2026-10-30T15:57:12.975062",
+  "current_price": 1234.0,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgX5FD8ZkXb7tE1HFuYfa'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgYw4Pi5UNyCbeViXZ2uf'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgX5FDuSzUyxWib1FRceX'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgYw4QDLPuAZBxkHGYqus'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgX5FEQhvqMeEKzrNy7Ug'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgYw4QbfPy4Js9htDdiJp'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgX5FEtENe6DhDjE14Rjo'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgYw4QyyWLub8H24XtSzT'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgX5FFLGdcERSVmb7VMjb'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgYw4RRGbktvsrRCW1sFm'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 27,
+    "articles_escalated": 29,
     "kb_documents_retrieved": 6,
-    "bull_news": 3,
+    "bull_news": 1,
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.0,
+  "execution_time_seconds": 0.9,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 27,
+    "tier1_escalated": 29,
     "rag_documents": 6,
     "rag_query": "usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? usda argentina USDA begins trade mission to Argentina and Ecuador regim",
     "kb_stats": {
-      "total_documents": 2551,
+      "total_documents": 2549,
       "categories": {
         "shock_history": 1081,
-        "event_history": 1460,
+        "event_history": 1458,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
