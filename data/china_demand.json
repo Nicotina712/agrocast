@@ -4,14 +4,14 @@
   "imports_yoy_pct": 1.8,
   "imports_zscore": 1.31,
   "crush_margin": {
-    "margin_usd_bu": 2.123,
-    "margin_usd_ton": 78.02,
-    "margin_pct_rank_2y": 64.0,
-    "soy_price_usd_ton": 453.6,
-    "meal_price_usd_ton": 329.2,
-    "oil_price_usc_lb": 65.69,
+    "margin_usd_bu": 2.018,
+    "margin_usd_ton": 74.15,
+    "margin_pct_rank_2y": 61.3,
+    "soy_price_usd_ton": 446.81,
+    "meal_price_usd_ton": 319.4,
+    "oil_price_usc_lb": 65.01,
     "signal": "NEUTRAL",
-    "note": "Crush en rango normal (2.12 USD/bu, percentil 64 de 2 a\u00f1os)."
+    "note": "Crush en rango normal (2.02 USD/bu, percentil 61 de 2 a\u00f1os)."
   },
   "cny_usd": null,
   "cny_signal": null,
@@ -62,6 +62,6 @@
       "imports_mmt": 115.0
     }
   ],
-  "as_of": "2026-10-29",
-  "_cached_at": "2026-10-29T19:23:21.002640+00:00"
+  "as_of": "2026-11-02",
+  "_cached_at": "2026-11-02T22:33:20.871675+00:00"
 }
