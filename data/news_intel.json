@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-02T22:32:25.282197",
-  "n_articles": 22,
+  "generated_at": "2026-11-03T20:21:41.515237",
+  "n_articles": 20,
   "n_high_impact": 0,
-  "composite": -0.0323,
+  "composite": 0.05,
   "drivers": {
     "news_china_demand_signal": 0.0,
     "news_china_demand_count": 0,
