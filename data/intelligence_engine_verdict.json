@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-11-03T17:22:12.409323",
-  "current_price": 1213.5,
+  "timestamp": "2026-11-04T17:37:58.902680",
+  "current_price": 1203.75,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CggcmwzVPYHT88vgMNopi'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgiXndm64iHyUS6NinRQj'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CggcmxWVm8UCt5DoDjdqC'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgiXneLZJ29RawtZxkM3n'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CggcmxzmpP25BF8cQMie5'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgiXnepLC6cSWDLChdBNZ'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CggcmyWGzmnAjBz3ywCLo'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgiXnfFt58bEEgV6JGY7L'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Cggcmz5W9zZ1pSLg9X28S'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgiXnfprGkc5dDzG2kczL'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 28,
+    "articles_escalated": 27,
     "kb_documents_retrieved": 8,
-    "bull_news": 2,
-    "bear_news": 7,
+    "bull_news": 3,
+    "bear_news": 9,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.1,
+  "execution_time_seconds": 1.0,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 28,
+    "tier1_escalated": 27,
     "rag_documents": 8,
-    "rag_query": "usda USDA exports – Philippines buy soymeal, June 5, 2026 usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? regime calm",
+    "rag_query": "Produção de eucalipto salta quase 15% em São Paulo e VPA chega perto de R$ 3 bil Livestock industry demands 1.5 million tonnes soymeal imports amid price surge Soybeans Falling on Thursday, with Produ",
     "kb_stats": {
-      "total_documents": 2549,
+      "total_documents": 2554,
       "categories": {
         "shock_history": 1081,
-        "event_history": 1458,
+        "event_history": 1463,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,

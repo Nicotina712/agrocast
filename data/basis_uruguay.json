@@ -1,16 +1,16 @@
 {
-  "fob_usd_ton": 417.0,
-  "cbot_usd_ton": 442.58,
-  "basis_usd_ton": -25.58,
-  "basis_zscore": -0.68,
-  "basis_pct_rank": 24.3,
-  "basis_5yr_avg": -22.75,
-  "interpretation": "Basis amplio (-25.6 USD/ton) \u2014 descuento elevado vs. Chicago, eval\u00fae esperar mejora.",
+  "fob_usd_ton": 407.0,
+  "cbot_usd_ton": 438.63,
+  "basis_usd_ton": -31.63,
+  "basis_zscore": -2.13,
+  "basis_pct_rank": 0.3,
+  "basis_5yr_avg": -22.76,
+  "interpretation": "Basis amplio (-31.6 USD/ton) \u2014 descuento elevado vs. Chicago, eval\u00fae esperar mejora.",
   "source": "revista_verde",
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-04",
   "cbot_note": "CBOT ref from Revista Verde (front month USD/ton)",
-  "rv_date": "29/10/2026",
+  "rv_date": "04/11/2026",
   "rv_campaign": "2026/2027",
   "signal": "DESFAVORABLE",
-  "_cached_at": "2026-11-02T22:33:02.648696+00:00"
+  "_cached_at": "2026-11-04T20:37:37.578206+00:00"
 }
