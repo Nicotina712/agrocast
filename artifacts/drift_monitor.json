@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at": "2026-11-04T20:38:00.680475",
+  "generated_at": "2026-11-05T20:55:26.968909",
   "today": "2026-11-04",
   "buckets": [
     {
@@ -41,10 +41,10 @@
     }
   ],
   "regime_shift": {
-    "p_buy_recent_90d": 0.394,
-    "p_buy_historical": 0.578,
-    "delta": -0.184,
-    "z_delta": -0.58
+    "p_buy_recent_90d": 0.395,
+    "p_buy_historical": 0.552,
+    "delta": -0.157,
+    "z_delta": -0.5
   },
   "health": "green"
 }
