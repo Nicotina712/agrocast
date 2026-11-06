@@ -1,21 +1,50 @@
 {
-  "as_of": "2026-11-05T17:53:59",
+  "as_of": "2026-11-06T17:10:18",
   "current": {
     "ok": true,
-    "is_shock": false,
-    "is_near_shock": false,
-    "ret_5d_pct": -1.69,
-    "ret_10d_pct": -3.33,
+    "is_shock": true,
+    "is_strong_shock": false,
+    "is_near_shock": true,
+    "shock_type": "oil_collapse",
+    "shock_direction": "down",
+    "window_active": "10d",
+    "ret_5d_pct": -2.27,
+    "ret_10d_pct": -4.93,
+    "oil_5d_pct": -12.53,
+    "oil_10d_pct": -11.81,
+    "soyoil_5d_pct": -5.45,
+    "soyoil_10d_pct": -6.76,
     "thr_spike_5d_pct": 4.65,
     "thr_spike_10d_pct": 6.85,
     "thr_drop_5d_pct": -4.1,
     "thr_drop_10d_pct": -6.09,
-    "thr_near_spike_5d_pct": 2.75,
-    "thr_near_spike_10d_pct": 3.89
+    "thr_near_spike_5d_pct": 2.74,
+    "thr_near_spike_10d_pct": 3.88,
+    "shock_date": "2026-11-06",
+    "shock_price": 1194.5,
+    "ret_active_pct": -4.93,
+    "oil_active_pct": -11.81
   },
-  "analogs_found": 0,
+  "analogs_found": 41,
+  "analog_stats": {
+    "n": 41,
+    "ret_30d_q25_pct": -7.35,
+    "ret_30d_med_pct": -3.45,
+    "ret_30d_q75_pct": 0.76,
+    "peak_day_med": 20,
+    "peak_day_q25": 6,
+    "peak_day_q75": 27,
+    "peak_gain_med_pct": -6.94,
+    "half_fade_med": 13,
+    "survived_30d_pct": 60.97560975609756,
+    "confidence": "high"
+  },
   "recommendation": {
-    "action": "NO_SHOCK",
-    "message": "Sin shock activo. Use el modelo regular."
+    "action": "INFO_BEARISH_DEEPENS",
+    "advisory": "info_only",
+    "message": "Shock bajista detectado con 41 an\u00e1logos hist\u00f3ricos. Peak t\u00edpico: d\u00eda 20 post-shock (rango Q25-Q75: d\u00eda 6-27, ganancia mediana -6.9%). Retorno mediano a 30d: -3.5% (banda Q25-Q75: -7.3% a +0.8%). Sobrevive 30d: 61% de los casos.",
+    "tactical": "Hist\u00f3ricamente la ca\u00edda suele profundizarse antes de recuperar. Informaci\u00f3n de contexto \u2014 no act\u00fae s\u00f3lo en base a esto.",
+    "confidence": "high",
+    "note": "Backtest 2016-2026 (N=971): acciones direccionales basadas en an\u00e1logos pierden vs always-sell con p<0.0001. Este panel es informativo, no decisor."
   }
 }

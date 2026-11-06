@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "timestamp": "2026-11-05T17:54:11.547436",
+  "timestamp": "2026-11-06T17:10:23.592014",
   "from_cache": false,
   "current_state": {
     "basis_usd_ton": -26.58,
@@ -31,48 +31,48 @@
     "7d": {
       "horizon_days": 7,
       "current_basis": -26.58,
-      "expected_basis": -25.53,
-      "change_expected": 1.05,
+      "expected_basis": -25.44,
+      "change_expected": 1.14,
       "quantiles": {
-        "q10": -35.25,
-        "q25": -30.67,
+        "q10": -34.91,
+        "q25": -30.65,
         "q50": -25.4,
-        "q75": -20.43,
-        "q90": -15.87
+        "q75": -20.53,
+        "q90": -15.83
       },
-      "prob_tighter_pct": 55.6,
+      "prob_tighter_pct": 56.1,
       "hedge_recommendation": "NEUTRAL — basis estable",
       "garch_daily_vol": 3.084
     },
     "15d": {
       "horizon_days": 15,
       "current_basis": -26.58,
-      "expected_basis": -24.33,
-      "change_expected": 2.25,
+      "expected_basis": -24.14,
+      "change_expected": 2.44,
       "quantiles": {
-        "q10": -39.36,
-        "q25": -32.2,
-        "q50": -24.3,
-        "q75": -16.83,
-        "q90": -9.61
+        "q10": -39.04,
+        "q25": -31.8,
+        "q50": -24.12,
+        "q75": -16.33,
+        "q90": -9.28
       },
-      "prob_tighter_pct": 58.2,
+      "prob_tighter_pct": 57.9,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
       "garch_daily_vol": 3.084
     },
     "30d": {
       "horizon_days": 30,
       "current_basis": -26.58,
-      "expected_basis": -22.53,
-      "change_expected": 4.05,
+      "expected_basis": -21.84,
+      "change_expected": 4.74,
       "quantiles": {
-        "q10": -43.15,
-        "q25": -33.57,
-        "q50": -22.75,
-        "q75": -11.65,
-        "q90": -1.32
+        "q10": -43.77,
+        "q25": -32.79,
+        "q50": -21.49,
+        "q75": -10.52,
+        "q90": -0.61
       },
-      "prob_tighter_pct": 59.7,
+      "prob_tighter_pct": 61.7,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
       "garch_daily_vol": 3.084
     }

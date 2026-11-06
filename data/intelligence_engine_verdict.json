@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-11-05T17:55:25.187638",
-  "current_price": 1189.75,
+  "timestamp": "2026-11-06T17:10:29.247697",
+  "current_price": 1194.5,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgkSvfYtJSAFjYEXPv6Py'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJrQTXYjhdpCpUsk7F'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgkSvgRyQp6TFfXjXCaXe'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJs4PseVJx21RXFpa1'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgkSvgwEcr1gwxErDxYNG'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJsf7YScio7T8g46Hd'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgkSvhSjkYonjNePozrm3'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJtH4PBwHLKPosYrSy'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgkSviJLMxwmuriLFoQ9D'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJtyF35TjkvPuMj4PG'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 29,
+    "articles_escalated": 28,
     "kb_documents_retrieved": 8,
-    "bull_news": 3,
+    "bull_news": 2,
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.0,
+  "execution_time_seconds": 1.2,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 29,
+    "tier1_escalated": 28,
     "rag_documents": 8,
-    "rag_query": "Precio del maíz en Rosario hoy 6 junio 2026 Precio de la Soja en Rosario hoy 6 junio 2026 Estudo analisa seguro rural em 7 países e traz dicas de modelos ao Brasil regime calm",
+    "rag_query": "Selloff continues in end-of-week trading usda USDA exports – Philippines buy soymeal, June 5, 2026 usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone regime calm",
     "kb_stats": {
-      "total_documents": 2554,
+      "total_documents": 2553,
       "categories": {
-        "shock_history": 1081,
-        "event_history": 1463,
+        "shock_history": 1077,
+        "event_history": 1466,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
