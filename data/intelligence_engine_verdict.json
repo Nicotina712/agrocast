@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-11-06T17:10:29.247697",
-  "current_price": 1194.5,
+  "timestamp": "2026-11-09T20:15:12.431762",
+  "current_price": 1187.0,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJrQTXYjhdpCpUsk7F'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgtCpbMMPXyoVZzfsgzqY'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJs4PseVJx21RXFpa1'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgtCpc3nY73HDS33AbQgr'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJsf7YScio7T8g46Hd'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgtCpcdksk44WQnazSx1z'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJtH4PBwHLKPosYrSy'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgtCpdBEwEk5byjVf9JmE'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgnHJtyF35TjkvPuMj4PG'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CgtCpdjjFcW2kcAQURocL'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
     "articles_escalated": 28,
-    "kb_documents_retrieved": 8,
+    "kb_documents_retrieved": 7,
     "bull_news": 2,
     "bear_news": 7,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.2,
+  "execution_time_seconds": 0.9,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
     "tier1_escalated": 28,
-    "rag_documents": 8,
-    "rag_query": "Selloff continues in end-of-week trading usda USDA exports – Philippines buy soymeal, June 5, 2026 usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone regime calm",
+    "rag_documents": 7,
+    "rag_query": "usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? usda argentina USDA begins trade mission to Argentina and Ecuador regim",
     "kb_stats": {
-      "total_documents": 2553,
+      "total_documents": 2554,
       "categories": {
         "shock_history": 1077,
-        "event_history": 1466,
+        "event_history": 1467,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
