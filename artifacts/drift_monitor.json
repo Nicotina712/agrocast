@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at": "2026-11-09T23:15:14.407809",
+  "generated_at": "2026-11-10T20:40:33.740234",
   "today": "2026-11-09",
   "buckets": [
     {
@@ -30,7 +30,7 @@
     {
       "window_days": 90,
       "n": 64,
-      "accuracy": 96.9,
+      "accuracy": 98.4,
       "auc": 99.9,
       "signal_dist": {
         "SELL": 44,
@@ -41,10 +41,10 @@
     }
   ],
   "regime_shift": {
-    "p_buy_recent_90d": 0.351,
-    "p_buy_historical": 0.568,
-    "delta": -0.217,
-    "z_delta": -0.69
+    "p_buy_recent_90d": 0.349,
+    "p_buy_historical": 0.575,
+    "delta": -0.226,
+    "z_delta": -0.72
   },
   "health": "green"
 }

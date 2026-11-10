@@ -1,23 +1,23 @@
 {
   "report_year": 2026,
   "marketing_year": "2026/27",
-  "report_date": "2026-10-13",
-  "released_at": "2026-10-13T17:00:00+00:00",
+  "report_date": "2026-11-10",
+  "released_at": "2026-11-10T17:00:00+00:00",
   "world": {
-    "production_mmt": 442.7,
-    "exports_mmt": 192.0,
-    "imports_mmt": 190.82,
-    "consumption_mmt": 442.18,
-    "ending_stocks_mmt": 124.28,
-    "beginning_stocks_mmt": 124.93
+    "production_mmt": 442.5,
+    "exports_mmt": 192.55,
+    "imports_mmt": 191.38,
+    "consumption_mmt": 442.8,
+    "ending_stocks_mmt": 123.5,
+    "beginning_stocks_mmt": 124.98
   },
   "argentina": {
     "production_mmt": 50.0,
-    "exports_mmt": 6.45,
+    "exports_mmt": 6.75,
     "imports_mmt": 6.5,
     "consumption_mmt": 49.65,
-    "ending_stocks_mmt": 24.07,
-    "beginning_stocks_mmt": 23.67
+    "ending_stocks_mmt": 23.74,
+    "beginning_stocks_mmt": 23.64
   },
   "brazil": {
     "production_mmt": 186.0,
@@ -28,11 +28,11 @@
     "beginning_stocks_mmt": 37.88
   },
   "usa": {
-    "production_mmt": 124.15,
-    "exports_mmt": 46.13,
+    "production_mmt": 124.48,
+    "exports_mmt": 46.81,
     "imports_mmt": 0.68,
-    "consumption_mmt": 78.7,
-    "ending_stocks_mmt": 8.57,
+    "consumption_mmt": 78.76,
+    "ending_stocks_mmt": 8.17,
     "beginning_stocks_mmt": 8.58
   },
   "china": {
@@ -44,19 +44,19 @@
     "beginning_stocks_mmt": 44.36
   },
   "surprise": {
-    "score": -0.21,
+    "score": 0.63,
     "surprise_z": null,
-    "expected": 124.02,
-    "actual": 124.28,
+    "expected": 124.28,
+    "actual": 123.5,
     "direction": "NEUTRAL",
-    "n_history": 1
+    "n_history": 2
   },
   "surprise_z": null,
   "signal": "NEUTRAL",
-  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: -0.2%) \u2192 NEUTRAL.",
+  "note": "Stocks globales en l\u00ednea con expectativas (sorpresa: +0.6%) \u2192 NEUTRAL.",
   "data_source": "usda_psd_csv",
-  "history_n": 27,
-  "history_n_unique": 1,
-  "as_of": "2026-11-09T20:14:33.264529",
-  "_cached_at": "2026-11-09T23:14:33.264801+00:00"
+  "history_n": 28,
+  "history_n_unique": 2,
+  "as_of": "2026-11-10T17:40:30.344967",
+  "_cached_at": "2026-11-10T20:40:30.345155+00:00"
 }

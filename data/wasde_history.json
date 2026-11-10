@@ -221,5 +221,16 @@
     "world_exports": 192.0,
     "brazil_exports": 118.0,
     "argentina_exports": 6.45
+  },
+  {
+    "timestamp": "2026-11-10T17:40:30.344398",
+    "report_date": "2026-11-10",
+    "marketing_year": "2026/27",
+    "data_source": "usda_psd_csv",
+    "world_ending_stocks": 123.5,
+    "world_production": 442.5,
+    "world_exports": 192.55,
+    "brazil_exports": 118.0,
+    "argentina_exports": 6.75
   }
 ]
