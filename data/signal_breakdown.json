@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?% (hace 24h)",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
@@ -27,24 +27,24 @@
     },
     {
       "name": "WASDE / Stocks Mundiales",
-      "score": -0.021,
+      "score": 0.063,
       "direction": "NEUTRO",
-      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 124.3 MMT",
+      "detail": "Se\u00f1al WASDE: NEUTRAL \u00b7 Stocks finales: 123.5 MMT",
       "weight": 0.2,
       "raw": {
         "signal": "NEUTRAL",
-        "surprise_score": -0.21
+        "surprise_score": 0.63
       }
     },
     {
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 11% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 78.2%",
+      "detail": "P(suba 14d): 9% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 82.4%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.3909,
-        "confidence": 0.7818,
+        "expected_return": -0.4122,
+        "confidence": 0.8244,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.014,
+      "score": -0.075,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1185.4 USc/bu \u00b7 Retorno: -0.1% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1221.2 USc/bu \u00b7 Retorno: -0.8% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1185.39,
-        "return_pct": -0.14
+        "forecast": 1221.23,
+        "return_pct": -0.75
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.53,
+      "score": 0.516,
       "direction": "MUY ALCISTA",
-      "detail": "Nov: retorno hist\u00f3rico promedio +2.6% \u00b7 \u00b11\u03c3: [-1.9%, +7.2%]",
+      "detail": "Nov: retorno hist\u00f3rico promedio +2.6% \u00b7 \u00b11\u03c3: [-2.0%, +7.1%]",
       "weight": 0.0,
       "raw": {
         "month": 11,
-        "avg_pct": 2.65
+        "avg_pct": 2.58
       }
     }
   ],
-  "composite_score": 40,
-  "composite_raw": -0.204,
+  "composite_score": 41,
+  "composite_raw": -0.187,
   "composite_signal": "SELL",
-  "as_of": "2026-11-10",
-  "_cached_at": "2026-11-10T20:40:24.248759+00:00"
+  "as_of": "2026-11-11",
+  "_cached_at": "2026-11-11T20:59:44.180059+00:00"
 }
