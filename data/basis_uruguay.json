@@ -1,16 +1,16 @@
 {
   "fob_usd_ton": 415.0,
-  "cbot_usd_ton": 451.86,
-  "basis_usd_ton": -36.86,
-  "basis_zscore": -3.36,
-  "basis_pct_rank": 0.0,
-  "basis_5yr_avg": -22.79,
-  "interpretation": "Basis muy amplio (-36.9 USD/ton) \u2014 descuento excepcional, mercado presionado.",
+  "cbot_usd_ton": 450.85,
+  "basis_usd_ton": -35.85,
+  "basis_zscore": -3.1,
+  "basis_pct_rank": 0.1,
+  "basis_5yr_avg": -22.8,
+  "interpretation": "Basis muy amplio (-35.9 USD/ton) \u2014 descuento excepcional, mercado presionado.",
   "source": "revista_verde",
-  "as_of": "2026-11-11",
+  "as_of": "2026-11-12",
   "cbot_note": "CBOT ref from Revista Verde (front month USD/ton)",
-  "rv_date": "11/11/2026",
+  "rv_date": "12/11/2026",
   "rv_campaign": "2026/2027",
   "signal": "MUY_DESFAVORABLE",
-  "_cached_at": "2026-11-11T20:59:55.986489+00:00"
+  "_cached_at": "2026-11-12T21:16:22.114015+00:00"
 }

@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at": "2026-11-11T21:00:05.173830",
+  "generated_at": "2026-11-12T21:16:31.799760",
   "today": "2026-11-11",
   "buckets": [
     {
@@ -34,17 +34,17 @@
       "auc": 99.9,
       "signal_dist": {
         "SELL": 46,
-        "BUY": 18,
-        "HOLD": 0
+        "BUY": 17,
+        "HOLD": 1
       },
       "status": "ok"
     }
   ],
   "regime_shift": {
-    "p_buy_recent_90d": 0.323,
-    "p_buy_historical": 0.564,
-    "delta": -0.241,
-    "z_delta": -0.79
+    "p_buy_recent_90d": 0.317,
+    "p_buy_historical": 0.599,
+    "delta": -0.282,
+    "z_delta": -0.91
   },
   "health": "green"
 }
