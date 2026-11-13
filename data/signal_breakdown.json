@@ -5,7 +5,7 @@
       "name": "Intelligence Engine (5-Agent Debate)",
       "score": 0.0,
       "direction": "NEUTRO",
-      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?% (hace 24h)",
+      "detail": "Veredicto: HOLD \u00b7 Confianza: 50% \u00b7 Sizing: ?%",
       "weight": 0.35,
       "raw": {
         "verdict": "HOLD",
@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 8% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 84.8%",
+      "detail": "P(suba 14d): 10% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 80.1%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.424,
-        "confidence": 0.848,
+        "expected_return": -0.4005,
+        "confidence": 0.801,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.063,
+      "score": -0.062,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1222.8 USc/bu \u00b7 Retorno: -0.6% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1225.1 USc/bu \u00b7 Retorno: -0.6% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1222.78,
-        "return_pct": -0.63
+        "forecast": 1225.13,
+        "return_pct": -0.62
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.516,
+      "score": 0.504,
       "direction": "MUY ALCISTA",
-      "detail": "Nov: retorno hist\u00f3rico promedio +2.6% \u00b7 \u00b11\u03c3: [-2.0%, +7.1%]",
+      "detail": "Nov: retorno hist\u00f3rico promedio +2.5% \u00b7 \u00b11\u03c3: [-2.0%, +7.1%]",
       "weight": 0.0,
       "raw": {
         "month": 11,
-        "avg_pct": 2.58
+        "avg_pct": 2.52
       }
     }
   ],
   "composite_score": 41,
   "composite_raw": -0.187,
   "composite_signal": "SELL",
-  "as_of": "2026-11-12",
-  "_cached_at": "2026-11-12T21:16:08.104728+00:00"
+  "as_of": "2026-11-13",
+  "_cached_at": "2026-11-13T20:43:11.247370+00:00"
 }
