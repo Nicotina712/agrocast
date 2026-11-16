@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-11-13T17:43:20.131872",
-  "current_price": 1232.75,
+  "timestamp": "2026-11-16T20:07:52.461523",
+  "current_price": 1226.75,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch1aUZJMzBby5xwSmGBuM'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7Sva3aAFc6hUtV8RJvg'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch1aUZrMVXw44GFxMWLBW'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7SvahmA4zhe92Py9tZZ'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch1aUaHPpP81tep2Ggwzz'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7SvbF1eynpHKZsb2hBy'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch1aUajggoRz1fV5oVpns'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7SvbrDNohyf7BL3yzxU'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch1aUbECPHMNhM2MSvuUy'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011Ch7SvcTgN9AWC8AmkLQrp'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
-    "articles_escalated": 28,
-    "kb_documents_retrieved": 8,
-    "bull_news": 2,
+    "articles_escalated": 27,
+    "kb_documents_retrieved": 5,
+    "bull_news": 3,
     "bear_news": 7,
     "technical_data_loaded": true
   },
@@ -31,14 +31,14 @@
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
-    "tier1_escalated": 28,
-    "rag_documents": 8,
-    "rag_query": "usda USDA exports – Philippines buy soymeal, June 5, 2026 usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? regime calm",
+    "tier1_escalated": 27,
+    "rag_documents": 5,
+    "rag_query": "usda argentina USDA begins trade mission to Argentina and Ecuador La “oportunidad excepcional” de la carne: frigoríficos exportadores se reunieron El desafío de la cercanía en la maquinaria agrícola: ",
     "kb_stats": {
-      "total_documents": 2561,
+      "total_documents": 2566,
       "categories": {
-        "shock_history": 1077,
-        "event_history": 1474,
+        "shock_history": 1076,
+        "event_history": 1480,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
