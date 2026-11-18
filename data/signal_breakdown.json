@@ -40,11 +40,11 @@
       "name": "Modelo ML (XGBoost 14d)",
       "score": -1.0,
       "direction": "MUY BAJISTA",
-      "detail": "P(suba 14d): 11% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 78.0%",
+      "detail": "P(suba 14d): 9% \u00b7 Se\u00f1al: HOLD \u00b7 Confianza: 81.8%",
       "weight": 0.2,
       "raw": {
-        "expected_return": -0.3899,
-        "confidence": 0.7798,
+        "expected_return": -0.4091,
+        "confidence": 0.8181,
         "signal": "HOLD"
       }
     },
@@ -62,30 +62,30 @@
     },
     {
       "name": "Forecast 30d (Ridge+XGB Ensemble)",
-      "score": -0.035,
+      "score": 0.015,
       "direction": "NEUTRO",
-      "detail": "Precio objetivo: 1222.5 USc/bu \u00b7 Retorno: -0.3% (informativo, no pondera)",
+      "detail": "Precio objetivo: 1217.8 USc/bu \u00b7 Retorno: +0.1% (informativo, no pondera)",
       "weight": 0.0,
       "raw": {
-        "forecast": 1222.51,
-        "return_pct": -0.35
+        "forecast": 1217.82,
+        "return_pct": 0.15
       }
     },
     {
       "name": "Estacionalidad Hist\u00f3rica",
-      "score": 0.498,
+      "score": 0.49,
       "direction": "ALCISTA",
-      "detail": "Nov: retorno hist\u00f3rico promedio +2.5% \u00b7 \u00b11\u03c3: [-2.1%, +7.1%]",
+      "detail": "Nov: retorno hist\u00f3rico promedio +2.5% \u00b7 \u00b11\u03c3: [-2.1%, +7.0%]",
       "weight": 0.0,
       "raw": {
         "month": 11,
-        "avg_pct": 2.49
+        "avg_pct": 2.45
       }
     }
   ],
   "composite_score": 41,
   "composite_raw": -0.187,
   "composite_signal": "SELL",
-  "as_of": "2026-11-17",
-  "_cached_at": "2026-11-17T21:58:23.465033+00:00"
+  "as_of": "2026-11-18",
+  "_cached_at": "2026-11-18T21:40:50.589623+00:00"
 }

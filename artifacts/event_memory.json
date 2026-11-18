@@ -1,12 +1,12 @@
 {
   "ok": true,
-  "n_events": 1480,
+  "n_events": 1481,
   "date_range": [
     "2017-02-16",
-    "2026-11-16"
+    "2026-11-18"
   ],
   "event_types": {
-    "speculative_mom": 554,
+    "speculative_mom": 555,
     "oil_energy": 466,
     "macro_fx": 450,
     "mixed": 6,
@@ -15,11 +15,11 @@
   },
   "direction_dist": {
     "bullish": 743,
-    "bearish": 731,
+    "bearish": 732,
     "neutral": 6
   },
   "mean_narrative_strength": 0.664,
   "mean_fade_risk": 0.161,
-  "fade_rate_7d_pct": 38.3,
-  "as_of": "2026-11-17T18:58:22"
+  "fade_rate_7d_pct": 38.4,
+  "as_of": "2026-11-18T18:40:48"
 }
