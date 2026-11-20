@@ -5,24 +5,24 @@
   "confidence_hint": "medium",
   "signals": {
     "vol_window": "vol_60d",
-    "vol_now": 0.0113,
+    "vol_now": 0.011,
     "vol_p33": 0.0105,
     "vol_p66": 0.0113,
     "news_velocity_7d": 1.0,
-    "iv_atm": 0.5889,
-    "ma90_slope": 0.00143,
-    "price_vs_ma90": -0.0217
+    "iv_atm": 0.5996,
+    "ma90_slope": 0.00086,
+    "price_vs_ma90": -0.0183
   },
-  "as_of": "2026-11-19T18:56:00",
+  "as_of": "2026-11-20T18:38:03",
   "hmm": {
     "ok": true,
     "n_states": 3,
     "lookback_days": 1440,
     "current_state": "low_vol",
-    "current_proba": 0.878,
+    "current_proba": 0.867,
     "state_probs": {
-      "medium_vol": 0.122,
-      "low_vol": 0.878,
+      "medium_vol": 0.133,
+      "low_vol": 0.867,
       "high_vol": 0.0
     },
     "state_freq": {
@@ -52,6 +52,6 @@
       "low_vol",
       "high_vol"
     ],
-    "explanation": "Mercado en estado 'low_vol' con probabilidad 88%. En la \u00faltima ventana (1440d), 1060 d\u00edas estuvieron en este r\u00e9gimen."
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 87%. En la \u00faltima ventana (1440d), 1060 d\u00edas estuvieron en este r\u00e9gimen."
   }
 }

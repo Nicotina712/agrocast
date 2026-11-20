@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "timestamp": "2026-11-19T18:56:12.801165",
+  "timestamp": "2026-11-20T18:38:21.511055",
   "from_cache": false,
   "current_state": {
     "basis_usd_ton": -35.81,
@@ -31,48 +31,48 @@
     "7d": {
       "horizon_days": 7,
       "current_basis": -35.81,
-      "expected_basis": -33.14,
-      "change_expected": 2.67,
+      "expected_basis": -33.18,
+      "change_expected": 2.63,
       "quantiles": {
-        "q10": -44.31,
-        "q25": -38.99,
-        "q50": -33.16,
-        "q75": -27.34,
-        "q90": -21.86
+        "q10": -44.22,
+        "q25": -38.91,
+        "q50": -33.21,
+        "q75": -27.44,
+        "q90": -22.01
       },
-      "prob_tighter_pct": 62.7,
+      "prob_tighter_pct": 62.4,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
       "garch_daily_vol": 3.556
     },
     "15d": {
       "horizon_days": 15,
       "current_basis": -35.81,
-      "expected_basis": -30.24,
-      "change_expected": 5.57,
+      "expected_basis": -30.14,
+      "change_expected": 5.67,
       "quantiles": {
-        "q10": -47.21,
-        "q25": -39.22,
-        "q50": -30.22,
-        "q75": -21.22,
-        "q90": -13.07
+        "q10": -47.51,
+        "q25": -39.02,
+        "q50": -30.02,
+        "q75": -20.95,
+        "q90": -13.26
       },
-      "prob_tighter_pct": 65.7,
+      "prob_tighter_pct": 66.6,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
       "garch_daily_vol": 3.556
     },
     "30d": {
       "horizon_days": 30,
       "current_basis": -35.81,
-      "expected_basis": -26.12,
-      "change_expected": 9.69,
+      "expected_basis": -26.04,
+      "change_expected": 9.77,
       "quantiles": {
-        "q10": -50.77,
-        "q25": -39.1,
-        "q50": -25.9,
-        "q75": -13.23,
-        "q90": -1.7
+        "q10": -50.73,
+        "q25": -39.18,
+        "q50": -25.94,
+        "q75": -12.83,
+        "q90": -1.33
       },
-      "prob_tighter_pct": 69.3,
+      "prob_tighter_pct": 68.8,
       "hedge_recommendation": "ESPERAR — basis se espera que mejore",
       "garch_daily_vol": 3.556
     }
