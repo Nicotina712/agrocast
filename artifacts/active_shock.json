@@ -1,16 +1,16 @@
 {
-  "as_of": "2026-11-20T18:38:17",
+  "as_of": "2026-11-23T22:22:53",
   "current": {
     "ok": true,
     "is_shock": false,
     "is_near_shock": false,
-    "ret_5d_pct": -1.81,
-    "ret_10d_pct": 2.65,
+    "ret_5d_pct": -0.12,
+    "ret_10d_pct": 3.83,
     "thr_spike_5d_pct": 4.6,
     "thr_spike_10d_pct": 6.82,
     "thr_drop_5d_pct": -4.1,
     "thr_drop_10d_pct": -6.09,
-    "thr_near_spike_5d_pct": 2.73,
+    "thr_near_spike_5d_pct": 2.74,
     "thr_near_spike_10d_pct": 3.84
   },
   "analogs_found": 0,
