@@ -1,44 +1,44 @@
 {
   "ok": true,
   "regime": "calm",
-  "explanation": "R\u00e9gimen normal sin extremos.",
+  "explanation": "Volatilidad baja, mercado lateral \u2014 predicciones m\u00e1s estables.",
   "confidence_hint": "medium",
   "signals": {
     "vol_window": "vol_60d",
-    "vol_now": 0.0109,
+    "vol_now": 0.0104,
     "vol_p33": 0.0105,
     "vol_p66": 0.0113,
     "news_velocity_7d": 1.0,
-    "iv_atm": 0.4951,
+    "iv_atm": 0.5269,
     "ma90_slope": 0.00078,
-    "price_vs_ma90": -0.0129
+    "price_vs_ma90": -0.0005
   },
-  "as_of": "2026-11-24T20:20:03",
+  "as_of": "2026-11-25T19:52:59",
   "hmm": {
     "ok": true,
     "n_states": 3,
     "lookback_days": 1440,
     "current_state": "low_vol",
-    "current_proba": 0.877,
+    "current_proba": 0.88,
     "state_probs": {
-      "medium_vol": 0.123,
-      "low_vol": 0.877,
+      "medium_vol": 0.12,
+      "low_vol": 0.88,
       "high_vol": 0.0
     },
     "state_freq": {
-      "medium_vol": 311,
-      "low_vol": 1057,
+      "medium_vol": 312,
+      "low_vol": 1056,
       "high_vol": 72
     },
     "transition_matrix": [
       [
-        0.936,
-        0.055,
+        0.933,
+        0.058,
         0.01
       ],
       [
-        0.015,
-        0.984,
+        0.016,
+        0.983,
         0.001
       ],
       [
@@ -52,6 +52,6 @@
       "low_vol",
       "high_vol"
     ],
-    "explanation": "Mercado en estado 'low_vol' con probabilidad 88%. En la \u00faltima ventana (1440d), 1057 d\u00edas estuvieron en este r\u00e9gimen."
+    "explanation": "Mercado en estado 'low_vol' con probabilidad 88%. En la \u00faltima ventana (1440d), 1056 d\u00edas estuvieron en este r\u00e9gimen."
   }
 }

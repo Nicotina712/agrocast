@@ -1,44 +1,44 @@
 {
-  "timestamp": "2026-11-24T20:20:23.981396",
-  "current_price": 1232.25,
+  "timestamp": "2026-11-25T19:53:31.989410",
+  "current_price": 1243.25,
   "agents": {
     "bull": {
-      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChNcMHbfrjWBu99gDxrws'}"
+      "error": "Bull Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChQU7PFAzyTmfHyo4dvnt'}"
     },
     "bear": {
-      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChNcMJG73iYDHvqnWxgKV'}"
+      "error": "Bear Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChQU7Ps8YrqbuZ8QUtrtQ'}"
     },
     "risk": {
-      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChNcMJtJvhQ2N6av7Y8PQ'}"
+      "error": "Risk Assessor failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChQU7QQ8HEGRAQJrMhUc6'}"
     },
     "technical": {
-      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChNcMKYzAYS6qqk3bUc1n'}"
+      "error": "Technical Analyst failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChQU7Qy72ru19HPgSqaRH'}"
     }
   },
   "verdict": {
-    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChNcMLFAeEe1Z7uK7Pwnv'}"
+    "error": "Fund Manager failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011ChQU7RXLzSzvfABSLj3mA'}"
   },
   "context_summary": {
     "articles_analyzed": 30,
     "articles_escalated": 28,
-    "kb_documents_retrieved": 6,
-    "bull_news": 1,
+    "kb_documents_retrieved": 8,
+    "bull_news": 2,
     "bear_news": 8,
     "technical_data_loaded": true
   },
-  "execution_time_seconds": 1.1,
+  "execution_time_seconds": 1.0,
   "from_cache": false,
   "pipeline": {
     "tier1_method": "vader_keywords",
     "tier1_articles": 30,
     "tier1_escalated": 28,
-    "rag_documents": 6,
-    "rag_query": "usda USDA’s preferred weapon vs New World screwworm has wings but isn’t a drone High-tech or hula hoop for soybean stand counts? usda argentina USDA begins trade mission to Argentina and Ecuador regim",
+    "rag_documents": 8,
+    "rag_query": "Soybeans Fading Lower on Monday Selloff continues in end-of-week trading usda USDA exports – Philippines buy soymeal, June 5, 2026 regime calm",
     "kb_stats": {
-      "total_documents": 2571,
+      "total_documents": 2575,
       "categories": {
         "shock_history": 1076,
-        "event_history": 1485,
+        "event_history": 1489,
         "cross_commodity": 1,
         "fundamentals": 2,
         "events": 1,
